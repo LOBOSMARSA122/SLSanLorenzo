@@ -15,6 +15,7 @@ using System.Diagnostics;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Threading;
+using System.Threading.Tasks;
 namespace Sigesoft.Node.WinClient.UI.Reports
 {
     public partial class frmManagementReportAsync : Form
@@ -32,7 +33,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             _serviceId = serviceId;
             _pacientId = pacientId;
         }
-
+        private TaskScheduler _scheduler;
         private void frmManagementReportAsync_Load(object sender, EventArgs e)
         {
             #region Declaration
@@ -42,6 +43,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceBL = new ServiceBL();            
             #endregion           
 
+            _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
             #region Populate chklConsolidadoReportes
             var listaFinalOrdena = new List<ServiceComponentList>();
             var listaOrdenReportes = oOrganizationBL.GetOrdenReportes(ref objOperationResult, _organizationId);
@@ -89,36 +91,59 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             CrearReportesCrystal(_serviceId, Reportes);
 
-            var x = _filesNameToMerge.ToList();
-            _mergeExPDF.FilesName = x;
-            _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
-            _mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; ;
-            _mergeExPDF.Execute();
-            _mergeExPDF.RunFile();
+            //var x = _filesNameToMerge.ToList();
+            //_mergeExPDF.FilesName = x;
+            //_mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
+            //_mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; ;
+            //_mergeExPDF.Execute();
+            //_mergeExPDF.RunFile();
         }
 
+        
         public void CrearReportesCrystal(string serviceId, List<string> reportesId)
         {
-            foreach (var com in reportesId)
-            {
+        
+           
+             
+                new Task(() =>
+                {
+                    foreach (var com in reportesId)
+                    {
+                        var IdCrystal = getIdCrystal(com);
+                        var componentId = com.Split('|')[0].ToString();
+                            Task[] tareas = {Task.Factory.StartNew(() => ChooseReport(componentId, serviceId, IdCrystal),CancellationToken.None, TaskCreationOptions.LongRunning,_scheduler)};
+                            Task.WaitAll(tareas);
+                    }
+                }).Start();
+
                 //var IdCrystal = getIdCrystal(com);
                 //var componentId = com.Split('|')[0].ToString();
-                GenerateAsync(com);
-                //ChooseReport(componentId, serviceId, IdCrystal);
-            }
-        }
-        public void GenerateAsync(string com)
-        {
-            ThreadPool.QueueUserWorkItem(CallBack, com);
+                //GenerateAsync(componentId, _serviceId, IdCrystal);
+          
         }
 
-        private void CallBack(object state)
+        private void GenerateAsync(string componentId, string serviceId, int pintIdCrystal)
         {
-            var com = (string)state;
-            var IdCrystal = getIdCrystal(com);
-            var componentId = com.Split('|')[0].ToString();
-            ChooseReport(componentId, _serviceId, IdCrystal);
+            var t = new Thread(() => { DoWorkGetExamen(componentId, serviceId, pintIdCrystal); });
+            t.Start();
         }
+
+        public void DoWorkGetExamen(string componentId, string serviceId, int pintIdCrystal)
+        {
+            ChooseReport(componentId, serviceId, pintIdCrystal);
+        }
+        //public void GenerateAsync(string com)
+        //{
+        //    //ThreadPool.QueueUserWorkItem(CallBack, com);
+        //}
+
+        //private void CallBack(object state)
+        //{
+        //    var com = (string)state;
+        //    var IdCrystal = getIdCrystal(com);
+        //    var componentId = com.Split('|')[0].ToString();
+        //    ChooseReport(componentId, _serviceId, IdCrystal);
+        //}
 
         private int getIdCrystal(string com)
         {
