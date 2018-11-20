@@ -126,9 +126,8 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                     }
 
-                    var listaLiquidacionEmpresa = new List<LiquidacionEmpresa>();
-
-                    var listFacturaCobranza = new List<FacturaCobranza>();
+                    List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
+                   
                     foreach (var ruc in deudores)
                     {
                         var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, fechaFin, ruc);
@@ -144,35 +143,45 @@ namespace Sigesoft.Node.WinClient.UI
                             }
                         }
 
-                        
-                        foreach (var nroFactura in facturas)
+                        foreach (var item in obj)
                         {
-                            var oFacturaCobranza = new FacturaCobranza();
-                            var obj_2 = oMedicamentoBl.ObtnerNroFacturaCobranza(nroFactura);
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
 
-                            oFacturaCobranza.v_IdVenta = obj_2.v_IdVenta;
-                            oFacturaCobranza.FechaCreacion = obj_2.FechaCreacion;
-                            oFacturaCobranza.FechaVencimiento = obj_2.FechaVencimiento;
-                            oFacturaCobranza.NetoXCobrar = obj_2.NetoXCobrar;
-                            oFacturaCobranza.TotalPagado = obj_2.TotalPagado;
-                            oFacturaCobranza.DocuemtosReferencia = obj_2.DocuemtosReferencia;
-                            oFacturaCobranza.NroComprobante = obj_2.NroComprobante;
-                            listFacturaCobranza.Add(oFacturaCobranza);
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+                            
+                            foreach (var N_fac in facturas)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                var obj_2 = oMedicamentoBl.ObtnerNroFacturaCobranza(N_fac);
+                                liquidacionDetalleEmpresa.v_IdVenta = obj_2.v_IdVenta;
+                                liquidacionDetalleEmpresa.FechaCreacion = obj_2.FechaCreacion;
+                                liquidacionDetalleEmpresa.FechaVencimiento = obj_2.FechaVencimiento;
+                                liquidacionDetalleEmpresa.NetoXCobrar = obj_2.NetoXCobrar;
+                                liquidacionDetalleEmpresa.TotalPagado = obj_2.TotalPagado;
+                                liquidacionDetalleEmpresa.DocuemtosReferencia = obj_2.DocuemtosReferencia;
+                                liquidacionDetalleEmpresa.NroComprobante = obj_2.NroComprobante;
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion.Add(liquidacionEmpresa);
                         }
-
                     }
 
                     string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
                     string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
-                    var lista = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
 
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                     string nombre = "Cuentas X Cobrar - CSL";
                     //query para validar si la empresa es deudora ARNOLD
-                    
-                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1);
+
+                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion, fechaInicio_1, fechaFin_1);
 
                     this.Enabled = true;
                 }

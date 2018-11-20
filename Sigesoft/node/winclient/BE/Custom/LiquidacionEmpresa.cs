@@ -33,12 +33,22 @@ namespace Sigesoft.Node.WinClient.BE
 
     public class LiquidacionEmpresaDetalle
     {
+        public string v_IdVenta { get; set; }
         public string v_LiquidacionId { get; set; }
         public string v_NroLiquidacion { get; set; }
         public decimal? d_Debe { get; set; }
         public decimal? d_Pago { get; set; }
         public decimal? d_Total { get; set; }
         public string v_NroFactura { get; set; }
+
+        public DateTime? FechaCreacion { get; set; }
+        public DateTime? FechaVencimiento { get; set; }
+
+        public decimal? NetoXCobrar { get; set; }
+        public decimal? TotalPagado { get; set; }
+        public string DocuemtosReferencia { get; set; }
+        public string NroComprobante { get; set; }
+        public string Condicion { get; set; }
     }
 
 }
