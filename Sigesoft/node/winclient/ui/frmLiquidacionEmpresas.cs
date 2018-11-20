@@ -48,18 +48,14 @@ namespace Sigesoft.Node.WinClient.UI
                         string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
                         string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
 
-                        var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, fechaFin, _empresa);
+                        var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Name(ref objOperationResult, fechaInicio, fechaFin, _empresa);
                         
                         string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                         string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                         string nombre = "Liquidaciones de EMPRESA - CSL";
 
-                        //query para validar si la empresa es deudora ARNOLD
-                        var test = oMedicamentoBl.EmpresaDeudora("20102078781");
-                       
-
-                       
+                        
                         List<string> facturas = new List<string>();
                         foreach (var item in lista)
                         {
@@ -110,6 +106,54 @@ namespace Sigesoft.Node.WinClient.UI
 
                     DateTime? fechaInicio = _fInicio.Value.Date;
                     DateTime? fechaFin = _fFin.Value.Date.AddDays(1);
+                    var deudoras = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
+
+                    List<string> deudores = new List<string>();
+                    foreach (var item in deudoras)
+                    {
+                        var empDeud = oMedicamentoBl.EmpresaDeudora(item.v_Ruc);
+                        foreach (var item_1 in empDeud)
+                        {
+                            if (item_1.NetoXCobrar - item_1.TotalPagado != 0)
+	                        {
+		                        deudores.Add(item.v_Ruc);
+	                        }
+                        }
+                    }
+
+                    var listaLiquidacionEmpresa = new List<LiquidacionEmpresa>();
+                    var listFacturaCobranza = new List<FacturaCobranza>();
+                    foreach (var ruc in deudores)
+                    {
+                        var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, fechaFin, ruc);
+
+                        List<string> facturas = new List<string>();
+                        foreach (var item in obj)
+                        {
+                            var obj_1 = item.detalle.FindAll(p => p.v_NroFactura != "").ToList();
+                            foreach (var item_1 in obj_1)
+                            {
+                                facturas.Add(item_1.v_NroFactura);
+                            }
+                        }
+
+                        
+                        foreach (var nroFactura in facturas)
+                        {
+                            var oFacturaCobranza = new FacturaCobranza();
+                            var obj_2 = oMedicamentoBl.ObtnerNroFacturaCobranza(nroFactura);
+
+                            oFacturaCobranza.v_IdVenta = obj_2.v_IdVenta;
+                            oFacturaCobranza.FechaCreacion = obj_2.FechaCreacion;
+                            oFacturaCobranza.FechaVencimiento = obj_2.FechaVencimiento;
+                            oFacturaCobranza.NetoXCobrar = obj_2.NetoXCobrar;
+                            oFacturaCobranza.TotalPagado = obj_2.TotalPagado;
+                            oFacturaCobranza.DocuemtosReferencia = obj_2.DocuemtosReferencia;
+                            oFacturaCobranza.NroComprobante = obj_2.NroComprobante;
+                            listFacturaCobranza.Add(oFacturaCobranza);
+                        }
+
+                    }
 
                     string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
                     string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
@@ -119,7 +163,8 @@ namespace Sigesoft.Node.WinClient.UI
 
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                     string nombre = "Cuentas X Cobrar - CSL";
-
+                    //query para validar si la empresa es deudora ARNOLD
+                    
                     Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1);
 
                     this.Enabled = true;
