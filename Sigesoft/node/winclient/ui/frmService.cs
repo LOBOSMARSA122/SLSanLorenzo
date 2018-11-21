@@ -806,9 +806,9 @@ namespace Sigesoft.Node.WinClient.UI
                 var DialogResult = MessageBox.Show("Este servicio ya tiene, reportes generados, ¿Desea volver a generar?", "INFORMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (DialogResult == DialogResult.No) 
                    {
-                       System.Diagnostics.Process.Start(@"\\192.168.1.179\Archivos Ocupacional\Consolidado");
-                       OpenFileDialog Archivos = new OpenFileDialog;
-                       Archivos.Filter="hola";
+                       string ruta = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+                       System.Diagnostics.Process.Start(ruta);
+                       Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());   
                        return;
                    }
  
