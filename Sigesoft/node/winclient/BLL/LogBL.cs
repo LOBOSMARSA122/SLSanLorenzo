@@ -174,11 +174,11 @@ namespace Sigesoft.Node.WinClient.BLL
             objEntity.v_ErrorException = pstrErrorMessage;
             objEntity.d_Date = DateTime.Now;
 
-            // Autogeneramos el Pk de la tabla
-            //int intNodeId = int.Parse(pintNodeId);
-            //objEntity.v_LogId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 7), "L"); ;
-            //dbContext.AddTolog(objEntity);
-            //dbContext.SaveChanges();
+             //Autogeneramos el Pk de la tabla
+            int intNodeId = int.Parse(pintNodeId);
+            objEntity.v_LogId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 7), "LV"); ;
+            dbContext.AddTolog(objEntity);
+            dbContext.SaveChanges();
         }
     }
 }

@@ -719,7 +719,6 @@
             this.btnReportAsync.Text = "&Compagina  Exámenes Asíncrono";
             this.btnReportAsync.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnReportAsync.UseVisualStyleBackColor = false;
-            this.btnReportAsync.Visible = false;
             this.btnReportAsync.Click += new System.EventHandler(this.btnReportAsync_Click);
             // 
             // btnServicios
