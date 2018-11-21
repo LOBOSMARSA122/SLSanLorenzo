@@ -9,6 +9,7 @@ using Sigesoft.Common;
 using System.Collections;
 using System.Transactions;
 using System.Data.Linq.SqlClient;
+using System.Threading;
 
 
 namespace Sigesoft.Node.WinClient.BLL
@@ -5077,7 +5078,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 					pobjOperationResult.Success = 1;
 					// Llenar entidad Log
-					LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "CAMPOS DE UN COMPONENTE DE SERVICIO", "v_ServiceComponentId=" + NewId.ToString(), Success.Ok, null);
+                    LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "CAMPOS DE UN COMPONENTE DE SERVICIO", "v_ServiceComponentId=" + NewId.ToString(), Success.Ok, null);
 
 					ts.Complete();
 				}

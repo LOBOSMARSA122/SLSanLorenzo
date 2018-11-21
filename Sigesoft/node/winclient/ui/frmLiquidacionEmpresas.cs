@@ -115,7 +115,7 @@ namespace Sigesoft.Node.WinClient.UI
                         string ruc = "";
                         foreach (var item_1 in empDeud)
                         {
-                            if (item_1.NetoXCobrar != 0)
+                            if (item_1.NetoXCobrar != 0 || item_1.NetoXCobrar.ToString() != "0.00")
 	                        {
                                 if (item.v_Ruc != ruc)
                                 {
@@ -153,7 +153,7 @@ namespace Sigesoft.Node.WinClient.UI
                             liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
                             liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
                             liquidacionEmpresa.v_ContactName = item.v_ContactName;
-                            
+
                             foreach (var N_fac in facturas)
                             {
                                 var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
