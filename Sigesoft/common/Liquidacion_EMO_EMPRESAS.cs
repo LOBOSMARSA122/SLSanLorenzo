@@ -25,7 +25,7 @@ namespace NetPdf
         }
 
         public static void CreateLiquidacion_EMO_EMPRESAS(string filePDF,
-            organizationDto infoEmpresaPropietaria, List<LiquidacionEmpresa> lista_1, string fechaInicio, string fechaFin)
+            organizationDto infoEmpresaPropietaria, List<LiquidacionEmpresa> lista, string fechaInicio, string fechaFin)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -119,7 +119,7 @@ namespace NetPdf
             decimal debe_2 = 0;
             decimal debe_3 = 0;
 
-            foreach (var liq in lista_1)
+            foreach (var liq in lista)
             {
                 List<double> enteros = new List<double>();
                 enteros.Add(0);
@@ -160,23 +160,23 @@ namespace NetPdf
                         //cells.Add(cell);
                         if (item.d_Debe != 0)
                         {
-                            cell = new PdfPCell(new Phrase(liq.Creacion_Liquidacion.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                            cell = new PdfPCell(new Phrase(item.FechaCreacion.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                             cells.Add(cell);
-                            cell = new PdfPCell(new Phrase(item.v_NroFactura, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                            cell = new PdfPCell(new Phrase(item.NroComprobante, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                             cells.Add(cell);
-                            decimal _d_Debe = (decimal)item.d_Debe;
+                            decimal _d_Debe = (decimal)item.NetoXCobrar;
                             _d_Debe = decimal.Round(_d_Debe, 2);
                             cell = new PdfPCell(new Phrase(_d_Debe.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                             cells.Add(cell);
 
-                            cell = new PdfPCell(new Phrase(liq.d_FechaVencimiento.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                            cell = new PdfPCell(new Phrase(item.FechaVencimiento.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                             cells.Add(cell);
 
                             int dias_mora = 0;
                             DateTime venc;
                             if (liq.d_FechaVencimiento != null)
                             {
-                                venc = liq.d_FechaVencimiento.Value;
+                                venc = item.FechaVencimiento.Value;
                             }
                             else
                             {
@@ -198,10 +198,10 @@ namespace NetPdf
                             cell = new PdfPCell(new Phrase(dias_mora.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                             cells.Add(cell);
 
-                            cell = new PdfPCell(new Phrase("- - -", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                            cell = new PdfPCell(new Phrase(item.DocuemtosReferencia, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                             cells.Add(cell);
 
-                            debe += item.d_Debe.Value;
+                            debe += item.NetoXCobrar.Value;
                         }
                         //else
                         //{

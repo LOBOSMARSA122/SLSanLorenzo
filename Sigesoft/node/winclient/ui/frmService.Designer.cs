@@ -108,7 +108,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnReportAsync = new System.Windows.Forms.Button();
+            this.btnServicios = new System.Windows.Forms.Button();
             this.btnHistoriaCl = new System.Windows.Forms.Button();
+            this.btnPErson = new System.Windows.Forms.Button();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCargoFactura = new System.Windows.Forms.Button();
@@ -137,8 +140,6 @@
             this.verEditarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Examenes = new System.Windows.Forms.ToolStripMenuItem();
             this.vistaPreviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnServicios = new System.Windows.Forms.Button();
-            this.btnPErson = new System.Windows.Forms.Button();
             this.btnMigrarEmpresa = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
@@ -161,7 +162,6 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
-            this.btnReportAsync = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -698,6 +698,43 @@
             this.groupBox2.Text = "Lista de Servicios";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // btnReportAsync
+            // 
+            this.btnReportAsync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportAsync.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReportAsync.Enabled = false;
+            this.btnReportAsync.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnReportAsync.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReportAsync.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnReportAsync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportAsync.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportAsync.ForeColor = System.Drawing.Color.Black;
+            this.btnReportAsync.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
+            this.btnReportAsync.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportAsync.Location = new System.Drawing.Point(1041, 486);
+            this.btnReportAsync.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReportAsync.Name = "btnReportAsync";
+            this.btnReportAsync.Size = new System.Drawing.Size(85, 36);
+            this.btnReportAsync.TabIndex = 154;
+            this.btnReportAsync.Text = "&Compagina  Exámenes Asíncrono";
+            this.btnReportAsync.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnReportAsync.UseVisualStyleBackColor = false;
+            this.btnReportAsync.Click += new System.EventHandler(this.btnReportAsync_Click);
+            // 
+            // btnServicios
+            // 
+            this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnServicios.ForeColor = System.Drawing.Color.Black;
+            this.btnServicios.Location = new System.Drawing.Point(855, 495);
+            this.btnServicios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnServicios.Name = "btnServicios";
+            this.btnServicios.Size = new System.Drawing.Size(103, 24);
+            this.btnServicios.TabIndex = 152;
+            this.btnServicios.Text = "Migrar Servicios ";
+            this.btnServicios.UseVisualStyleBackColor = true;
+            this.btnServicios.Visible = false;
+            this.btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
+            // 
             // btnHistoriaCl
             // 
             this.btnHistoriaCl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -719,6 +756,20 @@
             this.btnHistoriaCl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHistoriaCl.UseVisualStyleBackColor = false;
             this.btnHistoriaCl.Click += new System.EventHandler(this.btnHistoriaCl_Click);
+            // 
+            // btnPErson
+            // 
+            this.btnPErson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPErson.ForeColor = System.Drawing.Color.Black;
+            this.btnPErson.Location = new System.Drawing.Point(870, 497);
+            this.btnPErson.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPErson.Name = "btnPErson";
+            this.btnPErson.Size = new System.Drawing.Size(103, 24);
+            this.btnPErson.TabIndex = 151;
+            this.btnPErson.Text = "Migrar Pacientes";
+            this.btnPErson.UseVisualStyleBackColor = true;
+            this.btnPErson.Visible = false;
+            this.btnPErson.Click += new System.EventHandler(this.btnPErson_Click);
             // 
             // grdDataService
             // 
@@ -1450,34 +1501,6 @@
             this.vistaPreviaToolStripMenuItem.Visible = false;
             this.vistaPreviaToolStripMenuItem.Click += new System.EventHandler(this.vistaPreviaToolStripMenuItem_Click);
             // 
-            // btnServicios
-            // 
-            this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnServicios.ForeColor = System.Drawing.Color.Black;
-            this.btnServicios.Location = new System.Drawing.Point(855, 495);
-            this.btnServicios.Margin = new System.Windows.Forms.Padding(2);
-            this.btnServicios.Name = "btnServicios";
-            this.btnServicios.Size = new System.Drawing.Size(103, 24);
-            this.btnServicios.TabIndex = 152;
-            this.btnServicios.Text = "Migrar Servicios ";
-            this.btnServicios.UseVisualStyleBackColor = true;
-            this.btnServicios.Visible = false;
-            this.btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
-            // 
-            // btnPErson
-            // 
-            this.btnPErson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPErson.ForeColor = System.Drawing.Color.Black;
-            this.btnPErson.Location = new System.Drawing.Point(870, 497);
-            this.btnPErson.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPErson.Name = "btnPErson";
-            this.btnPErson.Size = new System.Drawing.Size(103, 24);
-            this.btnPErson.TabIndex = 151;
-            this.btnPErson.Text = "Migrar Pacientes";
-            this.btnPErson.UseVisualStyleBackColor = true;
-            this.btnPErson.Visible = false;
-            this.btnPErson.Click += new System.EventHandler(this.btnPErson_Click);
-            // 
             // btnMigrarEmpresa
             // 
             this.btnMigrarEmpresa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1946,29 +1969,6 @@
             this.btnImprimirCertificadoAptitud.UseVisualStyleBackColor = false;
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
-            // 
-            // btnReportAsync
-            // 
-            this.btnReportAsync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportAsync.BackColor = System.Drawing.SystemColors.Control;
-            this.btnReportAsync.Enabled = false;
-            this.btnReportAsync.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnReportAsync.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnReportAsync.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnReportAsync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportAsync.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportAsync.ForeColor = System.Drawing.Color.Black;
-            this.btnReportAsync.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
-            this.btnReportAsync.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportAsync.Location = new System.Drawing.Point(1041, 486);
-            this.btnReportAsync.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReportAsync.Name = "btnReportAsync";
-            this.btnReportAsync.Size = new System.Drawing.Size(85, 36);
-            this.btnReportAsync.TabIndex = 154;
-            this.btnReportAsync.Text = "&Compagina  Exámenes Asíncrono";
-            this.btnReportAsync.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnReportAsync.UseVisualStyleBackColor = false;
-            this.btnReportAsync.Click += new System.EventHandler(this.btnReportAsync_Click);
             // 
             // frmService
             // 

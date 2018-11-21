@@ -854,6 +854,7 @@
                                         <x:Label ID="Label747" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label748" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabaAnexo16" runat="server"></x:DropDownList>
+                                        <x:Button ID="btnReporte16" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -1470,7 +1471,7 @@
                                 <x:Toolbar ID="Toolbar2" runat="server">
                                     <Items>
                                         <x:Button ID="btnOsteomuscular" Text="Grabar Osteomuscular" Icon="SystemSave" runat="server" OnClick="btnOsteomuscular_Click" AjaxLoadingType="Mask"></x:Button>
-
+                                        <x:Button ID="btnReporteOsteo" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>

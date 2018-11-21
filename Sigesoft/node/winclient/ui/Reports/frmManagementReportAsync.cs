@@ -102,20 +102,35 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         public void CrearReportesCrystal(string serviceId, List<string> reportesId)
         {
-                new Task(() =>
-                {
-                    foreach (var com in reportesId.AsParallel())
-                    {
-                        var IdCrystal = getIdCrystal(com);
-                        var componentId = com.Split('|')[0].ToString();
-                            Task[] tareas = {Task.Factory.StartNew(() => ChooseReport(componentId, serviceId, IdCrystal),CancellationToken.None, TaskCreationOptions.LongRunning,_scheduler)};
-                            Task.WaitAll(tareas);
-                    }
-                }).Start();
+                //new Task(() =>
+                //{
+                //    foreach (var com in reportesId.AsParallel())
+                //    {
+                //        var IdCrystal = getIdCrystal(com);
+                //        var componentId = com.Split('|')[0].ToString();
+                //            Task[] tareas = {Task.Factory.StartNew(() => ChooseReport(componentId, serviceId, IdCrystal),CancellationToken.None, TaskCreationOptions.LongRunning,_scheduler)};
+                //            Task.WaitAll(tareas);
+                //    }
+                //}).Start();
+                ////new Task(() =>
+                ////{
+                ////    foreach (var com in reportesId.ToList().AsParallel().WithExecutionMode(ParallelExecutionMode.ForceParallelism))
+                ////    {
+                ////        var IdCrystal = getIdCrystal(com);
+                ////        var componentId = com.Split('|')[0].ToString();
+                ////            Task[] tareas = {Task.Factory.StartNew(() => ChooseReport(componentId, serviceId, IdCrystal),CancellationToken.None, TaskCreationOptions.LongRunning,_scheduler)};
+                ////            Task.WaitAll(tareas);
+                ////    }
+                ////}).Start();
 
-                //var IdCrystal = getIdCrystal(com);
-                //var componentId = com.Split('|')[0].ToString();
-                //GenerateAsync(componentId, _serviceId, IdCrystal);
+           
+                //foreach (var com in reportesId.ToList().AsParallel().WithExecutionMode(ParallelExecutionMode.ForceParallelism))
+                //{
+                //    var IdCrystal = getIdCrystal(com);
+                //    var componentId = com.Split('|')[0].ToString();
+                //    ChooseReport(componentId, serviceId, IdCrystal);
+                   
+                //}
           
         }
 

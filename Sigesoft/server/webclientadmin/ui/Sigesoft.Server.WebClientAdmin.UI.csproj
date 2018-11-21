@@ -1377,6 +1377,7 @@
     <Content Include="frmMaster_.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Html\NET MEDICAL.html" />
+    <Content Include="images\Anexo\CuadradoVacio.png" />
     <Content Include="images\icons\accept.png" />
     <Content Include="images\icons\add.png" />
     <Content Include="images\icons\anchor.png" />
@@ -3218,6 +3219,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Menu.xml" />
+    <None Include="Resources\CuadradoVacio.png" />
+    <None Include="Resources\CuadradoCheck.png" />
+    <None Include="Resources\MisPulmones.jpg" />
     <Content Include="Security\FRM002.aspx" />
     <Content Include="Security\FRM002A.aspx" />
     <Content Include="Security\FRM002B.aspx" />
@@ -4830,6 +4834,11 @@
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcesWeb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesWeb.resx</DependentUpon>
+    </Compile>
     <Compile Include="Security\FRM002.aspx.cs">
       <DependentUpon>FRM002.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5636,6 +5645,10 @@
     <EmbeddedResource Include="ExternalUser\InformePsicologicoOcupacional.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InformePsicologicoOcupacional.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourcesWeb.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesWeb.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
