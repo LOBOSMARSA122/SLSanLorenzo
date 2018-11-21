@@ -706,6 +706,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlUsuarioGrabarAudio;
         
         /// <summary>
+        /// btnReporteAudioCI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnReporteAudioCI;
+        
+        /// <summary>
         /// Panel9 control.
         /// </summary>
         /// <remarks>
@@ -3028,13 +3037,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlUsuarioGrabar;
         
         /// <summary>
-        /// btnReporteAudioCI control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Button btnReporteAudioCI;
+        protected global::FineUI.Button Button1;
         
         /// <summary>
         /// Panel16 control.
