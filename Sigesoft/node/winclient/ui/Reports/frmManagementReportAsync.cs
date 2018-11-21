@@ -102,12 +102,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         public void CrearReportesCrystal(string serviceId, List<string> reportesId)
         {
-        
-           
-             
                 new Task(() =>
                 {
-                    foreach (var com in reportesId)
+                    foreach (var com in reportesId.AsParallel())
                     {
                         var IdCrystal = getIdCrystal(com);
                         var componentId = com.Split('|')[0].ToString();
