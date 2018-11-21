@@ -80,12 +80,6 @@ namespace NetPdf
 
             #endregion
 
-            //var estatico_1 = 15f;
-            //var alto_Celda_1 = 15f;
-            //var alto_Celda_2 = 30f;
-            //var alto_Celda_3 = 45f;
-            //var alto_Celda_4 = 60f;
-            //var alto_Celda_6 = 90f;
             #region TÍTULO
 
             cells = new List<PdfPCell>();
@@ -97,15 +91,10 @@ namespace NetPdf
                 imagenEmpresa.SetAbsolutePosition(40, 790);
                 document.Add(imagenEmpresa);
             }
-            //iTextSharp.text.Image imagenMinsa = iTextSharp.text.Image.GetInstance("C:/Banner/Minsa.png");
-            //imagenMinsa.ScalePercent(10);
-            //imagenMinsa.SetAbsolutePosition(400, 785);
-            //document.Add(imagenMinsa);
             var tamaño_celda = 15f;
 
             var cellsTit = new List<PdfPCell>()
                 { 
-                    //new PdfPCell(new Phrase("REPORTE DE EMPRESAS Y SALDOS", fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("RESUMEN CUENTAS POR COBRAR", fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 18f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("", fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("DEL "+ fechaInicio + " AL " + fechaFin, fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 18f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
@@ -126,9 +115,9 @@ namespace NetPdf
             {
                 foreach (var item in liq.detalle)
                 {
-                    if (item.d_Debe != 0)
+                    if (item.NetoXCobrar != 0)
                     {
-                        _debe += item.d_Debe.Value;
+                        _debe += item.NetoXCobrar.Value;
                     }
                 }
                 _debe_1 = _debe;
@@ -148,9 +137,9 @@ namespace NetPdf
             {
                 foreach (var item in liq.detalle)
                 {
-                    if (item.d_Debe != 0)
+                    if (item.NetoXCobrar != 0)
                     {
-                        _debe_1_1 += item.d_Debe.Value;
+                        _debe_1_1 += item.NetoXCobrar.Value;
                     }
                 }
                 _debe_1__1 = _debe_1_1;
@@ -194,6 +183,23 @@ namespace NetPdf
             decimal debe_ant1_1 = 0;
             decimal debe_ant1_2 = 0;
 
+            List<decimal> a = new List<decimal>();
+            decimal d_1 = 0;
+            decimal d_2 = 0;
+            foreach (var item in Lista_2)
+            {
+                foreach (var deuda in item.detalle)
+                {
+                    d_1 += deuda.NetoXCobrar.Value;
+                }
+                d_2 = d_1;
+                a.Add(d_2);
+                d_1 = 0;
+            }
+
+
+
+
             cells = new List<PdfPCell>();
             foreach (var liq in Lista_1)
             {
@@ -203,8 +209,9 @@ namespace NetPdf
                 cells.Add(cell);
 
                 foreach (var item in liq.detalle){
-                    if (item.d_Debe != 0){
-                        debe += item.d_Debe.Value;
+                    if (item.NetoXCobrar != 0)
+                    {
+                        debe += item.NetoXCobrar.Value;
                     }
 
                 }
@@ -219,30 +226,29 @@ namespace NetPdf
 
                 if (Lista_2.Count != 0)
                 {
-                    foreach (var liq_1 in Lista_2)
+                    foreach (var item in a)
                     {
-                        foreach (var item_2 in liq_1.detalle)
-                        {
-                            if (item_2.d_Debe != 0)
-                            {
-                                debe_ant1 += item_2.d_Debe.Value;
-                            }
-                        }
-                        debe_ant1_1 = debe_ant1;
-                        decimal _debe1_ant = decimal.Round(debe_ant1_1, 2);
-                        cell = new PdfPCell(new Phrase(_debe1_ant.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
-                        cells.Add(cell);
-
-                        debe_ant1_2 = debe_ant1_1;
-                        debe_ant1 = 0;
-                        debe_ant1_1 = 0;
+                        debe_ant1 = item;
+                        a.Remove(item);
+                        break;
                     }
+                    debe_ant1_1 = debe_ant1;
+                    decimal _debe11 = decimal.Round(debe_ant1_1, 2);
+
+                    cell = new PdfPCell(new Phrase(_debe11.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                    cells.Add(cell);
+
+                    debe_ant1_2 = debe_ant1_1;
+                       
+                    
                     decimal deudaXempresa = debe_2 + debe_ant1_2;
                     deudaXempresa = decimal.Round(deudaXempresa, 2);
                     cell = new PdfPCell(new Phrase(deudaXempresa.ToString(), fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
                     cells.Add(cell);
                     cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                     cells.Add(cell);
+                    debe_ant1 = 0;
+                    debe_ant1_1 = 0;  
                 }
                 else
                 {
