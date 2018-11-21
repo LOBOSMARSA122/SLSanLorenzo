@@ -48,18 +48,14 @@ namespace Sigesoft.Node.WinClient.UI
                         string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
                         string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
 
-                        var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, fechaFin, _empresa);
+                        var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Name(ref objOperationResult, fechaInicio, fechaFin, _empresa);
                         
                         string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                         string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                         string nombre = "Liquidaciones de EMPRESA - CSL";
 
-                        //query para validar si la empresa es deudora ARNOLD
-                        var test = oMedicamentoBl.EmpresaDeudora("20102078781");
-                       
-
-                       
+                        
                         List<string> facturas = new List<string>();
                         foreach (var item in lista)
                         {
@@ -110,17 +106,82 @@ namespace Sigesoft.Node.WinClient.UI
 
                     DateTime? fechaInicio = _fInicio.Value.Date;
                     DateTime? fechaFin = _fFin.Value.Date.AddDays(1);
+                    var deudoras = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
+
+                    List<string> deudores = new List<string>();
+                    foreach (var item in deudoras)
+                    {
+                        var empDeud = oMedicamentoBl.EmpresaDeudora(item.v_Ruc);
+                        string ruc = "";
+                        foreach (var item_1 in empDeud)
+                        {
+                            if (item_1.NetoXCobrar != 0)
+	                        {
+                                if (item.v_Ruc != ruc)
+                                {
+                                    deudores.Add(item.v_Ruc);
+                                }
+		                        ruc = item.v_Ruc;
+	                        }
+                        }
+                    }
+
+                    List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
+                   
+                    foreach (var ruc in deudores)
+                    {
+                        var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, fechaFin, ruc);
+
+                        List<string> facturas = new List<string>();
+
+                        foreach (var item in obj)
+                        {
+                            var obj_1 = item.detalle.FindAll(p => p.v_NroFactura != "").ToList();
+                            foreach (var item_1 in obj_1)
+                            {
+                                facturas.Add(item_1.v_NroFactura);
+                            }
+                        }
+
+                        foreach (var item in obj)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+                            
+                            foreach (var N_fac in facturas)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                var obj_2 = oMedicamentoBl.ObtnerNroFacturaCobranza(N_fac);
+                                liquidacionDetalleEmpresa.v_IdVenta = obj_2.v_IdVenta;
+                                liquidacionDetalleEmpresa.FechaCreacion = obj_2.FechaCreacion;
+                                liquidacionDetalleEmpresa.FechaVencimiento = obj_2.FechaVencimiento;
+                                liquidacionDetalleEmpresa.NetoXCobrar = obj_2.NetoXCobrar;
+                                liquidacionDetalleEmpresa.TotalPagado = obj_2.TotalPagado;
+                                liquidacionDetalleEmpresa.DocuemtosReferencia = obj_2.DocuemtosReferencia;
+                                liquidacionDetalleEmpresa.NroComprobante = obj_2.NroComprobante;
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion.Add(liquidacionEmpresa);
+                        }
+                    }
 
                     string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
                     string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
-                    var lista = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
 
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                     string nombre = "Cuentas X Cobrar - CSL";
+                    //query para validar si la empresa es deudora ARNOLD
 
-                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1);
+                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion, fechaInicio_1, fechaFin_1);
 
                     this.Enabled = true;
                 }
