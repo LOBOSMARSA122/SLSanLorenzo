@@ -13,6 +13,7 @@ using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
+using Sigesoft.Server.WebClientAdmin.UI.ExternalUser;
 
   
 //using iTextSharp.text;
@@ -803,7 +804,11 @@ namespace Sigesoft.Node.WinClient.UI
             if (StatusLiquidation == 2)
             {
                 var DialogResult = MessageBox.Show("Este servicio ya tiene, reportes generados, ¿Desea volver a generar?", "INFORMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (DialogResult == DialogResult.No) return;
+                if (DialogResult == DialogResult.No) 
+                   {
+                       System.Diagnostics.Process.Start(@"\\192.168.1.179\Archivos Ocupacional\Consolidado");
+                   }
+ 
             }
 
             int flagPantalla = int.Parse(grdDataService.Selected.Rows[0].Cells["i_MasterServiceId"].Value.ToString()); // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
