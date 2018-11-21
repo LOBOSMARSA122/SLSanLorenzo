@@ -809,6 +809,7 @@ namespace Sigesoft.Node.WinClient.UI
                        System.Diagnostics.Process.Start(@"\\192.168.1.179\Archivos Ocupacional\Consolidado");
                        OpenFileDialog Archivos = new OpenFileDialog;
                        Archivos.Filter="hola";
+                       return;
                    }
  
             }
