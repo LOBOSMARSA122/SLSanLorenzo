@@ -1597,13 +1597,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlUsuarioGrabar;
         
         /// <summary>
-        /// Button1 control.
+        /// btnReporteOftalmoCI control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Button Button1;
+        protected global::FineUI.Button btnReporteOftalmoCI;
         
         /// <summary>
         /// Panel20 control.
@@ -3244,13 +3244,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Button btnGrabarYanacocha;
         
         /// <summary>
-        /// btnReporteOftalmoCI control.
+        /// btnReporteOftalmo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Button btnReporteOftalmoCI;
+        protected global::FineUI.Button btnReporteOftalmo;
         
         /// <summary>
         /// Panel7 control.

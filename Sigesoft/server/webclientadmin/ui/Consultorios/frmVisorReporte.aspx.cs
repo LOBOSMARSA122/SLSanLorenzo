@@ -53,6 +53,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ShowPdf1.FilePath = @"files\" + Session["NombreTrabajador"].ToString() + "-" + "Audiometría.pdf";
                 
             }
+            if (Mode == "Oftalmo")
+            {
+                path = _ruta + Session["ServiceId"].ToString() + "-" + "N005-ME000000028";
+                GenerateOftalmologia(_ruta, Session["ServiceId"].ToString());
+                //ShowPdf1.FilePath = @"files\" + Session["ServiceId"].ToString() + "-" + "N005-ME000000028.pdf";
+                ShowPdf1.FilePath = @"files\" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología.pdf";
+            }
             if (Mode == "OftalmoCI")
             {
                 path = _ruta + Session["ServiceId"].ToString() + "-" + "N005-ME000000028";
@@ -60,6 +67,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 //ShowPdf1.FilePath = @"files\" + Session["ServiceId"].ToString() + "-" + "N005-ME000000028.pdf";
                 ShowPdf1.FilePath = @"files\" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología.pdf";
             }
+
             if (Mode == "OdontoCI")
             {
                 path = _ruta + Session["ServiceId"].ToString() + "-" + "N005-ME000000027";
@@ -94,6 +102,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 GenerateElectro(_ruta, Session["ServiceId"].ToString());
                 //ShowPdf1.FilePath = @"files\" + Session["ServiceId"].ToString() + "-" + "N002-ME000000025.pdf";
                 ShowPdf1.FilePath = @"files\" + Session["NombreTrabajador"].ToString() + "-" + "Cardiología.pdf";
+            }
+            if (Mode == "Apendice")
+            {
+                path = _ruta + Session["ServiceId"].ToString() + "-" + Constants.APENDICE_ID;
+                GenerateApendice(string.Format("{0}.pdf", Path.Combine(path)), Session["ServiceId"].ToString(), Session["PersonId"].ToString());                   
+                //ShowPdf1.FilePath = @"files\" + Session["ServiceId"].ToString() + "-" + "N002-ME000000025.pdf";
+                ShowPdf1.FilePath = @"files\" + Session["NombreTrabajador"].ToString() + "-" + "apendiceNro5.pdf";
             }
             if (Mode == "312")
             {
@@ -221,6 +236,59 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         }
 
+        private void GenerateOftalmologiaCI(string _ruta, string p)
+        {
+            var component = "N002-ME000000028";
+            var OFTALMO_ANTIGUO = new ServiceBL().ReportOftalmologia_CI(p, component);
+            if (OFTALMO_ANTIGUO.Count == 0)
+            {
+                component = "N009-ME000000028";
+                OFTALMO_ANTIGUO = new ServiceBL().ReportOftalmologia_CI(p, component);
+            }
+            //Session["NombreTrabajador"] = OFTALMO_ANTIGUO[0]..Replace(" ", "_");
+            dsGetRepo = new DataSet();
+            DataTable dt_OFTALMO_ANTIGUO = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(OFTALMO_ANTIGUO);
+            dt_OFTALMO_ANTIGUO.TableName = "dtOftalmologia";
+            dsGetRepo.Tables.Add(dt_OFTALMO_ANTIGUO);
+
+
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crOftalmologia();
+            rp.SetDataSource(dsGetRepo);
+            rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+            rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+            objDiskOpt = new DiskFileDestinationOptions();
+            objDiskOpt.DiskFileName = _ruta + p + "-" + Constants.OFTALMOLOGIA_ID + ".pdf";
+            _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+            rp.ExportOptions.DestinationOptions = objDiskOpt;
+            rp.Export();
+            rp.Close();
+
+            System.IO.File.Copy(_ruta + p + "-" + Constants.OFTALMOLOGIA_ID + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología" + ".pdf"), true);
+        }
+
+        private void GenerateApendice(string pathFile, string ServicioId, string PacienteId)
+        {
+            var APENDICE_ID = new ServiceBL().GetReportEstudioElectrocardiografico(ServicioId, Constants.APENDICE_ID);
+            Session["NombreTrabajador"] = Regex.Replace(APENDICE_ID[0].DatosPaciente," ","_");
+            dsGetRepo = new DataSet();
+
+            DataTable dtAPENDICE_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(APENDICE_ID);
+            dtAPENDICE_ID.TableName = "dtEstudioElectrocardiografico";
+            dsGetRepo.Tables.Add(dtAPENDICE_ID);          
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crApendice05_EKG();
+            rp.SetDataSource(dsGetRepo);
+            rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+            rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+            objDiskOpt = new DiskFileDestinationOptions();
+            objDiskOpt.DiskFileName = pathFile;
+            _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+            rp.ExportOptions.DestinationOptions = objDiskOpt;
+            rp.Export();
+            rp.Close();
+            System.IO.File.Copy(pathFile, Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "apendiceNro5.pdf"), true);
+
+        }
+
         private void GeneratePsico(string _ruta, string p)
         {
             var PSICOLOGIA_ID = new PacientBL().GetFichaPsicologicaOcupacional(p);
@@ -228,7 +296,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             DataTable dt_PSICOLOGIA_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(PSICOLOGIA_ID);
             dt_PSICOLOGIA_ID.TableName = "InformePsico";
             dsGetRepo.Tables.Add(dt_PSICOLOGIA_ID);
-            rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.InformePsicologicoOcupacional();
+            rp = new Sigesoft.Node.WinClient.UI.Reports.InformePsicologicoOcupacional();
             rp.SetDataSource(dsGetRepo);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -246,7 +314,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             dt_HISTORIA_CLINICA_PSICOLOGICA_ID.TableName = "dtHistoriaClinicaPsicologica";
             dsGetRepo.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID);
 
-            rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crHistoriaClinicaPsicologica();
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crHistoriaClinicaPsicologica();
             rp.SetDataSource(dsGetRepo);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -259,7 +327,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             rp.Close();
 
 
-            rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crHistoriaClinicaPsicologica2();
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crHistoriaClinicaPsicologica2();
             rp.SetDataSource(dsGetRepo);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -380,39 +448,33 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             rp.Close();
         }
 
-        private void GenerateOftalmologiaCI(string _ruta, string p)
+        private void GenerateOftalmologia(string _ruta, string p)
         {
-            string component = "N009-ME000000028";
-            var OFTALMOLOGIA_CI_ID = new ServiceBL().ReportOftalmologia_CI(p, component);
-            if (OFTALMOLOGIA_CI_ID.Count == 0) {
-                component = "N002-ME000000028";
-                OFTALMOLOGIA_CI_ID = new ServiceBL().ReportOftalmologia_CI(p, component);
-                
+            var component = "N002-ME000000028";
+            var OFTALMO_ANTIGUO = new PacientBL().GetOftalmologia(p, component);
+            if (OFTALMO_ANTIGUO.Count == 0) {
+                component = "N009-ME000000028";
+                OFTALMO_ANTIGUO = new PacientBL().GetOftalmologia(p, component);
             }
+            Session["NombreTrabajador"]=OFTALMO_ANTIGUO[0].NombrePaciente.Replace(" ","_");
             dsGetRepo = new DataSet();
-            DataTable dt_OFTALMOLOGIA_CI_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(OFTALMOLOGIA_CI_ID);
-            dt_OFTALMOLOGIA_CI_ID.TableName = "dtOftalomologia_CI";
-            dsGetRepo.Tables.Add(dt_OFTALMOLOGIA_CI_ID);
+            DataTable dt_OFTALMO_ANTIGUO = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(OFTALMO_ANTIGUO);
+            dt_OFTALMO_ANTIGUO.TableName = "dtOftalmologia";
+            dsGetRepo.Tables.Add(dt_OFTALMO_ANTIGUO);
 
-            rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crOftalmologia_inter();
+
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crOftalmologia();
             rp.SetDataSource(dsGetRepo);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
             objDiskOpt = new DiskFileDestinationOptions();
-            objDiskOpt.DiskFileName = _ruta + p + "-" + component + ".pdf";
-            _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-            Session["filesNameToMerge"] = _filesNameToMerge;
-            rp.ExportOptions.DestinationOptions = objDiskOpt;
-            rp.Export();
-
-            Session["NombreTrabajador"] = OFTALMOLOGIA_CI_ID[0].NombreTrabajador.Replace(" ", "_");
-            //objDiskOpt.DiskFileName = Server.MapPath("files/" + p + "-" + "N005-ME000000028" + ".pdf");
-            objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología" + ".pdf");
+            objDiskOpt.DiskFileName = _ruta + p + "-" + Constants.OFTALMOLOGIA_ID + ".pdf";
             _filesNameToMerge.Add(objDiskOpt.DiskFileName);
             rp.ExportOptions.DestinationOptions = objDiskOpt;
             rp.Export();
-
-            rp.Close();
+            rp.Close(); 
+            
+            System.IO.File.Copy(_ruta + p + "-" + Constants.OFTALMOLOGIA_ID + ".pdf",Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología" + ".pdf"),true);
         }
 
         private void GenerateOdontogramaCI(string _ruta, string p)
@@ -488,7 +550,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             dt_OIT_ID.TableName = "dtInformeRadiografico";
             dsGetRepo.Tables.Add(dt_OIT_ID);
 
-            rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crInformeRadiograficoOIT();
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crInformeRadiograficoOIT();
             rp.SetDataSource(dsGetRepo);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -775,7 +837,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
               DataTable dt_ESPIROMETRIA_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(ESPIROMETRIA_ID);
               dt_ESPIROMETRIA_ID.TableName = "dtCuestionarioEspirometria";
               dsGetRepo.Tables.Add(dt_ESPIROMETRIA_ID);
-              rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crCuestionarioEspirometria();
+              rp = new Sigesoft.Node.WinClient.UI.Reports.crCuestionarioEspirometria();
               rp.SetDataSource(dsGetRepo);
               rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
               rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -964,6 +1026,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                                     CuadroVacio, CuadroCheck, Pulmones, _PiezasCaries,
                                     _PiezasAusentes, Audiometria, diagnosticRepository, MedicalCenter,
                                     pathFile);
+            Session["NombreTrabajador"]=Regex.Replace(_DataService.v_Pacient," ","_");
+            System.IO.File.Copy(pathFile, Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Informe_Anexo16.pdf"), true);
 
         }
 
