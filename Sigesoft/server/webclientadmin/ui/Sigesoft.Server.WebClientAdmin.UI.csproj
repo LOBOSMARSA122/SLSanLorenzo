@@ -3301,6 +3301,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="AdministradorServicios\crFichaAudiometria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crFichaAudiometria.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AdministradorServicios\crFichaAudiometria_inter.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5241,6 +5247,10 @@
     <EmbeddedResource Include="AdministradorServicios\crEstudioElectrocardiografico.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crEstudioElectrocardiografico.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministradorServicios\crFichaAudiometria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crFichaAudiometria.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AdministradorServicios\crFichaAudiometria_inter.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

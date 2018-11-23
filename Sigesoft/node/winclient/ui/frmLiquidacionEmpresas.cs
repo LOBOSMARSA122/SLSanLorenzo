@@ -294,15 +294,6 @@ namespace Sigesoft.Node.WinClient.UI
                                 facturas_1.Add(item_1.v_NroFactura);
                             }
                         }
-                        //List<string> facturas_2 = new List<string>();
-                        //foreach (var item in lista_2)
-                        //{
-                        //    var obj_1 = item.detalle.FindAll(p => p.v_NroFactura != "").ToList();
-                        //    foreach (var item_1 in obj_1)
-                        //    {
-                        //        facturas_2.Add(item_1.v_NroFactura);
-                        //    }
-                        //}
 
                         foreach (var item in lista_2)
                         {
@@ -349,7 +340,7 @@ namespace Sigesoft.Node.WinClient.UI
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                    string nombre = "Liquidaciones de EMPRESA - CSL";
+                    string nombre = "Liquidaciones de EMPRESAS - CSL";
 
                     DateTime? fechaFin_1 = DateTime.Now;
                     DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
@@ -362,7 +353,153 @@ namespace Sigesoft.Node.WinClient.UI
             
             else if (rbLiqPendFacturar.Checked)
             {
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
 
+                    var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                    OperationResult objOperationResult = new OperationResult();
+
+                    DateTime? inicioDeudas = new DateTime(2018, 1, 1, 0, 0, 0);
+                    DateTime? FinDeudas = DateTime.Now;
+                    var deudoras = new ServiceBL().GetListaLiquidacionByEmpresa_SinFacturar(ref objOperationResult, inicioDeudas, FinDeudas);
+
+                    List<string> deudores = new List<string>();
+                    string ruc_emp = "";
+                    decimal _debe_calculo = 0;
+                    foreach (var item in deudoras)
+                    {
+                        foreach (var item_1 in item.detalle)
+                        {
+                            _debe_calculo += (decimal)item_1.d_Debe + (decimal)item_1.d_Pago;
+                        }
+                        if (_debe_calculo !=0)
+                        {
+                            deudores.Add(item.v_Ruc);
+                        }
+                        //ruc_emp = item.v_Ruc;
+                        _debe_calculo = 0;
+                    }
+
+                    List<LiquidacionEmpresa> ListaLiquidacion_1 = new List<LiquidacionEmpresa>();
+
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaFin_L1 = DateTime.Now;
+                        DateTime? fechaInicio_L1 = DateTime.Now.AddDays(-30);
+                        var lista_1 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L1, fechaFin_L1, ruc);
+
+                        List<string> facturas_1 = new List<string>();
+                        foreach (var item in lista_1)
+                        {
+                            var obj_1 = item.detalle.FindAll(p => p.v_NroFactura == "").ToList();
+                            foreach (var item_1 in obj_1)
+                            {
+                                facturas_1.Add(item_1.v_NroFactura);
+                            }
+                        }
+
+                        foreach (var item in lista_1)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+                            var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                            if (facturas_1.Count() != 0)
+                            {
+                                foreach (var detalle in item.detalle)
+                                {
+                                    liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                    liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                    liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                    liquidacionDetalleEmpresa.v_NroFactura = "";
+                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                                }
+                            }
+                            else
+                            {
+                                liquidacionDetalleEmpresa.d_Debe = 0;
+                                liquidacionDetalleEmpresa.d_Pago = 0;
+                                liquidacionDetalleEmpresa.d_Total = 0;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_1.Add(liquidacionEmpresa);
+                        }
+                    }
+
+                    List<LiquidacionEmpresa> ListaLiquidacion_2 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaFin_L2 = DateTime.Now.AddDays(-31);
+                        DateTime? fechaInicio_L2 = new DateTime(2018, 1, 1, 0, 0, 0);
+                        var lista_2 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L2, fechaFin_L2, ruc);
+
+                        List<string> facturas_1 = new List<string>();
+                        foreach (var item in lista_2)
+                        {
+                            var obj_1 = item.detalle.FindAll(p => p.v_NroFactura == "").ToList();
+                            foreach (var item_1 in obj_1)
+                            {
+                                facturas_1.Add(item_1.v_NroFactura);
+                            }
+                        }
+
+                        foreach (var item in lista_2)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+                            var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                            if (facturas_1.Count() != 0)
+                            {
+                                foreach (var detalle in item.detalle)
+                                {
+                                    liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                    liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                    liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                    liquidacionDetalleEmpresa.v_NroFactura = "";
+                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                                }
+                            }
+                            else
+                            {
+                                liquidacionDetalleEmpresa.d_Debe = 0;
+                                liquidacionDetalleEmpresa.d_Pago = 0;
+                                liquidacionDetalleEmpresa.d_Total = 0;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_2.Add(liquidacionEmpresa);
+                        }
+                    }
+
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                    string nombre = "EMPRESAS POR FACTURAR - CSL";
+
+                    DateTime? fechaFin_1 = DateTime.Now;
+                    DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
+                    string fechaInicio_2 = fechaInicio_1.ToString().Split(' ')[0];
+                    string fechaFin_2 = fechaFin_1.ToString().Split(' ')[0];
+                    Liquidaciones_Pendientes_Facturass.CreateLiquidaciones_Pendientes_Facturass(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion_1, fechaInicio_2, fechaFin_2, ListaLiquidacion_2);
+                    this.Enabled = true;
+                }
             }
             else {
                 btnGenerar.Enabled = false;

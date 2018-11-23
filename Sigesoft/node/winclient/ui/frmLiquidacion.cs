@@ -28,6 +28,7 @@ namespace Sigesoft.Node.WinClient.UI
         private OperationResult _objOperationResult = new OperationResult();
         private PacientBL _pacientBL = new PacientBL();
         private int seleccionado = -1;
+        private int factura = -1;
         private string empresaId = null;
         public frmLiquidacion()
         {
@@ -49,6 +50,7 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(cbbSubContratas, "Value1", "Id", clientOrganization2, DropDownListAction.All);
 
             Utils.LoadDropDownList(cbbEstadoLiq, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 327, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cbbFac, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 328, null), DropDownListAction.Select);
             //
             btnLiqd1.Enabled = false;
             //
@@ -173,7 +175,8 @@ namespace Sigesoft.Node.WinClient.UI
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
             seleccionado = cbbEstadoLiq.SelectedIndex;
-            var _objData = _serviceBL.ListaLiquidacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, seleccionado);
+            factura = cbbFac.SelectedIndex;
+            var _objData = _serviceBL.ListaLiquidacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, seleccionado, factura);
 
             if (objOperationResult.Success != 1)
             {
@@ -312,9 +315,19 @@ namespace Sigesoft.Node.WinClient.UI
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                     string nombre = "Liquidación N° " + liquidacionID + " - CSL";
 
-                    var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
-
-
+                    string idLiq = "";
+                    foreach (var item in lista)
+                    {
+                        foreach (var item_1 in item.Detalle)
+                        {
+                            idLiq = item_1.v_NroLiquidacion;
+                            break;
+                        }
+                        break;
+                    }
+                    var traerEmpresa = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, idLiq);
+                    string idEmpresa = traerEmpresa.v_OrganizationId;
+                    var obtenerInformacionEmpresas = new ServiceBL().GetOrganizationId(ref _objOperationResult, idEmpresa);
                     Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas);
                     this.Enabled = true;
                 }
@@ -435,12 +448,25 @@ namespace Sigesoft.Node.WinClient.UI
                
                 string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                 string nombre = "Carta N° "+ liquidacionID + " - CSL";
+                
 
-                var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
                 int systemUser = 205;
                 var datosGrabo = _serviceBL.DevolverDatosUsuarioFirma(systemUser);
 
-                Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas, datosGrabo);
+                string idLiq = "";
+                foreach (var item in lista)
+                {
+                    foreach (var item_1 in item.Detalle)
+                    {
+                        idLiq = item_1.v_NroLiquidacion;
+                        break;
+                    }
+                    break;
+                }
+                var liquidacion = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, idLiq);
+                string N_Fact = liquidacion.v_NroFactura;
+                var empresa = new ServiceBL().GetOrganizationId(ref _objOperationResult, liquidacion.v_OrganizationId);
+                Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, empresa, datosGrabo, N_Fact);
                 this.Enabled = true;
             }
         }
@@ -510,6 +536,20 @@ namespace Sigesoft.Node.WinClient.UI
         private void cbbEstadoLiq_SelectedIndexChanged(object sender, EventArgs e)
         {
             seleccionado = cbbEstadoLiq.SelectedIndex;
+            if (seleccionado == 2)
+            {
+                cbbFac.Enabled = false;
+            }
+            else
+            {
+                cbbFac.Enabled = true;
+            }
+            
+        }
+
+        private void cbbFac_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            factura = cbbFac.SelectedIndex;
         }
     }
 }

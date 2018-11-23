@@ -152,6 +152,7 @@
     <Compile Include="INFORME_SAS_REPORT.cs" />
     <Compile Include="LaboratorioReport.cs" />
     <Compile Include="LiquidacionCuentasPorCobrar.cs" />
+    <Compile Include="Liquidaciones_Pendientes_Facturass.cs" />
     <Compile Include="Liquidacion_Carta.cs" />
     <Compile Include="Liquidacion_EMO.cs" />
     <Compile Include="Liquidacion_EMO_EMPRESAS.cs" />
@@ -178,6 +179,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reporte_Egresos.cs" />
     <Compile Include="ReportPDF.cs" />
     <Compile Include="TestSomnolncia.cs" />
     <Compile Include="TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.cs" />
@@ -240,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

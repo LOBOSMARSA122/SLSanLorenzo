@@ -78,6 +78,11 @@ namespace Sigesoft.Node.WinClient.UI
 
             Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
             Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            ////Llenado de los tipos de servicios [Emp/Part]
+            //Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.Select);
+            //// combo servicio
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
+          
             //Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.All);
 
             Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.All);
@@ -300,10 +305,13 @@ namespace Sigesoft.Node.WinClient.UI
                 ddlMasterServiceId.Enabled = false;
                 return;
             }
-
-            ddlMasterServiceId.Enabled = true;
-            OperationResult objOperationResult = new OperationResult();
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            else
+            {
+                ddlMasterServiceId.Enabled = true;
+            }
+            //ddlMasterServiceId.Enabled = true;
+            //OperationResult objOperationResult = new OperationResult();
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
           
         }
 
@@ -2905,6 +2913,37 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var frm = new Reports.frmManagementReportAsync(_EmpresaClienteId, _serviceId,_pacientId);
             frm.ShowDialog();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+
+                //var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Name(ref objOperationResult, fechaInicio, fechaFin, _empresa);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "EGRESOS DE PRUEBA - CSL";
+
+                Reporte_Egresos.CreateReporte_Egresos(ruta + nombre + ".pdf", MedicalCenter);
+                this.Enabled = true;
+            }
+        }
+
+        private void ddlServiceTypeId_TextChanged(object sender, EventArgs e)
+        {
+            if (ddlServiceTypeId.SelectedIndex == 0 || ddlServiceTypeId.SelectedIndex == -1)
+                return;
+
+            OperationResult objOperationResult = new OperationResult();
+            var id = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
+
         }
         
         //void ProcesoSErvicio()

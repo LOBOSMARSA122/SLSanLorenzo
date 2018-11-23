@@ -15,12 +15,7 @@ using Font = iTextSharp.text.Font;
 
 namespace NetPdf
 {
-    class DatosDeuda {
-        public string NombreEmpresa { get; set; }
-        public decimal deuda1 { get; set; }
-        public decimal deuda2 { get; set; }
-    }
-    public class LiquidacionCuentasPorCobrar
+     public class LiquidacionCuentasPorCobrar
     {
         private static void RunFile(string filePDF)
         {

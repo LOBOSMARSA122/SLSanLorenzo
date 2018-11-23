@@ -10,8 +10,8 @@
     <form id="form1" runat="server">       
     <asp:Label ID="lblmensaje" runat="server" Text=""></asp:Label>
           <cc1:ShowPdf ID="ShowPdf1" runat="server" BorderStyle="Inset" BorderWidth="2px"
-                Height="560px"
-                Width="650px" />
+                Height="760px"
+                Width="820px" />
     </form>
 </body>
 </html>
