@@ -23,6 +23,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
+        hospitalizacionDto hosp
         public static void CreateLiquidacion(string filePDF,
             organizationDto infoEmpresaPropietaria, List<HospitalizacionList> ListaHospit,
             ServiceList DataService, PacientList datosPac, int cargo, hospitalizacionDto hospit, hospitalizacionhabitacionDto hospitHabit,  MedicoTratanteAtenciones medico)
