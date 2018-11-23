@@ -13,6 +13,7 @@ using iTextSharp.text.pdf.draw;
 using Sigesoft.Node.WinClient.BE;
 using Font = iTextSharp.text.Font;
 
+
 namespace NetPdf
 {
     public class Liquidacion_Hospitalizacion
@@ -22,8 +23,7 @@ namespace NetPdf
             Process proceso = Process.Start(filePDF);
             proceso.WaitForExit();
             proceso.Close();
-        }
-        hospitalizacionDto _Hospitalizacion = new hospitalizacionDto();
+        }        
         public static void CreateLiquidacion(string filePDF,
             organizationDto infoEmpresaPropietaria, List<HospitalizacionList> ListaHospit,
             ServiceList DataService, PacientList datosPac, int cargo, hospitalizacionDto hospit, hospitalizacionhabitacionDto hospitHabit,  MedicoTratanteAtenciones medico)
@@ -484,7 +484,6 @@ namespace NetPdf
                 cells.Add(cell);
                 //.Split('.')[0] + "." + totalFinal.ToString().Split('.')[1].Substring(0, 2)
             }
-            
 
             columnWidths = new float[] { 11f, 15f, 42f, 10f, 10F, 12F };
 
@@ -493,7 +492,10 @@ namespace NetPdf
             document.Add(filiationWorker);
             #endregion
 
+            #region ACTUALIZAR PRECIOS EN BASE
+            
 
+            #endregion
             document.Close();
             writer.Close();
             writer.Dispose();
