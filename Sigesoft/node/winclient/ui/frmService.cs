@@ -805,7 +805,16 @@ namespace Sigesoft.Node.WinClient.UI
                    {
                        string ruta = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
                        System.Diagnostics.Process.Start(ruta);
-                       Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());   
+                       Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());
+
+                       //var companiaMinera = grdDataService.Selected.Rows[0].Cells["CompMinera"].Value.ToString();
+                       //var paciente = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+                       //var fecha = DateTime.Parse(grdDataService.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString()).ToString("dd MMMM,  yyyy");
+
+                       //var namePdf = companiaMinera + " - " + paciente + " - " + fecha;
+                       //string pdfPath = Path.Combine(ruta, namePdf + ".pdf");
+
+                       //Process.Start(pdfPath);
                        return;
                    }
  
