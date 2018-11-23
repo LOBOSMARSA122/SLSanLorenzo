@@ -260,10 +260,10 @@ namespace Sigesoft.Node.Contasol.Integration
                  " v.t_InsertaFecha AS FechaCreacion, " +
                  " v.t_FechaVencimiento AS FechaVencimiento, " +
                  " v.v_IdVenta, " +
-                "  Sum(d_Total) / (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) AS NetoXCobrar, " +
+                "  Sum(d_Total) / CASE WHEN (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta)= 0 THEN 1 ELSE (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta)END AS NetoXCobrar,   " +
                 "  v.v_SerieDocumento + '-' + v.v_CorrelativoDocumento AS NroComprobante, " +
                  " Sum(cd.d_ImporteSoles) AS TotalPagado, " +
-                "  CASE WHEN Sum(d_Total)/ (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) -  Sum(cd.d_ImporteSoles)  = 0 THEN 'NO DEBE' ELSE 'DEBE' END AS Condicion " +
+                "  CASE WHEN (Sum(d_Total)/    CASE WHEN (select count(*)  from cobranzadetalle where v_IdVenta = v.v_IdVenta) = 0 THEN 1 ELSE 	(select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) END ) -  Sum(cd.d_ImporteSoles)  = 0 THEN 'NO DEBE' ELSE 'DEBE' END AS Condicion  " +
                 " from venta v " +
                 " inner join cliente c on c.v_IdCliente =  v.v_IdCliente " +
                 " inner join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +

@@ -127,7 +127,37 @@ namespace Sigesoft.Node.WinClient.BLL
                throw;
            }
        }
-       
+
+       public List<ResumenTipoEmpresa> ReportResumenTipoEmpresa(DateTime fInicio, DateTime fFin)
+       {
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+               var query = dbContext.resumentipoempresa(fInicio, fFin).OrderBy(p => p.v_ServiceId).ToList();
+
+               var list = new List<ResumenTipoEmpresa>();
+               foreach (var item in query)
+               {
+                   var oResumenTipoEmpresa = new ResumenTipoEmpresa();
+
+                   oResumenTipoEmpresa.v_ServiceId = item.v_ServiceId;
+                   oResumenTipoEmpresa.EmpresaCliente = item.EmpresaCliente;
+                   oResumenTipoEmpresa.EmpresaEmpleadora = item.EmpresaEmpleadora;
+                   oResumenTipoEmpresa.EmpresaTrabajo = item.EmpresaTrabajo;
+                   oResumenTipoEmpresa.Precio = item.Precio.Value;
+
+                   list.Add(oResumenTipoEmpresa);
+               }
+
+               return list;
+           }
+           catch (Exception ex)
+           {
+               throw;
+           }
+       }
+      
        public List<Servicios> DetalleFactura(string nroFactura)
        {
            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -178,6 +208,15 @@ namespace Sigesoft.Node.WinClient.BLL
            {               
                throw;
            }
+       }
+
+       public class ResumenTipoEmpresa
+       {
+           public string v_ServiceId { get; set; }
+           public string EmpresaCliente { get; set; }
+           public string EmpresaEmpleadora { get; set; }
+           public string EmpresaTrabajo { get; set; }
+           public double? Precio { get; set; }
        }
 
        public class ReportResumeCaja

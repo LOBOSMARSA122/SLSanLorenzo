@@ -43,6 +43,11 @@ namespace Sigesoft.Node.WinClient.UI
                     txtTotalSaldo.Text = data.Sum(s => s.totalSaldo).ToString();
                     grdGrid.DataSource = data;
                 }
+                else if (tabControl1.SelectedTab.Name == "tpResumenTipoEmpresa")
+                {
+                    var data = oCustomReportBL.ReportResumenTipoEmpresa(pdatBeginDate.Value, pdatEndDate.Value);
+                    grdTipoEmpresa.DataSource = data;
+                }
                 else
                 {
                     var data = oCustomReportBL.ReportResumenTipoPago(pdatBeginDate.Value, pdatEndDate.Value, int.Parse(cboTipoCaja.SelectedValue.ToString()));
@@ -50,6 +55,7 @@ namespace Sigesoft.Node.WinClient.UI
                     grdDataTipoPago.DataSource = data;
                     txtTotalImporte.Text = data[0].ImporteTotal.ToString();
                 }
+                
             };
            
         }
