@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Dynamic;
 using Sigesoft.Server.WebClientAdmin.BE;
+using Sigesoft.Server.WebClientAdmin.BLL;
 using Sigesoft.Server.WebClientAdmin.DAL;
 using Sigesoft.Common;
 using System.Web.Configuration;
@@ -20495,6 +20496,846 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 return null;
             }
         }
-              
+        public class Data
+        {
+            public string _Key { get; set; }
+            public string StringData { get; set; }
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> GetValueOdontograma(string pstrServiceId, string pstrComponentId, string pstrpath)
+        {
+            try
+            {
+                ServiceBL oServiceBL = new ServiceBL();
+                List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> oServiceComponentFieldValuesList = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
+                List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> oServiceComponentFieldValuesList1 = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
+                oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontograma(pstrServiceId, pstrComponentId, pstrpath);
+                //var xx = oServiceComponentFieldValuesList.Count() == 0 || ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)) == null ? string.Empty : ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)).v_Value1;
+
+                #region Comentado
+
+                oServiceComponentFieldValuesList1 = ValoresComponenteOdontogramaValue1(pstrServiceId, pstrComponentId);
+
+                List<Data> x = new List<Data>();
+                Data y = new Data();
+
+                x.Add(new Data() { _Key = "", StringData = "" });
+                x.Add(new Data() { _Key = Constants.D11_1, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_2, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_3, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_4, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_5, StringData = "11" });
+
+                x.Add(new Data() { _Key = Constants.D12_1, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_2, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_3, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_4, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_5, StringData = "12" });
+
+                x.Add(new Data() { _Key = Constants.D13_1, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_2, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_3, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_4, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_5, StringData = "13" });
+
+                x.Add(new Data() { _Key = Constants.D14_1, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_2, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_3, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_4, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_5, StringData = "14" });
+
+                x.Add(new Data() { _Key = Constants.D15_1, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_2, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_3, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_4, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_5, StringData = "15" });
+
+                x.Add(new Data() { _Key = Constants.D16_1, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_2, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_3, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_4, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_5, StringData = "16" });
+
+                x.Add(new Data() { _Key = Constants.D17_1, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_2, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_3, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_4, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_5, StringData = "17" });
+
+                x.Add(new Data() { _Key = Constants.D18_1, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_2, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_3, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_4, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_5, StringData = "18" });
+
+                //--------------
+                x.Add(new Data() { _Key = Constants.D21_1, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_2, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_3, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_4, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_5, StringData = "21" });
+
+                x.Add(new Data() { _Key = Constants.D22_1, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_2, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_3, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_4, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_5, StringData = "22" });
+
+                x.Add(new Data() { _Key = Constants.D23_1, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_2, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_3, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_4, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_5, StringData = "23" });
+
+                x.Add(new Data() { _Key = Constants.D24_1, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_2, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_3, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_4, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_5, StringData = "24" });
+
+                x.Add(new Data() { _Key = Constants.D25_1, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_2, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_3, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_4, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_5, StringData = "25" });
+
+                x.Add(new Data() { _Key = Constants.D26_1, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_2, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_3, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_4, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_5, StringData = "26" });
+
+                x.Add(new Data() { _Key = Constants.D27_1, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_2, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_3, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_4, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_5, StringData = "27" });
+
+                x.Add(new Data() { _Key = Constants.D28_1, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_2, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_3, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_4, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_5, StringData = "28" });
+                //------------------------
+                x.Add(new Data() { _Key = Constants.D31_1, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_2, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_3, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_4, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_5, StringData = "31" });
+
+                x.Add(new Data() { _Key = Constants.D32_1, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_2, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_3, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_4, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_5, StringData = "32" });
+
+                x.Add(new Data() { _Key = Constants.D33_1, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_2, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_3, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_4, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_5, StringData = "33" });
+
+                x.Add(new Data() { _Key = Constants.D34_1, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_2, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_3, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_4, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_5, StringData = "34" });
+
+                x.Add(new Data() { _Key = Constants.D35_1, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_2, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_3, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_4, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_5, StringData = "35" });
+
+                x.Add(new Data() { _Key = Constants.D36_1, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_2, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_3, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_4, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_5, StringData = "36" });
+
+                x.Add(new Data() { _Key = Constants.D37_1, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_2, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_3, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_4, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_5, StringData = "37" });
+
+                x.Add(new Data() { _Key = Constants.D38_1, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_2, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_3, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_4, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_5, StringData = "38" });
+                //---------------------
+                x.Add(new Data() { _Key = Constants.D41_1, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_2, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_3, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_4, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_5, StringData = "41" });
+
+                x.Add(new Data() { _Key = Constants.D42_1, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_2, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_3, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_4, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_5, StringData = "42" });
+
+                x.Add(new Data() { _Key = Constants.D43_1, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_2, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_3, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_4, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_5, StringData = "43" });
+
+                x.Add(new Data() { _Key = Constants.D44_1, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_2, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_3, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_4, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_5, StringData = "44" });
+
+                x.Add(new Data() { _Key = Constants.D45_1, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_2, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_3, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_4, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_5, StringData = "45" });
+
+                x.Add(new Data() { _Key = Constants.D46_1, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_2, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_3, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_4, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_5, StringData = "46" });
+
+                x.Add(new Data() { _Key = Constants.D47_1, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_2, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_3, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_4, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_5, StringData = "47" });
+
+                x.Add(new Data() { _Key = Constants.D48_1, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_2, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_3, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_4, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_5, StringData = "48" });
+
+                var rangodientes = x.ToList();
+                foreach (var item in oServiceComponentFieldValuesList1)
+                {
+
+                    var NroDiente = rangodientes.Find(p => p._Key == item.v_ComponentFieldId) == null ? "" : rangodientes.Find(p => p._Key == item.v_ComponentFieldId).StringData;//.f x[item.v_ComponentFieldId];
+                    var valorDiente = oServiceComponentFieldValuesList1.Count() == 0 || ((Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList)oServiceComponentFieldValuesList1.Find(p => p.v_ComponentFieldId == item.v_ComponentFieldId)) == null ? string.Empty : ((Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList)oServiceComponentFieldValuesList1.Find(p => p.v_ComponentFieldId == item.v_ComponentFieldId)).v_Value1;
+                    #region SWITCH
+                    switch (NroDiente)
+                    {
+                        case "18":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(18);
+                            }
+                            break;
+                        case "17":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(17);
+                            }
+                            break;
+                        case "16":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(16);
+                            }
+                            break;
+                        case "15":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(15);
+                            }
+                            break;
+                        case "14":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(14);
+                            }
+                            break;
+                        case "13":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(13);
+                            }
+                            break;
+                        case "12":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(12);
+                            }
+                            break;
+                        case "11":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(11);
+                            }
+                            break;
+
+                        //--------------------------------------
+
+                        case "21":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(21);
+                            }
+                            break;
+                        case "22":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(22);
+                            }
+                            break;
+                        case "23":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(23);
+                            }
+                            break;
+                        case "24":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(24);
+                            }
+                            break;
+                        case "25":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(25);
+                            }
+                            break;
+                        case "26":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(26);
+                            }
+                            break;
+                        case "27":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(27);
+                            }
+                            break;
+                        case "28":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(28);
+                            }
+                            break;
+
+                        //------------------------------
+
+                        case "31":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(31);
+                            }
+                            break;
+                        case "32":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(32);
+                            }
+                            break;
+                        case "33":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(33);
+                            }
+                            break;
+                        case "34":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(34);
+                            }
+                            break;
+                        case "35":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(35);
+                            }
+                            break;
+                        case "36":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(36);
+                            }
+                            break;
+                        case "37":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(37);
+                            }
+                            break;
+                        case "38":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(38);
+                            }
+                            break;
+
+                        //------------------------------
+
+                        case "41":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(41);
+                            }
+                            break;
+                        case "42":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(42);
+                            }
+                            break;
+                        case "43":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(43);
+                            }
+                            break;
+                        case "44":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(44);
+                            }
+                            break;
+                        case "45":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(45);
+                            }
+                            break;
+                        case "46":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(46);
+                            }
+                            break;
+                        case "47":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(47);
+                            }
+                            break;
+                        case "48":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(48);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    #endregion
+
+                }
+                #endregion
+
+                return oServiceComponentFieldValuesList;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> GetValueOdontogramaAusente(string pstrServiceId, string pstrComponentId, string pstrPath)
+        {
+            try
+            {
+                ServiceBL oServiceBL = new ServiceBL();
+                List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> oServiceComponentFieldValuesList = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
+
+                oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontogramaAusente(pstrServiceId, pstrComponentId, pstrPath);
+                return oServiceComponentFieldValuesList;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+       }
+
+        public List<Sigesoft.Node.WinClient.BE.ValorComponenteList> GetListValueComponent(string pstrServiceId, string pstrComponentId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            int isDeleted = (int)SiNo.NO;
+
+            try
+            {
+
+                var PreQuery = (from A in dbContext.service
+                                join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                                join C in dbContext.servicecomponentfields on B.v_ServiceComponentId equals C.v_ServiceComponentId
+                                join D in dbContext.servicecomponentfieldvalues on C.v_ServiceComponentFieldsId equals D.v_ServiceComponentFieldsId
+                                join F in dbContext.componentfields on C.v_ComponentFieldId equals F.v_ComponentFieldId
+                                join G in dbContext.componentfield on C.v_ComponentFieldId equals G.v_ComponentFieldId
+                                join H in dbContext.component on F.v_ComponentId equals H.v_ComponentId
+                                where A.v_ServiceId == pstrServiceId
+                                        && B.i_IsDeleted == isDeleted
+                                        && C.i_IsDeleted == isDeleted
+                                select new Sigesoft.Node.WinClient.BE.ValorComponenteList
+                                {
+                                    ServicioId = A.v_ServiceId,
+                                    Valor = D.v_Value1,
+                                    NombreComponente = H.v_Name,
+                                    IdComponente = C.v_ComponentId,
+                                    NombreCampo = G.v_TextLabel,
+                                    IdCampo = C.v_ComponentFieldId
+                                }
+                           ).ToList();
+                return PreQuery;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.ReportOdontograma> ReportOdontograma(string pstrserviceId, string pstrComponentId, string Path)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+                                 join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId
+
+                                 join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+                                 //**************************************************************************************
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on BB.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId
+
+                                 where A.v_ServiceId == pstrserviceId
+                                 select new Sigesoft.Node.WinClient.BE.ReportOdontograma
+                                 {
+                                     IdServicio = A.v_ServiceId,
+                                     Trabajador = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                                     Fecha = A.d_ServiceDate.Value,
+                                     Puesto = B.v_CurrentOccupation,
+                                     Ficha = E.v_ServiceComponentId,
+                                     FirmaMedico = pme.b_SignatureImage,
+
+                                     EmpresaPropietaria = C2.v_Name,
+                                     Empresa = C1.v_Name,
+                                     EmpresaPropietariaEmail = C.v_Name,
+                                     EmpresaPropietariaDireccion = C1.v_Name + " / " + C.v_Name,
+
+                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
+                                 });
+
+                var MedicalCenter = GetInfoMedicalCenter();
+
+                var ValorDiente = GetValueOdontograma(pstrserviceId, pstrComponentId, Path).ToList();
+                var ValorDienteAusente = GetValueOdontogramaAusente(pstrserviceId, pstrComponentId, Path);
+                var ValorCampos = GetListValueComponent(pstrserviceId, pstrComponentId);
+                var Test = ValoresComponentesUserControl(pstrserviceId, pstrComponentId);
+                var sql = (from a in objEntity.ToList()
+                           select new Sigesoft.Node.WinClient.BE.ReportOdontograma
+                           {
+                               IdServicio = a.IdServicio,
+                               Trabajador = a.Trabajador,
+                               Fecha = a.Fecha,
+                               Puesto = a.Puesto,
+                               Ficha = a.Ficha,
+                               FirmaMedico = a.FirmaMedico,
+
+                               EmpresaPropietaria = a.EmpresaPropietaria,
+                               Empresa = a.Empresa,
+                               EmpresaPropietariaEmail = a.EmpresaPropietariaEmail,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+
+                               Tabaco = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TABACO_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TABACO_ID).Valor,
+                               Diabetes = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_DIABETES_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_DIABETES_ID).Valor,
+                               Tbc = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TBC_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TBC_ID).Valor,
+                               Ets = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_ETS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_ETS_ID).Valor,
+                               Hematopatias = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_HEMATOPATIAS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_HEMATOPATIAS_ID).Valor,
+                               Obesidad = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_OBESIDAD_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_OBESIDAD_ID).Valor,
+                               Periodontitis = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_PERIODONTITIS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_PERIODONTITIS_ID).Valor,
+                               Movilidad = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_MOVILIDAD_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_MOVILIDAD_ID).Valor,
+                               Recesion = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_RECESION_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_RECESION_ID).Valor,
+                               Exudacion = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_EXUDACION_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_EXUDACION_ID).Valor,
+                               Gingivitis = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_GINGIVITIS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_GINGIVITIS_ID).Valor,
+                               BolsaPeriodontales = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_BOLSA_PERIODONTALES_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_BOLSA_PERIODONTALES_ID).Valor,
+                               Diagnosticos = GetDiagnosticByServiceIdAndComponent(pstrserviceId, Constants.ODONTOGRAMA_ID),
+                               PiezasCaries = GetCantidadCaries(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID),
+                               PiezasAusentes = GetCantidadAusentes(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID),
+
+                               PlacaBacteriana = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_PLACA_BACTERIANA_ID),
+                               RemanentesReticulares = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_REMANENTES_RETICULARES_ID),
+                               OtrosExamen = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_OTROS_EXAMEN_ID),
+                               Aptitud = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_APTITUD_ID),
+
+                               Diente181 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_1).v_Value1,
+                               Diente182 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_2).v_Value1,
+                               Diente183 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_3).v_Value1,
+                               Diente184 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_4).v_Value1,
+                               Diente185 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_5).v_Value1,
+                               Diente186 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D18_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D18_6).v_Value1,
+
+                               Diente171 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_1).v_Value1,
+                               Diente172 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_2).v_Value1,
+                               Diente173 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_3).v_Value1,
+                               Diente174 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_4).v_Value1,
+                               Diente175 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_5).v_Value1,
+                               Diente176 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D17_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D17_6).v_Value1,
+
+                               Diente161 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_1).v_Value1,
+                               Diente162 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_2).v_Value1,
+                               Diente163 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_3).v_Value1,
+                               Diente164 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_4).v_Value1,
+                               Diente165 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_5).v_Value1,
+                               Diente166 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D16_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D16_6).v_Value1,
+
+                               Diente151 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_1).v_Value1,
+                               Diente152 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_2).v_Value1,
+                               Diente153 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_3).v_Value1,
+                               Diente154 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_4).v_Value1,
+                               Diente155 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_5).v_Value1,
+                               Diente156 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D15_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D15_6).v_Value1,
+
+                               Diente141 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_1).v_Value1,
+                               Diente142 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_2).v_Value1,
+                               Diente143 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_3).v_Value1,
+                               Diente144 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_4).v_Value1,
+                               Diente145 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_5).v_Value1,
+                               Diente146 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D14_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D14_6).v_Value1,
+
+                               Diente131 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_1).v_Value1,
+                               Diente132 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_2).v_Value1,
+                               Diente133 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_3).v_Value1,
+                               Diente134 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_4).v_Value1,
+                               Diente135 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_5).v_Value1,
+                               Diente136 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D13_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D13_6).v_Value1,
+
+                               Diente121 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_1).v_Value1,
+                               Diente122 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_2).v_Value1,
+                               Diente123 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_3).v_Value1,
+                               Diente124 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_4).v_Value1,
+                               Diente125 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_5).v_Value1,
+                               Diente126 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D12_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D12_6).v_Value1,
+
+                               Diente111 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_1).v_Value1,
+                               Diente112 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_2).v_Value1,
+                               Diente113 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_3).v_Value1,
+                               Diente114 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_4).v_Value1,
+                               Diente115 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_5).v_Value1,
+                               Diente116 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D11_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D11_6).v_Value1,
+                               //-------------------------------------------------------------------------------
+                               Diente211 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_1).v_Value1,
+                               Diente212 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_2).v_Value1,
+                               Diente213 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_3).v_Value1,
+                               Diente214 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_4).v_Value1,
+                               Diente215 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_5).v_Value1,
+                               Diente216 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D21_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D21_6).v_Value1,
+
+                               Diente221 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_1).v_Value1,
+                               Diente222 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_2).v_Value1,
+                               Diente223 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_3).v_Value1,
+                               Diente224 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_4).v_Value1,
+                               Diente225 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_5).v_Value1,
+                               Diente226 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D22_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D22_6).v_Value1,
+
+                               Diente231 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_1).v_Value1,
+                               Diente232 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_2).v_Value1,
+                               Diente233 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_3).v_Value1,
+                               Diente234 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_4).v_Value1,
+                               Diente235 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_5).v_Value1,
+                               Diente236 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D23_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D23_6).v_Value1,
+
+                               Diente241 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_1).v_Value1,
+                               Diente242 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_2).v_Value1,
+                               Diente243 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_3).v_Value1,
+                               Diente244 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_4).v_Value1,
+                               Diente245 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_5).v_Value1,
+                               Diente246 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D24_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D24_6).v_Value1,
+
+                               Diente251 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_1).v_Value1,
+                               Diente252 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_2).v_Value1,
+                               Diente253 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_3).v_Value1,
+                               Diente254 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_4).v_Value1,
+                               Diente255 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_5).v_Value1,
+                               Diente256 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D25_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D25_6).v_Value1,
+
+                               Diente261 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_1).v_Value1,
+                               Diente262 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_2).v_Value1,
+                               Diente263 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_3).v_Value1,
+                               Diente264 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_4).v_Value1,
+                               Diente265 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_5).v_Value1,
+                               Diente266 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D26_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D26_6).v_Value1,
+
+                               Diente271 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_1).v_Value1,
+                               Diente272 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_2).v_Value1,
+                               Diente273 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_3).v_Value1,
+                               Diente274 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_4).v_Value1,
+                               Diente275 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_5).v_Value1,
+                               Diente276 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D27_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D27_6).v_Value1,
+
+                               Diente281 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_1).v_Value1,
+                               Diente282 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_2).v_Value1,
+                               Diente283 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_3).v_Value1,
+                               Diente284 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_4).v_Value1,
+                               Diente285 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_5).v_Value1,
+                               Diente286 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D28_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D28_6).v_Value1,
+                               //-------------------------------------------------------------------------------
+                               Diente311 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_1).v_Value1,
+                               Diente312 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_2).v_Value1,
+                               Diente313 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_3).v_Value1,
+                               Diente314 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_4).v_Value1,
+                               Diente315 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_5).v_Value1,
+                               Diente316 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D31_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D31_6).v_Value1,
+
+                               Diente321 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_1).v_Value1,
+                               Diente322 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_2).v_Value1,
+                               Diente323 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_3).v_Value1,
+                               Diente324 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_4).v_Value1,
+                               Diente325 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_5).v_Value1,
+                               Diente326 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D32_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D32_6).v_Value1,
+
+                               Diente331 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_1).v_Value1,
+                               Diente332 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_2).v_Value1,
+                               Diente333 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_3).v_Value1,
+                               Diente334 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_4).v_Value1,
+                               Diente335 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_5).v_Value1,
+                               Diente336 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D33_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D33_6).v_Value1,
+
+                               Diente341 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_1).v_Value1,
+                               Diente342 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_2).v_Value1,
+                               Diente343 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_3).v_Value1,
+                               Diente344 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_4).v_Value1,
+                               Diente345 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_5).v_Value1,
+                               Diente346 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D34_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D34_6).v_Value1,
+
+                               Diente351 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_1).v_Value1,
+                               Diente352 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_2).v_Value1,
+                               Diente353 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_3).v_Value1,
+                               Diente354 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_4).v_Value1,
+                               Diente355 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_5).v_Value1,
+                               Diente356 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D35_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D35_6).v_Value1,
+
+                               Diente361 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_1).v_Value1,
+                               Diente362 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_2).v_Value1,
+                               Diente363 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_3).v_Value1,
+                               Diente364 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_4).v_Value1,
+                               Diente365 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_5).v_Value1,
+                               Diente366 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D36_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D36_6).v_Value1,
+
+                               Diente371 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_1).v_Value1,
+                               Diente372 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_2).v_Value1,
+                               Diente373 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_3).v_Value1,
+                               Diente374 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_4).v_Value1,
+                               Diente375 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_5).v_Value1,
+                               Diente376 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D37_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D37_6).v_Value1,
+
+                               Diente381 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_1).v_Value1,
+                               Diente382 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_2).v_Value1,
+                               Diente383 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_3).v_Value1,
+                               Diente384 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_4).v_Value1,
+                               Diente385 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_5).v_Value1,
+                               Diente386 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D38_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D38_6).v_Value1,
+                               //-------------------------------------------------------------------------------
+                               Diente411 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_1).v_Value1,
+                               Diente412 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_2).v_Value1,
+                               Diente413 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_3).v_Value1,
+                               Diente414 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_4).v_Value1,
+                               Diente415 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_5).v_Value1,
+                               Diente416 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D41_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D41_6).v_Value1,
+
+                               Diente421 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_1).v_Value1,
+                               Diente422 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_2).v_Value1,
+                               Diente423 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_3).v_Value1,
+                               Diente424 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_4).v_Value1,
+                               Diente425 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_5).v_Value1,
+                               Diente426 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D42_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D42_6).v_Value1,
+
+                               Diente431 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_1).v_Value1,
+                               Diente432 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_2).v_Value1,
+                               Diente433 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_3).v_Value1,
+                               Diente434 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_4).v_Value1,
+                               Diente435 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_5).v_Value1,
+                               Diente436 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D43_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D43_6).v_Value1,
+
+                               Diente441 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_1).v_Value1,
+                               Diente442 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_2).v_Value1,
+                               Diente443 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_3).v_Value1,
+                               Diente444 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_4).v_Value1,
+                               Diente445 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_5).v_Value1,
+                               Diente446 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D44_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D44_6).v_Value1,
+
+                               Diente451 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_1).v_Value1,
+                               Diente452 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_2).v_Value1,
+                               Diente453 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_3).v_Value1,
+                               Diente454 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_4).v_Value1,
+                               Diente455 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_5).v_Value1,
+                               Diente456 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D45_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D45_6).v_Value1,
+
+                               Diente461 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_1).v_Value1,
+                               Diente462 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_2).v_Value1,
+                               Diente463 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_3).v_Value1,
+                               Diente464 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_4).v_Value1,
+                               Diente465 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_5).v_Value1,
+                               Diente466 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D46_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D46_6).v_Value1,
+
+                               Diente471 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_1).v_Value1,
+                               Diente472 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_2).v_Value1,
+                               Diente473 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_3).v_Value1,
+                               Diente474 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_4).v_Value1,
+                               Diente475 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_5).v_Value1,
+                               Diente476 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D47_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D47_6).v_Value1,
+
+                               Diente481 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_1).v_Value1,
+                               Diente482 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_2).v_Value1,
+                               Diente483 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_3).v_Value1,
+                               Diente484 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_4).v_Value1,
+                               Diente485 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_5).v_Value1,
+                               Diente486 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D48_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D48_6).v_Value1,
+
+                               PiezasCuracion = NroDientesCurados(ListaDiente),
+                               b_Logo = MedicalCenter.b_Image,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                               Recomendaciones = GetRecommendationByServiceIdAndComponent(pstrserviceId, pstrComponentId),
+                               Otros = Test.Count() == 0 || Test.Find(p => p.v_ComponentFieldId == Constants.Otros) == null ? string.Empty : Test.Find(p => p.v_ComponentFieldId == Constants.Otros).v_Value1,
+                           }).ToList();
+
+                return sql;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

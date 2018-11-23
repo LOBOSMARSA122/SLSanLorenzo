@@ -60,7 +60,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 Session["ComponentesPermisoLectura"] = ListaComponentesPermisoLectura;
                 TabOdontograma.Hidden = true;
 
-                TabOdontograma.Attributes.Add("Tag", "N005-ME000000027");
+                TabOdontograma.Attributes.Add("Tag", "N002-ME000000027");
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1);  //  DateTime.Parse("12/11/2016");
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
@@ -205,7 +205,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 {
                     if (item == TabOdontograma.Attributes.GetValue("Tag").ToString())
                     {
-                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N005-ME000000027");
+                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N002-ME000000027");
                         if (Resultado != null)
                         {
                             LoadcombosOdonto();
@@ -279,7 +279,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             //var _objData = _serviceBL.GetAllServices_(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1));
             List<string> ComponentesId = new List<string>();
-            ComponentesId.Add("N005-ME000000027");
+            ComponentesId.Add("N002-ME000000027");
             var _objData = _serviceBL.GetAllServices_Consultorio(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1), ComponentesId.ToArray());
 
             if (_objData.Count == 0)
