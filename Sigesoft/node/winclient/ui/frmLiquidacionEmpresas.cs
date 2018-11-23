@@ -115,7 +115,7 @@ namespace Sigesoft.Node.WinClient.UI
                         string ruc = "";
                         foreach (var item_1 in empDeud)
                         {
-                            if (item_1.NetoXCobrar != 0 || item_1.NetoXCobrar.ToString() != "0.00")
+                            if (item_1.TotalPagado == null)
 	                        {
                                 if (item.v_Ruc != ruc)
                                 {
