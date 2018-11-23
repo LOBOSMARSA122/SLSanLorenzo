@@ -431,6 +431,7 @@
     <Compile Include="Generated\facturaciondetalleDto.cs" />
     <Compile Include="Generated\facturacionDto.cs" />
     <Compile Include="Generated\resumentipopagoResultDto.cs" />
+    <Compile Include="Generated\resumentipoempresaResultDto.cs" />
     <Compile Include="Generated\reportegerencialResultDto.cs" />
     <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
     <Compile Include="Generated\obtenerproductoResultDto.cs" />

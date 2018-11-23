@@ -3343,9 +3343,9 @@ namespace Sigesoft.Node.WinClient.UI
 
                     xeRoot.Save(folderBrowserDialog1.SelectedPath + @"\" + datosPaciente.Hc);
 
-                    WSRIProveedorExternoClient client = new WSRIProveedorExternoClient();
+                    //WSRIProveedorExternoClient client = new WSRIProveedorExternoClient();
 
-                        //client.EnviarDatosAPMedicos(
+                    //client.EnviarDatosAPMedicos(datosPaciente.Hc);
                  
                     }
                 }
