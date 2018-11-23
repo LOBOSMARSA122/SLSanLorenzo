@@ -14,5 +14,7 @@ namespace Sigesoft.Node.WinClient.BE
         public decimal Precio { get; set; }
         public string MedicoTratante { get; set; }
         public DateTime Ingreso { get; set; }
+
+        public int? i_conCargoA { get; set; }
     }
 }
