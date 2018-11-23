@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
       <title></title>
-     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js" temp_src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js" type="text/javascript"></script>
+     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js"  type="text/javascript"></script>
       <link href="../css/main.css" rel="stylesheet" type="text/css" />
       <style type="text/css">
         .highlight
@@ -408,7 +408,7 @@
         </x:Window>
           <x:Window ID="winEdit1" Title="Reporte" Popup="false" EnableIFrame="true" runat="server" IconUrl="~/images/16/11.png" 
        CloseAction="HidePostBack" EnableConfirmOnClose="true"  IFrameUrl="about:blank" EnableMaximize="true" EnableResize="true"
-       Target="Top"  IsModal="true"  Height="630px" Width="700px" >
+       Target="Top"  IsModal="true"  Height="630px" Width="870px" >
     </x:Window>
          <x:Window ID="winEditReco" Title="Recomendación" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"
         CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="false" EnableResize="false"
