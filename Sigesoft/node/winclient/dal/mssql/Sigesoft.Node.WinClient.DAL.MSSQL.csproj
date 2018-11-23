@@ -160,6 +160,7 @@
     <Compile Include="GeneratedAssemblers\facturaciondetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\resumentipopagoResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\resumentipoempresaResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reportegerencialResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reporteatencionmedicaResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\obtenerproductoResultAssembler.cs" />

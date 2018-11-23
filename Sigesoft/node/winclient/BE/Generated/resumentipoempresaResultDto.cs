@@ -14,38 +14,34 @@ using System.Text;
 namespace Sigesoft.Node.WinClient.BE
 {
     [DataContract()]
-    public partial class reportegerencialResultDto
+    public partial class resumentipoempresaResultDto
     {
         [DataMember()]
-        public String Mes { get; set; }
+        public String v_ServiceId { get; set; }
 
         [DataMember()]
-        public Nullable<DateTime> Fecha { get; set; }
+        public String EmpresaCliente { get; set; }
 
         [DataMember()]
-        public Nullable<Int32> TipoDocumento { get; set; }
+        public String EmpresaEmpleadora { get; set; }
 
         [DataMember()]
-        public Nullable<Decimal> Ingreso { get; set; }
+        public String EmpresaTrabajo { get; set; }
 
         [DataMember()]
-        public Nullable<Decimal> Egreso { get; set; }
+        public Nullable<Double> Precio { get; set; }
 
-        [DataMember()]
-        public Nullable<Decimal> Saldo { get; set; }
-
-        public reportegerencialResultDto()
+        public resumentipoempresaResultDto()
         {
         }
 
-        public reportegerencialResultDto(String mes, Nullable<DateTime> fecha, Nullable<Int32> tipoDocumento, Nullable<Decimal> ingreso, Nullable<Decimal> egreso, Nullable<Decimal> saldo)
+        public resumentipoempresaResultDto(String v_ServiceId, String empresaCliente, String empresaEmpleadora, String empresaTrabajo, Nullable<Double> precio)
         {
-			this.Mes = mes;
-			this.Fecha = fecha;
-			this.TipoDocumento = tipoDocumento;
-			this.Ingreso = ingreso;
-			this.Egreso = egreso;
-			this.Saldo = saldo;
+			this.v_ServiceId = v_ServiceId;
+			this.EmpresaCliente = empresaCliente;
+			this.EmpresaEmpleadora = empresaEmpleadora;
+			this.EmpresaTrabajo = empresaTrabajo;
+			this.Precio = precio;
         }
     }
 }
