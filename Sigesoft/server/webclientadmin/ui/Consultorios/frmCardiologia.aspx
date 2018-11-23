@@ -293,7 +293,7 @@
                                         <x:Label ID="Label20" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label21" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabar" runat="server"></x:DropDownList>
-                                        <x:Button ID="Button3" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
+                                        <x:Button ID="btnElectroCardio" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>
                                 </Toolbars>

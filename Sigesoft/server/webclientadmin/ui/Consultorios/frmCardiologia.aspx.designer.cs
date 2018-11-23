@@ -742,13 +742,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlUsuarioGrabar;
         
         /// <summary>
-        /// Button3 control.
+        /// btnElectroCardio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Button Button3;
+        protected global::FineUI.Button btnElectroCardio;
         
         /// <summary>
         /// panel3 control.

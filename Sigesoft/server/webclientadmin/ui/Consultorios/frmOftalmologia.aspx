@@ -686,7 +686,7 @@
                                 
                             </Items>
                         </x:Tab>                   
-                        <x:Tab ID="TabOftalmologia_Internacional" BodyPadding="5px" Title="Oftalmología" runat="server" Hidden="false">
+                        <x:Tab ID="TabOftalmologia_Internacional" BodyPadding="5px" Title="Oftalmología" runat="server">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar10" runat="server">
                                     <Items>
@@ -694,7 +694,7 @@
                                           <x:Label ID="Label746" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabar" runat="server"></x:DropDownList>
-                                        <x:Button ID="Button1" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
+                                        <x:Button ID="btnReporteOftalmoCI" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -1145,12 +1145,12 @@
 
                             </Items>
                         </x:Tab>
-                        <x:Tab ID="TabOftalmoYanacocha" BodyPadding="5px" Title="Oftalmlogía" runat="server" Hidden="false">
+                        <x:Tab ID="TabOftalmoYanacocha" BodyPadding="5px" Title="Oftalmlogía" runat="server">
                              <Toolbars>
                                 <x:Toolbar ID="Toolbar1" runat="server">
                                     <Items>
                                         <x:Button ID="btnGrabarYanacocha" Text="Grabar Oftalmología" Icon="SystemSave" runat="server" OnClick="btnGrabarYanacocha_Click" AjaxLoadingType="Mask"></x:Button>                                   
-                                      <x:Button ID="btnReporteOftalmoCI" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
+                                      <x:Button ID="btnReporteOftalmo" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
