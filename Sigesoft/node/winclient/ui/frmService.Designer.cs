@@ -108,6 +108,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnReportAsync = new System.Windows.Forms.Button();
             this.btnServicios = new System.Windows.Forms.Button();
             this.btnHistoriaCl = new System.Windows.Forms.Button();
@@ -162,7 +163,6 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -489,6 +489,7 @@
             this.ddlServiceTypeId.Size = new System.Drawing.Size(274, 21);
             this.ddlServiceTypeId.TabIndex = 30;
             this.ddlServiceTypeId.SelectedIndexChanged += new System.EventHandler(this.ddlServiceTypeId_SelectedIndexChanged_1);
+            this.ddlServiceTypeId.TextChanged += new System.EventHandler(this.ddlServiceTypeId_TextChanged);
             // 
             // label3
             // 
@@ -699,6 +700,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(689, 480);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(95, 23);
+            this.button2.TabIndex = 155;
+            this.button2.Text = "EGRESO";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // btnReportAsync
             // 
@@ -1971,16 +1982,6 @@
             this.btnImprimirCertificadoAptitud.UseVisualStyleBackColor = false;
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(689, 480);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 23);
-            this.button2.TabIndex = 155;
-            this.button2.Text = "EGRESO";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // frmService
             // 
