@@ -109,7 +109,6 @@
                                 </x:FormRow>
                             </Rows>
                         </x:Form>
-
                     </Items>
                 </x:GroupPanel>
                 <x:GroupPanel runat="server" Title="Datos de Trabajador" ID="GroupPanel3" AutoWidth="true" BoxFlex="1" Height="120">
@@ -2260,12 +2259,12 @@
                             </Items>
                         </x:Tab>
 
-                        <x:Tab ID="TabAlturaEstructural" BodyPadding="5px" Title="Altura Estrucctural 1-8" runat="server">
+                        <x:Tab ID="TabAlturaEstructural" BodyPadding="5px" Title="Altura Estructural 1-8" runat="server">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar3" runat="server">
                                     <Items>
                                         <x:Button ID="btnAlturaEsctructural" Text="Grabar Osteomuscula" Icon="SystemSave" runat="server" OnClick="btnAlturaEsctructural_Click" AjaxLoadingType="Mask"></x:Button>
-
+                                        <x:Button ID="btnAlturaReporte" Text="Ver Reporte" runat="server" Icon="PageWhiteText" Enabled="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>

@@ -3015,5 +3015,738 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
             return q4;
         }
+
+        public organizationDto GetInfoMedicalCenter()
+        {
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+
+                var sql = (from o in dbContext.organization
+                           where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                           select new organizationDto
+                           {
+                               v_Name = o.v_Name,
+                               v_Address = o.v_Address,
+                               b_Image = o.b_Image,
+                               v_PhoneNumber = o.v_PhoneNumber,
+                               v_Mail = o.v_Mail,
+
+                           }).SingleOrDefault();
+
+
+                return sql;
+            }
+        }
+
+        public string GetDisgnosticsCIE10ByServiceIdAndComponentConcatec(string pstrServiceId, string pstrComponentId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from ccc in dbContext.diagnosticrepository
+                             join ddd in dbContext.diseases on ccc.v_DiseasesId equals ddd.v_DiseasesId  // Diagnosticos                                                  
+
+
+                             where ccc.v_ServiceId == pstrServiceId && ccc.v_ComponentId == pstrComponentId &&
+                                   ccc.i_IsDeleted == 0
+
+                             select new
+                             {
+                                 v_DiseasesName = ddd.v_Name + "/" + ddd.v_CIE10Id,
+
+                             }).ToList();
+
+
+                return string.Join(", ", query.Select(p => p.v_DiseasesName));
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.OsteomuscularNuevo> ReportOsteoMuscularNuevo(string pstrserviceId, string pstrComponentId, string idComponentReport)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+                                 //**********************************************************************************************
+
+                                 join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId into I_join
+                                 from I in I_join.DefaultIfEmpty()
+
+                                 join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId
+
+                                 join L in dbContext.systemparameter on new { a = I.i_EsoTypeId.Value, b = 118 }
+                                                 equals new { a = L.i_ParameterId, b = L.i_GroupId } into L_join
+                                 from L in L_join.DefaultIfEmpty()
+
+                                 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId
+
+                                 where A.v_ServiceId == pstrserviceId
+
+                                 select new Sigesoft.Node.WinClient.BE.OsteomuscularNuevo
+                                 {//rrr
+                                     IdServicio = A.v_ServiceId,
+                                     NOMBRE_PACIENTE = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                                     PUESTO_TRABAJO = B.v_CurrentOccupation,
+                                     EMPRESA_CLIENTE = J.v_Name,
+                                     FechaNacimiento = B.d_Birthdate.Value,
+                                     i_SEXO = B.i_SexTypeId.Value,
+                                     NroDNI = B.v_DocNumber,
+                                     TIPOESO = I.i_EsoTypeId.Value,
+                                     FirmaGraba = pme.b_SignatureImage,
+                                     FirmaTrabajador = B.b_FingerPrintImage,
+                                     HuellaTrabajadr = B.b_RubricImage,
+                                     FECHA_SERVICIO = A.d_ServiceDate.Value
+                                 });
+
+                var MedicalCenter = GetInfoMedicalCenter();
+                var OsteoMuscular = new ServiceBL().ValoresComponentesUserControl(pstrserviceId, idComponentReport);
+
+                var xxx = OsteoMuscular.Find(p => p.v_ComponentFieldId == "N009-MF000000838");
+                var sql = (from a in objEntity.ToList()
+
+                           select new Sigesoft.Node.WinClient.BE.OsteomuscularNuevo
+                           {
+                               IdServicio = a.IdServicio,
+                               FECHA_SERVICIO = a.FECHA_SERVICIO,
+                               NOMBRE_PACIENTE = a.NOMBRE_PACIENTE,
+                               PUESTO_TRABAJO = a.PUESTO_TRABAJO,
+                               EMPRESA_CLIENTE = a.EMPRESA_CLIENTE,
+                               FechaNacimiento = a.FechaNacimiento,
+                               EDAD = GetAge(a.FechaNacimiento.Value),
+                               FirmaGraba = a.FirmaGraba,
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajadr = a.HuellaTrabajadr,
+                               i_SEXO = a.i_SEXO,
+                               SEXO = a.i_SEXO.ToString(),
+                               MANIPULACION_LEVANTAR_CARGAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS).v_Value1,
+                               MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION).v_Value1,
+
+                               OSTEO_MUSCULAR_TAREAS_CARGA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_TAREAS_CARGA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_TAREAS_CARGA).v_Value1,
+                               MANIPULACION_EMPUJAR_CARGA_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_EMPUJAR_CARGA_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_EMPUJAR_CARGA_DESCRIPCION).v_Value1,
+
+                               MANIPULACION_JALAR_CARGAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_JALAR_CARGAS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_JALAR_CARGAS).v_Value1,
+                               PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION).v_Value1,
+
+                               LEVANTAMIENTO_ENCIMA_DEL_HOMBRO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_ENCIMA_DEL_HOMBRO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_ENCIMA_DEL_HOMBRO).v_Value1,
+                               POSTURA_SEDENTARIA_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_SEDENTARIA_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_SEDENTARIA_DESCRIPCION).v_Value1,
+                               PESOS_SUPERIORES_A_25KGDESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KGDESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KGDESCRIPCION).v_Value1,
+                               PESOS_SUPERIORES_A_25KG = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KG) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KG).v_Value1,
+                               LEVANTAMIENTO_POR_ENCIMA_DELHOMBRODESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_POR_ENCIMA_DELHOMBRODESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_POR_ENCIMA_DELHOMBRODESCRIPCION).v_Value1,
+                               MANIPULACION_DE_VALVULAS_ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_).v_Value1,
+                               MANIPULACION_DE_VALVULAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_DESCRIPCION).v_Value1,
+                               POSTURA_FORZADA__ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_FORZADA__) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_FORZADA__).v_Value1,
+                               POSTURA_FORZADA_DESCRIPCION_ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_FORZADA_DESCRIPCION_) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_FORZADA_DESCRIPCION_).v_Value1,
+                               POSTURA_SEDENTARIA__ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_SEDENTARIA__) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_SEDENTARIA__).v_Value1,
+                               MOVIMIENTOS_REPETITIVOS__ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MOVIMIENTOS_REPETITIVOS__) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MOVIMIENTOS_REPETITIVOS__).v_Value1,
+                               MOVIMIENTOS_REPETITIVOS_DESCRIPCION_ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MOVIMIENTOS_REPETITIVOS_DESCRIPCION_) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MOVIMIENTOS_REPETITIVOS_DESCRIPCION_).v_Value1,
+                               SINTOMAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.SINTOMAS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.SINTOMAS).v_Value1,
+                               CADERA_POBRE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_POBRE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_POBRE).v_Value1,
+
+                               CADERA_PUNTOS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_PUNTOS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_PUNTOS).v_Value1,
+                               CADRA_OBSERVACIONES = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADRA_OBSERVACIONES) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADRA_OBSERVACIONES).v_Value1,
+                               MUSLO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO).v_Value1Name,
+                               MUSLO_EXCELENTE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_EXCELENTE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_EXCELENTE).v_Value1,
+                               _MUSLO_PROMEDIO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants._MUSLO_PROMEDIO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants._MUSLO_PROMEDIO).v_Value1,
+                               MUSLO_REGULAR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_REGULAR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_REGULAR).v_Value1,
+                               MUSLO_POBRE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_POBRE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_POBRE).v_Value1,
+                               MUSLO_PUNTOS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_PUNTOS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_PUNTOS).v_Value1,
+                               MUSLO_OBSERVACIONES = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_OBSERVACIONES) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUSLO_OBSERVACIONES).v_Value1,
+                               ABDOMEN_LAT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT).v_Value1,
+
+                               ABDOMEN_LAT_EXCELENTE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_EXCELENTE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_EXCELENTE).v_Value1,
+                               ABDOMEN_LAT_PROMEDIO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_PROMEDIO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_PROMEDIO).v_Value1,
+                               ABDOMEN_LAT_REGULAR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_REGULAR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_REGULAR).v_Value1,
+                               ABDOMEN_LAT_POBRE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_POBRE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_POBRE).v_Value1,
+                               ABDOMEN_LAT_PUNTOS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_PUNTOS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_PUNTOS).v_Value1,
+                               ABDOMEN_LAT_OBSERVACIONES = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_OBSERVACIONES) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_LAT_OBSERVACIONES).v_Value1,
+                               TOTAL = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOTAL) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOTAL).v_Value1,
+                               ABDOMEN = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN).v_Value1,
+                               CADERA_EXCELENTE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_EXCELENTE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_EXCELENTE).v_Value1,
+                               PUNTOS_ABDOMEN = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PUNTOS_ABDOMEN) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PUNTOS_ABDOMEN).v_Value1,
+
+                               CADERA_PROMEDIO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_PROMEDIO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_PROMEDIO).v_Value1,
+                               ABDOMEN_EXCELENTE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_EXCELENTE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_EXCELENTE).v_Value1,
+                               ABDOMEN_PROMEDIO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_PROMEDIO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_PROMEDIO).v_Value1,
+                               ABDOMEN_REGULAR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_REGULAR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_REGULAR).v_Value1,
+                               ABDOMEN_POBRE = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_POBRE) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_POBRE).v_Value1,
+                               CADERA_REGULAR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_REGULAR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_REGULAR).v_Value1,
+                               ABDOMEN_OBSERVACIONES = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_OBSERVACIONES) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ABDOMEN_OBSERVACIONES).v_Value1,
+                               CADERA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA).v_Value1,
+                               FLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.FLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.FLEXION).v_Value1,
+                               HOMBRO_IZQFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQFLEXION).v_Value1,
+
+                               HOMBRO_IZQEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQEXTENSION).v_Value1,
+                               HOMBRO_IZQROTDER = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQROTDER) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQROTDER).v_Value1,
+                               HOMBRO_IZQROTIZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQROTIZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQROTIZQ).v_Value1,
+                               HOMBRO_IZQFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQFUERZA).v_Value1,
+                               HOMBRO_IZQDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQDOLOR).v_Value1,
+                               CODO_DCH = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCH) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCH).v_Value1,
+                               CODO_DCHABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHABDUCC).v_Value1,
+                               CODO_DCHFELXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHFELXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHFELXION).v_Value1,
+                               CODO_DCHEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHEXTENSION).v_Value1,
+                               CODO_DCHROTDER = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHROTDER) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHROTDER).v_Value1,
+
+                               CODO_DCHROTIZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHROTIZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHROTIZQ).v_Value1,
+                               CODO_DCHDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHDOLOR).v_Value1,
+                               CODO_DCHFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_DCHFUERZA).v_Value1,
+                               CODO_IZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQ).v_Value1,
+                               CODO_IZQABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQABDUCC).v_Value1,
+                               CODO_IZQFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQFLEXION).v_Value1,
+                               CODO_IZQEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQEXTENSION).v_Value1,
+                               CODO_IZQROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQROTEXT).v_Value1,
+                               CODO_IZQROT_INT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQROT_INT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQROT_INT).v_Value1,
+                               CODO_IZQFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQFUERZA).v_Value1,
+
+                               CODO_IZQDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CODO_IZQDOLOR).v_Value1,
+                               MUNIECA_DCH = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIECA_DCH) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIECA_DCH).v_Value1,
+                               MUNIEECA_DCHABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHABDUCC).v_Value1,
+                               MUNIEECA_DCHFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHFLEXION).v_Value1,
+                               MUNIEECA_DCHEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHEXTENSION).v_Value1,
+                               MUNIEECA_DCHROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHROTEXT).v_Value1,
+                               MUNIEECA_DCHROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHROTINT).v_Value1,
+                               MUNIEECA_DCHFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHFUERZA).v_Value1,
+                               MUNIEECA_DCHDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_DCHDOLOR).v_Value1,
+                               MUNIEECA_IZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQ).v_Value1,
+
+                               MUNIEECA_IZQABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQABDUCC).v_Value1,
+                               MUNIEECA_IZQFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQFLEXION).v_Value1,
+                               MUNIEECA_IZQEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQEXTENSION).v_Value1,
+                               MUNIEECA_IZQROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQROTEXT).v_Value1,
+                               MUNIEECA_IZQROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQROTINT).v_Value1,
+                               MUNIEECA_IZQFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQFUERZA).v_Value1,
+                               MUNIEECA_IZQDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MUNIEECA_IZQDOLOR).v_Value1,
+                               CADERA_DCH = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCH) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCH).v_Value1,
+                               CADERA_DCHABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHABDUCC).v_Value1,
+                               CADERA_DCHFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHFLEXION).v_Value1,
+
+                               CADERA_DCHEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHEXTENSION).v_Value1,
+                               CADERA_DCHROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHROTEXT).v_Value1,
+                               CADERA_DCHROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHROTINT).v_Value1,
+                               CADERA_DCHFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHFUERZA).v_Value1,
+                               CADERA_DCHDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_DCHDOLOR).v_Value1,
+                               CADERA_IZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQ).v_Value1,
+                               CADERA_IZQABDUC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQABDUC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQABDUC).v_Value1,
+                               CADERA_IZQFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQFLEXION).v_Value1,
+                               CADERA_IZQROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQROTEXT).v_Value1,
+                               CADERA_IZQROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQROTINT).v_Value1,
+
+
+                               CADERA_IZQEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQEXTENSION).v_Value1,
+                               CADERA_IZQFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQFUERZA).v_Value1,
+                               CADERA_IZQDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQDOLOR).v_Value1,
+                               RODILLA_DCH = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCH) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCH).v_Value1,
+                               RODILLA_DCHABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHABDUCC).v_Value1,
+                               RODILLA_DCHFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHFLEXION).v_Value1,
+                               RODILLA_DCHEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHEXTENSION).v_Value1,
+                               RODILLA_DCHROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHROTEXT).v_Value1,
+                               RODILLA_DCHROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHROTINT).v_Value1,
+                               RODILLA_DCHFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHFUERZA).v_Value1,
+
+                               RODILLA_DCHDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_DCHDOLOR).v_Value1,
+                               RODILLA_IZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQ).v_Value1,
+                               RODILLA_IZQABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQABDUCC).v_Value1,
+                               RODILLA_IZQFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQFLEXION).v_Value1,
+                               RODILLA_IZQEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQEXTENSION).v_Value1,
+                               RODILLA_IZQROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQROTEXT).v_Value1,
+                               RODILLA_IZQINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQINT).v_Value1,
+                               RODILLA_IZQFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQFUERZA).v_Value1,
+                               RODILLA_IZQDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.RODILLA_IZQDOLOR).v_Value1,
+                               TOBILLO_DCH = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCH) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCH).v_Value1,
+
+                               TOBILLO_DCHABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHABDUCC).v_Value1,
+                               TOBILLO_DCHFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHFLEXION).v_Value1,
+                               TOBILLO_DCHEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHEXTENSION).v_Value1,
+                               TOBILLO_DCHROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHROTEXT).v_Value1,
+                               TOBILLO_DCHROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHROTINT).v_Value1,
+                               TOBILLO_DCHFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHFUERZA).v_Value1,
+                               TOBILLO_DCHDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_DCHDOLOR).v_Value1,
+                               TOBILLO_IZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQ).v_Value1,
+                               TOBILLO_IZQABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQABDUCC).v_Value1,
+                               TOBILLO_IZQFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQFLEXION).v_Value1,
+
+                               TOBILLO_IZQROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQROTEXT).v_Value1,
+                               TOBILLO_IZQEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQEXTENSION).v_Value1,
+                               TOBILLO_IZQROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQROTINT).v_Value1,
+                               TOBILLO_IZQFUERZA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQFUERZA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQFUERZA).v_Value1,
+                               TOBILLO_IZQDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TOBILLO_IZQDOLOR).v_Value1,
+                               HOMBRO_IZQABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQABDUCC).v_Value1,
+                               HOMBRO_DCHABDUCC = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHABDUCC) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHABDUCC).v_Value1,
+                               HOMBRO_DCH = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCH) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCH).v_Value1,
+                               HOMBRO_DCHFLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHFLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHFLEXION).v_Value1,
+                               HOMBRO_DCHROTEXT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHROTEXT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHROTEXT).v_Value1,
+
+                               HOMBRO_DCHDOLOR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHDOLOR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHDOLOR).v_Value1,
+                               HOMBRO_DCHFUERZATONO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHFUERZATONO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHFUERZATONO).v_Value1,
+                               HOMBRO_DCHEXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHEXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHEXTENSION).v_Value1,
+                               HOMBRO_IZQ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQ) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQ).v_Value1,
+                               HOMBRO_DCHROTINT = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHROTINT) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_DCHROTINT).v_Value1,
+                               OBSERVACION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OBSERVACION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OBSERVACION).v_Value1,
+                               TINEL_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TINEL_DERECHO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TINEL_DERECHO).v_Value1,
+                               TINEL_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TINEL_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TINEL_IZQUIERDO).v_Value1,
+                               LASEGUE_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LASEGUE_DERECHO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LASEGUE_DERECHO).v_Value1,
+                               LASEGUE_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LASEGUE_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LASEGUE_IZQUIERDO).v_Value1,
+
+                               FINKELSTEIN_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.FINKELSTEIN_DERECHO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.FINKELSTEIN_DERECHO).v_Value1,
+                               ADAM_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ADAM_DERECHO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ADAM_DERECHO).v_Value1,
+                               FINKELSTEIN_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.FINKELSTEIN_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.FINKELSTEIN_IZQUIERDO).v_Value1,
+                               ADAM_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ADAM_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.ADAM_IZQUIERDO).v_Value1,
+                               PHALEN_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PHALEN_DERECHO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PHALEN_DERECHO).v_Value1,
+                               PHALEN_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PHALEN_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PHALEN_IZQUIERDO).v_Value1,
+                               PIE_CAVO_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_CAVO_DERECHO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_CAVO_DERECHO).v_Value1,
+                               PIE_CAVO_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_CAVO_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_CAVO_IZQUIERDO).v_Value1,
+                               PIE_PLANO_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_PLANO_DERECHO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_PLANO_DERECHO).v_Value1,
+                               PIE_PLANO_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_PLANO_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_PLANO_IZQUIERDO).v_Value1,
+
+                               CERVICAL_AP = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_AP) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_AP).v_Value1,
+                               DORSAL_AP = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_AP) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_AP).v_Value1,
+                               LUMBAR_AP = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LUMBAR_AP) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LUMBAR_AP).v_Value1,
+                               DORSAL_LATERAL = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LATERAL) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LATERAL).v_Value1,
+                               LUMBAR_LATERAL = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LUMBAR_LATERAL) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LUMBAR_LATERAL).v_Value1,
+                               CERVICAL_LATERALIZACION_DERECHA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_LATERALIZACION_DERECHA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_LATERALIZACION_DERECHA).v_Value1,
+                               CERVICAL_LATERALIZACION_IZQUIERDA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_LATERALIZACION_IZQUIERDA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_LATERALIZACION_IZQUIERDA).v_Value1,
+                               DORSAL_LUMBAR_LATERAL_IZQUIERDA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_LATERAL_IZQUIERDA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_LATERAL_IZQUIERDA).v_Value1,
+                               DORSAL_LUMBAR_ROACION_DERECHA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_ROACION_DERECHA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_ROACION_DERECHA).v_Value1,
+                               CERVICAL_EXTENXION__ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_EXTENXION__) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_EXTENXION__).v_Value1,
+
+                               DORSAL_LUMBAR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR).v_Value1,
+                               DORSAL_LUMBAR_EXTENSION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_EXTENSION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_EXTENSION).v_Value1,
+                               CERVICAL_ROTACION_DERECHA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_ROTACION_DERECHA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_ROTACION_DERECHA).v_Value1,
+                               CERVICAL_ROTACION_IZQUIERDA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_ROTACION_IZQUIERDA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_ROTACION_IZQUIERDA).v_Value1,
+                               CERVICAL_IRRADIACION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_IRRADIACION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_IRRADIACION).v_Value1Name,
+                               DORSAL_LUMBAR_LATERAL_DERECHA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_LATERAL_DERECHA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_LATERAL_DERECHA).v_Value1Name,
+                               CERVICAL_FLEXION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_FLEXION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CERVICAL_FLEXION).v_Value1,
+                               DORSAL_LUMBAR_IRRADIACION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_IRRADIACION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_IRRADIACION).v_Value1,
+                               DORSAL_LUMBAR_ROACION_IZQUIERDA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_ROACION_IZQUIERDA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LUMBAR_ROACION_IZQUIERDA).v_Value1,
+                               COLUMNA_CERVICAL_CONTRACTURA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_CERVICAL_CONTRACTURA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_CERVICAL_CONTRACTURA).v_Value1,
+
+                               COLUMNA_LUMBAR = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_LUMBAR) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_LUMBAR).v_Value1,
+                               COLUMNA_DORSAL_CONTRACTURA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_DORSAL_CONTRACTURA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_DORSAL_CONTRACTURA).v_Value1,
+                               COLUMNA_LUMBAR_CONTACTURA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_LUMBAR_CONTACTURA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_LUMBAR_CONTACTURA).v_Value1,
+                               COLUMNA_DORSAL = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_DORSAL) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_DORSAL).v_Value1,
+                               COLUMNA_CERVICAL = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_CERVICAL) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.COLUMNA_CERVICAL).v_Value1,
+                               DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DESCRIPCION).v_Value1,
+                               b_Logo = MedicalCenter.b_Image,
+                               EmpresaPropietaria = MedicalCenter.v_Name,
+                               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+                               NroDNI = a.NroDNI,
+                               TIPOESO = a.TIPOESO,
+                               Recomendaciones = GetRecomendationByServiceIdAndComponentConcatec(a.IdServicio, Constants.OSTEO_MUSCULAR_ID_1),
+                               DxCIE10 = GetDisgnosticsCIE10ByServiceIdAndComponentConcatec(a.IdServicio, Constants.OSTEO_MUSCULAR_ID_1)
+                           }).ToList();
+
+                return sql;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.ReportAlturaEstructural> GetAlturaEstructural(string pstrserviceId, string pstrComponentId, string idComponentReport)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
+                                 join I in dbContext.systemparameter on new { a = C.i_EsoTypeId.Value, b = 118 }
+                                                    equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                                 from I in I_join.DefaultIfEmpty()
+
+
+                                 join D in dbContext.organization on C.v_WorkingOrganizationId equals D.v_OrganizationId
+                                 join D1 in dbContext.organization on C.v_CustomerOrganizationId equals D1.v_OrganizationId
+                                 join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 join J1 in dbContext.datahierarchy on new { a = B.i_LevelOfId.Value, b = 108 }
+                                                                    equals new { a = J1.i_ItemId, b = J1.i_GroupId } into J1_join
+                                 from J1 in J1_join.DefaultIfEmpty()
+                                 join F in dbContext.systemuser on E.i_ApprovedUpdateUserId equals F.i_SystemUserId into F_join
+                                 from F in F_join.DefaultIfEmpty()
+                                 join G in dbContext.professional on F.v_PersonId equals G.v_PersonId
+
+                                 join Z in dbContext.person on F.v_PersonId equals Z.v_PersonId
+
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join CC in dbContext.organization on BB.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                 from CC in CC_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrserviceId
+                                 select new Sigesoft.Node.WinClient.BE.ReportAlturaEstructural
+                                 {
+                                     EmpresaCliente = C2.v_Name, //general
+                                     EmpresaTrabajadora = C1.v_Name, //contrata
+                                     EmpresaPropietariaDireccion = CC.v_Name, //subcontrata
+                                     EmpresaPropietariaEmail = C1.v_Name + " / " + CC.v_Name,
+
+                                     v_ComponentId = E.v_ServiceComponentId,
+                                     v_ServiceId = A.v_ServiceId,
+                                     NombrePaciente = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+
+                                     Fecha = A.d_ServiceDate.Value,
+                                     FechaNacimiento = B.d_Birthdate.Value,
+                                     PuestoTrabajo = B.v_CurrentOccupation,
+                                     ServicioId = A.v_ServiceId,
+                                     RubricaMedico = G.b_SignatureImage,
+                                     RubricaTrabajador = B.b_RubricImage,
+                                     HuellaTrabajador = B.b_FingerPrintImage,
+                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
+                                     TipoExamen = I.v_Value1,
+                                     DNI = B.v_DocNumber
+                                 });
+
+
+                var serviceBL = new ServiceBL();
+                var MedicalCenter = serviceBL.GetInfoMedicalCenter();
+
+                var funcionesVitales = serviceBL.ReportFuncionesVitales(pstrserviceId, Constants.FUNCIONES_VITALES_ID);
+                var antropometria = serviceBL.ReportAntropometria(pstrserviceId, Constants.ANTROPOMETRIA_ID);
+                var valores = new ServiceBL().ValoresComponente(pstrserviceId, idComponentReport);
+                var sql = (from a in objEntity.ToList()
+                           select new Sigesoft.Node.WinClient.BE.ReportAlturaEstructural
+                           {
+                               EmpresaCliente = a.EmpresaCliente,
+                               EmpresaTrabajadora = a.EmpresaTrabajadora,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+
+                               v_ComponentId = a.v_ComponentId,
+                               v_ServiceId = a.v_ServiceId,
+                               ServicioId = a.ServicioId,
+                               NombrePaciente = a.NombrePaciente,
+
+                               Fecha = a.Fecha,
+                               FechaNacimiento = a.FechaNacimiento,
+                               Edad = GetAge(a.FechaNacimiento),
+                               PuestoTrabajo = a.PuestoTrabajo,
+                               AntecedenteTecSI = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_SI_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_SI_ID).v_Value1,
+                               AntecedenteTecNO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_NO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_NO_ID).v_Value1,
+                               AntecedenteTecObs = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_OBS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_OBS_ID).v_Value1,
+                               ConvulsionesSI = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_SI_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_SI_ID).v_Value1,
+                               ConvulsionesNO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_NO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_NO_ID).v_Value1,
+                               ConvulsionesObs = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_OBS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_OBS_ID).v_Value1,
+                               MareosSI = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_MAREOS_SI_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_MAREOS_SI_ID).v_Value1,
+                               MareosNO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_MAREOS_NO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_MAREOS_NO_ID).v_Value1,
+                               MareosObs = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_MAREOS_OBS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_MAREOS_OBS_ID).v_Value1,
+                               AgorafobiaSI = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_SI_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_SI_ID).v_Value1,
+                               AgorafobiaNO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_NO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_NO_ID).v_Value1,
+                               AgorafobiaObs = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_OBS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_OBS_ID).v_Value1,
+                               AcrofobiaSI = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_SI_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_SI_ID).v_Value1,
+                               AcrofobiaNO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_NO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_NO_ID).v_Value1,
+                               AcrofobiaObs = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_OBS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_OBS_ID).v_Value1,
+                               InsuficienciaCardiacaSI = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_SI_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_SI_ID).v_Value1,
+                               InsuficienciaCardiacaNO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_NO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_NO_ID).v_Value1,
+                               InsuficienciaCardiacaObs = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_OBS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_OBS_ID).v_Value1,
+                               EstereopsiaSI = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_SI_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_SI_ID).v_Value1,
+                               EstereopsiaNO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_NO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_NO_ID).v_Value1,
+                               EstereopsiaObs = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_OBS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_OBS_ID).v_Value1,
+                               NistagmusEspontaneo = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_NISTAGMUS_ESPONTANEO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_NISTAGMUS_ESPONTANEO_ID).v_Value1,
+                               NistagmusProvocado = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_NISTAGMUS_PROVOCADO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_NISTAGMUS_PROVOCADO_ID).v_Value1,
+                               PrimerosAuxilios = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_PRIMEROS_AUXILIOS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_PRIMEROS_AUXILIOS_ID).v_Value1,
+                               TrabajoNivelMar = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_TRABAJO_SOBRE_NIVEL_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_TRABAJO_SOBRE_NIVEL_ID).v_Value1,
+                               Timpanos = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_TIMPANOS_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_TIMPANOS_ID).v_Value1,
+                               Equilibrio = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_EQUILIBRIO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_EQUILIBRIO_ID).v_Value1,
+                               SustentacionPie20Seg = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_SUST_PIE_20_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_SUST_PIE_20_ID).v_Value1,
+                               CaminarLibre3Mts = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_RECTA_3_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_RECTA_3_ID).v_Value1,
+                               CaminarLibreVendado3Mts = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_OJOS_VENDADOS_3_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_OJOS_VENDADOS_3_ID).v_Value1,
+                               CaminarLibreVendadoPuntaTalon3Mts = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_OJOS_VENDADOS_PUNTA_TALON_3_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_OJOS_VENDADOS_PUNTA_TALON_3_ID).v_Value1,
+                               Rotar = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ROTAR_SILLA_GIRATORIA_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ROTAR_SILLA_GIRATORIA_ID).v_Value1,
+                               AdiadocoquinesiaDirecta = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ADIADOCOQUINESIA_DIRECTA_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ADIADOCOQUINESIA_DIRECTA_ID).v_Value1,
+                               AdiadocoquinesiaCruzada = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ADIADOCOQUINESIA_CRUZADA_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_ADIADOCOQUINESIA_CRUZADA_ID).v_Value1,
+                               Apto = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_APTO_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_APTO_ID).v_Value1,
+                               descripcion = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_DESCRIPCION_ID) == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == Constants.ALTURA_ESTRUCTURAL_DESCRIPCION_ID).v_Value1,
+
+
+                               //AntecedenteTecSI = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_SI_ID, "NOCOMBO", 0, "SI"),
+                               //AntecedenteTecNO = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_NO_ID, "NOCOMBO", 0, "SI"),
+                               // AntecedenteTecObs = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_OBS_ID, "NOCOMBO", 0, "SI"),
+
+                               //ConvulsionesSI = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_SI_ID, "NOCOMBO", 0, "SI"),
+                               //ConvulsionesNO = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_NO_ID, "NOCOMBO", 0, "SI"),
+                               //ConvulsionesObs = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_CONVULSIONES_EPILEPSIA_OBS_ID, "NOCOMBO", 0, "SI"),
+
+                               //MareosSI = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_MAREOS_SI_ID, "NOCOMBO", 0, "SI"),
+                               //MareosNO = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_MAREOS_NO_ID, "NOCOMBO", 0, "SI"),
+                               //MareosObs = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_MAREOS_OBS_ID, "NOCOMBO", 0, "SI"),
+
+                               //AgorafobiaSI = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_SI_ID, "NOCOMBO", 0, "SI"),
+                               //AgorafobiaNO = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_NO_ID, "NOCOMBO", 0, "SI"),
+                               //AgorafobiaObs = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_AGORAFOBIA_OBS_ID, "NOCOMBO", 0, "SI"),
+
+                               //AcrofobiaSI = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_SI_ID, "NOCOMBO", 0, "SI"),
+                               //AcrofobiaNO = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_NO_ID, "NOCOMBO", 0, "SI"),
+                               //AcrofobiaObs = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ACROFOBIA_OBS_ID, "NOCOMBO", 0, "SI"),
+
+                               //InsuficienciaCardiacaSI = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_SI_ID, "NOCOMBO", 0, "SI"),
+                               //InsuficienciaCardiacaNO = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_NO_ID, "NOCOMBO", 0, "SI"),
+                               //InsuficienciaCardiacaObs = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_INSUFICIENCIA_CARDIACA_OBS_ID, "NOCOMBO", 0, "SI"),
+
+                               //EstereopsiaSI = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_SI_ID, "NOCOMBO", 0, "SI"),
+                               //EstereopsiaNO = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_NO_ID, "NOCOMBO", 0, "SI"),
+                               //EstereopsiaObs = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ESTEREOPSIA_OBS_ID, "NOCOMBO", 0, "SI"),
+
+                               //NistagmusEspontaneo = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_NISTAGMUS_ESPONTANEO_ID, "NOCOMBO", 0, "SI"),
+                               //NistagmusProvocado = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_NISTAGMUS_PROVOCADO_ID, "NOCOMBO", 0, "SI"),
+
+                               //PrimerosAuxilios = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_PRIMEROS_AUXILIOS_ID, "NOCOMBO", 0, "SI"),
+                               //TrabajoNivelMar = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_TRABAJO_SOBRE_NIVEL_ID, "NOCOMBO", 0, "SI"),
+
+                               //Timpanos = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_TIMPANOS_ID, "NOCOMBO", 0, "SI"),
+                               //Equilibrio = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_EQUILIBRIO_ID, "NOCOMBO", 0, "SI"),
+                               //SustentacionPie20Seg = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_SUST_PIE_20_ID, "NOCOMBO", 0, "SI"),
+                               //CaminarLibre3Mts = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_RECTA_3_ID, "NOCOMBO", 0, "SI"),
+                               //CaminarLibreVendado3Mts = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_OJOS_VENDADOS_3_ID, "NOCOMBO", 0, "SI"),
+                               //CaminarLibreVendadoPuntaTalon3Mts = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_CAMINAR_LIBRE_OJOS_VENDADOS_PUNTA_TALON_3_ID, "NOCOMBO", 0, "SI"),
+                               //Rotar = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ROTAR_SILLA_GIRATORIA_ID, "NOCOMBO", 0, "SI"),
+                               //AdiadocoquinesiaDirecta = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ADIADOCOQUINESIA_DIRECTA_ID, "NOCOMBO", 0, "SI"),
+                               //AdiadocoquinesiaCruzada = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ADIADOCOQUINESIA_CRUZADA_ID, "NOCOMBO", 0, "SI"),
+                               //Apto = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_APTO_ID, "NOCOMBO", 0, "SI"),
+                               //descripcion = GetServiceComponentFielValue(a.ServicioId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+                               RubricaMedico = a.RubricaMedico,
+                               RubricaTrabajador = a.RubricaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+
+                               b_Logo = MedicalCenter.b_Image,
+                               EmpresaPropietaria = MedicalCenter.v_Name,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+
+                               IMC = antropometria.Count == 0 ? string.Empty : antropometria[0].IMC,
+                               Peso = antropometria.Count == 0 ? string.Empty : antropometria[0].Peso,
+                               FC = funcionesVitales.Count == 0 ? string.Empty : funcionesVitales[0].FC,
+                               PA = funcionesVitales.Count == 0 ? string.Empty : funcionesVitales[0].PA,
+                               FR = funcionesVitales.Count == 0 ? string.Empty : funcionesVitales[0].FR,
+                               Sat = funcionesVitales.Count == 0 ? string.Empty : funcionesVitales[0].Sat,
+                               PAD = funcionesVitales.Count == 0 ? string.Empty : funcionesVitales[0].PAD,
+                               talla = antropometria.Count == 0 ? string.Empty : antropometria[0].talla,
+                               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                               TipoExamen = a.TipoExamen,
+                               DNI = a.DNI
+                           }).ToList();
+
+                return sql;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Sigesoft.Node.WinClient.BE.PacientList GetPacientReportEPSFirmaMedicoOcupacional(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+                                 join C in dbContext.systemparameter on new { a = pe.i_TypeOfInsuranceId.Value, b = 188 }  // Tipo de seguro
+                                                              equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join d in dbContext.systemparameter on new { a = pe.i_Relationship.Value, b = 207 }  // Parentesco
+                                                              equals new { a = d.i_ParameterId, b = d.i_GroupId } into d_join
+                                 from d in d_join.DefaultIfEmpty()
+
+
+
+
+                                 join ee in dbContext.systemparameter on new { a = s.i_InicioEnf.Value, b = 118 }  // Inicio Enfermedad
+                                                            equals new { a = ee.i_ParameterId, b = ee.i_GroupId } into ee_join
+                                 from ee in ee_join.DefaultIfEmpty()
+
+                                 join ff in dbContext.systemparameter on new { a = s.i_TimeOfDiseaseTypeId.Value, b = 133 }  // Tiempor Enfer
+                                                          equals new { a = ff.i_ParameterId, b = ff.i_GroupId } into ff_join
+                                 from ff in ff_join.DefaultIfEmpty()
+
+                                 join gg in dbContext.systemparameter on new { a = s.i_CursoEnf.Value, b = 119 }  // Curso Enfermedad
+                                                          equals new { a = gg.i_ParameterId, b = gg.i_GroupId } into gg_join
+                                 from gg in gg_join.DefaultIfEmpty()
+
+
+
+
+
+                                 // Grupo sanguineo ****************************************************
+                                 join gs in dbContext.systemparameter on new { a = pe.i_BloodGroupId.Value, b = 154 }  // AB
+                                                             equals new { a = gs.i_ParameterId, b = gs.i_GroupId } into gs_join
+                                 from gs in gs_join.DefaultIfEmpty()
+
+                                 // Factor sanguineo ****************************************************
+                                 join fs in dbContext.systemparameter on new { a = pe.i_BloodFactorId.Value, b = 155 }  // NEGATIVO
+                                                           equals new { a = fs.i_ParameterId, b = fs.i_GroupId } into fs_join
+                                 from fs in fs_join.DefaultIfEmpty()
+
+                                 // Empresa / Sede Trabajo  ********************************************************
+                                 join ow in dbContext.organization on new { a = pr.v_WorkingOrganizationId }
+                                         equals new { a = ow.v_OrganizationId } into ow_join
+                                 from ow in ow_join.DefaultIfEmpty()
+
+                                 join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
+                                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                                 from lw in lw_join.DefaultIfEmpty()
+
+                                 join D in dbContext.systemparameter on new { a = pe.i_SexTypeId.Value, b = 100 }  // Tipo de seguro
+                                                               equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 join L in dbContext.systemparameter on new { a = pr.i_EsoTypeId.Value, b = 118 }
+                                                  equals new { a = L.i_ParameterId, b = L.i_GroupId } into L_join
+                                 from L in L_join.DefaultIfEmpty()
+                                 //************************************************************************************
+
+
+                                 join su in dbContext.systemuser on s.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
+                                 from su in su_join.DefaultIfEmpty()
+
+                                 join pr1 in dbContext.professional on su.v_PersonId equals pr1.v_PersonId into pr1_join
+                                 from pr1 in pr1_join.DefaultIfEmpty()
+
+
+                                 where s.v_ServiceId == serviceId
+                                 select new Sigesoft.Node.WinClient.BE.PacientList
+                                 {
+                                     TimeOfDisease = s.i_TimeOfDisease,
+                                     v_CurrentOccupation = pe.v_CurrentOccupation,
+                                     TiempoEnfermedad = ff.v_Value1,
+                                     InicioEnfermedad = ee.v_Value1,
+                                     CursoEnfermedad = gg.v_Value1,
+
+                                     v_PersonId = pe.v_PersonId,
+                                     v_FirstName = pe.v_FirstName,
+                                     v_FirstLastName = pe.v_FirstLastName,
+                                     v_SecondLastName = pe.v_SecondLastName,
+                                     b_Photo = pe.b_PersonImage,
+                                     v_TypeOfInsuranceName = C.v_Value1,
+                                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                                     v_RelationshipName = d.v_Value1,
+                                     v_OwnerName = "",
+                                     d_ServiceDate = s.d_ServiceDate,
+                                     d_Birthdate = pe.d_Birthdate,
+                                     i_DocTypeId = pe.i_DocTypeId,
+                                     i_NumberDependentChildren = pe.i_NumberDependentChildren,
+                                     i_NumberLivingChildren = pe.i_NumberLivingChildren,
+                                     FirmaTrabajador = pe.b_RubricImage,
+                                     HuellaTrabajador = pe.b_FingerPrintImage,
+                                     v_BloodGroupName = gs.v_Value1,
+                                     v_BloodFactorName = fs.v_Value1,
+                                     v_SexTypeName = D.v_Value1,
+                                     v_TipoExamen = L.v_Value1,
+                                     v_NombreProtocolo = pr.v_Name,
+                                     v_DocNumber = pe.v_DocNumber,
+                                     v_IdService = s.v_ServiceId,
+
+                                     v_Story = s.v_Story,
+                                     v_MainSymptom = s.v_MainSymptom,
+                                     FirmaDoctor = pr1.b_SignatureImage,
+                                     v_ExaAuxResult = s.v_ExaAuxResult,
+
+                                     //FirmaDoctor = pr.b_SignatureImage,
+                                     NombreDoctor = pe.v_FirstName + " " + pe.v_FirstLastName + " " + pe.v_SecondLastName,
+                                     CMP = pr1.v_ProfessionalCode
+
+                                 });
+
+
+                var sql = (from a in objEntity.ToList()
+
+                           select new Sigesoft.Node.WinClient.BE.PacientList
+                           {
+                               FirmaDoctor = a.FirmaDoctor,
+                               NombreDoctor = a.NombreDoctor,
+                               CMP = a.CMP,
+                               v_CurrentOccupation = a.v_CurrentOccupation,
+                               v_Story = a.v_Story,
+                               v_MainSymptom = a.v_MainSymptom,
+                               TimeOfDisease = a.TimeOfDisease,
+
+                               TiempoEnfermedad = a.TimeOfDisease + " " + a.TiempoEnfermedad,
+                               InicioEnfermedad = a.InicioEnfermedad,
+                               CursoEnfermedad = a.CursoEnfermedad,
+
+
+                               v_PersonId = a.v_PersonId,
+                               i_DocTypeId = a.i_DocTypeId,
+                               v_FirstName = a.v_FirstName,
+                               v_FirstLastName = a.v_FirstLastName,
+                               v_SecondLastName = a.v_SecondLastName,
+                               i_Age = GetAge(a.d_Birthdate.Value),
+                               b_Photo = a.b_Photo,
+                               v_TypeOfInsuranceName = a.v_TypeOfInsuranceName,
+                               v_FullWorkingOrganizationName = a.v_FullWorkingOrganizationName,
+                               v_RelationshipName = a.v_RelationshipName,
+                               v_OwnerName = a.v_FirstName + " " + a.v_FirstLastName + " " + a.v_SecondLastName,
+                               d_ServiceDate = a.d_ServiceDate,
+                               i_NumberDependentChildren = a.i_NumberDependentChildren,
+                               i_NumberLivingChildren = a.i_NumberLivingChildren,
+                               v_OwnerOrganizationName = (from n in dbContext.organization
+                                                          where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                                                          select n.v_Name).SingleOrDefault<string>(),
+                               v_DoctorPhysicalExamName = (from sc in dbContext.servicecomponent
+                                                           join J1 in dbContext.systemuser on new { i_InsertUserId = sc.i_ApprovedUpdateUserId.Value }
+                                                                      equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                                                           from J1 in J1_join.DefaultIfEmpty()
+                                                           join pe in dbContext.person on J1.v_PersonId equals pe.v_PersonId
+                                                           where (sc.v_ServiceId == serviceId) &&
+                                                                 (sc.v_ComponentId == Constants.EXAMEN_FISICO_ID)
+                                                           select pe.v_FirstName + " " + pe.v_FirstLastName).SingleOrDefault<string>(),
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+                               v_BloodGroupName = a.v_BloodGroupName,
+                               v_BloodFactorName = a.v_BloodFactorName,
+                               v_SexTypeName = a.v_SexTypeName,
+                               v_TipoExamen = a.v_TipoExamen,
+                               v_NombreProtocolo = a.v_NombreProtocolo,
+                               v_DocNumber = a.v_DocNumber,
+                               v_IdService = a.v_IdService,
+                               v_ExaAuxResult = a.v_ExaAuxResult
+
+                           }).FirstOrDefault();
+
+                return sql;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
     }
 }

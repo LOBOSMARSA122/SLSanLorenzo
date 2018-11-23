@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
       <title></title>
-     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js" temp_src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js" type="text/javascript"></script>
+     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js"  type="text/javascript"></script>
       <link href="../css/main.css" rel="stylesheet" type="text/css" />
       <style type="text/css">
         .highlight

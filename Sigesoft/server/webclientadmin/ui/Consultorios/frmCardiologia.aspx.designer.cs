@@ -1147,13 +1147,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlUsuarioGrabarApendice;
         
         /// <summary>
-        /// btnReporteCardio control.
+        /// apendiceN5EKG control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Button btnReporteCardio;
+        protected global::FineUI.Button apendiceN5EKG;
         
         /// <summary>
         /// panel4 control.

@@ -10570,6 +10570,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Button btnAlturaEsctructural;
         
         /// <summary>
+        /// btnAlturaReporte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnAlturaReporte;
+        
+        /// <summary>
         /// Panel56 control.
         /// </summary>
         /// <remarks>
