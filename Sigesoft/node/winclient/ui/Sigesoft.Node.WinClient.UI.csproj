@@ -5986,6 +5986,7 @@
     <None Include="Resources\repor_2.png" />
     <None Include="Resources\repor_3.png" />
     <None Include="Resources\repor_4.png" />
+    <None Include="Resources\repor_41.png" />
     <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -6757,7 +6758,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

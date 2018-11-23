@@ -2897,6 +2897,26 @@ namespace Sigesoft.Node.WinClient.UI
             var frm = new Reports.frmManagementReportAsync(_EmpresaClienteId, _serviceId,_pacientId);
             frm.ShowDialog();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+
+                //var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Name(ref objOperationResult, fechaInicio, fechaFin, _empresa);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "EGRESOS DE PRUEBA - CSL";
+
+                Reporte_Egresos.CreateReporte_Egresos(ruta + nombre + ".pdf", MedicalCenter);
+                this.Enabled = true;
+            }
+        }
         
         //void ProcesoSErvicio()
         //{
