@@ -904,7 +904,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             from E in E_join.DefaultIfEmpty()
                             join F in dbContext.component on A.v_ComponentId equals F.v_ComponentId
 
-                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && (A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados 
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && (A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados && A1.i_IsDeleted != 1
 
                             select new LiquidacionMedicoList
                             {

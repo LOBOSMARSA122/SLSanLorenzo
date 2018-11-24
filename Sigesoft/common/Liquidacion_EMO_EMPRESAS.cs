@@ -75,12 +75,6 @@ namespace NetPdf
 
             #endregion
 
-            var estatico_1 = 15f;
-            var alto_Celda_1 = 15f;
-            var alto_Celda_2 = 30f;
-            var alto_Celda_3 = 45f;
-            var alto_Celda_4 = 60f;
-            var alto_Celda_6 = 90f;
             #region TÍTULO
 
             cells = new List<PdfPCell>();
@@ -158,7 +152,7 @@ namespace NetPdf
                     {
                         //cell = new PdfPCell(new Phrase(nroreco.ToString() + ". ", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                         //cells.Add(cell);
-                        if (item.d_Debe != 0)
+                        if (item.Condicion == "DEBE")
                         {
                             cell = new PdfPCell(new Phrase(item.FechaCreacion.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                             cells.Add(cell);

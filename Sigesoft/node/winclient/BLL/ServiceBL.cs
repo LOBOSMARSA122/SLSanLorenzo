@@ -32822,7 +32822,31 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+        public organizationDto GetOrganizationRuc(ref OperationResult pobjOperationResult, string rucOrganization)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                organizationDto objDtoEntity = null;
 
+                var objEntity = (from a in dbContext.organization
+                                 where a.v_IdentificationNumber == rucOrganization
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = organizationAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
         public organizationDto GetOrganizationEmpresa(ref OperationResult pobjOperationResult, string v_organizationName)
         {
             //mon.IsActive = true;

@@ -266,8 +266,8 @@ namespace Sigesoft.Node.Contasol.Integration
                 "  CASE WHEN (Sum(d_Total)/    CASE WHEN (select count(*)  from cobranzadetalle where v_IdVenta = v.v_IdVenta) = 0 THEN 1 ELSE 	(select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) END ) -  Sum(cd.d_ImporteSoles)  = 0 THEN 'NO DEBE' ELSE 'DEBE' END AS Condicion  " +
                 " from venta v " +
                 " inner join cliente c on c.v_IdCliente =  v.v_IdCliente " +
-                " inner join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
-                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' " +
+                " left join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
+                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' and v.i_Eliminado = 0 " +
                 " group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
 
                 var result = cnx.Query<FacturaCobranza>(query).ToList();
