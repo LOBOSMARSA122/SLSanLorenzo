@@ -178,14 +178,18 @@ namespace NetPdf
                             }
 
                             DateTime ahora = DateTime.Now;
-                            var tSpan = ahora - venc;
 
-                            if (tSpan.Days <= 0)
+                            if (venc > ahora)
                             {
                                 dias_mora = 0;
                             }
-                            else
+                            else if (venc == ahora)
                             {
+                                dias_mora = 0;
+                            }
+                            else if (venc < ahora)
+                            {
+                                var tSpan = ahora - venc;
                                 dias_mora = tSpan.Days;
                             }
 
