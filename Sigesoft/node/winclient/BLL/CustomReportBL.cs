@@ -146,7 +146,8 @@ namespace Sigesoft.Node.WinClient.BLL
                    oResumenTipoEmpresa.EmpresaEmpleadora = item.EmpresaEmpleadora;
                    oResumenTipoEmpresa.EmpresaTrabajo = item.EmpresaTrabajo;
                    oResumenTipoEmpresa.Precio = item.Precio.Value;
-
+                   oResumenTipoEmpresa.Trabajador = item.Trabajador;
+                   oResumenTipoEmpresa.FechaExamen = item.FechaExamen;
                    list.Add(oResumenTipoEmpresa);
                }
 
@@ -216,6 +217,8 @@ namespace Sigesoft.Node.WinClient.BLL
            public string EmpresaCliente { get; set; }
            public string EmpresaEmpleadora { get; set; }
            public string EmpresaTrabajo { get; set; }
+           public string Trabajador { get; set; }
+           public DateTime? FechaExamen { get; set; }
            public double? Precio { get; set; }
        }
 

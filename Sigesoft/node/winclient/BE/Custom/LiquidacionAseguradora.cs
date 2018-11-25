@@ -14,6 +14,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string EmpresaId { get; set; }
         public string PacientDocument { get; set; }
         public string Aseguradora { get; set; }
+        public decimal? TotalAseguradora { get; set; }
+
         public List<LiquiAseguradoraDetalle> Detalle { get; set; }
     }
 }
