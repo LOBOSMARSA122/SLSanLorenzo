@@ -1581,7 +1581,7 @@
        <x:HiddenField ID="hfRefresh" runat="server" />
         <x:Window ID="Window2" Title="Descargar" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"
             CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="false" EnableResize="false" 
-            Target="Top"  IsModal="True" Width="450px" Height="370px" >
+            Target="Top"  IsModal="True" Width="450px" Height="370px">
         </x:Window>
      <x:Window ID="WindowAddDX" Title="Nuevo Diagnóstico" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"
             CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="false" EnableResize="false"
@@ -1595,7 +1595,7 @@
 
       <x:Window ID="winEdit1" Title="Reporte" Popup="false" EnableIFrame="true" runat="server" IconUrl="~/images/16/11.png" 
        CloseAction="HidePostBack" EnableConfirmOnClose="true"  IFrameUrl="about:blank" EnableMaximize="true" EnableResize="true"
-       Target="Top"  IsModal="true"  Height="630px" Width="700px" >
+       Target="Top"  IsModal="true"  Height="630px" Width="870px">
     </x:Window>
 
       <x:Window ID="winEditReco" Title="Recomendación" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"

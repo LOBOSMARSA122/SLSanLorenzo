@@ -20,6 +20,7 @@ namespace Sigesoft.Node.WinClient.UI
         private ProtocolBL _protocolBL = new ProtocolBL();
         private ServiceBL _ServiceBL = new ServiceBL();
         private protocolDto _protocolDTO = null;
+        private serviceDto _serviceDTO = null;
         private string _protocolName;
         string NumberDocument;
 
@@ -48,6 +49,7 @@ namespace Sigesoft.Node.WinClient.UI
             // cabecera del protocolo
             txtProtocolName.Text = _protocolDTO.v_Name;
             cbEsoType.SelectedValue = _protocolDTO.i_EsoTypeId.ToString();
+            
             // Almacenar temporalmente
             _protocolName = txtProtocolName.Text;
 
@@ -62,7 +64,9 @@ namespace Sigesoft.Node.WinClient.UI
             cbGeso.SelectedValue = _protocolDTO.v_GroupOccupationId;
             cbServiceType.SelectedValue = _protocolDTO.i_MasterServiceTypeId.ToString();
             cbService.SelectedValue = _protocolDTO.i_MasterServiceId.ToString();
-
+            //SERVICIO - CENTRO DE COSTO
+            var servicio = new ServiceBL().GetService(ref objOperationResult, _serviceId);
+            txtCentroCosto.Text = servicio.v_centrocosto;
             // Componentes del protocolo
             var dataListPc = _ServiceBL.GetServiceComponentsLiquidacion(ref objOperationResult, _serviceId);
             float Total = 0;
@@ -257,6 +261,11 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     _protocolDTO = new protocolDto();
                 }
+                //if (_serviceDTO == null)
+                //{
+                //    _serviceDTO = new serviceDto();
+                //}
+                _serviceDTO = new ServiceBL().GetService(ref objOperationResult, _serviceId);
 
                 _protocolDTO.v_Name = txtProtocolName.Text;
                 _protocolDTO.v_EmployerOrganizationId = id[0];
@@ -276,6 +285,11 @@ namespace Sigesoft.Node.WinClient.UI
                         _protocolcomponentListDTO,
                         _protocolcomponentListDTO,
                         Globals.ClientSession.GetAsList());
+
+                _serviceDTO.v_centrocosto = txtCentroCosto.Text;
+                _serviceDTO.v_ServiceId = _serviceId;
+                //_ServiceBL.UpdateService(ref objOperationResult, _serviceDTO, Globals.ClientSession.GetAsList());
+                _ServiceBL.UpdateService(ref objOperationResult, _serviceDTO, Globals.ClientSession.GetAsList());
 
                 }
 

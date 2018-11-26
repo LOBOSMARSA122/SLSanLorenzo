@@ -370,12 +370,14 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
             DirectoryInfo rutaOrigen = null;
             string rutaDestino = null;
+            DirectoryInfo ruta = null;
             DateTime FechaServicio = DateTime.Parse(Fecha);
             string Fecha1 = FechaServicio.Day.ToString().PadLeft(2, '0') + FechaServicio.Month.ToString().PadLeft(2, '0') + FechaServicio.Year;
             
             if (Consultorio == "RAYOS X")
             {
                 rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgRxOrigen").ToString());
+                ruta = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgRxDestino").ToString());
                 rutaDestino = Common.Utils.GetApplicationConfigValue("ImgRxDestino").ToString() + Dni + "-" + Fecha1;
 
 
@@ -397,6 +399,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             else if (Consultorio == "ELECTROCARDIOGRAMA")
             {
                 rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgEKGOrigen").ToString());
+                ruta = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgEKGDestino").ToString());
                 rutaDestino = Common.Utils.GetApplicationConfigValue("ImgEKGDestino").ToString() + Dni + "-" + Fecha1;
 
 
@@ -418,6 +421,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             else if (Consultorio == "ESPIROMETRÍA")
             {
                 rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgESPIROOrigen").ToString());
+                ruta = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgESPIDestino").ToString());
                 rutaDestino = Common.Utils.GetApplicationConfigValue("ImgESPIDestino").ToString() + Dni + "-" + Fecha1;
 
 
@@ -440,6 +444,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             else if (Consultorio == "LABORATORIO")
             {
                 rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgLABOrigen").ToString());
+                ruta = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgLABDestino").ToString());
                 rutaDestino = Common.Utils.GetApplicationConfigValue("ImgLABDestino").ToString() + Dni + "-" + Fecha1;
 
 
@@ -462,7 +467,8 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
 
             MessageBox.Show("Los archivos se copiaron correctamente en la siguiente ruta: " + Common.Utils.GetApplicationConfigValue("ImgRxDestino").ToString());
-
+            System.Diagnostics.Process.Start(ruta.ToString());
+            Clipboard.SetText(Dni + "-" + Fecha1);
 
         }
 

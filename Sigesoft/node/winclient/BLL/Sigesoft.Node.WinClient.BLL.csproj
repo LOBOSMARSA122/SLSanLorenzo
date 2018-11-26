@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AplicationHierarchyBL.cs" />
     <Compile Include="AreaBL.cs" />
     <Compile Include="AseguradoraBL.cs" />
     <Compile Include="AtencionesIntegralesBL.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="AuthorizedPersonBL.cs" />
     <Compile Include="BlackListBL.cs" />
     <Compile Include="CalendarBL.cs" />
+    <Compile Include="CustomReportBL.cs" />
     <Compile Include="DataHierarchyBL.cs" />
     <Compile Include="DxFrecuenteBL.cs" />
     <Compile Include="EmailBL.cs" />

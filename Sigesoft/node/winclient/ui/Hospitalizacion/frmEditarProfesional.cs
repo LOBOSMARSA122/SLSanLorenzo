@@ -51,9 +51,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             Utils.LoadDropDownList(ddlUsuario, "Value1", "Id", BLL.Utils.GetProfessional(ref objOperationResult1, ""), DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterForComboGrupo(ref objOperationResult1, 119, null), DropDownListAction.Select);
 
-            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult1, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
-           
+            //Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult1, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult1, 119, -1, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult1, -1, null), DropDownListAction.Select);
+
 
         }
 
@@ -110,17 +113,33 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void cboTipoServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlServiceTypeId.SelectedValue.ToString() == "-1")
-            {
-                ddlMasterServiceId.SelectedValue = "-1";
-                ddlMasterServiceId.Enabled = false;
-                return;
-            }
+            //if (ddlServiceTypeId.SelectedValue.ToString() == "-1")
+            //{
+            //    ddlMasterServiceId.SelectedValue = "-1";
+            //    ddlMasterServiceId.Enabled = false;
+            //    return;
+            //}
 
-            ddlMasterServiceId.Enabled = true;
-            OperationResult objOperationResult = new OperationResult();
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+            //ddlMasterServiceId.Enabled = true;
+            //OperationResult objOperationResult = new OperationResult();
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
           
+        }
+
+        private void ddlMasterServiceId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ddlServiceTypeId_TextChanged(object sender, EventArgs e)
+        {
+            if (ddlServiceTypeId.SelectedIndex == 0 || ddlServiceTypeId.SelectedIndex == -1)
+                return;
+
+            OperationResult objOperationResult = new OperationResult();
+            var id = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
+
         }
     }
 }
