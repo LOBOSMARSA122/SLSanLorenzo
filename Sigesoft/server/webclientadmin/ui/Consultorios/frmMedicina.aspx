@@ -4677,9 +4677,31 @@
                             </Items>
                         </x:Tab>
 
-                        <x:Tab ID="TabVacio" BodyPadding="5px" Title=" " runat="server">
-                            <Items>
-                            </Items>
+                        
+
+                        <x:Tab ID="fototipo" BodyPadding="5px" Title="Fototipo" runat="server" Hidden="false">
+                            <html xmlns="http://www.w3.org/1999/xhtml">
+                            <head><title></title></head>
+                            <body> 
+                                <canvas id="imgCanvas" width="800" height="800"></canvas>
+                                <div runat="server" id="botonera">
+                                    <div id="rellenoFondo" ></div>
+		                            <div class="botones" onclick="cambioColor('333')"><img src="negro.png"/></div>
+		                            <div class="botones" onclick="cambioColor('fff')"><img src="blanco.png"/></div>
+		                            <div class="botones" onclick="cambioColor('fe0000')"><img src="rojo.png"/></div>
+		                            <div class="botones" onclick="cambioColor('800080')"><img src="morado.png"/></div>
+		                            <div class="botones" onclick="cambioColor('ffff00')"><img src="amarillo.png"/></div>
+		                            <div class="botones" onclick="cambioColor('00ff00')"><img src="verde.png"/></div>
+		                            <div class="botones" onclick="cambioColor('00ffff')"><img src="azulClaro.png"/></div>
+		                            <div class="botones" onclick="cambioColor('0000fe')"><img src="azulOscuro.png"/></div>
+		                            <div class="botones" id="fondo" onclick="cambioFondo()"><img src="bg.png"/></div>
+		                            <div  class="botones" onclick="cargarDibujo()"><img src="reset.png" style="width:32px"/></div>
+		                            <div  class="botones" onclick="Guardar()"><img src="save.png" style="width:35px"/></div>
+                                </div>
+                            </body>
+                            </html>
+                                
+                            
                         </x:Tab>
                     </Tabs>
                 </x:TabStrip>
@@ -4773,19 +4795,101 @@
                     Ext.get(row).first().addClass('highlight');
                 }
             });
-
         }
 
         function onReady() {
             var grid = X(gridClientID);
             grid.addListener('viewready', function () {
-                highlightRows();
-                
+                highlightRows();              
             });
         }
 
         function onAjaxReady() {
             highlightRows();
+        }
+
+        var canvas = document.getElementById("imgCanvas");
+        var context = canvas.getContext("2d");
+
+        var imagenFondo = new Image();
+
+        imagenFondo.src = 'rostro.png';
+        //Cargo la imagen en la posición
+        context.drawImage(imagenFondo, 0, 0);
+
+        imagenFondo.onload = function () {
+            context.drawImage(imagenFondo, 0, 0);
+        }
+        var estoyDibujando = false;
+        ////////////////////////////////////////////////////
+
+        function cargarDibujo() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            var imagenFondo = new Image();
+            imagenFondo.src = 'rostro.png';
+            //Cargo la imagen en la posición
+            context.drawImage(imagenFondo, 0, 0);
+        }
+
+        function cambioColor(reciboColor) {
+            //Guardo en color el color seleccionado
+            color = "#" + reciboColor;
+            //Cambio de color el botón de relleno de fondo
+            document.getElementById('rellenoFondo').style.background = color;
+        }
+
+
+        function cambioGrosor(reciboGrosor) {
+            //Guardo el grosor recibido
+            grosor = reciboGrosor;
+        }
+
+        function cambioFondo() {
+            document.getElementById('imgCanvas').style.background = color;
+        }
+
+        function pulsaRaton(e) {
+            estoyDibujando = true;
+            //Indico que vamos a dibujar
+            context.beginPath();
+            //Averiguo las coordenadas X e Y por dónde va pasando el ratón
+            var pos = getMousePos(canvas, e);
+            posx = pos.x;
+            posy = pos.y;
+            context.moveTo(e.posx, e.posx);
+        }
+
+        function mueveRaton(e) {
+            if (estoyDibujando) {
+                var pos = getMousePos(canvas, e);
+                posx = pos.x;
+                posy = pos.y;
+                context.fillStyle = color;
+                context.fillRect(posx, posy, 10, 10);
+            }
+        }
+
+        function levantaRaton(e) {
+            //Indico que termino el dibujo
+            context.closePath();
+            estoyDibujando = false;
+        }
+        ////////////////////////////////////////////////////
+
+        document.addEventListener('mousemove', mueveRaton, false);
+
+        document.addEventListener('mousedown', pulsaRaton, false);
+
+        document.addEventListener('mouseup', levantaRaton, false);
+        color = "#333";
+        //---------------------------------//
+
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+                y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+            };
         }
     </script>
 </body>

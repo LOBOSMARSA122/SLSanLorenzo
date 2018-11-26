@@ -1329,6 +1329,7 @@
     <Content Include="Consultorios\frmEspirometria.aspx" />
     <Content Include="Consultorios\FRMEXAMENADICIONAL.aspx" />
     <Content Include="Consultorios\frmFirmaMedico.aspx" />
+    <Content Include="Consultorios\frmFototipo.aspx" />
     <Content Include="Consultorios\frmHabitosNocivos.aspx" />
     <Content Include="Consultorios\frmLaboratorio.aspx" />
     <Content Include="Consultorios\frmMedicina.aspx" />
@@ -3912,6 +3913,13 @@
     </Compile>
     <Compile Include="Consultorios\frmFirmaMedico.aspx.designer.cs">
       <DependentUpon>frmFirmaMedico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultorios\frmFototipo.aspx.cs">
+      <DependentUpon>frmFototipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultorios\frmFototipo.aspx.designer.cs">
+      <DependentUpon>frmFototipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consultorios\frmHabitosNocivos.aspx.cs">
       <DependentUpon>frmHabitosNocivos.aspx</DependentUpon>

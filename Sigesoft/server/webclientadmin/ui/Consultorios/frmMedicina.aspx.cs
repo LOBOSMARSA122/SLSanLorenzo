@@ -17,6 +17,9 @@ using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls.Adapters;
+using System.Web.UI.WebControls.Expressions;
+using System.Web.UI.WebControls.WebParts;
 
 namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 {
@@ -1284,7 +1287,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         protected void grdData_RowClick(object sender, GridRowClickEventArgs e)
         {
-          
+            
             OperationResult objOperationResult = new OperationResult();
             int index = e.RowIndex;
             Session["index"] = index;

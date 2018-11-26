@@ -21577,13 +21577,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txttxtOsteoMuscularInformadorEvaluar;
         
         /// <summary>
-        /// TabVacio control.
+        /// fototipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Tab TabVacio;
+        protected global::FineUI.Tab fototipo;
+        
+        /// <summary>
+        /// botonera control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl botonera;
         
         /// <summary>
         /// hfRefresh control.
