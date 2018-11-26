@@ -23,17 +23,22 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnBuscarFormulario_Click(object sender, EventArgs e)
         {
-          
-            string NombreFormulario = cboFormularios.SelectedValue.ToString();// ((ToolStripItem)sender).Tag.ToString();
-            Assembly asm = Assembly.GetEntryAssembly();
-            Type formtype = asm.GetType(NombreFormulario);
-
-            if (formtype != null)
+            try
             {
-                Form f = (Form)Activator.CreateInstance(formtype);
-                f.ShowDialog();
-            }         
+                string NombreFormulario = cboFormularios.SelectedValue.ToString();// ((ToolStripItem)sender).Tag.ToString();
+                Assembly asm = Assembly.GetEntryAssembly();
+                Type formtype = asm.GetType(NombreFormulario);
 
+                if (formtype != null)
+                {
+                    Form f = (Form)Activator.CreateInstance(formtype);
+                    f.ShowDialog();
+                }         
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El formulario no existe, por favor revise su búsqueda", "INFORMACIÓN",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void frmBuscarFormulario_Load(object sender, EventArgs e)

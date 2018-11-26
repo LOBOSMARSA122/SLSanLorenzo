@@ -2023,6 +2023,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de Servicios";
             this.Load += new System.EventHandler(this.frmService_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmService_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

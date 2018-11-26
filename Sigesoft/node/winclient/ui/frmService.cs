@@ -2946,6 +2946,14 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
 
         }
+
+        private void frmService_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
         
         //void ProcesoSErvicio()
         //{

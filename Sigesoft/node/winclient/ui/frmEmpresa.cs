@@ -2250,5 +2250,13 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
+        private void frmEmpresa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
     }
 }
