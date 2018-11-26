@@ -970,9 +970,9 @@
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
             this.grdDataService.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataService_AfterSelectChange);
             this.grdDataService.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdDataService_ClickCell);
-            this.grdDataService.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.btnEditarESO_Click);
             this.grdDataService.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseEnterElement);
             this.grdDataService.MouseLeaveElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseLeaveElement);
+            this.grdDataService.DoubleClick += new System.EventHandler(this.btnEditarESO_Click);
             // 
             // button1
             // 
@@ -1254,7 +1254,6 @@
             this.btnEditarESO.Text = "    &Ver / Editar Servicio";
             this.btnEditarESO.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnEditarESO.UseVisualStyleBackColor = false;
-            this.btnEditarESO.Visible = false;
             this.btnEditarESO.Click += new System.EventHandler(this.btnEditarESO_Click);
             // 
             // btnFechaEntrega

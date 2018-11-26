@@ -1438,21 +1438,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void FormActions()
         {
-            _formActions = BLL.Utils.SetFormActionsInSession("frmEsoV2", _nodeId, _roleId, _userId);
-            btnGuardarExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_SAVE", _formActions);
-            btnAgregarTotalDiagnostico.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_ADDDX", _formActions);
-            _removerTotalDiagnostico = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVEDX", _formActions);
+            _formActions = BLL.Utils.SetFormActionsInSession("frmEso", _nodeId, _roleId, _userId);
+            btnGuardarExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_SAVE", _formActions);
+            btnAgregarTotalDiagnostico.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_ADDDX", _formActions);
+            _removerTotalDiagnostico = BLL.Utils.IsActionEnabled("frmEso_ANADX_REMOVEDX", _formActions);
             btnAgregarRecomendaciones_AnalisisDx.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_ADDRECOME", _formActions);
-            _removerRecomendacionAnalisisDx = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVERECOME", _formActions);
-            btnAgregarRestriccion_Analisis.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_ADDRESTRIC", _formActions);
-            _removerRestriccionAnalisis = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVERESTRIC", _formActions);
-            btnAceptarDX.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_SAVE", _formActions);
+            _removerRecomendacionAnalisisDx = BLL.Utils.IsActionEnabled("frmEso_ANADX_REMOVERECOME", _formActions);
+            btnAgregarRestriccion_Analisis.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_ADDRESTRIC", _formActions);
+            _removerRestriccionAnalisis = BLL.Utils.IsActionEnabled("frmEso_ANADX_REMOVERESTRIC", _formActions);
+            btnAceptarDX.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_SAVE", _formActions);
 
-            btnAgregarRecomendaciones_Conclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_ADDRECOME", _formActions);
-            btnAgregarRestriccion_ConclusionesTratamiento.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_ADDRESTRIC", _formActions);
+            btnAgregarRecomendaciones_Conclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRECOME", _formActions);
+            btnAgregarRestriccion_ConclusionesTratamiento.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRESTRIC", _formActions);
 
-            _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_REMOVERECOME", _formActions);
-            _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_REMOVERESTRIC", _formActions);
+            _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERECOME", _formActions);
+            _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERESTRIC", _formActions);
 
             if (btnAceptarDX.Enabled) return;
             cbCalificacionFinal.Enabled = false;
@@ -2561,119 +2561,119 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void txt_ValueChanged(object sender, EventArgs e)
         {
-            //if (flagValueChange)
-            //{
-            //    // Capturar el control invocador
-            //    Control senderCtrl = (Control)sender;
-            //    // Obtener información contenida en la propiedad Tag del control invocante
-            //    var tagCtrl = (KeyTagControl)senderCtrl.Tag;
-            //    string valueToAnalyze = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
-            //    int isSourceField = tagCtrl.i_IsSourceFieldToCalculate;
-            //    Dictionary<string, object> Params = null;
-            //    List<double> evalExpResultList = new List<double>();
+            if (flagValueChange)
+            {
+                // Capturar el control invocador
+                Control senderCtrl = (Control)sender;
+                // Obtener información contenida en la propiedad Tag del control invocante
+                var tagCtrl = (KeyTagControl)senderCtrl.Tag;
+                string valueToAnalyze = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
+                int isSourceField = tagCtrl.i_IsSourceFieldToCalculate;
+                Dictionary<string, object> Params = null;
+                List<double> evalExpResultList = new List<double>();
 
-            //    ////MessageBox.Show(senderCtrl.Text);
-            //    if (isSourceField == (int)SiNo.SI)
-            //    {
-            //        #region Nueva logica de calculo de formula soporta n parametros
+                ////MessageBox.Show(senderCtrl.Text);
+                if (isSourceField == (int)SiNo.SI)
+                {
+                    #region Nueva logica de calculo de formula soporta n parametros
 
-            //        // Recorrer las formulas en las cuales el campo esta referenciado
-            //        foreach (var formu in tagCtrl.Formula)
-            //        {
-            //            // Obtener Campos fuente participantes en el calculo
-            //            var sourceFields = Common.Utils.GetTextFromExpressionInCorchete(formu.v_Formula);
-            //            Params = new Dictionary<string, object>();
+                    // Recorrer las formulas en las cuales el campo esta referenciado
+                    foreach (var formu in tagCtrl.Formula)
+                    {
+                        // Obtener Campos fuente participantes en el calculo
+                        var sourceFields = Common.Utils.GetTextFromExpressionInCorchete(formu.v_Formula);
+                        Params = new Dictionary<string, object>();
 
-            //            foreach (string sf in sourceFields)
-            //            {
-            //                // Buscar controles fuentes
-            //                var findCtrlResult = FindDynamicControl(sf);
-            //                var length = findCtrlResult.Length;
-            //                // La busqueda si tuvo exito
-            //                if (length != 0)
-            //                {
-            //                    // Obtener información del control encontrado 
-            //                    var tagSourceField = (KeyTagControl)findCtrlResult[0].Tag;
-            //                    // Obtener el tipo de dato al cual se va castear un control encontrado
-            //                    string dtc = GetDataTypeControl(tagSourceField.i_ControlId);
-            //                    // Obtener value del control encontrado
-            //                    var value = GetValueControl(tagSourceField.i_ControlId, findCtrlResult[0]);
+                        foreach (string sf in sourceFields)
+                        {
+                            // Buscar controles fuentes
+                            var findCtrlResult = FindDynamicControl(sf);
+                            var length = findCtrlResult.Length;
+                            // La busqueda si tuvo exito
+                            if (length != 0)
+                            {
+                                // Obtener información del control encontrado 
+                                var tagSourceField = (KeyTagControl)findCtrlResult[0].Tag;
+                                // Obtener el tipo de dato al cual se va castear un control encontrado
+                                string dtc = GetDataTypeControl(tagSourceField.i_ControlId);
+                                // Obtener value del control encontrado
+                                var value = GetValueControl(tagSourceField.i_ControlId, findCtrlResult[0]);
 
-            //                    if (dtc == "int")
-            //                    {
-            //                        //var ival = int.Parse(value);
-            //                        Params[sf] = int.Parse(value);
-            //                    }
-            //                    else if (dtc == "double")
-            //                    {
-            //                        Params[sf] = double.Parse(value);
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    if (sf.ToUpper() == "EDAD")
-            //                    {
-            //                        Params[sf] = _age;
-            //                    }
-            //                    else if (sf.ToUpper() == "GENERO_2")
-            //                    {
-            //                        Params[sf] = _sexType == Gender.FEMENINO ? 0 : 1;
-            //                    }
-            //                    else if (sf.ToUpper() == "GENERO_1")
-            //                    {
-            //                        Params[sf] = _sexType == Gender.MASCULINO ? 0 : 1;
-            //                    }
-            //                }
+                                if (dtc == "int")
+                                {
+                                    //var ival = int.Parse(value);
+                                    Params[sf] = int.Parse(value);
+                                }
+                                else if (dtc == "double")
+                                {
+                                    Params[sf] = double.Parse(value);
+                                }
+                            }
+                            else
+                            {
+                                if (sf.ToUpper() == "EDAD")
+                                {
+                                    Params[sf] = _age;
+                                }
+                                else if (sf.ToUpper() == "GENERO_2")
+                                {
+                                    Params[sf] = _sexType == Gender.FEMENINO ? 0 : 1;
+                                }
+                                else if (sf.ToUpper() == "GENERO_1")
+                                {
+                                    Params[sf] = _sexType == Gender.MASCULINO ? 0 : 1;
+                                }
+                            }
 
-            //            } // fin foreach sourceFields
+                        } // fin foreach sourceFields
 
-            //            bool isFound = false;
+                        bool isFound = false;
 
-            //            // Buscar algun cero
-            //            foreach (var item in Params)
-            //            {
-            //                if (item.Value.ToString() == "0" &&
-            //                    item.Key != "EDAD" &&
-            //                    item.Key != "GENERO_1" &&
-            //                    item.Key != "GENERO_2")
-            //                {
-            //                    isFound = true;
-            //                    break;
-            //                }
-            //            }
+                        // Buscar algun cero
+                        foreach (var item in Params)
+                        {
+                            if (item.Value.ToString() == "0" &&
+                                item.Key != "EDAD" &&
+                                item.Key != "GENERO_1" &&
+                                item.Key != "GENERO_2")
+                            {
+                                isFound = true;
+                                break;
+                            }
+                        }
 
-            //            if (!isFound)
-            //            {
-            //                var evalExpResult = Common.Utils.EvaluateExpression(formu.v_Formula, Params);
-            //                evalExpResultList.Add(evalExpResult);
-            //            }
+                        if (!isFound)
+                        {
+                            var evalExpResult = Common.Utils.EvaluateExpression(formu.v_Formula, Params);
+                            evalExpResultList.Add(evalExpResult);
+                        }
 
-            //        } // fin foreach Formula
+                    } // fin foreach Formula
 
-            //        // Mostrar el resultado en el control indicado
-            //        if (evalExpResultList.Count != 0)
-            //        {
-            //            for (int i = 0; i < tagCtrl.TargetFieldOfCalculateId.Count; i++)
-            //            {
-            //                var targetFieldOfCalculate1 = FindDynamicControl(tagCtrl.TargetFieldOfCalculateId[i].v_TargetFieldOfCalculateId);
+                    // Mostrar el resultado en el control indicado
+                    if (evalExpResultList.Count != 0)
+                    {
+                        for (int i = 0; i < tagCtrl.TargetFieldOfCalculateId.Count; i++)
+                        {
+                            var targetFieldOfCalculate1 = FindDynamicControl(tagCtrl.TargetFieldOfCalculateId[i].v_TargetFieldOfCalculateId);
 
-            //                for (int j = 0; j < evalExpResultList.Count; j++)
-            //                {
-            //                    if (i == j)
-            //                    {
-            //                        targetFieldOfCalculate1[0].Text = evalExpResultList[j].ToString();
-            //                    }
-            //                }
-            //            }
-            //        }
+                            for (int j = 0; j < evalExpResultList.Count; j++)
+                            {
+                                if (i == j)
+                                {
+                                    targetFieldOfCalculate1[0].Text = evalExpResultList[j].ToString();
+                                }
+                            }
+                        }
+                    }
 
-            //        #endregion
+                    #endregion
 
-            //    }
+                }
 
-            //    GeneratedAutoDX(valueToAnalyze, senderCtrl, tagCtrl);
+                GeneratedAutoDX(valueToAnalyze, senderCtrl, tagCtrl);
 
-            //}
+            }
 
         }
 
@@ -3081,9 +3081,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 if (componentProfile.i_Dx == (int)SiNo.SI)
                 {
-                    btnAgregarDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_ADDDX", _formActions);
-                    btnEditarDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_EDITDX", _formActions);
-                    btnRemoverDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_REMOVEDX", _formActions);
+                    btnAgregarDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_EXAMENES_ADDDX", _formActions);
+                    btnEditarDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_EXAMENES_EDITDX", _formActions);
+                    btnRemoverDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_EXAMENES_REMOVEDX", _formActions);
 
                 }
 
@@ -3104,7 +3104,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 else if (componentProfile.i_Approved == (int)SiNo.SI)
                 {
-                    chkApproved.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_APPROVED", _formActions);
+                    chkApproved.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_EXAMENES_APPROVED", _formActions);
                 }
 
                 #endregion
@@ -3538,7 +3538,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     break;
                 case (int)SiNo.SI:
                     // el check se activa o desactiva dependiendo del rol
-                    chkApproved.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_APPROVED", _formActions);
+                    chkApproved.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_APPROVED", _formActions);
                     break;
             }
         }
@@ -3549,9 +3549,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 case (int)SiNo.SI:
                     //la sección se activa o desactiva dependiendo del PERMISO. Los diagnósticos automáticos deben seguir funcionando y reportándose.
-                    btnAgregarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_ADDDX", _formActions);
-                    btnEditarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_EDITDX", _formActions);
-                    btnRemoverDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_REMOVEDX", _formActions);
+                    btnAgregarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_ADDDX", _formActions);
+                    btnEditarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_EDITDX", _formActions);
+                    btnRemoverDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_REMOVEDX", _formActions);
                     break;
                 case (int)SiNo.NO:
                     // toda la sección esta desactivada, pero los diagnósticos automáticos deben seguir funcionando y reportándose.
@@ -5089,8 +5089,31 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             diagnosticRepository.v_DiagnosticRepositoryId = Guid.NewGuid().ToString();
                             diagnosticRepository.v_DiseasesId = val.v_DiseasesId;
                             diagnosticRepository.i_AutoManualId = (int)AutoManual.Automático;
+
                             diagnosticRepository.i_PreQualificationId = (int)PreQualification.SinPreCalificar;
-                            diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.SinCalificar;
+
+
+                            //if (val.v_DiseasesId == "N009-DD000000789" || val.v_DiseasesId == "N009-DD000000788" || val.v_DiseasesId == "N009-DD000000787" || val.v_DiseasesId == "N009-DD000000786" || val.v_DiseasesId == "N009-DD000000785"
+                            //    || val.v_DiseasesId == "N009-DD000000784" || val.v_DiseasesId == "N009-DD000000783" || val.v_DiseasesId == "N009-DD000000782" || val.v_DiseasesId == "N009-DD000000780" || val.v_DiseasesId == "N009-DD000000779"
+                            //    || val.v_DiseasesId == "N009-DD000000778" || val.v_DiseasesId == "N009-DD000000777" || val.v_DiseasesId == "N009-DD000000776" || val.v_DiseasesId == "N009-DD000000775" || val.v_DiseasesId == "N009-DD000000774"
+                            //    || val.v_DiseasesId == "N009-DD000000661" || val.v_DiseasesId == "N009-DD000000505" || val.v_DiseasesId == "N009-DD000000484" || val.v_DiseasesId == "N009-DD000000483" || val.v_DiseasesId == "N009-DD000000771"
+                            //    || val.v_DiseasesId == "N009-DD000000662" || val.v_DiseasesId == "N009-DD000000795" || val.v_DiseasesId == "N009-DD000000797" || val.v_DiseasesId == "N009-DD000000799")
+                            //{
+                            //if (val.v_CIE10 == "Z000" || val.v_CIE10 == "Z001")
+                            //{
+                            //    diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Normal;
+                            //    diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
+                            //}
+                            //else
+                            //{
+                            //    diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
+                            //    diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Definitivo;
+                            //}
+
+
+                            diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
+                            diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
+
                             diagnosticRepository.v_ServiceId = _serviceId;
                             diagnosticRepository.v_ComponentId = val.v_ComponentId;
                             diagnosticRepository.v_DiseasesName = val.v_DiseasesName;
@@ -5110,6 +5133,43 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             diagnosticRepository.d_ExpirationDateDiagnostic = DateTime.Now.AddMonths(vm);
 
                             #endregion
+                            //#region CREAR / AGREGAR DX (automático)
+
+                            //matchValId = val.v_ComponentFieldValuesId;
+
+                            //// Si el valor analizado se encuentra en el rango de valores NORMALES, 
+                            //// entonces NO se genera un DX (automático).
+                            //if (val.v_DiseasesId == null)
+                            //    break;
+
+                            //val.Recomendations.ForEach(item => { item.v_RecommendationId = Guid.NewGuid().ToString(); });
+                            //val.Restrictions.ForEach(item => { item.v_RestrictionByDiagnosticId = Guid.NewGuid().ToString(); });
+                            //// Insertar DX sugerido (automático) a la bolsa de DX 
+                            //diagnosticRepository = new DiagnosticRepositoryList();
+                            //diagnosticRepository.v_DiagnosticRepositoryId = Guid.NewGuid().ToString();
+                            //diagnosticRepository.v_DiseasesId = val.v_DiseasesId;
+                            //diagnosticRepository.i_AutoManualId = (int)AutoManual.Automático;
+                            //diagnosticRepository.i_PreQualificationId = (int)PreQualification.SinPreCalificar;
+                            //diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.SinCalificar;
+                            //diagnosticRepository.v_ServiceId = _serviceId;
+                            //diagnosticRepository.v_ComponentId = val.v_ComponentId;
+                            //diagnosticRepository.v_DiseasesName = val.v_DiseasesName;
+                            //diagnosticRepository.v_AutoManualName = "AUTOMÁTICO";
+                            //diagnosticRepository.v_RestrictionsName = ConcatenateRestrictions(val.Restrictions);
+                            //diagnosticRepository.v_RecomendationsName = ConcatenateRecommendations(val.Recomendations);
+                            //diagnosticRepository.v_PreQualificationName = "SIN PRE-CALIFICAR";
+                            //// ID enlace DX automatico para grabar valores dinamicos
+                            //diagnosticRepository.v_ComponentFieldValuesId = val.v_ComponentFieldValuesId;
+                            //diagnosticRepository.v_ComponentFieldsId = pComponentFieldsId;
+                            //diagnosticRepository.Recomendations = RefreshRecomendationList(val.Recomendations);
+                            //diagnosticRepository.Restrictions = RefreshRestrictionList(val.Restrictions);
+                            //diagnosticRepository.i_RecordStatus = (int)RecordStatus.Agregado;
+                            //diagnosticRepository.i_RecordType = (int)RecordType.Temporal;
+
+                            //int vm = val.i_ValidationMonths == null ? 0 : val.i_ValidationMonths.Value;
+                            //diagnosticRepository.d_ExpirationDateDiagnostic = DateTime.Now.AddMonths(vm);
+
+                            //#endregion
                             break;
                         }
 
@@ -6744,6 +6804,41 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 btnGuardarExamen.Enabled = true;
                 btnVisorReporteExamen.Enabled = true;
             }
+        }
+
+        private void gbFuncionesBiologicas_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grdConclusionesDiagnosticas_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+            var caliFinal = (FinalQualification)e.Row.Cells["i_FinalQualificationId"].Value;
+
+            switch (caliFinal)
+            {
+                case FinalQualification.SinCalificar:
+                    e.Row.Appearance.BackColor = Color.Pink;
+                    e.Row.Appearance.BackColor2 = Color.Pink;
+                    break;
+                case FinalQualification.Definitivo:
+                    e.Row.Appearance.BackColor = Color.LawnGreen;
+                    e.Row.Appearance.BackColor2 = Color.LawnGreen;
+                    break;
+                case FinalQualification.Presuntivo:
+                    e.Row.Appearance.BackColor = Color.LawnGreen;
+                    e.Row.Appearance.BackColor2 = Color.LawnGreen;
+                    break;
+                case FinalQualification.Descartado:
+                    e.Row.Appearance.BackColor = Color.DarkGray;
+                    e.Row.Appearance.BackColor2 = Color.DarkGray;
+                    break;
+                default:
+                    break;
+            }
+
+            //Y doy el efecto degradado vertical
+            e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
         }
     }
 }
