@@ -215,9 +215,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                      ShowPdf1.FilePath = @"files\" + servicios[0].IdServicio + "_CONSOLIDADO.pdf";
                  }
-               
-
-             
             }
 
         }
