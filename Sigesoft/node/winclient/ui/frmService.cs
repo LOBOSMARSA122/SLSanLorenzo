@@ -78,6 +78,11 @@ namespace Sigesoft.Node.WinClient.UI
 
             Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
             Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            ////Llenado de los tipos de servicios [Emp/Part]
+            //Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.Select);
+            //// combo servicio
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
+          
             //Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.All);
 
             Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.All);
@@ -300,10 +305,13 @@ namespace Sigesoft.Node.WinClient.UI
                 ddlMasterServiceId.Enabled = false;
                 return;
             }
-
-            ddlMasterServiceId.Enabled = true;
-            OperationResult objOperationResult = new OperationResult();
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            else
+            {
+                ddlMasterServiceId.Enabled = true;
+            }
+            //ddlMasterServiceId.Enabled = true;
+            //OperationResult objOperationResult = new OperationResult();
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
           
         }
 
@@ -805,7 +813,16 @@ namespace Sigesoft.Node.WinClient.UI
                    {
                        string ruta = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
                        System.Diagnostics.Process.Start(ruta);
-                       Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());   
+                       Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());
+
+                       //var companiaMinera = grdDataService.Selected.Rows[0].Cells["CompMinera"].Value.ToString();
+                       //var paciente = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+                       //var fecha = DateTime.Parse(grdDataService.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString()).ToString("dd MMMM,  yyyy");
+
+                       //var namePdf = companiaMinera + " - " + paciente + " - " + fecha;
+                       //string pdfPath = Path.Combine(ruta, namePdf + ".pdf");
+
+                       //Process.Start(pdfPath);
                        return;
                    }
  
@@ -2916,6 +2933,17 @@ namespace Sigesoft.Node.WinClient.UI
                 Reporte_Egresos.CreateReporte_Egresos(ruta + nombre + ".pdf", MedicalCenter);
                 this.Enabled = true;
             }
+        }
+
+        private void ddlServiceTypeId_TextChanged(object sender, EventArgs e)
+        {
+            if (ddlServiceTypeId.SelectedIndex == 0 || ddlServiceTypeId.SelectedIndex == -1)
+                return;
+
+            OperationResult objOperationResult = new OperationResult();
+            var id = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
+
         }
         
         //void ProcesoSErvicio()

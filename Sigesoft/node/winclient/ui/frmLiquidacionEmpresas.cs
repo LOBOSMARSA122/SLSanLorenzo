@@ -43,50 +43,48 @@ namespace Sigesoft.Node.WinClient.UI
                         OperationResult objOperationResult = new OperationResult();
 
                         DateTime? fechaInicio = _fInicio.Value.Date;
-                        DateTime? fechaFin = _fFin.Value.Date.AddDays(1);
+                        DateTime? fechaFin = _fFin.Value.Date;
 
                         string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
                         string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
 
-                        var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Name(ref objOperationResult, fechaInicio, fechaFin, _empresa);
+                        //var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Name(ref objOperationResult, fechaInicio, fechaFin, _empresa);
                         
                         string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
-                        string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                        string nombre = "Liquidaciones de EMPRESA - CSL";
-
-                        
-                        List<string> facturas = new List<string>();
-                        foreach (var item in lista)
-                        {
-                            var obj = item.detalle.FindAll(p =>p.v_NroFactura != "").ToList();
-                            foreach (var item_1 in obj)
-                            {
-                                facturas.Add(item_1.v_NroFactura);
-                            }
-                        }
-
-                        var listFacturaCobranza = new List<FacturaCobranza>();
-                        foreach (var nroFactura in facturas)
-                        {
-                            var oFacturaCobranza = new FacturaCobranza();
-                            var obj = oMedicamentoBl.ObtnerNroFacturaCobranza(nroFactura);
-
-                            oFacturaCobranza.v_IdVenta = obj.v_IdVenta;
-                            oFacturaCobranza.FechaCreacion = obj.FechaCreacion;
-                            oFacturaCobranza.FechaVencimiento = obj.FechaVencimiento;
-                            oFacturaCobranza.NetoXCobrar = obj.NetoXCobrar;
-                            oFacturaCobranza.TotalPagado = obj.TotalPagado;
-                            oFacturaCobranza.DocuemtosReferencia = obj.DocuemtosReferencia;
-                            oFacturaCobranza.NroComprobante = obj.NroComprobante;       
-                            listFacturaCobranza.Add(oFacturaCobranza);
-                        }
-
-                      
+                        List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
                         var empresa_info = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, _empresa);
 
+                        string nombre = "Liquidaciones de EMPRESA " + empresa_info.v_Name;
 
-                        Liquidacion_EMPRESA_DETALLE.CreateLiquidacion_EMPRESAS_DETALLE(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1, empresa_info, listFacturaCobranza);
+                        var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                        var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                        liquidacionEmpresa.v_OrganizationName = empresa_info.v_Name;
+                        liquidacionEmpresa.v_Ruc = empresa_info.v_IdentificationNumber;
+                        liquidacionEmpresa.v_AddressLocation = empresa_info.v_Address;
+                        liquidacionEmpresa.v_TelephoneNumber = empresa_info.v_PhoneNumber;
+                        liquidacionEmpresa.v_ContactName = empresa_info.v_ContacName;
+
+                        var detalleEmpresaDeuda = oMedicamentoBl.EmpresaDeudora(empresa_info.v_IdentificationNumber);
+                        foreach (var detalle_facturas in detalleEmpresaDeuda)
+                        {
+                            var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                            liquidacionDetalleEmpresa.v_IdVenta = detalle_facturas.v_IdVenta;
+                            liquidacionDetalleEmpresa.FechaCreacion = detalle_facturas.FechaCreacion;
+                            liquidacionDetalleEmpresa.FechaVencimiento = detalle_facturas.FechaVencimiento;
+                            liquidacionDetalleEmpresa.NetoXCobrar = detalle_facturas.NetoXCobrar;
+                            liquidacionDetalleEmpresa.TotalPagado = detalle_facturas.TotalPagado;
+                            liquidacionDetalleEmpresa.DocuemtosReferencia = detalle_facturas.DocuemtosReferencia;
+                            liquidacionDetalleEmpresa.NroComprobante = detalle_facturas.NroComprobante;
+                            liquidacionDetalleEmpresa.Condicion = detalle_facturas.Condicion;
+                            listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                        }
+                        liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                        ListaLiquidacion.Add(liquidacionEmpresa);
+
+
+                        Liquidacion_EMPRESA_DETALLE.CreateLiquidacion_EMPRESAS_DETALLE(ruta + nombre + ".pdf", MedicalCenter, fechaInicio_1, fechaFin_1, empresa_info, ListaLiquidacion);
                         this.Enabled = true;
                     }
                 }
@@ -115,7 +113,7 @@ namespace Sigesoft.Node.WinClient.UI
                         string ruc = "";
                         foreach (var item_1 in empDeud)
                         {
-                            if (item_1.NetoXCobrar != 0 || item_1.NetoXCobrar.ToString() != "0.00")
+                            if (item_1.Condicion == "DEBE")
 	                        {
                                 if (item.v_Ruc != ruc)
                                 {
@@ -130,46 +128,36 @@ namespace Sigesoft.Node.WinClient.UI
                    
                     foreach (var ruc in deudores)
                     {
-                        var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, fechaFin, ruc);
+                        //var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, ruc);
+                        var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc);
 
-                        List<string> facturas = new List<string>();
+                        var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                        var liquidacionEmpresa = new LiquidacionEmpresa();
 
-                        foreach (var item in obj)
+                        liquidacionEmpresa.v_OrganizationName = empresa.v_Name;
+                        liquidacionEmpresa.v_Ruc = empresa.v_IdentificationNumber;
+                        liquidacionEmpresa.v_AddressLocation = empresa.v_Address;
+                        liquidacionEmpresa.v_TelephoneNumber = empresa.v_PhoneNumber;
+                        liquidacionEmpresa.v_ContactName = empresa.v_ContacName;
+
+                        var detalleEmpresaDeuda = oMedicamentoBl.EmpresaDeudora(ruc);
+                        foreach (var detalle_facturas in detalleEmpresaDeuda)
                         {
-                            var obj_1 = item.detalle.FindAll(p => p.v_NroFactura != "").ToList();
-                            foreach (var item_1 in obj_1)
-                            {
-                                facturas.Add(item_1.v_NroFactura);
-                            }
+                            var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                            //var obj_2 = oMedicamentoBl.ObtnerNroFacturaCobranza(N_fac);
+                            liquidacionDetalleEmpresa.v_IdVenta = detalle_facturas.v_IdVenta;
+                            liquidacionDetalleEmpresa.FechaCreacion = detalle_facturas.FechaCreacion;
+                            liquidacionDetalleEmpresa.FechaVencimiento = detalle_facturas.FechaVencimiento;
+                            liquidacionDetalleEmpresa.NetoXCobrar = detalle_facturas.NetoXCobrar;
+                            liquidacionDetalleEmpresa.TotalPagado = detalle_facturas.TotalPagado;
+                            liquidacionDetalleEmpresa.DocuemtosReferencia = detalle_facturas.DocuemtosReferencia;
+                            liquidacionDetalleEmpresa.NroComprobante = detalle_facturas.NroComprobante;
+                            liquidacionDetalleEmpresa.Condicion = detalle_facturas.Condicion;
+                            listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
                         }
+                        liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                        ListaLiquidacion.Add(liquidacionEmpresa);
 
-                        foreach (var item in obj)
-                        {
-                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
-                            var liquidacionEmpresa = new LiquidacionEmpresa();
-
-                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
-                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
-                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
-                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
-                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
-
-                            foreach (var N_fac in facturas)
-                            {
-                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
-                                var obj_2 = oMedicamentoBl.ObtnerNroFacturaCobranza(N_fac);
-                                liquidacionDetalleEmpresa.v_IdVenta = obj_2.v_IdVenta;
-                                liquidacionDetalleEmpresa.FechaCreacion = obj_2.FechaCreacion;
-                                liquidacionDetalleEmpresa.FechaVencimiento = obj_2.FechaVencimiento;
-                                liquidacionDetalleEmpresa.NetoXCobrar = obj_2.NetoXCobrar;
-                                liquidacionDetalleEmpresa.TotalPagado = obj_2.TotalPagado;
-                                liquidacionDetalleEmpresa.DocuemtosReferencia = obj_2.DocuemtosReferencia;
-                                liquidacionDetalleEmpresa.NroComprobante = obj_2.NroComprobante;
-                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
-                            }
-                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
-                            ListaLiquidacion.Add(liquidacionEmpresa);
-                        }
                     }
 
                     string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];

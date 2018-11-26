@@ -53,6 +53,7 @@
     <Compile Include="AuthorizedPersonBL.cs" />
     <Compile Include="BlackListBL.cs" />
     <Compile Include="CalendarBL.cs" />
+    <Compile Include="CustomReportBL.cs" />
     <Compile Include="DataHierarchyBL.cs" />
     <Compile Include="DxFrecuenteBL.cs" />
     <Compile Include="EmailBL.cs" />

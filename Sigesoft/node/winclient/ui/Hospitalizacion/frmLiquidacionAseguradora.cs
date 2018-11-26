@@ -66,6 +66,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             var _objData = oAseguradoraBL.GetLiquidacionAseguradoraPagedAndFiltered(ref objOperationResult, pstrFilterExpression, pdatBeginDate, pdatEndDate);
 
+            txtTotalAseguradora.Text = _objData.Sum(p => p.TotalAseguradora).ToString();
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);

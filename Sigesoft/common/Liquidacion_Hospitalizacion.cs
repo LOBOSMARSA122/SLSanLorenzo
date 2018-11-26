@@ -13,6 +13,7 @@ using iTextSharp.text.pdf.draw;
 using Sigesoft.Node.WinClient.BE;
 using Font = iTextSharp.text.Font;
 
+
 namespace NetPdf
 {
     public class Liquidacion_Hospitalizacion
@@ -22,7 +23,7 @@ namespace NetPdf
             Process proceso = Process.Start(filePDF);
             proceso.WaitForExit();
             proceso.Close();
-        }
+        }        
         public static void CreateLiquidacion(string filePDF,
             organizationDto infoEmpresaPropietaria, List<HospitalizacionList> ListaHospit,
             ServiceList DataService, PacientList datosPac, int cargo, hospitalizacionDto hospit, hospitalizacionhabitacionDto hospitHabit,  MedicoTratanteAtenciones medico)
@@ -72,12 +73,6 @@ namespace NetPdf
             Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             #endregion
 
-            var estatico_1 = 15f;
-            var alto_Celda_1 = 15f;
-            var alto_Celda_2 = 30f;
-            var alto_Celda_3 = 45f;
-            var alto_Celda_4 = 60f;
-            var alto_Celda_6 = 90f;
             #region TÍTULO
         
             cells = new List<PdfPCell>();
@@ -203,12 +198,13 @@ namespace NetPdf
             #region Parte Dinámica
             cells = new List<PdfPCell>();
             int tamañoTickets = 0;
+            
             foreach (var hospitalizacion in ListaHospit)
             {
                 var ListaServicios = hospitalizacion.Servicios.FindAll(p=>p.v_ServiceId != null);
                 decimal totalParcialMedicina = 0;
                 decimal sumaMedicina = 0;
-
+                #region
                 decimal sumaServicio = 0;
                 foreach (var servicios in ListaServicios)
                 {
@@ -226,7 +222,7 @@ namespace NetPdf
                                     cell = new PdfPCell(new Phrase(tickets.d_Fecha.ToString().Split(' ')[0], fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
 
-                                    cell = new PdfPCell(new Phrase(tickets.i_tipoCuenta.ToString() == "1" ? tickets.v_TicketId + "\n-\nSOP" : tickets.i_tipoCuenta.ToString() == "2" ? tickets.v_TicketId + "\n-\nPROCEDIMIENTOS" : tickets.i_tipoCuenta.ToString() == "3" ? tickets.v_TicketId + "\n-\nHOSPITALIZACION" : tickets.i_tipoCuenta.ToString() == "4" ? tickets.v_TicketId + "\n-\nI. SERV." : string.Empty, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                    cell = new PdfPCell(new Phrase(tickets.i_tipoCuenta.ToString() == "1" ? tickets.v_TicketId + "\n-\nSOP" : tickets.i_tipoCuenta.ToString() == "2" ? tickets.v_TicketId + "\n-\nPROC - SOP" : tickets.i_tipoCuenta.ToString() == "3" ? tickets.v_TicketId + "\n-\nHOSP" : tickets.i_tipoCuenta.ToString() == "4" ? tickets.v_TicketId + "\n-\nI. SERV." : string.Empty, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
 
                                     foreach (var Detalle in detalletickets)
@@ -266,7 +262,7 @@ namespace NetPdf
                                     cell = new PdfPCell(new Phrase(tickets.d_Fecha.ToString().Split(' ')[0], fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
 
-                                    cell = new PdfPCell(new Phrase(tickets.i_tipoCuenta.ToString() == "1" ? tickets.v_TicketId + "\n-\nSOP" : tickets.i_tipoCuenta.ToString() == "2" ? tickets.v_TicketId + "\n-\nPROCEDIMIENTOS" : tickets.i_tipoCuenta.ToString() == "3" ? tickets.v_TicketId + "\n-\nHOSPITALIZACION" : tickets.i_tipoCuenta.ToString() == "4" ? tickets.v_TicketId + "\n-\nI. SERV." : string.Empty, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                    cell = new PdfPCell(new Phrase(tickets.i_tipoCuenta.ToString() == "1" ? tickets.v_TicketId + "\n-\nSOP" : tickets.i_tipoCuenta.ToString() == "2" ? tickets.v_TicketId + "\n-\nPROC - SOP" : tickets.i_tipoCuenta.ToString() == "3" ? tickets.v_TicketId + "\n-\nHOSP" : tickets.i_tipoCuenta.ToString() == "4" ? tickets.v_TicketId + "\n-\nI. SERV." : string.Empty, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
 
                                     foreach (var Detalle in detalletickets)
@@ -456,7 +452,7 @@ namespace NetPdf
                         sumaHabitacion += (decimal)totalParcialHabitacion;
                     }
                 }
-
+            #endregion
                 decimal totalFinal = sumaMedicina + sumaServicio + sumaHabitacion;
                 
                 decimal IGV = totalFinal * (decimal)0.18;
@@ -496,6 +492,10 @@ namespace NetPdf
             document.Add(filiationWorker);
             #endregion
 
+            #region ACTUALIZAR PRECIOS EN BASE
+            
+
+            #endregion
             document.Close();
             writer.Close();
             writer.Dispose();
