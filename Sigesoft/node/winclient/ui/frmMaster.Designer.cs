@@ -348,6 +348,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMaster_Load);
             this.Click += new System.EventHandler(this.frmMaster_Click);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMaster_KeyDown);
             this.MenuPpal.ResumeLayout(false);
             this.MenuPpal.PerformLayout();
             this.MenuPpal_1.ResumeLayout(false);

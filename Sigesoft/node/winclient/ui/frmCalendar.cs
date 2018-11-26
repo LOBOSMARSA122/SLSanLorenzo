@@ -1546,1806 +1546,1810 @@ namespace Sigesoft.Node.WinClient.UI
                     if ((bool) item.Cells["b_Seleccionar"].Value)
                     {
 
-                        var serviceId = item.Cells["v_ServiceId"].Value.ToString();
-                        var datosPaciente = oNatclarBL.DatosXmlNatclar(serviceId);
-                        var ubigeoPaciente = oNatclarBL.DevolverUbigue(datosPaciente.DepartamentoNacimiento, datosPaciente.ProvinciaNacimiento, datosPaciente.ProvinciaNacimiento);
-                        var datosServicioCompleto = consolidadoDatos.Find(p => p.ServicioId == serviceId);
+//                        var serviceId = item.Cells["v_ServiceId"].Value.ToString();
+//                        var datosPaciente = oNatclarBL.DatosXmlNatclar(serviceId);
+//                        var ubigeoPaciente = oNatclarBL.DevolverUbigue(datosPaciente.DepartamentoNacimiento, datosPaciente.ProvinciaNacimiento, datosPaciente.ProvinciaNacimiento);
+//                        var datosServicioCompleto = consolidadoDatos.Find(p => p.ServicioId == serviceId);
 
-                        #region Transformación de la data
-                        if (datosPaciente.FechaNacimientoSigesoft != null)
-                            datosPaciente.FechaNacimiento = datosPaciente.FechaNacimientoSigesoft.Value.ToString("dd/MM/yyyy");
-                        #endregion
+//                        #region Transformación de la data
+//                        if (datosPaciente.FechaNacimientoSigesoft != null)
+//                            datosPaciente.FechaNacimiento = datosPaciente.FechaNacimientoSigesoft.Value.ToString("dd/MM/yyyy");
+//                        #endregion
 
-                        #region XML
+//                        #region XML
 
-                        #region Datos Paciente
+//                        #region Datos Paciente
 
-                        var eDatosPaciente = new List<string>();
-                        eDatosPaciente.Add("HC");
-                        eDatosPaciente.Add("DNI");
-                        eDatosPaciente.Add("Sexo");
-                        eDatosPaciente.Add("PrimerApellido");
-                        eDatosPaciente.Add("SegundoApellido");
-                        eDatosPaciente.Add("Nombre");
-                        eDatosPaciente.Add("EstadoCivil");
-                        eDatosPaciente.Add("FechaNacimiento");
-                        eDatosPaciente.Add("ProvinciaNacimiento");
-                        eDatosPaciente.Add("DistritoNacimiento");
-                        eDatosPaciente.Add("DepartamentoNacimiento");
-                        eDatosPaciente.Add("email");
-                        eDatosPaciente.Add("ResidenciaActual");
-                        eDatosPaciente.Add("Direccion");
+//                        var eDatosPaciente = new List<string>();
+//                        eDatosPaciente.Add("HC");
+//                        eDatosPaciente.Add("DNI");
+//                        eDatosPaciente.Add("Sexo");
+//                        eDatosPaciente.Add("PrimerApellido");
+//                        eDatosPaciente.Add("SegundoApellido");
+//                        eDatosPaciente.Add("Nombre");
+//                        eDatosPaciente.Add("EstadoCivil");
+//                        eDatosPaciente.Add("FechaNacimiento");
+//                        eDatosPaciente.Add("ProvinciaNacimiento");
+//                        eDatosPaciente.Add("DistritoNacimiento");
+//                        eDatosPaciente.Add("DepartamentoNacimiento");
+//                        eDatosPaciente.Add("email");
+//                        eDatosPaciente.Add("ResidenciaActual");
+//                        eDatosPaciente.Add("Direccion");
 
-                        var xeRoot = new XElement("Registro");
-                        var xeDatosPaciente = new XElement("DatosPaciente");
+//                        var xeRoot = new XElement("Registro");
+//                        var xeDatosPaciente = new XElement("DatosPaciente");
 
-                        foreach (var eDatoPaciente in eDatosPaciente)
-                        {
-                            xeDatosPaciente.Add(new XElement(eDatoPaciente));
-                        }
+//                        foreach (var eDatoPaciente in eDatosPaciente)
+//                        {
+//                            xeDatosPaciente.Add(new XElement(eDatoPaciente));
+//                        }
 
                        
-                        foreach (var elementName in eDatosPaciente)
-                        {
-                            switch (elementName)
-                            {
-                                case "HC":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Hc;
-                                    break;
-                                case "DNI":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Dni;
-                                    break;
-                                case "Sexo":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Sexo.Value.ToString();
-                                    break;
-                                case "PrimerApellido":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.PrimerApellido;
-                                    break;
-                                case "SegundoApellido":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.SegundoApellido;
-                                    break;
-                                case "Nombre":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Nombre;
-                                    break;
-                                case "EstadoCivil":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.EstadoCivil.Value.ToString();
-                                    break;
-                                case "FechaNacimiento":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.FechaNacimiento;
-                                    break;
-                                case "ProvinciaNacimiento":
-                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.prov;
-                                    break;
-                                case "DistritoNacimiento":
-                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.distr;
-                                    break;
-                                case "DepartamentoNacimiento":
-                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.depar;
-                                    break;
-                                case "email":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Email;
-                                    break;
-                                case "ResidenciaActual":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.ResidenciaActual;
-                                    break;
-                                case "Direccion":
-                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Direccion;
-                                    break;
-                                default: break;
-                            }
+//                        foreach (var elementName in eDatosPaciente)
+//                        {
+//                            switch (elementName)
+//                            {
+//                                case "HC":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Hc;
+//                                    break;
+//                                case "DNI":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Dni;
+//                                    break;
+//                                case "Sexo":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Sexo.Value.ToString();
+//                                    break;
+//                                case "PrimerApellido":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.PrimerApellido;
+//                                    break;
+//                                case "SegundoApellido":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.SegundoApellido;
+//                                    break;
+//                                case "Nombre":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Nombre;
+//                                    break;
+//                                case "EstadoCivil":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.EstadoCivil.Value.ToString();
+//                                    break;
+//                                case "FechaNacimiento":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.FechaNacimiento;
+//                                    break;
+//                                case "ProvinciaNacimiento":
+//                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.prov;
+//                                    break;
+//                                case "DistritoNacimiento":
+//                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.distr;
+//                                    break;
+//                                case "DepartamentoNacimiento":
+//                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.depar;
+//                                    break;
+//                                case "email":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Email;
+//                                    break;
+//                                case "ResidenciaActual":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.ResidenciaActual;
+//                                    break;
+//                                case "Direccion":
+//                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Direccion;
+//                                    break;
+//                                default: break;
+//                            }
 
-                        }
-                        xeRoot.Add(new XElement(xeDatosPaciente));
+//                        }
+//                        xeRoot.Add(new XElement(xeDatosPaciente));
 
-                        #endregion
+//                        #endregion
 
-                        #region Datos del Examen
+//                        #region Datos del Examen
 
-                            var eDatosExamen = new List<string>();
-                            eDatosExamen.Add("IDEstructura");
-                            eDatosExamen.Add("IDCentro");
-                            eDatosExamen.Add("IDExamen");
-                            eDatosExamen.Add("IDActuacion");
-                            eDatosExamen.Add("TipoExamen");
-                            eDatosExamen.Add("IDEstado");
-                            eDatosExamen.Add("FechaRegistro");
+//                            var eDatosExamen = new List<string>();
+//                            eDatosExamen.Add("IDEstructura");
+//                            eDatosExamen.Add("IDCentro");
+//                            eDatosExamen.Add("IDExamen");
+//                            eDatosExamen.Add("IDActuacion");
+//                            eDatosExamen.Add("TipoExamen");
+//                            eDatosExamen.Add("IDEstado");
+//                            eDatosExamen.Add("FechaRegistro");
 
-                            var xeDatosExamen = new XElement("DatosExamen");
+//                            var xeDatosExamen = new XElement("DatosExamen");
 
-                            foreach (var eDatoExamen in eDatosExamen)
-                            {
-                                xeDatosExamen.Add(new XElement(eDatoExamen));
-                            }
+//                            foreach (var eDatoExamen in eDatosExamen)
+//                            {
+//                                xeDatosExamen.Add(new XElement(eDatoExamen));
+//                            }
 
-                            foreach (var edatoExamen in eDatosExamen)
-                            {
-                                switch (edatoExamen)
-                                {
-                                    case "IDEstructura":
-                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstructura;
-                                        break;
-                                    case "IDCentro":
-                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDCentro;
-                                        break;
-                                    case "IDExamen":
-                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDExamen;
-                                        break;
-                                    case "IDActuacion":
-                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDActuacion;
-                                        break;
-                                    case "TipoExamen":
-                                        var tipoExamen = "";
-                                        switch (datosPaciente.TipoExamen)
-                                        {
-                                            case (int) TypeESO.PreOcupacional:
-                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_INGRESO;
-                                                break;
-                                            case (int) TypeESO.PeriodicoAnual:
-                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_PERIODICO;
-                                                break;
-                                            case (int) TypeESO.Retiro:
-                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_RETIRO;
-                                                break;
-                                            case (int) TypeESO.Especialista:
-                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_ESPECIAL;
-                                                break;
-                                            case (int) TypeESO.Visita:
-                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_VISITA;
-                                                break;
-                                            default:
-                                                break;
-                                        }
+//                            foreach (var edatoExamen in eDatosExamen)
+//                            {
+//                                switch (edatoExamen)
+//                                {
+//                                    case "IDEstructura":
+//                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstructura;
+//                                        break;
+//                                    case "IDCentro":
+//                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDCentro;
+//                                        break;
+//                                    case "IDExamen":
+//                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDExamen;
+//                                        break;
+//                                    case "IDActuacion":
+//                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDActuacion;
+//                                        break;
+//                                    case "TipoExamen":
+//                                        var tipoExamen = "";
+//                                        switch (datosPaciente.TipoExamen)
+//                                        {
+//                                            case (int) TypeESO.PreOcupacional:
+//                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_INGRESO;
+//                                                break;
+//                                            case (int) TypeESO.PeriodicoAnual:
+//                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_PERIODICO;
+//                                                break;
+//                                            case (int) TypeESO.Retiro:
+//                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_RETIRO;
+//                                                break;
+//                                            case (int) TypeESO.Especialista:
+//                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_ESPECIAL;
+//                                                break;
+//                                            case (int) TypeESO.Visita:
+//                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_VISITA;
+//                                                break;
+//                                            default:
+//                                                break;
+//                                        }
 
-                                        xeDatosExamen.Element(edatoExamen).Value = tipoExamen;
-                                        break;
-                                    case "IDEstado":
-                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstado.ToString() == "0"
-                                            ? "A"
-                                            : "I";
-                                        break;
-                                    case "FechaRegistro":
-                                        xeDatosExamen.Element(edatoExamen).Value =
-                                            datosPaciente.FechaRegistro.Value.ToString("dd/MM/yyyy");
-                                        break;
+//                                        xeDatosExamen.Element(edatoExamen).Value = tipoExamen;
+//                                        break;
+//                                    case "IDEstado":
+//                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstado.ToString() == "0"
+//                                            ? "A"
+//                                            : "I";
+//                                        break;
+//                                    case "FechaRegistro":
+//                                        xeDatosExamen.Element(edatoExamen).Value =
+//                                            datosPaciente.FechaRegistro.Value.ToString("dd/MM/yyyy");
+//                                        break;
 
-                                    default:
-                                        break;
-                                }
-                            }
-                            xeRoot.Add(new XElement(xeDatosExamen));
+//                                    default:
+//                                        break;
+//                                }
+//                            }
+//                            xeRoot.Add(new XElement(xeDatosExamen));
 
-                        #endregion
+//                        #endregion
                            
-                        #region Analítica
-                            var perfiles = datosServicioCompleto.CampoValores.FindAll(p => p.CategoryId == (int)CategoryTypeExam.Laboratorio).GroupBy(p => p.IdComponente).Select(group => group.First()).ToList();
-                            if (perfiles.Count > 0)
-                            {
-                                var xeAnalitica = new XElement("Analitica");
-                                var contadorPerfil = 1;
+//                        #region Analítica
+//                            var perfiles = datosServicioCompleto.CampoValores.FindAll(p => p.CategoryId == (int)CategoryTypeExam.Laboratorio).GroupBy(p => p.IdComponente).Select(group => group.First()).ToList();
+//                            if (perfiles.Count > 0)
+//                            {
+//                                var xeAnalitica = new XElement("Analitica");
+//                                var contadorPerfil = 1;
 
                           
-                                foreach (var perfil in perfiles)
-                                {
-                                    var xePerfil = new XElement("Perfil" + contadorPerfil);
-                                    xePerfil.Value = CodigoNatclarLaboratorio(perfil.IdComponente);
+//                                foreach (var perfil in perfiles)
+//                                {
+//                                    var xePerfil = new XElement("Perfil" + contadorPerfil);
+//                                    xePerfil.Value = CodigoNatclarLaboratorio(perfil.IdComponente);
 
-                                    //var pruebas = perfiles.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
-                                    var contadorPrueba = 1;
+//                                    //var pruebas = perfiles.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
+//                                    var contadorPrueba = 1;
 
-                                    var campos = datosServicioCompleto.CampoValores.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
+//                                    var campos = datosServicioCompleto.CampoValores.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
 
-                                    foreach (var prueba in campos)
-                                    {
-                                        var xePrueba = new XElement("Prueba" + contadorPrueba);
-                                        xePerfil.Add(xePrueba);
-                                        xePerfil.Element("Prueba" + contadorPrueba).Value = CodigoNatclarLaboratorio(prueba.IdCampo);
-                                        contadorPrueba++;
+//                                    foreach (var prueba in campos)
+//                                    {
+//                                        var xePrueba = new XElement("Prueba" + contadorPrueba);
+//                                        xePerfil.Add(xePrueba);
+//                                        xePerfil.Element("Prueba" + contadorPrueba).Value = CodigoNatclarLaboratorio(prueba.IdCampo);
+//                                        contadorPrueba++;
 
-                                        var xeValorPrueba = new XElement("ValorPrueba1");
-                                        xeValorPrueba.Value = prueba.ValorName;
-                                        xePrueba.Add(xeValorPrueba);
+//                                        var xeValorPrueba = new XElement("ValorPrueba1");
+//                                        xeValorPrueba.Value = prueba.ValorName;
+//                                        xePrueba.Add(xeValorPrueba);
 
-                                    }
-                                    xeAnalitica.Add(xePerfil);
+//                                    }
+//                                    xeAnalitica.Add(xePerfil);
 
-                                    contadorPerfil ++;
-                                }
-                                xeRoot.Add(new XElement(xeAnalitica));
-                            }
-                                #endregion
+//                                    contadorPerfil ++;
+//                                }
+//                                xeRoot.Add(new XElement(xeAnalitica));
+//                            }
+//                                #endregion
                             
-                        #region Antecedentes Médicos
-                        var antecedentesMedicos = new HistoryBL().GetPersonMedicalHistoryPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId);
-                        if (antecedentesMedicos.Count > 0)
-                        {
+//                        #region Antecedentes Médicos
+//                        var antecedentesMedicos = new HistoryBL().GetPersonMedicalHistoryPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId);
+//                        if (antecedentesMedicos.Count > 0)
+//                        {
 
-                            var eAntecedentes = new List<string>();
-                            eAntecedentes.Add("CodigoCIE");
-                            eAntecedentes.Add("Descripcion");
-                            eAntecedentes.Add("FechaInicio");
-                            eAntecedentes.Add("FechaFin");
-                            eAntecedentes.Add("AntecedenteLaboral");
+//                            var eAntecedentes = new List<string>();
+//                            eAntecedentes.Add("CodigoCIE");
+//                            eAntecedentes.Add("Descripcion");
+//                            eAntecedentes.Add("FechaInicio");
+//                            eAntecedentes.Add("FechaFin");
+//                            eAntecedentes.Add("AntecedenteLaboral");
 
-                            var xeAntecedente = new XElement("ANTECEDENTES");
+//                            var xeAntecedente = new XElement("ANTECEDENTES");
 
-                            foreach (var eAntecedente in eAntecedentes)
-                            {
-                                xeAntecedente.Add(new XElement(eAntecedente));
-                            }
+//                            foreach (var eAntecedente in eAntecedentes)
+//                            {
+//                                xeAntecedente.Add(new XElement(eAntecedente));
+//                            }
 
-                            foreach (var antecedente in antecedentesMedicos)
-                            {
-                                foreach (var elementName in eAntecedentes)
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "CodigoCIE":
-                                            xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id;
-                                            break;
-                                        case "Descripcion":
-                                            xeAntecedente.Element(elementName).Value = antecedente.v_TreatmentSite;
-                                            break;
-                                        case "FechaInicio":
-                                            xeAntecedente.Element(elementName).Value =
-                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
-                                            break;
-                                        case "FechaFin":
-                                            xeAntecedente.Element(elementName).Value =
-                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
-                                            break;
-                                        case "AntecedenteLaboral":
-                                            xeAntecedente.Element(elementName).Value = antecedente.i_TypeDiagnosticId ==4? "S": "N";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    xeRoot.Add(new XElement(xeAntecedente));
-                                }
-                            }
+//                            foreach (var antecedente in antecedentesMedicos)
+//                            {
+//                                foreach (var elementName in eAntecedentes)
+//                                {
+//                                    switch (elementName)
+//                                    {
+//                                        case "CodigoCIE":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id;
+//                                            break;
+//                                        case "Descripcion":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.v_TreatmentSite;
+//                                            break;
+//                                        case "FechaInicio":
+//                                            xeAntecedente.Element(elementName).Value =
+//                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+//                                            break;
+//                                        case "FechaFin":
+//                                            xeAntecedente.Element(elementName).Value =
+//                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+//                                            break;
+//                                        case "AntecedenteLaboral":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.i_TypeDiagnosticId ==4? "S": "N";
+//                                            break;
+//                                        default:
+//                                            break;
+//                                    }
+//                                    xeRoot.Add(new XElement(xeAntecedente));
+//                                }
+//                            }
 
-                        }
+//                        }
 
-                #endregion
+//                #endregion
 
-                        #region Antecedentes Quirurgico
-                        var antecedentesQuirurgicos = new HistoryBL().GetPersonMedicalHistoryPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId).FindAll(p => p.v_DiseasesId == "N009-DD000000637");
-                        if (antecedentesQuirurgicos.Count > 0)
-                        {
+//                        #region Antecedentes Quirurgico
+//                        var antecedentesQuirurgicos = new HistoryBL().GetPersonMedicalHistoryPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId).FindAll(p => p.v_DiseasesId == "N009-DD000000637");
+//                        if (antecedentesQuirurgicos.Count > 0)
+//                        {
 
-                            var eAntecedentes = new List<string>();
-                            eAntecedentes.Add("CodigoCIE");
-                            eAntecedentes.Add("Descripcion");
-                            eAntecedentes.Add("FechaInicio");
-                            eAntecedentes.Add("FechaFin");
-                            eAntecedentes.Add("AntecedenteLaboral");
+//                            var eAntecedentes = new List<string>();
+//                            eAntecedentes.Add("CodigoCIE");
+//                            eAntecedentes.Add("Descripcion");
+//                            eAntecedentes.Add("FechaInicio");
+//                            eAntecedentes.Add("FechaFin");
+//                            eAntecedentes.Add("AntecedenteLaboral");
 
-                            var xeAntecedente = new XElement("ANTECEDENTES");
+//                            var xeAntecedente = new XElement("ANTECEDENTES");
 
-                            foreach (var eAntecedente in eAntecedentes)
-                            {
-                                xeAntecedente.Add(new XElement(eAntecedente));
-                            }
+//                            foreach (var eAntecedente in eAntecedentes)
+//                            {
+//                                xeAntecedente.Add(new XElement(eAntecedente));
+//                            }
 
-                            foreach (var antecedente in antecedentesQuirurgicos)
-                            {
-                                foreach (var elementName in eAntecedentes)
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "CodigoCIE":
-                                            xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id;
-                                            break;
-                                        case "Descripcion":
-                                            xeAntecedente.Element(elementName).Value = antecedente.v_TreatmentSite;
-                                            break;
-                                        case "FechaInicio":
-                                            xeAntecedente.Element(elementName).Value =
-                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
-                                            break;
-                                        case "FechaFin":
-                                            xeAntecedente.Element(elementName).Value =
-                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
-                                            break;
-                                        case "AntecedenteLaboral":
-                                            xeAntecedente.Element(elementName).Value = antecedente.i_TypeDiagnosticId == 4 ? "S" : "N";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    xeRoot.Add(new XElement(xeAntecedente));
-                                }
-                            }
+//                            foreach (var antecedente in antecedentesQuirurgicos)
+//                            {
+//                                foreach (var elementName in eAntecedentes)
+//                                {
+//                                    switch (elementName)
+//                                    {
+//                                        case "CodigoCIE":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id;
+//                                            break;
+//                                        case "Descripcion":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.v_TreatmentSite;
+//                                            break;
+//                                        case "FechaInicio":
+//                                            xeAntecedente.Element(elementName).Value =
+//                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+//                                            break;
+//                                        case "FechaFin":
+//                                            xeAntecedente.Element(elementName).Value =
+//                                                antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+//                                            break;
+//                                        case "AntecedenteLaboral":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.i_TypeDiagnosticId == 4 ? "S" : "N";
+//                                            break;
+//                                        default:
+//                                            break;
+//                                    }
+//                                    xeRoot.Add(new XElement(xeAntecedente));
+//                                }
+//                            }
 
-                        }
+//                        }
 
-                        #endregion
+//                        #endregion
                           
-                        #region audiometria
-                        var audiometriaValores = new ServiceBL().ValoresComponentesUserControl(_serviceId, Constants.AUDIOMETRIA_ID);
-                        if (audiometriaValores.Count > 0)
-                        {
+//                        #region audiometria
+//                        var audiometriaValores = new ServiceBL().ValoresComponentesUserControl(_serviceId, Constants.AUDIOMETRIA_ID);
+//                        if (audiometriaValores.Count > 0)
+//                        {
 
-                            var eAudiometria = new List<string>();
-                            eAudiometria.Add("ATAND125");
-                            eAudiometria.Add("ATAND250");
-                            eAudiometria.Add("ATAND500");
-                            eAudiometria.Add("ATAND750");
-                            eAudiometria.Add("ATAND1000");
-                            eAudiometria.Add("ATAND1500");
-                            eAudiometria.Add("ATAND2000");
-                            eAudiometria.Add("ATAND3000");
-                            eAudiometria.Add("ATAND4000");
-                            eAudiometria.Add("ATAND6000");
-                            eAudiometria.Add("ATAND8000");
+//                            var eAudiometria = new List<string>();
+//                            eAudiometria.Add("ATAND125");
+//                            eAudiometria.Add("ATAND250");
+//                            eAudiometria.Add("ATAND500");
+//                            eAudiometria.Add("ATAND750");
+//                            eAudiometria.Add("ATAND1000");
+//                            eAudiometria.Add("ATAND1500");
+//                            eAudiometria.Add("ATAND2000");
+//                            eAudiometria.Add("ATAND3000");
+//                            eAudiometria.Add("ATAND4000");
+//                            eAudiometria.Add("ATAND6000");
+//                            eAudiometria.Add("ATAND8000");
 
-                            eAudiometria.Add("ATANI125");
-                            eAudiometria.Add("ATANI250");
-                            eAudiometria.Add("ATANI500");
-                            eAudiometria.Add("ATANI750");
-                            eAudiometria.Add("ATANI1000");
-                            eAudiometria.Add("ATANI1500");
-                            eAudiometria.Add("ATANI2000");
-                            eAudiometria.Add("ATANI3000");
-                            eAudiometria.Add("ATANI4000");
-                            eAudiometria.Add("ATANI6000");
-                            eAudiometria.Add("ATANI8000");
+//                            eAudiometria.Add("ATANI125");
+//                            eAudiometria.Add("ATANI250");
+//                            eAudiometria.Add("ATANI500");
+//                            eAudiometria.Add("ATANI750");
+//                            eAudiometria.Add("ATANI1000");
+//                            eAudiometria.Add("ATANI1500");
+//                            eAudiometria.Add("ATANI2000");
+//                            eAudiometria.Add("ATANI3000");
+//                            eAudiometria.Add("ATANI4000");
+//                            eAudiometria.Add("ATANI6000");
+//                            eAudiometria.Add("ATANI8000");
 
-                            eAudiometria.Add("ATAED125");
-                            eAudiometria.Add("ATAED250");
-                            eAudiometria.Add("ATAED500");
-                            eAudiometria.Add("ATAED750");
-                            eAudiometria.Add("ATAED1000");
-                            eAudiometria.Add("ATAED1500");
-                            eAudiometria.Add("ATAED2000");
-                            eAudiometria.Add("ATAED3000");
-                            eAudiometria.Add("ATAED4000");
-                            eAudiometria.Add("ATAED6000");
-                            eAudiometria.Add("ATAED8000");
+//                            eAudiometria.Add("ATAED125");
+//                            eAudiometria.Add("ATAED250");
+//                            eAudiometria.Add("ATAED500");
+//                            eAudiometria.Add("ATAED750");
+//                            eAudiometria.Add("ATAED1000");
+//                            eAudiometria.Add("ATAED1500");
+//                            eAudiometria.Add("ATAED2000");
+//                            eAudiometria.Add("ATAED3000");
+//                            eAudiometria.Add("ATAED4000");
+//                            eAudiometria.Add("ATAED6000");
+//                            eAudiometria.Add("ATAED8000");
 
-                            eAudiometria.Add("ATAEI125");
-                            eAudiometria.Add("ATAEI250");
-                            eAudiometria.Add("ATAEI500");
-                            eAudiometria.Add("ATAEI750");
-                            eAudiometria.Add("ATAEI1000");
-                            eAudiometria.Add("ATAEI1500");
-                            eAudiometria.Add("ATAEI2000");
-                            eAudiometria.Add("ATAEI3000");
-                            eAudiometria.Add("ATAEI4000");
-                            eAudiometria.Add("ATAEI6000");
-                            eAudiometria.Add("ATAEI8000");
+//                            eAudiometria.Add("ATAEI125");
+//                            eAudiometria.Add("ATAEI250");
+//                            eAudiometria.Add("ATAEI500");
+//                            eAudiometria.Add("ATAEI750");
+//                            eAudiometria.Add("ATAEI1000");
+//                            eAudiometria.Add("ATAEI1500");
+//                            eAudiometria.Add("ATAEI2000");
+//                            eAudiometria.Add("ATAEI3000");
+//                            eAudiometria.Add("ATAEI4000");
+//                            eAudiometria.Add("ATAEI6000");
+//                            eAudiometria.Add("ATAEI8000");
 
-                            eAudiometria.Add("ATOND125");
-                            eAudiometria.Add("ATOND250");
-                            eAudiometria.Add("ATOND500");
-                            eAudiometria.Add("ATOND750");
-                            eAudiometria.Add("ATOND1000");
-                            eAudiometria.Add("ATOND1500");
-                            eAudiometria.Add("ATOND2000");
-                            eAudiometria.Add("ATOND3000");
-                            eAudiometria.Add("ATOND4000");
-                            eAudiometria.Add("ATOND6000");
-                            eAudiometria.Add("ATOND8000");
+//                            eAudiometria.Add("ATOND125");
+//                            eAudiometria.Add("ATOND250");
+//                            eAudiometria.Add("ATOND500");
+//                            eAudiometria.Add("ATOND750");
+//                            eAudiometria.Add("ATOND1000");
+//                            eAudiometria.Add("ATOND1500");
+//                            eAudiometria.Add("ATOND2000");
+//                            eAudiometria.Add("ATOND3000");
+//                            eAudiometria.Add("ATOND4000");
+//                            eAudiometria.Add("ATOND6000");
+//                            eAudiometria.Add("ATOND8000");
 
-                            eAudiometria.Add("ATONI125");
-                            eAudiometria.Add("ATONI250");
-                            eAudiometria.Add("ATONI500");
-                            eAudiometria.Add("ATONI750");
-                            eAudiometria.Add("ATONI1000");
-                            eAudiometria.Add("ATONI1500");
-                            eAudiometria.Add("ATONI2000");
-                            eAudiometria.Add("ATONI3000");
-                            eAudiometria.Add("ATONI4000");
-                            eAudiometria.Add("ATONI6000");
-                            eAudiometria.Add("ATONI8000");
+//                            eAudiometria.Add("ATONI125");
+//                            eAudiometria.Add("ATONI250");
+//                            eAudiometria.Add("ATONI500");
+//                            eAudiometria.Add("ATONI750");
+//                            eAudiometria.Add("ATONI1000");
+//                            eAudiometria.Add("ATONI1500");
+//                            eAudiometria.Add("ATONI2000");
+//                            eAudiometria.Add("ATONI3000");
+//                            eAudiometria.Add("ATONI4000");
+//                            eAudiometria.Add("ATONI6000");
+//                            eAudiometria.Add("ATONI8000");
 
-                            eAudiometria.Add("ATOED125");
-                            eAudiometria.Add("ATOED250");
-                            eAudiometria.Add("ATOED500");
-                            eAudiometria.Add("ATOED750");
-                            eAudiometria.Add("ATOED1000");
-                            eAudiometria.Add("ATOED1500");
-                            eAudiometria.Add("ATOED2000");
-                            eAudiometria.Add("ATOED3000");
-                            eAudiometria.Add("ATOED4000");
-                            eAudiometria.Add("ATOED6000");
-                            eAudiometria.Add("ATOED8000");
+//                            eAudiometria.Add("ATOED125");
+//                            eAudiometria.Add("ATOED250");
+//                            eAudiometria.Add("ATOED500");
+//                            eAudiometria.Add("ATOED750");
+//                            eAudiometria.Add("ATOED1000");
+//                            eAudiometria.Add("ATOED1500");
+//                            eAudiometria.Add("ATOED2000");
+//                            eAudiometria.Add("ATOED3000");
+//                            eAudiometria.Add("ATOED4000");
+//                            eAudiometria.Add("ATOED6000");
+//                            eAudiometria.Add("ATOED8000");
 
-                            eAudiometria.Add("ATOEI125");
-                            eAudiometria.Add("ATOEI250");
-                            eAudiometria.Add("ATOEI500");
+//                            eAudiometria.Add("ATOEI125");
+//                            eAudiometria.Add("ATOEI250");
+//                            eAudiometria.Add("ATOEI500");
 
-                            eAudiometria.Add("ATOEI750");
-                            eAudiometria.Add("ATOEI1000");
-                            eAudiometria.Add("ATOEI1500");
-                            eAudiometria.Add("ATOEI2000");
-                            eAudiometria.Add("ATOEI3000");
-                            eAudiometria.Add("ATOEI4000");
-                            eAudiometria.Add("ATOEI6000");
-                            eAudiometria.Add("ATOEI8000");
-                            eAudiometria.Add("DESCATOTOD");
-                            eAudiometria.Add("OBSATOTOD");
+//                            eAudiometria.Add("ATOEI750");
+//                            eAudiometria.Add("ATOEI1000");
+//                            eAudiometria.Add("ATOEI1500");
+//                            eAudiometria.Add("ATOEI2000");
+//                            eAudiometria.Add("ATOEI3000");
+//                            eAudiometria.Add("ATOEI4000");
+//                            eAudiometria.Add("ATOEI6000");
+//                            eAudiometria.Add("ATOEI8000");
+//                            eAudiometria.Add("DESCATOTOD");
+//                            eAudiometria.Add("OBSATOTOD");
 
-                            eAudiometria.Add("DESCATOTOI");
-                            eAudiometria.Add("OBSATOTOI");
+//                            eAudiometria.Add("DESCATOTOI");
+//                            eAudiometria.Add("OBSATOTOI");
 
-                            var xeAudiometria = new XElement("Audiometría");
+//                            var xeAudiometria = new XElement("Audiometría");
 
-                            foreach (var eCampo in eAudiometria)
-                            {
-                                xeAudiometria.Add(new XElement(eCampo));
-                            }
+//                            foreach (var eCampo in eAudiometria)
+//                            {
+//                                xeAudiometria.Add(new XElement(eCampo));
+//                            }
 
-                        foreach (var elementName in eAudiometria)
-                        {
-                            switch (elementName)
-                            {
-                                case "ATAND125":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
-                                    break;
-                                case "ATAND250":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_250) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_250).v_Value1;
-                                    break;
-                                case "ATAND500":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_500) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_500).v_Value1;
-                                    break;
-                                case "ATAND750":
-                                    xeAudiometria.Element(elementName).Value = "";//audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
-                                    break;
-                                case "ATAND1000":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_1000) == null ? "": audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_1000).v_Value1;
-                                    break;
-                                case "ATAND1500":
-                                    xeAudiometria.Element(elementName).Value = "";//audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
-                                    break;
-                                case "ATAND2000":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_2000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_2000).v_Value1;
-                                    break;
-                                case "ATAND3000":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_3000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_3000).v_Value1;
-                                    break;
-                                case "ATAND4000":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_4000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_4000).v_Value1;
-                                    break;
-                                case "ATAND6000":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_6000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_6000).v_Value1;
-                                    break;
-                                case "ATAND8000":
-                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_8000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_8000).v_Value1;
-                                    break;
+//                        foreach (var elementName in eAudiometria)
+//                        {
+//                            switch (elementName)
+//                            {
+//                                case "ATAND125":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
+//                                    break;
+//                                case "ATAND250":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_250) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_250).v_Value1;
+//                                    break;
+//                                case "ATAND500":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_500) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_500).v_Value1;
+//                                    break;
+//                                case "ATAND750":
+//                                    xeAudiometria.Element(elementName).Value = "";//audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
+//                                    break;
+//                                case "ATAND1000":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_1000) == null ? "": audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_1000).v_Value1;
+//                                    break;
+//                                case "ATAND1500":
+//                                    xeAudiometria.Element(elementName).Value = "";//audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
+//                                    break;
+//                                case "ATAND2000":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_2000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_2000).v_Value1;
+//                                    break;
+//                                case "ATAND3000":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_3000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_3000).v_Value1;
+//                                    break;
+//                                case "ATAND4000":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_4000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_4000).v_Value1;
+//                                    break;
+//                                case "ATAND6000":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_6000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_6000).v_Value1;
+//                                    break;
+//                                case "ATAND8000":
+//                                    xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_8000) == null ? "" : audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_8000).v_Value1;
+//                                    break;
 
 
-                                default:
-                                    break;
-                            }
-                        }
-                        xeRoot.Add(new XElement(xeAudiometria));
+//                                default:
+//                                    break;
+//                            }
+//                        }
+//                        xeRoot.Add(new XElement(xeAudiometria));
 
-                        }
+//                        }
 
-                        #endregion
+//                        #endregion
                            
-                        #region Antecedentes
-                        var constantes = new ServiceBL().ValoresComponenteconstantes(_serviceId);
-                        if (constantes.Count > 0)
-                        {
-                            var eConstantes = new List<string>();
-                            eConstantes.Add("Peso");
-                            eConstantes.Add("Talla");
-                            eConstantes.Add("IMC");
-                            eConstantes.Add("PresionSistolica");
-                            eConstantes.Add("PresionDiastolica");
-                            eConstantes.Add("Respiracion");
-                            eConstantes.Add("Pulso");
-                            eConstantes.Add("SaturacionOxigeno");
-                            eConstantes.Add("Cintura");
-                            eConstantes.Add("Cadera");
-                            eConstantes.Add("ICC");
-                            eConstantes.Add("Temperatura");
-                            eConstantes.Add("FechaUltimaRegla");
+//                        #region Antecedentes
+//                        var constantes = new ServiceBL().ValoresComponenteconstantes(_serviceId);
+//                        if (constantes.Count > 0)
+//                        {
+//                            var eConstantes = new List<string>();
+//                            eConstantes.Add("Peso");
+//                            eConstantes.Add("Talla");
+//                            eConstantes.Add("IMC");
+//                            eConstantes.Add("PresionSistolica");
+//                            eConstantes.Add("PresionDiastolica");
+//                            eConstantes.Add("Respiracion");
+//                            eConstantes.Add("Pulso");
+//                            eConstantes.Add("SaturacionOxigeno");
+//                            eConstantes.Add("Cintura");
+//                            eConstantes.Add("Cadera");
+//                            eConstantes.Add("ICC");
+//                            eConstantes.Add("Temperatura");
+//                            eConstantes.Add("FechaUltimaRegla");
 
-                            var xeConstantes = new XElement("Constantes");
+//                            var xeConstantes = new XElement("Constantes");
 
-                            foreach (var eConstante in eConstantes)
-                            {
-                                xeConstantes.Add(new XElement(eConstante));
-                            }
+//                            foreach (var eConstante in eConstantes)
+//                            {
+//                                xeConstantes.Add(new XElement(eConstante));
+//                            }
 
-                            foreach (var elementName in eConstantes)
-                            {
-                                switch (elementName)
-                                {
-                                    case "Peso":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
-                                        break;
-                                    case "Talla":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID).v_Value1;
-                                        break;
-                                    case "IMC":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_IMC_ID).v_Value1;
-                                        break;
-                                    case "PresionSistolica":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAS_ID).v_Value1;
-                                        break;
-                                    case "PresionDiastolica":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAD_ID).v_Value1;
-                                        break;
-                                    case "Respiracion":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID).v_Value1;
-                                        break;
-                                    case "Pulso":
-                                        xeConstantes.Element(elementName).Value = "";//constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
-                                        break;
-                                    case "SaturacionOxigeno":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_SAT_O2_ID).v_Value1;
-                                        break;
-                                    case "Cintura":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_INDICE_CINTURA_ID).v_Value1;
-                                        break;
-                                    case "Cadera":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID).v_Value1;
-                                        break;
-                                    case "ICC":
-                                        xeConstantes.Element(elementName).Value = "";//constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
-                                        break;
-                                    case "Temperatura":
-                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_TEMPERATURA_ID).v_Value1;
-                                        break;
-                                    case "FechaUltimaRegla":
-                                        xeConstantes.Element(elementName).Value = datosPaciente.FechaUltimaRegla == null ? "" : datosPaciente.FechaUltimaRegla;
-                                        break;
-                                    default:
-                                        break;
-                                }
+//                            foreach (var elementName in eConstantes)
+//                            {
+//                                switch (elementName)
+//                                {
+//                                    case "Peso":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
+//                                        break;
+//                                    case "Talla":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID).v_Value1;
+//                                        break;
+//                                    case "IMC":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_IMC_ID).v_Value1;
+//                                        break;
+//                                    case "PresionSistolica":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAS_ID).v_Value1;
+//                                        break;
+//                                    case "PresionDiastolica":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAD_ID).v_Value1;
+//                                        break;
+//                                    case "Respiracion":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID).v_Value1;
+//                                        break;
+//                                    case "Pulso":
+//                                        xeConstantes.Element(elementName).Value = "";//constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
+//                                        break;
+//                                    case "SaturacionOxigeno":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_SAT_O2_ID).v_Value1;
+//                                        break;
+//                                    case "Cintura":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_INDICE_CINTURA_ID).v_Value1;
+//                                        break;
+//                                    case "Cadera":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID).v_Value1;
+//                                        break;
+//                                    case "ICC":
+//                                        xeConstantes.Element(elementName).Value = "";//constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
+//                                        break;
+//                                    case "Temperatura":
+//                                        xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_TEMPERATURA_ID).v_Value1;
+//                                        break;
+//                                    case "FechaUltimaRegla":
+//                                        xeConstantes.Element(elementName).Value = datosPaciente.FechaUltimaRegla == null ? "" : datosPaciente.FechaUltimaRegla;
+//                                        break;
+//                                    default:
+//                                        break;
+//                                }
                                          
-                            }
-                            xeRoot.Add(new XElement(xeConstantes));
+//                            }
+//                            xeRoot.Add(new XElement(xeConstantes));
 
-                        }
+//                        }
 
-                        #endregion
+//                        #endregion
 
-                        #region Datos Episodio
+//                        #region Datos Episodio
 
-                            var eDatosEpisodio = new List<string>();
-                            eDatosEpisodio.Add("EmpresaTitular");
-                            eDatosEpisodio.Add("EmpTitularRUC");
-                            eDatosEpisodio.Add("Contratista");
-                            eDatosEpisodio.Add("ContratanteCodigo");
-                            eDatosEpisodio.Add("Unidad");
-                            eDatosEpisodio.Add("UnidadCodigo");
-                            eDatosEpisodio.Add("Ocupacion");
-                            eDatosEpisodio.Add("GradoInstruccion");
-                            eDatosEpisodio.Add("ZonaTrabajo");
-                            eDatosEpisodio.Add("AreaTrabajo");
-                            eDatosEpisodio.Add("FechaExamen");
-                            eDatosEpisodio.Add("TipodeExamen");
-                            eDatosEpisodio.Add("TipoTarea");
-                            eDatosEpisodio.Add("Observaciones");
-                            eDatosEpisodio.Add("Vigencia");
-                            eDatosEpisodio.Add("Caducidad");
-
-
-                            var xeDatosEpisodio = new XElement("DatosEpisodio");
-
-                            foreach (var eDatoEpisodio in eDatosEpisodio)
-                            {
-                                xeDatosEpisodio.Add(new XElement(eDatoEpisodio));
-                            }
-
-                            foreach (var elementName in eDatosEpisodio)
-                            {
-                                switch (elementName)
-                                {
-                                    case "EmpresaTitular":
-                                        xeDatosEpisodio.Element(elementName).Value = "";// datosPaciente.Direccion;
-                                        break;
-                                    case "EmpTitularRUC":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "Contratista":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "ContratanteCodigo":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "Unidad":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "UnidadCodigo":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "Ocupacion":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "GradoInstruccion":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "ZonaTrabajo":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "AreaTrabajo":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "FechaExamen":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "TipodeExamen":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "TipoTarea":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "Observaciones":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "Vigencia":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    case "Caducidad":
-                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
-                                        break;
-                                    default:
-                                        break;
-                                }
-
-                            }
-                            xeRoot.Add(new XElement(xeDatosEpisodio));
+//                            var eDatosEpisodio = new List<string>();
+//                            eDatosEpisodio.Add("EmpresaTitular");
+//                            eDatosEpisodio.Add("EmpTitularRUC");
+//                            eDatosEpisodio.Add("Contratista");
+//                            eDatosEpisodio.Add("ContratanteCodigo");
+//                            eDatosEpisodio.Add("Unidad");
+//                            eDatosEpisodio.Add("UnidadCodigo");
+//                            eDatosEpisodio.Add("Ocupacion");
+//                            eDatosEpisodio.Add("GradoInstruccion");
+//                            eDatosEpisodio.Add("ZonaTrabajo");
+//                            eDatosEpisodio.Add("AreaTrabajo");
+//                            eDatosEpisodio.Add("FechaExamen");
+//                            eDatosEpisodio.Add("TipodeExamen");
+//                            eDatosEpisodio.Add("TipoTarea");
+//                            eDatosEpisodio.Add("Observaciones");
+//                            eDatosEpisodio.Add("Vigencia");
+//                            eDatosEpisodio.Add("Caducidad");
 
 
-                        #endregion
+//                            var xeDatosEpisodio = new XElement("DatosEpisodio");
+
+//                            foreach (var eDatoEpisodio in eDatosEpisodio)
+//                            {
+//                                xeDatosEpisodio.Add(new XElement(eDatoEpisodio));
+//                            }
+
+//                            foreach (var elementName in eDatosEpisodio)
+//                            {
+//                                switch (elementName)
+//                                {
+//                                    case "EmpresaTitular":
+//                                        xeDatosEpisodio.Element(elementName).Value = "";// datosPaciente.Direccion;
+//                                        break;
+//                                    case "EmpTitularRUC":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "Contratista":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "ContratanteCodigo":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "Unidad":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "UnidadCodigo":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "Ocupacion":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "GradoInstruccion":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "ZonaTrabajo":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "AreaTrabajo":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "FechaExamen":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "TipodeExamen":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "TipoTarea":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "Observaciones":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "Vigencia":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    case "Caducidad":
+//                                        xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+//                                        break;
+//                                    default:
+//                                        break;
+//                                }
+
+//                            }
+//                            xeRoot.Add(new XElement(xeDatosEpisodio));
+
+
+//                        #endregion
                            
-                        #region DOCIMG
-                        var docimgs = new ServiceBL().GetFilePdfsByServiceId(ref objOperationResult, _serviceId);
-                        if (docimgs.Count > 0)
-                        {
-                            var eDocimgs = new List<string>();
-                            eDocimgs.Add("Fecha");
-                            eDocimgs.Add("Tipo");
-                            eDocimgs.Add("Codigo");
-                            eDocimgs.Add("Titulo");
-                            eDocimgs.Add("Observaciones");
-                            eDocimgs.Add("IdentificadorDocumento");
+//                        #region DOCIMG
+//                        var docimgs = new ServiceBL().GetFilePdfsByServiceId(ref objOperationResult, _serviceId);
+//                        if (docimgs.Count > 0)
+//                        {
+//                            var eDocimgs = new List<string>();
+//                            eDocimgs.Add("Fecha");
+//                            eDocimgs.Add("Tipo");
+//                            eDocimgs.Add("Codigo");
+//                            eDocimgs.Add("Titulo");
+//                            eDocimgs.Add("Observaciones");
+//                            eDocimgs.Add("IdentificadorDocumento");
 
-                            var xeDocimg = new XElement("DOCIMG");
+//                            var xeDocimg = new XElement("DOCIMG");
 
-                            foreach (var eDocimg in eDocimgs)
-                            {
-                                xeDocimg.Add(new XElement(eDocimg));
-                            }
+//                            foreach (var eDocimg in eDocimgs)
+//                            {
+//                                xeDocimg.Add(new XElement(eDocimg));
+//                            }
 
-                            foreach (var docimg in docimgs)
-                            {
-                                //Crear Carpeta
-                                var ext = Path.GetExtension(docimg.v_FileName);
-                                var splitName = docimg.v_FileName.Split('-');
-                                var consultorio = splitName[2].Substring(0, splitName[2].Length - ext.Length);
-                                CreateEmptyFile(folderBrowserDialog1.SelectedPath + @"\" + consultorio, consultorio, docimg.v_FileName, ext);
+//                            foreach (var docimg in docimgs)
+//                            {
+//                                //Crear Carpeta
+//                                var ext = Path.GetExtension(docimg.v_FileName);
+//                                var splitName = docimg.v_FileName.Split('-');
+//                                var consultorio = splitName[2].Substring(0, splitName[2].Length - ext.Length);
+//                                CreateEmptyFile(folderBrowserDialog1.SelectedPath + @"\" + consultorio, consultorio, docimg.v_FileName, ext);
 
-                                foreach (var elementName in eDocimgs)
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "Fecha":
-                                            xeDocimg.Element(elementName).Value = docimg.FechaServicio.Value.ToString("dd/MM/yyyy");
-                                            break;
-                                        case "Tipo":
-                                            xeDocimg.Element(elementName).Value = ObtenerTipoEstudio(docimg.v_FileName);
-                                            break;
-                                        case "Codigo":
-                                            xeDocimg.Element(elementName).Value = ObtenerCodigo(docimg.v_FileName);
-                                            break;
-                                        case "Titulo":
-                                            xeDocimg.Element(elementName).Value = docimg.v_FileName;
-                                            break;
-                                        case "Observaciones":
-                                            xeDocimg.Element(elementName).Value = "";
-                                            break;
-                                        case "IdentificadorDocumento":
-                                            xeDocimg.Element(elementName).Value = docimg.v_FileName;
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    xeRoot.Add(new XElement(xeDocimg));
-                                }
-                            }
+//                                foreach (var elementName in eDocimgs)
+//                                {
+//                                    switch (elementName)
+//                                    {
+//                                        case "Fecha":
+//                                            xeDocimg.Element(elementName).Value = docimg.FechaServicio.Value.ToString("dd/MM/yyyy");
+//                                            break;
+//                                        case "Tipo":
+//                                            xeDocimg.Element(elementName).Value = ObtenerTipoEstudio(docimg.v_FileName);
+//                                            break;
+//                                        case "Codigo":
+//                                            xeDocimg.Element(elementName).Value = ObtenerCodigo(docimg.v_FileName);
+//                                            break;
+//                                        case "Titulo":
+//                                            xeDocimg.Element(elementName).Value = docimg.v_FileName;
+//                                            break;
+//                                        case "Observaciones":
+//                                            xeDocimg.Element(elementName).Value = "";
+//                                            break;
+//                                        case "IdentificadorDocumento":
+//                                            xeDocimg.Element(elementName).Value = docimg.v_FileName;
+//                                            break;
+//                                        default:
+//                                            break;
+//                                    }
+//                                    xeRoot.Add(new XElement(xeDocimg));
+//                                }
+//                            }
 
-                        }
+//                        }
 
-                    #endregion
+//                    #endregion
 
-                        #region ExFISICO
+//                        #region ExFISICO
 
-                        var examenFisico = new ServiceBL().ValoresComponenteExamenFisico(_serviceId);
-                        var examenFisicoId = examenFisico == null ? "": examenFisico[0].v_ComponentId;
-                        #region ...
-                            var eExFisico = new List<string>();
-                            eExFisico.Add("CodAnamnesis");
-                            eExFisico.Add("ObsAnamnesis");
-                            eExFisico.Add("CodEctoscopia");
-                            eExFisico.Add("ObsEctoscopia");
-                            eExFisico.Add("CodPiel");
-                            eExFisico.Add("ObsPiel");
-                            eExFisico.Add("CodCabellos");
-                            eExFisico.Add("ObsCabellos");
-                            eExFisico.Add("CodOidos");
-                            eExFisico.Add("ObsOidos");
-                            eExFisico.Add("CodCabeza");
-                            eExFisico.Add("ObsCabeza");
-                            eExFisico.Add("CodCuello");
-                            eExFisico.Add("ObsCuello");
+//                        var examenFisico = new ServiceBL().ValoresComponenteExamenFisico(_serviceId);
+//                        var examenFisicoId = examenFisico == null ? "": examenFisico[0].v_ComponentId;
+//                        #region ...
+//                            var eExFisico = new List<string>();
+//                            eExFisico.Add("CodAnamnesis");
+//                            eExFisico.Add("ObsAnamnesis");
+//                            eExFisico.Add("CodEctoscopia");
+//                            eExFisico.Add("ObsEctoscopia");
+//                            eExFisico.Add("CodPiel");
+//                            eExFisico.Add("ObsPiel");
+//                            eExFisico.Add("CodCabellos");
+//                            eExFisico.Add("ObsCabellos");
+//                            eExFisico.Add("CodOidos");
+//                            eExFisico.Add("ObsOidos");
+//                            eExFisico.Add("CodCabeza");
+//                            eExFisico.Add("ObsCabeza");
+//                            eExFisico.Add("CodCuello");
+//                            eExFisico.Add("ObsCuello");
 
-                            eExFisico.Add("CodNariz");
-                            eExFisico.Add("ObsNariz");
-                            eExFisico.Add("CodBoca");
-                            eExFisico.Add("ObsBoca");
-                            eExFisico.Add("CodFaringe");
-                            eExFisico.Add("ObsFaringe");
-                            eExFisico.Add("CodLaringe");
-                            eExFisico.Add("ObsLaringe");
-                            eExFisico.Add("CodAparatoRespiratorio");
-                            eExFisico.Add("ObsAparatoRespiratorio");
+//                            eExFisico.Add("CodNariz");
+//                            eExFisico.Add("ObsNariz");
+//                            eExFisico.Add("CodBoca");
+//                            eExFisico.Add("ObsBoca");
+//                            eExFisico.Add("CodFaringe");
+//                            eExFisico.Add("ObsFaringe");
+//                            eExFisico.Add("CodLaringe");
+//                            eExFisico.Add("ObsLaringe");
+//                            eExFisico.Add("CodAparatoRespiratorio");
+//                            eExFisico.Add("ObsAparatoRespiratorio");
 
-                            eExFisico.Add("CodAparatoCardiovascular");
-                            eExFisico.Add("ObsAparatoCardiovascular");
-                            eExFisico.Add("CodAbdomen");
-                            eExFisico.Add("DesAbdomen");
-                            eExFisico.Add("CodOrganosGenitales");
-                            eExFisico.Add("DesOrganosGenitales");
-                            eExFisico.Add("CodMSD");
-                            eExFisico.Add("ObsMSD");
-                            eExFisico.Add("CodMSI");
-                            eExFisico.Add("ObsMSI");
+//                            eExFisico.Add("CodAparatoCardiovascular");
+//                            eExFisico.Add("ObsAparatoCardiovascular");
+//                            eExFisico.Add("CodAbdomen");
+//                            eExFisico.Add("DesAbdomen");
+//                            eExFisico.Add("CodOrganosGenitales");
+//                            eExFisico.Add("DesOrganosGenitales");
+//                            eExFisico.Add("CodMSD");
+//                            eExFisico.Add("ObsMSD");
+//                            eExFisico.Add("CodMSI");
+//                            eExFisico.Add("ObsMSI");
 
-                            eExFisico.Add("CodMID");
-                            eExFisico.Add("ObsMID");
-                            eExFisico.Add("CodMII");
-                            eExFisico.Add("ObsMII");
-                            eExFisico.Add("CodMovimientoFuerza");
-                            eExFisico.Add("ObsMovimientoFuerza");
-                            eExFisico.Add("CodReflejosOsteotendinos");
-                            eExFisico.Add("ObsReflejosOsteotendinos");
-                            eExFisico.Add("CodMarcha");
-                            eExFisico.Add("ObsMarcha");
+//                            eExFisico.Add("CodMID");
+//                            eExFisico.Add("ObsMID");
+//                            eExFisico.Add("CodMII");
+//                            eExFisico.Add("ObsMII");
+//                            eExFisico.Add("CodMovimientoFuerza");
+//                            eExFisico.Add("ObsMovimientoFuerza");
+//                            eExFisico.Add("CodReflejosOsteotendinos");
+//                            eExFisico.Add("ObsReflejosOsteotendinos");
+//                            eExFisico.Add("CodMarcha");
+//                            eExFisico.Add("ObsMarcha");
 
-                            eExFisico.Add("CodColumnaVertebral");
-                            eExFisico.Add("ObsColumnaVertebral");
-                            eExFisico.Add("CodTactoRectal");
-                            eExFisico.Add("ObsTactoRectal");
-                            eExFisico.Add("CodAnillosInguinales");
-                            eExFisico.Add("ObsAnillosInguinales");
-                            eExFisico.Add("CodSistemaLinfatico");
-                            eExFisico.Add("ObsSistemaLinfatico");
-                            eExFisico.Add("CodHernias");
-                            eExFisico.Add("ObsHernias");
+//                            eExFisico.Add("CodColumnaVertebral");
+//                            eExFisico.Add("ObsColumnaVertebral");
+//                            eExFisico.Add("CodTactoRectal");
+//                            eExFisico.Add("ObsTactoRectal");
+//                            eExFisico.Add("CodAnillosInguinales");
+//                            eExFisico.Add("ObsAnillosInguinales");
+//                            eExFisico.Add("CodSistemaLinfatico");
+//                            eExFisico.Add("ObsSistemaLinfatico");
+//                            eExFisico.Add("CodHernias");
+//                            eExFisico.Add("ObsHernias");
 
-                            eExFisico.Add("CodVarices");
-                            eExFisico.Add("ObsVarices");
-                            eExFisico.Add("CodGanglios");
-                            eExFisico.Add("ObsGanglios");
-                            eExFisico.Add("CodReflejosPupilaresOD");
-                            eExFisico.Add("bsReflejosPupilaresOD");
-                            eExFisico.Add("CodReflejosPupilaresOI");
-                            eExFisico.Add("ObsReflejosPupilaresOI");
-                            eExFisico.Add("CodOjos");
-                            eExFisico.Add("DesOjos");
+//                            eExFisico.Add("CodVarices");
+//                            eExFisico.Add("ObsVarices");
+//                            eExFisico.Add("CodGanglios");
+//                            eExFisico.Add("ObsGanglios");
+//                            eExFisico.Add("CodReflejosPupilaresOD");
+//                            eExFisico.Add("bsReflejosPupilaresOD");
+//                            eExFisico.Add("CodReflejosPupilaresOI");
+//                            eExFisico.Add("ObsReflejosPupilaresOI");
+//                            eExFisico.Add("CodOjos");
+//                            eExFisico.Add("DesOjos");
 
                         
 
-                        #endregion
-                            var xeExFISICO = new XElement("ExFISICO");
-
-                            foreach (var itemExFisico in eExFisico)
-                            {
-                                xeExFISICO.Add(new XElement(itemExFisico));
-                            }
-
-                        #region ...
-                            foreach (var elementName in eExFisico)
-                            {
-                                switch (elementName)
-                                {
-                                    case "CodAnamnesis":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "ObsAnamnesis":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "CodEctoscopia":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_ECTOSCOPIA_ID) == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID).v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "ObsEctoscopia":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "CodPiel":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "ObsPiel":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "CodCabellos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "ObsCabellos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "CodOidos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "ObsOidos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-                                    case "CodCabeza":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_CABEZA_ID) == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_CABEZA_ID).v_Value1Name;
-
-                                        break;
-                                    case "ObsCabeza":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION) == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION).v_Value1;
-
-                                        break;
-                                    case "CodCuello":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-
-                                        break;
-
-                                    case "ObsCuello":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    //---------------
-
-                                    case "CodNariz":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsNariz":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodBoca":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsBoca":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodFaringe":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsFaringe":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodLaringe":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsLaringe":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodAparatoRespiratorio":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsAparatoRespiratorio":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    //---------------
-
-                                    case "CodAparatoCardiovascular":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsAparatoCardiovascular":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodAbdomen":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "DesAbdomen":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodOrganosGenitales":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "DesOrganosGenitales":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodMSD":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsMSD":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodMSI":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsMSI":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    //---------------
-
-                                    case "CodMID":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsMID":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodMII":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsMII":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodMovimientoFuerza":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsMovimientoFuerza":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodReflejosOsteotendinos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsReflejosOsteotendinos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodMarcha":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsMarcha":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    //---------------
-
-                                    case "CodColumnaVertebral":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsColumnaVertebral":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodTactoRectal":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsTactoRectal":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodAnillosInguinales":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsAnillosInguinales":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodSistemaLinfatico":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsSistemaLinfatico":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodHernias":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsHernias":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    //---------------
-
-                                    case "CodVarices":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsVarices":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodGanglios":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsGanglios":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodReflejosPupilaresOD":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "bsReflejosPupilaresOD":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodReflejosPupilaresOI":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "ObsReflejosPupilaresOI":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "CodOjos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-                                    case "DesOjos":
-                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        else
-                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                        break;
-
-
-                                    default: break;
-                                }
-
-                            }
+//                        #endregion
+//                            var xeExFISICO = new XElement("ExFISICO");
+
+//                            foreach (var itemExFisico in eExFisico)
+//                            {
+//                                xeExFISICO.Add(new XElement(itemExFisico));
+//                            }
+
+//                        #region ...
+//                            foreach (var elementName in eExFisico)
+//                            {
+//                                switch (elementName)
+//                                {
+//                                    case "CodAnamnesis":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "ObsAnamnesis":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "CodEctoscopia":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_ECTOSCOPIA_ID) == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID).v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "ObsEctoscopia":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "CodPiel":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "ObsPiel":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "CodCabellos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "ObsCabellos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "CodOidos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "ObsOidos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+//                                    case "CodCabeza":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_CABEZA_ID) == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_CABEZA_ID).v_Value1Name;
+
+//                                        break;
+//                                    case "ObsCabeza":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION) == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION).v_Value1;
+
+//                                        break;
+//                                    case "CodCuello":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
+//                                        break;
+
+//                                    case "ObsCuello":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    //---------------
+
+//                                    case "CodNariz":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsNariz":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodBoca":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsBoca":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodFaringe":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsFaringe":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodLaringe":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsLaringe":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodAparatoRespiratorio":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsAparatoRespiratorio":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    //---------------
+
+//                                    case "CodAparatoCardiovascular":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsAparatoCardiovascular":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodAbdomen":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "DesAbdomen":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodOrganosGenitales":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "DesOrganosGenitales":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodMSD":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsMSD":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodMSI":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsMSI":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    //---------------
+
+//                                    case "CodMID":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsMID":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodMII":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsMII":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodMovimientoFuerza":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsMovimientoFuerza":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodReflejosOsteotendinos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsReflejosOsteotendinos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodMarcha":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsMarcha":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    //---------------
+
+//                                    case "CodColumnaVertebral":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsColumnaVertebral":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodTactoRectal":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsTactoRectal":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodAnillosInguinales":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsAnillosInguinales":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodSistemaLinfatico":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsSistemaLinfatico":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodHernias":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsHernias":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    //---------------
+
+//                                    case "CodVarices":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsVarices":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodGanglios":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsGanglios":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodReflejosPupilaresOD":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "bsReflejosPupilaresOD":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodReflejosPupilaresOI":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "ObsReflejosPupilaresOI":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "CodOjos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+//                                    case "DesOjos":
+//                                        if (examenFisicoId == Constants.EXAMEN_FISICO_ID)
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        else
+//                                            xeExFISICO.Element(elementName).Value = examenFisico.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenFisico.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                        break;
+
+
+//                                    default: break;
+//                                }
+
+//                            }
                         
 
-                    #endregion
+//                    #endregion
 
-                        xeRoot.Add(new XElement(xeExFISICO));
-                    #endregion
+//                        xeRoot.Add(new XElement(xeExFISICO));
+//                    #endregion
 
-                        #region Examen Ocular VB
-                        var examenOcular = new ServiceBL().ValoresComponenteExamenOcular(_serviceId);
-                        var examenOftalmoId = examenOcular == null ? "" : examenOcular[0].v_ComponentId;
-// N009-MF000003547	VISIÓNDECERCA SC OD
-//N009-MF000003548	VISIÓNDECERCA SC OI
-//N009-MF000003549	VISIÓNDECERCA CC OD
-//N009-MF000003550	VISIÓNDECERCA CC OI
-//N009-MF000003551	VISIÓNDELEJOS SC OD
-//N009-MF000003552	VISIÓNDELEJOS SC OI
-//N009-MF000003553	VISIÓNDELEJOS CC OD
-//N009-MF000003554	VISIÓNDELEJOS CC OI
+//                        #region Examen Ocular VB
+//                        var examenOcular = new ServiceBL().ValoresComponenteExamenOcular(_serviceId);
+//                        var examenOftalmoId = examenOcular == null ? "" : examenOcular[0].v_ComponentId;
+//// N009-MF000003547	VISIÓNDECERCA SC OD
+////N009-MF000003548	VISIÓNDECERCA SC OI
+////N009-MF000003549	VISIÓNDECERCA CC OD
+////N009-MF000003550	VISIÓNDECERCA CC OI
+////N009-MF000003551	VISIÓNDELEJOS SC OD
+////N009-MF000003552	VISIÓNDELEJOS SC OI
+////N009-MF000003553	VISIÓNDELEJOS CC OD
+////N009-MF000003554	VISIÓNDELEJOS CC OI
 
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL SC OD = "N009-MF000003568";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL SC OI = "N009-MF000003566";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL CC OD = "N009-MF000003567";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL CC OI = "N009-MF000003568";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL SC OD = "N009-MF000003568";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL SC OI = "N009-MF000003566";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL CC OD = "N009-MF000003567";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL CC OI = "N009-MF000003568";
 
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC SC OD = "N009-MF000003569";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC SC OI = "N009-MF000003570";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC CC OD = "N009-MF000003571";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC CC OI = "N009-MF000003572";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC SC OD = "N009-MF000003569";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC SC OI = "N009-MF000003570";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC CC OD = "N009-MF000003571";
+//        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC CC OI = "N009-MF000003572";
 
-//N009-MF000003614	VISIÓNDECERCA SC OD
-//N009-MF000003615	VISIÓNDECERCA SC OI
-//N009-MF000003616	VISIÓNDECERCA CC OD
-//N009-MF000003617	VISIÓNDECERCA CC OI
+////N009-MF000003614	VISIÓNDECERCA SC OD
+////N009-MF000003615	VISIÓNDECERCA SC OI
+////N009-MF000003616	VISIÓNDECERCA CC OD
+////N009-MF000003617	VISIÓNDECERCA CC OI
 
-//N009-MF000003618	VISIÓNDELEJOS SC OD
-//N009-MF000003619	VISIÓNDELEJOS SC OI
-//N009-MF000003620	VISIÓNDELEJOS CC OD
-//N009-MF000003621	VISIÓNDELEJOS C COI
+////N009-MF000003618	VISIÓNDELEJOS SC OD
+////N009-MF000003619	VISIÓNDELEJOS SC OI
+////N009-MF000003620	VISIÓNDELEJOS CC OD
+////N009-MF000003621	VISIÓNDELEJOS C COI
 
-                        var eExOcularVB = new List<string>();
-                        eExOcularVB.Add("VisionCercaODSCVB");
-                        eExOcularVB.Add("VisionCercaOISCVB");
-                        eExOcularVB.Add("VisionLejosODSCVB");
-                        eExOcularVB.Add("VisionLejosOISCVB");
-                        eExOcularVB.Add("VisionCercaODCVB");
-                        eExOcularVB.Add("VisionCercaOICVB");
-                        eExOcularVB.Add("VisionLejosODCVB");
-                        eExOcularVB.Add("VisionLejosOICVB");
-                        eExOcularVB.Add("ProvinciaNacimiento");
-                        eExOcularVB.Add("TestColores");
-                        eExOcularVB.Add("RestriccionActual");
-                        eExOcularVB.Add("TipoRestriccion");
+//                        var eExOcularVB = new List<string>();
+//                        eExOcularVB.Add("VisionCercaODSCVB");
+//                        eExOcularVB.Add("VisionCercaOISCVB");
+//                        eExOcularVB.Add("VisionLejosODSCVB");
+//                        eExOcularVB.Add("VisionLejosOISCVB");
+//                        eExOcularVB.Add("VisionCercaODCVB");
+//                        eExOcularVB.Add("VisionCercaOICVB");
+//                        eExOcularVB.Add("VisionLejosODCVB");
+//                        eExOcularVB.Add("VisionLejosOICVB");
+//                        eExOcularVB.Add("ProvinciaNacimiento");
+//                        eExOcularVB.Add("TestColores");
+//                        eExOcularVB.Add("RestriccionActual");
+//                        eExOcularVB.Add("TipoRestriccion");
 
-                        var xeExOcularVB = new XElement("ExOcularVB");
+//                        var xeExOcularVB = new XElement("ExOcularVB");
 
-                        foreach (var itemeExOcularVB in eExOcularVB)
-                        {
-                            xeExOcularVB.Add(new XElement(itemeExOcularVB));
-                        }
+//                        foreach (var itemeExOcularVB in eExOcularVB)
+//                        {
+//                            xeExOcularVB.Add(new XElement(itemeExOcularVB));
+//                        }
 
 
-                        foreach (var elementName in eExOcularVB)
-                        {
-                            switch (elementName)
-                            {
-                                case "VisionCercaODSCVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003547") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003547").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003569") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003569").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003614") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003614").v_Value1;
+//                        foreach (var elementName in eExOcularVB)
+//                        {
+//                            switch (elementName)
+//                            {
+//                                case "VisionCercaODSCVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003547") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003547").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003569") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003569").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003614") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003614").v_Value1;
 
-                                    break;
-                                case "VisionCercaOISCVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003548") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003548").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003570") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003570").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003615") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003615").v_Value1;
+//                                    break;
+//                                case "VisionCercaOISCVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003548") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003548").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003570") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003570").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003615") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003615").v_Value1;
 
-                                    break;
-                                case "VisionLejosODSCVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003551") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003551").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003618") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003618").v_Value1;
+//                                    break;
+//                                case "VisionLejosODSCVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003551") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003551").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003618") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003618").v_Value1;
 
-                                    break;
-                                case "VisionLejosOISCVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003552") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003552").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003566") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003566").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003619") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003619").v_Value1;
+//                                    break;
+//                                case "VisionLejosOISCVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003552") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003552").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003566") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003566").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003619") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003619").v_Value1;
 
-                                    break;
-                                case "VisionCercaODCVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003549") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003549").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003571") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003571").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003616") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003616").v_Value1;
+//                                    break;
+//                                case "VisionCercaODCVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003549") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003549").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003571") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003571").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003616") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003616").v_Value1;
 
-                                    break;
-                                case "VisionCercaOICVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003550") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003550").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003572") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003572").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003617") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003617").v_Value1;
+//                                    break;
+//                                case "VisionCercaOICVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003550") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003550").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003572") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003572").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003617") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003617").v_Value1;
 
-                                    break;
-                                case "VisionLejosODCVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003553") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003553").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003567") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003567").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003620") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003620").v_Value1;
+//                                    break;
+//                                case "VisionLejosODCVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003553") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003553").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003567") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003567").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003620") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003620").v_Value1;
 
-                                    break;
-                                case "VisionLejosOICVB":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003554") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003554").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003621") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003621").v_Value1;
+//                                    break;
+//                                case "VisionLejosOICVB":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003554") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003554").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003621") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003621").v_Value1;
 
-                                    break;
-                                case "ProvinciaNacimiento":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    break;
+//                                case "ProvinciaNacimiento":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
 
-                                    break;
-                                case "TestColores":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    break;
+//                                case "TestColores":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
 
-                                    break;
-                                case "RestriccionActual":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    break;
+//                                case "RestriccionActual":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
 
-                                    break;
-                                case "TipoRestriccion":
-                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
-                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    break;
+//                                case "TipoRestriccion":
+//                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+//                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+//                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
 
-                                    break;
+//                                    break;
                               
-                                default: break;
-                            }
+//                                default: break;
+//                            }
 
-                        }
-                        xeRoot.Add(new XElement(xeExOcularVB));
+//                        }
+//                        xeRoot.Add(new XElement(xeExOcularVB));
 
-                        #endregion
+//                        #endregion
 
-                        #region Hábitos
-                        var habitos = new HistoryBL().GetNoxiousHabitsPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "i_TypeHabitsId DESC", null, _PacientId);
-                        if (habitos.Count > 0)
-                        {
-                            var eHabitos = new List<string>();
-                            eHabitos.Add("Descripcion");
-                            eHabitos.Add("Vigencia");
-                            eHabitos.Add("TipoHabito");
-                            eHabitos.Add("FechaInicio");
-                            eHabitos.Add("FechaFin");
+//                        #region Hábitos
+//                        var habitos = new HistoryBL().GetNoxiousHabitsPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "i_TypeHabitsId DESC", null, _PacientId);
+//                        if (habitos.Count > 0)
+//                        {
+//                            var eHabitos = new List<string>();
+//                            eHabitos.Add("Descripcion");
+//                            eHabitos.Add("Vigencia");
+//                            eHabitos.Add("TipoHabito");
+//                            eHabitos.Add("FechaInicio");
+//                            eHabitos.Add("FechaFin");
 
-                            var xeHabitos = new XElement("HABITOS_TOXICOS");
+//                            var xeHabitos = new XElement("HABITOS_TOXICOS");
 
-                            foreach (var eAntecedente in eHabitos)
-                            {
-                                xeHabitos.Add(new XElement(eAntecedente));
-                            }
+//                            foreach (var eAntecedente in eHabitos)
+//                            {
+//                                xeHabitos.Add(new XElement(eAntecedente));
+//                            }
 
-                            foreach (var habito in habitos)
-                            {
-                                foreach (var elementName in eHabitos)
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "Descripcion":
-                                            xeHabitos.Element(elementName).Value = habito.v_TypeHabitsName;
-                                            break;
-                                        case "Vigencia":
-                                            xeHabitos.Element(elementName).Value = "S";
-                                            break;
-                                        case "TipoHabito":
-                                            xeHabitos.Element(elementName).Value = CodigoNatclarHabito(habito.i_TypeHabitsId);
-                                            break;
-                                        case "FechaInicio":
-                                            xeHabitos.Element(elementName).Value = "";
-                                            break;
-                                        case "FechaFin":
-                                            xeHabitos.Element(elementName).Value = "";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    xeRoot.Add(new XElement(xeHabitos));
-                                }
-                            }
+//                            foreach (var habito in habitos)
+//                            {
+//                                foreach (var elementName in eHabitos)
+//                                {
+//                                    switch (elementName)
+//                                    {
+//                                        case "Descripcion":
+//                                            xeHabitos.Element(elementName).Value = habito.v_TypeHabitsName;
+//                                            break;
+//                                        case "Vigencia":
+//                                            xeHabitos.Element(elementName).Value = "S";
+//                                            break;
+//                                        case "TipoHabito":
+//                                            xeHabitos.Element(elementName).Value = CodigoNatclarHabito(habito.i_TypeHabitsId);
+//                                            break;
+//                                        case "FechaInicio":
+//                                            xeHabitos.Element(elementName).Value = "";
+//                                            break;
+//                                        case "FechaFin":
+//                                            xeHabitos.Element(elementName).Value = "";
+//                                            break;
+//                                        default:
+//                                            break;
+//                                    }
+//                                    xeRoot.Add(new XElement(xeHabitos));
+//                                }
+//                            }
 
-                        }
+//                        }
 
-                        #endregion
+//                        #endregion
 
-                        #region Antecedentes Familiares
-                        var antecedentesFamiliares = new HistoryBL().GetFamilyMedicalAntecedentsPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "v_DiseasesId DESC", null, _PacientId);
-                        if (antecedentesFamiliares.Count > 0)
-                        {
+//                        #region Antecedentes Familiares
+//                        var antecedentesFamiliares = new HistoryBL().GetFamilyMedicalAntecedentsPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "v_DiseasesId DESC", null, _PacientId);
+//                        if (antecedentesFamiliares.Count > 0)
+//                        {
 
-                            var eAntecedentesFamiliares = new List<string>();
-                            eAntecedentesFamiliares.Add("CodigoCIE");
-                            eAntecedentesFamiliares.Add("Descripcion");
-                            eAntecedentesFamiliares.Add("FechaInicio");
-                            eAntecedentesFamiliares.Add("FechaFin");
+//                            var eAntecedentesFamiliares = new List<string>();
+//                            eAntecedentesFamiliares.Add("CodigoCIE");
+//                            eAntecedentesFamiliares.Add("Descripcion");
+//                            eAntecedentesFamiliares.Add("FechaInicio");
+//                            eAntecedentesFamiliares.Add("FechaFin");
 
-                            var xeAntecedente = new XElement("HISTORIA_FAMILIAR");
+//                            var xeAntecedente = new XElement("HISTORIA_FAMILIAR");
 
-                            foreach (var eAntecedente in eAntecedentesFamiliares)
-                            {
-                                xeAntecedente.Add(new XElement(eAntecedente));
-                            }
+//                            foreach (var eAntecedente in eAntecedentesFamiliares)
+//                            {
+//                                xeAntecedente.Add(new XElement(eAntecedente));
+//                            }
 
-                            foreach (var antecedente in antecedentesFamiliares)
-                            {
-                                foreach (var elementName in eAntecedentesFamiliares)
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "CodigoCIE":
-                                            xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id;
-                                            break;
-                                        case "Descripcion":
-                                            xeAntecedente.Element(elementName).Value = antecedente.v_Comment;
-                                            break;
-                                        case "FechaInicio":
-                                            xeAntecedente.Element(elementName).Value = "";
-                                            break;
-                                        case "FechaFin":
-                                            xeAntecedente.Element(elementName).Value = "";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    xeRoot.Add(new XElement(xeAntecedente));
-                                }
-                            }
+//                            foreach (var antecedente in antecedentesFamiliares)
+//                            {
+//                                foreach (var elementName in eAntecedentesFamiliares)
+//                                {
+//                                    switch (elementName)
+//                                    {
+//                                        case "CodigoCIE":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id == null ? "" : antecedente.v_CIE10Id;
+//                                            break;
+//                                        case "Descripcion":
+//                                            xeAntecedente.Element(elementName).Value = antecedente.v_Comment == null ? "" : antecedente.v_Comment;
+//                                            break;
+//                                        case "FechaInicio":
+//                                            xeAntecedente.Element(elementName).Value = "";
+//                                            break;
+//                                        case "FechaFin":
+//                                            xeAntecedente.Element(elementName).Value = "";
+//                                            break;
+//                                        default:
+//                                            break;
+//                                    }
+//                                    xeRoot.Add(new XElement(xeAntecedente));
+//                                }
+//                            }
 
-                        }
+//                        }
 
-                        #endregion
+//                        #endregion
 
-                        #region Antecedentes Fisiologico
+//                        #region Antecedentes Fisiologico
 
-                        var antecedentesFisiologicos = new List<FamilyMedicalAntecedentsList>();// new HistoryBL().GetFamilyMedicalAntecedentsPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId);
+//                        var antecedentesFisiologicos = new List<FamilyMedicalAntecedentsList>();// new HistoryBL().GetFamilyMedicalAntecedentsPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId);
                   
-                            var eAntecedentesFisiologico = new List<string>();
-                            eAntecedentesFisiologico.Add("Descripcion");
-                            eAntecedentesFisiologico.Add("Tipo");
-                            eAntecedentesFisiologico.Add("FechaInicio");
-                            eAntecedentesFisiologico.Add("FechaFin");
-                            eAntecedentesFisiologico.Add("Vigencia");
+//                            var eAntecedentesFisiologico = new List<string>();
+//                            eAntecedentesFisiologico.Add("Descripcion");
+//                            eAntecedentesFisiologico.Add("Tipo");
+//                            eAntecedentesFisiologico.Add("FechaInicio");
+//                            eAntecedentesFisiologico.Add("FechaFin");
+//                            eAntecedentesFisiologico.Add("Vigencia");
 
-                            var xeAntecedenteFisiologico = new XElement("HISTORIAL_FISIOLOGICO");
+//                            var xeAntecedenteFisiologico = new XElement("HISTORIAL_FISIOLOGICO");
 
-                            foreach (var eAntecedente in eAntecedentesFisiologico)
-                            {
-                                xeAntecedenteFisiologico.Add(new XElement(eAntecedente));
-                            }
+//                            foreach (var eAntecedente in eAntecedentesFisiologico)
+//                            {
+//                                xeAntecedenteFisiologico.Add(new XElement(eAntecedente));
+//                            }
 
-                            foreach (var antecedente in antecedentesFisiologicos)
-                            {
-                                foreach (var elementName in eAntecedentesFisiologico)
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "Descripcion":
-                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
-                                            break;
-                                        case "Tipo":
-                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
-                                            break;
-                                        case "FechaInicio":
-                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
-                                            break;
-                                        case "FechaFin":
-                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
-                                            break;
-                                        case "Vigencia":
-                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    xeRoot.Add(new XElement(xeAntecedenteFisiologico));
-                                }
-                            }
-
-
-                        #endregion
-
-                        #region Historia Laboral
-
-                            var historiaLaboral = new HistoryBL().GetHistoryPagedAndFiltered(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId);
-
-                            var eHistoriaLaboral = new List<string>();
-                            eHistoriaLaboral.Add("EmpresaLaboral");
-                            eHistoriaLaboral.Add("RCTEmpresa");
-                            eHistoriaLaboral.Add("PuestosHistorial");
-                            eHistoriaLaboral.Add("DuracionPuestoA");
-                            eHistoriaLaboral.Add("DuracionPuestoM");
-                            eHistoriaLaboral.Add("FechaInicioPuesto");
-                            eHistoriaLaboral.Add("FechaFinPuesto");
-                            eHistoriaLaboral.Add("ActividadCNAE");
-                            eHistoriaLaboral.Add("PuestoActual");
-                            eHistoriaLaboral.Add("DescripcionTareas");
-
-                            eHistoriaLaboral.Add("ValoracionRiesgo");
-                            eHistoriaLaboral.Add("AreaTrabajo");
-                            eHistoriaLaboral.Add("ZonaLaboral");
-                            eHistoriaLaboral.Add("AlturaLaboral");
-                            eHistoriaLaboral.Add("DuracionTrabajosAlturaA");
-                            eHistoriaLaboral.Add("DuracionTrabajosAlturaM");
-                            eHistoriaLaboral.Add("PostulaPuesto");
+//                            foreach (var antecedente in antecedentesFisiologicos)
+//                            {
+//                                foreach (var elementName in eAntecedentesFisiologico)
+//                                {
+//                                    switch (elementName)
+//                                    {
+//                                        case "Descripcion":
+//                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
+//                                            break;
+//                                        case "Tipo":
+//                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
+//                                            break;
+//                                        case "FechaInicio":
+//                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
+//                                            break;
+//                                        case "FechaFin":
+//                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
+//                                            break;
+//                                        case "Vigencia":
+//                                            xeAntecedenteFisiologico.Element(elementName).Value = "";
+//                                            break;
+//                                        default:
+//                                            break;
+//                                    }
+//                                    xeRoot.Add(new XElement(xeAntecedenteFisiologico));
+//                                }
+//                            }
 
 
-                            var xeHistoriaLaboral = new XElement("HISTORIA_LABORAL");
+//                        #endregion
 
-                            foreach (var eLaboral in eAntecedentesFisiologico)
-                            {
-                                xeHistoriaLaboral.Add(new XElement(eLaboral));
-                            }
+//                        #region Historia Laboral
 
-                            foreach (var itemLaboral in historiaLaboral)
-                            {
-                                foreach (var elementName in eAntecedentesFisiologico)
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "EmpresaLaboral":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_Organization;
-                                            break;
-                                        case "RCTEmpresa":
-                                            xeHistoriaLaboral.Element(elementName).Value = "";
-                                            break;
-                                        case "PuestosHistorial":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_TypeActivity;
-                                            break;
-                                        case "DuracionPuestoA":
-                                            xeHistoriaLaboral.Element(elementName).Value = Common.Utils.YearMonthDiff(itemLaboral.d_EndDate.Value, itemLaboral.d_StartDate.Value).Years.ToString();
-                                            break;
-                                        case "DuracionPuestoM":
-                                            xeHistoriaLaboral.Element(elementName).Value = Common.Utils.YearMonthDiff(itemLaboral.d_EndDate.Value, itemLaboral.d_StartDate.Value).TotalMonths.ToString();
-                                            break;
-                                        case "FechaInicioPuesto":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.d_StartDate.Value.ToString("dd/MM/yyyy");
-                                            break;
-                                        case "FechaFinPuesto":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.d_EndDate.Value.ToString("dd/MM/yyyy");
-                                            break;
-                                        case "ActividadCNAE":
-                                            xeHistoriaLaboral.Element(elementName).Value = "";
-                                            break;
-                                        case "PuestoActual":
-                                            xeHistoriaLaboral.Element(elementName).Value =  itemLaboral.i_Trabajo_Actual == 0 ?"N" : "S";
-                                            break;
-                                        case "DescripcionTareas":
-                                            xeHistoriaLaboral.Element(elementName).Value = "";
-                                            break;
-                                        case "ValoracionRiesgo":
-                                            xeHistoriaLaboral.Element(elementName).Value = "";
-                                            break;
-                                        case "AreaTrabajo":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_workstation;
-                                            break;
-                                        case "ZonaLaboral":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_TypeOperationName;
-                                            break;
-                                        case "AlturaLaboral":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.i_GeografixcaHeight.ToString();
-                                            break;
-                                        case "DuracionTrabajosAlturaA":
-                                            xeHistoriaLaboral.Element(elementName).Value = "";
-                                            break;
-                                        case "DuracionTrabajosAlturaM":
-                                            xeHistoriaLaboral.Element(elementName).Value = "";
-                                            break;
-                                        case "PostulaPuesto":
-                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.i_Trabajo_Actual == 0 ? "S" : "N";
-                                            break;
+//                            var historiaLaboral = new HistoryBL().GetHistoryPagedAndFiltered(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId);
 
-                                        default:
-                                            break;
-                                    }
-                                    xeRoot.Add(new XElement(xeAntecedenteFisiologico));
-                                }
-                            }
+//                            var eHistoriaLaboral = new List<string>();
+//                            eHistoriaLaboral.Add("EmpresaLaboral");
+//                            eHistoriaLaboral.Add("RCTEmpresa");
+//                            eHistoriaLaboral.Add("PuestosHistorial");
+//                            eHistoriaLaboral.Add("DuracionPuestoA");
+//                            eHistoriaLaboral.Add("DuracionPuestoM");
+//                            eHistoriaLaboral.Add("FechaInicioPuesto");
+//                            eHistoriaLaboral.Add("FechaFinPuesto");
+//                            eHistoriaLaboral.Add("ActividadCNAE");
+//                            eHistoriaLaboral.Add("PuestoActual");
+//                            eHistoriaLaboral.Add("DescripcionTareas");
+
+//                            eHistoriaLaboral.Add("ValoracionRiesgo");
+//                            eHistoriaLaboral.Add("AreaTrabajo");
+//                            eHistoriaLaboral.Add("ZonaLaboral");
+//                            eHistoriaLaboral.Add("AlturaLaboral");
+//                            eHistoriaLaboral.Add("DuracionTrabajosAlturaA");
+//                            eHistoriaLaboral.Add("DuracionTrabajosAlturaM");
+//                            eHistoriaLaboral.Add("PostulaPuesto");
 
 
-                        #endregion
+//                            var xeHistoriaLaboral = new XElement("HISTORIA_LABORAL");
 
-                        #region Lectura OIT
-                        var examenOIT = new ServiceBL().ValoresComponente(_serviceId, Constants.OIT_ID);
-                        if (examenOIT.Count > 0)
-                        {
-                            var eLecturaOIT = new List<string>();
-                            eLecturaOIT.Add("Calidad");
-                            eLecturaOIT.Add("ObservacionCalidad");
-                            eLecturaOIT.Add("AnormalidadParenquitamosa");
-                            eLecturaOIT.Add("OpacidadesPequeñas");
-                            eLecturaOIT.Add("OpacidadesAbundancia");
-                            eLecturaOIT.Add("AnormalidadPleural");
-                            eLecturaOIT.Add("DescripcionAnormalidadPleural");
-                            eLecturaOIT.Add("OtrasAnomalias");
-                            eLecturaOIT.Add("DescripcionOtrasAnomalias");
+//                            foreach (var eLaboral in eAntecedentesFisiologico)
+//                            {
+//                                xeHistoriaLaboral.Add(new XElement(eLaboral));
+//                            }
 
-                            var xeLecturaOIT = new XElement("LecturasOIT");
+//                            foreach (var itemLaboral in historiaLaboral)
+//                            {
+//                                foreach (var elementName in eAntecedentesFisiologico)
+//                                {
+//                                    switch (elementName)
+//                                    {
+//                                        case "EmpresaLaboral":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_Organization;
+//                                            break;
+//                                        case "RCTEmpresa":
+//                                            xeHistoriaLaboral.Element(elementName).Value = "";
+//                                            break;
+//                                        case "PuestosHistorial":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_TypeActivity;
+//                                            break;
+//                                        case "DuracionPuestoA":
+//                                            xeHistoriaLaboral.Element(elementName).Value = Common.Utils.YearMonthDiff(itemLaboral.d_EndDate.Value, itemLaboral.d_StartDate.Value).Years.ToString();
+//                                            break;
+//                                        case "DuracionPuestoM":
+//                                            xeHistoriaLaboral.Element(elementName).Value = Common.Utils.YearMonthDiff(itemLaboral.d_EndDate.Value, itemLaboral.d_StartDate.Value).TotalMonths.ToString();
+//                                            break;
+//                                        case "FechaInicioPuesto":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.d_StartDate.Value.ToString("dd/MM/yyyy");
+//                                            break;
+//                                        case "FechaFinPuesto":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.d_EndDate.Value.ToString("dd/MM/yyyy");
+//                                            break;
+//                                        case "ActividadCNAE":
+//                                            xeHistoriaLaboral.Element(elementName).Value = "";
+//                                            break;
+//                                        case "PuestoActual":
+//                                            xeHistoriaLaboral.Element(elementName).Value =  itemLaboral.i_Trabajo_Actual == 0 ?"N" : "S";
+//                                            break;
+//                                        case "DescripcionTareas":
+//                                            xeHistoriaLaboral.Element(elementName).Value = "";
+//                                            break;
+//                                        case "ValoracionRiesgo":
+//                                            xeHistoriaLaboral.Element(elementName).Value = "";
+//                                            break;
+//                                        case "AreaTrabajo":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_workstation;
+//                                            break;
+//                                        case "ZonaLaboral":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.v_TypeOperationName;
+//                                            break;
+//                                        case "AlturaLaboral":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.i_GeografixcaHeight.ToString();
+//                                            break;
+//                                        case "DuracionTrabajosAlturaA":
+//                                            xeHistoriaLaboral.Element(elementName).Value = "";
+//                                            break;
+//                                        case "DuracionTrabajosAlturaM":
+//                                            xeHistoriaLaboral.Element(elementName).Value = "";
+//                                            break;
+//                                        case "PostulaPuesto":
+//                                            xeHistoriaLaboral.Element(elementName).Value = itemLaboral.i_Trabajo_Actual == 0 ? "S" : "N";
+//                                            break;
 
-                            foreach (var itemLecturaOIT in eLecturaOIT)
-                            {
-                                xeLecturaOIT.Add(new XElement(itemLecturaOIT));
-                            }
+//                                        default:
+//                                            break;
+//                                    }
+//                                    xeRoot.Add(new XElement(xeAntecedenteFisiologico));
+//                                }
+//                            }
 
-                            foreach (var elementName in eLecturaOIT)
-                            {
-                                switch (elementName)
-                                {
-                                    case "Calidad":
-                                        xeLecturaOIT.Element(elementName).Value = examenOIT.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID).v_Value1Name;
-                                        break;
-                                    case "ObservacionCalidad":
-                                        xeLecturaOIT.Element(elementName).Value = examenOIT.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID).v_Value1;
-                                        break;
-                                    case "AnormalidadParenquitamosa":
-                                        xeLecturaOIT.Element(elementName).Value = examenOIT.Find(p => p.v_ComponentFieldId == Constants.RX_0_0_ID).v_Value1 != "1" ? "S" : "N";
-                                        break;
-                                    case "OpacidadesPequeñas":
-                                        xeLecturaOIT.Element(elementName).Value = ObtenerOpacidadesPequenias(examenOIT);
-                                        break;
-                                    case "OpacidadesAbundancia":
-                                        xeLecturaOIT.Element(elementName).Value = ObtenerOpacidadesAbundancia(examenOIT);
-                                        break;
-                                    case "AnormalidadPleural":
-                                        xeLecturaOIT.Element(elementName).Value = ObtenerAnormalidadPleural(examenOIT);
-                                        break;
-                                    case "DescripcionAnormalidadPleural":
-                                        xeLecturaOIT.Element(elementName).Value = "";//WALTER FALTA CREAR CAMPO;
-                                        break;
-                                    case "OtrasAnomalias":
-                                        xeLecturaOIT.Element(elementName).Value = "";//WALTER FALTA CREAR CAMPO;
-                                        break;
-                                    case "DescripcionOtrasAnomalias":
-                                        xeLecturaOIT.Element(elementName).Value = "";//WALTER FALTA CREAR CAMPO;
-                                        break;
 
-                                    default: break;
-                                }
+//                        #endregion
 
-                            }
-                            xeRoot.Add(new XElement(xeLecturaOIT));
+//                        #region Lectura OIT
+//                        var examenOIT = new ServiceBL().ValoresComponente(_serviceId, Constants.OIT_ID);
+//                        if (examenOIT.Count > 0)
+//                        {
+//                            var eLecturaOIT = new List<string>();
+//                            eLecturaOIT.Add("Calidad");
+//                            eLecturaOIT.Add("ObservacionCalidad");
+//                            eLecturaOIT.Add("AnormalidadParenquitamosa");
+//                            eLecturaOIT.Add("OpacidadesPequeñas");
+//                            eLecturaOIT.Add("OpacidadesAbundancia");
+//                            eLecturaOIT.Add("AnormalidadPleural");
+//                            eLecturaOIT.Add("DescripcionAnormalidadPleural");
+//                            eLecturaOIT.Add("OtrasAnomalias");
+//                            eLecturaOIT.Add("DescripcionOtrasAnomalias");
 
-                        }
-                        #endregion
+//                            var xeLecturaOIT = new XElement("LecturasOIT");
 
-                        #region Psicologia
-                        var examenPsicologia = new ServiceBL().ValoresComponenteExamenFisico(_serviceId);//AMC?
-                        if (examenPsicologia.Count > 0)
-                        {
-                            var ePsicologia = new List<string>();
-                            ePsicologia.Add("Informe");
-                            ePsicologia.Add("Recomendaciones");
-                            ePsicologia.Add("Aptitud");
+//                            foreach (var itemLecturaOIT in eLecturaOIT)
+//                            {
+//                                xeLecturaOIT.Add(new XElement(itemLecturaOIT));
+//                            }
 
-                            var xePsicologia = new XElement("Psicologia");
+//                            foreach (var elementName in eLecturaOIT)
+//                            {
+//                                switch (elementName)
+//                                {
+//                                    case "Calidad":
+//                                        xeLecturaOIT.Element(elementName).Value = examenOIT.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID).v_Value1Name;
+//                                        break;
+//                                    case "ObservacionCalidad":
+//                                        xeLecturaOIT.Element(elementName).Value = examenOIT.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID).v_Value1;
+//                                        break;
+//                                    case "AnormalidadParenquitamosa":
+//                                        xeLecturaOIT.Element(elementName).Value = examenOIT.Find(p => p.v_ComponentFieldId == Constants.RX_0_0_ID).v_Value1 != "1" ? "S" : "N";
+//                                        break;
+//                                    case "OpacidadesPequeñas":
+//                                        xeLecturaOIT.Element(elementName).Value = ObtenerOpacidadesPequenias(examenOIT);
+//                                        break;
+//                                    case "OpacidadesAbundancia":
+//                                        xeLecturaOIT.Element(elementName).Value = ObtenerOpacidadesAbundancia(examenOIT);
+//                                        break;
+//                                    case "AnormalidadPleural":
+//                                        xeLecturaOIT.Element(elementName).Value = ObtenerAnormalidadPleural(examenOIT);
+//                                        break;
+//                                    case "DescripcionAnormalidadPleural":
+//                                        xeLecturaOIT.Element(elementName).Value = "";//WALTER FALTA CREAR CAMPO;
+//                                        break;
+//                                    case "OtrasAnomalias":
+//                                        xeLecturaOIT.Element(elementName).Value = "";//WALTER FALTA CREAR CAMPO;
+//                                        break;
+//                                    case "DescripcionOtrasAnomalias":
+//                                        xeLecturaOIT.Element(elementName).Value = "";//WALTER FALTA CREAR CAMPO;
+//                                        break;
 
-                            foreach (var itemPsicologia in ePsicologia)
-                            {
-                                xePsicologia.Add(new XElement(itemPsicologia));
-                            }
+//                                    default: break;
+//                                }
 
-                            foreach (var elementName in ePsicologia)
-                            {
-                                switch (elementName)
-                                {
-                                    case "Informe":
-                                        xePsicologia.Element(elementName).Value = "";
-                                        break;
-                                    case "Recomendaciones":
-                                        xePsicologia.Element(elementName).Value = "";
-                                        break;
-                                    case "Aptitud":
-                                        xePsicologia.Element(elementName).Value = "";
-                                        break;
+//                            }
+//                            xeRoot.Add(new XElement(xeLecturaOIT));
+
+//                        }
+//                        #endregion
+
+//                        #region Psicologia
+//                        var examenPsicologia = new ServiceBL().ValoresComponenteExamenFisico(_serviceId);//AMC?
+//                        if (examenPsicologia.Count > 0)
+//                        {
+//                            var ePsicologia = new List<string>();
+//                            ePsicologia.Add("Informe");
+//                            ePsicologia.Add("Recomendaciones");
+//                            ePsicologia.Add("Aptitud");
+
+//                            var xePsicologia = new XElement("Psicologia");
+
+//                            foreach (var itemPsicologia in ePsicologia)
+//                            {
+//                                xePsicologia.Add(new XElement(itemPsicologia));
+//                            }
+
+//                            foreach (var elementName in ePsicologia)
+//                            {
+//                                switch (elementName)
+//                                {
+//                                    case "Informe":
+//                                        xePsicologia.Element(elementName).Value = "";
+//                                        break;
+//                                    case "Recomendaciones":
+//                                        xePsicologia.Element(elementName).Value = "";
+//                                        break;
+//                                    case "Aptitud":
+//                                        xePsicologia.Element(elementName).Value = "";
+//                                        break;
                                     
-                                    default: break;
-                                }
+//                                    default: break;
+//                                }
 
-                            }
-                            xeRoot.Add(new XElement(xePsicologia));
+//                            }
+//                            xeRoot.Add(new XElement(xePsicologia));
 
-                        }
-                        #endregion
+//                        }
+//                        #endregion
 
-                    #endregion
+//                    #endregion
 
-                    xeRoot.Save(folderBrowserDialog1.SelectedPath + @"\" + datosPaciente.Hc);
+                    //xeRoot.Save(folderBrowserDialog1.SelectedPath + @"\" + datosPaciente.Hc);
 
-                    WSRIProveedorExternoClient client = new WSRIProveedorExternoClient();
+                    //WSRIProveedorExternoClient client = new WSRIProveedorExternoClient();
 
-                        //client.EnviarDatosAPMedicos(
+                    //    var x = new EstructuraDatosAPMedicos();
+                    //    x.DatosPaciente = new XmlDatosPaciente();
+                    //    x.DatosPaciente.Nombre = "Alberto";
+                    //    x.DatosExamen.
+                    //    var result = client.(x);
                  
                     }
                 }
