@@ -686,7 +686,7 @@
                                 
                             </Items>
                         </x:Tab>                   
-                        <x:Tab ID="TabOftalmologia_Internacional" BodyPadding="5px" Title="Oftalmología" runat="server" Hidden="false">
+                        <x:Tab ID="TabOftalmologia_Internacional" BodyPadding="5px" Title="Oftalmología" runat="server">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar10" runat="server">
                                     <Items>
@@ -1150,7 +1150,7 @@
                                 <x:Toolbar ID="Toolbar1" runat="server">
                                     <Items>
                                         <x:Button ID="btnGrabarYanacocha" Text="Grabar Oftalmología" Icon="SystemSave" runat="server" OnClick="btnGrabarYanacocha_Click" AjaxLoadingType="Mask"></x:Button>                                   
-                                      
+                                      <x:Button ID="btnReporteOftalmo" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -1330,7 +1330,7 @@
 
         <x:Window ID="winEdit1" Title="Reporte" Popup="false" EnableIFrame="true" runat="server" IconUrl="~/images/16/11.png" 
        CloseAction="HidePostBack" EnableConfirmOnClose="true"  IFrameUrl="about:blank" EnableMaximize="true" EnableResize="true"
-       Target="Top" OnClose="winEdit1_Close"  IsModal="true"  Height="630px" Width="700px" >
+       Target="Top" OnClose="winEdit1_Close"  IsModal="true"  Height="630px" Width="870px">
     </x:Window>
 
         <x:Window ID="winEditReco" Title="Recomendación" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"

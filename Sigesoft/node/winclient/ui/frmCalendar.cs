@@ -121,8 +121,14 @@ namespace Sigesoft.Node.WinClient.UI
 
             OperationResult objOperationResult = new OperationResult();
 
-            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult,Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult,Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+
+            //Llenado de los tipos de servicios [Emp/Part]
+            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.Select);
+            // combo servicio
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
+          
             Utils.LoadDropDownList(ddlVipId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlNewContinuationId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 121, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlLineStatusId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 120, null), DropDownListAction.All);
@@ -455,9 +461,16 @@ namespace Sigesoft.Node.WinClient.UI
         
         private void ddlServiceTypeId_TextChanged(object sender, EventArgs e)
         {
+            //OperationResult objOperationResult = new OperationResult();
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+
+            if (ddlServiceTypeId.SelectedIndex == 0 || ddlServiceTypeId.SelectedIndex == -1)
+                return;
+
             OperationResult objOperationResult = new OperationResult();
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
-            
+            var id = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
+
         }
 
         private void grdDataCalendar_InitializeRow(object sender, Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
@@ -3343,9 +3356,9 @@ namespace Sigesoft.Node.WinClient.UI
 
                     xeRoot.Save(folderBrowserDialog1.SelectedPath + @"\" + datosPaciente.Hc);
 
-                    WSRIProveedorExternoClient client = new WSRIProveedorExternoClient();
+                    //WSRIProveedorExternoClient client = new WSRIProveedorExternoClient();
 
-                        //client.EnviarDatosAPMedicos(
+                    //client.EnviarDatosAPMedicos(datosPaciente.Hc);
                  
                     }
                 }

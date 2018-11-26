@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Dynamic;
 using Sigesoft.Server.WebClientAdmin.BE;
+using Sigesoft.Server.WebClientAdmin.BLL;
 using Sigesoft.Server.WebClientAdmin.DAL;
 using Sigesoft.Common;
 using System.Web.Configuration;
@@ -17898,6 +17899,216 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
         {
             try
             {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                                 join B in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                                                                     equals new { a = B.v_ServiceId, b = B.v_ComponentId } into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+
+                                 join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join I in dbContext.systemparameter on new { a = C.i_EsoTypeId.Value, b = 118 }
+                                                    equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                                 from I in I_join.DefaultIfEmpty()
+
+
+                                 join D in dbContext.organization on C.v_EmployerOrganizationId equals D.v_OrganizationId into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 join E in dbContext.person on A.v_PersonId equals E.v_PersonId into E_join
+                                 from E in E_join.DefaultIfEmpty()
+
+                                 join SP1 in dbContext.systemparameter on new { a = D.i_SectorTypeId.Value, b = 104 }
+                                        equals new { a = SP1.i_ParameterId, b = SP1.i_GroupId } into SP1_join
+                                 from SP1 in SP1_join.DefaultIfEmpty()
+
+                                 join SP2 in dbContext.datahierarchy on new { a = D.i_SectorTypeId.Value, b = 104 }
+                                        equals new { a = SP2.i_ItemId, b = SP2.i_GroupId } into SP2_join
+                                 from SP2 in SP2_join.DefaultIfEmpty()
+
+                                 join F in dbContext.servicecomponentmultimedia on B.v_ServiceComponentId equals F.v_ServiceComponentId into F_join
+                                 from F in F_join.DefaultIfEmpty()
+
+                                 join G in dbContext.multimediafile on F.v_MultimediaFileId equals G.v_MultimediaFileId into G_join
+                                 from G in G_join.DefaultIfEmpty()
+
+                                 join F1 in dbContext.systemuser on B.i_ApprovedUpdateUserId equals F1.i_SystemUserId into F1_join
+                                 from F1 in F1_join.DefaultIfEmpty()
+
+                                 join Z in dbContext.person on F1.v_PersonId equals Z.v_PersonId into Z_join
+                                 from Z in Z_join.DefaultIfEmpty()
+
+                                 join D1 in dbContext.organization on C.v_CustomerOrganizationId equals D1.v_OrganizationId into D1_join
+                                 from D1 in D1_join.DefaultIfEmpty()
+
+                                 join D2 in dbContext.organization on C.v_EmployerOrganizationId equals D2.v_OrganizationId into D2_join
+                                 from D2 in D2_join.DefaultIfEmpty()
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join pme in dbContext.professional on F1.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join CC in dbContext.organization on BB.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                 from CC in CC_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrserviceId
+                                 && (G.i_IsDeleted == 0 || G.i_IsDeleted == null)
+                                 select new Sigesoft.Node.WinClient.BE.ReportCuestionarioEspirometria
+                                 {
+                                     IdServicio = A.v_ServiceId,
+                                     ServiceComponentId = B.v_ServiceComponentId,
+                                     Fecha = A.d_ServiceDate.Value,
+                                     NombreTrabajador = E.v_FirstLastName + " " + E.v_SecondLastName + " " + E.v_FirstName,
+                                     FechaNacimineto = E.d_Birthdate,
+                                     Genero = E.i_SexTypeId.Value,
+                                     FirmaTrabajador = E.b_RubricImage,
+                                     HuellaTrabajador = E.b_FingerPrintImage,
+                                     b_File = pme.b_SignatureImage,
+                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
+                                     Dni = E.v_DocNumber,
+                                     TipoExamen = I.v_Value1,
+                                     TipoEso = C.i_EsoTypeId.Value,
+
+                                     RazonSocial = D.v_Name,
+                                     ActividadEconomica = D2.v_SectorName,
+                                     PuestoTrabajo = E.v_CurrentOccupation,
+                                     LogoCliente = D1.b_Image,
+
+                                     EmpresaCliente = C2.v_Name,
+                                     EmpresaContratista = C1.v_Name,
+                                     EmpresaPropietaria = CC.v_Name,
+                                     EmpresaPropietariaDireccion = C1.v_Name + " / " + CC.v_Name,
+                                 });
+
+
+                var MedicalCenter = GetInfoMedicalCenter();
+                var Espirometria = ValoresComponente(pstrserviceId, Constants.ESPIROMETRIA_ID);
+                var FuncionesVitales = ValoresComponente(pstrserviceId, Constants.FUNCIONES_VITALES_ID);
+                var Antropometria = ValoresComponente(pstrserviceId, Constants.ANTROPOMETRIA_ID);
+                var LogoEmpresa = GetLogoMedicalCenter();
+                var sql = (from a in objEntity.ToList()
+
+
+                           select new Sigesoft.Node.WinClient.BE.ReportCuestionarioEspirometria
+                           {
+                               EmpresaCliente = a.EmpresaCliente,
+                               EmpresaContratista = a.EmpresaContratista,
+                               EmpresaPropietaria = a.EmpresaPropietaria,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+
+                               IdServicio = a.IdServicio,
+                               ServiceComponentId = a.ServiceComponentId,
+                               TipoEso = a.TipoEso,
+                               Fecha = a.Fecha,
+                               Fecha_S = a.Fecha.Value.ToString("dd/MM/yyyy"),
+                               NombreTrabajador = a.NombreTrabajador,
+                               FechaNacimineto_S = a.FechaNacimineto.Value.ToString("dd/MM/yyyy"),
+                               RazonSocial = a.RazonSocial,
+                               ActividadEconomica = a.ActividadEconomica,
+                               PuestoTrabajo = a.PuestoTrabajo,
+                               LogoCliente = a.LogoCliente,
+                               TiempoTrabajo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_TIEMPO_TRABAJO_ID).v_Value1,
+                               Edad = GetAge(a.FechaNacimineto.Value),
+                               Logo = LogoEmpresa,
+                               b_File = a.b_File,
+                               Dni = a.Dni,
+                               Pregunta1ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_1).v_Value1,
+                               Pregunta2ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_2).v_Value1,
+                               Pregunta3ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_3).v_Value1,
+                               Pregunta4ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_4).v_Value1,
+                               Pregunta5ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5).v_Value1,
+                               NroCigarros = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000003660").v_Value1,
+
+                               HemoptisisSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.PIROMETRIA_ANTECEDENTES_HEMOSTISIS).v_Value1,
+                               PseumotoraxSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_PNEUMOTORAX).v_Value1,
+                               TraqueostomiaSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_TRAQUEOSTOMIA).v_Value1,
+                               SondaPleuralSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_SONDA_PLEURAL).v_Value1,
+                               AneurismaSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_ANEURISMA_CEREBRAL).v_Value1,
+                               EmboliaSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBOLIA_PULMONAR).v_Value1,
+                               InfartoSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INFARTO_RECIENTE).v_Value1,
+                               InestabilidadSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INESTABILIDAD_CV).v_Value1,
+                               FiebreSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_FIEBRE_NAUSEAS).v_Value1,
+                               EmbarazoAvanzadoSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_AVANZADO).v_Value1,
+                               EmbarazoComplicadoSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_COMPLICADO).v_Value1,
+
+                               Pregunta1BSiNo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESESPIROMETRIA_CUESTIONARIO_PARA_1) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESESPIROMETRIA_CUESTIONARIO_PARA_1).v_Value1,
+                               Pregunta2BSiNo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_2) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_2).v_Value1,
+                               Pregunta3BSiNo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_3) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_3).v_Value1,
+                               Pregunta4BSiNo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_4) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_4).v_Value1,
+                               Pregunta5BSiNo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_5) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_5).v_Value1,
+                               Pregunta6BSiNo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_6) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_6).v_Value1,
+                               Pregunta7BSiNo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_7) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_7).v_Value1,
+
+
+                               FVC = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_CVF) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_CVF).v_Value1,
+                               FVCDes = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_FVC) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_FVC).v_Value1,
+
+                               VEF1 = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1).v_Value1,
+                               VEF1Des = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_DES_VEF_1) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_DES_VEF_1).v_Value1,
+
+                               PEF = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_PEF) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_PEF).v_Value1,
+                               PEFDes = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_DES_PEF) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_DES_PEF).v_Value1,
+
+                               FER = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_FET) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_FET).v_Value1,
+                               FERDes = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_FER) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_FER).v_Value1,
+
+                               F25 = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_FEF_25_75) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_FEF_25_75).v_Value1,
+                               F25Des = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_F_25) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_F_25).v_Value1,
+
+                               F50 = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_F_50) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_F_50).v_Value1,
+                               F50Des = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_F_50) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_F_50).v_Value1,
+
+                               MEF = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_MEF) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_MEF).v_Value1,
+                               MEFDes = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_MEF) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_MEF).v_Value1,
+
+                               R50 = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_F_50) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_F_50).v_Value1,
+                               R50Des = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_R_50) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_R_50).v_Value1,
+
+                               MVV = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_MVV) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_MVV).v_Value1,
+                               MVVDes = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_MVV) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_MVV).v_Value1,
+
+                               Normal = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_Normal) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_Normal).v_Value1,
+                               SindromeRestrictivo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeRestrictivo) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeRestrictivo).v_Value1,
+                               SindromeObtructivo = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeObtructivo) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeObtructivo).v_Value1,
+                               Observacion = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_Observacion) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_Observacion).v_Value1,
+
+
+                               FrecuenciaCardiaca = FuncionesVitales.Count() == 0 || FuncionesVitales.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID) == null ? string.Empty : FuncionesVitales.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID).v_Value1,
+                               Talla = Antropometria.Count() == 0 || Antropometria.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID) == null ? string.Empty : Antropometria.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID).v_Value1,
+                               Peso = Antropometria.Count() == 0 || Antropometria.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID) == null ? string.Empty : Antropometria.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1,
+                               ComentarioPrueba = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000003135") == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000003135").v_Value1,
+                               Caucasico = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000000622") == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000000622").v_Value1,
+                               Fumador = Espirometria.Count() == 0 || Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000000623") == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000000623").v_Value1,
+                               Genero = a.Genero,
+                               //FirmaTrabajador = a.FirmaTrabajador == null ? GetFirma("") : a.FirmaTrabajador,
+
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+
+                               b_Logo = MedicalCenter.b_Image,
+                               //EmpresaPropietaria = MedicalCenter.v_Name,
+                               //EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+                               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                               TipoExamen = a.TipoExamen,
+
+
+                           }).ToList();
+
+                return sql;
                 //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 //var objEntity = (from A in dbContext.service
@@ -18018,7 +18229,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 //               TipoExamen = a.TipoExamen
                 //           }).ToList();
 
-                return null;
+                //return null;
             }
             catch (Exception)
             {
@@ -18286,6 +18497,238 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
         {
             try
             {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var groupUbigeo = 113;
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+
+
+                                 // Usuario Tecnologo *************************************
+                                 join tec in dbContext.systemuser on E.i_UpdateUserTechnicalDataRegisterId equals tec.i_SystemUserId into tec_join
+                                 from tec in tec_join.DefaultIfEmpty()
+
+                                 join ptec in dbContext.professional on tec.v_PersonId equals ptec.v_PersonId into ptec_join
+                                 from ptec in ptec_join.DefaultIfEmpty()
+                                 // *******************************************************  
+
+                                 join pro in dbContext.protocol on A.v_ProtocolId equals pro.v_ProtocolId
+
+                                 join H in dbContext.systemparameter on new { a = pro.i_EsoTypeId.Value, b = 118 }
+                                                 equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
+
+                                 // Empresa / Sede Trabajo  ********************************************************
+                                 join ow in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
+                                         equals new { a = ow.v_OrganizationId } into ow_join
+                                 from ow in ow_join.DefaultIfEmpty()
+
+                                 join o in dbContext.organization on new { a = pro.v_EmployerOrganizationId }
+                                         equals new { a = o.v_OrganizationId } into o_join
+                                 from o in o_join.DefaultIfEmpty()
+
+                                 join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
+                                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                                 from lw in lw_join.DefaultIfEmpty()
+
+
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on BB.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 //************************************************************************************
+                                 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId into Z_join
+                                 from Z in Z_join.DefaultIfEmpty()
+
+                                 // Ubigeo de la persona *******************************************************
+                                 join dep in dbContext.datahierarchy on new { a = B.i_DepartmentId.Value, b = groupUbigeo }
+                                                      equals new { a = dep.i_ItemId, b = dep.i_GroupId } into dep_join
+                                 from dep in dep_join.DefaultIfEmpty()
+
+                                 join prov in dbContext.datahierarchy on new { a = B.i_ProvinceId.Value, b = groupUbigeo }
+                                                       equals new { a = prov.i_ItemId, b = prov.i_GroupId } into prov_join
+                                 from prov in prov_join.DefaultIfEmpty()
+
+                                 join distri in dbContext.datahierarchy on new { a = B.i_DistrictId.Value, b = groupUbigeo }
+                                                       equals new { a = distri.i_ItemId, b = distri.i_GroupId } into distri_join
+                                 from distri in distri_join.DefaultIfEmpty()
+
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join D in dbContext.organization on E1.v_CustomerOrganizationId equals D.v_OrganizationId into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 //*********************************************************************************************
+                                 let varDpto = dep.v_Value1 == null ? "" : dep.v_Value1
+                                 let varProv = prov.v_Value1 == null ? "" : prov.v_Value1
+                                 let varDistri = distri.v_Value1 == null ? "" : distri.v_Value1
+                                 where A.v_ServiceId == pstrserviceId
+
+                                 select new Sigesoft.Node.WinClient.BE.AudiometriaList
+                                 {
+                                     v_PersonId = A.v_PersonId,
+
+                                     v_FullPersonName = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+
+                                     d_BirthDate = B.d_Birthdate,
+                                     d_ServiceDate = A.d_ServiceDate,
+
+                                     v_DocNumber = B.v_DocNumber,
+                                     i_SexTypeId = B.i_SexTypeId.Value,
+
+                                     FirmaTecnologo = ptec.b_SignatureImage,
+                                     FirmaMedico = pme.b_SignatureImage,
+
+                                     Puesto = B.v_CurrentOccupation,
+                                     v_SexType = B.i_SexTypeId == (int)Gender.MASCULINO ? "M" : "F",
+
+                                     //
+                                     v_EsoTypeName = H.v_Value1,
+                                     v_ServiceComponentId = E.v_ServiceComponentId,
+
+                                     v_CustomerOrganizationName = C2.v_Name,
+                                     v_EmployerOrganizationName = C1.v_Name,
+                                     EmpresaPropietaria = C.v_Name,
+                                     EmpresaPropietariaDireccion = C1.v_Name + " / " + C.v_Name,
+
+                                     FirmaTrabajador = B.b_RubricImage,
+                                     HuellaTrabajador = B.b_FingerPrintImage,
+                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
+                                     Departamento = varDpto,
+                                     Provincia = varProv,
+                                     Distrito = varDistri,
+                                     DireccionPaciente = B.v_AdressLocation,
+                                     Telefono = B.v_TelephoneNumber
+                                 });
+
+                var MedicalCenter = GetInfoMedicalCenter();
+
+                var __sql = ValoresComponente(pstrserviceId, pstrComponentId);
+
+                var sql = (from a in objEntity.ToList()
+
+                           select new Sigesoft.Node.WinClient.BE.AudiometriaList
+                           {
+
+                               v_PersonId = a.v_PersonId,
+                               v_FullPersonName = a.v_FullPersonName,
+                               Telefono = a.Telefono,
+                               d_BirthDate = a.d_BirthDate,
+                               i_AgePacient = GetAge(a.d_BirthDate.Value),
+                               d_ServiceDate = a.d_ServiceDate,
+                               v_DocNumber = a.v_DocNumber,
+                               i_SexTypeId = a.i_SexTypeId,
+                               FirmaMedico = a.FirmaMedico,
+                               FirmaTecnologo = a.FirmaTecnologo,
+                               Puesto = a.Puesto,
+                               v_SexType = a.v_SexType,
+                               Departamento = a.Departamento,
+                               Provincia = a.Provincia,
+                               Distrito = a.Distrito,
+                               DireccionPaciente = a.DireccionPaciente,
+                               // Requisitos para la Audiometria                         
+                               CambiosAltitud = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD).v_Value1,
+                               ExpuestoRuido = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO).v_Value1,
+                               ProcesoInfeccioso = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO).v_Value1,
+                               DurmioNochePrevia = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA).v_Value1,
+                               ConsumioAlcoholDiaPrevio = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO).v_Value1,
+
+                               //// Antecedentes Medicos de importancia
+
+                               RinitisSinusitis = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS).v_Value1,
+                               UsoMedicamentos = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS).v_Value1,
+                               Sarampion = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION).v_Value1,
+                               Tec = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC).v_Value1,
+                               OtitisMediaCronica = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA).v_Value1,
+                               DiabetesMellitus = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS).v_Value1,
+                               SorderaAntecedente = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA).v_Value1,
+                               SorderaFamiliar = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR).v_Value1,
+                               Meningitis = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS).v_Value1,
+                               Dislipidemia = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA).v_Value1,
+                               EnfTiroidea = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA).v_Value1,
+                               SustQuimicas = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS).v_Value1,
+
+                               //// Hobbies
+
+                               UsoMP3 = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3).v_Value1,
+                               PracticaTiro = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO).v_Value1,
+                               Otros = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS).v_Value1,
+
+                               //// Sintomas actuales
+
+                               Sordera = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA).v_Value1,
+                               Otalgia1 = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA).v_Value1,
+                               Acufenos = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS).v_Value1,
+                               SecrecionOtica = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA).v_Value1,
+                               Vertigos = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS).v_Value1,
+
+                               //// Otoscopia
+
+                               OidoIzquierdo = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO).v_Value1,
+                               OidoDerecho = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO).v_Value1,
+
+                               b_Logo = MedicalCenter.b_Image,
+                               EmpresaPropietaria = a.EmpresaPropietaria,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+
+                               //
+                               v_EsoTypeName = a.v_EsoTypeName,
+                               v_ServiceComponentId = a.v_ServiceComponentId,
+                               v_CustomerOrganizationName = a.v_CustomerOrganizationName,
+                               v_EmployerOrganizationName = a.v_EmployerOrganizationName,
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+                               MarcaAudiometria = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA).v_Value1,
+                               ModeloAudiometria = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO).v_Value1,
+                               CalibracionAudiometria = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION).v_Value1,
+                               TiempoTrabajo = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO) == null ? "" : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO).v_Value1,
+                               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                               Dx = GetDiagnosticByServiceIdAndCategoryId(pstrserviceId, 15),
+                               Recomendaciones = ConcatenateRecomendacionesByCategoria(15, pstrserviceId),
+
+
+
+                               CuaelfrecuencidusoEspecificar = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002201") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002201").v_Value1,
+                               DesdcuandoACUFENOS = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002202") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002202").v_Value1,
+                               DesdcuandoMAREOS = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002203") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002203").v_Value1,
+                               Arsenico = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002183") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002183").v_Value1,
+                               Tolueno = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002184") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002184").v_Value1,
+                               OTROS = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002185") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002185").v_Value1,
+                               Infeccioaoidcronic = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002186") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002186").v_Value1,
+                               OtalgiDesdcuando = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002204") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002204").v_Value1,
+                               Otorrea = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002187") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002187").v_Value1,
+                               AntecedentequirurgicoORL = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002188") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002188").v_Value1,
+                               HIPERTENSIoARTERIAL = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002189") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002189").v_Value1,
+                               EnfermedadMeniere = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002190") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002190").v_Value1,
+                               Hipoacusifamiliar = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002191") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002191").v_Value1,
+                               DIABETEMELLITUS = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002192") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002192").v_Value1,
+                               TEFracturadehuestemporal = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002193") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002193").v_Value1,
+                               Rinitis = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002194") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002194").v_Value1,
+                               Sinusitis = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002195") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002195").v_Value1,
+                               Parotiditis = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002196") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002196").v_Value1,
+                               Sarampion1 = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002197") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002197").v_Value1,
+                               UsdOtotoxicos = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002198") == null ? "" : __sql.Find(p => p.v_ComponentFieldId == "N009-MF000002198").v_Value1,
+
+                           }).ToList();
+
+                return sql;
                 //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 //var objEntity = (from A in dbContext.service
@@ -18503,7 +18946,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                 //           }).ToList();
 
-                return null;
+                //return null;
             }
             catch (Exception)
             {
@@ -19309,7 +19752,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                 var sql = (from a in objEntity.ToList()
 
-                           let OsteoMuscular = new ServiceBL().ValoresComponente(pstrserviceId, "N005-ME000000046")
+                           let OsteoMuscular = new ServiceBL().ValoresComponente(pstrserviceId, pstrComponentId)
                            select new MusculoEsqueleticoInter
                            {
                                PersonId = a.PersonId,
@@ -19323,8 +19766,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                PUESTOTRABAJO = a.PUESTOTRABAJO,
                                FECHASERVICIO = a.FECHASERVICIO,
 
-                               DXEXAMEN = new ServiceBL().GetDiagnosticByServiceIdAndComponent(pstrserviceId, "N005-ME000000046"),
-                               RECOMENDACIONESEXAMEN = new ServiceBL().GetRecommendationByServiceIdAndComponent(pstrserviceId, "N005-ME000000046"),
+                               DXEXAMEN = new ServiceBL().GetDiagnosticByServiceIdAndComponent(pstrserviceId, pstrComponentId),
+                               RECOMENDACIONESEXAMEN = new ServiceBL().GetRecommendationByServiceIdAndComponent(pstrserviceId, pstrComponentId),
 
                                FIRMAUSUARIOGRABA = a.FIRMAUSUARIOGRABA,
                                NOMBREUSUARIOGRABA = a.NOMBREUSUARIOGRABA,
@@ -19505,7 +19948,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                TEST_DE_TINEL_DERECHO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TEST_DE_TINEL_DERECHO_CI) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TEST_DE_TINEL_DERECHO_CI).v_Value1,
                                TEST_DE_TINEL_IZQUIERDO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TEST_DE_TINEL_IZQUIERDO_CI) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.TEST_DE_TINEL_IZQUIERDO_CI).v_Value1,
 
-
                                CADERA_IZQUIERDA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQUIERDA_CI) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQUIERDA_CI).v_Value1,
                                CADERA_IZQUIERDA_12MESES = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQUIERDA_12MESES_CI) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQUIERDA_12MESES_CI).v_Value1,
                                CADERA_IZQUIERDA_7_DIAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQUIERDA_7_DIAS_CI) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.CADERA_IZQUIERDA_7_DIAS_CI).v_Value1,
@@ -19518,10 +19960,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                DORSAL_LATERAL = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LATERAL_CI) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DORSAL_LATERAL_CI).v_Value1,
                                LUMBAR_LATERAL = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LUMBAR_LATERAL_CI) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LUMBAR_LATERAL_CI).v_Value1,
 
-
-
-
-
                            }).ToList();
 
                 return sql;
@@ -19529,7 +19967,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -19744,10 +20181,1161 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
             return query.v_ServiceComponentId;
         }
 
-        //var objEntitySource = (from a in dbContext.servicecomponent
-        //                       where (a.v_ServiceId == pobjDtoEntity.v_ServiceId) &&
-        //                             (componentId.Contains(a.v_ComponentId))
-        //                       select a).ToList();
-              
+        public List<Sigesoft.Node.WinClient.BE.ReportEstudioElectrocardiografico> GetReportElectroGold(string pstrserviceId, string pstrComponentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
+                                 join D in dbContext.organization on C.v_EmployerOrganizationId equals D.v_OrganizationId
+                                 join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 join J1 in dbContext.datahierarchy on new { a = B.i_LevelOfId.Value, b = 108 }
+                                                                    equals new { a = J1.i_ItemId, b = J1.i_GroupId } into J1_join
+                                 from J1 in J1_join.DefaultIfEmpty()
+                                 join F in dbContext.systemuser on E.i_InsertUserId equals F.i_SystemUserId into F_join
+                                 from F in F_join.DefaultIfEmpty()
+
+                                 join G in dbContext.professional on F.v_PersonId equals G.v_PersonId into G_join
+                                 from G in G_join.DefaultIfEmpty()
+
+                                 join M in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
+                                     equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
+                                 from M in M_join.DefaultIfEmpty()
+
+
+
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+
+                                 // Usuario Tecnologo *************************************
+                                 join tec in dbContext.systemuser on E.i_UpdateUserTechnicalDataRegisterId equals tec.i_SystemUserId into tec_join
+                                 from tec in tec_join.DefaultIfEmpty()
+
+                                 join ptec in dbContext.professional on tec.v_PersonId equals ptec.v_PersonId into ptec_join
+                                 from ptec in ptec_join.DefaultIfEmpty()
+                                 // *******************************************************       
+
+                                 join X in dbContext.person on me.v_PersonId equals X.v_PersonId
+                                 join Y in dbContext.person on tec.v_PersonId equals Y.v_PersonId into Y_join
+                                 from Y in Y_join.DefaultIfEmpty()
+
+                                 join F1 in dbContext.servicecomponentmultimedia on E.v_ServiceComponentId equals F1.v_ServiceComponentId into F1_join
+                                 from F1 in F1_join.DefaultIfEmpty()
+
+                                 join G1 in dbContext.multimediafile on F1.v_MultimediaFileId equals G1.v_MultimediaFileId into G1_join
+                                 from G1 in G1_join.DefaultIfEmpty()
+
+
+                                 where A.v_ServiceId == pstrserviceId
+                                 select new Sigesoft.Node.WinClient.BE.ReportEstudioElectrocardiografico
+                                 { //ron
+                                     NroFicha = E.v_ServiceComponentId,
+                                     TipoESO = C.i_EsoTypeId.Value,
+                                     NroHistoria = A.v_ServiceId,
+                                     DatosPaciente = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                     FechaNacimiento = B.d_Birthdate.Value,
+                                     Genero = M.v_Value1,
+                                     FirmaMedico = pme.b_SignatureImage,
+                                     FirmaTecnico = ptec.b_SignatureImage,
+                                     Fecha = A.d_ServiceDate.Value,
+                                     Empresa = D.v_Name,//vamos
+                                     Puesto = B.v_CurrentOccupation,
+                                     NombreDoctor = X.v_FirstLastName + " " + X.v_SecondLastName + " " + X.v_FirstName,
+                                     NombreTecnologo = Y.v_FirstLastName + " " + Y.v_SecondLastName + " " + Y.v_FirstName,
+                                     NombreUsuarioGraba = X.v_FirstLastName + " " + X.v_SecondLastName + " " + X.v_FirstName,
+                                     b_Imagen = G1.b_File,
+                                     HuellaPaciente = B.b_FingerPrintImage,
+                                     FirmaPaciente = B.b_RubricImage
+                                 });
+
+                var MedicalCenter = GetInfoMedicalCenter();
+                var Valores = ValoresComponente(pstrserviceId, pstrComponentId);
+                var sql = (from a in objEntity.ToList()
+
+                           select new Sigesoft.Node.WinClient.BE.ReportEstudioElectrocardiografico
+                           {
+                               b_Imagen = a.b_Imagen,
+                               NroFicha = a.NroFicha,
+                               NroHistoria = a.NroHistoria,
+                               DatosPaciente = a.DatosPaciente,
+                               FechaNacimiento = a.FechaNacimiento,
+                               Genero = a.Genero,
+                               FirmaMedico = a.FirmaMedico,
+                               FirmaTecnico = a.FirmaTecnico,
+                               Fecha = a.Fecha,
+                               Empresa = a.Empresa,
+                               TipoESO = a.TipoESO,
+                               Puesto = a.Puesto,
+                               Edad = GetAge(a.FechaNacimiento),
+                               NombreDoctor = a.NombreDoctor,
+                               NombreTecnologo = a.NombreTecnologo,
+                               HuellaPaciente = a.HuellaPaciente,
+                               FirmaPaciente = a.FirmaPaciente,
+
+                               FrecuenciaCardiaca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003119") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003119").v_Value1,
+                               RitmoCardiaco = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003120") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003120").v_Value1,
+
+                               PrGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003121") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003121").v_Value1,
+                               QrsGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122").v_Value1,
+                               QtcGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003123") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003123").v_Value1,
+                               EjeCardicacoGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003124") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003124").v_Value1,
+                               //HallazgoGold = GetDiagnosticByServiceIdAndComponent(a.NroHistoria, Constants.ELECTRO_GOLD),
+                               HallazgoGold = GetDiagnosticByServiceIdAndComponent(a.NroHistoria, Constants.ELECTRO_GOLD),
+                               Hallazgos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126").v_Value1,
+
+                               //ObservacionesGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126").v_Value1,
+                               ObservacionesGold = GetRecommendationByServiceIdAndComponent(a.NroHistoria, Constants.ELECTRO_GOLD),
+
+                               EkGNormalGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003127") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003127").v_Value1,
+
+                           }).ToList();
+
+                return sql;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public Sigesoft.Node.WinClient.BE.UsuarioGrabo DevolverDatosUsuarioGraboExamen(int categoriaId, string pstrserviceId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var objEntity = (from E in dbContext.servicecomponent
+
+                             join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join B in dbContext.person on pme.v_PersonId equals B.v_PersonId
+
+                             join C in dbContext.component on E.v_ComponentId equals C.v_ComponentId
+
+                             where E.v_ServiceId == pstrserviceId && C.i_CategoryId == categoriaId
+                             select new Sigesoft.Node.WinClient.BE.UsuarioGrabo
+                             {
+                                 Firma = pme.b_SignatureImage,
+                                 Nombre = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                 CMP = pme.v_ProfessionalCode
+                             }).FirstOrDefault();
+
+            return objEntity;
+
+        }
+
+        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3,
+             string p4, string p5, string p6, string p7, string p8, string p9, string p10)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var objEntity = (from E in dbContext.servicecomponent
+
+                             join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join p in dbContext.person on me.v_PersonId equals p.v_PersonId
+
+                             where E.v_ServiceId == pstrServiceId &&
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 ||
+                             E.v_ComponentId == p4 || E.v_ComponentId == p5 || E.v_ComponentId == p6 ||
+                             E.v_ComponentId == p7 || E.v_ComponentId == p8 || E.v_ComponentId == p9 || E.v_ComponentId == p10)
+                             select new KeyValueDTO
+                             {
+                                 Value5 = pme.b_SignatureImage,
+                                 Value2 = p.v_FirstLastName + " " + p.v_SecondLastName + " " + p.v_FirstName,
+                                 Value3 = pme.v_ProfessionalCode
+
+                             }).FirstOrDefault();
+
+            return objEntity;
+        }
+
+        public Sigesoft.Node.WinClient.BE.ServiceList GetInformacion_OtrosExamenes(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join D in dbContext.datahierarchy on new { a = C.i_SectorTypeId.Value, b = 104 }
+                                                        equals new { a = D.i_ItemId, b = D.i_GroupId } into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 join E in dbContext.datahierarchy on new { a = C.i_DepartmentId.Value, b = 113 }
+                                                       equals new { a = E.i_ItemId, b = E.i_GroupId } into E_join
+                                 from E in E_join.DefaultIfEmpty()
+
+                                 join F in dbContext.datahierarchy on new { a = C.i_ProvinceId.Value, b = 113 }
+                                                       equals new { a = F.i_ItemId, b = F.i_GroupId } into F_join
+                                 from F in F_join.DefaultIfEmpty()
+
+                                 join G in dbContext.datahierarchy on new { a = C.i_DistrictId.Value, b = 113 }
+                                                       equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                 from G in G_join.DefaultIfEmpty()
+
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join su in dbContext.systemuser on A.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
+                                 from su in su_join.DefaultIfEmpty()
+
+                                 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
+                                 from pr in pr_join.DefaultIfEmpty()
+
+                                 join P1 in dbContext.person on new { a = pr.v_PersonId }
+                                         equals new { a = P1.v_PersonId } into P1_join
+                                 from P1 in P1_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new Sigesoft.Node.WinClient.BE.ServiceList
+                                 {
+                                     v_PersonId = H.v_PersonId,
+                                     v_ServiceId = A.v_ServiceId,
+                                     i_EsoTypeId = B.i_EsoTypeId.Value,
+                                     RUC = C.v_IdentificationNumber,
+                                     //---------------DATOS DE LA EMPRESA--------------------------------
+                                     EmpresaTrabajo = C.v_Name,
+                                     EmpresaEmpleadora = C1.v_Name,
+                                     RubroEmpresaTrabajo = C.v_SectorName,
+                                     DireccionEmpresaTrabajo = C.v_Address,
+                                     DepartamentoEmpresaTrabajo = E.v_Value1,
+                                     ProvinciaEmpresaTrabajo = F.v_Value1,
+                                     DistritoEmpresaTrabajo = G.v_Value1,
+                                     v_CurrentOccupation = H.v_CurrentOccupation,
+                                     b_Logo = C2.b_Image,
+                                     EmpresaClienteId = C.v_OrganizationId,
+
+                                     FirmaTrabajador = H.b_RubricImage,
+                                     HuellaTrabajador = H.b_FingerPrintImage,
+
+                                     //Datos del Doctor
+                                     FirmaDoctor = pr.b_SignatureImage,
+                                     NombreDoctor = P1.v_FirstName + " " + P1.v_FirstLastName + " " + P1.v_SecondLastName,
+                                     CMP = pr.v_ProfessionalCode,
+
+                                     v_CustomerOrganizationName = C2.v_Name,
+
+                                 });
+
+                var sql = (from a in objEntity.ToList()
+                           let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
+                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID,
+                           Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID,
+                           Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID, Constants.ANEXO_3_EXO_RESP_YANACOCHA)
+
+                           select new Sigesoft.Node.WinClient.BE.ServiceList
+                           {
+                               //-----------------CABECERA---------------------------------
+                               v_ServiceId = a.v_ServiceId,
+                               i_EsoTypeId = a.i_EsoTypeId, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                               RUC = a.RUC,
+                               //---------------DATOS DE LA EMPRESA--------------------------------
+                               EmpresaTrabajo = a.EmpresaTrabajo,
+                               EmpresaEmpleadora = a.EmpresaEmpleadora,
+                               RubroEmpresaTrabajo = a.RubroEmpresaTrabajo,
+                               DireccionEmpresaTrabajo = a.DireccionEmpresaTrabajo,
+                               DepartamentoEmpresaTrabajo = a.DepartamentoEmpresaTrabajo,
+                               ProvinciaEmpresaTrabajo = a.ProvinciaEmpresaTrabajo,
+                               DistritoEmpresaTrabajo = a.DistritoEmpresaTrabajo,
+                               v_CurrentOccupation = a.v_CurrentOccupation,
+                               b_Logo = a.b_Logo,
+                               EmpresaClienteId = a.EmpresaClienteId,
+                               //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+
+                               v_OwnerOrganizationName = (from n in dbContext.organization
+                                                          where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                                                          select n.v_Name + " " + n.v_Address).SingleOrDefault<string>(),
+
+
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+
+                               //Datos del Doctor
+                               FirmaDoctor = a.FirmaDoctor,
+                               NombreDoctor = DatosMedicina.Value2,
+                               CMP = DatosMedicina.Value3,
+
+                               FirmaMedicoMedicina = DatosMedicina.Value5,
+                               v_CustomerOrganizationName = a.v_CustomerOrganizationName
+                           }).FirstOrDefault();
+
+                return sql;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public class Data
+        {
+            public string _Key { get; set; }
+            public string StringData { get; set; }
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> GetValueOdontograma(string pstrServiceId, string pstrComponentId, string pstrpath)
+        {
+            try
+            {
+                ServiceBL oServiceBL = new ServiceBL();
+                List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> oServiceComponentFieldValuesList = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
+                List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> oServiceComponentFieldValuesList1 = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
+                oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontograma(pstrServiceId, pstrComponentId, pstrpath);
+                //var xx = oServiceComponentFieldValuesList.Count() == 0 || ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)) == null ? string.Empty : ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)).v_Value1;
+
+                #region Comentado
+
+                oServiceComponentFieldValuesList1 = ValoresComponenteOdontogramaValue1(pstrServiceId, pstrComponentId);
+
+                List<Data> x = new List<Data>();
+                Data y = new Data();
+
+                x.Add(new Data() { _Key = "", StringData = "" });
+                x.Add(new Data() { _Key = Constants.D11_1, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_2, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_3, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_4, StringData = "11" });
+                x.Add(new Data() { _Key = Constants.D11_5, StringData = "11" });
+
+                x.Add(new Data() { _Key = Constants.D12_1, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_2, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_3, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_4, StringData = "12" });
+                x.Add(new Data() { _Key = Constants.D12_5, StringData = "12" });
+
+                x.Add(new Data() { _Key = Constants.D13_1, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_2, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_3, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_4, StringData = "13" });
+                x.Add(new Data() { _Key = Constants.D13_5, StringData = "13" });
+
+                x.Add(new Data() { _Key = Constants.D14_1, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_2, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_3, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_4, StringData = "14" });
+                x.Add(new Data() { _Key = Constants.D14_5, StringData = "14" });
+
+                x.Add(new Data() { _Key = Constants.D15_1, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_2, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_3, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_4, StringData = "15" });
+                x.Add(new Data() { _Key = Constants.D15_5, StringData = "15" });
+
+                x.Add(new Data() { _Key = Constants.D16_1, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_2, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_3, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_4, StringData = "16" });
+                x.Add(new Data() { _Key = Constants.D16_5, StringData = "16" });
+
+                x.Add(new Data() { _Key = Constants.D17_1, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_2, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_3, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_4, StringData = "17" });
+                x.Add(new Data() { _Key = Constants.D17_5, StringData = "17" });
+
+                x.Add(new Data() { _Key = Constants.D18_1, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_2, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_3, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_4, StringData = "18" });
+                x.Add(new Data() { _Key = Constants.D18_5, StringData = "18" });
+
+                //--------------
+                x.Add(new Data() { _Key = Constants.D21_1, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_2, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_3, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_4, StringData = "21" });
+                x.Add(new Data() { _Key = Constants.D21_5, StringData = "21" });
+
+                x.Add(new Data() { _Key = Constants.D22_1, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_2, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_3, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_4, StringData = "22" });
+                x.Add(new Data() { _Key = Constants.D22_5, StringData = "22" });
+
+                x.Add(new Data() { _Key = Constants.D23_1, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_2, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_3, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_4, StringData = "23" });
+                x.Add(new Data() { _Key = Constants.D23_5, StringData = "23" });
+
+                x.Add(new Data() { _Key = Constants.D24_1, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_2, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_3, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_4, StringData = "24" });
+                x.Add(new Data() { _Key = Constants.D24_5, StringData = "24" });
+
+                x.Add(new Data() { _Key = Constants.D25_1, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_2, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_3, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_4, StringData = "25" });
+                x.Add(new Data() { _Key = Constants.D25_5, StringData = "25" });
+
+                x.Add(new Data() { _Key = Constants.D26_1, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_2, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_3, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_4, StringData = "26" });
+                x.Add(new Data() { _Key = Constants.D26_5, StringData = "26" });
+
+                x.Add(new Data() { _Key = Constants.D27_1, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_2, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_3, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_4, StringData = "27" });
+                x.Add(new Data() { _Key = Constants.D27_5, StringData = "27" });
+
+                x.Add(new Data() { _Key = Constants.D28_1, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_2, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_3, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_4, StringData = "28" });
+                x.Add(new Data() { _Key = Constants.D28_5, StringData = "28" });
+                //------------------------
+                x.Add(new Data() { _Key = Constants.D31_1, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_2, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_3, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_4, StringData = "31" });
+                x.Add(new Data() { _Key = Constants.D31_5, StringData = "31" });
+
+                x.Add(new Data() { _Key = Constants.D32_1, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_2, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_3, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_4, StringData = "32" });
+                x.Add(new Data() { _Key = Constants.D32_5, StringData = "32" });
+
+                x.Add(new Data() { _Key = Constants.D33_1, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_2, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_3, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_4, StringData = "33" });
+                x.Add(new Data() { _Key = Constants.D33_5, StringData = "33" });
+
+                x.Add(new Data() { _Key = Constants.D34_1, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_2, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_3, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_4, StringData = "34" });
+                x.Add(new Data() { _Key = Constants.D34_5, StringData = "34" });
+
+                x.Add(new Data() { _Key = Constants.D35_1, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_2, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_3, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_4, StringData = "35" });
+                x.Add(new Data() { _Key = Constants.D35_5, StringData = "35" });
+
+                x.Add(new Data() { _Key = Constants.D36_1, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_2, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_3, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_4, StringData = "36" });
+                x.Add(new Data() { _Key = Constants.D36_5, StringData = "36" });
+
+                x.Add(new Data() { _Key = Constants.D37_1, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_2, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_3, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_4, StringData = "37" });
+                x.Add(new Data() { _Key = Constants.D37_5, StringData = "37" });
+
+                x.Add(new Data() { _Key = Constants.D38_1, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_2, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_3, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_4, StringData = "38" });
+                x.Add(new Data() { _Key = Constants.D38_5, StringData = "38" });
+                //---------------------
+                x.Add(new Data() { _Key = Constants.D41_1, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_2, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_3, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_4, StringData = "41" });
+                x.Add(new Data() { _Key = Constants.D41_5, StringData = "41" });
+
+                x.Add(new Data() { _Key = Constants.D42_1, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_2, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_3, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_4, StringData = "42" });
+                x.Add(new Data() { _Key = Constants.D42_5, StringData = "42" });
+
+                x.Add(new Data() { _Key = Constants.D43_1, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_2, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_3, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_4, StringData = "43" });
+                x.Add(new Data() { _Key = Constants.D43_5, StringData = "43" });
+
+                x.Add(new Data() { _Key = Constants.D44_1, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_2, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_3, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_4, StringData = "44" });
+                x.Add(new Data() { _Key = Constants.D44_5, StringData = "44" });
+
+                x.Add(new Data() { _Key = Constants.D45_1, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_2, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_3, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_4, StringData = "45" });
+                x.Add(new Data() { _Key = Constants.D45_5, StringData = "45" });
+
+                x.Add(new Data() { _Key = Constants.D46_1, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_2, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_3, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_4, StringData = "46" });
+                x.Add(new Data() { _Key = Constants.D46_5, StringData = "46" });
+
+                x.Add(new Data() { _Key = Constants.D47_1, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_2, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_3, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_4, StringData = "47" });
+                x.Add(new Data() { _Key = Constants.D47_5, StringData = "47" });
+
+                x.Add(new Data() { _Key = Constants.D48_1, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_2, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_3, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_4, StringData = "48" });
+                x.Add(new Data() { _Key = Constants.D48_5, StringData = "48" });
+
+                var rangodientes = x.ToList();
+                foreach (var item in oServiceComponentFieldValuesList1)
+                {
+
+                    var NroDiente = rangodientes.Find(p => p._Key == item.v_ComponentFieldId) == null ? "" : rangodientes.Find(p => p._Key == item.v_ComponentFieldId).StringData;//.f x[item.v_ComponentFieldId];
+                    var valorDiente = oServiceComponentFieldValuesList1.Count() == 0 || ((Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList)oServiceComponentFieldValuesList1.Find(p => p.v_ComponentFieldId == item.v_ComponentFieldId)) == null ? string.Empty : ((Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList)oServiceComponentFieldValuesList1.Find(p => p.v_ComponentFieldId == item.v_ComponentFieldId)).v_Value1;
+                    #region SWITCH
+                    switch (NroDiente)
+                    {
+                        case "18":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(18);
+                            }
+                            break;
+                        case "17":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(17);
+                            }
+                            break;
+                        case "16":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(16);
+                            }
+                            break;
+                        case "15":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(15);
+                            }
+                            break;
+                        case "14":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(14);
+                            }
+                            break;
+                        case "13":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(13);
+                            }
+                            break;
+                        case "12":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(12);
+                            }
+                            break;
+                        case "11":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(11);
+                            }
+                            break;
+
+                        //--------------------------------------
+
+                        case "21":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(21);
+                            }
+                            break;
+                        case "22":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(22);
+                            }
+                            break;
+                        case "23":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(23);
+                            }
+                            break;
+                        case "24":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(24);
+                            }
+                            break;
+                        case "25":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(25);
+                            }
+                            break;
+                        case "26":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(26);
+                            }
+                            break;
+                        case "27":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(27);
+                            }
+                            break;
+                        case "28":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(28);
+                            }
+                            break;
+
+                        //------------------------------
+
+                        case "31":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(31);
+                            }
+                            break;
+                        case "32":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(32);
+                            }
+                            break;
+                        case "33":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(33);
+                            }
+                            break;
+                        case "34":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(34);
+                            }
+                            break;
+                        case "35":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(35);
+                            }
+                            break;
+                        case "36":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(36);
+                            }
+                            break;
+                        case "37":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(37);
+                            }
+                            break;
+                        case "38":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(38);
+                            }
+                            break;
+
+                        //------------------------------
+
+                        case "41":
+                            if (valorDiente == "3")
+                            {
+                                //ContadorD18 = 1;
+                                ListaDiente.Add(41);
+                            }
+                            break;
+                        case "42":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(42);
+                            }
+                            break;
+                        case "43":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(43);
+                            }
+                            break;
+                        case "44":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(44);
+                            }
+                            break;
+                        case "45":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(45);
+                            }
+                            break;
+                        case "46":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(46);
+                            }
+                            break;
+                        case "47":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(47);
+                            }
+                            break;
+                        case "48":
+                            if (valorDiente == "3")
+                            {
+                                ListaDiente.Add(48);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    #endregion
+
+                }
+                #endregion
+
+                return oServiceComponentFieldValuesList;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> GetValueOdontogramaAusente(string pstrServiceId, string pstrComponentId, string pstrPath)
+        {
+            try
+            {
+                ServiceBL oServiceBL = new ServiceBL();
+                List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> oServiceComponentFieldValuesList = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
+
+                oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontogramaAusente(pstrServiceId, pstrComponentId, pstrPath);
+                return oServiceComponentFieldValuesList;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+       }
+
+        public List<Sigesoft.Node.WinClient.BE.ValorComponenteList> GetListValueComponent(string pstrServiceId, string pstrComponentId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            int isDeleted = (int)SiNo.NO;
+
+            try
+            {
+
+                var PreQuery = (from A in dbContext.service
+                                join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                                join C in dbContext.servicecomponentfields on B.v_ServiceComponentId equals C.v_ServiceComponentId
+                                join D in dbContext.servicecomponentfieldvalues on C.v_ServiceComponentFieldsId equals D.v_ServiceComponentFieldsId
+                                join F in dbContext.componentfields on C.v_ComponentFieldId equals F.v_ComponentFieldId
+                                join G in dbContext.componentfield on C.v_ComponentFieldId equals G.v_ComponentFieldId
+                                join H in dbContext.component on F.v_ComponentId equals H.v_ComponentId
+                                where A.v_ServiceId == pstrServiceId
+                                        && B.i_IsDeleted == isDeleted
+                                        && C.i_IsDeleted == isDeleted
+                                select new Sigesoft.Node.WinClient.BE.ValorComponenteList
+                                {
+                                    ServicioId = A.v_ServiceId,
+                                    Valor = D.v_Value1,
+                                    NombreComponente = H.v_Name,
+                                    IdComponente = C.v_ComponentId,
+                                    NombreCampo = G.v_TextLabel,
+                                    IdCampo = C.v_ComponentFieldId
+                                }
+                           ).ToList();
+                return PreQuery;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public List<Sigesoft.Node.WinClient.BE.ReportOdontograma> ReportOdontograma(string pstrserviceId, string pstrComponentId, string Path)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+                                 join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId
+
+                                 join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+                                 //**************************************************************************************
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on BB.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId
+
+                                 where A.v_ServiceId == pstrserviceId
+                                 select new Sigesoft.Node.WinClient.BE.ReportOdontograma
+                                 {
+                                     IdServicio = A.v_ServiceId,
+                                     Trabajador = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                                     Fecha = A.d_ServiceDate.Value,
+                                     Puesto = B.v_CurrentOccupation,
+                                     Ficha = E.v_ServiceComponentId,
+                                     FirmaMedico = pme.b_SignatureImage,
+
+                                     EmpresaPropietaria = C2.v_Name,
+                                     Empresa = C1.v_Name,
+                                     EmpresaPropietariaEmail = C.v_Name,
+                                     EmpresaPropietariaDireccion = C1.v_Name + " / " + C.v_Name,
+
+                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
+                                 });
+
+                var MedicalCenter = GetInfoMedicalCenter();
+
+                var ValorDiente = GetValueOdontograma(pstrserviceId, pstrComponentId, Path).ToList();
+                var ValorDienteAusente = GetValueOdontogramaAusente(pstrserviceId, pstrComponentId, Path);
+                var ValorCampos = GetListValueComponent(pstrserviceId, pstrComponentId);
+                var Test = ValoresComponentesUserControl(pstrserviceId, pstrComponentId);
+                var sql = (from a in objEntity.ToList()
+                           select new Sigesoft.Node.WinClient.BE.ReportOdontograma
+                           {
+                               IdServicio = a.IdServicio,
+                               Trabajador = a.Trabajador,
+                               Fecha = a.Fecha,
+                               Puesto = a.Puesto,
+                               Ficha = a.Ficha,
+                               FirmaMedico = a.FirmaMedico,
+
+                               EmpresaPropietaria = a.EmpresaPropietaria,
+                               Empresa = a.Empresa,
+                               EmpresaPropietariaEmail = a.EmpresaPropietariaEmail,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+
+                               Tabaco = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TABACO_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TABACO_ID).Valor,
+                               Diabetes = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_DIABETES_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_DIABETES_ID).Valor,
+                               Tbc = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TBC_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TBC_ID).Valor,
+                               Ets = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_ETS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_ETS_ID).Valor,
+                               Hematopatias = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_HEMATOPATIAS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_HEMATOPATIAS_ID).Valor,
+                               Obesidad = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_OBESIDAD_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_OBESIDAD_ID).Valor,
+                               Periodontitis = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_PERIODONTITIS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_PERIODONTITIS_ID).Valor,
+                               Movilidad = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_MOVILIDAD_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_MOVILIDAD_ID).Valor,
+                               Recesion = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_RECESION_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_RECESION_ID).Valor,
+                               Exudacion = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_EXUDACION_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_EXUDACION_ID).Valor,
+                               Gingivitis = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_GINGIVITIS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_GINGIVITIS_ID).Valor,
+                               BolsaPeriodontales = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_BOLSA_PERIODONTALES_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_BOLSA_PERIODONTALES_ID).Valor,
+                               Diagnosticos = GetDiagnosticByServiceIdAndComponent(pstrserviceId, Constants.ODONTOGRAMA_ID),
+                               PiezasCaries = GetCantidadCaries(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID),
+                               PiezasAusentes = GetCantidadAusentes(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID),
+
+                               PlacaBacteriana = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_PLACA_BACTERIANA_ID),
+                               RemanentesReticulares = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_REMANENTES_RETICULARES_ID),
+                               OtrosExamen = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_OTROS_EXAMEN_ID),
+                               Aptitud = GetValueOdontograma1(a.IdServicio, pstrComponentId, Constants.ODONTOGRAMA_APTITUD_ID),
+
+                               Diente181 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_1).v_Value1,
+                               Diente182 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_2).v_Value1,
+                               Diente183 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_3).v_Value1,
+                               Diente184 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_4).v_Value1,
+                               Diente185 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D18_5).v_Value1,
+                               Diente186 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D18_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D18_6).v_Value1,
+
+                               Diente171 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_1).v_Value1,
+                               Diente172 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_2).v_Value1,
+                               Diente173 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_3).v_Value1,
+                               Diente174 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_4).v_Value1,
+                               Diente175 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D17_5).v_Value1,
+                               Diente176 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D17_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D17_6).v_Value1,
+
+                               Diente161 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_1).v_Value1,
+                               Diente162 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_2).v_Value1,
+                               Diente163 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_3).v_Value1,
+                               Diente164 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_4).v_Value1,
+                               Diente165 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D16_5).v_Value1,
+                               Diente166 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D16_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D16_6).v_Value1,
+
+                               Diente151 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_1).v_Value1,
+                               Diente152 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_2).v_Value1,
+                               Diente153 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_3).v_Value1,
+                               Diente154 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_4).v_Value1,
+                               Diente155 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D15_5).v_Value1,
+                               Diente156 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D15_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D15_6).v_Value1,
+
+                               Diente141 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_1).v_Value1,
+                               Diente142 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_2).v_Value1,
+                               Diente143 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_3).v_Value1,
+                               Diente144 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_4).v_Value1,
+                               Diente145 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D14_5).v_Value1,
+                               Diente146 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D14_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D14_6).v_Value1,
+
+                               Diente131 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_1).v_Value1,
+                               Diente132 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_2).v_Value1,
+                               Diente133 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_3).v_Value1,
+                               Diente134 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_4).v_Value1,
+                               Diente135 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D13_5).v_Value1,
+                               Diente136 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D13_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D13_6).v_Value1,
+
+                               Diente121 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_1).v_Value1,
+                               Diente122 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_2).v_Value1,
+                               Diente123 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_3).v_Value1,
+                               Diente124 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_4).v_Value1,
+                               Diente125 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D12_5).v_Value1,
+                               Diente126 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D12_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D12_6).v_Value1,
+
+                               Diente111 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_1).v_Value1,
+                               Diente112 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_2).v_Value1,
+                               Diente113 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_3).v_Value1,
+                               Diente114 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_4).v_Value1,
+                               Diente115 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D11_5).v_Value1,
+                               Diente116 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D11_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D11_6).v_Value1,
+                               //-------------------------------------------------------------------------------
+                               Diente211 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_1).v_Value1,
+                               Diente212 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_2).v_Value1,
+                               Diente213 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_3).v_Value1,
+                               Diente214 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_4).v_Value1,
+                               Diente215 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D21_5).v_Value1,
+                               Diente216 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D21_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D21_6).v_Value1,
+
+                               Diente221 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_1).v_Value1,
+                               Diente222 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_2).v_Value1,
+                               Diente223 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_3).v_Value1,
+                               Diente224 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_4).v_Value1,
+                               Diente225 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D22_5).v_Value1,
+                               Diente226 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D22_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D22_6).v_Value1,
+
+                               Diente231 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_1).v_Value1,
+                               Diente232 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_2).v_Value1,
+                               Diente233 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_3).v_Value1,
+                               Diente234 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_4).v_Value1,
+                               Diente235 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D23_5).v_Value1,
+                               Diente236 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D23_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D23_6).v_Value1,
+
+                               Diente241 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_1).v_Value1,
+                               Diente242 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_2).v_Value1,
+                               Diente243 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_3).v_Value1,
+                               Diente244 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_4).v_Value1,
+                               Diente245 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D24_5).v_Value1,
+                               Diente246 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D24_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D24_6).v_Value1,
+
+                               Diente251 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_1).v_Value1,
+                               Diente252 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_2).v_Value1,
+                               Diente253 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_3).v_Value1,
+                               Diente254 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_4).v_Value1,
+                               Diente255 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D25_5).v_Value1,
+                               Diente256 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D25_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D25_6).v_Value1,
+
+                               Diente261 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_1).v_Value1,
+                               Diente262 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_2).v_Value1,
+                               Diente263 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_3).v_Value1,
+                               Diente264 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_4).v_Value1,
+                               Diente265 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D26_5).v_Value1,
+                               Diente266 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D26_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D26_6).v_Value1,
+
+                               Diente271 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_1).v_Value1,
+                               Diente272 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_2).v_Value1,
+                               Diente273 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_3).v_Value1,
+                               Diente274 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_4).v_Value1,
+                               Diente275 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D27_5).v_Value1,
+                               Diente276 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D27_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D27_6).v_Value1,
+
+                               Diente281 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_1).v_Value1,
+                               Diente282 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_2).v_Value1,
+                               Diente283 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_3).v_Value1,
+                               Diente284 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_4).v_Value1,
+                               Diente285 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D28_5).v_Value1,
+                               Diente286 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D28_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D28_6).v_Value1,
+                               //-------------------------------------------------------------------------------
+                               Diente311 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_1).v_Value1,
+                               Diente312 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_2).v_Value1,
+                               Diente313 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_3).v_Value1,
+                               Diente314 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_4).v_Value1,
+                               Diente315 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D31_5).v_Value1,
+                               Diente316 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D31_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D31_6).v_Value1,
+
+                               Diente321 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_1).v_Value1,
+                               Diente322 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_2).v_Value1,
+                               Diente323 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_3).v_Value1,
+                               Diente324 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_4).v_Value1,
+                               Diente325 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D32_5).v_Value1,
+                               Diente326 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D32_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D32_6).v_Value1,
+
+                               Diente331 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_1).v_Value1,
+                               Diente332 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_2).v_Value1,
+                               Diente333 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_3).v_Value1,
+                               Diente334 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_4).v_Value1,
+                               Diente335 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D33_5).v_Value1,
+                               Diente336 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D33_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D33_6).v_Value1,
+
+                               Diente341 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_1).v_Value1,
+                               Diente342 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_2).v_Value1,
+                               Diente343 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_3).v_Value1,
+                               Diente344 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_4).v_Value1,
+                               Diente345 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D34_5).v_Value1,
+                               Diente346 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D34_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D34_6).v_Value1,
+
+                               Diente351 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_1).v_Value1,
+                               Diente352 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_2).v_Value1,
+                               Diente353 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_3).v_Value1,
+                               Diente354 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_4).v_Value1,
+                               Diente355 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D35_5).v_Value1,
+                               Diente356 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D35_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D35_6).v_Value1,
+
+                               Diente361 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_1).v_Value1,
+                               Diente362 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_2).v_Value1,
+                               Diente363 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_3).v_Value1,
+                               Diente364 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_4).v_Value1,
+                               Diente365 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D36_5).v_Value1,
+                               Diente366 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D36_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D36_6).v_Value1,
+
+                               Diente371 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_1).v_Value1,
+                               Diente372 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_2).v_Value1,
+                               Diente373 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_3).v_Value1,
+                               Diente374 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_4).v_Value1,
+                               Diente375 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D37_5).v_Value1,
+                               Diente376 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D37_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D37_6).v_Value1,
+
+                               Diente381 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_1).v_Value1,
+                               Diente382 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_2).v_Value1,
+                               Diente383 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_3).v_Value1,
+                               Diente384 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_4).v_Value1,
+                               Diente385 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D38_5).v_Value1,
+                               Diente386 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D38_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D38_6).v_Value1,
+                               //-------------------------------------------------------------------------------
+                               Diente411 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_1).v_Value1,
+                               Diente412 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_2).v_Value1,
+                               Diente413 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_3).v_Value1,
+                               Diente414 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_4).v_Value1,
+                               Diente415 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D41_5).v_Value1,
+                               Diente416 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D41_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D41_6).v_Value1,
+
+                               Diente421 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_1).v_Value1,
+                               Diente422 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_2).v_Value1,
+                               Diente423 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_3).v_Value1,
+                               Diente424 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_4).v_Value1,
+                               Diente425 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D42_5).v_Value1,
+                               Diente426 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D42_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D42_6).v_Value1,
+
+                               Diente431 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_1).v_Value1,
+                               Diente432 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_2).v_Value1,
+                               Diente433 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_3).v_Value1,
+                               Diente434 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_4).v_Value1,
+                               Diente435 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D43_5).v_Value1,
+                               Diente436 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D43_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D43_6).v_Value1,
+
+                               Diente441 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_1).v_Value1,
+                               Diente442 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_2).v_Value1,
+                               Diente443 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_3).v_Value1,
+                               Diente444 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_4).v_Value1,
+                               Diente445 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D44_5).v_Value1,
+                               Diente446 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D44_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D44_6).v_Value1,
+
+                               Diente451 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_1).v_Value1,
+                               Diente452 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_2).v_Value1,
+                               Diente453 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_3).v_Value1,
+                               Diente454 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_4).v_Value1,
+                               Diente455 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D45_5).v_Value1,
+                               Diente456 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D45_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D45_6).v_Value1,
+
+                               Diente461 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_1).v_Value1,
+                               Diente462 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_2).v_Value1,
+                               Diente463 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_3).v_Value1,
+                               Diente464 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_4).v_Value1,
+                               Diente465 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D46_5).v_Value1,
+                               Diente466 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D46_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D46_6).v_Value1,
+
+                               Diente471 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_1).v_Value1,
+                               Diente472 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_2).v_Value1,
+                               Diente473 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_3).v_Value1,
+                               Diente474 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_4).v_Value1,
+                               Diente475 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D47_5).v_Value1,
+                               Diente476 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D47_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D47_6).v_Value1,
+
+                               Diente481 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_1) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_1).v_Value1,
+                               Diente482 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_2) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_2).v_Value1,
+                               Diente483 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_3) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_3).v_Value1,
+                               Diente484 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_4) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_4).v_Value1,
+                               Diente485 = ValorDiente.Count() == 0 || ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_5) == null ? string.Empty : ValorDiente.Find(p => p.v_ComponentFieldId == Constants.D48_5).v_Value1,
+                               Diente486 = ValorDienteAusente.Count() == 0 || ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D48_6) == null ? string.Empty : ValorDienteAusente.Find(p => p.v_ComponentFieldId == Constants.D48_6).v_Value1,
+
+                               PiezasCuracion = NroDientesCurados(ListaDiente),
+                               b_Logo = MedicalCenter.b_Image,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                               Recomendaciones = GetRecommendationByServiceIdAndComponent(pstrserviceId, pstrComponentId),
+                               Otros = Test.Count() == 0 || Test.Find(p => p.v_ComponentFieldId == Constants.Otros) == null ? string.Empty : Test.Find(p => p.v_ComponentFieldId == Constants.Otros).v_Value1,
+                           }).ToList();
+
+                return sql;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

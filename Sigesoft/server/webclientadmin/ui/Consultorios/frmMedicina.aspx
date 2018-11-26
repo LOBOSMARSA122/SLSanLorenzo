@@ -109,7 +109,6 @@
                                 </x:FormRow>
                             </Rows>
                         </x:Form>
-
                     </Items>
                 </x:GroupPanel>
                 <x:GroupPanel runat="server" Title="Datos de Trabajador" ID="GroupPanel3" AutoWidth="true" BoxFlex="1" Height="120">
@@ -854,6 +853,7 @@
                                         <x:Label ID="Label747" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label748" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabaAnexo16" runat="server"></x:DropDownList>
+                                        <x:Button ID="btnReporte16" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -1470,7 +1470,7 @@
                                 <x:Toolbar ID="Toolbar2" runat="server">
                                     <Items>
                                         <x:Button ID="btnOsteomuscular" Text="Grabar Osteomuscular" Icon="SystemSave" runat="server" OnClick="btnOsteomuscular_Click" AjaxLoadingType="Mask"></x:Button>
-
+                                        <x:Button ID="btnReporteOsteo" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -2259,12 +2259,12 @@
                             </Items>
                         </x:Tab>
 
-                        <x:Tab ID="TabAlturaEstructural" BodyPadding="5px" Title="Altura Estrucctural 1-8" runat="server">
+                        <x:Tab ID="TabAlturaEstructural" BodyPadding="5px" Title="Altura Estructural 1-8" runat="server">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar3" runat="server">
                                     <Items>
                                         <x:Button ID="btnAlturaEsctructural" Text="Grabar Osteomuscula" Icon="SystemSave" runat="server" OnClick="btnAlturaEsctructural_Click" AjaxLoadingType="Mask"></x:Button>
-
+                                        <x:Button ID="btnAlturaReporte" Text="Ver Reporte" runat="server" Icon="PageWhiteText" Enabled="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -4743,7 +4743,7 @@
 
         <x:Window ID="winEdit1" Title="Reporte" Popup="false" EnableIFrame="true" runat="server" IconUrl="~/images/16/11.png"
             CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="true" EnableResize="true"
-            Target="Top" IsModal="true" Height="630px" Width="700px">
+            Target="Top" IsModal="true" Height="630px" Width="870px">
         </x:Window>
 
         <x:Window ID="winEditReco" Title="Recomendación" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"

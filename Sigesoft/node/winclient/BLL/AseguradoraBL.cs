@@ -45,6 +45,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 LiquidacionAseguradora oLiquidacionAseguradora;
                 var detalle = new List<LiquiAseguradoraDetalle>();
                 LiquiAseguradoraDetalle oLiquiAseguradoraDetalle;
+                decimal? TotalAseguradora = 0;
                 foreach (var servicio in data)
                 {
                     oLiquidacionAseguradora = new LiquidacionAseguradora();
@@ -63,6 +64,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.Tipo = componente.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
                         oLiquiAseguradoraDetalle.SaldoPaciente = componente.d_SaldoPaciente.Value;
                         oLiquiAseguradoraDetalle.SaldoAseguradora = componente.d_SaldoAseguradora.Value;
+                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
                         oLiquiAseguradoraDetalle.SubTotal = componente.d_SaldoPaciente.Value + componente.d_SaldoAseguradora.Value;
                         oLiquiAseguradoraDetalle.Cantidad = 1;
                         oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(componente.r_Price.ToString());
@@ -78,6 +80,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.Tipo = ticket.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
                         oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente;
                         oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora;
+                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
                         oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente + ticket.d_SaldoAseguradora;
                         oLiquiAseguradoraDetalle.Cantidad = ticket.d_Cantidad;
                         oLiquiAseguradoraDetalle.PrecioUnitario = ticket.d_PrecioVenta;
@@ -93,14 +96,16 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.Tipo = receta.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
                         oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
                         oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
+                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
                         oLiquiAseguradoraDetalle.SubTotal = receta.d_SaldoPaciente + receta.d_SaldoAseguradora;
                         oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad;
                         oLiquiAseguradoraDetalle.PrecioUnitario = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].d_PrecioVenta;
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
+                    oLiquidacionAseguradora.TotalAseguradora = TotalAseguradora;
                     oLiquidacionAseguradora.Detalle = detalle;
-
+                    
                     ListaLiquidacion.Add(oLiquidacionAseguradora);
                 }
              
@@ -201,8 +206,7 @@ namespace Sigesoft.Node.WinClient.BLL
                              join H in dbContext.service on A.v_ServiceId equals H.v_ServiceId
                              join I in dbContext.protocol on H.v_ProtocolId equals I.v_ProtocolId
                              join G in dbContext.plan on new { a = I.v_ProtocolId, b = A.v_IdUnidadProductiva }
-                                     equals new { a = G.v_ProtocoloId, b = G.v_IdUnidadProductiva } into G_join
-                             from G in G_join.DefaultIfEmpty()
+                                     equals new { a = G.v_ProtocoloId, b = G.v_IdUnidadProductiva } 
                              where A.v_ServiceId == serviceId &&
                                    A.i_IsDeleted == 0 &&
                                    A.i_IsRequiredId == 1 &&

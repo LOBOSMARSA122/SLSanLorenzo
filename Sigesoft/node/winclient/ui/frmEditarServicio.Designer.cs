@@ -82,15 +82,17 @@
             this.txtProtocolName = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grdDataLocation = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblCostoTotal = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.uvProtocol = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.grdDataLocation = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.txtCentroCosto = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataLocation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -372,6 +374,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.txtCentroCosto);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.cbOrganizationInvoice);
             this.groupBox2.Controls.Add(this.label8);
@@ -619,32 +623,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Precios";
             // 
-            // lblCostoTotal
-            // 
-            this.lblCostoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCostoTotal.BackColor = System.Drawing.SystemColors.Info;
-            this.lblCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostoTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblCostoTotal.Location = new System.Drawing.Point(855, 188);
-            this.lblCostoTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCostoTotal.Name = "lblCostoTotal";
-            this.lblCostoTotal.Size = new System.Drawing.Size(88, 23);
-            this.lblCostoTotal.TabIndex = 111;
-            this.lblCostoTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(655, 188);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(196, 23);
-            this.label9.TabIndex = 110;
-            this.label9.Text = "Costo Total del Protocolo";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // grdDataLocation
             // 
             this.grdDataLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -715,6 +693,53 @@
             this.grdDataLocation.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataLocation_InitializeLayout);
             this.grdDataLocation.DoubleClick += new System.EventHandler(this.grdDataLocation_DoubleClick_1);
             // 
+            // lblCostoTotal
+            // 
+            this.lblCostoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCostoTotal.BackColor = System.Drawing.SystemColors.Info;
+            this.lblCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoTotal.ForeColor = System.Drawing.Color.Black;
+            this.lblCostoTotal.Location = new System.Drawing.Point(855, 188);
+            this.lblCostoTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCostoTotal.Name = "lblCostoTotal";
+            this.lblCostoTotal.Size = new System.Drawing.Size(88, 23);
+            this.lblCostoTotal.TabIndex = 111;
+            this.lblCostoTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(655, 188);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(196, 23);
+            this.label9.TabIndex = 110;
+            this.label9.Text = "Costo Total del Protocolo";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtCentroCosto
+            // 
+            this.txtCentroCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCentroCosto.Location = new System.Drawing.Point(685, 108);
+            this.txtCentroCosto.MaxLength = 100;
+            this.txtCentroCosto.Name = "txtCentroCosto";
+            this.txtCentroCosto.Size = new System.Drawing.Size(250, 20);
+            this.txtCentroCosto.TabIndex = 172;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(586, 109);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 19);
+            this.label5.TabIndex = 173;
+            this.label5.Text = "C. Costo";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmEditarServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -737,8 +762,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataLocation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -790,5 +815,7 @@
         private System.Windows.Forms.Button button1;
         private Infragistics.Win.Misc.UltraValidator uvProtocol;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdDataLocation;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCentroCosto;
     }
 }

@@ -294,7 +294,7 @@
                                          <%--<x:Label ID="Label746" runat="server" Text="....." ShowLabel="false"></x:Label>--%>
                                         <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabar" runat="server" Enabled="false"></x:DropDownList>
-                                        <%--<x:Button ID="btnReporteEspiro" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>--%> 
+                                        <x:Button ID="btnReporteEspiro" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -610,7 +610,7 @@
 
          <x:Window ID="winEdit1" Title="Reporte" Popup="false" EnableIFrame="true" runat="server" IconUrl="~/images/16/11.png" 
        CloseAction="HidePostBack" EnableConfirmOnClose="true"  IFrameUrl="about:blank" EnableMaximize="true" EnableResize="true"
-       Target="Top"  IsModal="true"  Height="630px" Width="700px" >
+       Target="Top"  IsModal="true"  Height="630px" Width="870px" >
     </x:Window>
 
          <x:Window ID="winEditReco" Title="Recomendación" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"

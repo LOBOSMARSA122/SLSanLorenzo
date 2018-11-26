@@ -2045,6 +2045,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  r_Price = A.r_Price,
                                  v_ComponentName = B.v_Name,
                                  v_CategoryName = F.v_Value1,
+                                 i_ConCargoA = A.i_ConCargoA,
                                  MedicoTratante = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
                                  d_InsertDate = A.d_InsertDate
 							 }).ToList();
@@ -31161,14 +31162,16 @@ namespace Sigesoft.Node.WinClient.BLL
             return objEntity;
 
         }
-        public List<Liquidacion> ListaLiquidacion(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, int estadoLiq)
+        public List<Liquidacion> ListaLiquidacion(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, int? estadoLiq, int? fact)
         {
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 if (estadoLiq == 1)
                 {
-                    var query = from A in dbContext.service
+                    if (fact == 1)
+                    {
+                        var query = from A in dbContext.service
                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
                                 join C in dbContext.person on A.v_PersonId equals C.v_PersonId
                                 join D in dbContext.groupoccupation on B.v_GroupOccupationId equals D.v_GroupOccupationId
@@ -31194,7 +31197,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 from H in J5_join.DefaultIfEmpty()
 
                                 where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
-                                && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != ""
+                                && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 2
 
                                 select new Liquidacion
                                 {
@@ -31307,6 +31310,291 @@ namespace Sigesoft.Node.WinClient.BLL
 
                     pobjOperationResult.Success = 1;
                     return ListaLiquidacion.ToList();
+                    }
+                    else if (fact == 2)
+                    {
+                        var query = from A in dbContext.service
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
+                                    join C in dbContext.person on A.v_PersonId equals C.v_PersonId
+                                    join D in dbContext.groupoccupation on B.v_GroupOccupationId equals D.v_GroupOccupationId
+
+                                    join J1 in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                                    equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join
+                                    from J1 in J1_join.DefaultIfEmpty()
+
+                                    join F in dbContext.organization on B.v_CustomerOrganizationId equals F.v_OrganizationId
+                                    join I in dbContext.location on B.v_CustomerLocationId equals I.v_LocationId
+
+                                    join BB in dbContext.organization on B.v_EmployerOrganizationId equals BB.v_OrganizationId
+                                    join CC in dbContext.location on B.v_EmployerLocationId equals CC.v_LocationId
+
+                                    join G in dbContext.organization on B.v_WorkingOrganizationId equals G.v_OrganizationId into J4_join
+                                    from G in J4_join.DefaultIfEmpty()
+
+                                    join J in dbContext.location on B.v_WorkingLocationId equals J.v_LocationId into J6_join
+                                    from J in J6_join.DefaultIfEmpty()
+
+                                    join H in dbContext.systemparameter on new { a = B.i_MasterServiceId.Value, b = 119 }
+                                                                        equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
+                                    from H in J5_join.DefaultIfEmpty()
+
+                                    where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
+                                    && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 1
+
+                                    select new Liquidacion
+                                    {
+                                        v_ServiceId = A.v_ServiceId,
+                                        v_PersonId = C.v_PersonId,
+                                        i_EsoTypeId = B.i_EsoTypeId.Value,
+                                        Esotype = J1.v_Value1,
+                                        v_CustomerOrganizationId = F.v_OrganizationId,
+                                        v_EmployerOrganizationId = BB.v_OrganizationId,
+                                        v_WorkingOrganizationId = G.v_OrganizationId,
+                                        v_NroLiquidacion = A.v_NroLiquidacion,
+                                        CCosto = A.v_centrocosto,
+                                        Trabajador = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
+                                        FechaNacimiento = C.d_Birthdate.Value,
+                                        FechaExamen = A.d_ServiceDate.Value,
+                                        NroDocumemto = C.v_DocNumber,
+                                        Cargo = C.v_CurrentOccupation,
+                                        Perfil = B.v_Name,
+                                        v_ProtocolId = B.v_ProtocolId,
+                                        v_CustomerLocationId = B.v_CustomerLocationId,
+                                        v_EmployerLocationId = B.v_EmployerLocationId,
+                                        v_WorkingLocationId = B.v_WorkingLocationId
+                                    };
+                        if (!string.IsNullOrEmpty(pstrFilterExpression))
+                        {
+                            query = query.Where(pstrFilterExpression);
+                        }
+                        if (!string.IsNullOrEmpty(pstrSortExpression))
+                        {
+                            query = query.OrderBy(pstrSortExpression);
+                        }
+                        if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                        {
+                            int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                            query = query.Skip(intStartRowIndex);
+                        }
+                        if (pintResultsPerPage.HasValue)
+                        {
+                            query = query.Take(pintResultsPerPage.Value);
+                        }
+
+                        var result = (from A in query.ToList()
+                                      select new Liquidacion
+                                      {
+                                          v_ProtocolId = A.v_ProtocolId,
+                                          v_PersonId = A.v_PersonId,
+                                          v_ServiceId = A.v_ServiceId,
+                                          i_EsoTypeId = A.i_EsoTypeId,
+                                          Esotype = A.Esotype,
+                                          v_CustomerOrganizationId = A.v_CustomerOrganizationId,
+                                          v_EmployerOrganizationId = A.v_EmployerOrganizationId,
+                                          v_WorkingOrganizationId = A.v_WorkingOrganizationId,
+                                          v_NroLiquidacion = A.v_NroLiquidacion,
+                                          Trabajador = A.Trabajador,
+                                          FechaNacimiento = A.FechaNacimiento,
+                                          Edad = GetAge(A.FechaNacimiento.Value),
+                                          FechaExamen = A.FechaExamen,
+                                          NroDocumemto = A.NroDocumemto,
+                                          Cargo = A.Cargo,
+                                          Perfil = A.Perfil,
+                                          Precio = 0,
+                                          CCosto = A.CCosto
+                                      }).ToList();
+
+                        var ListaServicios = result.ToList();
+                        var tipoEsos = result.ToList().GroupBy(g => g.i_EsoTypeId).Select(p => p.FirstOrDefault());
+
+
+                        List<Liquidacion> ListaLiquidacion = new List<Liquidacion>();
+
+                        foreach (var item in tipoEsos)
+                        {
+                            var LiquidacionDetalle = new List<LiquidacionDetalle>();
+                            var oLiquidacionEmpresaDetalle = new Liquidacion();
+                            oLiquidacionEmpresaDetalle.Esotype = item.Esotype;
+
+                            var servicios = ListaServicios.FindAll(p => p.i_EsoTypeId == item.i_EsoTypeId);
+
+                            int contador = 1;
+                            foreach (var servicio in servicios)
+                            {
+                                var oLiquidacionDetalle = new LiquidacionDetalle();
+                                oLiquidacionDetalle.v_ProtocolId = servicio.v_ProtocolId;
+                                oLiquidacionDetalle.Item = contador;
+                                oLiquidacionDetalle.v_PersonId = servicio.v_PersonId;
+                                oLiquidacionDetalle.b_Seleccionar = false;
+                                oLiquidacionDetalle.v_NroLiquidacion = servicio.v_NroLiquidacion;
+                                oLiquidacionDetalle.v_ServiceId = servicio.v_ServiceId;
+                                oLiquidacionDetalle.Trabajador = servicio.Trabajador;
+                                oLiquidacionDetalle.FechaNacimiento = servicio.FechaNacimiento.Value;
+                                oLiquidacionDetalle.Edad = servicio.Edad;
+                                oLiquidacionDetalle.FechaExamen = servicio.FechaExamen;
+                                oLiquidacionDetalle.NroDocumemto = servicio.NroDocumemto;
+                                oLiquidacionDetalle.Cargo = servicio.Cargo;
+
+                                oLiquidacionDetalle.Perfil = servicio.Perfil;
+                                oLiquidacionDetalle.Precio =
+                                    GetServiceComponentsLiquidacion(ref pobjOperationResult, servicio.v_ServiceId).Sum(s => s.r_Price).Value;
+                                oLiquidacionDetalle.SubTotal = float.Parse((oLiquidacionDetalle.Precio / 1.18).ToString());
+                                oLiquidacionDetalle.Igv = oLiquidacionDetalle.Precio - oLiquidacionDetalle.SubTotal;
+                                oLiquidacionDetalle.CCosto = servicio.CCosto;
+
+                                LiquidacionDetalle.Add(oLiquidacionDetalle);
+                                contador++;
+                            }
+                            oLiquidacionEmpresaDetalle.Detalle = LiquidacionDetalle;
+
+                            ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
+                        }
+
+                        pobjOperationResult.Success = 1;
+                        return ListaLiquidacion.ToList();
+                    }
+                    else
+                    {
+                        var query = from A in dbContext.service
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
+                                    join C in dbContext.person on A.v_PersonId equals C.v_PersonId
+                                    join D in dbContext.groupoccupation on B.v_GroupOccupationId equals D.v_GroupOccupationId
+
+                                    join J1 in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                                    equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join
+                                    from J1 in J1_join.DefaultIfEmpty()
+
+                                    join F in dbContext.organization on B.v_CustomerOrganizationId equals F.v_OrganizationId
+                                    join I in dbContext.location on B.v_CustomerLocationId equals I.v_LocationId
+
+                                    join BB in dbContext.organization on B.v_EmployerOrganizationId equals BB.v_OrganizationId
+                                    join CC in dbContext.location on B.v_EmployerLocationId equals CC.v_LocationId
+
+                                    join G in dbContext.organization on B.v_WorkingOrganizationId equals G.v_OrganizationId into J4_join
+                                    from G in J4_join.DefaultIfEmpty()
+
+                                    join J in dbContext.location on B.v_WorkingLocationId equals J.v_LocationId into J6_join
+                                    from J in J6_join.DefaultIfEmpty()
+
+                                    join H in dbContext.systemparameter on new { a = B.i_MasterServiceId.Value, b = 119 }
+                                                                        equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
+                                    from H in J5_join.DefaultIfEmpty()
+
+                                    where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
+                                    && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != ""
+
+                                    select new Liquidacion
+                                    {
+                                        v_ServiceId = A.v_ServiceId,
+                                        v_PersonId = C.v_PersonId,
+                                        i_EsoTypeId = B.i_EsoTypeId.Value,
+                                        Esotype = J1.v_Value1,
+                                        v_CustomerOrganizationId = F.v_OrganizationId,
+                                        v_EmployerOrganizationId = BB.v_OrganizationId,
+                                        v_WorkingOrganizationId = G.v_OrganizationId,
+                                        v_NroLiquidacion = A.v_NroLiquidacion,
+                                        CCosto = A.v_centrocosto,
+                                        Trabajador = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
+                                        FechaNacimiento = C.d_Birthdate.Value,
+                                        FechaExamen = A.d_ServiceDate.Value,
+                                        NroDocumemto = C.v_DocNumber,
+                                        Cargo = C.v_CurrentOccupation,
+                                        Perfil = B.v_Name,
+                                        v_ProtocolId = B.v_ProtocolId,
+                                        v_CustomerLocationId = B.v_CustomerLocationId,
+                                        v_EmployerLocationId = B.v_EmployerLocationId,
+                                        v_WorkingLocationId = B.v_WorkingLocationId
+                                    };
+                        if (!string.IsNullOrEmpty(pstrFilterExpression))
+                        {
+                            query = query.Where(pstrFilterExpression);
+                        }
+                        if (!string.IsNullOrEmpty(pstrSortExpression))
+                        {
+                            query = query.OrderBy(pstrSortExpression);
+                        }
+                        if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                        {
+                            int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                            query = query.Skip(intStartRowIndex);
+                        }
+                        if (pintResultsPerPage.HasValue)
+                        {
+                            query = query.Take(pintResultsPerPage.Value);
+                        }
+
+                        var result = (from A in query.ToList()
+                                      select new Liquidacion
+                                      {
+                                          v_ProtocolId = A.v_ProtocolId,
+                                          v_PersonId = A.v_PersonId,
+                                          v_ServiceId = A.v_ServiceId,
+                                          i_EsoTypeId = A.i_EsoTypeId,
+                                          Esotype = A.Esotype,
+                                          v_CustomerOrganizationId = A.v_CustomerOrganizationId,
+                                          v_EmployerOrganizationId = A.v_EmployerOrganizationId,
+                                          v_WorkingOrganizationId = A.v_WorkingOrganizationId,
+                                          v_NroLiquidacion = A.v_NroLiquidacion,
+                                          Trabajador = A.Trabajador,
+                                          FechaNacimiento = A.FechaNacimiento,
+                                          Edad = GetAge(A.FechaNacimiento.Value),
+                                          FechaExamen = A.FechaExamen,
+                                          NroDocumemto = A.NroDocumemto,
+                                          Cargo = A.Cargo,
+                                          Perfil = A.Perfil,
+                                          Precio = 0,
+                                          CCosto = A.CCosto
+                                      }).ToList();
+
+                        var ListaServicios = result.ToList();
+                        var tipoEsos = result.ToList().GroupBy(g => g.i_EsoTypeId).Select(p => p.FirstOrDefault());
+
+
+                        List<Liquidacion> ListaLiquidacion = new List<Liquidacion>();
+
+                        foreach (var item in tipoEsos)
+                        {
+                            var LiquidacionDetalle = new List<LiquidacionDetalle>();
+                            var oLiquidacionEmpresaDetalle = new Liquidacion();
+                            oLiquidacionEmpresaDetalle.Esotype = item.Esotype;
+
+                            var servicios = ListaServicios.FindAll(p => p.i_EsoTypeId == item.i_EsoTypeId);
+
+                            int contador = 1;
+                            foreach (var servicio in servicios)
+                            {
+                                var oLiquidacionDetalle = new LiquidacionDetalle();
+                                oLiquidacionDetalle.v_ProtocolId = servicio.v_ProtocolId;
+                                oLiquidacionDetalle.Item = contador;
+                                oLiquidacionDetalle.v_PersonId = servicio.v_PersonId;
+                                oLiquidacionDetalle.b_Seleccionar = false;
+                                oLiquidacionDetalle.v_NroLiquidacion = servicio.v_NroLiquidacion;
+                                oLiquidacionDetalle.v_ServiceId = servicio.v_ServiceId;
+                                oLiquidacionDetalle.Trabajador = servicio.Trabajador;
+                                oLiquidacionDetalle.FechaNacimiento = servicio.FechaNacimiento.Value;
+                                oLiquidacionDetalle.Edad = servicio.Edad;
+                                oLiquidacionDetalle.FechaExamen = servicio.FechaExamen;
+                                oLiquidacionDetalle.NroDocumemto = servicio.NroDocumemto;
+                                oLiquidacionDetalle.Cargo = servicio.Cargo;
+
+                                oLiquidacionDetalle.Perfil = servicio.Perfil;
+                                oLiquidacionDetalle.Precio =
+                                    GetServiceComponentsLiquidacion(ref pobjOperationResult, servicio.v_ServiceId).Sum(s => s.r_Price).Value;
+                                oLiquidacionDetalle.SubTotal = float.Parse((oLiquidacionDetalle.Precio / 1.18).ToString());
+                                oLiquidacionDetalle.Igv = oLiquidacionDetalle.Precio - oLiquidacionDetalle.SubTotal;
+                                oLiquidacionDetalle.CCosto = servicio.CCosto;
+
+                                LiquidacionDetalle.Add(oLiquidacionDetalle);
+                                contador++;
+                            }
+                            oLiquidacionEmpresaDetalle.Detalle = LiquidacionDetalle;
+
+                            ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
+                        }
+
+                        pobjOperationResult.Success = 1;
+                        return ListaLiquidacion.ToList();
+                    }
                 }
                 else if (estadoLiq == 2)
                 {
@@ -31725,6 +32013,31 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public liquidacionDto ListaLiquidacionById(ref OperationResult pobjOperationResult, string idLiquidacion)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                liquidacionDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.liquidacion
+                                 where a.v_NroLiquidacion == idLiquidacion
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = liquidacionAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
         public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa(ref OperationResult pobjOperationResult, DateTime? pdatBeginDate, DateTime? pdatEndDate)
         {
             try
@@ -31734,6 +32047,89 @@ namespace Sigesoft.Node.WinClient.BLL
                 var query = from A in dbContext.liquidacion
                             join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
                             where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
+
+                            select new LiquidacionEmpresa
+                            {
+                                v_OrganizationName = F.v_Name,
+                                v_LiquidacionId = A.v_LiquidacionId,
+                                v_Ruc = F.v_IdentificationNumber,
+                                v_AddressLocation = F.v_Address,
+                                v_TelephoneNumber = F.v_PhoneNumber,
+                                v_ContactName = F.v_ContacName,
+                                v_NroLiquidacion = A.v_NroLiquidacion,
+                                v_OrganizationId = A.v_OrganizationId,
+                                d_Monto = A.d_Monto,
+                                d_FechaVencimiento = A.d_FechaVencimiento,
+                                v_NroFactura = A.v_NroFactura,
+                                Creacion_Liquidacion = A.d_InsertDate
+                            };
+
+                var result = query.ToList();
+                var empresas = result.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
+
+                List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
+
+                foreach (var item in empresas)
+                {
+                    var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                    var oLiquidacionEmpresa = new LiquidacionEmpresa();
+                    oLiquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                    oLiquidacionEmpresa.v_Ruc = item.v_Ruc;
+                    oLiquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                    oLiquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                    oLiquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                    var liquidaciones = result.FindAll(p => p.v_OrganizationId == item.v_OrganizationId);
+
+                    foreach (var liquidacion in liquidaciones)
+                    {
+                        var oLiquidacionDetalle = new LiquidacionEmpresaDetalle();
+                        oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
+                        oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
+                        oLiquidacionDetalle.v_NroFactura = liquidacion.v_NroFactura;
+                        if (oLiquidacionDetalle.v_NroFactura != "" && oLiquidacionDetalle.v_NroFactura != null)
+                        {
+                            var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
+                            var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
+                            oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                        }
+                        else
+                        {
+                            oLiquidacionDetalle.d_Debe = 0;
+                        }
+                        oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
+
+                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;
+
+                        LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
+                    }
+                    oLiquidacionEmpresa.detalle = LiquidacionEmpresaDetalle;
+
+                    ListaLiquidacion.Add(oLiquidacionEmpresa);
+                }
+
+                pobjOperationResult.Success = 1;
+                return ListaLiquidacion.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa_SinFacturar(ref OperationResult pobjOperationResult, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.liquidacion
+                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate && A.v_NroFactura == null || A.v_NroFactura == ""
 
                             select new LiquidacionEmpresa
                             {
@@ -32401,6 +32797,56 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public organizationDto GetOrganizationId(ref OperationResult pobjOperationResult, string v_OrganizationId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                organizationDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.organization
+                                 where a.v_OrganizationId == v_OrganizationId
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = organizationAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+        public organizationDto GetOrganizationRuc(ref OperationResult pobjOperationResult, string rucOrganization)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                organizationDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.organization
+                                 where a.v_IdentificationNumber == rucOrganization
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = organizationAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
         public organizationDto GetOrganizationEmpresa(ref OperationResult pobjOperationResult, string v_organizationName)
         {
             //mon.IsActive = true;

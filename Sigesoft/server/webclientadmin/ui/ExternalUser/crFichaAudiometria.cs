@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
+namespace Sigesoft.Node.WinClient.UI.Reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         
         public override string FullResourceName {
             get {
-                return "Sigesoft.Server.WebClientAdmin.UI.ExternalUser.crFichaAudiometria.rpt";
+                return "Sigesoft.Node.WinClient.UI.Reports.crFichaAudiometria.rpt";
             }
             set {
                 // Do nothing

@@ -3433,6 +3433,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlUsuarioGrabaAnexo16;
         
         /// <summary>
+        /// btnReporte16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnReporte16;
+        
+        /// <summary>
         /// Panel14 control.
         /// </summary>
         /// <remarks>
@@ -5987,6 +5996,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Button btnOsteomuscular;
+        
+        /// <summary>
+        /// btnReporteOsteo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnReporteOsteo;
         
         /// <summary>
         /// Panel20 control.
@@ -10550,6 +10568,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Button btnAlturaEsctructural;
+        
+        /// <summary>
+        /// btnAlturaReporte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnAlturaReporte;
         
         /// <summary>
         /// Panel56 control.

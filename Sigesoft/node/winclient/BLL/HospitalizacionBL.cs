@@ -264,6 +264,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;
                         oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
                         oHospitalizacionHabitacionList.d_Precio = habitacion.d_Precio;
+                        oHospitalizacionHabitacionList.i_conCargoA = habitacion.i_conCargoA;
                         if (habitacion.d_Precio != null)
                             oHospitalizacionHabitacionList.Total =
                                 CalcularCostoHabitacion(habitacion.d_Precio.ToString(), habitacion.d_StartDate,
@@ -349,6 +350,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      NroHabitacion = D.v_Value1,
                                      d_StartDate = A.d_StartDate,
                                      d_EndDate = A.d_EndDate,
+                                     i_conCargoA = A.i_ConCargoA,
                                      d_Precio = A.d_Precio.Value
                                  }).ToList();
               List<HospitalizacionHabitacionList> obj = habitaciones;
@@ -450,6 +452,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oComponentesHospitalizacion.Precio = decimal.Round((decimal)componente.r_Price, 2);
                     oComponentesHospitalizacion.MedicoTratante = componente.MedicoTratante;
                     oComponentesHospitalizacion.Ingreso = componente.d_InsertDate.Value;
+                    oComponentesHospitalizacion.i_conCargoA = componente.i_ConCargoA;
                     listaComponentes.Add(oComponentesHospitalizacion);
                 }
                 tickets.Componentes = listaComponentes;
@@ -901,7 +904,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             from E in E_join.DefaultIfEmpty()
                             join F in dbContext.component on A.v_ComponentId equals F.v_ComponentId
 
-                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && (A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados 
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && (A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados && A1.i_IsDeleted != 1
 
                             select new LiquidacionMedicoList
                             {

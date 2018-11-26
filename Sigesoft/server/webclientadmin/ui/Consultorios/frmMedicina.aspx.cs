@@ -49,18 +49,21 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 {
                     AccordionPane2.Visible = true;
                 }
+                btnAlturaReporte.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=AlturaEstructural");
                 btnNuevoAntecedenteOcupacional.OnClientClick = WindowAddAntecedenteOcupacional.GetSaveStateReference(hfRefresh.ClientID) + WindowAddAntecedenteOcupacional.GetShowReference("../Consultorios/frmAntecedenteOcupacional.aspx?Mode=New");
                 btnNuevoAntecedentePersonal.OnClientClick = WindowAddAntecedentePersonal.GetSaveStateReference(hfRefresh.ClientID) + WindowAddAntecedentePersonal.GetShowReference("../Consultorios/frmAntecedentePersonal.aspx?Mode=New");
 
                 btnAgregarAntecedenteFamiliar.OnClientClick = WindowAddAntecedenteFamiliar.GetSaveStateReference(hfRefresh.ClientID) + WindowAddAntecedenteFamiliar.GetShowReference("../Consultorios/frmAntecedenteFamiliar.aspx?Mode=New");
                 btnAgregarHabitoNocivo.OnClientClick = WindowAddHabitoNocivo.GetSaveStateReference(hfRefresh.ClientID) + WindowAddHabitoNocivo.GetShowReference("../Consultorios/frmHabitosNocivos.aspx?Mode=New");
-              
+                
                 btnReporte312.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=312");
                 btnReporteAltura18C.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=AlturaCI");
+                btnReporteOsteo.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=OsteoCI");
                 btnReporteOsteoCI.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=OsteoCI");
                 btnReporteTamizajeCI.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=TamizajeCI");
                 btn7D_CI.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=7D");
                 btnReporteSintomatico.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Sintomatico");
+                btnReporte16.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Anexo16");
 
                 btnCertificadoAptitud.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Certificado");
                 btnInformeCI.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=InformeCI");
