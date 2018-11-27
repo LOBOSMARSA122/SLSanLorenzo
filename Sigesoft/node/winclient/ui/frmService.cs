@@ -50,6 +50,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmService_Load(object sender, EventArgs e)
         {
+            this.Show();
             #region Simular sesion
             //ClientSession objClientSession = new ClientSession();
             //objClientSession.i_SystemUserId = 1;
@@ -2944,6 +2945,14 @@ namespace Sigesoft.Node.WinClient.UI
             var id = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
             Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
 
+        }
+
+        private void frmService_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
         
         //void ProcesoSErvicio()

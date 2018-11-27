@@ -78,6 +78,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EmpresaEmpleadora");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EmpresaTrabajo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Trabajador");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaExamen");
             Infragistics.Win.UltraWinGrid.SummarySettings summarySettings2 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "Precio", 4, true, "Band 0", 0, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "Precio", 4, true);
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
@@ -98,7 +100,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpResumenCaja = new System.Windows.Forms.TabPage();
             this.txtTotalSaldo = new System.Windows.Forms.TextBox();
-            this.btnExport = new System.Windows.Forms.Button();
+            this.btnExportResumenCaja = new System.Windows.Forms.Button();
             this.txtTotalEgreso = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtTotalIngreso = new System.Windows.Forms.TextBox();
@@ -106,14 +108,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.grdGrid = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tpResumenTipoPago = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtTotalImporte = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnExportTipoPago = new System.Windows.Forms.Button();
             this.grdDataTipoPago = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.sfdAramark = new System.Windows.Forms.SaveFileDialog();
-            this.ugeAramark = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.tpResumenTipoEmpresa = new System.Windows.Forms.TabPage();
+            this.btnExportTipoEmpresa = new System.Windows.Forms.Button();
+            this.txtMontoTotal = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.grdTipoEmpresa = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.sfdField = new System.Windows.Forms.SaveFileDialog();
+            this.ugeResumenCaja = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.ugeResumenTipo = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.ugeResumenEmpresa = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -254,7 +259,7 @@
             // tpResumenCaja
             // 
             this.tpResumenCaja.Controls.Add(this.txtTotalSaldo);
-            this.tpResumenCaja.Controls.Add(this.btnExport);
+            this.tpResumenCaja.Controls.Add(this.btnExportResumenCaja);
             this.tpResumenCaja.Controls.Add(this.txtTotalEgreso);
             this.tpResumenCaja.Controls.Add(this.label6);
             this.tpResumenCaja.Controls.Add(this.txtTotalIngreso);
@@ -278,19 +283,19 @@
             this.txtTotalSaldo.Size = new System.Drawing.Size(100, 20);
             this.txtTotalSaldo.TabIndex = 65;
             // 
-            // btnExport
+            // btnExportResumenCaja
             // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.Enabled = false;
-            this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(10, 367);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(114, 24);
-            this.btnExport.TabIndex = 66;
-            this.btnExport.Text = "Exportar a Excel";
-            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExportResumenCaja.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportResumenCaja.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportResumenCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportResumenCaja.Location = new System.Drawing.Point(10, 367);
+            this.btnExportResumenCaja.Name = "btnExportResumenCaja";
+            this.btnExportResumenCaja.Size = new System.Drawing.Size(114, 24);
+            this.btnExportResumenCaja.TabIndex = 66;
+            this.btnExportResumenCaja.Text = "Exportar a Excel";
+            this.btnExportResumenCaja.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportResumenCaja.UseVisualStyleBackColor = true;
+            this.btnExportResumenCaja.Click += new System.EventHandler(this.btnExportResumenCaja_Click);
             // 
             // txtTotalEgreso
             // 
@@ -425,9 +430,7 @@
             // 
             // tpResumenTipoPago
             // 
-            this.tpResumenTipoPago.Controls.Add(this.button1);
-            this.tpResumenTipoPago.Controls.Add(this.txtTotalImporte);
-            this.tpResumenTipoPago.Controls.Add(this.label7);
+            this.tpResumenTipoPago.Controls.Add(this.btnExportTipoPago);
             this.tpResumenTipoPago.Controls.Add(this.grdDataTipoPago);
             this.tpResumenTipoPago.Location = new System.Drawing.Point(4, 22);
             this.tpResumenTipoPago.Name = "tpResumenTipoPago";
@@ -437,39 +440,19 @@
             this.tpResumenTipoPago.Text = "Resumen Tipo Pago";
             this.tpResumenTipoPago.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnExportTipoPago
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Enabled = false;
-            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(10, 370);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 24);
-            this.button1.TabIndex = 69;
-            this.button1.Text = "Exportar a Excel";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // txtTotalImporte
-            // 
-            this.txtTotalImporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalImporte.Location = new System.Drawing.Point(425, 383);
-            this.txtTotalImporte.Name = "txtTotalImporte";
-            this.txtTotalImporte.ReadOnly = true;
-            this.txtTotalImporte.Size = new System.Drawing.Size(100, 20);
-            this.txtTotalImporte.TabIndex = 68;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(422, 367);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 13);
-            this.label7.TabIndex = 67;
-            this.label7.Text = "TOTAL IMPORTE";
+            this.btnExportTipoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportTipoPago.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportTipoPago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportTipoPago.Location = new System.Drawing.Point(10, 370);
+            this.btnExportTipoPago.Name = "btnExportTipoPago";
+            this.btnExportTipoPago.Size = new System.Drawing.Size(114, 24);
+            this.btnExportTipoPago.TabIndex = 69;
+            this.btnExportTipoPago.Text = "Exportar a Excel";
+            this.btnExportTipoPago.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportTipoPago.UseVisualStyleBackColor = true;
+            this.btnExportTipoPago.Click += new System.EventHandler(this.btnExportTipoPago_Click);
             // 
             // grdDataTipoPago
             // 
@@ -577,6 +560,9 @@
             // 
             // tpResumenTipoEmpresa
             // 
+            this.tpResumenTipoEmpresa.Controls.Add(this.btnExportTipoEmpresa);
+            this.tpResumenTipoEmpresa.Controls.Add(this.txtMontoTotal);
+            this.tpResumenTipoEmpresa.Controls.Add(this.label8);
             this.tpResumenTipoEmpresa.Controls.Add(this.grdTipoEmpresa);
             this.tpResumenTipoEmpresa.Location = new System.Drawing.Point(4, 22);
             this.tpResumenTipoEmpresa.Name = "tpResumenTipoEmpresa";
@@ -584,6 +570,40 @@
             this.tpResumenTipoEmpresa.TabIndex = 2;
             this.tpResumenTipoEmpresa.Text = "Resumen Tipo Empresa";
             this.tpResumenTipoEmpresa.UseVisualStyleBackColor = true;
+            // 
+            // btnExportTipoEmpresa
+            // 
+            this.btnExportTipoEmpresa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportTipoEmpresa.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportTipoEmpresa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportTipoEmpresa.Location = new System.Drawing.Point(14, 366);
+            this.btnExportTipoEmpresa.Name = "btnExportTipoEmpresa";
+            this.btnExportTipoEmpresa.Size = new System.Drawing.Size(114, 24);
+            this.btnExportTipoEmpresa.TabIndex = 69;
+            this.btnExportTipoEmpresa.Text = "Exportar a Excel";
+            this.btnExportTipoEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportTipoEmpresa.UseVisualStyleBackColor = true;
+            this.btnExportTipoEmpresa.Click += new System.EventHandler(this.btnExportTipoEmpresa_Click);
+            // 
+            // txtMontoTotal
+            // 
+            this.txtMontoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMontoTotal.Location = new System.Drawing.Point(429, 379);
+            this.txtMontoTotal.Name = "txtMontoTotal";
+            this.txtMontoTotal.ReadOnly = true;
+            this.txtMontoTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoTotal.TabIndex = 68;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(426, 363);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 13);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "MONTO TOTAL";
             // 
             // grdTipoEmpresa
             // 
@@ -601,12 +621,16 @@
             ultraGridColumn4.Header.VisiblePosition = 3;
             ultraGridColumn4.Hidden = true;
             ultraGridColumn5.Header.VisiblePosition = 4;
+            ultraGridColumn7.Header.VisiblePosition = 5;
+            ultraGridColumn14.Header.VisiblePosition = 6;
             ultraGridBand6.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
             ultraGridColumn3,
             ultraGridColumn4,
-            ultraGridColumn5});
+            ultraGridColumn5,
+            ultraGridColumn7,
+            ultraGridColumn14});
             summarySettings2.DisplayFormat = "Monto Grupal = {0}";
             summarySettings2.GroupBySummaryValueAppearance = appearance17;
             ultraGridBand6.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
@@ -689,9 +713,9 @@
             this.tpResumenCaja.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdGrid)).EndInit();
             this.tpResumenTipoPago.ResumeLayout(false);
-            this.tpResumenTipoPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataTipoPago)).EndInit();
             this.tpResumenTipoEmpresa.ResumeLayout(false);
+            this.tpResumenTipoEmpresa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdTipoEmpresa)).EndInit();
             this.ResumeLayout(false);
 
@@ -709,23 +733,26 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.GroupBox groupBox2;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdGrid;
-        private System.Windows.Forms.SaveFileDialog sfdAramark;
-        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ugeAramark;
+        private System.Windows.Forms.SaveFileDialog sfdField;
+        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ugeResumenCaja;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpResumenCaja;
         private System.Windows.Forms.TabPage tpResumenTipoPago;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdDataTipoPago;
         private System.Windows.Forms.TextBox txtTotalSaldo;
-        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnExportResumenCaja;
         private System.Windows.Forms.TextBox txtTotalEgreso;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTotalIngreso;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtTotalImporte;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnExportTipoPago;
         private System.Windows.Forms.TabPage tpResumenTipoEmpresa;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdTipoEmpresa;
+        private System.Windows.Forms.Button btnExportTipoEmpresa;
+        private System.Windows.Forms.TextBox txtMontoTotal;
+        private System.Windows.Forms.Label label8;
+        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ugeResumenTipo;
+        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ugeResumenEmpresa;
     }
 }

@@ -53,31 +53,72 @@ namespace Sigesoft.Node.WinClient.UI
                     var data = oCustomReportBL.ReportResumenTipoPago(pdatBeginDate.Value, pdatEndDate.Value, int.Parse(cboTipoCaja.SelectedValue.ToString()));
 
                     grdDataTipoPago.DataSource = data;
-                    txtTotalImporte.Text = data[0].ImporteTotal.ToString();
-                }
+                                    }
                 
             };
            
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
+        private void btnExportResumenCaja_Click(object sender, EventArgs e)
         {
             //"Matriz de datos <Empresa Cliente> de <fecha inicio> a <fecha fin>"
             string NombreArchivo = "";
 
-                NombreArchivo = "Resumen de Caja del " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
-           
+            NombreArchivo = "Resumen de Caja del " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+
 
             NombreArchivo = NombreArchivo.Replace("/", "_");
             NombreArchivo = NombreArchivo.Replace(":", "_");
 
-            sfdAramark.FileName = NombreArchivo;
-            sfdAramark.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
-            if (sfdAramark.ShowDialog() == DialogResult.OK)
+            sfdField.FileName = NombreArchivo;
+            sfdField.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdField.ShowDialog() == DialogResult.OK)
             {
-                this.ugeAramark.Export(this.grdGrid, sfdAramark.FileName);
+                this.ugeResumenCaja.Export(this.grdGrid, sfdField.FileName);
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnExportTipoPago_Click(object sender, EventArgs e)
+        {
+            //"Matriz de datos <Empresa Cliente> de <fecha inicio> a <fecha fin>"
+            string NombreArchivo = "";
+
+            NombreArchivo = "Resumen de Tipo Pago del " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sfdField.FileName = NombreArchivo;
+            sfdField.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdField.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeResumenTipo.Export(this.grdDataTipoPago, sfdField.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnExportTipoEmpresa_Click(object sender, EventArgs e)
+        {
+            //"Matriz de datos <Empresa Cliente> de <fecha inicio> a <fecha fin>"
+            string NombreArchivo = "";
+
+            NombreArchivo = "Resumen de Tipo Empresa del " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sfdField.FileName = NombreArchivo;
+            sfdField.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdField.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeResumenEmpresa.Export(this.grdTipoEmpresa, sfdField.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+       
     }
 }

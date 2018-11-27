@@ -368,5 +368,24 @@ namespace Sigesoft.Node.WinClient.UI
          
         }
 
+        private void frmMaster_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                var frm = new frmBuscarFormulario(objAuthorizationList);
+                frm.ShowDialog();
+            }
+        }
+
+        private void frmMaster_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        
+        }
+
+        private void frmMaster_KeyUp(object sender, KeyEventArgs e)
+        {
+           
+        }
+
     }
 }
