@@ -32129,7 +32129,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.liquidacion
                             join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
-                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate && A.v_NroFactura == null || A.v_NroFactura == ""
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate && A.v_NroFactura == ""
 
                             select new LiquidacionEmpresa
                             {

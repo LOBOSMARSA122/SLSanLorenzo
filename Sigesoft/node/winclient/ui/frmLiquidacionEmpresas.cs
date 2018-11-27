@@ -337,21 +337,38 @@ namespace Sigesoft.Node.WinClient.UI
                     var deudoras = new ServiceBL().GetListaLiquidacionByEmpresa_SinFacturar(ref objOperationResult, inicioDeudas, FinDeudas);
 
                     List<string> deudores = new List<string>();
-                    string ruc_emp = "";
-                    decimal _debe_calculo = 0;
                     foreach (var item in deudoras)
                     {
+                        string ruc = "";
                         foreach (var item_1 in item.detalle)
                         {
-                            _debe_calculo += (decimal)item_1.d_Debe + (decimal)item_1.d_Pago;
+                            if (item_1.v_NroFactura == "")
+                            {
+                                if (item.v_Ruc != ruc)
+                                {
+                                    deudores.Add(item.v_Ruc);
+                                }
+                                ruc = item.v_Ruc;
+                            }
                         }
-                        if (_debe_calculo !=0)
-                        {
-                            deudores.Add(item.v_Ruc);
-                        }
-                        //ruc_emp = item.v_Ruc;
-                        _debe_calculo = 0;
                     }
+
+                    //List<string> deudores = new List<string>();
+                    //string ruc_emp = "";
+                    //decimal _debe_calculo = 0;
+                    //foreach (var item in deudoras)
+                    //{
+                    //    foreach (var item_1 in item.detalle)
+                    //    {
+                    //        _debe_calculo += (decimal)item_1.d_Debe + (decimal)item_1.d_Pago;
+                    //    }
+                    //    if (_debe_calculo !=0)
+                    //    {
+                    //        deudores.Add(item.v_Ruc);
+                    //    }
+                    //    //ruc_emp = item.v_Ruc;
+                    //    _debe_calculo = 0;
+                    //}
 
                     List<LiquidacionEmpresa> ListaLiquidacion_1 = new List<LiquidacionEmpresa>();
 
