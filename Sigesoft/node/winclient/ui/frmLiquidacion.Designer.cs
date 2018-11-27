@@ -72,6 +72,8 @@
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbbFac = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.cbbEstadoLiq = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbbSubContratas = new System.Windows.Forms.ComboBox();
@@ -113,8 +115,6 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.cbbFac = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -156,10 +156,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
             // 
+            // cbbFac
+            // 
+            this.cbbFac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbFac.DropDownWidth = 173;
+            this.cbbFac.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbFac.FormattingEnabled = true;
+            this.cbbFac.Location = new System.Drawing.Point(961, 76);
+            this.cbbFac.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbFac.Name = "cbbFac";
+            this.cbbFac.Size = new System.Drawing.Size(173, 21);
+            this.cbbFac.TabIndex = 146;
+            this.cbbFac.SelectedIndexChanged += new System.EventHandler(this.cbbFac_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(934, 83);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(23, 13);
+            this.label11.TabIndex = 145;
+            this.label11.Text = "FAC";
+            // 
             // cbbEstadoLiq
             // 
             this.cbbEstadoLiq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbEstadoLiq.DropDownWidth = 400;
+            this.cbbEstadoLiq.DropDownWidth = 173;
             this.cbbEstadoLiq.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbEstadoLiq.FormattingEnabled = true;
             this.cbbEstadoLiq.Location = new System.Drawing.Point(735, 77);
@@ -896,31 +921,6 @@
             this.btnEditarServicio.Text = "Editar Servicio";
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
-            // 
-            // cbbFac
-            // 
-            this.cbbFac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbFac.DropDownWidth = 400;
-            this.cbbFac.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbFac.FormattingEnabled = true;
-            this.cbbFac.Location = new System.Drawing.Point(961, 76);
-            this.cbbFac.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbFac.Name = "cbbFac";
-            this.cbbFac.Size = new System.Drawing.Size(173, 21);
-            this.cbbFac.TabIndex = 146;
-            this.cbbFac.SelectedIndexChanged += new System.EventHandler(this.cbbFac_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(934, 83);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(23, 13);
-            this.label11.TabIndex = 145;
-            this.label11.Text = "FAC";
             // 
             // frmLiquidacion
             // 

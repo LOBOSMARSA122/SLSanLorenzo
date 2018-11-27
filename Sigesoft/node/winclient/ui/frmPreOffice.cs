@@ -26,7 +26,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmPreOffice_Load(object sender, EventArgs e)
         {
-
+            this.Show();
             // Obtener permisos de cada examen de un rol especifico
             var componentProfile = _serviceBL.GetRoleNodeComponentProfileByRoleNodeId(Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_RoleId.Value);
             

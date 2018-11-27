@@ -5866,6 +5866,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         #endregion
 
+        #region Fototipo
+        protected void AddFototipo(string link)
+        {
+            
+        }
+
+        #endregion
+
         protected void ddlPiel_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlPiel.SelectedValue.ToString() == "2")

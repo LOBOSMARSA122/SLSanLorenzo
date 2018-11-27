@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AplicationHierarchyBL.cs" />
     <Compile Include="AreaBL.cs" />
     <Compile Include="AseguradoraBL.cs" />
     <Compile Include="AtencionesIntegralesBL.cs" />

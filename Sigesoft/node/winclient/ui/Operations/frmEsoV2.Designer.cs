@@ -905,12 +905,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsmverMas});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(122, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 26);
             // 
             // TsmverMas
             // 
             this.TsmverMas.Name = "TsmverMas";
-            this.TsmverMas.Size = new System.Drawing.Size(121, 22);
+            this.TsmverMas.Size = new System.Drawing.Size(122, 22);
             this.TsmverMas.Text = "Ver Mas..";
             this.TsmverMas.Click += new System.EventHandler(this.TsmverMas_Click);
             // 
@@ -1598,6 +1598,7 @@
             this.grdConclusionesDiagnosticas.Name = "grdConclusionesDiagnosticas";
             this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1261, 269);
             this.grdConclusionesDiagnosticas.TabIndex = 53;
+            this.grdConclusionesDiagnosticas.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdConclusionesDiagnosticas_InitializeRow);
             this.grdConclusionesDiagnosticas.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdConclusionesDiagnosticas_ClickCell);
             // 
             // lblRecordCountConclusionesDiagnosticas
@@ -3520,6 +3521,7 @@
             this.gbFuncionesBiologicas.TabIndex = 1;
             this.gbFuncionesBiologicas.TabStop = false;
             this.gbFuncionesBiologicas.Text = "Funciones Biológicas";
+            this.gbFuncionesBiologicas.Enter += new System.EventHandler(this.gbFuncionesBiologicas_Enter);
             // 
             // cbSed
             // 

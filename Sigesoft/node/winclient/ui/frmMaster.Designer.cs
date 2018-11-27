@@ -340,6 +340,7 @@
             this.Controls.Add(this.MenuPpal);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.MenuPpal;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMaster";
@@ -348,6 +349,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMaster_Load);
             this.Click += new System.EventHandler(this.frmMaster_Click);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMaster_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMaster_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMaster_KeyUp);
             this.MenuPpal.ResumeLayout(false);
             this.MenuPpal.PerformLayout();
             this.MenuPpal_1.ResumeLayout(false);

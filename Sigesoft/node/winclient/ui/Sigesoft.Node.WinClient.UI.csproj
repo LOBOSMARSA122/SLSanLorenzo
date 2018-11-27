@@ -473,6 +473,12 @@
     <Compile Include="frmAdjuntarDeclaracionJurada.Designer.cs">
       <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBuscarFormulario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarFormulario.Designer.cs">
+      <DependentUpon>frmBuscarFormulario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCargoFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3428,6 +3434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdjuntarDeclaracionJurada.resx">
       <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarFormulario.resx">
+      <DependentUpon>frmBuscarFormulario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargoFactura.resx">
       <DependentUpon>frmCargoFactura.cs</DependentUpon>

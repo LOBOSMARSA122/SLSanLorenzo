@@ -3198,6 +3198,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administración de Organización";
             this.Load += new System.EventHandler(this.frmAdministracion_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmEmpresa_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
