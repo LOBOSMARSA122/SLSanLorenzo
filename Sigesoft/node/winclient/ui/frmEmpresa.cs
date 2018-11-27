@@ -117,8 +117,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmAdministracion_Load(object sender, EventArgs e)
         {
-
-
+            this.Show();
             tabControl1.TabPages.Remove(tabGES);
             tabControl1.TabPages.Remove(tabPuesto);
             //tabControl1.TabPages.Remove(tabAlmacen);
@@ -2249,6 +2248,14 @@ namespace Sigesoft.Node.WinClient.UI
 
             //};
 
+        }
+
+        private void frmEmpresa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
     }

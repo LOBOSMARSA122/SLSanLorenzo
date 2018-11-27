@@ -202,6 +202,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         
         private void frmProtocolManagement_Load(object sender, EventArgs e)
         {
+            this.Show();
             #region Mayusculas - Normal
             var _EsMayuscula = int.Parse(Common.Utils.GetApplicationConfigValue("EsMayuscula"));
             if (_EsMayuscula == 1)

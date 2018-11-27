@@ -110,7 +110,7 @@ namespace NetPdf
             {
                 foreach (var item in liq.detalle)
                 {
-                    if (item.NetoXCobrar != 0)
+                    if (item.Condicion == "DEBE")
                     {
                         _debe += item.NetoXCobrar.Value;
                     }
@@ -132,7 +132,7 @@ namespace NetPdf
             {
                 foreach (var item in liq.detalle)
                 {
-                    if (item.NetoXCobrar != 0)
+                    if (item.Condicion == "DEBE")
                     {
                         _debe_1_1 += item.NetoXCobrar.Value;
                     }
@@ -185,7 +185,10 @@ namespace NetPdf
             {
                 foreach (var deuda in item.detalle)
                 {
-                    d_1 += deuda.NetoXCobrar.Value;
+                    if (deuda.Condicion == "DEBE")
+                    {
+                        d_1 += deuda.NetoXCobrar.Value;
+                    }
                 }
                 d_2 = d_1;
                 a.Add(d_2);
@@ -204,7 +207,7 @@ namespace NetPdf
                 cells.Add(cell);
 
                 foreach (var item in liq.detalle){
-                    if (item.NetoXCobrar != 0)
+                    if (item.Condicion == "DEBE")
                     {
                         debe += item.NetoXCobrar.Value;
                     }

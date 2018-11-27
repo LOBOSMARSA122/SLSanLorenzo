@@ -110,6 +110,8 @@
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn21 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_EntryTimeCM");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn22 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("b_Seleccionar");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ddlConsultorio = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.chkServiciosTerminados = new System.Windows.Forms.CheckBox();
             this.cbCustomerOrganization = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -199,8 +201,6 @@
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.ddlConsultorio = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -256,6 +256,30 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // ddlConsultorio
+            // 
+            this.ddlConsultorio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlConsultorio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlConsultorio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlConsultorio.FormattingEnabled = true;
+            this.ddlConsultorio.Location = new System.Drawing.Point(824, 43);
+            this.ddlConsultorio.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlConsultorio.Name = "ddlConsultorio";
+            this.ddlConsultorio.Size = new System.Drawing.Size(249, 21);
+            this.ddlConsultorio.TabIndex = 111;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(761, 48);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(62, 13);
+            this.label20.TabIndex = 110;
+            this.label20.Text = "Consultorio";
             // 
             // chkServiciosTerminados
             // 
@@ -1428,6 +1452,7 @@
             this.btnPerson.Text = "Agendar Cita Personal";
             this.btnPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPerson.UseVisualStyleBackColor = false;
+            this.btnPerson.Visible = false;
             this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
             // 
             // btnExportPdf
@@ -1678,30 +1703,6 @@
             ultraDataColumn20,
             ultraDataColumn21,
             ultraDataColumn22});
-            // 
-            // ddlConsultorio
-            // 
-            this.ddlConsultorio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.ddlConsultorio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ddlConsultorio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlConsultorio.FormattingEnabled = true;
-            this.ddlConsultorio.Location = new System.Drawing.Point(824, 43);
-            this.ddlConsultorio.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlConsultorio.Name = "ddlConsultorio";
-            this.ddlConsultorio.Size = new System.Drawing.Size(249, 21);
-            this.ddlConsultorio.TabIndex = 111;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(761, 48);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(62, 13);
-            this.label20.TabIndex = 110;
-            this.label20.Text = "Consultorio";
             // 
             // frmCalendar
             // 
