@@ -5996,6 +5996,9 @@
     <Content Include="Backgrounds\FOTO-20.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\alta-medica-400x400-1.png" />
+    <None Include="Resources\alta-medica-400x400-2.png" />
+    <None Include="Resources\alta-medica-400x400-3.png" />
     <Content Include="Resources\cuadradoazul.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

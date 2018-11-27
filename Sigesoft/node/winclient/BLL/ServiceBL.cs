@@ -31624,7 +31624,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 from H in J5_join.DefaultIfEmpty()
 
                                 where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
-                                && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion == null || A.v_NroLiquidacion == ""
+                                && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion == null || A.v_NroLiquidacion == "" && A.i_IsFac != 2
 
                                 select new Liquidacion
                                 {
@@ -31765,7 +31765,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 from H in J5_join.DefaultIfEmpty()
 
                                 where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
-                                && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null
+                                && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.i_IsFac != 2
 
                                 select new Liquidacion
                                 {
