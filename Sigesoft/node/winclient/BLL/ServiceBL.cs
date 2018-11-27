@@ -31196,9 +31196,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                     equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
                                 from H in J5_join.DefaultIfEmpty()
 
-                                where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
+                                where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 2
-
+                                    //&& A.i_ServiceStatusId == 3
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
@@ -31338,9 +31338,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                         equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
                                     from H in J5_join.DefaultIfEmpty()
 
-                                    where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
+                                    where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 1
-
+                                    //&& A.i_ServiceStatusId == 3
                                     select new Liquidacion
                                     {
                                         v_ServiceId = A.v_ServiceId,
@@ -31480,9 +31480,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                         equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
                                     from H in J5_join.DefaultIfEmpty()
 
-                                    where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
+                                    where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != ""
-
+                                    //&& A.i_ServiceStatusId == 3
                                     select new Liquidacion
                                     {
                                         v_ServiceId = A.v_ServiceId,
@@ -31623,9 +31623,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                     equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
                                 from H in J5_join.DefaultIfEmpty()
 
-                                where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
+                                where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion == null || A.v_NroLiquidacion == "" && A.i_IsFac != 2
-
+                                //&& A.i_ServiceStatusId == 3
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
@@ -31764,9 +31764,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                     equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
                                 from H in J5_join.DefaultIfEmpty()
 
-                                where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
+                                where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.i_IsFac != 2
-
+                                //&& A.i_ServiceStatusId == 3
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
