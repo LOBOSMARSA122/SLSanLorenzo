@@ -501,7 +501,7 @@
             this.btnDarAlta.ForeColor = System.Drawing.Color.Black;
             this.btnDarAlta.Image = global::Sigesoft.Node.WinClient.UI.Resources.accept;
             this.btnDarAlta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDarAlta.Location = new System.Drawing.Point(1142, 299);
+            this.btnDarAlta.Location = new System.Drawing.Point(988, 523);
             this.btnDarAlta.Margin = new System.Windows.Forms.Padding(2);
             this.btnDarAlta.Name = "btnDarAlta";
             this.btnDarAlta.Size = new System.Drawing.Size(85, 25);
@@ -698,7 +698,7 @@
             this.btnGenerarLiq.ForeColor = System.Drawing.Color.Black;
             this.btnGenerarLiq.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
             this.btnGenerarLiq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarLiq.Location = new System.Drawing.Point(1000, 522);
+            this.btnGenerarLiq.Location = new System.Drawing.Point(6, 523);
             this.btnGenerarLiq.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerarLiq.Name = "btnGenerarLiq";
             this.btnGenerarLiq.Size = new System.Drawing.Size(134, 47);

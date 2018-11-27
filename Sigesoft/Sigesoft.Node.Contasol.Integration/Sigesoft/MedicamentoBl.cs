@@ -288,11 +288,34 @@ namespace Sigesoft.Node.Contasol.Integration
                 //" where c.v_NroDocIdentificacion = '" + rucEmpresa + "' " +
                 //" group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
 
+            }
         }
-        
-    
 
+        public List<FacturaCobranza> EmpresaDeudora_Fechas_Fac(string rucEmpresa, DateTime? inicio, DateTime? fin)
+        {
 
+            using (var cnx = ConnectionHelper.GetConnection)
+            {
+                if (cnx.State != ConnectionState.Open) cnx.Open();
+
+                var query = "select " +
+                 " v.t_InsertaFecha AS FechaCreacion, " +
+                 " v.t_FechaVencimiento AS FechaVencimiento, " +
+                 " v.v_IdVenta, " +
+                "  Sum(d_Total) / CASE WHEN (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta)= 0 THEN 1 ELSE (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta)END AS NetoXCobrar,   " +
+                "  v.v_SerieDocumento + '-' + v.v_CorrelativoDocumento AS NroComprobante, " +
+                 " Sum(cd.d_ImporteSoles) AS TotalPagado, " +
+                "  CASE WHEN (Sum(d_Total)/    CASE WHEN (select count(*)  from cobranzadetalle where v_IdVenta = v.v_IdVenta) = 0 THEN 1 ELSE 	(select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) END ) -  Sum(cd.d_ImporteSoles)  = 0 THEN 'NO DEBE' ELSE 'DEBE' END AS Condicion  " +
+                " from venta v " +
+                " inner join cliente c on c.v_IdCliente =  v.v_IdCliente " +
+                " left join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
+                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' and v.i_Eliminado = 0  and v.t_InsertaFecha >= '" + inicio + "' and v.t_InsertaFecha <= '" + fin + "'" +
+                " group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
+
+                var result = cnx.Query<FacturaCobranza>(query).ToList();
+
+                return result;
+            }
         }
 
     }
