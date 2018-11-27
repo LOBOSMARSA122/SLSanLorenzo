@@ -1575,6 +1575,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             var chartAudiogramaOD = new MemoryStream();
             Chart1.SaveImage(chartAudiogramaOD, ChartImageFormat.Png);
+            Chart1.SaveImage(chartAudiogramaOD, ChartImageFormat.Png);
+            
 
             var chartAudiogramaOI = new MemoryStream();
             Chart2.SaveImage(chartAudiogramaOI, ChartImageFormat.Png);
