@@ -8,6 +8,7 @@ using Sigesoft.Server.WebClientAdmin.BLL;
 using Sigesoft.Server.WebClientAdmin.DAL;
 using Sigesoft.Common;
 using System.Web.Configuration;
+using System.Net;
 
 
 namespace Sigesoft.Server.WebClientAdmin.BLL
@@ -7821,7 +7822,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
             return result;
         }
-
+        
         public bool AddServiceComponentValues_(ref OperationResult pobjOperationResult, List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList> pobjServicecomponentfields, List<string> ClientSession, string pstrPersonId, string pServiceComponentId)
         {
 
@@ -8181,6 +8182,11 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
         public string[] AddMultimediaFileComponent(ref OperationResult pobjOperationResult, FileInfoDto pobjDtoEntity, List<string> ClientSession)
         {
             //mon.IsActive = true;
+
+            var webclient = new WebClient();
+            
+           
+
             string[] IDs = new string[2];
             var multimediaFileId = string.Empty;
             var serviceComponentMultimediaId = string.Empty;
@@ -8223,6 +8229,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
             return IDs;
         }
+
 
         private string AddMultimediaFile(ref OperationResult pobjOperationResult, multimediafileDto pobjDtoEntity, List<string> ClientSession, SiNo ExecLog)
         {

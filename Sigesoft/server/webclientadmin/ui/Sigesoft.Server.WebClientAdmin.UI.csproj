@@ -1377,17 +1377,10 @@
     <Content Include="frmMaster_.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Html\NET MEDICAL.html" />
-    <Content Include="images\Fototipo\amarillo.png" />
-    <Content Include="images\Fototipo\azulClaro.png" />
-    <Content Include="images\Fototipo\azulOscuro.png" />
     <Content Include="images\Fototipo\bg.png" />
-    <Content Include="images\Fototipo\blanco.png" />
-    <Content Include="images\Fototipo\morado.png" />
     <Content Include="images\Fototipo\reset.png" />
-    <Content Include="images\Fototipo\rojo.png" />
     <Content Include="images\Fototipo\rostro.png" />
     <Content Include="images\Fototipo\save.png" />
-    <Content Include="images\Fototipo\verde.png" />
     <Content Include="images\icons\accept.png" />
     <Content Include="images\icons\add.png" />
     <Content Include="images\icons\anchor.png" />
