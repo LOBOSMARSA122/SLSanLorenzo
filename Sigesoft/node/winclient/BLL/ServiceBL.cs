@@ -32389,7 +32389,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                 {
                                     oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
                                 }
-
                             }
                             else
                             {
@@ -32779,7 +32778,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 organizationDto objDtoEntity = null;
 
                 var objEntity = (from a in dbContext.organization
-                                 where a.v_IdentificationNumber == rucOrganization
+                                 where a.v_IdentificationNumber == rucOrganization && a.i_IsDeleted == 0
                                  select a).FirstOrDefault();
 
                 if (objEntity != null)

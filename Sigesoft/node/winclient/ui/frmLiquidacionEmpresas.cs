@@ -366,14 +366,74 @@ namespace Sigesoft.Node.WinClient.UI
                     //    }
                     //    idEmpresa = item.v_OrganizationId;
                     //}
+                    int años_atras = 2018;
+                    if (DateTime.Now.Year != años_atras)
+                    {
+                        años_atras = DateTime.Now.Year-1;
+                    }
+                    else if (años_atras == 2018)
+                    {
+                        años_atras = años_atras - 1;
+                    }
+                    else
+                    {
+                        años_atras = 2018;
+                    }
+                    #region años atrás
+                    List<LiquidacionEmpresa> ListaAños_Atras = new List<LiquidacionEmpresa>();
+
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L1 = new DateTime(2018, 1, 1, 0, 0, 0);
+                        DateTime? fechaFin_L1 = new DateTime(años_atras, 12, 31, 0, 0, 0);
+
+                        var lista_anterior = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L1, fechaFin_L1, ruc);
+
+                        foreach (var item in lista_anterior)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaAños_Atras.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+
+                    int año_inicio = 2018;
+                    if (DateTime.Now.Year != año_inicio)
+                    {
+                        año_inicio = DateTime.Now.Year;
+                    }
+                    else
+                    {
+                        año_inicio = 2018;
+                    }
+                    #region enero
                     List<LiquidacionEmpresa> ListaLiquidacion_1 = new List<LiquidacionEmpresa>();
 
                     foreach (var ruc in deudores)
                     {
-                        DateTime año = DateTime.Now;
-
-                        DateTime? fechaFin_L1 = new DateTime(2018, 1, 1, 0, 0, 0);
-                        DateTime? fechaInicio_L1 = new DateTime(2018, 1, 31, 0, 0, 0);
+                        DateTime? fechaInicio_L1 = new DateTime(año_inicio, 1, 1, 0, 0, 0);
+                        DateTime? fechaFin_L1 = new DateTime(año_inicio, 1, 31, 0, 0, 0);
+                        
                         var lista_1 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L1, fechaFin_L1, ruc);
 
                         foreach (var item in lista_1)
@@ -386,30 +446,30 @@ namespace Sigesoft.Node.WinClient.UI
                             liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
                             liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
                             liquidacionEmpresa.v_ContactName = item.v_ContactName;
-                            var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
-                            foreach (var detalle in item.detalle)
-                            {
-                                if (detalle.v_NroFactura == "")
-                                {
-                                    liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
-                                    liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
-                                    liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
-                                    liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
-                                    liquidacionDetalleEmpresa.v_NroFactura = "";
-                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa); 
-                                }
-                            }
 
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
                             liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
                             ListaLiquidacion_1.Add(liquidacionEmpresa);
                         }
                     }
-
+                    #endregion
+                    #region febrero
                     List<LiquidacionEmpresa> ListaLiquidacion_2 = new List<LiquidacionEmpresa>();
                     foreach (var ruc in deudores)
                     {
-                        DateTime? fechaFin_L2 = new DateTime(2018, 2, 1, 0, 0, 0);
-                        DateTime? fechaInicio_L2 = new DateTime(2018, 2, 28, 0, 0, 0);
+                        DateTime? fechaInicio_L2 = new DateTime(año_inicio, 2, 1, 0, 0, 0);
+                        DateTime? fechaFin_L2 = new DateTime(año_inicio, 2, 28, 0, 0, 0);
+                        
                         var lista_2 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L2, fechaFin_L2, ruc);
 
                         foreach (var item in lista_2)
@@ -422,26 +482,422 @@ namespace Sigesoft.Node.WinClient.UI
                             liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
                             liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
                             liquidacionEmpresa.v_ContactName = item.v_ContactName;
-                            var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
-                            foreach (var detalle in item.detalle)
-                            {
-                                if (detalle.v_NroFactura == "")
-                                {
-                                    liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
-                                    liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
-                                    liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
-                                    liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
-                                    liquidacionDetalleEmpresa.v_NroFactura = "";
-                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa); 
-                                }
-                            }
 
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
                             liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
                             ListaLiquidacion_2.Add(liquidacionEmpresa);
                         }
-                        
-                    }
 
+                    }
+                    #endregion
+                    #region marzo
+                    List<LiquidacionEmpresa> ListaLiquidacion_3 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L3 = new DateTime(año_inicio, 3, 1, 0, 0, 0);
+                        DateTime? fechaFin_L3 = new DateTime(año_inicio, 3, 31, 0, 0, 0);
+                        
+                        var lista_3 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L3, fechaFin_L3, ruc);
+
+                        foreach (var item in lista_3)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_3.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    #region abril
+                    List<LiquidacionEmpresa> ListaLiquidacion_4 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L4 = new DateTime(año_inicio, 4, 1, 0, 0, 0);
+                        DateTime? fechaFin_L4 = new DateTime(año_inicio, 4, 30, 0, 0, 0);
+                        
+                        var lista_4 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L4, fechaFin_L4, ruc);
+
+                        foreach (var item in lista_4)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_4.Add(liquidacionEmpresa);
+                        }
+
+                    }
+                    #endregion
+                    #region mayo
+                    List<LiquidacionEmpresa> ListaLiquidacion_5 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L5 = new DateTime(año_inicio, 5, 1, 0, 0, 0);
+                        DateTime? fechaFin_L5 = new DateTime(año_inicio, 5, 31, 0, 0, 0);
+                        
+                        var lista_5 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L5, fechaFin_L5, ruc);
+
+                        foreach (var item in lista_5)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_5.Add(liquidacionEmpresa);
+                        }
+
+                    }
+                    #endregion
+                    #region junio
+                    List<LiquidacionEmpresa> ListaLiquidacion_6 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L6 = new DateTime(año_inicio, 6, 1, 0, 0, 0);
+                        DateTime? fechaFin_L6 = new DateTime(año_inicio, 6, 30, 0, 0, 0);
+                        
+                        var lista_6 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L6, fechaFin_L6, ruc);
+
+                        foreach (var item in lista_6)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_6.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    #region julio
+                    List<LiquidacionEmpresa> ListaLiquidacion_7 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L7 = new DateTime(año_inicio, 7, 1, 0, 0, 0);
+                        DateTime? fechaFin_L7 = new DateTime(año_inicio, 7, 31, 0, 0, 0);
+                        
+                        var lista_7 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L7, fechaFin_L7, ruc);
+
+                        foreach (var item in lista_7)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_7.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    #region agosto
+                    List<LiquidacionEmpresa> ListaLiquidacion_8 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L8 = new DateTime(año_inicio, 8, 1, 0, 0, 0);
+                        DateTime? fechaFin_L8 = new DateTime(año_inicio, 8, 31, 0, 0, 0);
+                        
+                        var lista_8 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L8, fechaFin_L8, ruc);
+
+                        foreach (var item in lista_8)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_8.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    #region setiembre
+                    List<LiquidacionEmpresa> ListaLiquidacion_9 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L9 = new DateTime(año_inicio, 9, 1, 0, 0, 0);
+                        DateTime? fechaFin_L9 = new DateTime(año_inicio, 9, 30, 0, 0, 0);
+                        
+                        var lista_9 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L9, fechaFin_L9, ruc);
+
+                        foreach (var item in lista_9)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_9.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    #region octubre
+                    List<LiquidacionEmpresa> ListaLiquidacion_10 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L10 = new DateTime(año_inicio, 10, 1, 0, 0, 0);
+                        DateTime? fechaFin_L10 = new DateTime(año_inicio, 10, 31, 0, 0, 0);
+                        
+                        var lista_10 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L10, fechaFin_L10, ruc);
+
+                        foreach (var item in lista_10)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_10.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    #region noviembre
+                    List<LiquidacionEmpresa> ListaLiquidacion_11 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L11 = new DateTime(año_inicio, 11, 1, 0, 0, 0);
+                        DateTime? fechaFin_L11 = new DateTime(año_inicio, 11, 30, 0, 0, 0);
+                        
+                        var lista_11 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L11, fechaFin_L11, ruc);
+
+                        foreach (var item in lista_11)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                             var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);                                
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_11.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    #region diciembre
+                    List<LiquidacionEmpresa> ListaLiquidacion_12 = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_L12 = new DateTime(año_inicio, 12, 1, 0, 0, 0);
+                        DateTime? fechaFin_L12 = new DateTime(año_inicio, 12, 31, 0, 0, 0);
+                        
+                        var lista_12 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L12, fechaFin_L12, ruc);
+
+                        foreach (var item in lista_12)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_12.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+
+                    #region total
+                    List<LiquidacionEmpresa> ListaLiquidacion_total = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_LT = new DateTime(2018, 1, 1, 0, 0, 0);
+                        DateTime? fechaFin_LT = DateTime.Now;
+                        var lista_total = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_LT, fechaFin_LT, ruc);
+
+                        foreach (var item in lista_total)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_total.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
@@ -451,7 +907,8 @@ namespace Sigesoft.Node.WinClient.UI
                     DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
                     string fechaInicio_2 = fechaInicio_1.ToString().Split(' ')[0];
                     string fechaFin_2 = fechaFin_1.ToString().Split(' ')[0];
-                    Liquidaciones_Pendientes_Facturass.CreateLiquidaciones_Pendientes_Facturass(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion_1, fechaInicio_2, fechaFin_2, ListaLiquidacion_2);
+                    Liquidaciones_Pendientes_Facturass.CreateLiquidaciones_Pendientes_Facturass(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion_1, fechaInicio_2, fechaFin_2, ListaLiquidacion_2, ListaLiquidacion_3, ListaLiquidacion_4, ListaLiquidacion_5, ListaLiquidacion_6, ListaLiquidacion_7, ListaLiquidacion_8,
+                        ListaLiquidacion_9, ListaLiquidacion_10, ListaLiquidacion_11, ListaLiquidacion_12, ListaLiquidacion_total, ListaAños_Atras);
                     this.Enabled = true;
                 }
             }
