@@ -334,11 +334,13 @@ namespace Sigesoft.Node.WinClient.UI
 
                     DateTime? inicioDeudas = new DateTime(2018, 1, 1, 0, 0, 0);
                     DateTime? FinDeudas = DateTime.Now;
-                    var deudoras = new ServiceBL().GetListaLiquidacionByEmpresa_SinFacturar(ref objOperationResult, inicioDeudas, FinDeudas);
+
+                    var deudoras = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, inicioDeudas, FinDeudas);
 
                     List<string> deudores = new List<string>();
                     foreach (var item in deudoras)
                     {
+                        var empDeud = oMedicamentoBl.EmpresaDeudora(item.v_Ruc);
                         string ruc = "";
                         foreach (var item_1 in item.detalle)
                         {
@@ -352,41 +354,27 @@ namespace Sigesoft.Node.WinClient.UI
                             }
                         }
                     }
+                    //var deudoras = new ServiceBL().GetListaLiquidaciones_Deudas(ref objOperationResult, inicioDeudas, FinDeudas);
 
                     //List<string> deudores = new List<string>();
-                    //string ruc_emp = "";
-                    //decimal _debe_calculo = 0;
+                    //string idEmpresa = "";
                     //foreach (var item in deudoras)
                     //{
-                    //    foreach (var item_1 in item.detalle)
+                    //    if (item.v_OrganizationId != idEmpresa)
                     //    {
-                    //        _debe_calculo += (decimal)item_1.d_Debe + (decimal)item_1.d_Pago;
+                    //        deudores.Add(item.v_OrganizationId);
                     //    }
-                    //    if (_debe_calculo !=0)
-                    //    {
-                    //        deudores.Add(item.v_Ruc);
-                    //    }
-                    //    //ruc_emp = item.v_Ruc;
-                    //    _debe_calculo = 0;
+                    //    idEmpresa = item.v_OrganizationId;
                     //}
-
                     List<LiquidacionEmpresa> ListaLiquidacion_1 = new List<LiquidacionEmpresa>();
 
                     foreach (var ruc in deudores)
                     {
-                        DateTime? fechaFin_L1 = DateTime.Now;
-                        DateTime? fechaInicio_L1 = DateTime.Now.AddDays(-30);
-                        var lista_1 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L1, fechaFin_L1, ruc);
+                        DateTime año = DateTime.Now;
 
-                        List<string> facturas_1 = new List<string>();
-                        foreach (var item in lista_1)
-                        {
-                            var obj_1 = item.detalle.FindAll(p => p.v_NroFactura == "").ToList();
-                            foreach (var item_1 in obj_1)
-                            {
-                                facturas_1.Add(item_1.v_NroFactura);
-                            }
-                        }
+                        DateTime? fechaFin_L1 = new DateTime(2018, 1, 1, 0, 0, 0);
+                        DateTime? fechaInicio_L1 = new DateTime(2018, 1, 31, 0, 0, 0);
+                        var lista_1 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L1, fechaFin_L1, ruc);
 
                         foreach (var item in lista_1)
                         {
@@ -399,24 +387,17 @@ namespace Sigesoft.Node.WinClient.UI
                             liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
                             liquidacionEmpresa.v_ContactName = item.v_ContactName;
                             var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
-                            if (facturas_1.Count() != 0)
+                            foreach (var detalle in item.detalle)
                             {
-                                foreach (var detalle in item.detalle)
+                                if (detalle.v_NroFactura == "")
                                 {
                                     liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
                                     liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
                                     liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                    liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
                                     liquidacionDetalleEmpresa.v_NroFactura = "";
-                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa); 
                                 }
-                            }
-                            else
-                            {
-                                liquidacionDetalleEmpresa.d_Debe = 0;
-                                liquidacionDetalleEmpresa.d_Pago = 0;
-                                liquidacionDetalleEmpresa.d_Total = 0;
-                                liquidacionDetalleEmpresa.v_NroFactura = "";
-                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
                             }
 
                             liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
@@ -427,19 +408,9 @@ namespace Sigesoft.Node.WinClient.UI
                     List<LiquidacionEmpresa> ListaLiquidacion_2 = new List<LiquidacionEmpresa>();
                     foreach (var ruc in deudores)
                     {
-                        DateTime? fechaFin_L2 = DateTime.Now.AddDays(-31);
-                        DateTime? fechaInicio_L2 = new DateTime(2018, 1, 1, 0, 0, 0);
+                        DateTime? fechaFin_L2 = new DateTime(2018, 2, 1, 0, 0, 0);
+                        DateTime? fechaInicio_L2 = new DateTime(2018, 2, 28, 0, 0, 0);
                         var lista_2 = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_L2, fechaFin_L2, ruc);
-
-                        List<string> facturas_1 = new List<string>();
-                        foreach (var item in lista_2)
-                        {
-                            var obj_1 = item.detalle.FindAll(p => p.v_NroFactura == "").ToList();
-                            foreach (var item_1 in obj_1)
-                            {
-                                facturas_1.Add(item_1.v_NroFactura);
-                            }
-                        }
 
                         foreach (var item in lista_2)
                         {
@@ -452,29 +423,23 @@ namespace Sigesoft.Node.WinClient.UI
                             liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
                             liquidacionEmpresa.v_ContactName = item.v_ContactName;
                             var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
-                            if (facturas_1.Count() != 0)
+                            foreach (var detalle in item.detalle)
                             {
-                                foreach (var detalle in item.detalle)
+                                if (detalle.v_NroFactura == "")
                                 {
                                     liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
                                     liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
                                     liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                    liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
                                     liquidacionDetalleEmpresa.v_NroFactura = "";
-                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                                    listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa); 
                                 }
-                            }
-                            else
-                            {
-                                liquidacionDetalleEmpresa.d_Debe = 0;
-                                liquidacionDetalleEmpresa.d_Pago = 0;
-                                liquidacionDetalleEmpresa.d_Total = 0;
-                                liquidacionDetalleEmpresa.v_NroFactura = "";
-                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
                             }
 
                             liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
                             ListaLiquidacion_2.Add(liquidacionEmpresa);
                         }
+                        
                     }
 
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
