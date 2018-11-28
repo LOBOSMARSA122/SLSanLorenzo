@@ -34,11 +34,13 @@ namespace Sigesoft.Node.Contasol.Integration
                         "p.\"v_IdLinea\" as \"IdLinea\", " +
                         "p.\"v_AccionFarmaco\" as \"AccionFarmaco\", p.\"v_PrincipioActivo\" as \"PrincipioActivo\", " +
                         "p.\"v_Laboratorio\" as \"Laboratorio\", p.\"d_PrecioVenta\" as \"PrecioVenta\" " +
+                        ",pa.\"d_StockActual\" as \"Stock\" " +
                         "from producto p " +
                         "join productodetalle pd on p.\"v_IdProducto\" = pd.\"v_IdProducto\" " +
+                        "join productoalmacen pa on pd.\"v_IdProductoDetalle\" = pa.\"v_ProductoDetalleId\" " +
                         "where (" + nombre + " is null or lower(p.\"v_Descripcion\") like " + nombre + ") and " +
                         "(" + accionFarmaco + " is null or lower(p.\"v_AccionFarmaco\") like " + accionFarmaco + ") " +
-                        "and p.\"i_Eliminado\" = 0;";
+                        "and pa.i_IdAlmacen = 1 and p.\"i_Eliminado\" = 0;";
 
                     var listado = cnx.Query<MedicamentoDto>(query).ToList();
 

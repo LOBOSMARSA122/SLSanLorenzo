@@ -90,6 +90,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
         public string PersonId { get; set; }
         public string Dni { get; set; }
         public string Fecha { get; set; }
+        public string ProtocolId { get; set; }
         public string Consultorio { get; set; }
         ///// <summary>
         ///// ID tabla multimediafile
@@ -171,6 +172,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             frm.PersonId = PersonId;
             frm.ServiceComponentId = ServiceComponentId;
             frm.Dni = Dni;
+            frm.ProtocolId = ProtocolId;
             frm.Fecha = Fecha.Replace("/","");
             frm.Consultorio = Consultorio;
             frm.Action = ActionForm.Add;          

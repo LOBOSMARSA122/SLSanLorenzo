@@ -111,6 +111,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
         public string ServiceComponentId { get; set; }
 
         public string Dni { get; set; }
+        public string ProtocolId { get; set; }
 
         public string Fecha { get; set; }
         public string Consultorio { get; set; }
@@ -524,7 +525,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                     {
                         ext = Path.GetExtension(_filePath);
                         File.Copy(_filePath, rutaOrigen + Dni + "-" + Fecha + "-" + Consultorio + ext);
-                        fileInfo.FileName = Dni + "-" + Fecha + "-" + Consultorio + ext;
+                        fileInfo.FileName = Dni + "-" + Fecha + "-" + Consultorio + "-" + ProtocolId + ext;
                         fileInfo.ThumbnailFile = Common.Utils.imageToByteArray1(pbFile.Image);
                         fileInfo.Action = (int)ActionForm.Add;
 
