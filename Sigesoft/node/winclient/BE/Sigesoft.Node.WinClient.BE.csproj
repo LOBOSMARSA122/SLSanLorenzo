@@ -71,6 +71,7 @@
     <Compile Include="Custom\Liquidacion.cs" />
     <Compile Include="Custom\LiquidacionAseguradora.cs" />
     <Compile Include="Custom\LiquidacionEmpresa.cs" />
+    <Compile Include="Custom\LiquidacionesConsolidado.cs" />
     <Compile Include="Custom\LiquidacionMedicoList.cs" />
     <Compile Include="Custom\LiquidacionServicios.cs" />
     <Compile Include="Custom\MatrizGoldFields.cs" />

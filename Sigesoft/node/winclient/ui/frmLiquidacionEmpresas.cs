@@ -945,6 +945,11 @@ namespace Sigesoft.Node.WinClient.UI
                     }
                     var deudoraas = new ServiceBL().GetListaLiquidaciones_Deudas(ref objOperationResult, inicioDeudas, FinDeudas);
 
+                    foreach (var item in deudoraas)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationId(ref objOperationResult, item.v_OrganizationId);
+                        var Datos = new ServiceBL();
+                    }
                     //List<string> deudores = new List<string>();
                     //string idEmpresa = "";
                     //foreach (var item in deudoras)
