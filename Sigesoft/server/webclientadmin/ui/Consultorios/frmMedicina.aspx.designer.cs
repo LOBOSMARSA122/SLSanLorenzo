@@ -11542,49 +11542,40 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Button Button2;
         
         /// <summary>
-        /// Panel112 control.
+        /// Panel90 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Panel Panel112;
+        protected global::FineUI.Panel Panel90;
         
         /// <summary>
-        /// GroupPanel7 control.
+        /// Form59 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.GroupPanel GroupPanel7;
+        protected global::FineUI.Form Form59;
         
         /// <summary>
-        /// Form193 control.
+        /// FormRow214 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Form Form193;
+        protected global::FineUI.FormRow FormRow214;
         
         /// <summary>
-        /// FormRow551 control.
+        /// ContentPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow551;
-        
-        /// <summary>
-        /// ContentPanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.ContentPanel ContentPanel2;
+        protected global::FineUI.ContentPanel ContentPanel1;
         
         /// <summary>
         /// txtMultimediaFileId_Inter control.
