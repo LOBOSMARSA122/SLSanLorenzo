@@ -33,7 +33,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 dbContext.SaveChanges();
 
                 pobjOperationResult.Success = 1;
-
+                
                 if (ExecLog == SiNo.SI)
                 {
                     // Llenar entidad Log
@@ -242,6 +242,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 46), "FC");
                 objEntity.v_ServiceComponentMultimediaId = NewId;
 
+
                 dbContext.AddToservicecomponentmultimedia(objEntity);
                 dbContext.SaveChanges();
 
@@ -300,7 +301,42 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 return null;
             }
         }
+        public FileInfoDto GetMultimediaFileByServiceId(ref OperationResult pobjOperationResult, string pstrServiceId, string pstrComponentId)
+        {
 
+            int isDeleted = (int)SiNo.NO;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+
+                var query = (from A in dbContext.service
+                             join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                             join C in dbContext.servicecomponentmultimedia on B.v_ServiceComponentId equals C.v_ServiceComponentId
+                             join D in dbContext.multimediafile on C.v_MultimediaFileId equals D.v_MultimediaFileId
+
+                             where A.v_ServiceId == pstrServiceId &&
+                                   A.i_IsDeleted == isDeleted && B.i_IsDeleted == isDeleted && D.i_IsDeleted == isDeleted
+                                   && B.v_ComponentId == pstrComponentId
+
+                             select new FileInfoDto
+                             {
+                                 MultimediaFileId = D.v_MultimediaFileId,
+                                 ByteArrayFile = D.b_File,
+
+                             }).FirstOrDefault();
+
+                pobjOperationResult.Success = 1;
+                return query;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
 
     }
 }

@@ -21344,5 +21344,25 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 throw;
             }
         }
-    }
+        public List<servicecomponentDto> GetServiceComponentId(string serviceId, string componentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from a in dbContext.servicecomponent
+                             where a.i_IsDeleted == 0 && a.v_ServiceId == serviceId && a.v_ComponentId == componentId
+                             select new servicecomponentDto
+                             { 
+                                v_ServiceComponentId = a.v_ServiceComponentId,
+                             }
+                             ).ToList();
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            
+        }
+   }
 }
