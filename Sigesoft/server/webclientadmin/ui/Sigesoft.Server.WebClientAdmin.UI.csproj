@@ -1372,12 +1372,14 @@
     <Content Include="ExternalUser\FRMHojaRuta.aspx" />
     <Content Include="ExternalUser\FRMINTERC.aspx" />
     <Content Include="ExternalUser\FRMReagenda.aspx" />
+    <Content Include="frmCanvasFotipo.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmLogin_.aspx" />
     <Content Include="frmMaster_.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Html\NET MEDICAL.html" />
     <Content Include="images\Fototipo\bg.png" />
+    <Content Include="images\Fototipo\eye.jpg" />
     <Content Include="images\Fototipo\reset.png" />
     <Content Include="images\Fototipo\rostro.png" />
     <Content Include="images\Fototipo\save.png" />
@@ -4805,6 +4807,13 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="frmCanvasFotipo.aspx.cs">
+      <DependentUpon>frmCanvasFotipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCanvasFotipo.aspx.designer.cs">
+      <DependentUpon>frmCanvasFotipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>

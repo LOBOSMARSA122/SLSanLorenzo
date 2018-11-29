@@ -220,12 +220,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
         private void btnDibujar_Click(object sender, EventArgs e)
         {
-            //Graphics lienzo;
-            //lienzo = panel1.CreateGraphics();
-            //Pen lapiz = new Pen(Color.Black);
-
-            //lienzo.DrawLine(lapiz,0,0,100,100);
-            //ResizeCanvas();
+            System.Diagnostics.Process.Start("http://localhost:32874/frmCanvasFotipo.aspx");  
         }
 
         private Bitmap _canvas;

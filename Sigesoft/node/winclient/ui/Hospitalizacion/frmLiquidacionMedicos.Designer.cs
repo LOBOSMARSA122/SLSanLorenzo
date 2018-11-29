@@ -221,11 +221,13 @@
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn1.ColSpan = ((short)(4));
+            ultraGridColumn1.Header.CheckBoxVisibility = Infragistics.Win.UltraWinGrid.HeaderCheckBoxVisibility.Always;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2});
+            ultraGridColumn12.Header.CheckBoxVisibility = Infragistics.Win.UltraWinGrid.HeaderCheckBoxVisibility.Always;
             ultraGridColumn12.Header.VisiblePosition = 0;
             ultraGridColumn9.Header.VisiblePosition = 1;
             ultraGridColumn9.Width = 206;
