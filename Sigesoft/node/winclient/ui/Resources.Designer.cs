@@ -393,6 +393,36 @@ namespace Sigesoft.Node.WinClient.UI {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap alta_medica_400x400_1 {
+            get {
+                object obj = ResourceManager.GetObject("alta-medica-400x400-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap alta_medica_400x400_2 {
+            get {
+                object obj = ResourceManager.GetObject("alta-medica-400x400-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap alta_medica_400x400_3 {
+            get {
+                object obj = ResourceManager.GetObject("alta-medica-400x400-3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap animated_key_image_0005 {
             get {
                 object obj = ResourceManager.GetObject("animated-key-image-0005", resourceCulture);

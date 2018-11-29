@@ -229,10 +229,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4")
                 {
                     btnEditarHabitacion.Enabled = false;
+                    btnEliminarHabitacion.Enabled = false;
                 }
                 else
                 {
                     btnEditarHabitacion.Enabled = true;
+                    btnEliminarHabitacion.Enabled = true;
                 }
             }
             
@@ -411,6 +413,37 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 _objCalendarBL.UpdateAdditionalExam(_auxiliaryExams, v_ServiceId, (int?)SiNo.NO, Globals.ClientSession.GetAsList());
                 btnFilter_Click(sender, e);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            
+            var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
+
+            var habtacion = new HospitalizacionHabitacionBL().GetHabitacion(ref objOperationResult, hospitalizacionHabitacionId);
+
+            habtacion.i_IsDeleted = 1;
+
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar habitación?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                new HospitalizacionHabitacionBL().UpdateHospitalizacionHabitacion(ref objOperationResult, habtacion, Globals.ClientSession.GetAsList());
+
+                //this.Close();
+               
+               btnFilter_Click(sender, e);
+            }
+            //else
+            //{
+            //    this.Close();
+
+            //}
+
+            //btnFilter_Click(sender, e);
+            //btnEliminarHabitacion.Enabled = false;
         }           
 
     }

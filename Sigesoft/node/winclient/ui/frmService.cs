@@ -2717,98 +2717,105 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdDataService_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
         {
-            OperationResult objOperationResult = new OperationResult();
-            List<string> Filters = new List<string>();
-            
-            foreach (UltraGridRow rowSelected in this.grdDataService.Selected.Rows)
+            if (grdDataService.Selected.Rows.Count == 0) return ;
+            if (grdDataService.Selected.Rows[0].Cells != null)
             {
+                OperationResult objOperationResult = new OperationResult();
+                List<string> Filters = new List<string>();
 
-                if (rowSelected.Band.Index.ToString() == "0")
+                foreach (UltraGridRow rowSelected in this.grdDataService.Selected.Rows)
                 {
-                    var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-                    ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
 
-                    if (personData.i_ServiceTypeId == 1)
+                    if (rowSelected.Band.Index.ToString() == "0")
                     {
-                        btnHistoriaCl.Enabled = false;
+                            var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                            ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
+
+                            if (personData.i_ServiceTypeId == 1)
+                            {
+                                btnHistoriaCl.Enabled = false;
+                            }
+                            else
+                            {
+                                btnHistoriaCl.Enabled = true;
+                            }
+
+                    }
+                    if (rowSelected.Band.Index.ToString() == "1")
+                    {
+                        btnEditarESO.Enabled = false;
+                        button1.Enabled = false;
+                        button1.Enabled = false;
+                        btnAdminReportes.Enabled = false;
+                        btnReportAsync.Enabled = false;
+                        btnGenerarLiquidacion.Enabled = false;
+                        btnInterconsulta.Enabled = false;
+                        btnTiempos.Enabled = false;
+                        btnFechaEntrega.Enabled = false;
+
+                        return;
+                    }
+                }
+                    if (_ListaServicios != null)
+                    {
+                        btnFechaEntrega.Enabled = true;
                     }
                     else
                     {
-                        btnHistoriaCl.Enabled = true;
+                        btnFechaEntrega.Enabled = false;
                     }
-                }
-                if (rowSelected.Band.Index.ToString() == "1")
-                {
-                    btnEditarESO.Enabled = false;
-                    button1.Enabled = false;
-                    button1.Enabled = false;
-                    btnAdminReportes.Enabled = false;
-                    btnReportAsync.Enabled = false;
-                    btnGenerarLiquidacion.Enabled = false;
-                    btnInterconsulta.Enabled = false;
-                    btnTiempos.Enabled = false;
-                    btnFechaEntrega.Enabled = false;
+                    btn7D.Enabled =
+                    btnOdontograma.Enabled =
+                    btnHistoriaOcupacional.Enabled =
+                    btnRadiologico.Enabled =
+                    btnOsteomuscular.Enabled =
+                    btnPruebaEsfuerzo.Enabled =
+                    btnInformeRadiologicoOIT.Enabled =
+                    btnEstudioEKG.Enabled =
+                    btnDermatologico.Enabled =
+                    btnEditarESO.Enabled =
+                    button1.Enabled =
+                    btnImprimirCertificadoAptitud.Enabled =
+                    btnInformeMedicoTrabajador.Enabled =
+                    btnImprimirInformeMedicoEPS.Enabled =
+                    btnAdminReportes.Enabled =
+                    btnReportAsync.Enabled =
+                    btnInforme312.Enabled =
+                    btnInformeMusculoEsqueletico.Enabled =
+                    btnInformeAlturaEstructural.Enabled =
+                    btnInformePsicologico.Enabled =
+                    btnInformeOftalmo.Enabled =
+                    btnGenerarLiquidacion.Enabled =
+                    btnInterconsulta.Enabled =
+                    btnTiempos.Enabled =
 
-                    return;
-                }
+
+                    //btnFechaEntrega.Enabled =
+                        //btnImprimirFichaOcupacional.Enabled = 
+                    (grdDataService.Selected.Rows.Count > 0);
+
+                    if (grdDataService.Selected.Rows.Count == 0)
+                        return;
+
+
+                    _serviceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                    _EmpresaClienteId = grdDataService.Selected.Rows[0].Cells["v_CustomerOrganizationId"].Value.ToString();
+                    _pacientId = grdDataService.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
+                    _protocolId = grdDataService.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+                    _customerOrganizationName = grdDataService.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
+                    _personFullName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+
+                    if (grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null)
+                    {
+                        btnImprimirExamenes.Enabled = false;
+                    }
+                    else
+                    {
+                        btnImprimirExamenes.Enabled = true;
+                    }
             }
-            if (_ListaServicios != null)
-            {
-                btnFechaEntrega.Enabled = true;
-            }
-            else
-            {
-                btnFechaEntrega.Enabled = false;
-            }
-            btn7D.Enabled =
-            btnOdontograma.Enabled =
-            btnHistoriaOcupacional.Enabled =
-            btnRadiologico.Enabled =
-            btnOsteomuscular.Enabled =
-            btnPruebaEsfuerzo.Enabled =
-            btnInformeRadiologicoOIT.Enabled =
-            btnEstudioEKG.Enabled =
-            btnDermatologico.Enabled =
-            btnEditarESO.Enabled =
-            button1.Enabled =
-            btnImprimirCertificadoAptitud.Enabled =
-            btnInformeMedicoTrabajador.Enabled =
-            btnImprimirInformeMedicoEPS.Enabled =
-            btnAdminReportes.Enabled =
-            btnReportAsync.Enabled = 
-            btnInforme312.Enabled =
-            btnInformeMusculoEsqueletico.Enabled =
-            btnInformeAlturaEstructural.Enabled =
-            btnInformePsicologico.Enabled =
-            btnInformeOftalmo.Enabled =
-            btnGenerarLiquidacion.Enabled =
-            btnInterconsulta.Enabled =
-            btnTiempos.Enabled =
-
-
-            //btnFechaEntrega.Enabled =
-                //btnImprimirFichaOcupacional.Enabled = 
-            (grdDataService.Selected.Rows.Count > 0);
-
-            if (grdDataService.Selected.Rows.Count == 0)
-                return;
-
-
-            _serviceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            _EmpresaClienteId = grdDataService.Selected.Rows[0].Cells["v_CustomerOrganizationId"].Value.ToString();
-            _pacientId = grdDataService.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
-            _protocolId = grdDataService.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-            _customerOrganizationName = grdDataService.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
-            _personFullName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
-
-            if (grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null)
-            {
-                btnImprimirExamenes.Enabled = false;
-            }
-            else
-            {
-                btnImprimirExamenes.Enabled = true;
-            }
+            
+           
         }
 
         private void grdDataService_InitializeLayout(object sender, InitializeLayoutEventArgs e)
