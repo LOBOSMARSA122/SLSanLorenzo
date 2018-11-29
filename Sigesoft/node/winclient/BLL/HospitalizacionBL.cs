@@ -427,8 +427,10 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketslist.v_TicketId = tick.v_TicketId;
                         ticketslist.v_ServiceId = tick.v_ServiceId;
                         ticketslist.d_Fecha = tick.d_Fecha;
+                        ticketslist.i_TicketInterno = tick.i_TicketInterno;
+                        ticketslist.TicketInterno = tick.i_TicketInterno == 1 ? "SI" : "NO";
                         // acá estoy agregando a las lista
-                        Tickets.Add(tick);
+                        Tickets.Add(ticketslist);
                     }
                     tickets.Tickets = Tickets;
                 }
@@ -487,7 +489,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                    d_Fecha = E.d_Fecha,
                                    i_conCargoA = E.i_ConCargoA,
                                    i_tipoCuenta = E.i_TipoCuentaId,
-                                  
+                                  i_TicketInterno = E.i_TicketInterno,
                                    
                                };
             List<TicketList> objData = queryticket.ToList();
@@ -499,7 +501,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                                   v_ServiceId = a.v_ServiceId,
                                                   d_Fecha = a.d_Fecha,
                                                   i_conCargoA = a.i_conCargoA,
-                                                  i_tipoCuenta = a.i_tipoCuenta
+                                                  i_tipoCuenta = a.i_tipoCuenta,
+                                                  i_TicketInterno = a.i_TicketInterno
                                               }).ToList();
 
             var objtData = ticket.AsEnumerable()
@@ -521,7 +524,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.d_Fecha = item.d_Fecha;
                 tickets.i_conCargoA = item.i_conCargoA;
                 tickets.i_tipoCuenta = item.i_tipoCuenta;
-
+                tickets.i_TicketInterno = item.i_TicketInterno;
                 // estos son los hijos de 1 hopitalización
                 var ticketssdetalle = BuscarTicketsDetalle(item.v_TicketId).ToList();
 

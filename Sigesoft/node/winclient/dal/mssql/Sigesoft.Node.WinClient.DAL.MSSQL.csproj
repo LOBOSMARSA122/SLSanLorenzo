@@ -166,6 +166,7 @@
     <Compile Include="GeneratedAssemblers\obtenerproductoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\obtenerpreciotarifarioResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\obtenernetoporcobrarResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\facturadeudoraResultAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
