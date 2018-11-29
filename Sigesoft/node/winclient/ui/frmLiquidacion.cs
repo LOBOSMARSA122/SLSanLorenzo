@@ -486,6 +486,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
                 {
+                    if (grdData.Selected.Rows.Count == 0) return;
                     if (grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value == null) return;
                     var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
                     if (liquidacionID == null || liquidacionID == "")

@@ -13,6 +13,7 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_conCargoA { get; set; }
         public int? i_tipoCuenta { get; set; }
         public int? i_TicketInterno { get; set; }
+        public string TicketInterno { get; set; }
 
         public List<TicketDetalleList> Productos { get; set; }
     }

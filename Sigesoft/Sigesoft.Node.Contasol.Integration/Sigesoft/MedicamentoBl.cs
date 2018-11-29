@@ -38,7 +38,7 @@ namespace Sigesoft.Node.Contasol.Integration
                         "from producto p " +
                         "join productodetalle pd on p.\"v_IdProducto\" = pd.\"v_IdProducto\" " +
                         "join productoalmacen pa on pd.\"v_IdProductoDetalle\" = pa.\"v_ProductoDetalleId\" " +
-                        "where (" + nombre + " is null or lower(p.\"v_Descripcion\") like " + nombre + ") and " +
+                        "where (" + nombre + " is null or lower(p.\"v_Descripcion\") like " + nombre + ") and p.i_EsActivo =1 and pa.d_StockActual > 0 and " +
                         "(" + accionFarmaco + " is null or lower(p.\"v_AccionFarmaco\") like " + accionFarmaco + ") " +
                         "and pa.i_IdAlmacen = 1 and p.\"i_Eliminado\" = 0;";
 
@@ -289,6 +289,35 @@ namespace Sigesoft.Node.Contasol.Integration
                 //" inner join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
                 //" where c.v_NroDocIdentificacion = '" + rucEmpresa + "' " +
                 //" group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
+
+            }
+        }
+
+        public List<FacturaCobranza> EmpresaDeudora(string correlativoDocumento, string serieDocumento)
+        {
+
+            using (var cnx = ConnectionHelper.GetConnection)
+            {
+                if (cnx.State != ConnectionState.Open) cnx.Open();
+
+                var query = "select " +
+                 " v.t_InsertaFecha AS FechaCreacion, " +
+                 " v.t_FechaVencimiento AS FechaVencimiento, " +
+                 " v.v_IdVenta, " +
+                "  Sum(d_Total) / CASE WHEN (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta)= 0 THEN 1 ELSE (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta)END AS NetoXCobrar,   " +
+                "  v.v_SerieDocumento + '-' + v.v_CorrelativoDocumento AS NroComprobante, " +
+                 " Sum(cd.d_ImporteSoles) AS TotalPagado, " +
+                "  CASE WHEN (Sum(d_Total)/    CASE WHEN (select count(*)  from cobranzadetalle where v_IdVenta = v.v_IdVenta) = 0 THEN 1 ELSE 	(select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) END ) -  Sum(cd.d_ImporteSoles)  = 0 THEN 'NO DEBE' ELSE 'DEBE' END AS Condicion  " +
+                " from venta v " +
+                " inner join cliente c on c.v_IdCliente =  v.v_IdCliente " +
+                " left join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
+                " where  v.v_CorrelativoDocumento = '" + correlativoDocumento + "' and v.v_SerieDocumento='" + serieDocumento + "' and v.i_Eliminado = 0 " +
+                " group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
+
+                var result = cnx.Query<FacturaCobranza>(query).ToList();
+
+                return result;
+
 
             }
         }

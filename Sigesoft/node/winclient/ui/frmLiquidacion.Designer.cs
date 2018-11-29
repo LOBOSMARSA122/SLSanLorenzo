@@ -65,6 +65,10 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Debe");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Pago");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaVencimiento");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NroFactura");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TotalPagado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Condicion");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
@@ -704,12 +708,20 @@
             ultraGridColumn29.Header.VisiblePosition = 2;
             ultraGridColumn30.Header.VisiblePosition = 3;
             ultraGridColumn31.Header.VisiblePosition = 4;
+            ultraGridColumn19.Header.VisiblePosition = 5;
+            ultraGridColumn18.Header.VisiblePosition = 6;
+            ultraGridColumn17.Header.VisiblePosition = 7;
+            ultraGridColumn25.Header.VisiblePosition = 8;
             ultraGridBand4.Columns.AddRange(new object[] {
             ultraGridColumn23,
             ultraGridColumn24,
             ultraGridColumn29,
             ultraGridColumn30,
-            ultraGridColumn31});
+            ultraGridColumn31,
+            ultraGridColumn19,
+            ultraGridColumn18,
+            ultraGridColumn17,
+            ultraGridColumn25});
             this.grdEmpresa.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.grdEmpresa.DisplayLayout.BandsSerializer.Add(ultraGridBand4);
             this.grdEmpresa.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
@@ -759,6 +771,7 @@
             this.grdEmpresa.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
             this.grdEmpresa.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.grdEmpresa.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdEmpresa.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.grdEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdEmpresa.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.grdEmpresa.Location = new System.Drawing.Point(5, 6);

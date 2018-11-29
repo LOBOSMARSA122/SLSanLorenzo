@@ -31293,6 +31293,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             oLiquidacionDetalle.NroDocumemto = servicio.NroDocumemto;
                             oLiquidacionDetalle.Cargo = servicio.Cargo;
 
+
                             oLiquidacionDetalle.Perfil = servicio.Perfil;
                             oLiquidacionDetalle.Precio =
                                 GetServiceComponentsLiquidacion(ref pobjOperationResult, servicio.v_ServiceId).Sum(s => s.r_Price).Value;
@@ -31960,6 +31961,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
                         oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
                         oLiquidacionDetalle.v_NroFactura = liquidacion.v_NroFactura;
+                        oLiquidacionDetalle.FechaVencimiento = liquidacion.d_FechaVencimiento;
                         if (oLiquidacionDetalle.v_NroFactura != "" && oLiquidacionDetalle.v_NroFactura != null)
                         {
                             var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
@@ -31974,7 +31976,23 @@ namespace Sigesoft.Node.WinClient.BLL
                             oLiquidacionDetalle.d_Debe = 0;
                         }
 
-                       
+                        if (oLiquidacionDetalle.v_NroFactura != "")
+                        {
+                            var obj = oLiquidacionDetalle.v_NroFactura.Split('-').ToList();
+
+                            var obtenerDatosSambhs = dbContext.facturadeudora(obj[0].ToString(), obj[1].ToString()).ToList();
+
+                            oLiquidacionDetalle.TotalPagado = obtenerDatosSambhs.Count > 0 ? obtenerDatosSambhs[0].TotalPagado : 0;
+                            oLiquidacionDetalle.Condicion = obtenerDatosSambhs.Count > 0 ? obtenerDatosSambhs[0].Condicion : "---";
+
+                        }
+                        else
+                        {
+                            oLiquidacionDetalle.TotalPagado = null;
+                            oLiquidacionDetalle.Condicion = "---";
+                        }
+
+
                         oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
                         
                         oLiquidacionDetalle.d_Total = liquidacion.d_Monto;      
@@ -32012,6 +32030,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+      
+
 
         public liquidacionDto ListaLiquidacionById(ref OperationResult pobjOperationResult, string idLiquidacion)
         {

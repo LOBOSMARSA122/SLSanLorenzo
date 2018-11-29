@@ -49,6 +49,7 @@ namespace Sigesoft.Node.WinClient.BE
         public decimal? TotalPagado { get; set; }
         public string DocuemtosReferencia { get; set; }
         public string NroComprobante { get; set; }
+
         public string Condicion { get; set; }
     }
 
