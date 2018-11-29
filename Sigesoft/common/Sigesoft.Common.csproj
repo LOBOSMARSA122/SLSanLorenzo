@@ -153,6 +153,7 @@
     <Compile Include="LaboratorioReport.cs" />
     <Compile Include="LiquidacionCuentasPorCobrar.cs" />
     <Compile Include="Liquidaciones_Pendientes_Facturass.cs" />
+    <Compile Include="Liquidaciones_Pendientes_Facturas_Detalle.cs" />
     <Compile Include="Liquidacion_Carta.cs" />
     <Compile Include="Liquidacion_EMO.cs" />
     <Compile Include="Liquidacion_EMO_EMPRESAS.cs" />

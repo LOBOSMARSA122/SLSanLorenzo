@@ -22,9 +22,13 @@ namespace Sigesoft.Node.WinClient.BE.Custom
 
     public class LiquidacionesConsolidadoDetalle
     {
+        public string v_ServiceId { get; set; }
+        public string v_NroLiquidacion { get; set; }
+        public string v_OrganizationId { get; set; }
+
         public string v_Paciente { get; set; }
         public DateTime? d_exam { get; set; }
-        public decimal? d_price { get; set; }
+        public float? d_price { get; set; }
         public string v_UsuarRecord { get; set; }
         public string v_CenterCost { get; set; }
     }
