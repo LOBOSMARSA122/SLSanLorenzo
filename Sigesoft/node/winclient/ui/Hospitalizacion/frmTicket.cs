@@ -14,6 +14,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
     public partial class frmTicket : Form
     {
         public  string _serviceId;
+        public int i_TicketInterno { get; set; }
         public string _ticketId;
         private string _mode = null;
         private string _protocolId;
@@ -74,6 +75,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             objticketDto.d_Fecha = DateTime.Parse(txtFecha.Text);
             objticketDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante :(int)CargoHospitalizacion.Paciente;
             objticketDto.i_TipoCuentaId = int.Parse(cboTipoCuenta.SelectedValue.ToString());
+            objticketDto.i_TicketInterno = chkTicketInterno.Checked ? 1 : 0;
             if (_mode == "New")
             {
                 foreach (var item in _tmpTicketDetalleList)

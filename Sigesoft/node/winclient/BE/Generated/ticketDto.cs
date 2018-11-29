@@ -49,6 +49,8 @@ namespace Sigesoft.Node.WinClient.BE
         [DataMember()]
         public List<ticketdetalleDto> ticketdetalle { get; set; }
 
+        public int i_TicketInterno { get; set; }
+
         public ticketDto()
         {
         }
