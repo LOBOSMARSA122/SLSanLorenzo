@@ -36,6 +36,7 @@
             this.rbCuentasXCobrar = new System.Windows.Forms.RadioButton();
             this.rbEstadoCuentaEmpresa = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rbLiqPendFacturarDETALLE = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.rbLiqPendFacturarDETALLE);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnGenerar);
             this.groupBox1.Controls.Add(this.rbLiqPendFacturar);
@@ -54,7 +56,7 @@
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(442, 212);
+            this.groupBox1.Size = new System.Drawing.Size(442, 221);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FORMATOS:";
@@ -62,7 +64,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(246, 183);
+            this.btnCancelar.Location = new System.Drawing.Point(246, 192);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 113;
@@ -73,7 +75,7 @@
             // 
             this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerar.Enabled = false;
-            this.btnGenerar.Location = new System.Drawing.Point(347, 183);
+            this.btnGenerar.Location = new System.Drawing.Point(347, 192);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 112;
@@ -84,7 +86,7 @@
             // rbLiqPendFacturar
             // 
             this.rbLiqPendFacturar.AutoSize = true;
-            this.rbLiqPendFacturar.Location = new System.Drawing.Point(6, 145);
+            this.rbLiqPendFacturar.Location = new System.Drawing.Point(6, 124);
             this.rbLiqPendFacturar.Name = "rbLiqPendFacturar";
             this.rbLiqPendFacturar.Size = new System.Drawing.Size(203, 17);
             this.rbLiqPendFacturar.TabIndex = 111;
@@ -96,7 +98,7 @@
             // rbResumenCuentasXCobrar
             // 
             this.rbResumenCuentasXCobrar.AutoSize = true;
-            this.rbResumenCuentasXCobrar.Location = new System.Drawing.Point(6, 112);
+            this.rbResumenCuentasXCobrar.Location = new System.Drawing.Point(6, 87);
             this.rbResumenCuentasXCobrar.Name = "rbResumenCuentasXCobrar";
             this.rbResumenCuentasXCobrar.Size = new System.Drawing.Size(164, 17);
             this.rbResumenCuentasXCobrar.TabIndex = 110;
@@ -108,7 +110,7 @@
             // rbCuentasXCobrar
             // 
             this.rbCuentasXCobrar.AutoSize = true;
-            this.rbCuentasXCobrar.Location = new System.Drawing.Point(6, 76);
+            this.rbCuentasXCobrar.Location = new System.Drawing.Point(6, 51);
             this.rbCuentasXCobrar.Name = "rbCuentasXCobrar";
             this.rbCuentasXCobrar.Size = new System.Drawing.Size(116, 17);
             this.rbCuentasXCobrar.TabIndex = 109;
@@ -120,7 +122,7 @@
             // rbEstadoCuentaEmpresa
             // 
             this.rbEstadoCuentaEmpresa.AutoSize = true;
-            this.rbEstadoCuentaEmpresa.Location = new System.Drawing.Point(6, 39);
+            this.rbEstadoCuentaEmpresa.Location = new System.Drawing.Point(6, 19);
             this.rbEstadoCuentaEmpresa.Name = "rbEstadoCuentaEmpresa";
             this.rbEstadoCuentaEmpresa.Size = new System.Drawing.Size(168, 17);
             this.rbEstadoCuentaEmpresa.TabIndex = 108;
@@ -140,11 +142,23 @@
             this.pictureBox1.TabIndex = 107;
             this.pictureBox1.TabStop = false;
             // 
+            // rbLiqPendFacturarDETALLE
+            // 
+            this.rbLiqPendFacturarDETALLE.AutoSize = true;
+            this.rbLiqPendFacturarDETALLE.Location = new System.Drawing.Point(6, 160);
+            this.rbLiqPendFacturarDETALLE.Name = "rbLiqPendFacturarDETALLE";
+            this.rbLiqPendFacturarDETALLE.Size = new System.Drawing.Size(260, 17);
+            this.rbLiqPendFacturarDETALLE.TabIndex = 114;
+            this.rbLiqPendFacturarDETALLE.TabStop = true;
+            this.rbLiqPendFacturarDETALLE.Text = "Liquidaciones Pendientes de Facturar - DETALLE";
+            this.rbLiqPendFacturarDETALLE.UseVisualStyleBackColor = true;
+            this.rbLiqPendFacturarDETALLE.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // frmLiquidacionEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 236);
+            this.ClientSize = new System.Drawing.Size(466, 245);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -168,6 +182,7 @@
         private System.Windows.Forms.RadioButton rbResumenCuentasXCobrar;
         private System.Windows.Forms.RadioButton rbCuentasXCobrar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.RadioButton rbLiqPendFacturarDETALLE;
 
     }
 }
