@@ -62,6 +62,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rbPaciente = new System.Windows.Forms.RadioButton();
             this.rbMedicoTratante = new System.Windows.Forms.RadioButton();
+            this.chkTicketInterno = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdTicketDetalle)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -391,11 +392,22 @@
             this.rbMedicoTratante.Text = "Medico Tratante";
             this.rbMedicoTratante.UseVisualStyleBackColor = true;
             // 
+            // chkTicketInterno
+            // 
+            this.chkTicketInterno.AutoSize = true;
+            this.chkTicketInterno.Location = new System.Drawing.Point(576, 94);
+            this.chkTicketInterno.Name = "chkTicketInterno";
+            this.chkTicketInterno.Size = new System.Drawing.Size(117, 17);
+            this.chkTicketInterno.TabIndex = 102;
+            this.chkTicketInterno.Text = "Es un ticket interno";
+            this.chkTicketInterno.UseVisualStyleBackColor = true;
+            // 
             // frmTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 443);
+            this.Controls.Add(this.chkTicketInterno);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.grdTicketDetalle);
             this.Controls.Add(this.btnGuardarTicket);
@@ -417,6 +429,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -442,5 +455,6 @@
         private System.Windows.Forms.RadioButton rbPaciente;
         private System.Windows.Forms.RadioButton rbMedicoTratante;
         private System.Windows.Forms.ComboBox cboTipoCuenta;
+        private System.Windows.Forms.CheckBox chkTicketInterno;
     }
 }

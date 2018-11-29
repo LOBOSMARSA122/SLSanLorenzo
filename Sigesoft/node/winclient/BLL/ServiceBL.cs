@@ -11249,7 +11249,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								d_FechaEntrega = A.d_FechaEntrega,
 								v_ServiceId = A.v_ServiceId,
 								v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-								v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + B.v_DocNumber,
+								v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + "(HCL-"+B.v_DocNumber+")",
 								d_ServiceDate = A.d_ServiceDate,
 								i_ServiceStatusId = A.i_ServiceStatusId,
 								v_ServiceStatusName = H.v_Value1,

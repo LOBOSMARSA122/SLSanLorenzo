@@ -871,6 +871,7 @@
             ultraGridColumn27.Hidden = true;
             ultraGridColumn29.Header.VisiblePosition = 21;
             ultraGridColumn29.Hidden = true;
+            ultraGridColumn12.Header.Caption = "Paciente (Nro Historia)";
             ultraGridColumn12.Header.VisiblePosition = 1;
             ultraGridColumn14.Header.VisiblePosition = 26;
             ultraGridBand1.Columns.AddRange(new object[] {

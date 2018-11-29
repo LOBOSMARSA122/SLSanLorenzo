@@ -912,6 +912,104 @@ namespace Sigesoft.Node.WinClient.UI
                     this.Enabled = true;
                 }
             }
+                else if (rbLiqPendFacturarDETALLE.Checked)
+            {
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
+
+                    var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                    OperationResult objOperationResult = new OperationResult();
+
+                    DateTime? inicioDeudas = new DateTime(2018, 1, 1, 0, 0, 0);
+                    DateTime? FinDeudas = DateTime.Now;
+
+                    var deudoras = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, inicioDeudas, FinDeudas);
+
+                    List<string> deudores = new List<string>();
+                    foreach (var item in deudoras)
+                    {
+                        var empDeud = oMedicamentoBl.EmpresaDeudora(item.v_Ruc);
+                        string ruc = "";
+                        foreach (var item_1 in item.detalle)
+                        {
+                            if (item_1.v_NroFactura == "")
+                            {
+                                if (item.v_Ruc != ruc)
+                                {
+                                    deudores.Add(item.v_Ruc);
+                                }
+                                ruc = item.v_Ruc;
+                            }
+                        }
+                    }
+                    var deudoraas = new ServiceBL().GetListaLiquidaciones_Deudas(ref objOperationResult, inicioDeudas, FinDeudas);
+
+                    foreach (var item in deudoraas)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationId(ref objOperationResult, item.v_OrganizationId);
+                        var Datos = new ServiceBL();
+                    }
+                    //List<string> deudores = new List<string>();
+                    //string idEmpresa = "";
+                    //foreach (var item in deudoras)
+                    //{
+                    //    if (item.v_OrganizationId != idEmpresa)
+                    //    {
+                    //        deudores.Add(item.v_OrganizationId);
+                    //    }
+                    //    idEmpresa = item.v_OrganizationId;
+                    //}
+                    
+                    #region total
+                    List<LiquidacionEmpresa> ListaLiquidacion_total = new List<LiquidacionEmpresa>();
+                    foreach (var ruc in deudores)
+                    {
+                        DateTime? fechaInicio_LT = new DateTime(2018, 1, 1, 0, 0, 0);
+                        DateTime? fechaFin_LT = DateTime.Now;
+                        var lista_total = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_LT, fechaFin_LT, ruc);
+
+                        foreach (var item in lista_total)
+                        {
+                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                            var liquidacionEmpresa = new LiquidacionEmpresa();
+
+                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
+                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
+                            foreach (var detalle in detalles)
+                            {
+                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
+                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
+                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
+                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
+                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
+                                liquidacionDetalleEmpresa.v_NroFactura = "";
+                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
+                            }
+                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
+                            ListaLiquidacion_total.Add(liquidacionEmpresa);
+                        }
+                    }
+                    #endregion
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                    string nombre = "EMPRESAS POR FACTURAR DETALLE- CSL";
+
+                    DateTime? fechaFin_1 = DateTime.Now;
+                    DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
+                    string fechaInicio_2 = fechaInicio_1.ToString().Split(' ')[0];
+                    string fechaFin_2 = fechaFin_1.ToString().Split(' ')[0];
+                    //Liquidaciones_Pendientes_Facturass.CreateLiquidaciones_Pendientes_Facturass(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion_1, fechaInicio_2, fechaFin_2, ListaLiquidacion_2, ListaLiquidacion_3, ListaLiquidacion_4, ListaLiquidacion_5, ListaLiquidacion_6, ListaLiquidacion_7, ListaLiquidacion_8,
+                    //    ListaLiquidacion_9, ListaLiquidacion_10, ListaLiquidacion_11, ListaLiquidacion_12, ListaLiquidacion_total, ListaAños_Atras);
+                    this.Enabled = true;
+                }
+            }
             else {
                 btnGenerar.Enabled = false;
             }
@@ -933,6 +1031,11 @@ namespace Sigesoft.Node.WinClient.UI
         }
 
         private void rbLiqPendFacturar_CheckedChanged(object sender, EventArgs e)
+        {
+            btnGenerar.Enabled = true;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             btnGenerar.Enabled = true;
         }

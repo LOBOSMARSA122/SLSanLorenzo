@@ -1032,30 +1032,6 @@ namespace NetPdf
             document.Add(filiationWorker);
             #endregion
 
-            document.NewPage();
-            document.SetPageSize(iTextSharp.text.PageSize.A4);
-            #region TÍTULO
-            cells = new List<PdfPCell>();
-
-            if (infoEmpresaPropietaria.b_Image != null)
-            {
-                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image));
-                imagenEmpresa.ScalePercent(25);
-                imagenEmpresa.SetAbsolutePosition(40, 790);
-                document.Add(imagenEmpresa);
-            }
-
-            document.Add(new Paragraph("\n"));
-
-            cellsTit = new List<PdfPCell>()
-                { 
-                    new PdfPCell(new Phrase("FORMATO DE PRUEBA", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER,BackgroundColor= BaseColor.ORANGE },  
-                };
-
-            columnWidths = new float[] { 100f };
-            table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
-            document.Add(table);
-            #endregion       
             document.Close();
             writer.Close();
             writer.Dispose();
