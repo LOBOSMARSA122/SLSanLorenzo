@@ -16,7 +16,7 @@ namespace Sigesoft.Node.WinClient.BE.Custom
         public string v_NroLiquidacion { get; set; }
         public string v_ServiceId { get; set; }
         public string v_OrganizationId { get; set; }
-
+        public DateTime? d_creaionLiq { get; set; }
         public List<LiquidacionesConsolidadoDetalle> detalle { get; set; }
     }
 

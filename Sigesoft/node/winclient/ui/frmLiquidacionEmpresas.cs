@@ -961,6 +961,7 @@ namespace Sigesoft.Node.WinClient.UI
                         empresaLiquidacion.v_TelephoneNumber = empresa.v_PhoneNumber;
                         empresaLiquidacion.v_ContactName = empresa.v_ContacName;
                         empresaLiquidacion.v_NroLiquidacion = item.v_NroLiquidacion;
+                        empresaLiquidacion.d_creaionLiq = item.Creacion_Liquidacion;
                         foreach (var detalle in Datos)
                         {
                             var empresaLiquidacionDetalle = new LiquidacionesConsolidadoDetalle();
@@ -996,8 +997,7 @@ namespace Sigesoft.Node.WinClient.UI
                     DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
                     string fechaInicio_2 = fechaInicio_1.ToString().Split(' ')[0];
                     string fechaFin_2 = fechaFin_1.ToString().Split(' ')[0];
-                    //Liquidaciones_Pendientes_Facturass.CreateLiquidaciones_Pendientes_Facturass(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion_1, fechaInicio_2, fechaFin_2, ListaLiquidacion_2, ListaLiquidacion_3, ListaLiquidacion_4, ListaLiquidacion_5, ListaLiquidacion_6, ListaLiquidacion_7, ListaLiquidacion_8,
-                    //    ListaLiquidacion_9, ListaLiquidacion_10, ListaLiquidacion_11, ListaLiquidacion_12, ListaLiquidacion_total, ListaAños_Atras);
+                    Liquidaciones_Pendientes_Facturas_Detalle.CreateLiquidaciones_Pendientes_Facturas_Detalle(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion_detalle, fechaInicio_2, fechaFin_2);
                     this.Enabled = true;
                 }
             }
