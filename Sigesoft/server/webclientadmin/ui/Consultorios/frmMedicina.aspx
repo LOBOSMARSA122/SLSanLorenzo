@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../css/main.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
         .highlight {
             background-color: lightgreen;
@@ -28,10 +28,12 @@
 			border: 1px solid  #000;
 			box-shadow: 2px 2px 10px #333;
 		}
+
 		#botonera{
 			margin-left: 20px;
 			margin-top: 20px;
 		}
+
 		.botones{
 			display: inline-block;
 			height: 32px;
@@ -42,6 +44,7 @@
         #btn1 {
             background-color: #fffc6d
         }
+
         #btn1:hover {
             transform:translateY(-8px)
         }
@@ -69,8 +72,7 @@
 			border-radius: 5px 5px 5px 5px;
 			height: 50px;
 			margin-bottom: 10px;
-			width: 50px;
-				
+			width: 50px;			
 		}
 
         #cargarDibujo:hover {
@@ -2510,7 +2512,8 @@
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar24" runat="server">
                                     <Items>
-                                        <x:Button ID="Button1" Text="Grabar Fototipo" Icon="SystemSave" OnClick="btngrabarFototipo_Click" runat="server" AjaxLoadingType="Mask"></x:Button>
+                                        <x:Button ID="btngrabarfoto" Text="Grabar Fototipo" Icon="SystemSave" runat="server" AjaxLoadingType="Mask" OnClick="btngrabarfoto_Click"></x:Button>
+
                                         <x:Label ID="Label729" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label730" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlGrabarUsuarioFototipo" runat="server"></x:DropDownList>
@@ -2518,48 +2521,37 @@
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
-                            <Items>
-                                <x:Panel ID="Panel112" runat="server" ShowBorder="True" ShowHeader="True" Title="Fototipo" EnableBackgroundColor="true" Layout="VBox"
-                                    BoxConfigAlign="Stretch" BoxConfigPosition="Start" BoxConfigChildMargin="3 7 12 5" Height="1050">
-                                    <Items>
-                                        <x:GroupPanel ID="GroupPanel7" runat="server" Title="Imagen Fototipo" BoxFlex="1" Height="1000" TableColspan="3">
-                                            <Items>
-                                                <x:Form ID="Form193" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
-                                                    <Rows>
-                                                        <x:FormRow ID="FormRow551" ColumnWidths="460px" runat="server">
-                                                            <Items>
-                                                                
-                                                                <x:ContentPanel ID="ContentPanel1" runat="server" Width="960px" BodyPadding="5px" EnableBackgroundColor="true" ShowBorder="true" ShowHeader="true" Title=" ">
-                                                                    <x:TextBox ID="txtMultimediaId" Hidden="true"  Width="100" runat="server"></x:TextBox>
-                                                                    <x:TextArea ID="txtSetLinkImg" Hidden="true" Width="100" runat="server"></x:TextArea>
-                                                                    <asp:TextBox ID="txtLinkImage" style="display:none" Width="100" runat="server"></asp:TextBox>
-                                                                    <div>
-                                                                        <div id="rellenoFondo" ></div>
-                                                                        <div class="botones" id="btn1" onclick="cambioColor('fffc6d')"></div>
-                                                                        <div class="botones" id="btn2" onclick="cambioColor('4286f4')"></div>
-                                                                        <div class="botones" id="btn3" onclick="cambioColor('f44171')"></div>
-                                                                        <div class="botones" id="btn4" onclick="cambioColor('25dd69')"></div>
-                                                                        <div class="botones" id="fondo" onclick="cambioFondo()"><img  src="../images/Fototipo/bg.png"/></div>
-                                                                        <div  class="botones" id="Div1" onclick="Visualizar()"><img style="width:35px; height:35px; cursor:pointer"  src="../images/Fototipo/eye.jpg" /></div>
-                                                                        <div  class="botones" id="cargarDibujo" onclick="cargarDibujo()"><img src="../images/Fototipo/reset.png" style="width:32px"/></div>
-                                                                        <div  class="botones" onclick="Guardar()"><img src="../images/Fototipo/save.png" style="width:35px; cursor:pointer"/></div>
-                                                                        <a id="download" style="display:none"></a>
-                                                                    </div>
-                                                                    <canvas id="imgCanvas" width="800" height="800"></canvas>
-                                                                    
-                                                                </x:ContentPanel>
-
-                                                            </Items>
-                                                        </x:FormRow>
-
-                                                    </Rows>
-                                                </x:Form>
-                                            </Items>
-                                        </x:GroupPanel>
-                                        
-                                    </Items>
-                                    
-                                </x:Panel>
+                                <Items>   
+                                    <x:Panel ID="Panel90" EnableBackgroundColor="true" Title="Fototipo" Height="920px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Layout="Column">
+                                        <Items>
+                                            <x:Form ID="Form59" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                            <Rows>
+                                                <x:FormRow ID="FormRow214" ColumnWidths="240px 720px 240px 240px" runat="server">
+                                                    <Items>
+                                                        <x:ContentPanel ID="ContentPanel1" runat="server" Width="950px" BodyPadding="0px" EnableBackgroundColor="true" ShowBorder="false" ShowHeader="false">
+                                                    <div>
+                                                        <div id="rellenoFondo" ></div>
+                                                        <div class="botones" id="btn1" onclick="cambioColor('fffc6d')"></div>
+                                                        <div class="botones" id="btn2" onclick="cambioColor('4286f4')"></div>
+                                                        <div class="botones" id="btn3" onclick="cambioColor('f44171')"></div>
+                                                        <div class="botones" id="btn4" onclick="cambioColor('25dd69')"></div>
+                                                        <div class="botones" onclick="cargarDibujo()"><img src="../images/Fototipo/clean.png" style="width:32px"/></div>
+                                                        <div class="botones" onclick="mostrarimagen()"><img src="../images/Fototipo/reload.png" style="width:35px"/></div>
+                                                        <div><x:TextBox runat="server" ID="txtMultimediaFileId_Inter" Hidden="true"/></div>
+                                                        <div><x:TextBox runat="server" ID="txtServiceComponentMultimediaId_Inter" Hidden="true" /></div>
+                                                        <div><x:TextArea Width="500" Height="500" ID="texturl" runat="server" Hidden="true"></x:TextArea></div>                                          
+                                                    </div>                        
+                                                    <div>
+                                                        <canvas id="imgCanvas" width="800" height="800"></canvas> 
+                                                    </div>
+                                                        </x:ContentPanel>   
+                                                    </Items>  
+                                                </x:FormRow> 
+                                            </Rows>
+                                            </x:Form>
+                                        </Items>                                      
+                                    </x:Panel>
+                                                                                         
                             </Items>
                         </x:Tab>
                         <x:Tab ID="TabAltura18_Internacional" BodyPadding="5px" Title="Examen Altura 1.8" runat="server" Hidden="false">
@@ -4786,12 +4778,7 @@
                                 </x:Panel>
 
                             </Items>
-                        </x:Tab>
-
-                        <x:Tab ID="TabVacio" BodyPadding="5px" Title=" " runat="server">
-                            <Items>
-                            </Items>
-                        </x:Tab>
+                        </x:Tab>                      
                     </Tabs>
                 </x:TabStrip>
             </Items>
@@ -4871,7 +4858,8 @@
     <script type="text/javascript">
         var highlightRowsClientID = '<%= highlightRows.ClientID %>';
         var gridClientID = '<%= grdDx.ClientID %>';
-        
+        var texturlID = '<%= texturl.ClientID %>';
+
         function highlightRows() {
             var highlightRows = X(highlightRowsClientID);
             var grid = X(gridClientID);
@@ -4884,14 +4872,12 @@
                     Ext.get(row).first().addClass('highlight');
                 }
             });
-
         }
 
         function onReady() {
             var grid = X(gridClientID);
             grid.addListener('viewready', function () {
-                highlightRows();
-                
+                highlightRows();              
             });
         }
 
@@ -4901,48 +4887,32 @@
 
         var canvas = document.getElementById("imgCanvas");
         var context = canvas.getContext("2d");
-
         var imagenFondo = new Image();
-
         imagenFondo.src = '../images/Fototipo/rostro.png';
 
-        
-
-        //Cargo la imagen en la posición
         context.drawImage(imagenFondo, 0, 0);
-
-
+        
         imagenFondo.onload = function () {
             context.drawImage(imagenFondo, 0, 0);
         }
-
         var estoyDibujando = false;
 
         function cargarDibujo() {
-
             context.clearRect(0, 0, canvas.width, canvas.height);
             var imagenFondo = new Image();
-
             imagenFondo.src = '../images/Fototipo/rostro.png';
-            //Cargo la imagen en la posición
             context.drawImage(imagenFondo, 0, 0);
+            cambiarUrl()
         }
-
 
 
         function cambioColor(reciboColor) {
-            //Guardo en color el color seleccionado
             color = "#" + reciboColor;
-            //Cambio de color el botón de relleno de fondo
             document.getElementById('rellenoFondo').style.background = color;
         }
 
-
         function cambioGrosor(reciboGrosor) {
-            //Guardo el grosor recibido
             grosor = reciboGrosor;
-
-
         }
 
         function cambioFondo() {
@@ -4951,10 +4921,7 @@
 
         function pulsaRaton(e) {
             estoyDibujando = true;
-            //Indico que vamos a dibujar
             context.beginPath();
-
-            //Averiguo las coordenadas X e Y por dónde va pasando el ratón
             var pos = getMousePos(canvas, e);
             posx = pos.x;
             posy = pos.y;
@@ -4963,27 +4930,26 @@
 
         function mueveRaton(e) {
             if (estoyDibujando) {
-
                 var pos = getMousePos(canvas, e);
                 posx = pos.x;
                 posy = pos.y;
-
                 context.fillStyle = color;
-                context.fillRect(posx, posy, 3, 3);
+                context.fillRect(posx, posy, 10, 10);                
             }
         }
 
         function levantaRaton(e) {
-            //Indico que termino el dibujo
             context.closePath();
             estoyDibujando = false;
+            cambiarUrl()
         }
 
-        document.addEventListener('mousemove', mueveRaton, false);
+        imgCanvas.addEventListener('mousemove', mueveRaton, false);
 
-        document.addEventListener('mousedown', pulsaRaton, false);
+        imgCanvas.addEventListener('mousedown', pulsaRaton, false);
 
-        document.addEventListener('mouseup', levantaRaton, false);
+        imgCanvas.addEventListener('mouseup', levantaRaton, false);
+
         color = "#333";
 
         function getMousePos(canvas, evt) {
@@ -4991,29 +4957,22 @@
             return {
                 x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
                 y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
-            };
-        }
+            };            
+        }       
+        function cambiarUrl() {
+            document.getElementById('<%=texturl.ClientID%>').value = canvas.toDataURL("image/png");
+        }       
+            
+        function mostrarimagen() {          
+            if (document.getElementById('<%=texturl.ClientID%>').value == "") {
+                cargarDibujo()
+            } else {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                var imagenFondo1 = new Image();
+                imagenFondo1.src = document.getElementById('<%=texturl.ClientID%>').value;
+                context.drawImage(imagenFondo1, 0, 0);
+            }          
 
-
-        function Guardar()
-        {
-            var link = document.getElementById("download");
-            link.href = canvas.toDataURL("image/png");
-            asignarInput(link.href);
-        }
-
-        function asignarInput(link)
-        {
-            var contenedorImg = document.getElementById("<%=txtLinkImage.ClientID%>");
-            contenedorImg.value = link;
-        }
-
-        function Visualizar()
-        {
-            var imagenFondo = new Image();
-            var contenedorImg = document.getElementById("<%=txtSetLinkImg.ClientID%>").value;
-            imagenFondo.src = contenedorImg;
-            context.drawImage(imagenFondo, 0, 0);
         }
     </script>
 </body>

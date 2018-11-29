@@ -21344,25 +21344,29 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 throw;
             }
         }
-        public List<servicecomponentDto> GetServiceComponentId(string serviceId, string componentId)
+
+        public Sigesoft.Server.WebClientAdmin.BE.Custom.ServiceComponentMultimediaFile ExtraerUrlImagen(string personId, string serviceComponentId)
         {
             try
             {
+                //string asz = "";
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var query = (from a in dbContext.servicecomponent
-                             where a.i_IsDeleted == 0 && a.v_ServiceId == serviceId && a.v_ComponentId == componentId
-                             select new servicecomponentDto
-                             { 
-                                v_ServiceComponentId = a.v_ServiceComponentId,
-                             }
-                             ).ToList();
-                return query;
+                var objEntity = (from A in dbContext.servicecomponentmultimedia
+                                 join B in dbContext.multimediafile on A.v_MultimediaFileId equals B.v_MultimediaFileId
+                                 where A.v_ServiceComponentId == serviceComponentId
+                                 select new Sigesoft.Server.WebClientAdmin.BE.Custom.ServiceComponentMultimediaFile
+                                 {
+                                     v_ServiceComponetMultimediaId=A.v_ServiceComponentMultimediaId,
+                                     b_file=B.b_File,
+                                     v_MultimediaFileId=B.v_MultimediaFileId
+                                 }).ToList().LastOrDefault();
+                return objEntity;
             }
-            catch (Exception ex)
-            {
-                return null;
+            catch(Exception) {
+                throw;
             }
             
         }
-   }
+    }
+
 }

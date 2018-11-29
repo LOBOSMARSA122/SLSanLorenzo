@@ -410,6 +410,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.v_ProtocolName = item.v_ProtocolName;
                 tickets.v_ProtocolId = item.v_ProtocolId;
                 tickets.v_DocNumber = item.v_DocNumber;
+                
                 #region Tickets
 
                 // estos son los hijos de 1 hopitalización
@@ -485,7 +486,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                    v_TicketId = E.v_TicketId,
                                    d_Fecha = E.d_Fecha,
                                    i_conCargoA = E.i_ConCargoA,
-                                   i_tipoCuenta = E.i_TipoCuentaId
+                                   i_tipoCuenta = E.i_TipoCuentaId,
+                                  
                                    
                                };
             List<TicketList> objData = queryticket.ToList();
