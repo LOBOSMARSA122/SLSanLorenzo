@@ -150,6 +150,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         ticketdetalleDtoUp.v_CodInterno = item.v_CodInterno;
                         ticketdetalleDtoUp.v_Descripcion = item.v_NombreProducto;
                         ticketdetalleDtoUp.d_PrecioVenta = item.d_PrecioVenta;
+                        ticketdetalleDtoUp.i_IsDeleted = item.i_IsDeletd;
                         ticketdetalleDtoUp.d_SaldoPaciente = item.d_SaldoPaciente;
                         ticketdetalleDtoUp.d_SaldoAseguradora = item.d_SaldoAseguradora;
                         ticketdetalleDtoUp.v_IdUnidadProductiva = item.v_IdUnidadProductiva;
