@@ -1378,6 +1378,8 @@
     <Content Include="Global.asax" />
     <Content Include="Html\NET MEDICAL.html" />
     <Content Include="images\Fototipo\bg.png" />
+    <Content Include="images\Fototipo\clean.png" />
+    <Content Include="images\Fototipo\reload.png" />
     <Content Include="images\Fototipo\reset.png" />
     <Content Include="images\Fototipo\rostro.png" />
     <Content Include="images\Fototipo\save.png" />

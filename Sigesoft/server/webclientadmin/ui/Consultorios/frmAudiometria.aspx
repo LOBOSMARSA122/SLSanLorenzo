@@ -1147,7 +1147,7 @@
                                             </Items>
                                         </x:GroupPanel>
 
-                                        <x:GroupPanel ID="GroupPanel17" runat="server" Title="Imagen Oído Derecho - Oído Izquierdo" BoxFlex="1" Height="370" TableColspan="3">
+                                        <x:GroupPanel ID="GroupPanel17" runat="server" Title="Imageen Oído Derecho - Oído Izquierdo" BoxFlex="1" Height="370" TableColspan="3">
                                             <Items>
                                                 <x:Form ID="Form10" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
                                                     <Rows>

@@ -4,6 +4,7 @@ using FineUI;
 using NetPdf;
 using Sigesoft.Common;
 using Sigesoft.Server.WebClientAdmin.BE;
+using Sigesoft.Server.WebClientAdmin.BE.Custom;
 using Sigesoft.Server.WebClientAdmin.BLL;
 using Sigesoft.Server.WebClientAdmin.UI.ExternalUser;
 using System;
@@ -12,6 +13,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -37,7 +39,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
         private Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList _tmpTotalDiagnostic = null;
         List<string> _filesNameToMerge = new List<string>();
-
+        List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> _listMedicina = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
+        private MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
+        ServiceComponentMultimediaFile _ServiceComponentMultimediaFile = new ServiceComponentMultimediaFile();
+        FileInfoDto fileInfo = null;
+        public string cadenaUrlFoto = null;
+        public string JsFunction { get; set; }
         #region Cargar Inicial
 
         protected void Page_Load(object sender, EventArgs e)
@@ -684,6 +691,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlAltura1_8Aptitud_Internacional.Attributes.Add("Tag", "N005-MF000002077");
                 txtAltura1_8Observaciones_Internacional.Attributes.Add("Tag", "N005-MF000002078");
 
+                //txtMultimediaFileId_Inter.Attributes.Add("Tag", Constants.txt_MULTIMEDIA_FILE_FOTO_TIPO);
+                //txtServiceComponentMultimediaId_Inter.Attributes.Add("Tag", Constants.txt_SERVICE_COMPONENT_MULTIMEDIA_FOTO_TIPO);
+
                 #region OsteomuscularInternacional
                 //Setear OsteoMuscular
 
@@ -1020,7 +1030,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString(); ;
                 }
 
-            }
+
+
+            }          
         }
 
         
@@ -1286,8 +1298,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         }
 
         protected void grdData_RowClick(object sender, GridRowClickEventArgs e)
-        {
-            
+        {            
             OperationResult objOperationResult = new OperationResult();
             int index = e.RowIndex;
             Session["index"] = index;
@@ -1325,7 +1336,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             txtPuestoCabecera.Text = dataKeys[12] == null ? "" : dataKeys[12].ToString();
 
             DateTime? FechaNacimiento = DateTime.Parse(dataKeys[13].ToString());
-            txtEdadCabecera.Text = dataKeys[13] == null ? "" : new ServiceBL().GetAge(FechaNacimiento.Value).ToString();// dataKeys[13].ToString();
+            txtEdadCabecera.Text = dataKeys[13] == null ? "" : new ServiceBL().GetAge(FechaNacimiento.Value).ToString();// dataKeys[13].ToString();                               
 
             //Mostrar
             grdComponentes.DataSource=  _serviceBL.GetServiceComponentByCategoryId(ref objOperationResult, int.Parse(ddlConsultorio.SelectedValue.ToString()), Session["ServiceId"].ToString());
@@ -1343,7 +1354,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             }
             ActualizaGrillasDx(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
 
-            //LlenarLista();
+            //LlenarLista();ç
+            
+            _ServiceComponentMultimediaFile = _serviceBL.ExtraerUrlImagen(Session["ServiceId"].ToString(), Session["ServicioComponentIdMedicina"].ToString());
+            if (_ServiceComponentMultimediaFile == null)
+            {
+                texturl.Text = "";
+                txtMultimediaFileId_Inter.Text = "";
+                txtServiceComponentMultimediaId_Inter.Text = "";
+            }
+            else {
+                texturl.Text = Encoding.UTF8.GetString(_ServiceComponentMultimediaFile.b_file);
+                txtMultimediaFileId_Inter.Text = _ServiceComponentMultimediaFile.v_MultimediaFileId.ToString();
+                txtServiceComponentMultimediaId_Inter.Text = _ServiceComponentMultimediaFile.v_ServiceComponetMultimediaId.ToString();
+            }
+            
+            
         }
 
         private void LlenarLista()
@@ -6041,6 +6067,79 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtEstadoMental.Text = "";
             }
         }
+        
+        protected void btngrabarfoto_Click(object sender, EventArgs e)
+        {
+            
+            
+            byte[] urlfoto = Encoding.ASCII.GetBytes(texturl.Text);
 
+            string[] FOTO = SavePrepared(txtMultimediaFileId_Inter.Text, txtServiceComponentMultimediaId_Inter.Text, Session["PersonId"].ToString(), Session["ServicioComponentIdMedicina"].ToString(), "IMAGEN MEDICINA", "IMAGEN PROVENIENTE DEL UC MEDICINA", urlfoto);
+
+            if (FOTO != null)    // GRABAR
+            {
+                txtMultimediaFileId_Inter.Text = FOTO[0];
+                txtServiceComponentMultimediaId_Inter.Text = FOTO[1];
+
+                var medicina = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>()
+                {                                
+                    new Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList { v_ComponentFieldId = txtMultimediaFileId_Inter.ID, v_Value1 = txtMultimediaFileId_Inter.Text },                
+                    new Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList { v_ComponentFieldId = txtServiceComponentMultimediaId_Inter.ID, v_Value1 = txtServiceComponentMultimediaId_Inter.Text }
+                };
+
+                _listMedicina.AddRange(medicina);
+            }
+        }
+
+        private string[] SavePrepared(string multimediaFileId, string serviceComponentMultimediaId, string personId, string serviceComponentId, string fileName, string description, byte[] chartImagen)
+        {
+            string[] FOTO = null;
+
+            fileInfo = new FileInfoDto();
+
+            fileInfo.PersonId = personId;
+            fileInfo.ServiceComponentId = serviceComponentId;
+            fileInfo.FileName = fileName;
+            fileInfo.Description = description;
+            fileInfo.ByteArrayFile = chartImagen;
+
+            OperationResult operationResult = null;
+
+            if (string.IsNullOrEmpty(multimediaFileId))     // GRABAR
+            {
+                // Grabar
+                operationResult = new OperationResult();
+                FOTO = _multimediaFileBL.AddMultimediaFileComponent(ref operationResult, fileInfo, ((ClientSession)Session["objClientSession"]).GetAsList());               
+                txtMultimediaFileId_Inter.Text=FOTO[0];
+                txtServiceComponentMultimediaId_Inter.Text = FOTO[1];
+                // Analizar el resultado de la operación
+                if (operationResult.Success != 1)
+                {
+                    //MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                else {
+                    Alert.ShowInTop("Se grabó correctamente", MessageBoxIcon.Information);
+                }
+            }
+            else        // ACTUALIZAR
+            {
+                operationResult = new OperationResult();
+                fileInfo.MultimediaFileId = multimediaFileId;
+                fileInfo.ServiceComponentMultimediaId = serviceComponentMultimediaId;
+                _multimediaFileBL.UpdateMultimediaFileComponent(ref operationResult, fileInfo, ((ClientSession)Session["objClientSession"]).GetAsList());
+                // Analizar el resultado de la operación
+                if (operationResult.Success != 1)
+                {
+                    //MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                else {
+                    Alert.ShowInTop("Se grabó correctamente", MessageBoxIcon.Information);
+                }
+            }
+            return FOTO;
+
+        }
     }
 }

@@ -561,6 +561,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         ObtenerDatosAudiometriaInternacional(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabAudiometriaInternacional.Hidden = false;
                     }
+                    TabAudiometria.Hidden = false;
+                    TabAudiometriaInternacional.Hidden = false;
                 }
             }
             else
@@ -594,7 +596,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                             ObtenerDatosAudiometriaInternacional(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabAudiometriaInternacional.Hidden = false;
                         }
-
+                        TabAudiometria.Hidden = false;
+                        TabAudiometriaInternacional.Hidden = false;
                     }
                 }
             }
@@ -1621,11 +1624,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private string[] SavePrepared(string multimediaFileId, string serviceComponentMultimediaId, string personId, string serviceComponentId, string fileName, string description, byte[] chartImagen)
         {
-
             string[] IDs = null;
-
             fileInfo = new FileInfoDto();
-
             fileInfo.PersonId = personId;
             fileInfo.ServiceComponentId = serviceComponentId;
             fileInfo.FileName = fileName;

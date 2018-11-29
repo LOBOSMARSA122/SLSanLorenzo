@@ -2503,7 +2503,7 @@
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar24" runat="server">
                                     <Items>
-                                        <x:Button ID="Button1" Text="Grabar Fototipo" Icon="SystemSave" runat="server" AjaxLoadingType="Mask"></x:Button>
+                                        <x:Button ID="btngrabarfoto" Text="Grabar Fototipo" Icon="SystemSave" runat="server" AjaxLoadingType="Mask" OnClick="btngrabarfoto_Click"></x:Button>
                                         <x:Label ID="Label729" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label730" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="DropDownList1" runat="server"></x:DropDownList>
@@ -2511,148 +2511,17 @@
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
-                            <Items>
-                                <x:Panel ID="Panel90" Title="DATOS DE LA EMPRESA" EnableBackgroundColor="true" Height="160px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
-                                    <Items>
-                                        <x:Form ID="Form59" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
-                                            <Rows>
-                                                <x:FormRow ID="FormRow214" ColumnWidths="150px 630px 80px 100px " runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label765" runat="server" Text="RAZÓN SOCIAL" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox44" ShowLabel="false" CssClass="mright" runat="server" Width="600"></x:TextBox>
-                                                        <x:Label ID="label766" runat="server" Text="RUC N.R.O" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox45" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow215" ColumnWidths="149px 810px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label767" runat="server" Text="ACTIVIDAD ECONÓMICA" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox46" ShowLabel="false" CssClass="mright" runat="server" Width="810"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow216" ColumnWidths="150px 810px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label768" runat="server" Text="LUGAR DE TRABAJO" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox97" ShowLabel="false" CssClass="mright" runat="server" Width="810"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow217" ColumnWidths="149px 810px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label769" runat="server" Text="PUESTO DE TRABAJO" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox98" ShowLabel="false" CssClass="mright" runat="server" Width="810"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow218" ColumnWidths="150px 230px 120px 250px 110px 100px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label770" runat="server" Text="MINERALES EXPLOTADOS O PROCESADOS" ShowLabel="false"></x:Label>
-                                                        <x:TextArea ID="TextArea4" ShowLabel="false" CssClass="mright" runat="server" Width="200" Height="40"></x:TextArea>
-                                                        <x:Label ID="label771" runat="server" Text="LUGAR DE LABOR" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList2" runat="server" Width="160px" ShowLabel="false"></x:DropDownList>
-                                                        <x:Label ID="label772" runat="server" Text="ALTITUD LABOR" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList3" runat="server" Width="100px" ShowLabel="false"></x:DropDownList>
-                                                    </Items>
-                                                </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-
-                                    </Items>
-                                </x:Panel>
-                                <x:Panel ID="Panel91" Title="FILIACIÓN DEL TRABAJADOR" EnableBackgroundColor="true" Height="230px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
-                                    <Items>
-                                        <x:Form ID="Form60" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
-                                            <Rows>
-                                                <x:FormRow ID="FormRow219" ColumnWidths="150px 810px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label773" runat="server" Text="NOMBRES Y APELLIDOS" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox99" ShowLabel="false" CssClass="mright" runat="server" Width="810"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow220" ColumnWidths="149px 160px 120px 200px 170px 160px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label774" runat="server" Text="FECHA NACIMIENTO" ShowLabel="false"></x:Label>
-                                                        <x:DatePicker ID="DatePicker1" Label="F.I" Width="100px" runat="server" DateFormatString="dd/MM/yyyy" ShowLabel="false" />
-                                                        <x:Label ID="label775" runat="server" Text="TIPO DOCUMENTO" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList4" runat="server" Width="150px" ShowLabel="false"></x:DropDownList>
-                                                        <x:Label ID="label776" runat="server" Text="NÚMERO DE DOCUMENTO" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox100" ShowLabel="false" CssClass="mright" runat="server" Width="160"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow221" ColumnWidths="150px 160px 120px 200px 170px 160px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label777" runat="server" Text="EDAD" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox101" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                        <x:Label ID="label778" runat="server" Text="TIPO EVALUACIÓN" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList5" runat="server" Width="150px" ShowLabel="false"></x:DropDownList>
-                                                        <x:Label ID="label779" runat="server" Text="TIPO DE SEGURO" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList6" runat="server" Width="160px" ShowLabel="false"></x:DropDownList>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow222" ColumnWidths="149px 810px 170px 160px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label780" runat="server" Text="DIRECCIÓN FISCAL" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox102" ShowLabel="false" CssClass="mright" runat="server" Width="430"></x:TextBox>
-                                                        <x:Label ID="label781" runat="server" Text="LUGAR NACIMIENTO" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox103" ShowLabel="false" CssClass="mright" runat="server" Width="160"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow223" ColumnWidths="150px 160px 120px 200px 170px 160px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label782" runat="server" Text="DEPARTAMENTO" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList7" runat="server" Width="160px" ShowLabel="false" AutoPostBack="true" OnSelectedIndexChanged="ddlDepartamento_16_SelectedIndexChanged"></x:DropDownList>
-                                                        <x:Label ID="label783" runat="server" Text="PROVINCIA" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList8" runat="server" Width="150px" ShowLabel="false" AutoPostBack="true" OnSelectedIndexChanged="ddlProvincia_16_SelectedIndexChanged"></x:DropDownList>
-                                                        <x:Label ID="label784" runat="server" Text="DISTRITO" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList9" runat="server" Width="150px" ShowLabel="false"></x:DropDownList>
-
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow224" ColumnWidths="220px 90px 320px 170px 60px 100px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label785" runat="server" Text="RESIDENCIA EN LUGAR DE TRABAJO" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList10" runat="server" Width="45px" ShowLabel="false"></x:DropDownList>
-                                                        <x:Label ID="label786" runat="server" Text="TIEMPO DE RESIDENCIA EN LUGAR TRABAJO(Años)" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox104" ShowLabel="false" CssClass="mright" runat="server" Width="150"></x:TextBox>
-                                                        <x:Label ID="label787" runat="server" Text="GÉNERO" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList11" runat="server" Width="100" ShowLabel="false"></x:DropDownList>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow225" ColumnWidths="150px 550px 100px 160px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label788" runat="server" Text="CORREO ELECTRÓNICO" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox105" ShowLabel="false" CssClass="mright" runat="server" Width="540"></x:TextBox>
-                                                        <x:Label ID="label789" runat="server" Text="TELÉFONO" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox106" ShowLabel="false" CssClass="mright" runat="server" Width="160"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow226" ColumnWidths="149px 160px 120px 200px 110px 60px 130px 30px" runat="server">
-                                                    <Items>
-                                                        <x:Label ID="label790" runat="server" Text="ESTADO CIVIL" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList12" runat="server" Width="120px" ShowLabel="false"></x:DropDownList>
-                                                        <x:Label ID="label791" runat="server" Text="GR. INSTRUCCIÓN" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="DropDownList13" runat="server" Width="175px" ShowLabel="false"></x:DropDownList>
-                                                        <x:Label ID="label792" runat="server" Text="# HIJOS VIVOS" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox107" ShowLabel="false" CssClass="mright" runat="server" Width="30"></x:TextBox>
-                                                        <x:Label ID="label793" runat="server" Text="# HIJOS MUERTOS" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox108" ShowLabel="false" CssClass="mright" runat="server" Width="30"></x:TextBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                    </Items>
-                                </x:Panel>
+                            <Items>                                
                                 <x:Panel ID="Panel112" runat="server" ShowBorder="True" ShowHeader="True" Title="Fototipo" EnableBackgroundColor="true" Layout="VBox"
-                                    BoxConfigAlign="Stretch" BoxConfigPosition="Start" BoxConfigChildMargin="3 7 12 5" Height="1050">
+                                    BoxConfigAlign="Stretch" BoxConfigPosition="Start" BoxConfigChildMargin="3 7 12 5" Height="2050">
                                     <Items>
-                                        <x:GroupPanel ID="GroupPanel7" runat="server" Title="Imagen Fototipo" BoxFlex="1" Height="1000" TableColspan="3">
+                                        <x:GroupPanel ID="GroupPanel7" runat="server" Title="Imagen Fototipo" BoxFlex="1" Height="2100" TableColspan="3">
                                             <Items>
                                                 <x:Form ID="Form193" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
                                                     <Rows>
                                                         <x:FormRow ID="FormRow551" ColumnWidths="460px" runat="server">
                                                             <Items>
-                                                                
-                                                                <x:ContentPanel ID="ContentPanel1" runat="server" Width="960px" BodyPadding="5px" EnableBackgroundColor="true" ShowBorder="true" ShowHeader="true" Title=" ">
-                                                                    
-                                                                    <canvas id="imgCanvas" width="800" height="800"></canvas>
+                                                                <x:ContentPanel ID="ContentPanel2" runat="server" Width="1060px" BodyPadding="5px" EnableBackgroundColor="true" ShowBorder="true" ShowHeader="true" Title=" ">
                                                                     <div>
                                                                         <div id="rellenoFondo" ></div>
                                                                         <div class="botones" id="btn1" onclick="cambioColor('fffc6d')"></div>
@@ -2660,11 +2529,17 @@
                                                                         <div class="botones" id="btn3" onclick="cambioColor('f44171')"></div>
                                                                         <div class="botones" id="btn4" onclick="cambioColor('25dd69')"></div>
                                                                         <div class="botones" id="fondo" onclick="cambioFondo()"><img src="../images/Fototipo/bg.png"/></div>
-
-                                                                        <div  class="botones" onclick="cargarDibujo()"><img src="../images/Fototipo/reset.png" style="width:32px"/></div>
-	                                                                    <div  class="botones" onclick="Guardar()"><img src="../images/Fototipo/save.png" style="width:35px"/></div>
-                                                                        <a id="download"><input type="button" value="Descargar" onClick="descargar()"></a>
+                                                                        <div class="botones" onclick="cargarDibujo()"><img src="../images/Fototipo/clean.png" style="width:32px"/></div>
+                                                                        <div class="botones" onclick="mostrarimagen()"><img src="../images/Fototipo/reload.png" style="width:35px"/></div>
+                                                                        <x:TextBox runat="server" ID="txtMultimediaFileId_Inter" Hidden="true"/>
+                                                                        <x:TextBox runat="server" ID="txtServiceComponentMultimediaId_Inter" Hidden="true"/>
+                                                                        <x:TextArea Width="900" Height="500" ID="texturl" runat="server" Hidden="true"></x:TextArea>
                                                                     </div>
+                                                                    <div id="divimgcanvas">
+                                                                         <canvas id="imgCanvas" width="800" height="800"></canvas>
+                                                                    </div>
+                                                                   
+                                                                    
                                                                 </x:ContentPanel>
 
                                                             </Items>
@@ -4904,34 +4779,7 @@
                                 </x:Panel>
 
                             </Items>
-                        </x:Tab>
-
-                        
-
-                        <x:Tab ID="fototipo" BodyPadding="5px" Title="Fototipo" runat="server" Hidden="false">
-                            <html xmlns="http://www.w3.org/1999/xhtml">
-                            <head><title></title></head>
-                            <body> 
-                                <canvas id="imgCanvas" width="800" height="800"></canvas>
-                                <div runat="server" id="botonera">
-                                    <div id="rellenoFondo" ></div>
-		                            <div class="botones" onclick="cambioColor('333')"><img src="negro.png"/></div>
-		                            <div class="botones" onclick="cambioColor('fff')"><img src="blanco.png"/></div>
-		                            <div class="botones" onclick="cambioColor('fe0000')"><img src="rojo.png"/></div>
-		                            <div class="botones" onclick="cambioColor('800080')"><img src="morado.png"/></div>
-		                            <div class="botones" onclick="cambioColor('ffff00')"><img src="amarillo.png"/></div>
-		                            <div class="botones" onclick="cambioColor('00ff00')"><img src="verde.png"/></div>
-		                            <div class="botones" onclick="cambioColor('00ffff')"><img src="azulClaro.png"/></div>
-		                            <div class="botones" onclick="cambioColor('0000fe')"><img src="azulOscuro.png"/></div>
-		                            <div class="botones" id="fondo" onclick="cambioFondo()"><img src="bg.png"/></div>
-		                            <div  class="botones" onclick="cargarDibujo()"><img src="reset.png" style="width:32px"/></div>
-		                            <div  class="botones" onclick="Guardar()"><img src="save.png" style="width:35px"/></div>
-                                </div>
-                            </body>
-                            </html>
-                                
-                            
-                        </x:Tab>
+                        </x:Tab>                      
                     </Tabs>
                 </x:TabStrip>
             </Items>
@@ -5011,6 +4859,7 @@
     <script type="text/javascript">
         var highlightRowsClientID = '<%= highlightRows.ClientID %>';
         var gridClientID = '<%= grdDx.ClientID %>';
+        var texturlID = '<%= texturl.ClientID %>';
 
         function highlightRows() {
             var highlightRows = X(highlightRowsClientID);
@@ -5037,7 +4886,133 @@
             highlightRows();
         }
 
+        var canvas = document.getElementById("imgCanvas");
+        var context = canvas.getContext("2d");
 
+        var imagenFondo = new Image();
+        imagenFondo.src = '../images/Fototipo/rostro.png';
+        context.drawImage(imagenFondo, 0, 0);
+        //Cargo la imagen en la posición
+        
+        imagenFondo.onload = function () {
+            context.drawImage(imagenFondo, 0, 0);
+        }
+        var estoyDibujando = false;
+
+        function cargarDibujo() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            var imagenFondo = new Image();
+            imagenFondo.src = '../images/Fototipo/rostro.png';
+            //Cargo la imagen en la posición
+            context.drawImage(imagenFondo, 0, 0);
+            cambiarUrl()
+            console.log('cargar dibujo');
+        }
+
+
+        function cambioColor(reciboColor) {
+            //Guardo en color el color seleccionado
+            color = "#" + reciboColor;
+            //Cambio de color el botón de relleno de fondo
+            document.getElementById('rellenoFondo').style.background = color;
+            cambiarUrl()
+            console.log('caMbio color');
+        }
+
+
+        function cambioGrosor(reciboGrosor) {
+            //Guardo el grosor recibido
+            grosor = reciboGrosor;
+            cambiarUrl()
+            console.log('cambio grosor');
+        }
+
+        function cambioFondo() {
+            document.getElementById('imgCanvas').style.background = color;
+        }
+
+
+        function pulsaRaton(e) {
+            estoyDibujando = true;
+            //Indico que vamos a dibujar
+            context.beginPath();
+
+            //Averiguo las coordenadas X e Y por dónde va pasando el ratón
+            var pos = getMousePos(canvas, e);
+            posx = pos.x;
+            posy = pos.y;
+            context.moveTo(e.posx, e.posx);
+        }
+
+        function mueveRaton(e) {
+            if (estoyDibujando) {
+
+                var pos = getMousePos(canvas, e);
+                posx = pos.x;
+                posy = pos.y;
+
+                context.fillStyle = color;
+                context.fillRect(posx, posy, 10, 10);
+                
+                console.log('mueve raton');
+            }
+        }
+
+        function levantaRaton(e) {
+            //Indico que termino el dibujo
+            context.closePath();
+            estoyDibujando = false;
+            cambiarUrl()
+            console.log('levanta raton');
+        }
+
+        //document.addEventListener('mousemove', mueveRaton, false);
+
+        //document.addEventListener('mousedown', pulsaRaton, false);
+
+        //document.addEventListener('mouseup', levantaRaton, false);
+
+        imgCanvas.addEventListener('mousemove', mueveRaton, false);
+
+        imgCanvas.addEventListener('mousedown', pulsaRaton, false);
+
+        imgCanvas.addEventListener('mouseup', levantaRaton, false);
+
+        color = "#333";
+
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+                y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+            };            
+        }
+        
+        function cambiarUrl() {
+            document.getElementById('<%=texturl.ClientID%>').value = canvas.toDataURL("image/png");
+            console.log('CAMBIAR URL');
+        }
+       
+        function guardarimagen() {
+            document.getElementById('<%=texturl.ClientID%>').value = canvas.toDataURL("image/png");
+        }
+
+        
+        
+
+        function mostrarimagen() {          
+            if (document.getElementById('<%=texturl.ClientID%>').value == "") {
+                cargarDibujo()
+                guardarimagen()
+                console.log('vacio');
+            } else {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                var imagenFondo1 = new Image();
+                imagenFondo1.src = document.getElementById('<%=texturl.ClientID%>').value;
+                context.drawImage(imagenFondo1, 0, 0);
+                console.log('no vacio');
+            }          
+        }
     </script>
 </body>
 </html>
