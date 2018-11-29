@@ -11497,13 +11497,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Toolbar Toolbar24;
         
         /// <summary>
-        /// Button1 control.
+        /// btngrabarfoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Button Button1;
+        protected global::FineUI.Button btngrabarfoto;
         
         /// <summary>
         /// Label729 control.
@@ -11542,40 +11542,31 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Button Button2;
         
         /// <summary>
-        /// Panel112 control.
+        /// Panel90 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Panel Panel112;
+        protected global::FineUI.Panel Panel90;
         
         /// <summary>
-        /// GroupPanel7 control.
+        /// Form59 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.GroupPanel GroupPanel7;
+        protected global::FineUI.Form Form59;
         
         /// <summary>
-        /// Form193 control.
+        /// FormRow214 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Form Form193;
-        
-        /// <summary>
-        /// FormRow551 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow551;
+        protected global::FineUI.FormRow FormRow214;
         
         /// <summary>
         /// ContentPanel1 control.
@@ -11587,31 +11578,31 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.ContentPanel ContentPanel1;
         
         /// <summary>
-        /// txtMultimediaId control.
+        /// txtMultimediaFileId_Inter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtMultimediaId;
+        protected global::FineUI.TextBox txtMultimediaFileId_Inter;
         
         /// <summary>
-        /// txtSetLinkImg control.
+        /// txtServiceComponentMultimediaId_Inter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextArea txtSetLinkImg;
+        protected global::FineUI.TextBox txtServiceComponentMultimediaId_Inter;
         
         /// <summary>
-        /// txtLinkImage control.
+        /// texturl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLinkImage;
+        protected global::FineUI.TextArea texturl;
         
         /// <summary>
         /// TabAltura18_Internacional control.
@@ -21710,15 +21701,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.TextBox txttxtOsteoMuscularInformadorEvaluar;
-        
-        /// <summary>
-        /// TabVacio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Tab TabVacio;
         
         /// <summary>
         /// hfRefresh control.

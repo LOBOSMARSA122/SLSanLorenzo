@@ -11,6 +11,7 @@ using Sigesoft.Node.Contasol.Integration;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
 using NetPdf;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -945,10 +946,35 @@ namespace Sigesoft.Node.WinClient.UI
                     }
                     var deudoraas = new ServiceBL().GetListaLiquidaciones_Deudas(ref objOperationResult, inicioDeudas, FinDeudas);
 
+                    List<LiquidacionesConsolidado> ListaLiquidacion_detalle = new List<LiquidacionesConsolidado>();
                     foreach (var item in deudoraas)
                     {
                         var empresa = new ServiceBL().GetOrganizationId(ref objOperationResult, item.v_OrganizationId);
-                        var Datos = new ServiceBL();
+                        var Datos = new ServiceBL().GetLiquidacionConsolidada(ref objOperationResult, item.v_NroLiquidacion);
+
+                        var listaLiquidacionEmpresaDetalle = new List<LiquidacionesConsolidadoDetalle>();
+                        var empresaLiquidacion = new LiquidacionesConsolidado();
+
+                        empresaLiquidacion.v_OrganizationName = empresa.v_Name;
+                        empresaLiquidacion.v_Ruc = empresa.v_IdentificationNumber;
+                        empresaLiquidacion.v_AddressLocation = empresa.v_Address;
+                        empresaLiquidacion.v_TelephoneNumber = empresa.v_PhoneNumber;
+                        empresaLiquidacion.v_ContactName = empresa.v_ContacName;
+                        empresaLiquidacion.v_NroLiquidacion = item.v_NroLiquidacion;
+                        foreach (var detalle in Datos)
+                        {
+                            var empresaLiquidacionDetalle = new LiquidacionesConsolidadoDetalle();
+
+                            empresaLiquidacionDetalle.v_Paciente = detalle.v_Paciente;
+                            empresaLiquidacionDetalle.d_exam = detalle.d_exam;
+                            empresaLiquidacionDetalle.d_price = detalle.d_price;
+                            empresaLiquidacionDetalle.v_UsuarRecord = detalle.v_UsuarRecord;
+                            empresaLiquidacionDetalle.v_CenterCost = detalle.v_CenterCost;
+                            listaLiquidacionEmpresaDetalle.Add(empresaLiquidacionDetalle);
+                        }
+                        empresaLiquidacion.detalle = listaLiquidacionEmpresaDetalle;
+                        ListaLiquidacion_detalle.Add(empresaLiquidacion);
+
                     }
                     //List<string> deudores = new List<string>();
                     //string idEmpresa = "";
@@ -960,46 +986,11 @@ namespace Sigesoft.Node.WinClient.UI
                     //    }
                     //    idEmpresa = item.v_OrganizationId;
                     //}
-                    
-                    #region total
-                    List<LiquidacionEmpresa> ListaLiquidacion_total = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
-                    {
-                        DateTime? fechaInicio_LT = new DateTime(2018, 1, 1, 0, 0, 0);
-                        DateTime? fechaFin_LT = DateTime.Now;
-                        var lista_total = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio_LT, fechaFin_LT, ruc);
-
-                        foreach (var item in lista_total)
-                        {
-                            var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
-                            var liquidacionEmpresa = new LiquidacionEmpresa();
-
-                            liquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
-                            liquidacionEmpresa.v_Ruc = item.v_Ruc;
-                            liquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
-                            liquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
-                            liquidacionEmpresa.v_ContactName = item.v_ContactName;
-
-                            var detalles = item.detalle.FindAll(p => p.v_NroFactura == "");
-                            foreach (var detalle in detalles)
-                            {
-                                var liquidacionDetalleEmpresa = new LiquidacionEmpresaDetalle();
-                                liquidacionDetalleEmpresa.d_Debe = detalle.d_Debe;
-                                liquidacionDetalleEmpresa.d_Pago = detalle.d_Pago;
-                                liquidacionDetalleEmpresa.d_Total = detalle.d_Total;
-                                liquidacionDetalleEmpresa.v_LiquidacionId = detalle.v_LiquidacionId;
-                                liquidacionDetalleEmpresa.v_NroFactura = "";
-                                listaLiquidacionEmpresaDetalle.Add(liquidacionDetalleEmpresa);
-                            }
-                            liquidacionEmpresa.detalle = listaLiquidacionEmpresaDetalle;
-                            ListaLiquidacion_total.Add(liquidacionEmpresa);
-                        }
-                    }
-                    #endregion
+                   
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                    string nombre = "EMPRESAS POR FACTURAR DETALLE- CSL";
+                    string nombre = "EMPRESAS LIQUIDADAS - POR FACTURAR DETALLE- CSL";
 
                     DateTime? fechaFin_1 = DateTime.Now;
                     DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);

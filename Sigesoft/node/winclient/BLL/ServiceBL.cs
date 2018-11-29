@@ -10,6 +10,7 @@ using System.Collections;
 using System.Transactions;
 using System.Data.Linq.SqlClient;
 using System.Threading;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 
 namespace Sigesoft.Node.WinClient.BLL
@@ -32600,6 +32601,102 @@ namespace Sigesoft.Node.WinClient.BLL
 
                     ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
                 }
+
+                pobjOperationResult.Success = 1;
+                return ListaLiquidacion.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public List<LiquidacionesConsolidadoDetalle> GetLiquidacionConsolidada(ref OperationResult pobjOperationResult, string nrLiquidacion)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.service
+                            join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                            join C in dbContext.liquidacion on A.v_NroLiquidacion equals C.v_NroLiquidacion
+                            join D in dbContext.calendar on A.v_ServiceId equals D.v_ServiceId
+                            join E in dbContext.systemuser on D.i_InsertUserId equals E.i_InsertUserId
+                            join F in dbContext.person on E.v_PersonId equals F.v_PersonId
+                            join G in dbContext.organization on C.v_OrganizationId equals G.v_OrganizationId
+
+                            where A.i_IsDeleted == 0 && A.v_NroLiquidacion == nrLiquidacion
+                            select new LiquidacionesConsolidadoDetalle
+                            {
+                                v_OrganizationId = G.v_OrganizationId,
+                                v_NroLiquidacion = C.v_NroLiquidacion,
+                                v_ServiceId = A.v_ServiceId,
+                                v_Paciente = B.v_FirstName + ", " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                                d_exam = A.d_ServiceDate,
+                                v_UsuarRecord = F.v_FirstName + ", " + F.v_FirstLastName + " " + F.v_SecondLastName,
+                                v_CenterCost = A.v_centrocosto
+                            };
+                float precio = 0;
+                foreach (var item in query)
+                {
+                    precio = GetServiceComponentsLiquidacion(ref pobjOperationResult, item.v_ServiceId).Sum(s => s.r_Price).Value;
+                    
+                }
+                var result = (from A in query.ToList()
+                              select new LiquidacionesConsolidadoDetalle
+                              {
+                                  v_OrganizationId = A.v_OrganizationId,
+                                  v_NroLiquidacion = A.v_NroLiquidacion,
+                                  v_ServiceId = A.v_ServiceId,
+                                  v_Paciente = A.v_Paciente,
+                                  d_exam = A.d_exam,
+                                  v_UsuarRecord = A.v_UsuarRecord,
+                                  v_CenterCost = A.v_CenterCost
+                              }).ToList();
+
+                var ListaServicios = result.ToList();
+                List<LiquidacionesConsolidadoDetalle> ListaLiquidacion = new List<LiquidacionesConsolidadoDetalle>();
+                foreach (var item in ListaServicios)
+                {
+                    var oLiquidacionEmpresaDetalle = new LiquidacionesConsolidadoDetalle();
+                    oLiquidacionEmpresaDetalle.v_OrganizationId = item.v_OrganizationId;
+                    oLiquidacionEmpresaDetalle.v_NroLiquidacion = item.v_NroLiquidacion;
+                    oLiquidacionEmpresaDetalle.v_ServiceId = item.v_ServiceId;
+                    oLiquidacionEmpresaDetalle.v_Paciente = item.v_Paciente;
+                    oLiquidacionEmpresaDetalle.d_exam = item.d_exam;
+                    oLiquidacionEmpresaDetalle.v_UsuarRecord = item.v_UsuarRecord;
+                    oLiquidacionEmpresaDetalle.v_CenterCost = item.v_CenterCost;
+                    oLiquidacionEmpresaDetalle.d_price = GetServiceComponentsLiquidacion(ref pobjOperationResult, item.v_ServiceId).Sum(s => s.r_Price).Value;
+                    ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
+                }
+                
+                //List<LiquidacionesConsolidado> ListaLiquidacion = new List<LiquidacionesConsolidado>();
+
+                //foreach (var item in ListaServicios)
+                //{
+                //    var LiquidacionDetalle = new List<LiquidacionesConsolidadoDetalle>();
+                //    var oLiquidacionEmpresaDetalle = new LiquidacionesConsolidado();
+                //    oLiquidacionEmpresaDetalle.v_OrganizationName = item.v_OrganizationName;
+
+                //    foreach (var servicio in item.detalle)
+                //    {
+                //        var oLiquidacionDetalle = new LiquidacionesConsolidadoDetalle();
+                //        oLiquidacionDetalle.v_NroLiquidacion = servicio.v_NroLiquidacion;
+                //        oLiquidacionDetalle.v_Paciente = servicio.v_Paciente;
+                //        oLiquidacionDetalle.d_exam = servicio.d_exam;
+                //        oLiquidacionDetalle.d_price =
+                //        GetServiceComponentsLiquidacion(ref pobjOperationResult, item.v_ServiceId).Sum(s => s.r_Price).Value;
+
+                //        oLiquidacionDetalle.v_NroLiquidacion = servicio.v_NroLiquidacion;
+                //        oLiquidacionDetalle.v_CenterCost = servicio.v_CenterCost;
+                //        LiquidacionDetalle.Add(oLiquidacionDetalle);
+                //    }
+                //    oLiquidacionEmpresaDetalle.detalle = LiquidacionDetalle;
+
+                //    ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
+                //}
 
                 pobjOperationResult.Success = 1;
                 return ListaLiquidacion.ToList();

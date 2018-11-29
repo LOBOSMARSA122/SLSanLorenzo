@@ -92,6 +92,7 @@
     <Compile Include="Custom\RoleNodeList.cs" />
     <Compile Include="Custom\ServerNodeSyncList.cs" />
     <Compile Include="Custom\ServiceComponentList.cs" />
+    <Compile Include="Custom\ServiceComponentMultimediaFile.cs" />
     <Compile Include="Custom\ServiceList.cs" />
     <Compile Include="Custom\ServiceShort.cs" />
     <Compile Include="Custom\SoftwareComponentReleaseList.cs" />
