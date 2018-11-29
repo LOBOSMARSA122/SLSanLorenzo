@@ -45,6 +45,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaCaducidad");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PrincipioActivo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Almacen");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Stock");
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -527,39 +528,40 @@
             ultraGridColumn2.Width = 293;
             ultraGridColumn3.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn3.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn3.Header.VisiblePosition = 1;
+            ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn3.Width = 157;
             ultraGridColumn4.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn4.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn4.Header.VisiblePosition = 2;
+            ultraGridColumn4.Header.VisiblePosition = 3;
             ultraGridColumn4.Width = 129;
             ultraGridColumn5.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn5.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn5.Header.VisiblePosition = 3;
+            ultraGridColumn5.Header.VisiblePosition = 4;
             ultraGridColumn15.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn15.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn15.Header.VisiblePosition = 4;
+            ultraGridColumn15.Header.VisiblePosition = 5;
             ultraGridColumn6.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn6.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn6.Header.VisiblePosition = 5;
+            ultraGridColumn6.Header.VisiblePosition = 6;
             ultraGridColumn7.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn7.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn7.Header.VisiblePosition = 6;
+            ultraGridColumn7.Header.VisiblePosition = 7;
             ultraGridColumn8.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn8.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn8.Header.VisiblePosition = 7;
+            ultraGridColumn8.Header.VisiblePosition = 8;
             ultraGridColumn9.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn9.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn9.Header.VisiblePosition = 8;
+            ultraGridColumn9.Header.VisiblePosition = 9;
             ultraGridColumn10.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn10.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn10.Header.VisiblePosition = 9;
+            ultraGridColumn10.Header.VisiblePosition = 10;
             ultraGridColumn21.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn21.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn21.Header.VisiblePosition = 10;
+            ultraGridColumn21.Header.VisiblePosition = 11;
             ultraGridColumn22.CellActivation = Infragistics.Win.UltraWinGrid.Activation.ActivateOnly;
             ultraGridColumn22.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            ultraGridColumn22.Header.VisiblePosition = 11;
+            ultraGridColumn22.Header.VisiblePosition = 12;
+            ultraGridColumn1.Header.VisiblePosition = 1;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn2,
             ultraGridColumn3,
@@ -572,7 +574,8 @@
             ultraGridColumn9,
             ultraGridColumn10,
             ultraGridColumn21,
-            ultraGridColumn22});
+            ultraGridColumn22,
+            ultraGridColumn1});
             this.ultraGrid1.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.ultraGrid1.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraGrid1.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;

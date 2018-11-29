@@ -72,9 +72,16 @@
 			width: 50px;
 				
 		}
+
+        #cargarDibujo:hover {
+            transform:rotate(-360deg);
+            transition: all 2s linear;
+            cursor:pointer;
+        }
     </style>
 </head>
 <body>
+
     <form id="form1" runat="server">
         <x:PageManager ID="PageManager1" runat="server" />
         <x:Panel ID="Panel2" runat="server" Height="5000px" Width="1000px" ShowBorder="True"
@@ -2504,24 +2511,25 @@
                                 <x:Toolbar ID="Toolbar24" runat="server">
                                     <Items>
                                         <x:Button ID="btngrabarfoto" Text="Grabar Fototipo" Icon="SystemSave" runat="server" AjaxLoadingType="Mask" OnClick="btngrabarfoto_Click"></x:Button>
+
                                         <x:Label ID="Label729" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label730" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
-                                        <x:DropDownList ID="DropDownList1" runat="server"></x:DropDownList>
+                                        <x:DropDownList ID="ddlGrabarUsuarioFototipo" runat="server"></x:DropDownList>
                                         <x:Button ID="Button2" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
                             <Items>                                
                                 <x:Panel ID="Panel112" runat="server" ShowBorder="True" ShowHeader="True" Title="Fototipo" EnableBackgroundColor="true" Layout="VBox"
-                                    BoxConfigAlign="Stretch" BoxConfigPosition="Start" BoxConfigChildMargin="3 7 12 5" Height="2050">
+                                    BoxConfigAlign="Stretch" BoxConfigPosition="Start" BoxConfigChildMargin="3 7 12 5" Height="1050">
                                     <Items>
-                                        <x:GroupPanel ID="GroupPanel7" runat="server" Title="Imagen Fototipo" BoxFlex="1" Height="2100" TableColspan="3">
+                                        <x:GroupPanel ID="GroupPanel7" runat="server" Title="Imagen Fototipo" BoxFlex="1" Height="1100" TableColspan="3">
                                             <Items>
                                                 <x:Form ID="Form193" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
                                                     <Rows>
                                                         <x:FormRow ID="FormRow551" ColumnWidths="460px" runat="server">
                                                             <Items>
-                                                                <x:ContentPanel ID="ContentPanel2" runat="server" Width="1060px" BodyPadding="5px" EnableBackgroundColor="true" ShowBorder="true" ShowHeader="true" Title=" ">
+                                                                <x:ContentPanel ID="ContentPanel2" runat="server" Width="1060px" BodyPadding="5px" EnableBackgroundColor="true" ShowBorder="true" ShowHeader="true" Title=" ">                                                                                                                      
                                                                     <div>
                                                                         <div id="rellenoFondo" ></div>
                                                                         <div class="botones" id="btn1" onclick="cambioColor('fffc6d')"></div>
@@ -2537,14 +2545,10 @@
                                                                     </div>
                                                                     <div id="divimgcanvas">
                                                                          <canvas id="imgCanvas" width="800" height="800"></canvas>
-                                                                    </div>
-                                                                   
-                                                                    
+                                                                    </div>                                                                                                                                                                                                            
                                                                 </x:ContentPanel>
-
                                                             </Items>
                                                         </x:FormRow>
-
                                                     </Rows>
                                                 </x:Form>
                                             </Items>
@@ -4888,9 +4892,9 @@
 
         var canvas = document.getElementById("imgCanvas");
         var context = canvas.getContext("2d");
-
         var imagenFondo = new Image();
         imagenFondo.src = '../images/Fototipo/rostro.png';
+
         context.drawImage(imagenFondo, 0, 0);
         //Cargo la imagen en la posición
         
@@ -4946,14 +4950,11 @@
 
         function mueveRaton(e) {
             if (estoyDibujando) {
-
                 var pos = getMousePos(canvas, e);
                 posx = pos.x;
                 posy = pos.y;
-
                 context.fillStyle = color;
-                context.fillRect(posx, posy, 10, 10);
-                
+                context.fillRect(posx, posy, 10, 10);                
                 console.log('mueve raton');
             }
         }
@@ -4986,8 +4987,7 @@
                 x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
                 y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
             };            
-        }
-        
+        }       
         function cambiarUrl() {
             document.getElementById('<%=texturl.ClientID%>').value = canvas.toDataURL("image/png");
             console.log('CAMBIAR URL');
@@ -5012,6 +5012,7 @@
                 context.drawImage(imagenFondo1, 0, 0);
                 console.log('no vacio');
             }          
+
         }
     </script>
 </body>

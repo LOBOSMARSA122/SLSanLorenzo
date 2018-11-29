@@ -1452,7 +1452,6 @@
             this.btnPerson.Text = "Agendar Cita Personal";
             this.btnPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPerson.UseVisualStyleBackColor = false;
-            this.btnPerson.Visible = false;
             this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
             // 
             // btnExportPdf

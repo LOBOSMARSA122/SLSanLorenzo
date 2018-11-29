@@ -11524,13 +11524,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label730;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlGrabarUsuarioFototipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.DropDownList DropDownList1;
+        protected global::FineUI.DropDownList ddlGrabarUsuarioFototipo;
         
         /// <summary>
         /// Button2 control.

@@ -1181,6 +1181,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             var ucFileUpload = new Sigesoft.Node.WinClient.UI.UserControls.ucFileUpload();
                                             ucFileUpload.PersonId = _personId;
                                             ucFileUpload.Dni = _Dni;
+                                            ucFileUpload.ProtocolId = _ProtocolId;
                                             ucFileUpload.Fecha = lblFecInicio.Text;
                                             ucFileUpload.Consultorio = com.v_CategoryName;
                                             ucFileUpload.ServiceComponentId = com.v_ServiceComponentId;
@@ -1697,6 +1698,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         ucFileUpload.ServiceComponentId = com.v_ServiceComponentId;
                                         ucFileUpload.Name = f.v_ComponentFieldId;
                                         ucFileUpload.Dni = _Dni;
+                                        ucFileUpload.ProtocolId = _ProtocolId;
                                         ucFileUpload.Fecha = lblFecInicio.Text;
                                         ucFileUpload.Consultorio = com.v_CategoryName;
                                         //ctl = new Sigesoft.Node.WinClient.UI.UserControls.ucFileUpload();

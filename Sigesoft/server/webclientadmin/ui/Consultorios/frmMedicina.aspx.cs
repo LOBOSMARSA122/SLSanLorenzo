@@ -29,7 +29,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
     {
         ServiceBL _serviceBL = new ServiceBL();
         HistoryBL _HistoryBL = new HistoryBL();
-
+        private MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
+        FileInfoDto fileInfo = null;
         DataHierarchyBL _objDataHierarchyBL = new DataHierarchyBL();
         SystemParameterBL _objSystemParameterBL = new SystemParameterBL();
         List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList> _serviceComponentFieldsList = new List<Node.WinClient.BE.ServiceComponentFieldsList>();
@@ -40,9 +41,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         private Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList _tmpTotalDiagnostic = null;
         List<string> _filesNameToMerge = new List<string>();
         List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList> _listMedicina = new List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldValuesList>();
-        private MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
         ServiceComponentMultimediaFile _ServiceComponentMultimediaFile = new ServiceComponentMultimediaFile();
-        FileInfoDto fileInfo = null;
         public string cadenaUrlFoto = null;
         public string JsFunction { get; set; }
         #region Cargar Inicial
@@ -97,6 +96,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 Session["ComponentesPermisoLectura"] = ListaComponentesPermisoLectura;
 
                 TabAnexo312.Hidden = true;
+                TabFototipo.Hidden = true;
                 TabAnexo16.Hidden = true;
                 TabOsteomuscular.Hidden = true;
                 TabOsteomuscularInternacional.Hidden = true;
@@ -1009,6 +1009,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtOtrosLesionesSecundariass_Inter.Attributes.Add("Tag", "N005-MF000002029");
                 #endregion
 
+
+                #region Fototipos
+                TabFototipo.Attributes.Add("Tag", "N009-ME000000411");
+                //txtLinkImage.Attributes.Add("Tag", "N009-MF000003204");
+                #endregion
+
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1);  //  DateTime.Parse("12/11/2016");
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
@@ -1093,6 +1099,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         protected void CargarRegistro()
         {
             TabAnexo312.Hidden = true;
+            TabFototipo.Hidden = true;
             TabAnexo16.Hidden = true;
             TabOsteomuscular.Hidden = true;
             TabOsteomuscularInternacional.Hidden = true;
@@ -1170,6 +1177,17 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         LoadCombosDermatologicoInternacional();
                         ObtenerDatosDermatologicosInternacional(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabDermatologico_Internacional.Hidden = false;
+                    }
+                    else if (item.ComponentId == TabFototipo.Attributes.GetValue("Tag").ToString())
+                    {
+                        OperationResult objOperationResult = new OperationResult();
+                        System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+                        LoadcombosFototipo();
+                        //ObtenerDatosFototipo(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                        TabFototipo.Hidden = false;
+                        //var dataMultimedia = _multimediaFileBL.GetMultimediaFileByPersonId(ref objOperationResult, Session["PersonId"].ToString());
+                        
+                        
                     }
 
                 }
@@ -1353,7 +1371,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 Accordion1.Enabled = false;
             }
             ActualizaGrillasDx(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-
             //LlenarLista();ç
             
             _ServiceComponentMultimediaFile = _serviceBL.ExtraerUrlImagen(Session["ServiceId"].ToString(), Session["ServicioComponentIdMedicina"].ToString());
@@ -1370,6 +1387,19 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             }
             
             
+//=======
+
+//            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+//            var dataMultimedia = _multimediaFileBL.GetMultimediaFileByServiceId(ref objOperationResult, Session["ServiceId"].ToString(), "N009-ME000000411");
+
+//            if (dataMultimedia != null)
+//            {
+//                //txtMultimediaFileId.Text = dataMultimedia.MultimediaFileId;
+//                //txtSetLinkImg.Text = encoding.GetString(dataMultimedia.ByteArrayFile);
+//                txtMultimediaId.Text = dataMultimedia.MultimediaFileId;
+//                txtSetLinkImg.Text = encoding.GetString(dataMultimedia.ByteArrayFile);
+//            }
+//>>>>>>> 7993ff78304401a3ce15e6e0bee45ae0251235c9
         }
 
         private void LlenarLista()
@@ -2146,7 +2176,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         #endregion
 
         #region Tamizaje Dermatológico
-
+        private void LoadcombosFototipo()
+        {
+            OperationResult objOperationResult = new OperationResult();
+            SystemParameterBL oSystemParameterBL = new SystemParameterBL();
+            Utils.LoadDropDownList(ddlGrabarUsuarioFototipo, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+        }
         private void LoadCombosDermatologico()
         {
             OperationResult objOperationResult = new OperationResult();
@@ -2555,7 +2590,24 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
              
            }
         }
+        private void ObtenerDatosFototipo(string pServiceId, string pPersonId)
+        {
+            OperationResult objOperationResult = new OperationResult();
 
+            var ComponentesMedicina = (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["ComponenteseMedicina"];
+            if (ComponentesMedicina.Find(p => p.v_ComponentFieldsId == "N009-ME000000411") != null)
+            {
+                SearchControlAndLoadData(TabFototipo, Session["ServicioComponentIdMedicina"].ToString(), ComponentesMedicina);
+            }
+            else
+            {
+                //para obtener valores por defecto
+                var _tmpServiceComponentsForBuildMenuList = new ServiceBL().ObtenerValoresPorDefecto(ref objOperationResult, pServiceId);
+                SearchControlAndClean(TabFototipo, _tmpServiceComponentsForBuildMenuList);
+                CargarValoresDefectoOsteoUC();
+
+            }
+        }
         private void CargarValoresDefectoOsteoUC()
         {
             rbAbdomen1.Checked = true;
@@ -3383,7 +3435,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtDermatoloCIInformadorActualizacion.Text = "";
             }
         }
-                     
+
+
         protected void btnDermatologicoInternacional_Click(object sender, EventArgs e)
         {
 
@@ -4265,6 +4318,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         //AMC
                         string ComponentFieldId = ((TextBox)ctrl).Attributes.GetValue("Tag").ToString();
+                        if (ComponentFieldId == "N009-MF000003204" || ComponentFieldId == "N009-ME000000411")
+                        {
+                            bool llega = true;
+                        }
                         ((TextBox)ctrl).Text = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? "" : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1;
 
                     }
@@ -5893,11 +5950,44 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         #endregion
 
         #region Fototipo
-        protected void AddFototipo(string link)
-        {
+        //protected void btngrabarFototipo_Click(object sender, EventArgs e)
+        //{
             
-        }
 
+        //    if (ddlGrabarUsuarioFototipo.SelectedValue == "-1")
+        //    {
+        //        Alert.ShowInTop("Seleccionar Firma de usuario", MessageBoxIcon.Information);
+        //        return;
+        //    }
+
+        //    OperationResult objOperationResult = new OperationResult();
+        //    System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+        //    var img = txtLinkImage.Text;
+        //    byte[] array =  encoding.GetBytes(img);
+
+        //    fileInfo = new FileInfoDto();
+
+        //    fileInfo.PersonId = Session["PersonId"].ToString();
+        //    var serviceComponentId = _serviceBL.GetServiceComponentId(Session["ServiceId"].ToString(), "N009-ME000000411");
+        //    fileInfo.ServiceComponentId = serviceComponentId[0].v_ServiceComponentId;
+        //    fileInfo.FileName = "IMAGEN FOTOTIPO";
+        //    fileInfo.Description = "IMAGEN PROVENIENTE DE MEDICINA FOTOTIPO";
+        //    fileInfo.ByteArrayFile = array;
+
+        //    if (txtMultimediaId.Text != "")
+        //    {
+        //        fileInfo.MultimediaFileId = txtMultimediaId.Text;
+        //        _multimediaFileBL.UpdateMultimediaFileComponent(ref objOperationResult, fileInfo, ((ClientSession)Session["objClientSession"]).GetAsList());
+        //    }
+        //    else
+        //    {
+        //        _multimediaFileBL.AddMultimediaFileComponent(ref objOperationResult, fileInfo, ((ClientSession)Session["objClientSession"]).GetAsList());
+        //    }
+            
+            
+            
+
+        //}
         #endregion
 
         protected void ddlPiel_SelectedIndexChanged(object sender, EventArgs e)
