@@ -118,7 +118,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 objticketDto.v_TicketId = _tickId;
                 _ticketdetalleDTOUpdate = new List<ticketdetalleDto>();
                 _ticketdetalleDTODelete = new List<ticketdetalleDto>();
-
+                objticketDto.i_TicketInterno = chkTicketInterno.Checked ? 1 : 0;
                 foreach (var item in _tmpTicketDetalleList)
                 {
                     #region Add

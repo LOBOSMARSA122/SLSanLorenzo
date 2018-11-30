@@ -1198,9 +1198,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 var ListaComponenentesConPermiso = (List<string>)Session["ComponentesPermisoLectura"];
 
-                foreach (var item in ListaComponenentesConPermiso)
+                foreach (var item in ListaComponentes)
                 {
-                    if (item == TabAnexo312.Attributes.GetValue("Tag").ToString())
+                    if (item.ComponentId == TabAnexo312.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.EXAMEN_FISICO_ID);
                         if (Resultado != null)
@@ -1211,7 +1211,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         }
 
                     }
-                    else if (item == TabAnexo16.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabAnexo16.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.EXAMEN_FISICO_7C_ID);
                         if (Resultado != null)
@@ -1222,7 +1222,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         }
 
                     }
-                    else if (item == TabOsteomuscular.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabOsteomuscular.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.OSTEO_MUSCULAR_ID_1);
                         if (Resultado != null)
@@ -1233,7 +1233,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         }
 
                     }
-                    else if (item == TabOsteomuscularInternacional.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabOsteomuscularInternacional.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N005-ME000000046");
                         if (Resultado != null)
@@ -1245,7 +1245,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                     }
 
-                    else if (item == TabAlturaEstructural.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabAlturaEstructural.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.ALTURA_ESTRUCTURAL_ID);
                         if (Resultado != null)
@@ -1257,7 +1257,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                     }
 
-                    else if (item == TabAltura18_Internacional.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabAltura18_Internacional.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N005-ME000000117");
                         if (Resultado != null)
@@ -1269,7 +1269,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                     }
 
-                    else if (item == Tab7D.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == Tab7D.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.ALTURA_7D_ID);
                         if (Resultado != null)
@@ -1280,7 +1280,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         }
 
                     }
-                    else if (item == TabSintomaticoRespiratorio.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabSintomaticoRespiratorio.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.SINTOMATICO_ID);
                         if (Resultado != null)
@@ -1291,7 +1291,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         }
 
                     }
-                    else if (item == TabTamizajeDermatologico.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabTamizajeDermatologico.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.TAMIZAJE_DERMATOLOGIO_ID);
                         if (Resultado != null)
@@ -1301,7 +1301,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                             TabTamizajeDermatologico.Hidden = false;
                         }
                     }
-                    else if (item == TabDermatologico_Internacional.Attributes.GetValue("Tag").ToString())
+                    else if (item.ComponentId == TabDermatologico_Internacional.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N005-ME000000116");
                         if (Resultado != null)
@@ -1310,6 +1310,17 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                             ObtenerDatosDermatologicosInternacional(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabDermatologico_Internacional.Hidden = false;
                         }
+                    }
+                    else if (item.ComponentId == TabFototipo.Attributes.GetValue("Tag").ToString())
+                    {
+                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N009-ME000000411");
+                        if (Resultado != null)
+                        {
+                            OperationResult objOperationResult = new OperationResult();
+                            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+                            LoadcombosFototipo();
+                            TabFototipo.Hidden = false;
+                        }                       
                     }
                 }
             }
@@ -1480,6 +1491,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 Tab7D.Hidden = true;
                 TabSintomaticoRespiratorio.Hidden = true;
                 TabTamizajeDermatologico.Hidden = true;
+                TabFototipo.Hidden = true;
             }
             if (objOperationResult.Success != 1)
             {

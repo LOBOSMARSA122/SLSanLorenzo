@@ -2508,7 +2508,7 @@
 
                             </Items>
                         </x:Tab>
-                        <x:Tab ID="TabFototipo" BodyPadding="5px" Title="Fototipo" runat="server">
+                        <x:Tab ID="TabFototipo" BodyPadding="5px" Title="Fototipo" runat="server" Hidden="false">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar24" runat="server">
                                     <Items>
