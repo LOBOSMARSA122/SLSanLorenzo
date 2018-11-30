@@ -429,6 +429,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketslist.d_Fecha = tick.d_Fecha;
                         ticketslist.i_TicketInterno = tick.i_TicketInterno;
                         ticketslist.TicketInterno = tick.i_TicketInterno == 1 ? "SI" : "NO";
+                        ticketslist.Productos = tick.Productos;
                         // acá estoy agregando a las lista
                         Tickets.Add(ticketslist);
                     }

@@ -967,18 +967,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
             var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacienteId);
             var _PiezasCaries = _serviceBL.GetCantidadCaries(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID);
-            //var _PiezasAusentes = _serviceBL.GetCantidadAusentes(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID);
-            //var CuadroVacio = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.CuadradoVacio);
-            //var CuadroCheck = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.CuadradoCheck);
-            //var Pulmones = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.MisPulmones);
+            var _PiezasAusentes = _serviceBL.GetCantidadAusentes(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID);
+            var CuadroVacio = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.CuadradoVacio);
+            var CuadroCheck = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.CuadradoCheck);
+            var Pulmones = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.MisPulmones);
             var Audiometria = _serviceBL.ValoresComponenteOdontogramaValue1(_serviceId, Constants.AUDIOMETRIA_ID);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            //ReportPDF.CreateAnexo16GoldField(_DataService, filiationData, _Valores, _listMedicoPersonales,
-              //                      _listaPatologicosFamiliares, _listaHabitoNocivos,
-                //                    CuadroVacio, CuadroCheck, Pulmones, _PiezasCaries,
-                  //                  _PiezasAusentes, Audiometria, diagnosticRepository, MedicalCenter,
-                    //                pathFile);
+            ReportPDF.CreateAnexo16GoldField(_DataService, filiationData, _Valores, _listMedicoPersonales,
+                                    _listaPatologicosFamiliares, _listaHabitoNocivos,
+                                    CuadroVacio, CuadroCheck, Pulmones, _PiezasCaries,
+                                    _PiezasAusentes, Audiometria, diagnosticRepository, MedicalCenter,
+                                    pathFile);
             Session["NombreTrabajador"]=Regex.Replace(_DataService.v_Pacient," ","_");
             System.IO.File.Copy(pathFile, Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Informe_Anexo16.pdf"), true);
         }

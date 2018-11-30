@@ -337,19 +337,19 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         }
                     }
                 }
-                //if (banda == "2")
-                //{
-                //    if (rowSelected.Band.Index.ToString() == "0")
-                //    {
-                //        if (e.Row.Cells["d_FechaAlta"].Value != null)
-                //        {
-                //            e.Row.Appearance.BackColor = Color.Yellow;
-                //            e.Row.Appearance.BackColor2 = Color.White;
-                //            //Y doy el efecto degradado vertical
-                //            e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-                //        }
-                //    }
-                //}
+                if (banda == "2")
+                {
+                    if (rowSelected.Band.Index.ToString() == "0")
+                    {
+                        if (e.Row.Cells["TicketInterno"].Value == "SI")
+                        {
+                            e.Row.Appearance.BackColor = Color.LightGreen;
+                            e.Row.Appearance.BackColor2 = Color.White;
+                            //Y doy el efecto degradado vertical
+                            e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                        }
+                    }
+                }
 
             }
         }

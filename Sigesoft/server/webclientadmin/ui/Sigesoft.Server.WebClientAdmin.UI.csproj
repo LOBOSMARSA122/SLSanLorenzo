@@ -3226,6 +3226,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Menu.xml" />
+    <Content Include="Resources\ausent.png" />
+    <Content Include="Resources\caries.png" />
+    <Content Include="Resources\CuadradoCheck.png" />
+    <Content Include="Resources\CuadradoVacio.png" />
+    <Content Include="Resources\curacion.png" />
+    <Content Include="Resources\MisPulmones.jpg" />
+    <Content Include="Resources\R_coronadefinitiva.png" />
+    <Content Include="Resources\R_coronatemporal.png" />
+    <Content Include="Resources\R_dienteausente.png" />
+    <Content Include="Resources\R_protesisfijabueno.png" />
+    <Content Include="Resources\R_protesisfijamalo.png" />
+    <Content Include="Resources\R_ProtesisTotal.png" />
+    <Content Include="Resources\R_remanenteredicular.png" />
     <Content Include="Security\FRM002.aspx" />
     <Content Include="Security\FRM002A.aspx" />
     <Content Include="Security\FRM002B.aspx" />
@@ -4845,6 +4858,7 @@
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcesWeb.Designer.cs" />
     <Compile Include="Security\FRM002.aspx.cs">
       <DependentUpon>FRM002.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5652,6 +5666,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InformePsicologicoOcupacional.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResourcesWeb.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
