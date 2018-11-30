@@ -32627,6 +32627,11 @@ namespace Sigesoft.Node.WinClient.BLL
                             join F in dbContext.person on E.v_PersonId equals F.v_PersonId
                             join G in dbContext.organization on C.v_OrganizationId equals G.v_OrganizationId
 
+                            join H in dbContext.protocol on A.v_ProtocolId equals H.v_ProtocolId
+                            join J1 in dbContext.systemparameter on new { a = H.i_EsoTypeId.Value, b = 118 }
+                                            equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join
+                            from J1 in J1_join.DefaultIfEmpty()
+
                             where A.i_IsDeleted == 0 && A.v_NroLiquidacion == nrLiquidacion
                             select new LiquidacionesConsolidadoDetalle
                             {
@@ -32638,12 +32643,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_UsuarRecord = F.v_FirstName + ", " + F.v_FirstLastName + " " + F.v_SecondLastName,
                                 v_CenterCost = A.v_centrocosto
                             };
-                float precio = 0;
-                foreach (var item in query)
-                {
-                    precio = GetServiceComponentsLiquidacion(ref pobjOperationResult, item.v_ServiceId).Sum(s => s.r_Price).Value;
-                    
-                }
                 var result = (from A in query.ToList()
                               select new LiquidacionesConsolidadoDetalle
                               {
@@ -32670,34 +32669,8 @@ namespace Sigesoft.Node.WinClient.BLL
                     oLiquidacionEmpresaDetalle.v_CenterCost = item.v_CenterCost;
                     oLiquidacionEmpresaDetalle.d_price = GetServiceComponentsLiquidacion(ref pobjOperationResult, item.v_ServiceId).Sum(s => s.r_Price).Value;
                     ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
+
                 }
-                
-                //List<LiquidacionesConsolidado> ListaLiquidacion = new List<LiquidacionesConsolidado>();
-
-                //foreach (var item in ListaServicios)
-                //{
-                //    var LiquidacionDetalle = new List<LiquidacionesConsolidadoDetalle>();
-                //    var oLiquidacionEmpresaDetalle = new LiquidacionesConsolidado();
-                //    oLiquidacionEmpresaDetalle.v_OrganizationName = item.v_OrganizationName;
-
-                //    foreach (var servicio in item.detalle)
-                //    {
-                //        var oLiquidacionDetalle = new LiquidacionesConsolidadoDetalle();
-                //        oLiquidacionDetalle.v_NroLiquidacion = servicio.v_NroLiquidacion;
-                //        oLiquidacionDetalle.v_Paciente = servicio.v_Paciente;
-                //        oLiquidacionDetalle.d_exam = servicio.d_exam;
-                //        oLiquidacionDetalle.d_price =
-                //        GetServiceComponentsLiquidacion(ref pobjOperationResult, item.v_ServiceId).Sum(s => s.r_Price).Value;
-
-                //        oLiquidacionDetalle.v_NroLiquidacion = servicio.v_NroLiquidacion;
-                //        oLiquidacionDetalle.v_CenterCost = servicio.v_CenterCost;
-                //        LiquidacionDetalle.Add(oLiquidacionDetalle);
-                //    }
-                //    oLiquidacionEmpresaDetalle.detalle = LiquidacionDetalle;
-
-                //    ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
-                //}
-
                 pobjOperationResult.Success = 1;
                 return ListaLiquidacion.ToList();
 
