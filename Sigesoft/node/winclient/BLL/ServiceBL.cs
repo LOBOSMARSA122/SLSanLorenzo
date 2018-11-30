@@ -32623,7 +32623,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                             join C in dbContext.liquidacion on A.v_NroLiquidacion equals C.v_NroLiquidacion
                             join D in dbContext.calendar on A.v_ServiceId equals D.v_ServiceId
-                            join E in dbContext.systemuser on D.i_InsertUserId equals E.i_InsertUserId
+                            join E in dbContext.systemuser on D.i_InsertUserId equals E.i_SystemUserId
                             join F in dbContext.person on E.v_PersonId equals F.v_PersonId
                             join G in dbContext.organization on C.v_OrganizationId equals G.v_OrganizationId
 
