@@ -989,8 +989,9 @@ namespace Sigesoft.Node.WinClient.UI
                    
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
-                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                    string nombre = "EMPRESAS LIQUIDADAS - POR FACTURAR DETALLE- CSL";
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "" + DateTime.Now.ToString().Split('/')[1] + "" + DateTime.Now.ToString().Split('/')[2];
+                    string a = fecha.ToString();
+                    string nombre = "EMPRESAS LIQUIDADAS POR FACTURAR DETALLE - CSL - " + a;
 
                     DateTime? fechaFin_1 = DateTime.Now;
                     DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
