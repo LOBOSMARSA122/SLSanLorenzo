@@ -366,6 +366,7 @@ namespace Sigesoft.Node.WinClient.UI
                 if (rowSelected.Band.Index.ToString() == "0")
                 {
                     btnLiqd1.Enabled = false;
+                    btnCarta.Enabled = false;
                     btnRepEmp.Enabled = true;
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
@@ -375,17 +376,20 @@ namespace Sigesoft.Node.WinClient.UI
                     if (liquidacionID == null || liquidacionID =="")
                     {
                         btnLiqd1.Enabled = false;
+                        btnCarta.Enabled = false;
                         btnRepEmp.Enabled = true;
                     }
                     else
                     {
                         btnLiqd1.Enabled = true;
+                        btnCarta.Enabled = true;
                         btnRepEmp.Enabled = true;
                     }
                 }
                 else
                 {
                     btnLiqd1.Enabled = false;
+                    btnCarta.Enabled = false;
                     btnRepEmp.Enabled = true;
                 }
 
@@ -451,44 +455,73 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnCarta_Click(object sender, EventArgs e)
         {
-            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
-            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-
-            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            if (tabControl1.SelectedTab.Name == "tpESO")
             {
-                this.Enabled = false;
+                var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+                var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
 
-                var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
-                var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
-
-                //var _DataService = _serviceBL.GetInfoEmpresaLiquidacion(serviceID);
-               
-                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-               
-                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                string nombre = "Carta N° "+ liquidacionID + " - CSL";
-                
-
-                int systemUser = 205;
-                var datosGrabo = _serviceBL.DevolverDatosUsuarioFirma(systemUser);
-
-                string idLiq = "";
-                foreach (var item in lista)
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                 {
-                    foreach (var item_1 in item.Detalle)
+                    this.Enabled = false;
+
+                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+                    var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                    string nombre = "Carta N° " + liquidacionID + " - CSL";
+
+
+                    int systemUser = 205;
+                    var datosGrabo = _serviceBL.DevolverDatosUsuarioFirma(systemUser);
+
+                    string idLiq = "";
+                    foreach (var item in lista)
                     {
-                        idLiq = item_1.v_NroLiquidacion;
+                        foreach (var item_1 in item.Detalle)
+                        {
+                            idLiq = item_1.v_NroLiquidacion;
+                            break;
+                        }
                         break;
                     }
-                    break;
+                    var liquidacion = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, idLiq);
+                    string N_Fact = liquidacion.v_NroFactura;
+                    var empresa = new ServiceBL().GetOrganizationId(ref _objOperationResult, liquidacion.v_OrganizationId);
+                    Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, empresa, datosGrabo, N_Fact);
+                    this.Enabled = true;
                 }
-                var liquidacion = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, idLiq);
-                string N_Fact = liquidacion.v_NroFactura;
-                var empresa = new ServiceBL().GetOrganizationId(ref _objOperationResult, liquidacion.v_OrganizationId);
-                Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, empresa, datosGrabo, N_Fact);
-                this.Enabled = true;
+            }
+            else if (tabControl1.SelectedTab.Name == "tpEmpresa")
+            {
+                var liquidacionID = grdEmpresa.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
+
+                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+                    var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                    string nombre = "Carta N° " + liquidacionID + " - CSL";
+
+
+                    int systemUser = 205;
+                    var datosGrabo = _serviceBL.DevolverDatosUsuarioFirma(systemUser);
+
+                    var liquidacion = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, liquidacionID);
+                    string N_Fact = liquidacion.v_NroFactura;
+                    var empresa = new ServiceBL().GetOrganizationId(ref _objOperationResult, liquidacion.v_OrganizationId);
+                    Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, empresa, datosGrabo, N_Fact);
+                    this.Enabled = true;
+                }
             }
         }
 
@@ -500,6 +533,7 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     
                     btnLiqd1.Enabled = false;
+                    btnCarta.Enabled = false;
                     btnRepEmp.Enabled = true;
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
@@ -510,17 +544,20 @@ namespace Sigesoft.Node.WinClient.UI
                     if (liquidacionID == null || liquidacionID == "")
                     {
                         btnLiqd1.Enabled = false;
+                        btnCarta.Enabled = false;
                         btnRepEmp.Enabled = true;
                     }
                     else
                     {
                         btnLiqd1.Enabled = true;
+                        btnCarta.Enabled = true;
                         btnRepEmp.Enabled = true;
                     }
                 }
                 else
                 {
                     btnLiqd1.Enabled = false;
+                    btnCarta.Enabled = false;
                     btnRepEmp.Enabled = false;
                 }
             }
@@ -575,6 +612,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             if (tabControl1.SelectedTab.Name == "tpESO")
             {
+                txtCCosto.Text="";
                 txtCCosto.Enabled = true;
                 ddlCustomerOrganization.Enabled = true;
                 ddlEmployerOrganization.Enabled = true;
@@ -584,6 +622,13 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else if (tabControl1.SelectedTab.Name == "tpEmpresa")
             {
+                txtCCosto.Text = "";
+                ddlCustomerOrganization.SelectedValue = "-1";
+                ddlEmployerOrganization.SelectedValue = "-1";
+                cbbSubContratas.SelectedValue = "-1";
+                cbbEstadoLiq.SelectedValue = "-1";
+                cbbFac.SelectedValue = "-1";
+
                 txtCCosto.Enabled = false;
                 ddlCustomerOrganization.Enabled = false;
                 ddlEmployerOrganization.Enabled = false;
