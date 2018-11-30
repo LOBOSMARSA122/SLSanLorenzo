@@ -19602,9 +19602,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 								 join J1 in dbContext.datahierarchy on new { a = B.i_LevelOfId.Value, b = 108 }
 																	equals new { a = J1.i_ItemId, b = J1.i_GroupId } into J1_join
-								 from J1 in J1_join.DefaultIfEmpty()
-								 join F in dbContext.systemuser on E.i_InsertUserId equals F.i_SystemUserId
-								 join G in dbContext.professional on F.v_PersonId equals G.v_PersonId
+								 from J1 in J1_join.DefaultIfEmpty()								
 
 								 join M in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
 									 equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
@@ -19629,7 +19627,9 @@ namespace Sigesoft.Node.WinClient.BLL
 								 from ptec in ptec_join.DefaultIfEmpty()
 								 // *******************************************************       
 
-								 join X in dbContext.person on me.v_PersonId equals X.v_PersonId
+                                 join X in dbContext.person on me.v_PersonId equals X.v_PersonId into X_join
+                                 from X in X_join.DefaultIfEmpty()
+
 								 join Y in dbContext.person on tec.v_PersonId equals Y.v_PersonId into Y_join
 								 from Y in Y_join.DefaultIfEmpty()
 
@@ -32623,7 +32623,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                             join C in dbContext.liquidacion on A.v_NroLiquidacion equals C.v_NroLiquidacion
                             join D in dbContext.calendar on A.v_ServiceId equals D.v_ServiceId
-                            join E in dbContext.systemuser on D.i_InsertUserId equals E.i_InsertUserId
+                            join E in dbContext.systemuser on D.i_InsertUserId equals E.i_SystemUserId
                             join F in dbContext.person on E.v_PersonId equals F.v_PersonId
                             join G in dbContext.organization on C.v_OrganizationId equals G.v_OrganizationId
 

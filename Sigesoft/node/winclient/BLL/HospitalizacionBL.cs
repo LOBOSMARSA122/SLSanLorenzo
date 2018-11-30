@@ -37,7 +37,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                 d_Birthdate = B.d_Birthdate.Value,
                                 i_IsDeleted = A.i_IsDeleted.Value,
                                 v_Comentario = A.v_Comentario,
-                                v_NroLiquidacion = A.v_NroLiquidacion
+                                v_NroLiquidacion = A.v_NroLiquidacion,
+                                d_PagoMedico = A.d_PagoMedico,
+                                i_MedicoPago = A.i_MedicoPago,
+                                d_PagoPaciente = A.d_PagoPaciente,
+                                i_PacientePago = A.i_PacientePago
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -68,15 +72,19 @@ namespace Sigesoft.Node.WinClient.BLL
                 var hospitalizaciones = (from a in objData
                          select new HospitalizacionList
                          {
-                             v_Paciente = a.v_Paciente,
-                             d_FechaIngreso = a.d_FechaIngreso,
-                             d_FechaAlta = a.d_FechaAlta,
-                             v_HopitalizacionId = a.v_HopitalizacionId,
-                             v_PersonId = a.v_PersonId,
-                             v_DocNumber = a.v_DocNumber,
-                             i_Years = GetAge(a.d_Birthdate),
-                             v_Comentario = a.v_Comentario,
-                             v_NroLiquidacion = a.v_NroLiquidacion
+                            v_Paciente = a.v_Paciente,
+                            d_FechaIngreso = a.d_FechaIngreso,
+                            d_FechaAlta = a.d_FechaAlta,
+                            v_HopitalizacionId = a.v_HopitalizacionId,
+                            v_PersonId = a.v_PersonId,
+                            v_DocNumber = a.v_DocNumber,
+                            i_Years = GetAge(a.d_Birthdate),
+                            v_Comentario = a.v_Comentario,
+                            v_NroLiquidacion = a.v_NroLiquidacion,
+                            d_PagoMedico = a.d_PagoMedico,
+                            MedicoPago = a.i_MedicoPago == 1 ? "SI" : a.d_PagoMedico == null? "SIN LIQUIDAR" : a.d_PagoMedico == 0? "---" : "NO",
+                            d_PagoPaciente = a.d_PagoPaciente,
+                            PacientePago = a.i_PacientePago == 1 ? "SI" : a.d_PagoPaciente == null ? "SIN LIQUIDAR" : a.d_PagoPaciente == 0 ? "---" : "NO",
                          }).ToList();
 
                 var objtData = hospitalizaciones.AsEnumerable()
@@ -102,6 +110,11 @@ namespace Sigesoft.Node.WinClient.BLL
                     hospit.d_FechaAlta = item.d_FechaAlta;
                     hospit.v_Comentario = item.v_Comentario;
                     hospit.v_NroLiquidacion = item.v_NroLiquidacion;
+                    hospit.d_PagoMedico = item.d_PagoMedico;
+                    hospit.MedicoPago = item.MedicoPago;
+                    hospit.d_PagoPaciente = item.d_PagoPaciente;
+                    hospit.PacientePago =item.PacientePago;
+
                     // estos son los hijos de 1 hopitalización
                     var servicios = BuscarServiciosHospitalizacion(item.v_HopitalizacionId).ToList();
                     
