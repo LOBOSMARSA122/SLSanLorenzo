@@ -355,7 +355,9 @@ namespace Sigesoft.Node.WinClient.UI
                     grdDataServiceComponent.DataSource = ListServiceComponent;
 
                     this.Enabled = false;
-                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+
+                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
                     frm.ShowDialog();
                     this.Enabled = true;
                     // Aviso automático de que se culminaron todos los examanes, se tendria que proceder
