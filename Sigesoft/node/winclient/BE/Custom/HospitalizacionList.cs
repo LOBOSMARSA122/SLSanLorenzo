@@ -19,6 +19,15 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_Comentario { get; set; }
         public string v_NroLiquidacion { get; set; }
         public string v_NroHospitalizacion { get; set; }
+
+        public decimal? d_PagoMedico { get; set; }
+        public int? i_MedicoPago { get; set; }
+        public string MedicoPago { get; set; }
+        public decimal? d_PagoPaciente { get; set; }
+        public int? i_PacientePago { get; set; }
+        public string PacientePago { get; set; }
+
+
         public List<HospitalizacionServiceList> Servicios{ get; set; }
         public List<HospitalizacionHabitacionList> Habitaciones { get; set; }
        

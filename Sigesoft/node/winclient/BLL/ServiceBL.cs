@@ -19602,9 +19602,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 								 join J1 in dbContext.datahierarchy on new { a = B.i_LevelOfId.Value, b = 108 }
 																	equals new { a = J1.i_ItemId, b = J1.i_GroupId } into J1_join
-								 from J1 in J1_join.DefaultIfEmpty()
-								 join F in dbContext.systemuser on E.i_InsertUserId equals F.i_SystemUserId
-								 join G in dbContext.professional on F.v_PersonId equals G.v_PersonId
+								 from J1 in J1_join.DefaultIfEmpty()								
 
 								 join M in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
 									 equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
@@ -19629,7 +19627,9 @@ namespace Sigesoft.Node.WinClient.BLL
 								 from ptec in ptec_join.DefaultIfEmpty()
 								 // *******************************************************       
 
-								 join X in dbContext.person on me.v_PersonId equals X.v_PersonId
+                                 join X in dbContext.person on me.v_PersonId equals X.v_PersonId into X_join
+                                 from X in X_join.DefaultIfEmpty()
+
 								 join Y in dbContext.person on tec.v_PersonId equals Y.v_PersonId into Y_join
 								 from Y in Y_join.DefaultIfEmpty()
 
