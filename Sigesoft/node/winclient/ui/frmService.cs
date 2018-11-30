@@ -2897,6 +2897,7 @@ namespace Sigesoft.Node.WinClient.UI
                   
         }
 
+
         private void btnHistoriaCl_Click(object sender, EventArgs e)
         {
             OperationResult _objOperationResult = new OperationResult();
@@ -2970,6 +2971,80 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 this.Close();
             }
+        }
+
+        private void grdDataService_DoubleClick(object sender, EventArgs e)
+        {
+            Form frm;
+            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+            if (TserviceId == (int)MasterService.AtxMedicaParticular)
+            {
+                #region ESO V1
+                //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                //frm.ShowDialog();
+                #endregion
+                #region ESO V2 (Asíncrono)
+                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                frm.ShowDialog();
+                #endregion
+
+            }
+            else
+            {
+                //Obtener Estado del servicio
+                var EstadoServicio = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceStatusId"].Value.ToString());
+
+                if (EstadoServicio == (int)ServiceStatus.Culminado)
+                {
+                    //Obtener el usuario
+                    int UserId = Globals.ClientSession.i_SystemUserId;
+                    if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                    {
+                        this.Enabled = false;
+                        #region ESO V1
+                        //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                        //frm.ShowDialog();
+                        #endregion
+                        #region ESO V2 (Asíncrono)
+                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm.ShowDialog();
+                        #endregion
+                        this.Enabled = true;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        #region ESO V1
+                        //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                        //frm.ShowDialog();
+                        #endregion
+                        #region ESO V2 (Asíncrono)
+                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm.ShowDialog();
+                        #endregion
+                        this.Enabled = true;
+                    }
+
+                }
+                else
+                {
+                    this.Enabled = false;
+                    #region ESO V1
+                    //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                    //frm.ShowDialog();
+                    #endregion
+                    #region ESO V2 (Asíncrono)
+                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                    frm.ShowDialog();
+                    #endregion
+                    this.Enabled = true;
+                }
+
+
+            }
+
+            btnFilter_Click(sender, e);
+            
         }
         
         //void ProcesoSErvicio()

@@ -581,7 +581,7 @@ namespace Sigesoft.Node.WinClient.UI
         private void brnRepEmp_Click(object sender, EventArgs e)
         {
             //var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-            //empresaId = grdEmpresa.Selected.Rows[0].Cells["v_OrganizationId"].Value.ToString();
+            empresaId = grdEmpresa.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
 
             frmLiquidacionEmpresas reportsEmpresas = new frmLiquidacionEmpresas(dtpDateTimeStar.Value.Date, dptDateTimeEnd.Value.Date, empresaId);
             reportsEmpresas.ShowDialog();

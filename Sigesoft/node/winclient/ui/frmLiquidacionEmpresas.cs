@@ -264,7 +264,7 @@ namespace Sigesoft.Node.WinClient.UI
                         DateTime? fechaFin_L2 = DateTime.Now.AddDays(-31);
                         DateTime? fechaInicio_L2 = new DateTime(2018, 1, 1, 0, 0, 0);
                         var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc);
-                        var lista_2 = oMedicamentoBl.EmpresaDeudora_Fechas_Fac(ruc, fechaInicio_L2, fechaFin_L2);
+                        var lista_2 = oMedicamentoBl.EmpresaDeudora_Fechas_Fac(ruc, fechaInicio_L2.Value, fechaFin_L2.Value);
 
                         var listaLiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
                         var liquidacionEmpresa = new LiquidacionEmpresa();
@@ -991,7 +991,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "" + DateTime.Now.ToString().Split('/')[1] + "" + DateTime.Now.ToString().Split('/')[2];
                     string a = fecha.ToString();
-                    string nombre = "EMPRESAS LIQUIDADAS POR FACTURAR DETALLE - CSL - " + a;
+                    string nombre = "EMPRESAS LIQUIDADAS POR FACTURAR DETALLE - CSL";
 
                     DateTime? fechaFin_1 = DateTime.Now;
                     DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
@@ -1029,6 +1029,11 @@ namespace Sigesoft.Node.WinClient.UI
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             btnGenerar.Enabled = true;
+        }
+
+        private void frmLiquidacionEmpresas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
