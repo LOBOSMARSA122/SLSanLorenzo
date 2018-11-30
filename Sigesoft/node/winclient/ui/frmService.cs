@@ -375,11 +375,14 @@ namespace Sigesoft.Node.WinClient.UI
            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
            if (TserviceId == (int)MasterService.AtxMedicaParticular)
            {
-               frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
-               frm.ShowDialog();
-
+               #region ESO V1
+                   frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                   frm.ShowDialog();
+               #endregion
+               #region ESO V2 (Asíncrono)
                //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                //frm.ShowDialog();
+               #endregion   
            }
            else
            {
@@ -2844,8 +2847,15 @@ namespace Sigesoft.Node.WinClient.UI
             int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
             if (TserviceId == (int)MasterService.AtxMedicaParticular)
             {
-                frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                #region ESO V1
+                //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                //frm.ShowDialog();
+                #endregion
+                #region ESO V2 (Asíncrono)
+                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                 frm.ShowDialog();
+                #endregion
+                
             }
             else
             {

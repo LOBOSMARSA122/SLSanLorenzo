@@ -728,6 +728,7 @@
             this.grdLlamandoPaciente.TabIndex = 79;
             this.grdLlamandoPaciente.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdLlamandoPaciente_AfterSelectChange);
             this.grdLlamandoPaciente.Click += new System.EventHandler(this.grdLlamandoPaciente_Click);
+            this.grdLlamandoPaciente.DoubleClick += new System.EventHandler(this.grdLlamandoPaciente_DoubleClick);
             // 
             // timer1
             // 

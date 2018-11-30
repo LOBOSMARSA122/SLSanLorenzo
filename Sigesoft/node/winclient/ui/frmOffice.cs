@@ -343,10 +343,15 @@ namespace Sigesoft.Node.WinClient.UI
                 Form frm;
                 if (_TserviceId == (int)MasterService.AtxMedicaParticular)
                 {
-                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
-                    //frm.ShowDialog();
-                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                    #region ESO V1
+                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
                     frm.ShowDialog();
+                    #endregion
+                    #region ESO V2 (Asíncrono)
+                    //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                    //frm.ShowDialog();
+                    #endregion
+                    
                 }
                 else
                 {
@@ -355,10 +360,126 @@ namespace Sigesoft.Node.WinClient.UI
                     grdDataServiceComponent.DataSource = ListServiceComponent;
 
                     this.Enabled = false;
-                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    #region ESO V1  
+                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    frm.ShowDialog();
+                    #endregion
+                    #region ESO V2 (Asíncrono)
+                    //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                    //frm.ShowDialog();
+                    #endregion
+                    
+                    this.Enabled = true;
+                    // Aviso automático de que se culminaron todos los examanes, se tendria que proceder
+                    // a establecer el estado del servicio a (Culminado Esperando Aptitud)               
 
+                    var alert = objServiceBL.GetServiceComponentsCulminados(ref objOperationResult, _serviceId);
+
+                    if (alert != null && alert.Count > 0)
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Todos los Examenes se encuentran concluidos.\nEl estado de la Atención es: En espera de Aptitud .", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        serviceDto objserviceDto = new serviceDto();
+                        objserviceDto = objServiceBL.GetService(ref objOperationResult, objservicecomponentDto.v_ServiceId);
+                        objserviceDto.i_ServiceStatusId = (int)ServiceStatus.EsperandoAptitud;
+                        objserviceDto.v_Motive = "Esperando Aptitud";
+
+                        objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                    }
+
+                }
+
+                // refrecar la grilla
+                ListServiceComponent = objServiceBL.GetServiceComponents(ref objOperationResult, _serviceId);
+                grdDataServiceComponent.DataSource = ListServiceComponent;
+            }
+        }
+        private void Atender02()
+        {
+            OperationResult objOperationResult = new OperationResult();
+            ServiceBL objServiceBL = new ServiceBL();
+            servicecomponentDto objservicecomponentDto = new servicecomponentDto();
+            List<ServiceComponentList> ListServiceComponent = new List<ServiceComponentList>();
+            _ServiceComponentId = new List<string>();
+
+
+            if (grdDataServiceComponent.Rows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar a un paciente", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (chkVerificarHuellaDigital.Checked)
+            {
+                var checkingFinger = new frmCheckingFinger();
+                checkingFinger._PacientId = _personId;
+                checkingFinger.ShowDialog();
+
+                if (checkingFinger.DialogResult == DialogResult.Cancel)
+                    return;
+            }
+
+            DialogResult Result = MessageBox.Show("¿Está seguro de INICIAR ATENCIÓN este registro?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (_categoryId == -1)
+            {
+                _ServiceComponentId.Add(grdListaLlamando.Selected.Rows[0].Cells["v_ServiceComponentId"].Value.ToString());
+            }
+            else
+            {
+                foreach (var item in objServiceBL.GetServiceComponentByCategoryId(ref objOperationResult, _categoryId, _serviceId))
+                {
+                    _ServiceComponentId.Add(item.v_ServiceComponentId);
+                }
+            }
+
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                for (int i = 0; i < _ServiceComponentId.Count(); i++)
+                {
+                    objservicecomponentDto = objServiceBL.GetServiceComponent(ref objOperationResult, _ServiceComponentId[i]);
+                    objservicecomponentDto.i_QueueStatusId = (int)Common.QueueStatusId.OCUPADO;
+                    objservicecomponentDto.d_StartDate = DateTime.Now;
+                    objServiceBL.UpdateServiceComponent(ref objOperationResult, objservicecomponentDto, Globals.ClientSession.GetAsList());
+                }
+                //Actualizar grdDataServiceComponent-
+                //string strServicelId = grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                ListServiceComponent = objServiceBL.GetServiceComponents(ref objOperationResult, serviceIdGrillaLlamandoPaciente);
+                grdDataServiceComponent.DataSource = ListServiceComponent;
+
+                _Flag = 1;
+
+                Form frm;
+                if (_TserviceId == (int)MasterService.AtxMedicaParticular)
+                {
+                    #region ESO V1
+                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    //frm.ShowDialog();
+                    #endregion
+                    #region ESO V2 (Asíncrono)
                     frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
                     frm.ShowDialog();
+                    #endregion
+
+                }
+                else
+                {
+                    // refrecar la grilla
+                    ListServiceComponent = objServiceBL.GetServiceComponents(ref objOperationResult, serviceIdGrillaLlamandoPaciente);
+                    grdDataServiceComponent.DataSource = ListServiceComponent;
+
+                    this.Enabled = false;
+                    #region ESO V1
+                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    //frm.ShowDialog();
+                    #endregion
+                    #region ESO V2 (Asíncrono)
+                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                    frm.ShowDialog();
+                    #endregion
+
                     this.Enabled = true;
                     // Aviso automático de que se culminaron todos los examanes, se tendria que proceder
                     // a establecer el estado del servicio a (Culminado Esperando Aptitud)               
@@ -1099,6 +1220,11 @@ namespace Sigesoft.Node.WinClient.UI
         {
 
             //btnRefresh_Click(sender, e);
+        }
+
+        private void grdLlamandoPaciente_DoubleClick(object sender, EventArgs e)
+        {
+            Atender02();
         }
 
     }
