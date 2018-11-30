@@ -951,7 +951,7 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                         var empresa = new ServiceBL().GetOrganizationId(ref objOperationResult, item.v_OrganizationId);
                         var Datos = new ServiceBL().GetLiquidacionConsolidada(ref objOperationResult, item.v_NroLiquidacion);
-
+                        
                         var listaLiquidacionEmpresaDetalle = new List<LiquidacionesConsolidadoDetalle>();
                         var empresaLiquidacion = new LiquidacionesConsolidado();
 
@@ -965,7 +965,6 @@ namespace Sigesoft.Node.WinClient.UI
                         foreach (var detalle in Datos)
                         {
                             var empresaLiquidacionDetalle = new LiquidacionesConsolidadoDetalle();
-
                             empresaLiquidacionDetalle.v_Paciente = detalle.v_Paciente;
                             empresaLiquidacionDetalle.d_exam = detalle.d_exam;
                             empresaLiquidacionDetalle.d_price = detalle.d_price;
