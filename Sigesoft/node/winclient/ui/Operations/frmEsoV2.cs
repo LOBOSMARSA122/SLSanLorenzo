@@ -5434,15 +5434,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 // datos de cabecera del Servicio
                 serviceDTO.i_AptitudeStatusId = int.Parse(cbAptitudEso.SelectedValue.ToString());
 
-                if (txtFecVctoGlobal.Text != dtpFecVctoGlobal.Value.ToShortTimeString())
-                {
-                    DialogResult Result2 = MessageBox.Show("¿Está seguro de Actualizar la Fecha de Vencimiento?:", "CONFIRMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                //if (txtFecVctoGlobal.Text != dtpFecVctoGlobal.Value.ToShortTimeString())
+                //{
+                //    DialogResult Result2 = MessageBox.Show("¿Está seguro de Actualizar la Fecha de Vencimiento?:", "CONFIRMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (Result2 == DialogResult.Yes)
-                    { serviceDTO.d_GlobalExpirationDate = dtpFecVctoGlobal.Value; }
-                    else
-                    { serviceDTO.d_GlobalExpirationDate = DateTime.Parse(txtFecVctoGlobal.Text); ; }
-                }
+                //    if (Result2 == DialogResult.Yes)
+                //    { serviceDTO.d_GlobalExpirationDate = dtpFecVctoGlobal.Value; }
+                //    else
+                //    { serviceDTO.d_GlobalExpirationDate = DateTime.Parse(txtFecVctoGlobal.Text); ; }
+                //}
 
                 #region UTILIZAR FIRMA (Suplantar profesional)
 

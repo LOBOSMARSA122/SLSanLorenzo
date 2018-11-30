@@ -749,6 +749,7 @@
             this.btnPerson = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.ultraFlowLayoutManager2 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
+            this.label27 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -931,7 +932,7 @@
             this.btnCerrarESO.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCerrarESO.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnCerrarESO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarESO.Location = new System.Drawing.Point(165, 7);
+            this.btnCerrarESO.Location = new System.Drawing.Point(587, 5);
             this.btnCerrarESO.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarESO.Name = "btnCerrarESO";
             this.btnCerrarESO.Size = new System.Drawing.Size(27, 24);
@@ -2487,6 +2488,7 @@
             this.groupBox4.Controls.Add(this.chkApproved);
             this.groupBox4.Controls.Add(this.cbEstadoComponente);
             this.groupBox4.Controls.Add(this.EXAMENES_lblComentarios);
+            this.groupBox4.Controls.Add(this.label27);
             this.groupBox4.Controls.Add(this.label23);
             this.groupBox4.Controls.Add(this.cbTipoProcedenciaExamen);
             this.groupBox4.Controls.Add(this.txtComentario);
@@ -7859,6 +7861,17 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Visible = false;
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.DarkGray;
+            this.label27.Location = new System.Drawing.Point(497, 6);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(94, 24);
+            this.label27.TabIndex = 52;
+            this.label27.Text = "CERRAR";
+            // 
             // FrmEsoV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8553,5 +8566,6 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
+        private System.Windows.Forms.Label label27;
     }
 }
