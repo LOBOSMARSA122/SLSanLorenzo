@@ -329,6 +329,7 @@ namespace Sigesoft.Node.Contasol.Integration
             {
                 if (cnx.State != ConnectionState.Open) cnx.Open();
 
+
                 var query = "select " +
                  " v.t_InsertaFecha AS FechaCreacion, " +
                  " v.t_FechaVencimiento AS FechaVencimiento, " +
@@ -340,7 +341,7 @@ namespace Sigesoft.Node.Contasol.Integration
                 " from venta v " +
                 " inner join cliente c on c.v_IdCliente =  v.v_IdCliente " +
                 " left join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
-                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' and v.i_Eliminado = 0  and v.t_InsertaFecha >= '" + inicio + "' and v.t_InsertaFecha <= '" + fin + "'" +
+                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' and v.i_Eliminado = 0  and v.t_InsertaFecha >= '" + inicio.Value.Date.ToString("yyyy-dd-MM") + "' and v.t_InsertaFecha <= '" + fin.Value.Date.ToString("yyyy-dd-MM") + "'" +
                 " group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
 
                 var result = cnx.Query<FacturaCobranza>(query).ToList();

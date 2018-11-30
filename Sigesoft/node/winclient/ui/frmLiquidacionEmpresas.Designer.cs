@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbLiqPendFacturarDETALLE = new System.Windows.Forms.RadioButton();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.rbLiqPendFacturar = new System.Windows.Forms.RadioButton();
@@ -36,7 +37,6 @@
             this.rbCuentasXCobrar = new System.Windows.Forms.RadioButton();
             this.rbEstadoCuentaEmpresa = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rbLiqPendFacturarDETALLE = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +60,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FORMATOS:";
+            // 
+            // rbLiqPendFacturarDETALLE
+            // 
+            this.rbLiqPendFacturarDETALLE.AutoSize = true;
+            this.rbLiqPendFacturarDETALLE.Location = new System.Drawing.Point(6, 160);
+            this.rbLiqPendFacturarDETALLE.Name = "rbLiqPendFacturarDETALLE";
+            this.rbLiqPendFacturarDETALLE.Size = new System.Drawing.Size(260, 17);
+            this.rbLiqPendFacturarDETALLE.TabIndex = 114;
+            this.rbLiqPendFacturarDETALLE.TabStop = true;
+            this.rbLiqPendFacturarDETALLE.Text = "Liquidaciones Pendientes de Facturar - DETALLE";
+            this.rbLiqPendFacturarDETALLE.UseVisualStyleBackColor = true;
+            this.rbLiqPendFacturarDETALLE.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // btnCancelar
             // 
@@ -142,18 +154,6 @@
             this.pictureBox1.TabIndex = 107;
             this.pictureBox1.TabStop = false;
             // 
-            // rbLiqPendFacturarDETALLE
-            // 
-            this.rbLiqPendFacturarDETALLE.AutoSize = true;
-            this.rbLiqPendFacturarDETALLE.Location = new System.Drawing.Point(6, 160);
-            this.rbLiqPendFacturarDETALLE.Name = "rbLiqPendFacturarDETALLE";
-            this.rbLiqPendFacturarDETALLE.Size = new System.Drawing.Size(260, 17);
-            this.rbLiqPendFacturarDETALLE.TabIndex = 114;
-            this.rbLiqPendFacturarDETALLE.TabStop = true;
-            this.rbLiqPendFacturarDETALLE.Text = "Liquidaciones Pendientes de Facturar - DETALLE";
-            this.rbLiqPendFacturarDETALLE.UseVisualStyleBackColor = true;
-            this.rbLiqPendFacturarDETALLE.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // frmLiquidacionEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +165,7 @@
             this.Name = "frmLiquidacionEmpresas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REPORTES EMPRESAS";
+            this.Load += new System.EventHandler(this.frmLiquidacionEmpresas_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

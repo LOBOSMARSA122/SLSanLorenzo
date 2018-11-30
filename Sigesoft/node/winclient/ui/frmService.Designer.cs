@@ -977,7 +977,7 @@
             this.grdDataService.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdDataService_ClickCell);
             this.grdDataService.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseEnterElement);
             this.grdDataService.MouseLeaveElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseLeaveElement);
-            this.grdDataService.DoubleClick += new System.EventHandler(this.btnEditarESO_Click);
+            this.grdDataService.DoubleClick += new System.EventHandler(this.grdDataService_DoubleClick);
             // 
             // button1
             // 
