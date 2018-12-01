@@ -53,6 +53,8 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(cbbFac, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 328, null), DropDownListAction.Select);
             //
             btnLiqd1.Enabled = false;
+            btnCarta.Enabled = false;
+            btnRepEmp.Enabled = false;
             //
             UltraGridColumn c = grdData.DisplayLayout.Bands[1].Columns["b_Seleccionar"];
             c.CellActivation = Activation.AllowEdit;
