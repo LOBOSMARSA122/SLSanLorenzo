@@ -78,6 +78,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             objticketDto.i_TicketInterno = chkTicketInterno.Checked ? 1 : 0;
             if (_mode == "New")
             {
+
                 foreach (var item in _tmpTicketDetalleList)
                 {
                     ticketdetalleDto ticketDetalle = new ticketdetalleDto();
@@ -118,6 +119,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 objticketDto.v_TicketId = _tickId;
                 _ticketdetalleDTOUpdate = new List<ticketdetalleDto>();
                 _ticketdetalleDTODelete = new List<ticketdetalleDto>();
+
+                objticketDto.d_Fecha = DateTime.Parse(txtFecha.Text);
+                objticketDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante : (int)CargoHospitalizacion.Paciente;
+                objticketDto.i_TipoCuentaId = int.Parse(cboTipoCuenta.SelectedValue.ToString());
                 objticketDto.i_TicketInterno = chkTicketInterno.Checked ? 1 : 0;
                 foreach (var item in _tmpTicketDetalleList)
                 {
@@ -242,6 +247,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 cboTipoCuenta.SelectedValue = objticketDtoo.i_TipoCuentaId.ToString();
 
                 var dataListPc = _objTicketBl.GetTicketDetails(ref objOperationResult, _tickId);
+
+                if (objticketDtoo.i_TicketInterno == 1)
+                    chkTicketInterno.Checked = true;
+                else
+                    chkTicketInterno.Checked = false;
 
                 grdTicketDetalle.DataSource = dataListPc;
 
