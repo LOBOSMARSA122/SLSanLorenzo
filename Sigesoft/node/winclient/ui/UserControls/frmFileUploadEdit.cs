@@ -524,7 +524,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                     else
                     {
                         ext = Path.GetExtension(_filePath);
-                        File.Copy(_filePath, rutaOrigen + Dni + "-" + Fecha + "-" + Consultorio + ProtocolId + ext);
+                        File.Copy(_filePath, rutaOrigen + Dni + "-" + Fecha + "-" + Consultorio +"-"+ ProtocolId + ext);
                         fileInfo.FileName = Dni + "-" + Fecha + "-" + Consultorio + "-" + ProtocolId + ext;
                         fileInfo.ThumbnailFile = Common.Utils.imageToByteArray1(pbFile.Image);
                         fileInfo.Action = (int)ActionForm.Add;
@@ -589,8 +589,8 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                     fileInfo.Description = txtDescripcion.Text;
 
                     ext = Path.GetExtension(_filePath);
-                    File.Copy(_filePath, rutaOrigen + Dni + "-" + Fecha + "-" + Consultorio + ProtocolId + ext);
-                    fileInfo.FileName = Dni + "-" + Fecha + "-" + Consultorio + ProtocolId + ext;
+                    File.Copy(_filePath, rutaOrigen + Dni + "-" + Fecha + "-" + Consultorio +"-"+ ProtocolId + ext);
+                    fileInfo.FileName = Dni + "-" + Fecha + "-" + Consultorio +"-"+ ProtocolId + ext;
 
                     //if (_file != null)
                     //    fileInfo.ByteArrayFile = _file;

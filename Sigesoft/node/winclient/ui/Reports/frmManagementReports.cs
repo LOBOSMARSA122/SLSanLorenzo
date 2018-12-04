@@ -2812,7 +2812,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                             if (multimediaFile.ByteArrayFile == null)
                             {
                                 var a = multimediaFile.FileName.Split('-');
-                                var consultorio = a[2].Substring(0, a[2].Length - 4);
+                                var consultorio = a[2].Substring(0, a[2].Length - 0);
                                 if (consultorio == "ESPIROMETRÍA")
                                 {
                                     rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgESPIROOrigen").ToString();
