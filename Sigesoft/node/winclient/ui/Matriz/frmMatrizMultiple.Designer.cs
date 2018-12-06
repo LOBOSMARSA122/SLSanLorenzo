@@ -830,174 +830,174 @@
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn337 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("DNI");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn338 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaServicioDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn339 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("LugarExamen");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn340 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("EdadTrabajador");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn341 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Trabajador");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn342 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CustomerOrganizationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn343 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PuestoTrabajo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn344 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AntecedentesImportancia");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn345 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Peso");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn346 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Talla");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn347 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("IMC");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn348 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("EstadoNutricional");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn349 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PerimetroAbdominal");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn350 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("DxPerimetroAbdominal");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn351 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PresionSistolica");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn352 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PresionDiastolica");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn353 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("DxPA");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn354 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UsaLentes");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn355 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AgudezaVisual");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn356 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OtrasAlteracionesVision");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn357 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OtrasAlteEnfOculares");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn358 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Audiometria");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn359 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ComentarioAudiometria");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn360 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Espirometria");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn361 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Edad");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn362 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sexo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn363 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoDocumentoIdentidad");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn364 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("NumeroDocumentoIdentidad");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn365 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PuestoTrabajo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn366 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FonoContacto");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn367 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CentroMedico");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn368 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoExamen");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn369 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaExamenMedico");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn370 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("VigenciaHasta");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn371 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_Od");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn372 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_Od");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn373 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_Od");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn374 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_Od");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn375 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_Od");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn376 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_Od");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn377 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_Od");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn378 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PromedioStsOd");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn379 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_Oi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn380 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_Oi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn381 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_Oi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn382 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_Oi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn383 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_Oi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn384 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_Oi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn385 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_Oi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn386 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PromedioStsOi");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn387 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn388 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn389 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn390 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn391 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn392 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn393 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn394 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn395 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn396 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn397 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn398 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn399 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn400 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn401 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn402 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn403 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn404 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn405 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fcv");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn406 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fev1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn407 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fev1Fvc");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn408 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_3");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn409 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Peso");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn410 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Talla");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn411 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Imc");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn412 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_4");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn413 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("SCOjoDer");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn414 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("SCOjoIzq");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn415 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CCOjoDer");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn416 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CCOjoIzq");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn417 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_5");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn418 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_6");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn419 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion_3");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn420 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_7");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn421 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion_4");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn422 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Gdl");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn423 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ConclusionGdl");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn424 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn425 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn426 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn427 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn428 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_3");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn429 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_3");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn430 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_4");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn431 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_4");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn432 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_5");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn433 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_5");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn434 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_6");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn435 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_6");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn436 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoExamen_1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn437 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_7");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn438 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_7");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn439 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UgDl");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn440 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UgDlConclusion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn441 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UggCreatina");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn442 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UggCreatinaConclusion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn443 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MggCreatina");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn444 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MggCreatinaConclusion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn445 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn446 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn447 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx3");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn448 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx4");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn449 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx5");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn450 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx6");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn451 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx7");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn452 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx8");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn453 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion1");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn454 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion2");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn455 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion3");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn456 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion4");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn457 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion5");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn458 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion6");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn459 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion7");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn460 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion8");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn461 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion9");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn462 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Observaciones");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn463 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("GrupoSanguineo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn464 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FactorSanguineo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn465 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Alergias");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn466 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudManejoRestriccion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn467 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudOcupacional");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn468 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Restricciones");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn469 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("RevisonMedico");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn470 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ResponsableDigitacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn471 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("NotasImportante");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn472 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CoeficienteIntelectual");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn473 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FuncionesCognitivas");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn474 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoRecomendacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn475 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion7");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn476 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion8");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn477 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion9");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn478 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Observaciones");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn479 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("GrupoSanguineo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn480 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FactorSanguineo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn481 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Alergias");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn482 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudManejoRestriccion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn483 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudOcupacional");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn484 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Restricciones");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn485 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("RevisonMedico");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn486 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ResponsableDigitacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn487 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("NotasImportante");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn488 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CoeficienteIntelectual");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn489 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FuncionesCognitivas");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn490 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoRecomendacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn491 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ApellidosNombres");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn492 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Procedencia");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn493 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sexo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn494 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Empresa");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn495 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dni");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn496 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PuestoTrabajo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn497 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Edad");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn498 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoExamen");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn499 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaDigitacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn500 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaExamenOcupacional");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn501 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaNacimiento");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn502 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Peso");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn503 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Talla");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn504 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Imc");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn505 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("DNI");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn506 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaServicioDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn507 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("LugarExamen");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn508 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("EdadTrabajador");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn509 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Trabajador");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn510 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CustomerOrganizationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn511 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PuestoTrabajo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn512 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AntecedentesImportancia");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn513 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Peso");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn514 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Talla");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn515 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("IMC");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn516 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("EstadoNutricional");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn517 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PerimetroAbdominal");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn518 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("DxPerimetroAbdominal");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn519 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PresionSistolica");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn520 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PresionDiastolica");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn521 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("DxPA");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn522 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UsaLentes");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn523 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AgudezaVisual");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn524 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OtrasAlteracionesVision");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn525 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OtrasAlteEnfOculares");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn526 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Audiometria");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn527 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ComentarioAudiometria");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn528 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Espirometria");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn529 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Edad");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn530 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sexo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn531 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoDocumentoIdentidad");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn532 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("NumeroDocumentoIdentidad");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn533 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PuestoTrabajo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn534 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FonoContacto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn535 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CentroMedico");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn536 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoExamen");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn537 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaExamenMedico");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn538 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("VigenciaHasta");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn539 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_Od");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn540 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_Od");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn541 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_Od");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn542 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_Od");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn543 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_Od");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn544 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_Od");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn545 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_Od");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn546 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PromedioStsOd");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn547 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_Oi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn548 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_Oi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn549 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_Oi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn550 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_Oi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn551 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_Oi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn552 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_Oi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn553 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_Oi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn554 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PromedioStsOi");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn555 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn556 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn557 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn558 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn559 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn560 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn561 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn562 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_500Hz_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn563 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_1000Hz_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn564 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_2000Hz_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn565 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_3000Hz_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn566 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_4000Hz_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn567 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_6000Hz_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn568 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("_8000Hz_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn569 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn570 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn571 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn572 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn573 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fcv");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn574 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fev1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn575 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fev1Fvc");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn576 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_3");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn577 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Peso");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn578 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Talla");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn579 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Imc");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn580 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_4");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn581 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("SCOjoDer");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn582 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("SCOjoIzq");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn583 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CCOjoDer");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn584 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CCOjoIzq");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn585 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_5");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn586 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_6");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn587 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion_3");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn588 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Conclusion_7");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn589 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Descripcion_4");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn590 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Gdl");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn591 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ConclusionGdl");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn592 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn593 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn594 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn595 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn596 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_3");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn597 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_3");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn598 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_4");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn599 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_4");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn600 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_5");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn601 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_5");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn602 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_6");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn603 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_6");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn604 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoExamen_1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn605 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Mgdl_7");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn606 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MgdlConclusion_7");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn607 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UgDl");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn608 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UgDlConclusion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn609 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UggCreatina");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn610 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("UggCreatinaConclusion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn611 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MggCreatina");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn612 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("MggCreatinaConclusion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn613 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn614 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn615 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx3");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn616 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx4");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn617 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx5");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn618 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx6");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn619 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx7");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn620 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dx8");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn621 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion1");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn622 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion2");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn623 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion3");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn624 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion4");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn625 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion5");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn626 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion6");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn627 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion7");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn628 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion8");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn629 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion9");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn630 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Observaciones");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn631 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("GrupoSanguineo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn632 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FactorSanguineo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn633 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Alergias");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn634 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudManejoRestriccion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn635 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudOcupacional");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn636 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Restricciones");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn637 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("RevisonMedico");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn638 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ResponsableDigitacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn639 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("NotasImportante");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn640 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CoeficienteIntelectual");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn641 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FuncionesCognitivas");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn642 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoRecomendacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn643 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion7");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn644 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion8");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn645 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Recomendacion9");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn646 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Observaciones");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn647 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("GrupoSanguineo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn648 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FactorSanguineo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn649 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Alergias");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn650 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudManejoRestriccion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn651 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AptitudOcupacional");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn652 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Restricciones");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn653 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("RevisonMedico");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn654 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ResponsableDigitacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn655 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("NotasImportante");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn656 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("CoeficienteIntelectual");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn657 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FuncionesCognitivas");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn658 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoRecomendacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn659 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ApellidosNombres");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn660 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Procedencia");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn661 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sexo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn662 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Empresa");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn663 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Dni");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn664 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PuestoTrabajo");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn665 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Edad");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn666 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("TipoExamen");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn667 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaDigitacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn668 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaExamenOcupacional");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn669 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FechaNacimiento");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn670 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Peso");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn671 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Talla");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn672 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Imc");
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpShauindo = new System.Windows.Forms.TabPage();
             this.btnExportShauindo = new System.Windows.Forms.Button();
@@ -3326,6 +3326,7 @@
             // 
             this.ddlEmployerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.ddlEmployerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlEmployerOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlEmployerOrganization.FormattingEnabled = true;
             this.ddlEmployerOrganization.Location = new System.Drawing.Point(830, 21);
             this.ddlEmployerOrganization.Name = "ddlEmployerOrganization";
@@ -3369,7 +3370,6 @@
             // 
             this.ddlProtocolId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.ddlProtocolId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ddlProtocolId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlProtocolId.Enabled = false;
             this.ddlProtocolId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProtocolId.FormattingEnabled = true;
@@ -3459,186 +3459,186 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn337,
-            ultraDataColumn338,
-            ultraDataColumn339,
-            ultraDataColumn340,
-            ultraDataColumn341,
-            ultraDataColumn342,
-            ultraDataColumn343,
-            ultraDataColumn344,
-            ultraDataColumn345,
-            ultraDataColumn346,
-            ultraDataColumn347,
-            ultraDataColumn348,
-            ultraDataColumn349,
-            ultraDataColumn350,
-            ultraDataColumn351,
-            ultraDataColumn352,
-            ultraDataColumn353,
-            ultraDataColumn354,
-            ultraDataColumn355,
-            ultraDataColumn356,
-            ultraDataColumn357,
-            ultraDataColumn358,
-            ultraDataColumn359,
-            ultraDataColumn360});
+            ultraDataColumn505,
+            ultraDataColumn506,
+            ultraDataColumn507,
+            ultraDataColumn508,
+            ultraDataColumn509,
+            ultraDataColumn510,
+            ultraDataColumn511,
+            ultraDataColumn512,
+            ultraDataColumn513,
+            ultraDataColumn514,
+            ultraDataColumn515,
+            ultraDataColumn516,
+            ultraDataColumn517,
+            ultraDataColumn518,
+            ultraDataColumn519,
+            ultraDataColumn520,
+            ultraDataColumn521,
+            ultraDataColumn522,
+            ultraDataColumn523,
+            ultraDataColumn524,
+            ultraDataColumn525,
+            ultraDataColumn526,
+            ultraDataColumn527,
+            ultraDataColumn528});
             // 
             // ultraDataSource2
             // 
             this.ultraDataSource2.Band.Columns.AddRange(new object[] {
-            ultraDataColumn361,
-            ultraDataColumn362,
-            ultraDataColumn363,
-            ultraDataColumn364,
-            ultraDataColumn365,
-            ultraDataColumn366,
-            ultraDataColumn367,
-            ultraDataColumn368,
-            ultraDataColumn369,
-            ultraDataColumn370,
-            ultraDataColumn371,
-            ultraDataColumn372,
-            ultraDataColumn373,
-            ultraDataColumn374,
-            ultraDataColumn375,
-            ultraDataColumn376,
-            ultraDataColumn377,
-            ultraDataColumn378,
-            ultraDataColumn379,
-            ultraDataColumn380,
-            ultraDataColumn381,
-            ultraDataColumn382,
-            ultraDataColumn383,
-            ultraDataColumn384,
-            ultraDataColumn385,
-            ultraDataColumn386,
-            ultraDataColumn387,
-            ultraDataColumn388,
-            ultraDataColumn389,
-            ultraDataColumn390,
-            ultraDataColumn391,
-            ultraDataColumn392,
-            ultraDataColumn393,
-            ultraDataColumn394,
-            ultraDataColumn395,
-            ultraDataColumn396,
-            ultraDataColumn397,
-            ultraDataColumn398,
-            ultraDataColumn399,
-            ultraDataColumn400,
-            ultraDataColumn401,
-            ultraDataColumn402,
-            ultraDataColumn403,
-            ultraDataColumn404,
-            ultraDataColumn405,
-            ultraDataColumn406,
-            ultraDataColumn407,
-            ultraDataColumn408,
-            ultraDataColumn409,
-            ultraDataColumn410,
-            ultraDataColumn411,
-            ultraDataColumn412,
-            ultraDataColumn413,
-            ultraDataColumn414,
-            ultraDataColumn415,
-            ultraDataColumn416,
-            ultraDataColumn417,
-            ultraDataColumn418,
-            ultraDataColumn419,
-            ultraDataColumn420,
-            ultraDataColumn421,
-            ultraDataColumn422,
-            ultraDataColumn423,
-            ultraDataColumn424,
-            ultraDataColumn425,
-            ultraDataColumn426,
-            ultraDataColumn427,
-            ultraDataColumn428,
-            ultraDataColumn429,
-            ultraDataColumn430,
-            ultraDataColumn431,
-            ultraDataColumn432,
-            ultraDataColumn433,
-            ultraDataColumn434,
-            ultraDataColumn435,
-            ultraDataColumn436,
-            ultraDataColumn437,
-            ultraDataColumn438,
-            ultraDataColumn439,
-            ultraDataColumn440,
-            ultraDataColumn441,
-            ultraDataColumn442,
-            ultraDataColumn443,
-            ultraDataColumn444,
-            ultraDataColumn445,
-            ultraDataColumn446,
-            ultraDataColumn447,
-            ultraDataColumn448,
-            ultraDataColumn449,
-            ultraDataColumn450,
-            ultraDataColumn451,
-            ultraDataColumn452,
-            ultraDataColumn453,
-            ultraDataColumn454,
-            ultraDataColumn455,
-            ultraDataColumn456,
-            ultraDataColumn457,
-            ultraDataColumn458,
-            ultraDataColumn459,
-            ultraDataColumn460,
-            ultraDataColumn461,
-            ultraDataColumn462,
-            ultraDataColumn463,
-            ultraDataColumn464,
-            ultraDataColumn465,
-            ultraDataColumn466,
-            ultraDataColumn467,
-            ultraDataColumn468,
-            ultraDataColumn469,
-            ultraDataColumn470,
-            ultraDataColumn471,
-            ultraDataColumn472,
-            ultraDataColumn473,
-            ultraDataColumn474});
+            ultraDataColumn529,
+            ultraDataColumn530,
+            ultraDataColumn531,
+            ultraDataColumn532,
+            ultraDataColumn533,
+            ultraDataColumn534,
+            ultraDataColumn535,
+            ultraDataColumn536,
+            ultraDataColumn537,
+            ultraDataColumn538,
+            ultraDataColumn539,
+            ultraDataColumn540,
+            ultraDataColumn541,
+            ultraDataColumn542,
+            ultraDataColumn543,
+            ultraDataColumn544,
+            ultraDataColumn545,
+            ultraDataColumn546,
+            ultraDataColumn547,
+            ultraDataColumn548,
+            ultraDataColumn549,
+            ultraDataColumn550,
+            ultraDataColumn551,
+            ultraDataColumn552,
+            ultraDataColumn553,
+            ultraDataColumn554,
+            ultraDataColumn555,
+            ultraDataColumn556,
+            ultraDataColumn557,
+            ultraDataColumn558,
+            ultraDataColumn559,
+            ultraDataColumn560,
+            ultraDataColumn561,
+            ultraDataColumn562,
+            ultraDataColumn563,
+            ultraDataColumn564,
+            ultraDataColumn565,
+            ultraDataColumn566,
+            ultraDataColumn567,
+            ultraDataColumn568,
+            ultraDataColumn569,
+            ultraDataColumn570,
+            ultraDataColumn571,
+            ultraDataColumn572,
+            ultraDataColumn573,
+            ultraDataColumn574,
+            ultraDataColumn575,
+            ultraDataColumn576,
+            ultraDataColumn577,
+            ultraDataColumn578,
+            ultraDataColumn579,
+            ultraDataColumn580,
+            ultraDataColumn581,
+            ultraDataColumn582,
+            ultraDataColumn583,
+            ultraDataColumn584,
+            ultraDataColumn585,
+            ultraDataColumn586,
+            ultraDataColumn587,
+            ultraDataColumn588,
+            ultraDataColumn589,
+            ultraDataColumn590,
+            ultraDataColumn591,
+            ultraDataColumn592,
+            ultraDataColumn593,
+            ultraDataColumn594,
+            ultraDataColumn595,
+            ultraDataColumn596,
+            ultraDataColumn597,
+            ultraDataColumn598,
+            ultraDataColumn599,
+            ultraDataColumn600,
+            ultraDataColumn601,
+            ultraDataColumn602,
+            ultraDataColumn603,
+            ultraDataColumn604,
+            ultraDataColumn605,
+            ultraDataColumn606,
+            ultraDataColumn607,
+            ultraDataColumn608,
+            ultraDataColumn609,
+            ultraDataColumn610,
+            ultraDataColumn611,
+            ultraDataColumn612,
+            ultraDataColumn613,
+            ultraDataColumn614,
+            ultraDataColumn615,
+            ultraDataColumn616,
+            ultraDataColumn617,
+            ultraDataColumn618,
+            ultraDataColumn619,
+            ultraDataColumn620,
+            ultraDataColumn621,
+            ultraDataColumn622,
+            ultraDataColumn623,
+            ultraDataColumn624,
+            ultraDataColumn625,
+            ultraDataColumn626,
+            ultraDataColumn627,
+            ultraDataColumn628,
+            ultraDataColumn629,
+            ultraDataColumn630,
+            ultraDataColumn631,
+            ultraDataColumn632,
+            ultraDataColumn633,
+            ultraDataColumn634,
+            ultraDataColumn635,
+            ultraDataColumn636,
+            ultraDataColumn637,
+            ultraDataColumn638,
+            ultraDataColumn639,
+            ultraDataColumn640,
+            ultraDataColumn641,
+            ultraDataColumn642});
             // 
             // ultraDataSource3
             // 
             this.ultraDataSource3.Band.Columns.AddRange(new object[] {
-            ultraDataColumn475,
-            ultraDataColumn476,
-            ultraDataColumn477,
-            ultraDataColumn478,
-            ultraDataColumn479,
-            ultraDataColumn480,
-            ultraDataColumn481,
-            ultraDataColumn482,
-            ultraDataColumn483,
-            ultraDataColumn484,
-            ultraDataColumn485,
-            ultraDataColumn486,
-            ultraDataColumn487,
-            ultraDataColumn488,
-            ultraDataColumn489,
-            ultraDataColumn490});
+            ultraDataColumn643,
+            ultraDataColumn644,
+            ultraDataColumn645,
+            ultraDataColumn646,
+            ultraDataColumn647,
+            ultraDataColumn648,
+            ultraDataColumn649,
+            ultraDataColumn650,
+            ultraDataColumn651,
+            ultraDataColumn652,
+            ultraDataColumn653,
+            ultraDataColumn654,
+            ultraDataColumn655,
+            ultraDataColumn656,
+            ultraDataColumn657,
+            ultraDataColumn658});
             // 
             // ultraDataSource4
             // 
             this.ultraDataSource4.Band.Columns.AddRange(new object[] {
-            ultraDataColumn491,
-            ultraDataColumn492,
-            ultraDataColumn493,
-            ultraDataColumn494,
-            ultraDataColumn495,
-            ultraDataColumn496,
-            ultraDataColumn497,
-            ultraDataColumn498,
-            ultraDataColumn499,
-            ultraDataColumn500,
-            ultraDataColumn501,
-            ultraDataColumn502,
-            ultraDataColumn503,
-            ultraDataColumn504});
+            ultraDataColumn659,
+            ultraDataColumn660,
+            ultraDataColumn661,
+            ultraDataColumn662,
+            ultraDataColumn663,
+            ultraDataColumn664,
+            ultraDataColumn665,
+            ultraDataColumn666,
+            ultraDataColumn667,
+            ultraDataColumn668,
+            ultraDataColumn669,
+            ultraDataColumn670,
+            ultraDataColumn671,
+            ultraDataColumn672});
             // 
             // frmMatrizMultiple
             // 
