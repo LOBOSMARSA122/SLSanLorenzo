@@ -32114,7 +32114,15 @@ namespace Sigesoft.Node.WinClient.BLL
                         {
                             var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
                             var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
-                            oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                            //oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                            if (x.Count == 0)
+                            {
+                                oLiquidacionDetalle.d_Debe = 0;
+                            }
+                            else
+                            {
+                                oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                            }
                         }
                         else
                         {
