@@ -55,6 +55,7 @@ namespace Sigesoft.Node.WinClient.UI
             btnLiqd1.Enabled = false;
             btnCarta.Enabled = false;
             btnRepEmp.Enabled = false;
+            btnEliminarLiquidacion.Enabled = false;
             //
             UltraGridColumn c = grdData.DisplayLayout.Bands[1].Columns["b_Seleccionar"];
             c.CellActivation = Activation.AllowEdit;
@@ -369,6 +370,7 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     btnLiqd1.Enabled = false;
                     btnCarta.Enabled = false;
+                    btnEliminarLiquidacion.Enabled = false;
                     btnRepEmp.Enabled = true;
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
@@ -379,12 +381,14 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                         btnLiqd1.Enabled = false;
                         btnCarta.Enabled = false;
+                        btnEliminarLiquidacion.Enabled = false;
                         btnRepEmp.Enabled = true;
                     }
                     else
                     {
                         btnLiqd1.Enabled = true;
                         btnCarta.Enabled = true;
+                        btnEliminarLiquidacion.Enabled = false;
                         btnRepEmp.Enabled = true;
                     }
                 }
@@ -393,6 +397,7 @@ namespace Sigesoft.Node.WinClient.UI
                     btnLiqd1.Enabled = false;
                     btnCarta.Enabled = false;
                     btnRepEmp.Enabled = true;
+                    btnEliminarLiquidacion.Enabled = false;
                 }
 
             }
@@ -537,23 +542,36 @@ namespace Sigesoft.Node.WinClient.UI
                     btnLiqd1.Enabled = false;
                     btnCarta.Enabled = false;
                     btnRepEmp.Enabled = true;
+                    btnEliminarLiquidacion.Enabled = false;
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
                 {
                     if (grdEmpresa.Selected.Rows.Count == 0) return;
                     //if (grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value == null) return;
                     var liquidacionID = grdEmpresa.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+                    
                     if (liquidacionID == null || liquidacionID == "")
                     {
                         btnLiqd1.Enabled = false;
                         btnCarta.Enabled = false;
                         btnRepEmp.Enabled = true;
+                        btnEliminarLiquidacion.Enabled = false;
                     }
                     else
                     {
+                        var traeLiqu = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, liquidacionID);
+                        if (traeLiqu.v_NroFactura == null || traeLiqu.v_NroFactura == "")
+                        {
+                            btnEliminarLiquidacion.Enabled = true;
+                        }
+                        else
+                        {
+                            btnEliminarLiquidacion.Enabled = false;
+                        }
                         btnLiqd1.Enabled = true;
                         btnCarta.Enabled = true;
                         btnRepEmp.Enabled = true;
+                        
                     }
                 }
                 else
@@ -561,6 +579,7 @@ namespace Sigesoft.Node.WinClient.UI
                     btnLiqd1.Enabled = false;
                     btnCarta.Enabled = false;
                     btnRepEmp.Enabled = false;
+                    btnEliminarLiquidacion.Enabled = false;
                 }
             }
         }
@@ -637,6 +656,38 @@ namespace Sigesoft.Node.WinClient.UI
                 cbbSubContratas.Enabled = false;
                 cbbEstadoLiq.Enabled = false;
                 cbbFac.Enabled = false;
+            }
+        }
+
+        private void btnEliminarLiquidacion_Click(object sender, EventArgs e)
+        {
+            var liquidacionID = grdEmpresa.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+
+            var liquidaciones = new ServiceBL().GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+            int n = 0;
+            foreach (var item in liquidaciones)
+            {
+                n = item.Detalle.Count();
+                break;
+            }
+            
+
+            DialogResult Result = MessageBox.Show("¿Desea eliminar liquidación N° " + liquidacionID + "?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (n > 0)
+                {
+                    MessageBox.Show("NO SE PUEDE BORRAR REGISTRO POR QUE SE ENCUENTRA ENLAZADO A UNO O VARIOS SERVICIOS.", "¡ATENCIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    var traeLiqu = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, liquidacionID);
+
+                    traeLiqu.v_LiquidacionId = liquidacionID;
+                    traeLiqu.i_IsDeleted = 1;
+                    new ServiceBL().UpdateLiquidacion(ref _objOperationResult, traeLiqu, Globals.ClientSession.GetAsList());
+                }
             }
         }
     }

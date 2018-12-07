@@ -440,6 +440,8 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketslist.v_TicketId = tick.v_TicketId;
                         ticketslist.v_ServiceId = tick.v_ServiceId;
                         ticketslist.d_Fecha = tick.d_Fecha;
+                        ticketslist.i_conCargoA = tick.i_conCargoA;
+                        ticketslist.i_tipoCuenta = tick.i_tipoCuenta;
                         ticketslist.i_TicketInterno = tick.i_TicketInterno;
                         ticketslist.TicketInterno = tick.i_TicketInterno == 1 ? "SI" : "NO";
                         ticketslist.Productos = tick.Productos;
