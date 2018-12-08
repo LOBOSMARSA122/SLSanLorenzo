@@ -1,15 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
+using ScrapperReniecSunat;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
-using Sigesoft.Node.WinClient.BLL;
+using ColumnStyle = Infragistics.Win.UltraWinGrid.ColumnStyle;
 
 namespace Sigesoft.Node.WinClient.UI
 {
     public partial class FrmAgendaDinamica : Form
     {
+        UltraCombo _ucGenero = new UltraCombo();
+
         public FrmAgendaDinamica()
         {
             InitializeComponent();
@@ -17,92 +22,65 @@ namespace Sigesoft.Node.WinClient.UI
        
         private void frmAgendaDinamica_Load(object sender, EventArgs e)
         {
-            grdDataService.DisplayLayout.Bands[0].Columns.Add("xxx", "yyyy");
-            grdDataService.DisplayLayout.Bands[0].Columns["xxx"].DataType = typeof(Boolean);
-            grdDataService.DisplayLayout.Bands[0].Columns["xxx"].CellActivation = Activation.AllowEdit;
-            grdDataService.DisplayLayout.Bands[0].Columns["xxx"].CellClickAction = CellClickAction.Edit;
+            grdSchedule.DataSource = new BindingList<AgendaDinamica>();
+            //CargarCombosDetalle();
+        }
 
-
+        private void CargarCombosDetalle()
+        {
             OperationResult objOperationResult = new OperationResult();
-            var objData = new ServiceBL().GetServicesPagedAndFiltered_F(ref objOperationResult, 0, null, "", "", DateTime.Parse("01/08/2018"), DateTime.Parse("01/09/2018"), null, DateTime.Parse("01/01/2000"), DateTime.Parse("01/01/2050"), "");
-            grdDataService.DataSource = objData;
 
+            #region Configura Combo Tipo Documento
+            UltraGridBand _ultraGridBanda = new UltraGridBand("Band 0", -1);
+            UltraGridColumn _ultraGridColumnaID = new UltraGridColumn("Id");
+            UltraGridColumn _ultraGridColumnaDescripcion = new UltraGridColumn("Value1");
+            UltraGridColumn _ultraGridColumnaSiglas = new UltraGridColumn("Value2");
+            _ultraGridColumnaID.Header.Caption = "Cod.";
+            _ultraGridColumnaDescripcion.Header.Caption = "Descripción";
+            _ultraGridColumnaSiglas.Header.Caption = "Siglas";
+            _ultraGridColumnaID.Width = 30;
+            _ultraGridColumnaDescripcion.Width = 200;
+            _ultraGridColumnaSiglas.Width = 80;
+            _ultraGridBanda.Columns.AddRange(new object[] { _ultraGridColumnaID, _ultraGridColumnaDescripcion, _ultraGridColumnaSiglas });
+            _ucGenero.DisplayLayout.BandsSerializer.Add(_ultraGridBanda);
+            _ucGenero.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList;
+            _ucGenero.DropDownWidth = 330;
+            #endregion
 
-            
-            
-        }
-
-        private void grdDataService_InitializeLayout(object sender, InitializeLayoutEventArgs e)
-        {
-            e.Layout.Override.HeaderClickAction = HeaderClickAction.Select;
-            e.Layout.Override.SelectTypeCol = SelectType.None;         
-        }
-
-        private void grdDataService_MouseUp(object sender, MouseEventArgs e)
-        {
-            var grid = (UltraGrid)sender;
-            var element = grid.DisplayLayout.UIElement.LastElementEntered;
-            if(element == null)return;
-            var header = element.GetContext(typeof(Infragistics.Win.UltraWinGrid.ColumnHeader)) as Infragistics.Win.UltraWinGrid.ColumnHeader;
-
-            if (header == null) return;
-            var dialogResult = MessageBox.Show(@"presionó " + header.Column.Key, @"INFORMACIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (dialogResult == DialogResult.Yes)
-            {
-                //grid.DisplayLayout.Bands[0].Columns[header.Column.Key].CellActivation = Activation.Disabled;
-                try
-                {
-                    var isBound = grid.DisplayLayout.Bands[0].Columns[header.Column.Key].IsBound;
-                    if(!isBound)grid.DisplayLayout.Bands[0].Columns.Remove(header.Column.Key);
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                    throw;
-                }
-               
-            }
-        }
-
-        private void grdDataService_ClickCell(object sender, ClickCellEventArgs e)
-        {
-            if (e.Cell.Column.DataType.Name != "Boolean")return;
-            //if (e.Cell.Column.Key != "xxx") return;
-            e.Cell.Value = e.Cell.Value.ToString() == "False";
+            //Utils.Windows.LoadUltraComboList(ucTipoDocumento, "Value2", "Id", _objDocumentoBL.ObtenDocumentosParaComboGridTesoreria(ref objOperationResult, null), DropDownListAction.Select);
         }
 
         private void btnAgregarRegistro_Click(object sender, EventArgs e)
         {
-            if (grdAgenda.ActiveRow != null)
+            if (grdSchedule.ActiveRow != null)
             {
-                if (grdAgenda.ActiveRow.Cells["NroDocumento"].Value != null)
+                if (grdSchedule.ActiveRow.Cells["NroDocumento"].Value != null)
                 {
-                    UltraGridRow row = grdAgenda.DisplayLayout.Bands[0].AddNew();
+                    UltraGridRow row = grdSchedule.DisplayLayout.Bands[0].AddNew();
                     if (row == null) return;
-                    grdAgenda.Rows.Move(row, grdAgenda.Rows.Count - 1);
-                    grdAgenda.ActiveRowScrollRegion.ScrollRowIntoView(row);
+                    grdSchedule.Rows.Move(row, grdSchedule.Rows.Count - 1);
+                    grdSchedule.ActiveRowScrollRegion.ScrollRowIntoView(row);
                     row.Cells["NroDocumento"].Value = "";
                     row.Cells["Nombre"].Value = "";
                     row.Cells["ApellidoPaterno"].Value = "";
                     row.Cells["ApellidoMaterno"].Value = "";
                     row.Cells["FechaNacimiento"].Value = "";
-                    row.Cells["Genero"].Value = "";
+                    row.Cells["GeneroId"].Value = "";
                     row.Cells["Puesto"].Value = "";
                 }
             }
             else
             {
-                grdAgenda.Rows[0].Activate();
-                UltraGridRow row = grdAgenda.DisplayLayout.Bands[0].AddNew();
+                UltraGridRow row = grdSchedule.DisplayLayout.Bands[0].AddNew();
                 if (row == null) return;
-                grdAgenda.Rows.Move(row, grdAgenda.Rows.Count - 1);
-                grdAgenda.ActiveRowScrollRegion.ScrollRowIntoView(row);
+                grdSchedule.Rows.Move(row, grdSchedule.Rows.Count - 1);
+                grdSchedule.ActiveRowScrollRegion.ScrollRowIntoView(row);
                 row.Cells["NroDocumento"].Value = "";
                 row.Cells["Nombre"].Value = "";
                 row.Cells["ApellidoPaterno"].Value = "";
                 row.Cells["ApellidoMaterno"].Value = "";
                 row.Cells["FechaNacimiento"].Value = "";
-                row.Cells["Genero"].Value = "";
+                row.Cells["GeneroId"].Value = "";
                 row.Cells["Puesto"].Value = "";
             }
             EnterEditMode();
@@ -110,18 +88,82 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void EnterEditMode()
         {
-            //var ultimaFila = grdData.Rows.LastOrDefault();
-            //if (ultimaFila != null && !cboDocumento.Focused)
-            //{
-            //    grdData.Focus();
-            //    grdData.ActiveColScrollRegion.Scroll(ColScrollAction.Left);
-            //    grdData.ActiveCell = ultimaFila.Cells["v_CodigoInterno"];
-            //    grdData.PerformAction(UltraGridAction.EnterEditMode, false, false);
-            //    if (!grdData.ActiveCell.IsInEditMode)
-            //    {
-            //        grdData.PerformAction(UltraGridAction.EnterEditMode, false, false);
-            //    }
-            //}
+            var lastRow = grdSchedule.Rows.LastOrDefault();
+            if (lastRow != null)
+            {
+                grdSchedule.Focus();
+                grdSchedule.ActiveColScrollRegion.Scroll(ColScrollAction.Left);
+                grdSchedule.ActiveCell = lastRow.Cells["NroDocumento"];
+                grdSchedule.PerformAction(UltraGridAction.EnterEditMode, false, false);
+            }
+        }
+
+        private void ObtenerDatosDni(string dni)
+        {
+            var f = new frmBuscarDatos(dni);
+            if (f.ConexionDisponible)
+            {
+                f.ShowDialog();
+
+                switch (f.Estado)
+                {
+                    case Estado.NoResul:
+                        MessageBox.Show(@"No se encontró datos de el DNI");
+                        break;
+
+                    case Estado.Ok:
+                        if (f.Datos != null)
+                        {
+                            if (!f.EsContribuyente)
+                            {
+                                var datos = (ReniecResultDto)f.Datos;
+                                grdSchedule.ActiveRow.Cells["Nombre"].Value = datos.Nombre;
+                                grdSchedule.ActiveRow.Cells["ApellidoPaterno"].Value = datos.ApellidoPaterno;
+                                grdSchedule.ActiveRow.Cells["ApellidoMaterno"].Value = datos.ApellidoMaterno;
+                                grdSchedule.ActiveRow.Cells["FechaNacimiento"].Value = datos.FechaNacimiento;
+
+                                var lastRow = grdSchedule.Rows.LastOrDefault();
+                                if (lastRow != null)
+                                {
+                                    grdSchedule.Focus();
+                                    grdSchedule.ActiveColScrollRegion.Scroll(ColScrollAction.Left);
+                                    grdSchedule.ActiveCell = lastRow.Cells["Puesto"];
+                                    grdSchedule.PerformAction(UltraGridAction.EnterEditMode, false, false);
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
+            else
+                MessageBox.Show(@"No se pudo conectar la página", @"Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+      
+        private void grdSchedule_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var dni = grdSchedule.ActiveRow.Cells["NroDocumento"].Text;
+                ObtenerDatosDni(dni);
+            }
+        }
+
+        private void grdSchedule_KeyUp(object sender, KeyEventArgs e)
+        {
+            var grid = (UltraGrid)sender;
+
+            if (e.KeyCode == Keys.Down)
+            {
+                btnAgregarRegistro_Click(sender, e);
+                // Go down one row
+                grid.PerformAction(UltraGridAction.BelowCell);
+            }
+        }
+
+        private void grdSchedule_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+            //e.Layout.Bands[0].Columns["GeneroId"].EditorComponent = _ucGenero;
+            e.Layout.Bands[0].Columns["GeneroId"].Style = ColumnStyle.DropDownList;
         }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="Custom\Adolescente.cs" />
     <Compile Include="Custom\Adulto.cs" />
     <Compile Include="Custom\AdultoMayor.cs" />
+    <Compile Include="Custom\AgendaDinamica.cs" />
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
     <Compile Include="Custom\CalendarDetail.cs" />

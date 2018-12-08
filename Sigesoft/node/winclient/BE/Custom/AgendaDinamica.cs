@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Sigesoft.Node.WinClient.BE
+﻿namespace Sigesoft.Node.WinClient.BE
 {
     public class AgendaDinamica
     {
@@ -12,6 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string FechaNacimiento { get; set; }
+        public int GeneroId { get; set; }
         public string Genero { get; set; }
         public string Puesto { get; set; }
     }

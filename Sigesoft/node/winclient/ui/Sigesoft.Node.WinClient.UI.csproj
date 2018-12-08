@@ -473,6 +473,12 @@
     <Compile Include="frmAdjuntarDeclaracionJurada.Designer.cs">
       <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAgendaDinamica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAgendaDinamica.Designer.cs">
+      <DependentUpon>FrmAgendaDinamica.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBuscarFormulario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3434,6 +3440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdjuntarDeclaracionJurada.resx">
       <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAgendaDinamica.resx">
+      <DependentUpon>FrmAgendaDinamica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarFormulario.resx">
       <DependentUpon>frmBuscarFormulario.cs</DependentUpon>
@@ -6779,7 +6788,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
