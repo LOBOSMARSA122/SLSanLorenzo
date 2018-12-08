@@ -237,28 +237,28 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 #region Anamnesis
 
-                gbSintomasySignos.Enabled = false;
-                gbFuncionesBiologicas.Enabled = false;
-                btnGuardarAnamnesis.Enabled = false;
+                gbSintomasySignos.Enabled = true;
+                gbFuncionesBiologicas.Enabled = true;
+                btnGuardarAnamnesis.Enabled = true;
 
                 #endregion
 
                 #region Examenes
 
-                gbDiagnosticoExamen.Enabled = false;
-                txtComentario.Enabled = false;
-                cbEstadoComponente.Enabled = false;
-                cbTipoProcedenciaExamen.Enabled = false;
-                btnGuardarExamen.Enabled = false;
-                btnVisorReporteExamen.Enabled = false;
+                gbDiagnosticoExamen.Enabled = true;
+                txtComentario.Enabled = true;
+                cbEstadoComponente.Enabled = true;
+                cbTipoProcedenciaExamen.Enabled = true;
+                btnGuardarExamen.Enabled = true;
+                btnVisorReporteExamen.Enabled = true;
 
                 #endregion
 
                 #region Analisis de diagnosticos
 
-                gbTotalDiagnostico.Enabled = false;
-                gbEdicionDiagnosticoTotal.Enabled = false;
-                btnAceptarDX.Enabled = false;
+                gbTotalDiagnostico.Enabled = true;
+                gbEdicionDiagnosticoTotal.Enabled = true;
+                btnAceptarDX.Enabled = true;
 
                 #endregion
 
@@ -443,16 +443,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
             if (_action == "View")
             {
-                gbAntecedentes.Enabled = false;
-                gbServiciosAnteriores.Enabled = false;
-                cbAptitudEso.Enabled = false;
-                gbConclusionesDiagnosticas.Enabled = false;
-                gbRecomendaciones_Conclusiones.Enabled = false;
-                gbRestricciones_Conclusiones.Enabled = false;
-                btnGuardarConclusiones.Enabled = false;
-                btnAceptarDX.Enabled = false;
-                cbAptitudEso.Enabled = false;
-                btnGuardarExamen.Enabled = false;
+                gbAntecedentes.Enabled = true;
+                gbServiciosAnteriores.Enabled = true;
+                cbAptitudEso.Enabled = true;
+                gbConclusionesDiagnosticas.Enabled = true;
+                gbRecomendaciones_Conclusiones.Enabled = true;
+                gbRestricciones_Conclusiones.Enabled = true;
+                btnGuardarConclusiones.Enabled = true;
+                btnAceptarDX.Enabled = true;
+                cbAptitudEso.Enabled = true;
+                btnGuardarExamen.Enabled = true;
             }
         }
 
@@ -943,7 +943,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                             if (_action == "View")
                                             {
-                                                txt.ReadOnly = true;
+                                                txt.ReadOnly = false;
                                             }
 
                                             ctl = txt;
@@ -1096,7 +1096,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                             if (_action == "View")
                                             {
-                                                une.ReadOnly = true;
+                                                une.ReadOnly = false;
                                             }
 
                                             ctl = une;
@@ -1115,7 +1115,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                             if (_action == "View")
                                             {
-                                                ctl.Enabled = false;
+                                                ctl.Enabled = true;
                                             }
 
                                             break;
@@ -1133,7 +1133,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                             if (_action == "View")
                                             {
-                                                ctl.Enabled = false;
+                                                ctl.Enabled = true;
                                             }
 
                                             break;
@@ -1148,7 +1148,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             ctl.Leave += new EventHandler(txt_Leave);
                                             if (_action == "View")
                                             {
-                                                ctl.Enabled = false;
+                                                ctl.Enabled = true;
                                             }
                                             break;
                                         case ControlType.SiNoCombo:
@@ -1173,7 +1173,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                             if (_action == "View")
                                             {
-                                                ctl.Enabled = false;
+                                                ctl.Enabled = true;
                                             }
 
                                             break;
@@ -1345,7 +1345,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                             if (_action == "View")
                                             {
-                                                cb.Enabled = false;
+                                                cb.Enabled = true;
                                             }
 
                                             ctl = cb;
@@ -1511,7 +1511,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            txt.ReadOnly = true;
+                                            txt.ReadOnly = false;
                                         }
 
                                         ctl = txt;
@@ -1535,7 +1535,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            txt.ReadOnly = true;
+                                            txt.ReadOnly = false;
                                         }
 
                                         ctl = txt;
@@ -1573,7 +1573,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            une.ReadOnly = true;
+                                            une.ReadOnly = false;
                                         }
 
                                         ctl = une;
@@ -1611,7 +1611,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            une.ReadOnly = true;
+                                            une.ReadOnly = false;
                                         }
 
                                         ctl = une;
@@ -1630,7 +1630,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            ctl.Enabled = false;
+                                            ctl.Enabled = true;
                                         }
 
                                         break;
@@ -1648,7 +1648,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            ctl.Enabled = false;
+                                            ctl.Enabled = true;
                                         }
 
                                         break;
@@ -1664,7 +1664,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         ctl.Leave += new EventHandler(txt_Leave);
                                         if (_action == "View")
                                         {
-                                            ctl.Enabled = false;
+                                            ctl.Enabled = true;
                                         }
                                         break;
                                     case ControlType.SiNoCombo:
@@ -1688,7 +1688,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            ctl.Enabled = false;
+                                            ctl.Enabled = true;
                                         }
 
                                         break;
@@ -1853,7 +1853,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                         if (_action == "View")
                                         {
-                                            cb.Enabled = false;
+                                            cb.Enabled = true;
                                         }
 
                                         ctl = cb;
@@ -3871,7 +3871,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 txtt.ReadOnly = isReadOnly;
                                 if (_action == "View")
                                 {
-                                    txtt.ReadOnly = true;
+                                    txtt.ReadOnly = false;
                                 }
                                 break;
                             case ControlType.CadenaMultilinea:
@@ -3880,7 +3880,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 txtm.ReadOnly = isReadOnly;
                                 if (_action == "View")
                                 {
-                                    txtm.ReadOnly = true;
+                                    txtm.ReadOnly = false;
                                 }
                                 break;
                             case ControlType.NumeroEntero:
@@ -3898,7 +3898,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 und.ReadOnly = isReadOnly;
                                 if (_action == "View")
                                 {
-                                    und.ReadOnly = true;
+                                    und.ReadOnly = false;
                                 }
                                 break;
                             case ControlType.SiNoCheck:
@@ -3907,7 +3907,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 chkSiNo.Enabled = isWriteOnly;
                                 if (_action == "View")
                                 {
-                                    chkSiNo.Enabled = false;
+                                    chkSiNo.Enabled = true;
                                 }
                                 break;
                             case ControlType.SiNoRadioButton:
@@ -3916,7 +3916,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 rbSiNo.Enabled = isWriteOnly;
                                 if (_action == "View")
                                 {
-                                    rbSiNo.Enabled = false;
+                                    rbSiNo.Enabled = true;
                                 }
                                 break;
                             case ControlType.Radiobutton:
@@ -3925,7 +3925,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 rb.Enabled = isWriteOnly;
                                 if (_action == "View")
                                 {
-                                    rb.Enabled = false;
+                                    rb.Enabled = true;
                                 }
                                 break;
                             case ControlType.SiNoCombo:
@@ -3934,7 +3934,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 cbSiNo.Enabled = isWriteOnly;
                                 if (_action == "View")
                                 {
-                                    cbSiNo.Enabled = false;
+                                    cbSiNo.Enabled = true;
                                 }
                                 break;
                             case ControlType.UcFileUpload:
@@ -3945,7 +3945,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 cbList.Enabled = isWriteOnly;
                                 if (_action == "View")
                                 {
-                                    cbList.Enabled = false;
+                                    cbList.Enabled = true;
                                 }
                                 break;
                             default:

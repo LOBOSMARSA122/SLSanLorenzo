@@ -209,8 +209,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 objticketDto.d_UpdateDate = DateTime.Now;
                 objticketDto.i_UpdateUserId = Int32.Parse(ClientSession[2]);
                 objticketDto.i_IsDeleted = 0;
-                var objStrongEntity = ticketAssembler.ToEntity(objticketDto);
+                ticket objStrongEntity = ticketAssembler.ToEntity(objticketDto);
                 dbContext.ticket.ApplyCurrentValues(objStrongEntity);
+                dbContext.SaveChanges();
                 #endregion
 
                 int intNodeId = int.Parse(ClientSession[0]);

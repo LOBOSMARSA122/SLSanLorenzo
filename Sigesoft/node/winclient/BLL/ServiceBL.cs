@@ -32114,7 +32114,15 @@ namespace Sigesoft.Node.WinClient.BLL
                         {
                             var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
                             var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
-                            oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                            //oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                            if (x.Count == 0)
+                            {
+                                oLiquidacionDetalle.d_Debe = 0;
+                            }
+                            else
+                            {
+                                oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                            }
                         }
                         else
                         {
@@ -33562,5 +33570,35 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
 
+        public void UpdateLiquidacion(ref OperationResult pobjOperationResult, liquidacionDto pobjDtoEntity, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.liquidacion
+                                       where a.v_LiquidacionId == pobjDtoEntity.v_LiquidacionId
+                                       select a).FirstOrDefault();
+
+                pobjDtoEntity.d_UpdateDate = DateTime.Now;
+
+                pobjDtoEntity.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+
+                liquidacion objEntity = liquidacionAssembler.ToEntity(pobjDtoEntity);
+
+                dbContext.liquidacion.ApplyCurrentValues(objEntity);
+
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+            }
+        }
 	}
 }
