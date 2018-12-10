@@ -96,6 +96,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEliminarLiquidacion = new System.Windows.Forms.Button();
             this.btnRepEmp = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpESO = new System.Windows.Forms.TabPage();
@@ -119,7 +120,6 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.btnEliminarLiquidacion = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -424,6 +424,27 @@
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // btnEliminarLiquidacion
+            // 
+            this.btnEliminarLiquidacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarLiquidacion.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminarLiquidacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEliminarLiquidacion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEliminarLiquidacion.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEliminarLiquidacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarLiquidacion.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarLiquidacion.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarLiquidacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarLiquidacion.Location = new System.Drawing.Point(1138, 177);
+            this.btnEliminarLiquidacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarLiquidacion.Name = "btnEliminarLiquidacion";
+            this.btnEliminarLiquidacion.Size = new System.Drawing.Size(85, 36);
+            this.btnEliminarLiquidacion.TabIndex = 160;
+            this.btnEliminarLiquidacion.Text = "DELETE LIQ";
+            this.btnEliminarLiquidacion.UseVisualStyleBackColor = false;
+            this.btnEliminarLiquidacion.Click += new System.EventHandler(this.btnEliminarLiquidacion_Click);
             // 
             // btnRepEmp
             // 
@@ -937,26 +958,6 @@
             this.btnEditarServicio.Text = "Editar Servicio";
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
-            // 
-            // btnEliminarLiquidacion
-            // 
-            this.btnEliminarLiquidacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminarLiquidacion.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEliminarLiquidacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEliminarLiquidacion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEliminarLiquidacion.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEliminarLiquidacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarLiquidacion.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarLiquidacion.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarLiquidacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarLiquidacion.Location = new System.Drawing.Point(1138, 177);
-            this.btnEliminarLiquidacion.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminarLiquidacion.Name = "btnEliminarLiquidacion";
-            this.btnEliminarLiquidacion.Size = new System.Drawing.Size(85, 36);
-            this.btnEliminarLiquidacion.TabIndex = 160;
-            this.btnEliminarLiquidacion.Text = "DELETE LIQ";
-            this.btnEliminarLiquidacion.UseVisualStyleBackColor = false;
-            this.btnEliminarLiquidacion.Click += new System.EventHandler(this.btnEliminarLiquidacion_Click);
             // 
             // frmLiquidacion
             // 

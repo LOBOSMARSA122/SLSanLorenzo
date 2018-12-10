@@ -913,7 +913,7 @@ namespace Sigesoft.Node.WinClient.UI
                     this.Enabled = true;
                 }
             }
-                else if (rbLiqPendFacturarDETALLE.Checked)
+            else if (rbLiqPendFacturarDETALLE.Checked)
             {
                 using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                 {
@@ -1001,7 +1001,16 @@ namespace Sigesoft.Node.WinClient.UI
                     this.Enabled = true;
                 }
             }
-            else {
+            else if (rbEmpresasSLSF.Checked)
+            {
+
+            }
+            else if (rbEmpresasDetalleSLSF.Checked)
+            {
+
+            }
+            else
+            {
                 btnGenerar.Enabled = false;
             }
         }
