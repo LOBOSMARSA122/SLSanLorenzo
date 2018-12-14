@@ -37,6 +37,10 @@
             this.rbCuentasXCobrar = new System.Windows.Forms.RadioButton();
             this.rbEstadoCuentaEmpresa = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.rbEmpresasDetalleSLSF = new System.Windows.Forms.RadioButton();
+            this.rbEmpresasSLSF = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +50,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.rbEmpresasDetalleSLSF);
+            this.groupBox1.Controls.Add(this.rbEmpresasSLSF);
             this.groupBox1.Controls.Add(this.rbLiqPendFacturarDETALLE);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnGenerar);
@@ -54,9 +60,10 @@
             this.groupBox1.Controls.Add(this.rbCuentasXCobrar);
             this.groupBox1.Controls.Add(this.rbEstadoCuentaEmpresa);
             this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.shapeContainer1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(442, 221);
+            this.groupBox1.Size = new System.Drawing.Size(442, 274);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FORMATOS:";
@@ -64,7 +71,7 @@
             // rbLiqPendFacturarDETALLE
             // 
             this.rbLiqPendFacturarDETALLE.AutoSize = true;
-            this.rbLiqPendFacturarDETALLE.Location = new System.Drawing.Point(6, 160);
+            this.rbLiqPendFacturarDETALLE.Location = new System.Drawing.Point(6, 145);
             this.rbLiqPendFacturarDETALLE.Name = "rbLiqPendFacturarDETALLE";
             this.rbLiqPendFacturarDETALLE.Size = new System.Drawing.Size(260, 17);
             this.rbLiqPendFacturarDETALLE.TabIndex = 114;
@@ -76,7 +83,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(246, 192);
+            this.btnCancelar.Location = new System.Drawing.Point(246, 245);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 113;
@@ -87,7 +94,7 @@
             // 
             this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerar.Enabled = false;
-            this.btnGenerar.Location = new System.Drawing.Point(347, 192);
+            this.btnGenerar.Location = new System.Drawing.Point(347, 245);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 112;
@@ -98,7 +105,7 @@
             // rbLiqPendFacturar
             // 
             this.rbLiqPendFacturar.AutoSize = true;
-            this.rbLiqPendFacturar.Location = new System.Drawing.Point(6, 124);
+            this.rbLiqPendFacturar.Location = new System.Drawing.Point(6, 113);
             this.rbLiqPendFacturar.Name = "rbLiqPendFacturar";
             this.rbLiqPendFacturar.Size = new System.Drawing.Size(203, 17);
             this.rbLiqPendFacturar.TabIndex = 111;
@@ -110,7 +117,7 @@
             // rbResumenCuentasXCobrar
             // 
             this.rbResumenCuentasXCobrar.AutoSize = true;
-            this.rbResumenCuentasXCobrar.Location = new System.Drawing.Point(6, 87);
+            this.rbResumenCuentasXCobrar.Location = new System.Drawing.Point(6, 81);
             this.rbResumenCuentasXCobrar.Name = "rbResumenCuentasXCobrar";
             this.rbResumenCuentasXCobrar.Size = new System.Drawing.Size(164, 17);
             this.rbResumenCuentasXCobrar.TabIndex = 110;
@@ -122,7 +129,7 @@
             // rbCuentasXCobrar
             // 
             this.rbCuentasXCobrar.AutoSize = true;
-            this.rbCuentasXCobrar.Location = new System.Drawing.Point(6, 51);
+            this.rbCuentasXCobrar.Location = new System.Drawing.Point(6, 49);
             this.rbCuentasXCobrar.Name = "rbCuentasXCobrar";
             this.rbCuentasXCobrar.Size = new System.Drawing.Size(116, 17);
             this.rbCuentasXCobrar.TabIndex = 109;
@@ -149,16 +156,57 @@
             this.pictureBox1.Image = global::Sigesoft.Node.WinClient.UI.Resources.repor_41;
             this.pictureBox1.Location = new System.Drawing.Point(313, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 110);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 114);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 107;
             this.pictureBox1.TabStop = false;
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(3, 16);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(436, 255);
+            this.shapeContainer1.TabIndex = 115;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape1
+            // 
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 7;
+            this.lineShape1.X2 = 259;
+            this.lineShape1.Y1 = 157;
+            this.lineShape1.Y2 = 157;
+            // 
+            // rbEmpresasDetalleSLSF
+            // 
+            this.rbEmpresasDetalleSLSF.AutoSize = true;
+            this.rbEmpresasDetalleSLSF.Location = new System.Drawing.Point(6, 216);
+            this.rbEmpresasDetalleSLSF.Name = "rbEmpresasDetalleSLSF";
+            this.rbEmpresasDetalleSLSF.Size = new System.Drawing.Size(223, 17);
+            this.rbEmpresasDetalleSLSF.TabIndex = 117;
+            this.rbEmpresasDetalleSLSF.TabStop = true;
+            this.rbEmpresasDetalleSLSF.Text = "Empresas pendientes SL / SF - DETALLE";
+            this.rbEmpresasDetalleSLSF.UseVisualStyleBackColor = true;
+            // 
+            // rbEmpresasSLSF
+            // 
+            this.rbEmpresasSLSF.AutoSize = true;
+            this.rbEmpresasSLSF.Location = new System.Drawing.Point(6, 187);
+            this.rbEmpresasSLSF.Name = "rbEmpresasSLSF";
+            this.rbEmpresasSLSF.Size = new System.Drawing.Size(166, 17);
+            this.rbEmpresasSLSF.TabIndex = 116;
+            this.rbEmpresasSLSF.TabStop = true;
+            this.rbEmpresasSLSF.Text = "Empresas pendientes SL / SF";
+            this.rbEmpresasSLSF.UseVisualStyleBackColor = true;
             // 
             // frmLiquidacionEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 245);
+            this.ClientSize = new System.Drawing.Size(466, 298);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -184,6 +232,10 @@
         private System.Windows.Forms.RadioButton rbCuentasXCobrar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.RadioButton rbLiqPendFacturarDETALLE;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        private System.Windows.Forms.RadioButton rbEmpresasDetalleSLSF;
+        private System.Windows.Forms.RadioButton rbEmpresasSLSF;
 
     }
 }
