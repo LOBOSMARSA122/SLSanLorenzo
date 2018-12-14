@@ -13637,6 +13637,185 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+
+        public List<DiagnosticRepositoryList> GetAptitudeCertificateRefact(ref OperationResult pobjOperationResult, string pstrServiceId)
+        {
+            var isDeleted = 0;
+            //object ccc_join;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from sss in dbContext.service
+                             join ccc in dbContext.diagnosticrepository on sss.v_ServiceId equals ccc.v_ServiceId into ccc_join
+                             from ccc in ccc_join.DefaultIfEmpty()  // ESO
+
+                             join ddd in dbContext.diseases on ccc.v_DiseasesId equals ddd.v_DiseasesId into ddd_join
+                             from ddd in ddd_join.DefaultIfEmpty()  // Diagnosticos
+
+                             join D in dbContext.person on sss.v_PersonId equals D.v_PersonId
+
+                             join J in dbContext.systemparameter on new { a = D.i_SexTypeId.Value, b = 100 }
+                                                equals new { a = J.i_ParameterId, b = J.i_GroupId }  // GENERO
+
+                             join E in dbContext.protocol on sss.v_ProtocolId equals E.v_ProtocolId
+
+                             join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
+
+                             join abc in dbContext.organization on E.v_CustomerOrganizationId equals abc.v_OrganizationId //GENERAL
+
+                             join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId //CONTRATA
+
+                             join abcd in dbContext.organization on E.v_WorkingOrganizationId equals abcd.v_OrganizationId //SUB CONTRATA
+
+                             join lll in dbContext.location on E.v_EmployerLocationId equals lll.v_LocationId
+
+                             join H in dbContext.systemparameter on new { a = E.i_EsoTypeId.Value, b = 118 }
+                                                 equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
+
+                             join G in dbContext.systemparameter on new { a = sss.i_AptitudeStatusId.Value, b = 124 }
+                                      equals new { a = G.i_ParameterId, b = G.i_GroupId }  // ESTADO APTITUD ESO                    
+
+                             join J3 in dbContext.systemparameter on new { a = 119, b = sss.i_MasterServiceId.Value }  // DESCRIPCION DEL SERVICIO
+                                                        equals new { a = J3.i_GroupId, b = J3.i_ParameterId } into J3_join
+                             from J3 in J3_join.DefaultIfEmpty()
+
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = ccc.i_InsertUserId.Value }
+                                             equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             join J2 in dbContext.systemuser on new { i_UpdateUserId = ccc.i_UpdateUserId.Value }
+                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                             from J2 in J2_join.DefaultIfEmpty()
+
+                             join su in dbContext.systemuser on sss.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
+                             from su in su_join.DefaultIfEmpty()
+
+                             join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
+                             from pr in pr_join.DefaultIfEmpty()
+
+                             join H1 in dbContext.systemparameter on new { a = D.i_BloodGroupId.Value, b = 154 }
+                                             equals new { a = H1.i_ParameterId, b = H1.i_GroupId } into H1_join
+                             from H1 in H1_join.DefaultIfEmpty()
+
+                             join H2 in dbContext.systemparameter on new { a = D.i_BloodFactorId.Value, b = 155 }
+                                                                             equals new { a = H2.i_ParameterId, b = H2.i_GroupId } into H2_join
+                             from H2 in H2_join.DefaultIfEmpty()
+
+                             where (ccc.v_ServiceId == pstrServiceId) &&
+                                   (ccc.i_IsDeleted == isDeleted) &&
+                                 //(ddd.v_DiseasesId != "N009-DD000000029") &&
+                                   (ccc.i_FinalQualificationId == (int)FinalQualification.Definitivo ||
+                                   ccc.i_FinalQualificationId == (int)FinalQualification.Presuntivo)
+                             //&& (ccc.v_DiseasesId != Constants.NORMOACUSIA || ccc.v_DiseasesId != Constants.NORMOACUSIA_OIDO_DERECHO || ccc.v_DiseasesId != Constants.NORMOACUSIA_OIDO_IZQUIERDO || ccc.v_DiseasesId != Constants.NORMOPESO || ccc.v_DiseasesId != Constants.DISEASES_RECOMENDACIONES)
+
+
+                             select new DiagnosticRepositoryList
+                             {
+                                 v_DiagnosticRepositoryId = ccc.v_DiagnosticRepositoryId,
+                                 v_ServiceId = ccc.v_ServiceId,
+                                 v_DiseasesId = ccc.v_DiseasesId,
+                                 i_AutoManualId = ccc.i_AutoManualId,
+                                 i_PreQualificationId = ccc.i_PreQualificationId,
+                                 i_FinalQualificationId = ccc.i_FinalQualificationId,
+                                 i_DiagnosticTypeId = ccc.i_DiagnosticTypeId,
+                                 d_ExpirationDateDiagnostic = ccc.d_ExpirationDateDiagnostic,
+                                 v_DiseasesName = ddd.v_Name,
+                                 v_CreationUser = J1.v_UserName,
+                                 v_UpdateUser = J2.v_UserName,
+                                 d_CreationDate = J1.d_InsertDate,
+                                 d_UpdateDate = J2.d_UpdateDate,
+                                 i_IsDeleted = ccc.i_IsDeleted.Value,
+                                 v_ProtocolId = E.v_ProtocolId,
+                                 v_ProtocolName = E.v_Name,
+                                 v_PersonId = D.v_PersonId,
+                                 d_BirthDate = D.d_Birthdate,
+                                 v_EsoTypeName = H.v_Value1,
+                                 v_LocationName = lll.v_Name,
+                                 v_FirstName = D.v_FirstName,
+                                 v_FirstLastName = D.v_FirstLastName,
+                                 v_SecondLastName = D.v_SecondLastName,
+                                 v_DocNumber = D.v_DocNumber,
+                                 v_GenderName = J.v_Value1,
+                                 v_AptitudeStatusName = G.v_Value1,
+                                 v_OccupationName = D.v_CurrentOccupation,
+                                 g_Image = pr.b_SignatureImage,
+                                 d_ServiceDate = sss.d_ServiceDate,
+                                 i_AptitudeStatusId = sss.i_AptitudeStatusId,
+                                 i_EsoTypeId_Old = E.i_EsoTypeId.Value,
+                                 v_ObsStatusService = sss.v_ObsStatusService,
+                                 b_Photo = D.b_PersonImage,
+                                 GrupoFactorSanguineo = H1.v_Value1 + " - " + H2.v_Value1,
+                                 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate,
+                                 v_Cie10 = ddd.v_CIE10Id,
+
+                                 v_OrganizationPartialName = abc.v_Name,
+                                 EmpresaPropietaria = ooo.v_Name,
+                                 EmpresaPropietariaDireccion = abcd.v_Name,
+                                 EmpresaPropietariaEmail = ooo.v_Name + " / " + abcd.v_Name
+
+                             });
+
+                var MedicalCenter = GetInfoMedicalCenter();
+
+                var q = (from a in query.ToList()
+                         select new DiagnosticRepositoryList
+                         {
+                             v_DiagnosticRepositoryId = a.v_DiagnosticRepositoryId,
+                             v_ServiceId = a.v_ServiceId,
+                             v_DiseasesId = a.v_DiseasesId,
+                             i_DiagnosticTypeId = a.i_DiagnosticTypeId,
+                             d_ExpirationDateDiagnostic = a.d_ExpirationDateDiagnostic,
+                             v_CreationUser = a.v_CreationUser,
+                             v_UpdateUser = a.v_UpdateUser,
+                             d_CreationDate = a.d_CreationDate,
+                             d_UpdateDate = a.d_UpdateDate,
+                             i_IsDeleted = a.i_IsDeleted,
+                             i_EsoTypeId = a.i_EsoTypeId_Old.ToString(),
+                             v_EsoTypeName = a.v_EsoTypeName,
+
+                             v_PersonName = string.Format("{0} {1}, {2}", a.v_FirstLastName, a.v_SecondLastName, a.v_FirstName),
+                             v_DocNumber = a.v_DocNumber,
+                             i_Age = a.d_BirthDate == null ? (int?)null : DateTime.Today.AddTicks(-a.d_BirthDate.Value.Ticks).Year - 1,
+                             v_GenderName = a.v_GenderName,
+                             v_DiseasesName = a.v_DiseasesName == "RECOMENDACIONES" ? "" : a.v_DiseasesName,
+                             v_Cie10 = a.v_Cie10,
+                             v_DiseasesNameCie10 = string.Format("{0}   {1}", a.v_Cie10, a.v_DiseasesName),
+                             v_RecomendationsName = ConcatenateRecomendacionesConcatecDx_(a.v_DiagnosticRepositoryId),
+                             v_RestrictionsName = ConcatenateRestrictionConcatecDx(a.v_DiagnosticRepositoryId),
+                             //v_RecomendacionesConcatenadasDx = ConcatenateRecommendationByService(a.v_DiagnosticRepositoryId),
+                             v_AptitudeStatusName = a.v_AptitudeStatusName,
+                             v_OccupationName = a.v_OccupationName,  // por ahora se muestra el GESO
+                             g_Image = a.g_Image,
+                             b_Logo = MedicalCenter.b_Image,
+                             EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                             v_ServiceDate = a.d_ServiceDate == null ? string.Empty : a.d_ServiceDate.Value.ToShortDateString(),
+                             d_ServiceDate = a.d_ServiceDate,
+                             i_AptitudeStatusId = a.i_AptitudeStatusId,
+                             v_ObsStatusService = a.v_ObsStatusService,
+                             b_Photo = a.b_Photo,
+                             GrupoFactorSanguineo = a.GrupoFactorSanguineo == null ? "NOAPLICA" : a.GrupoFactorSanguineo,
+                             d_FechaExpiracionServicio = a.d_FechaExpiracionServicio,
+
+                             v_OrganizationName = string.Format("{0}", a.v_OrganizationPartialName),//loco aca se concatena, solo quita el 1 y el nombre
+                             EmpresaPropietaria = a.EmpresaPropietaria,
+                             EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+                             EmpresaPropietariaEmail = a.EmpresaPropietariaEmail
+
+                         }).ToList();
+
+                pobjOperationResult.Success = 1;
+
+                return q.OrderByDescending(p => p.v_DiseasesName).ToList();
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
 		public List<ServiceList> GetServicesPagedAndFilteredReport(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
 		{
 			//mon.IsActive = true;

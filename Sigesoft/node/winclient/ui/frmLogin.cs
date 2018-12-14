@@ -234,6 +234,16 @@ namespace Sigesoft.Node.WinClient.UI
                 objClientSession.i_RolVentaId = objUserDto.i_RolVentaId;
                 objClientSession.i_SystemUserCopyId = objUserDto.i_SystemUserId;
                 objClientSession.i_ProfesionId = objUserDto.i_ProfesionId;
+
+                var dataOrganization = new ServiceBL().GetInfoMedicalCenter();
+
+                objClientSession.b_LogoOwner = dataOrganization.b_Image;
+                objClientSession.v_TelephoneOwner = dataOrganization.v_PhoneNumber;
+                objClientSession.v_RucOwner = dataOrganization.v_IdentificationNumber;
+                objClientSession.v_AddressOwner = dataOrganization.v_Address;
+                objClientSession.v_OrganizationOwner = dataOrganization.v_Name;
+                objClientSession.v_SectorName = dataOrganization.v_SectorName;
+
                 // Pasar el objeto de sesión al gestor de objetos globales
                 Globals.ClientSession = objClientSession;
 

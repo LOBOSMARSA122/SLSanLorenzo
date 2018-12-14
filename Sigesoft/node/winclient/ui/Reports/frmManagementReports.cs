@@ -2893,7 +2893,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             switch (componentId)
             {
                 case Constants.INFORME_CERTIFICADO_APTITUD:
-                    var INFORME_CERTIFICADO_APTITUD = new ServiceBL().GetAptitudeCertificate(ref objOperationResult, _serviceId);
+                    var INFORME_CERTIFICADO_APTITUD = new ServiceBL().GetAptitudeCertificateRefact(ref objOperationResult, _serviceId);
 
                     if (INFORME_CERTIFICADO_APTITUD == null)
                     {

@@ -237,5 +237,29 @@ namespace Sigesoft.Node.WinClient.BLL
           }
       }
 
+      public groupoccupationDto GetFirstGroupOccupationByLocationId(ref OperationResult pobjOperationResult, string locationId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                groupoccupationDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.groupoccupation
+                                 where a.v_LocationId == locationId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = groupoccupationAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
       }
 }

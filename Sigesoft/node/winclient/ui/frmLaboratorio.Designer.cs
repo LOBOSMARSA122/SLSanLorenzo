@@ -74,7 +74,6 @@
             // 
             // ultraGrid1
             // 
-            this.ultraGrid1.DataSource = this.ultraDataSource1;
             appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
             appearance1.BackColor2 = System.Drawing.Color.White;
             appearance1.BackHatchStyle = Infragistics.Win.BackHatchStyle.LightHorizontal;
@@ -147,7 +146,7 @@
             this.ultraGrid1.Name = "ultraGrid1";
             this.ultraGrid1.Size = new System.Drawing.Size(1637, 510);
             this.ultraGrid1.TabIndex = 0;
-            this.ultraGrid1.Text = "7";
+            this.ultraGrid1.Text = "cxvcxv";
             // 
             // ultraDataSource1
             // 

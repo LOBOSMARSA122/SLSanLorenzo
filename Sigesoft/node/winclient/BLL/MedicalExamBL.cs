@@ -295,5 +295,21 @@ namespace Sigesoft.Node.WinClient.BLL
           
       }
 
+      public List<ComponentList> GetAllComponent()
+    {
+        var dbContext = new SigesoftEntitiesModel();
+        List<ComponentList> objDtoEntity = null;
+
+        var objEntity = (from a in dbContext.component
+            where a.i_IsDeleted == 0
+            select new ComponentList
+            {
+                v_ComponentId = a.v_ComponentId,
+                r_BasePrice = a.r_BasePrice
+            }).ToList();
+
+        return objEntity.ToList();
+    }
+
     }
 }

@@ -57,6 +57,7 @@
     <Compile Include="CustomReportBL.cs" />
     <Compile Include="DataHierarchyBL.cs" />
     <Compile Include="DxFrecuenteBL.cs" />
+    <Compile Include="DynamicScheduleBl.cs" />
     <Compile Include="EmailBL.cs" />
     <Compile Include="EmbarazoBL.cs" />
     <Compile Include="FacturacionBL.cs" />

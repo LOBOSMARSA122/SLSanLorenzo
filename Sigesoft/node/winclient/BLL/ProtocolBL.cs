@@ -1606,7 +1606,6 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-
         public List<ProtocolList> GetProtocolosByEmpresaId(ref OperationResult pobjOperationResult, string pstrEmpredaId)
         {
             //mon.IsActive = true;
@@ -1635,7 +1634,6 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
-
 
         public List<OrganizationList> GetEmpresaByProtocoloId(string pstrProtocolId)
         {
@@ -1905,5 +1903,127 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        //public List<ScheduleForProcess> GetAllProtocol()
+        //{
+        //    var dbContext = new SigesoftEntitiesModel();
+
+        //    var objEntity = (from a in dbContext.protocolcomponent
+        //        where a.i_IsDeleted == 0
+        //        select a).ToList();
+
+        //    var protocols = objEntity.GroupBy(g => g.v_ProtocolId).Select(s => s.First());
+
+        //    var list = new List<ScheduleForProcess>();
+
+        //    foreach (var protocol in protocols)
+        //    {
+        //        var oScheduleForProcess = new ScheduleForProcess();
+
+        //        oScheduleForProcess.ProtocolId = protocol.v_ProtocolId;
+                
+        //        var components = objEntity.FindAll(p => p.v_ProtocolId == protocol.v_ProtocolId);
+
+        //        var comps = new List<ComponentsByRecord>();
+        //        foreach (var component in components)
+        //        {
+        //            var oComponentsByRecord = new ComponentsByRecord();
+        //            oComponentsByRecord.ComponetId = component.v_ComponentId;
+        //            oComponentsByRecord.Check = true;
+        //            oComponentsByRecord.CategoryName = "TRIAJE";
+        //            comps.Add(oComponentsByRecord);
+        //        }
+
+        //        oScheduleForProcess.ComponentsByRecord = comps;
+        //        list.Add(oScheduleForProcess);
+
+        //    }
+
+        //    return list;
+        //}
+
+        public List<ProtocolProcess> GetAllProtocol()
+        {
+            var dbContext = new SigesoftEntitiesModel();
+
+            var objEntity = (from a in dbContext.protocol
+                            join b in dbContext.protocolcomponent on a.v_ProtocolId equals  b.v_ProtocolId
+                            where a.i_IsDeleted == 0
+                            select new
+                            {
+                                a.v_ProtocolId,
+                                a.v_Name,
+                                a.v_EmployerOrganizationId,
+                                a.v_EmployerLocationId,
+                                a.i_EsoTypeId,
+                                a.v_CustomerOrganizationId,
+                                a.v_CustomerLocationId,
+                                a.v_WorkingOrganizationId,
+                                a.v_WorkingLocationId,
+                                a.i_MasterServiceTypeId,
+                                a.i_MasterServiceId,
+                                b.v_ProtocolComponentId,
+                                b.v_ComponentId,
+                                b.r_Price
+
+                            }).ToList();
+
+            var protocols = objEntity.GroupBy(g => g.v_ProtocolId).Select(s => s.First());
+
+            var list = new List<ProtocolProcess>();
+
+            foreach (var protocol in protocols)
+            {
+                var oProtocolProcess = new ProtocolProcess();
+
+                oProtocolProcess.ProtocolId = protocol.v_ProtocolId;
+                oProtocolProcess.Name = protocol.v_Name;
+                oProtocolProcess.EmployerOrganizationId = protocol.v_EmployerOrganizationId + "|" + protocol.v_EmployerLocationId;
+                oProtocolProcess.EmployerLocationId = protocol.v_EmployerLocationId;
+                oProtocolProcess.EsoTypeId = protocol.i_EsoTypeId;
+                oProtocolProcess.CustomerOrganizationId = protocol.v_CustomerOrganizationId + "|" + protocol.v_CustomerLocationId;
+                oProtocolProcess.CustomerLocationId = protocol.v_CustomerLocationId;
+                oProtocolProcess.WorkingOrganizationId = protocol.v_WorkingOrganizationId + "|" + protocol.v_WorkingLocationId;
+                oProtocolProcess.WorkingLocationId = protocol.v_WorkingLocationId;
+                oProtocolProcess.MasterServiceTypeId = protocol.i_MasterServiceTypeId;
+                oProtocolProcess.MasterServiceId = protocol.i_MasterServiceId;
+
+                var components = objEntity.FindAll(p => p.v_ProtocolId == protocol.v_ProtocolId);
+
+                var comps = new List<Component>();
+                foreach (var component in components)
+                {
+                    var oComponent = new Component();
+                    oComponent.ProtocolComponentId = component.v_ProtocolComponentId;
+                    oComponent.ProtocolId = component.v_ProtocolId;
+                    oComponent.ComponentId = component.v_ComponentId;
+
+                    comps.Add(oComponent);
+                }
+
+                oProtocolProcess.Components = comps;
+                list.Add(oProtocolProcess);
+            }
+
+            return list;
+        }
+
+        public string[] ComponentsOfMostUsedProtocol()
+        {
+            var dbContext = new SigesoftEntitiesModel();
+            var objEntity = (from a in dbContext.service where a.i_IsDeleted == 0 select a).ToList();
+
+            var x = objEntity
+                .GroupBy(g => g.v_ProtocolId)
+                .Select(n => new
+                {
+                    ProtocolId = n.Key,
+                    ProtocolCount = n.Count()
+                }).OrderByDescending(n => n.ProtocolCount).First();
+            
+            var s = (from a in dbContext.protocolcomponent where a.v_ProtocolId == x.ProtocolId select(a)).ToList().Select(r => r.v_ComponentId.ToString()).ToArray();
+
+            return s;
+
+        }
     }
 }

@@ -120,6 +120,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinListView.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -130,6 +131,10 @@
     </Reference>
     <Reference Include="Ionic.Zip.Reduced">
       <HintPath>..\..\..\..\ExternalLibraries\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Server\WebClientAdmin\UI\Bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -473,11 +478,23 @@
     <Compile Include="frmAdjuntarDeclaracionJurada.Designer.cs">
       <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAgendaDinamica.cs">
+    <Compile Include="FrmChangeGeso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAgendaDinamica.Designer.cs">
-      <DependentUpon>FrmAgendaDinamica.cs</DependentUpon>
+    <Compile Include="FrmChangeGeso.Designer.cs">
+      <DependentUpon>FrmChangeGeso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfigurationProtocols.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfigurationProtocols.Designer.cs">
+      <DependentUpon>FrmConfigurationProtocols.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDynamicSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDynamicSchedule.Designer.cs">
+      <DependentUpon>FrmDynamicSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBuscarFormulario.cs">
       <SubType>Form</SubType>
@@ -3441,8 +3458,14 @@
     <EmbeddedResource Include="frmAdjuntarDeclaracionJurada.resx">
       <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAgendaDinamica.resx">
-      <DependentUpon>FrmAgendaDinamica.cs</DependentUpon>
+    <EmbeddedResource Include="FrmChangeGeso.resx">
+      <DependentUpon>FrmChangeGeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfigurationProtocols.resx">
+      <DependentUpon>FrmConfigurationProtocols.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDynamicSchedule.resx">
+      <DependentUpon>FrmDynamicSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarFormulario.resx">
       <DependentUpon>frmBuscarFormulario.cs</DependentUpon>

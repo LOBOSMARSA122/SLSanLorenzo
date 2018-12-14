@@ -85,13 +85,50 @@ namespace Sigesoft.Common
             set { _objData[12] = value.ToString(); }
         }
 
+        public byte[] b_LogoOwner
+        {
+            get { return new[] {byte.Parse(_objData[13])}; }
+            set { _objData[13] = value.ToString(); }
+        }
+
+        public string v_TelephoneOwner
+        {
+            get { return _objData[14]; }
+            set { _objData[14] = value; }
+        }
+
+        public string v_RucOwner
+        {
+            get { return _objData[15]; }
+            set { _objData[15] = value; }
+        }
+
+        public string v_AddressOwner
+        {
+            get { return _objData[16]; }
+            set { _objData[16] = value; }
+        }
+
+        public string v_OrganizationOwner
+        {
+            get { return _objData[17]; }
+            set { _objData[17] = value; }
+        }
+
+        public string v_SectorName
+        {
+            get { return _objData[18]; }
+            set { _objData[18] = value; }
+        }
+
+
         private List<string> _objData;
 
         public ClientSession()
         {
-            _objData = new List<string>(13);
+            _objData = new List<string>(19);
 
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 19; i++)
             {
                 _objData.Add(null);
             }

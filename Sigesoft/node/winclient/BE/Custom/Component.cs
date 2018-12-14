@@ -18,7 +18,7 @@ namespace Sigesoft.Node.WinClient.BE
         //public string v_DiagnosableName { get; set; }
         public int? i_ComponentTypeId { get; set; }
         //public string v_ComponentTypeName { get; set; }
-        //public float? r_BasePrice { get; set; }
+        public float? r_BasePrice { get; set; }
         public int? i_UIIsVisibleId { get; set; }
 
         public int i_IsDeleted { get; set; }
