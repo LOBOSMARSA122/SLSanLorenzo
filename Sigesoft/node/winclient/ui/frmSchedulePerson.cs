@@ -716,7 +716,7 @@ namespace Sigesoft.Node.WinClient.UI
                     return;
                 }
 
-                if (cboMedicoTratante.SelectedValue.ToString() == "0")
+                if (cboMedicoTratante.SelectedValue.ToString() == "0" && ddlMasterServiceId.SelectedValue.ToString() != "2")
                 {
                     MessageBox.Show("Por favor seleccione médico tratante.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;

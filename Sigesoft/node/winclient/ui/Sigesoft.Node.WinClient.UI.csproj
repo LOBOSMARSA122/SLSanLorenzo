@@ -159,9 +159,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\ExternalLibraries\ScrapperReniecSunat.dll</HintPath>
     </Reference>
-    <Reference Include="Sigesoft.Server.WebClientAdmin.UI">
-      <HintPath>..\..\..\Server\WebClientAdmin\UI\obj\Debug\Sigesoft.Server.WebClientAdmin.UI.dll</HintPath>
-    </Reference>
     <Reference Include="SigPlusNET">
       <HintPath>..\..\..\..\ExternalLibraries\SigPlusNET.dll</HintPath>
     </Reference>
@@ -5938,6 +5935,10 @@
     <ProjectReference Include="..\..\..\Common\Sigesoft.Common.csproj">
       <Project>{83b4875b-6b20-49f1-891d-b1f379760899}</Project>
       <Name>Sigesoft.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Server\WebClientAdmin\BE\Sigesoft.Server.WebClientAdmin.BE.csproj">
+      <Project>{B78BC42C-F0B2-4842-8C13-8D0DF6DBE65D}</Project>
+      <Name>Sigesoft.Server.WebClientAdmin.BE</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Sigesoft.Api\Sigesoft.Api.csproj">
       <Project>{2ffca4fa-7bc4-41fb-814d-604929746b7d}</Project>

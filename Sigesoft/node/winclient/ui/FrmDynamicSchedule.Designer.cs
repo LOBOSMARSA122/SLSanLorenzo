@@ -51,9 +51,9 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel4 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel5 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel6 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
+            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
+            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel2 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
+            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel3 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             this.grdSchedule = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkFC = new System.Windows.Forms.CheckBox();
@@ -90,14 +90,18 @@
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdSchedule.DisplayLayout.Appearance = appearance1;
+            ultraGridColumn3.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             ultraGridColumn3.Header.Caption = "Nro. Documento";
             ultraGridColumn3.Header.VisiblePosition = 2;
+            ultraGridColumn11.CellActivation = Infragistics.Win.UltraWinGrid.Activation.Disabled;
             ultraGridColumn11.Header.Caption = "Nombres";
             ultraGridColumn11.Header.VisiblePosition = 3;
             ultraGridColumn11.Width = 161;
+            ultraGridColumn12.CellActivation = Infragistics.Win.UltraWinGrid.Activation.Disabled;
             ultraGridColumn12.Header.Caption = "Apellido Paterno";
             ultraGridColumn12.Header.VisiblePosition = 4;
             ultraGridColumn12.Width = 144;
+            ultraGridColumn13.CellActivation = Infragistics.Win.UltraWinGrid.Activation.Disabled;
             ultraGridColumn13.Header.Caption = "Apellido Materno";
             ultraGridColumn13.Header.VisiblePosition = 5;
             ultraGridColumn13.Width = 125;
@@ -105,10 +109,13 @@
             ultraGridColumn14.Header.VisiblePosition = 6;
             ultraGridColumn15.Header.Caption = "Sexo";
             ultraGridColumn15.Header.VisiblePosition = 7;
+            ultraGridColumn16.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             ultraGridColumn16.Header.Caption = "Ocupación Actual";
             ultraGridColumn16.Header.VisiblePosition = 10;
             ultraGridColumn16.Width = 147;
+            ultraGridColumn17.CellActivation = Infragistics.Win.UltraWinGrid.Activation.Disabled;
             ultraGridColumn17.Header.VisiblePosition = 8;
+            ultraGridColumn18.CellActivation = Infragistics.Win.UltraWinGrid.Activation.Disabled;
             ultraGridColumn18.Header.VisiblePosition = 9;
             ultraGridColumn19.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.Edit;
             ultraGridColumn19.Header.Fixed = true;
@@ -147,6 +154,7 @@
             this.grdSchedule.DisplayLayout.MaxColScrollRegions = 1;
             this.grdSchedule.DisplayLayout.MaxRowScrollRegions = 1;
             this.grdSchedule.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdSchedule.DisplayLayout.Override.AllowColSwapping = Infragistics.Win.UltraWinGrid.AllowColSwapping.NotAllowed;
             this.grdSchedule.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
             this.grdSchedule.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
             appearance4.BackColor = System.Drawing.Color.Transparent;
@@ -175,6 +183,7 @@
             this.grdSchedule.DisplayLayout.Override.RowSelectorAppearance = appearance8;
             this.grdSchedule.DisplayLayout.Override.RowSelectorHeaderStyle = Infragistics.Win.UltraWinGrid.RowSelectorHeaderStyle.ColumnChooserButton;
             this.grdSchedule.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.RowIndex;
+            this.grdSchedule.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             this.grdSchedule.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.Fixed;
             appearance9.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             appearance9.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -373,28 +382,28 @@
             // 
             this.ultraStatusBarSchedule.Location = new System.Drawing.Point(0, 496);
             this.ultraStatusBarSchedule.Name = "ultraStatusBarSchedule";
-            ultraStatusPanel4.Key = "Validating";
-            ultraStatusPanel4.ProgressBarInfo.Label = "Validando Registros";
-            ultraStatusPanel4.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Adjustable;
-            ultraStatusPanel4.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Progress;
-            ultraStatusPanel4.Visible = false;
-            ultraStatusPanel4.Width = 533;
-            ultraStatusPanel5.Key = "Processing";
-            ultraStatusPanel5.ProgressBarInfo.Label = "Procesando Registros";
-            ultraStatusPanel5.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Adjustable;
-            ultraStatusPanel5.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Progress;
-            ultraStatusPanel5.Visible = false;
-            ultraStatusPanel5.Width = 533;
-            ultraStatusPanel6.Key = "scheduling";
-            ultraStatusPanel6.ProgressBarInfo.Label = "Agendando";
-            ultraStatusPanel6.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Adjustable;
-            ultraStatusPanel6.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Progress;
-            ultraStatusPanel6.Visible = false;
-            ultraStatusPanel6.Width = 533;
+            ultraStatusPanel1.Key = "Validating";
+            ultraStatusPanel1.ProgressBarInfo.Label = "Validando Registros";
+            ultraStatusPanel1.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Adjustable;
+            ultraStatusPanel1.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Progress;
+            ultraStatusPanel1.Visible = false;
+            ultraStatusPanel1.Width = 533;
+            ultraStatusPanel2.Key = "Processing";
+            ultraStatusPanel2.ProgressBarInfo.Label = "Procesando Registros";
+            ultraStatusPanel2.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Adjustable;
+            ultraStatusPanel2.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Progress;
+            ultraStatusPanel2.Visible = false;
+            ultraStatusPanel2.Width = 533;
+            ultraStatusPanel3.Key = "scheduling";
+            ultraStatusPanel3.ProgressBarInfo.Label = "Agendando";
+            ultraStatusPanel3.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Adjustable;
+            ultraStatusPanel3.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Progress;
+            ultraStatusPanel3.Visible = false;
+            ultraStatusPanel3.Width = 533;
             this.ultraStatusBarSchedule.Panels.AddRange(new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel[] {
-            ultraStatusPanel4,
-            ultraStatusPanel5,
-            ultraStatusPanel6});
+            ultraStatusPanel1,
+            ultraStatusPanel2,
+            ultraStatusPanel3});
             this.ultraStatusBarSchedule.Size = new System.Drawing.Size(1070, 23);
             this.ultraStatusBarSchedule.TabIndex = 158;
             this.ultraStatusBarSchedule.Text = "Barra de Progeso";

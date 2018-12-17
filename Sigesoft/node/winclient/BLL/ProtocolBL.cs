@@ -112,7 +112,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 if (pstrComponente == "")
                 {
-                    var ee = objData.GroupBy(x => x.v_Protocol)
+                    var ee = objData.GroupBy(x => x.v_ProtocolId)
                           .Select(group => group.First());
 
                     return ee.ToList();
@@ -2025,5 +2025,66 @@ namespace Sigesoft.Node.WinClient.BLL
             return s;
 
         }
+
+
+        public protocolcomponentDto GetProtocolComponentDto(ref OperationResult pobjOperationResult, string protocolComponentId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                protocolcomponentDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.protocolcomponent
+                                where a.v_ProtocolComponentId == protocolComponentId
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = protocolcomponentAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+
+        public void UpdateProtocolComponent(ref OperationResult pobjOperationResult, protocolcomponentDto pobjDtoEntity, List<string> ClientSession)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.protocolcomponent
+                    where a.v_ProtocolComponentId == pobjDtoEntity.v_ProtocolComponentId
+                    select a).FirstOrDefault();
+
+                // Crear la entidad con los datos actualizados
+                pobjDtoEntity.d_UpdateDate = DateTime.Now;
+                pobjDtoEntity.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                protocolcomponent objEntity = protocolcomponentAssembler.ToEntity(pobjDtoEntity);
+
+                // Copiar los valores desde la entidad actualizada a la Entidad Fuente
+                dbContext.protocolcomponent.ApplyCurrentValues(objEntity);
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+            }
+        }
+
     }
 }

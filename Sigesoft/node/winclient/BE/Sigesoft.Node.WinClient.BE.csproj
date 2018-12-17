@@ -67,6 +67,7 @@
     <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
+    <Compile Include="Custom\IdsPersonAndProtocol.cs" />
     <Compile Include="Custom\InformacionEmpresas.cs" />
     <Compile Include="Custom\LiquiAseguradoraDetalle.cs" />
     <Compile Include="Custom\Liquidacion.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Custom\ProtocolProcess.cs" />
     <Compile Include="Custom\ProtocolList.cs" />
     <Compile Include="Custom\ProtocoloCorto.cs" />
+    <Compile Include="Custom\ProtocolsAndWorkers.cs" />
     <Compile Include="Custom\ProtocolSystemUSerExternalList.cs" />
     <Compile Include="Custom\PuestoList.cs" />
     <Compile Include="Custom\recetadespachoDto.cs" />

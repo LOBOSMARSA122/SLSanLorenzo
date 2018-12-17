@@ -32,16 +32,12 @@ namespace Sigesoft.Node.WinClient.BE
         public List<ComponentsByRecord> ComponentsByRecord { get; set; }
     }
 
-    public class ComponentsByRecord : IComparable
+    public class ComponentsByRecord
     {
         public string CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ComponetId { get; set; }
         public string ComponetName { get; set; }
         public bool Check { get; set; }
-        public int CompareTo(object obj)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -83,7 +83,7 @@
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_tick;
             this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOk.Location = new System.Drawing.Point(409, 58);
+            this.btnOk.Location = new System.Drawing.Point(325, 58);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(51, 23);
             this.btnOk.TabIndex = 156;
@@ -97,7 +97,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(325, 58);
+            this.btnCancel.Location = new System.Drawing.Point(382, 58);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 23);
             this.btnCancel.TabIndex = 157;
