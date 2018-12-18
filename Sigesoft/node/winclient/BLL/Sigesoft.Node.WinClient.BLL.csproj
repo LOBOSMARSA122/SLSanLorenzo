@@ -93,6 +93,7 @@
     <Compile Include="SecurityBL.cs" />
     <Compile Include="ServiceBL.cs" />
     <Compile Include="ServiceOrderBL.cs" />
+    <Compile Include="SpecialistConfigurationBl.cs" />
     <Compile Include="SupplierBL.cs" />
     <Compile Include="SystemParameterBL.cs" />
     <Compile Include="TicketBL.cs" />

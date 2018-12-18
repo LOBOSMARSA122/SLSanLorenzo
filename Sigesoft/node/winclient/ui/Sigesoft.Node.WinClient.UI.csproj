@@ -481,6 +481,12 @@
     <Compile Include="FrmChangeGeso.Designer.cs">
       <DependentUpon>FrmChangeGeso.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmConfiguracionPagoEspecialista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfiguracionPagoEspecialista.Designer.cs">
+      <DependentUpon>FrmConfiguracionPagoEspecialista.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConfigurationProtocols.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3421,6 +3427,7 @@
     <Compile Include="UserControls\ucHistorialGrupoFactor.Designer.cs">
       <DependentUpon>ucHistorialGrupoFactor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\GridKeyValueDTO.cs" />
     <Compile Include="Utils\Utils.cs" />
     <EmbeddedResource Include="Configuration\frmExternalUserEditSinProtocol.resx">
       <DependentUpon>frmExternalUserEditSinProtocol.cs</DependentUpon>
@@ -3457,6 +3464,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChangeGeso.resx">
       <DependentUpon>FrmChangeGeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfiguracionPagoEspecialista.resx">
+      <DependentUpon>FrmConfiguracionPagoEspecialista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfigurationProtocols.resx">
       <DependentUpon>FrmConfigurationProtocols.cs</DependentUpon>

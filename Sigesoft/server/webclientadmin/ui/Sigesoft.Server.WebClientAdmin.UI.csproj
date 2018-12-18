@@ -5197,6 +5197,18 @@
       <Project>{83b4875b-6b20-49f1-891d-b1f379760899}</Project>
       <Name>Sigesoft.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Node\WinClient\BE\Sigesoft.Node.WinClient.BE.csproj">
+      <Project>{ff8e51f3-510e-4e90-9627-0ad3e9cb8f5c}</Project>
+      <Name>Sigesoft.Node.WinClient.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Node\WinClient\BLL\Sigesoft.Node.WinClient.BLL.csproj">
+      <Project>{f4650c86-db62-4fa8-8475-0887031a0c05}</Project>
+      <Name>Sigesoft.Node.WinClient.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Node\WinClient\UI\Sigesoft.Node.WinClient.UI.csproj">
+      <Project>{5cf08cbc-3693-460b-873d-7398a48e20a9}</Project>
+      <Name>Sigesoft.Node.WinClient.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BE\Sigesoft.Server.WebClientAdmin.BE.csproj">
       <Project>{b78bc42c-f0b2-4842-8c13-8d0df6dbe65d}</Project>
       <Name>Sigesoft.Server.WebClientAdmin.BE</Name>

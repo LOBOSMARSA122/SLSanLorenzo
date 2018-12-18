@@ -497,6 +497,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agendado Dinámico";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAgendaDinamica_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdSchedule)).EndInit();
             this.groupBox1.ResumeLayout(false);

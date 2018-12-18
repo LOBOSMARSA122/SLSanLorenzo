@@ -64,6 +64,7 @@
     <Compile Include="Custom\FacturaCobranza.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
     <Compile Include="Custom\AtencionNinio.cs" />
+    <Compile Include="Custom\GridKeyValueDTO.cs" />
     <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
@@ -293,6 +294,7 @@
     <Compile Include="Custom\ServicioFacturadoDetalle.cs" />
     <Compile Include="Custom\Servicios.cs" />
     <Compile Include="Custom\SintomaticoRespi.cs" />
+    <Compile Include="Custom\SpecialistConfiguration.cs" />
     <Compile Include="Custom\SubRerportConclusiones.cs" />
     <Compile Include="Custom\SupplierList.cs" />
     <Compile Include="Custom\SystemUserList.cs" />
