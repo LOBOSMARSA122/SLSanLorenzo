@@ -83,17 +83,17 @@ namespace Sigesoft.Node.WinClient.UI
             var dataSystemUser = BLL.Utils.GetProfessionalUltra(ref _operationResult, "");
 
             #region Configura cbOrganizationInvoice
-            UltraGridBand _ultraGridBandaEmployer = new UltraGridBand("Band 0", -1);
-            UltraGridColumn _ultraGridColumnaIDEmployer = new UltraGridColumn("Id");
-            UltraGridColumn _ultraGridColumnaDescripcionEmployer = new UltraGridColumn("Value1");
+            UltraGridBand ultraGridBandaEmployer = new UltraGridBand("Band 0", -1);
+            UltraGridColumn ultraGridColumnaIdEmployer = new UltraGridColumn("Id");
+            UltraGridColumn ultraGridColumnaDescripcionEmployer = new UltraGridColumn("Value1");
 
-            _ultraGridColumnaIDEmployer.Header.Caption = "Id";
-            _ultraGridColumnaDescripcionEmployer.Header.Caption = "Empresa";
-            _ultraGridColumnaIDEmployer.Width = 1;
-            _ultraGridColumnaDescripcionEmployer.Width = 300;
+            ultraGridColumnaIdEmployer.Header.Caption = @"Id";
+            ultraGridColumnaDescripcionEmployer.Header.Caption = @"Empresa";
+            ultraGridColumnaIdEmployer.Width = 1;
+            ultraGridColumnaDescripcionEmployer.Width = 300;
 
-            _ultraGridBandaEmployer.Columns.AddRange(new object[] { _ultraGridColumnaIDEmployer, _ultraGridColumnaDescripcionEmployer });
-            cbOrganizationInvoice.DisplayLayout.BandsSerializer.Add(_ultraGridBandaEmployer);
+            ultraGridBandaEmployer.Columns.AddRange(new object[] { ultraGridColumnaIdEmployer, ultraGridColumnaDescripcionEmployer });
+            cbOrganizationInvoice.DisplayLayout.BandsSerializer.Add(ultraGridBandaEmployer);
             cbOrganizationInvoice.DropDownStyle = UltraComboStyle.DropDownList;
             cbOrganizationInvoice.DropDownWidth = 330;
 
@@ -107,17 +107,17 @@ namespace Sigesoft.Node.WinClient.UI
             #endregion
 
             #region Configura cbOrganization
-            UltraGridBand _ultraGridBandaCustomer = new UltraGridBand("Band 0", -1);
-            UltraGridColumn _ultraGridColumnaIDCustomer = new UltraGridColumn("Id");
-            UltraGridColumn _ultraGridColumnaDescripcionCustomer = new UltraGridColumn("Value1");
+            UltraGridBand ultraGridBandaCustomer = new UltraGridBand("Band 0", -1);
+            UltraGridColumn ultraGridColumnaIdCustomer = new UltraGridColumn("Id");
+            UltraGridColumn ultraGridColumnaDescripcionCustomer = new UltraGridColumn("Value1");
 
-            _ultraGridColumnaIDCustomer.Header.Caption = "Id";
-            _ultraGridColumnaDescripcionCustomer.Header.Caption = "Empresa";
-            _ultraGridColumnaIDCustomer.Width = 1;
-            _ultraGridColumnaDescripcionCustomer.Width = 300;
+            ultraGridColumnaIdCustomer.Header.Caption = @"Id";
+            ultraGridColumnaDescripcionCustomer.Header.Caption = @"Empresa";
+            ultraGridColumnaIdCustomer.Width = 1;
+            ultraGridColumnaDescripcionCustomer.Width = 300;
 
-            _ultraGridBandaCustomer.Columns.AddRange(new object[] { _ultraGridColumnaIDCustomer, _ultraGridColumnaDescripcionCustomer });
-            cbOrganization.DisplayLayout.BandsSerializer.Add(_ultraGridBandaCustomer);
+            ultraGridBandaCustomer.Columns.AddRange(new object[] { ultraGridColumnaIdCustomer, ultraGridColumnaDescripcionCustomer });
+            cbOrganization.DisplayLayout.BandsSerializer.Add(ultraGridBandaCustomer);
             cbOrganization.DropDownStyle = UltraComboStyle.DropDownList;
             cbOrganization.DropDownWidth = 330;
 
@@ -131,17 +131,17 @@ namespace Sigesoft.Node.WinClient.UI
             #endregion
 
             #region Configura cbIntermediaryOrganization
-            UltraGridBand _ultraGridBandaIntermediaryOrganization = new UltraGridBand("Band 0", -1);
-            UltraGridColumn _ultraGridColumnaIDIntermediaryOrganization = new UltraGridColumn("Id");
-            UltraGridColumn _ultraGridColumnaDescripcionIntermediaryOrganization = new UltraGridColumn("Value1");
+            UltraGridBand ultraGridBandaIntermediaryOrganization = new UltraGridBand("Band 0", -1);
+            UltraGridColumn ultraGridColumnaIdIntermediaryOrganization = new UltraGridColumn("Id");
+            UltraGridColumn ultraGridColumnaDescripcionIntermediaryOrganization = new UltraGridColumn("Value1");
 
-            _ultraGridColumnaIDIntermediaryOrganization.Header.Caption = "Id";
-            _ultraGridColumnaDescripcionIntermediaryOrganization.Header.Caption = "Empresa";
-            _ultraGridColumnaIDIntermediaryOrganization.Width = 1;
-            _ultraGridColumnaDescripcionIntermediaryOrganization.Width = 300;
+            ultraGridColumnaIdIntermediaryOrganization.Header.Caption = @"Id";
+            ultraGridColumnaDescripcionIntermediaryOrganization.Header.Caption = @"Empresa";
+            ultraGridColumnaIdIntermediaryOrganization.Width = 1;
+            ultraGridColumnaDescripcionIntermediaryOrganization.Width = 300;
 
-            _ultraGridBandaIntermediaryOrganization.Columns.AddRange(new object[] { _ultraGridColumnaIDIntermediaryOrganization, _ultraGridColumnaDescripcionIntermediaryOrganization });
-            cbIntermediaryOrganization.DisplayLayout.BandsSerializer.Add(_ultraGridBandaIntermediaryOrganization);
+            ultraGridBandaIntermediaryOrganization.Columns.AddRange(new object[] { ultraGridColumnaIdIntermediaryOrganization, ultraGridColumnaDescripcionIntermediaryOrganization });
+            cbIntermediaryOrganization.DisplayLayout.BandsSerializer.Add(ultraGridBandaIntermediaryOrganization);
             cbIntermediaryOrganization.DropDownStyle = UltraComboStyle.DropDownList;
             cbIntermediaryOrganization.DropDownWidth = 330;
 
@@ -155,17 +155,17 @@ namespace Sigesoft.Node.WinClient.UI
             #endregion
 
             #region Configura cbCategory
-            UltraGridBand _ultraGridBandaCategory = new UltraGridBand("Band 0", -1);
-            UltraGridColumn _ultraGridColumnaIDCategory = new UltraGridColumn("Id");
-            UltraGridColumn _ultraGridColumnaDescripcionCategory = new UltraGridColumn("Value1");
+            UltraGridBand ultraGridBandaCategory = new UltraGridBand("Band 0", -1);
+            UltraGridColumn ultraGridColumnaIdCategory = new UltraGridColumn("Id");
+            UltraGridColumn ultraGridColumnaDescripcionCategory = new UltraGridColumn("Value1");
 
-            _ultraGridColumnaIDCategory.Header.Caption = "Id";
-            _ultraGridColumnaDescripcionCategory.Header.Caption = "Categoría";
-            _ultraGridColumnaIDCategory.Width = 1;
-            _ultraGridColumnaDescripcionCategory.Width = 300;
+            ultraGridColumnaIdCategory.Header.Caption = @"Id";
+            ultraGridColumnaDescripcionCategory.Header.Caption = @"Categoría";
+            ultraGridColumnaIdCategory.Width = 1;
+            ultraGridColumnaDescripcionCategory.Width = 300;
 
-            _ultraGridBandaCategory.Columns.AddRange(new object[] { _ultraGridColumnaIDCategory, _ultraGridColumnaDescripcionCategory });
-            cbCategory.DisplayLayout.BandsSerializer.Add(_ultraGridBandaCategory);
+            ultraGridBandaCategory.Columns.AddRange(new object[] { ultraGridColumnaIdCategory, ultraGridColumnaDescripcionCategory });
+            cbCategory.DisplayLayout.BandsSerializer.Add(ultraGridBandaCategory);
             cbCategory.DropDownStyle = UltraComboStyle.DropDownList;
             cbCategory.DropDownWidth = 330;
 
@@ -179,17 +179,17 @@ namespace Sigesoft.Node.WinClient.UI
             #endregion
 
             #region Configura cbSystemUser
-            UltraGridBand _ultraGridBandaSystemUser = new UltraGridBand("Band 0", -1);
-            UltraGridColumn _ultraGridColumnaIDSystemUser = new UltraGridColumn("Id");
-            UltraGridColumn _ultraGridColumnaDescripcionSystemUser = new UltraGridColumn("Value1");
+            UltraGridBand ultraGridBandaSystemUser = new UltraGridBand("Band 0", -1);
+            UltraGridColumn ultraGridColumnaIdSystemUser = new UltraGridColumn("Id");
+            UltraGridColumn ultraGridColumnaDescripcionSystemUser = new UltraGridColumn("Value1");
 
-            _ultraGridColumnaIDSystemUser.Header.Caption = "Id";
-            _ultraGridColumnaDescripcionSystemUser.Header.Caption = "System User";
-            _ultraGridColumnaIDSystemUser.Width = 1;
-            _ultraGridColumnaDescripcionSystemUser.Width = 300;
+            ultraGridColumnaIdSystemUser.Header.Caption = @"Id";
+            ultraGridColumnaDescripcionSystemUser.Header.Caption = @"System User";
+            ultraGridColumnaIdSystemUser.Width = 1;
+            ultraGridColumnaDescripcionSystemUser.Width = 300;
 
-            _ultraGridBandaSystemUser.Columns.AddRange(new object[] { _ultraGridColumnaIDSystemUser, _ultraGridColumnaDescripcionSystemUser });
-            cbSystemUser.DisplayLayout.BandsSerializer.Add(_ultraGridBandaSystemUser);
+            ultraGridBandaSystemUser.Columns.AddRange(new object[] { ultraGridColumnaIdSystemUser, ultraGridColumnaDescripcionSystemUser });
+            cbSystemUser.DisplayLayout.BandsSerializer.Add(ultraGridBandaSystemUser);
             cbSystemUser.DropDownStyle = UltraComboStyle.DropDownList;
             cbSystemUser.DropDownWidth = 330;
 
@@ -209,11 +209,11 @@ namespace Sigesoft.Node.WinClient.UI
             if (!ValidateRecords()) return;
 
             if (oSpecialistConfigurationBl.SaveChange(_list, Globals.ClientSession.GetAsList()))
-                MessageBox.Show("Se Actualizó correctamente", @"Registros Válidos", MessageBoxButtons.OK,
+                MessageBox.Show(@"Se Actualizó correctamente", @"Registros Válidos", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             else
             {
-                MessageBox.Show("No se actualizó", @"ERROR", MessageBoxButtons.OK,
+                MessageBox.Show(@"No se actualizó", @"ERROR", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
@@ -229,7 +229,7 @@ namespace Sigesoft.Node.WinClient.UI
             for (var i = 0; i < totalRecordsToValidate; i++)
             {
                 var record = _list[i];
-                var msm = ValidateCell(record.i_SystemUserId.ToString(), "i_SystemUserId");
+                var msm = ValidateCell(record.i_SystemUserId, "i_SystemUserId");
                 if (msm != "")
                 {
                     sbMessageValidation.Append("Registro " + (i + 1));
@@ -237,7 +237,7 @@ namespace Sigesoft.Node.WinClient.UI
                     sbMessageValidation.Append("\n");
                 }
 
-                msm = ValidateCell(record.i_CategoryId.ToString(), "i_CategoryId");
+                msm = ValidateCell(record.i_CategoryId, "i_CategoryId");
                 if (msm != "")
                 {
                     sbMessageValidation.Append("Registro " + (i + 1));
@@ -245,23 +245,31 @@ namespace Sigesoft.Node.WinClient.UI
                     sbMessageValidation.Append("\n");
                 }
 
-                msm = ValidateCell(record.v_EmployerOrganizationId, "v_EmployerOrganizationId");
-                if (msm != "")
-                {
-                    sbMessageValidation.Append("Registro " + (i + 1));
-                    sbMessageValidation.Append(": " + msm);
-                    sbMessageValidation.Append("\n");
-                }
+                //msm = ValidateCell(record.v_EmployerOrganizationId, "v_EmployerOrganizationId");
+                //if (msm != "")
+                //{
+                //    sbMessageValidation.Append("Registro " + (i + 1));
+                //    sbMessageValidation.Append(": " + msm);
+                //    sbMessageValidation.Append("\n");
+                //}
 
-                msm = ValidateCell(record.v_CustomerOrganizationId, "v_CustomerOrganizationId");
-                if (msm != "")
-                {
-                    sbMessageValidation.Append("Registro " + (i + 1));
-                    sbMessageValidation.Append(": " + msm);
-                    sbMessageValidation.Append("\n");
-                }
+                //msm = ValidateCell(record.v_CustomerOrganizationId, "v_CustomerOrganizationId");
+                //if (msm != "")
+                //{
+                //    sbMessageValidation.Append("Registro " + (i + 1));
+                //    sbMessageValidation.Append(": " + msm);
+                //    sbMessageValidation.Append("\n");
+                //}
 
-                msm = ValidateCell(record.v_WorkingOrganizationId, "v_WorkingOrganizationId");
+                //msm = ValidateCell(record.v_WorkingOrganizationId, "v_WorkingOrganizationId");
+                //if (msm != "")
+                //{
+                //    sbMessageValidation.Append("Registro " + (i + 1));
+                //    sbMessageValidation.Append(": " + msm);
+                //    sbMessageValidation.Append("\n");
+                //}
+
+                msm = ValidateCell(record.Price.ToString(), "Price");
                 if (msm != "")
                 {
                     sbMessageValidation.Append("Registro " + (i + 1));
@@ -280,31 +288,36 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var message = "";
             var valueLength = value.Length;
-            var Vvalue = value.ToString();
+            var vvalue = value;
             if (field == "i_SystemUserId")
             {
-                if (Vvalue == "-1")
+                if (vvalue == "-1")
                     message = "\"i_SystemUserId \" es invalido";
             }
             else if (field == "i_CategoryId")
             {
-                if (Vvalue == "-1")
+                if (vvalue == "-1")
                     message = "\"i_CategoryId \" es invalido";
             }
-            else if (field == "v_EmployerOrganizationId")
+            //else if (field == "v_EmployerOrganizationId")
+            //{
+            //    if (Vvalue == "-1")
+            //        message = "\"v_EmployerOrganizationId \" es invalido";
+            //}
+            //else if (field == "v_CustomerOrganizationId")
+            //{
+            //    if (Vvalue == "-1")
+            //        message = "\"v_CustomerOrganizationId \" es invalido";
+            //}
+            //else if (field == "v_WorkingOrganizationId")
+            //{
+            //    if (Vvalue == "-1")
+            //        message = "\"v_WorkingOrganizationId \" es invalido";
+            //}
+            else if (field == "Price")
             {
-                if (Vvalue == "-1")
-                    message = "\"v_EmployerOrganizationId \" es invalido";
-            }
-            else if (field == "v_CustomerOrganizationId")
-            {
-                if (Vvalue == "-1")
-                    message = "\"v_CustomerOrganizationId \" es invalido";
-            }
-            else if (field == "v_WorkingOrganizationId")
-            {
-                if (Vvalue == "-1")
-                    message = "\"v_WorkingOrganizationId \" es invalido";
+                if (valueLength == 0)
+                    message = "\"Price \" es invalido";
             }
 
             return message;
@@ -363,14 +376,17 @@ namespace Sigesoft.Node.WinClient.UI
                 if (e.Cell == null) return;
                 if (e.Cell.Column.Key != "Delete") return;
                 if (oSpecialistConfigurationBl.DeleteRow(medicoId))
+                {
+                    grdConfiguration.DataSource = oSpecialistConfigurationBl.LoadGrid();
                     MessageBox.Show(@"Se elimino correctamente", @"INFORMACIÓN", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
+                }
                 else
                     MessageBox.Show(@"Ocurrió un error al eliminar registro", @"ERROR", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
 
-                grdConfiguration.DataSource = oSpecialistConfigurationBl.LoadGrid();
+                
             }
             catch (Exception exception)
             {
