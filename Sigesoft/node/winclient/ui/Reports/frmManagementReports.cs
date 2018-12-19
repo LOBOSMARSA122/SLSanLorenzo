@@ -2916,7 +2916,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalMedicalAptitudeCertificate();
+                            rp = new Reports.crCertificadoDeAptitudEmpresarial();
                             rp.SetDataSource(ds1);
 
                             string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoRetiro").ToString();
@@ -3362,7 +3362,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalMedicalAptitudeCertificateRetiros();
+                            rp = new Reports.crCertificadoDeAptitudEmpresarial();
                             rp.SetDataSource(dsGetRepo);
                         }
                         else
@@ -3403,7 +3403,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalMedicalAptitudeCertificateRetiros();
+                            rp = new Reports.crCertificadoDeAptitudEmpresarial();
                             //rp.SetDataSource(dsGetRepo);
                             string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoEmp").ToString();
                             //rp = new Reports.crOccupationalMedicalAptitudeCertificate();
@@ -4428,7 +4428,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalRetirosSinDxSinFirma();
+                            rp = new Reports.crCertificadoDeAptitudEmpresarial();
                             //rp.SetDataSource(dsGetRepo);
                             string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoSinDX").ToString();
                             //rp = new Reports.crOccupationalMedicalAptitudeCertificate();

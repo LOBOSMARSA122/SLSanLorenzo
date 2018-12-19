@@ -4161,7 +4161,7 @@ namespace Sigesoft.Common
 
         public const string txt_AN_OI_125 = "N002-AUD00000070";
         public const string txt_AN_OI_250 = "N002-AUD00000071";
-        public const string txt_AN_OI_500 = "N002-AUD00000052";
+        public const string txt_AN_OI_500 = "N002-AUD00000072";
         public const string txt_AN_OI_1000 = "N002-AUD00000073";
         public const string txt_AN_OI_2000 = "N002-AUD00000074";
         public const string txt_AN_OI_3000 = "N002-AUD00000075";
