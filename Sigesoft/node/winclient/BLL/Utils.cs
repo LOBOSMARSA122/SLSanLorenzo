@@ -290,6 +290,46 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<GridKeyValueDTO> GetSystemParameterForComboTreeBoxUltra(ref OperationResult pobjOperationResult, int pintGroupId, string pstrSortExpression)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.systemparameter
+                    where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0
+                    select a;
+
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                else
+                {
+                    query = query.OrderBy("v_Value1");
+                }
+
+                var query2 = query.AsEnumerable()
+                    .Select(x => new GridKeyValueDTO
+                    {
+                        Id = x.i_ParameterId.ToString(),
+                        Value1 = x.v_Value1,
+                    }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+
         public static List<KeyValueDTOForTree> GetDataHierarchyForComboTreeBox(ref OperationResult pobjOperationResult, int pintGroupId, string pstrSortExpression)
         {
             //mon.IsActive = true;
@@ -907,7 +947,60 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<GridKeyValueDTO> GetJoinOrganizationAndLocationUltra(ref OperationResult pobjOperationResult, int pintNodeId)
+        {
+            //Devart.Data.PostgreSql.PgSqlMonitor mon = new Devart.Data.PostgreSql.PgSqlMonitor();
+            //mon.IsActive = true;
 
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from n in dbContext.node
+                             join a in dbContext.nodeorganizationlocationprofile on n.i_NodeId equals a.i_NodeId
+                             join J1 in dbContext.nodeorganizationprofile on new { a = a.i_NodeId, b = a.v_OrganizationId }
+                                                      equals new { a = J1.i_NodeId, b = J1.v_OrganizationId } into j1_join
+                             from J1 in j1_join.DefaultIfEmpty()
+                             join b in dbContext.organization on J1.v_OrganizationId equals b.v_OrganizationId
+                             join c in dbContext.location on a.v_LocationId equals c.v_LocationId
+                             where n.i_NodeId == pintNodeId &&
+                                   n.i_IsDeleted == 0 &&
+                                   a.i_IsDeleted == 0
+
+                             select new RestrictedWarehouseProfileList
+                             {
+                                 v_OrganizationName = b.v_Name,
+                                 v_LocationName = c.v_Name,
+                                 v_LocationId = c.v_LocationId,
+                                 v_OrganizationId = b.v_OrganizationId,
+                                 i_NodeId = J1.i_NodeId,
+                             }
+                          );
+
+                var q = from a in query.ToList()
+                        select new GridKeyValueDTO
+                        {
+                            Id = string.Format("{0}", a.v_OrganizationId),
+                            Value1 = string.Format("{0} ",
+                                     a.v_OrganizationName,
+                                     a.v_LocationName
+                                    )
+                        };
+
+                List<GridKeyValueDTO> KeyValueDTO = q.OrderBy(p => p.Value1).ToList();
+
+                pobjOperationResult.Success = 1;
+                return KeyValueDTO;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+        
         public static List<KeyValueDTO> GetJoinOrganization(ref OperationResult pobjOperationResult, int pintNodeId)
         {
             //Devart.Data.PostgreSql.PgSqlMonitor mon = new Devart.Data.PostgreSql.PgSqlMonitor();
@@ -1752,6 +1845,45 @@ namespace Sigesoft.Node.WinClient.BLL
                                 Id = x.i_SystemUserId.ToString(),
                                 Value1 = x.v_UserName
                             }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public static List<GridKeyValueDTO> GetProfessionalUltra(ref OperationResult pobjOperationResult, string pstrSortExpression)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.systemuser
+                    where a.i_IsDeleted == 0 && a.i_SystemUserTypeId == 1
+                    select a;
+
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                else
+                {
+                    query = query.OrderBy("v_UserName");
+                }
+
+                var query2 = query.AsEnumerable()
+                    .Select(x => new GridKeyValueDTO
+                    {
+                        Id = x.i_SystemUserId.ToString(),
+                        Value1 = x.v_UserName
+                    }).ToList();
 
                 pobjOperationResult.Success = 1;
                 return query2;

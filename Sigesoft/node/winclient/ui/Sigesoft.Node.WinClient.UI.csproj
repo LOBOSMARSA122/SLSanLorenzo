@@ -159,9 +159,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\ExternalLibraries\ScrapperReniecSunat.dll</HintPath>
     </Reference>
-    <Reference Include="Sigesoft.Server.WebClientAdmin.UI">
-      <HintPath>..\..\..\Server\WebClientAdmin\UI\obj\Debug\Sigesoft.Server.WebClientAdmin.UI.dll</HintPath>
-    </Reference>
     <Reference Include="SigPlusNET">
       <HintPath>..\..\..\..\ExternalLibraries\SigPlusNET.dll</HintPath>
     </Reference>
@@ -483,6 +480,12 @@
     </Compile>
     <Compile Include="FrmChangeGeso.Designer.cs">
       <DependentUpon>FrmChangeGeso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfiguracionPagoEspecialista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfiguracionPagoEspecialista.Designer.cs">
+      <DependentUpon>FrmConfiguracionPagoEspecialista.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConfigurationProtocols.cs">
       <SubType>Form</SubType>
@@ -1258,6 +1261,12 @@
     </Compile>
     <Compile Include="frmPacient.Designer.cs">
       <DependentUpon>frmPacient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPagoEspecialistaOcupacional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPagoEspecialistaOcupacional.Designer.cs">
+      <DependentUpon>FrmPagoEspecialistaOcupacional.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPopupArea.cs">
       <SubType>Form</SubType>
@@ -3430,6 +3439,7 @@
     <Compile Include="UserControls\ucHistorialGrupoFactor.Designer.cs">
       <DependentUpon>ucHistorialGrupoFactor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\GridKeyValueDTO.cs" />
     <Compile Include="Utils\Utils.cs" />
     <EmbeddedResource Include="Configuration\frmExternalUserEditSinProtocol.resx">
       <DependentUpon>frmExternalUserEditSinProtocol.cs</DependentUpon>
@@ -3466,6 +3476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChangeGeso.resx">
       <DependentUpon>FrmChangeGeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfiguracionPagoEspecialista.resx">
+      <DependentUpon>FrmConfiguracionPagoEspecialista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfigurationProtocols.resx">
       <DependentUpon>FrmConfigurationProtocols.cs</DependentUpon>
@@ -3644,6 +3657,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPacient.resx">
       <DependentUpon>frmPacient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPagoEspecialistaOcupacional.resx">
+      <DependentUpon>FrmPagoEspecialistaOcupacional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPopupArea.resx">
       <DependentUpon>frmPopupArea.cs</DependentUpon>
@@ -5948,6 +5964,10 @@
     <ProjectReference Include="..\..\..\Common\Sigesoft.Common.csproj">
       <Project>{83b4875b-6b20-49f1-891d-b1f379760899}</Project>
       <Name>Sigesoft.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Server\WebClientAdmin\BE\Sigesoft.Server.WebClientAdmin.BE.csproj">
+      <Project>{B78BC42C-F0B2-4842-8C13-8D0DF6DBE65D}</Project>
+      <Name>Sigesoft.Server.WebClientAdmin.BE</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Sigesoft.Api\Sigesoft.Api.csproj">
       <Project>{2ffca4fa-7bc4-41fb-814d-604929746b7d}</Project>

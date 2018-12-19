@@ -5,7 +5,9 @@ using System.Text;
 using System.Configuration;
 using Sigesoft.Common;
 using System.Windows.Forms;
+using Infragistics.Win.UltraWinEditors;
 using Infragistics.Win.UltraWinGrid;
+using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.UI.Operations;
 
 namespace Sigesoft.Node.WinClient.UI
@@ -205,6 +207,92 @@ namespace Sigesoft.Node.WinClient.UI
             return nodes;
         }
 
+        public static void LoadUltraComboEditorList(UltraComboEditor prmDropDownList, string prmDataTextField = null, string prmDataValueField = null, List<KeyValueDTO> prmDataSource = null, DropDownListAction? prmDropDownListAction = null)
+        {
+
+            prmDropDownList.DataSource = null;
+            prmDropDownList.Items.Clear();
+            KeyValueDTO firstItem = null;
+            var priorFirstItem = prmDataSource.FirstOrDefault(p => p.Id == "-1");
+
+            if (prmDropDownListAction != null)
+            {
+                switch (prmDropDownListAction)
+                {
+                    case DropDownListAction.All:
+                        firstItem = new KeyValueDTO() { Id = Constants.AllValue, Value1 = Constants.All };
+                        break;
+                    case DropDownListAction.Select:
+                        firstItem = new KeyValueDTO() { Id = Constants.SelectValue, Value1 = Constants.Select };
+                        break;
+                }
+            }
+
+            if (priorFirstItem == null && firstItem != null)
+            {
+                prmDataSource.Insert(0, firstItem);
+            }
+
+            if (prmDataSource != null)
+            {
+                if (prmDataSource.Count != 0)
+                {
+                    prmDropDownList.DisplayMember = prmDataTextField;
+                    prmDropDownList.ValueMember = prmDataValueField;
+                    prmDropDownList.DataSource = prmDataSource;
+                }
+            }
+
+        }
+
+        public static void LoadUltraComboList(UltraCombo prmDropDownList, string prmDataTextField = null, string prmDataValueField = null, List<GridKeyValueDTO> prmDataSource = null, DropDownListAction? prmDropDownListAction = null)
+        {
+            GridKeyValueDTO firstItem = null;
+            var priorFirstItem = prmDataSource.FirstOrDefault(p => p.Id == "-1");
+
+            if (prmDropDownListAction != null)
+            {
+                switch (prmDropDownListAction)
+                {
+                    case DropDownListAction.All:
+                        if (prmDataTextField == "Value1")
+                        {
+                            firstItem = new GridKeyValueDTO() { Id = Constants.AllValue, Value1 = Constants.All };
+                        }
+                        //else if (prmDataTextField == "Value2")
+                        //{
+                        //    firstItem = new GridKeyValueDTO() { Id = Constants.AllValue, Value2 = Constants.All };
+                        //}
+                        break;
+                    case DropDownListAction.Select:
+                        if (prmDataTextField == "Value1")
+                        {
+                            firstItem = new GridKeyValueDTO() { Id = Constants.SelectValue, Value1 = Constants.Select };
+                        }
+                        //else if (prmDataTextField == "Value2")
+                        //{
+                        //    firstItem = new GridKeyValueDTO() { Id = Constants.SelectValue, Value2 = Constants.Select };
+                        //}
+
+                        break;
+                }
+            }
+            if (priorFirstItem == null && firstItem != null)
+            {
+                prmDataSource.Insert(0, firstItem);
+            }
+
+            if (prmDataSource != null)
+            {
+                if (prmDataSource.Count != 0)
+                {
+                    prmDropDownList.DataSource = prmDataSource;
+                    prmDropDownList.DisplayMember = prmDataTextField;
+                    prmDropDownList.ValueMember = prmDataValueField;
+                }
+            }
+        }
+       
 
         public class CustomizedToolTip
         {

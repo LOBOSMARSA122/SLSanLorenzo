@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 using Infragistics.Win;
 using Infragistics.Win.UltraWinGrid;
@@ -23,11 +22,15 @@ namespace Sigesoft.Node.WinClient.UI
         private ProtocolBL _protocolBl = new ProtocolBL();
         private MedicalExamBL _medicalExamBl = new MedicalExamBL();
         private DynamicScheduleBl _dynamicScheduleBl = new DynamicScheduleBl();
-        private GroupOccupationBL _groupOccupationBl = new GroupOccupationBL();
+        //private GroupOccupationBL _groupOccupationBl = new GroupOccupationBL();
         private CalendarBL _calendarBl = new CalendarBL();
         private OperationResult _operationResult = new OperationResult();
         private readonly Random _rnd = new Random();
         private List<ScheduleForProcess> _scheduleForProcess;
+        private List<IdsPersonAndProtocol> _listIdsPersonAndProtocols = new List<IdsPersonAndProtocol>();
+        private ProtocolsAndWorkers _protocolsAndWorkers = new ProtocolsAndWorkers();
+        private List<protocolDto> _protocolDtos = new List<protocolDto>();
+        private List<personDto> _personDtos = new List<personDto>();
         #endregion
 
         public FrmDynamicSchedule()
@@ -265,7 +268,7 @@ namespace Sigesoft.Node.WinClient.UI
                     sbMessageValidation.Append("\n");
                 }
 
-                msm = ValidateCell(record.Birthdate.ToString(), "Birthdate");
+                msm = ValidateCell(record.Birthdate.ToString("dd/MM/yyyy"), "Birthdate");
                 if (msm != "")
                 {
                     sbMessageValidation.Append("Registro " + (i + 1));
@@ -288,7 +291,15 @@ namespace Sigesoft.Node.WinClient.UI
                     sbMessageValidation.Append(": " + msm);
                     sbMessageValidation.Append("\n");
                 }
-                Thread.Sleep(2000);
+
+                msm = ValidateCell(record.GesoId, "GesoId");
+                if (msm != "")
+                {
+                    sbMessageValidation.Append("Registro " + (i + 1));
+                    sbMessageValidation.Append(": " + msm);
+                    sbMessageValidation.Append("\n");
+                }
+
             }
             ultraStatusBarSchedule.Panels["Validating"].Visible = false;
 
@@ -337,6 +348,11 @@ namespace Sigesoft.Node.WinClient.UI
                 if (valueLength == 0)
                     message = "\"Puesto Actual \" es invalido";
             }
+            else if (field == "GesoId")
+            {
+                if (valueLength < 16)
+                    message = "\"GesoId \" es Invalida. Debe Cambiar GESO";
+            }
 
             return message;
 
@@ -348,49 +364,72 @@ namespace Sigesoft.Node.WinClient.UI
 
             ultraStatusBarSchedule.Panels["Processing"].Visible = true;
 
-            var protocolsBd = _protocolBl.GetAllProtocol();
-            var componentsBd = _medicalExamBl.GetAllComponent();
-
             for (var i = 0; i < totalRecordsProcess; i++)
             {
                 ultraStatusBarSchedule.Panels["Processing"].ProgressBarInfo.Value = i;
                 ultraStatusBarSchedule.Refresh();
 
-                if (!Process(GetPersonId(_scheduleForProcess[i]), GetProtocolId(_scheduleForProcess[i], protocolsBd, componentsBd))) return false;
+                var personId = GetPersonId(_scheduleForProcess[i]);
+                var protocolId = GetProtocolId(_scheduleForProcess[i]);
+                _listIdsPersonAndProtocols.Add(new IdsPersonAndProtocol {PersonId = personId, ProtocolId = protocolId});
 
-                Thread.Sleep(100);
+                if (!Process(personId, protocolId)) return false;
             }
 
-            ultraStatusBarSchedule.Panels["Processing"].Visible = false;
-            return true;
-        }
+            _protocolsAndWorkers.Protocols= _protocolDtos;
+            _protocolsAndWorkers.Workers = _personDtos;
 
+            var frm = new FrmConfigurationProtocols(_protocolsAndWorkers);
+            frm.ShowDialog();
+
+            ultraStatusBarSchedule.Panels["Processing"].Visible = false;
+            return frm.DialogResult == DialogResult.OK;
+        }
+        
         private bool Process(string personId, string protocolId)
         {
-            Schedule(personId, protocolId);
+            try
+            {
+                var oprotocolDto = _protocolBl.GetProtocol(ref _operationResult, protocolId);
+                var opersonDto = _pacientBl.GetPerson(ref _operationResult, personId);
+                
+                _protocolDtos.Add(oprotocolDto);
+                _personDtos.Add(opersonDto);
 
-            return true;
+                return true;
+            }
+            catch (Exception )
+            {
+                return false;
+            }
+            
         }
 
-        private void Schedule(string personId, string protocolId)
+        private void Schedule(List<IdsPersonAndProtocol> list)
         {
-            var objCalendarDto = new calendarDto();
-            objCalendarDto.v_PersonId = personId;
-            objCalendarDto.d_DateTimeCalendar = dtpCalendarDate.Value;
-            objCalendarDto.i_ServiceTypeId = (int)ServiceType.Empresarial;
-            objCalendarDto.i_CalendarStatusId = (int) CalendarStatus.Agendado;
-            objCalendarDto.i_ServiceId = (int)MasterService.Eso;
-            objCalendarDto.v_ProtocolId = protocolId;
-            objCalendarDto.i_NewContinuationId = 1;
-            objCalendarDto.i_LineStatusId = (int)LineStatus.EnCircuito;
-            objCalendarDto.i_IsVipId = (int)SiNo.NO;
+            foreach (var item in list)
+            {
+                var objCalendarDto = new calendarDto();
+                objCalendarDto.v_PersonId = item.PersonId;
+                objCalendarDto.d_DateTimeCalendar = dtpCalendarDate.Value;
+                objCalendarDto.i_ServiceTypeId = (int)ServiceType.Empresarial;
+                objCalendarDto.i_CalendarStatusId = (int)CalendarStatus.Agendado;
+                objCalendarDto.i_ServiceId = (int)MasterService.Eso;
+                objCalendarDto.v_ProtocolId = item.ProtocolId;
+                objCalendarDto.i_NewContinuationId = 1;
+                objCalendarDto.i_LineStatusId = (int)LineStatus.EnCircuito;
+                objCalendarDto.i_IsVipId = (int)SiNo.NO;
 
-            _calendarBl.AddShedule(ref _operationResult, objCalendarDto, Globals.ClientSession.GetAsList(), protocolId, personId, (int)MasterService.Eso, "Nuevo");
+                _calendarBl.AddShedule(ref _operationResult, objCalendarDto, Globals.ClientSession.GetAsList(), item.ProtocolId, item.PersonId, (int)MasterService.Eso, "Nuevo");
+            }
 
         }
 
-        private string GetProtocolId(ScheduleForProcess record, List<ProtocolProcess> protocolsBd,List<ComponentList> componentsBd)
+        private string GetProtocolId(ScheduleForProcess record)
         {
+            var componentsBd = _medicalExamBl.GetAllComponent();
+            var protocolsBd = _protocolBl.GetAllProtocol();
+
             var protocolId = ProtocolExist(record, protocolsBd);
 
             if (string.IsNullOrEmpty(protocolId))
@@ -407,18 +446,18 @@ namespace Sigesoft.Node.WinClient.UI
             var organizationInvoiceIds = cbOrganizationInvoice.SelectedValue.ToString().Split('|');
             var organizationIntermediaryIds = cbIntermediaryOrganization.SelectedValue.ToString().Split('|');
 
-            oprotocolDto.v_Name = "CREADO AUTOMÁTICAMENTE" + DateTime.Now.ToString("hh.mm.ss.ffffff");
+            oprotocolDto.v_Name = "&&&&" + CreateProtocolName(record.Geso);
             oprotocolDto.v_EmployerOrganizationId = organizationIds[0];
             oprotocolDto.v_EmployerLocationId = organizationIds[1];
             oprotocolDto.i_EsoTypeId = int.Parse(cbEsoType.SelectedValue.ToString());
-            oprotocolDto.v_GroupOccupationId = GetGesoId(organizationInvoiceIds[1]);
+            oprotocolDto.v_GroupOccupationId = record.GesoId;// GetGesoId(organizationInvoiceIds[1]);
             oprotocolDto.v_CustomerOrganizationId = organizationInvoiceIds[0];
             oprotocolDto.v_CustomerLocationId = organizationInvoiceIds[1];
             oprotocolDto.v_WorkingOrganizationId = organizationIntermediaryIds[0];
             oprotocolDto.v_WorkingLocationId = cbIntermediaryOrganization.SelectedValue.ToString() != "-1" ? organizationIntermediaryIds[1] : "-1";
-            oprotocolDto.i_MasterServiceId = (int)ServiceType.Empresarial;
+            oprotocolDto.i_MasterServiceId = (int)MasterService.Eso;
             oprotocolDto.v_CostCenter = "";
-            oprotocolDto.i_MasterServiceTypeId = (int)MasterService.Eso;
+            oprotocolDto.i_MasterServiceTypeId = (int)ServiceType.Empresarial;
             oprotocolDto.i_HasVigency = Convert.ToInt32(true);
             oprotocolDto.i_ValidInDays = null;
             oprotocolDto.i_IsActive = Convert.ToInt32(true);
@@ -448,10 +487,32 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
-        private string GetGesoId(string locationId)
+        private string CreateProtocolName(string gesoName)
         {
-           return _groupOccupationBl.GetFirstGroupOccupationByLocationId(ref _operationResult, locationId).v_GroupOccupationId;
+            var organizationInvoice = cbOrganizationInvoice.SelectedValue.ToString();
+            var organization = cbOrganization.SelectedValue.ToString();
+            var intermediaryOrganization = cbIntermediaryOrganization.SelectedValue.ToString();
+
+            if (organizationInvoice == organization && organizationInvoice == intermediaryOrganization)
+            {
+                var invoiceName = cbOrganizationInvoice.Text.Split('/');
+
+                return invoiceName[0] + " - " + cbEsoType.Text + " - " + gesoName;
+            }
+            else
+            {
+                var invoiceName = cbOrganizationInvoice.Text.Split('/');
+                var organizationName = cbOrganization.Text.Split('/');
+
+                return invoiceName[0] + " - " + cbEsoType.Text + " - " + gesoName + " - " + organizationName[0];
+            }
+
         }
+
+        //private string GetGesoId(string locationId)
+        //{
+        //   return _groupOccupationBl.GetFirstGroupOccupationByLocationId(ref _operationResult, locationId).v_GroupOccupationId;
+        //}
 
         private string ProtocolExist(ScheduleForProcess record, List<ProtocolProcess> protocolsBd)
         {
@@ -501,8 +562,15 @@ namespace Sigesoft.Node.WinClient.UI
 
         private string GetPersonId(ScheduleForProcess record)
         {
-            var oPersonDto =  _pacientBl.GetPersonByNroDocument(ref _operationResult, record.NroDocument);
-            return oPersonDto != null ? oPersonDto.v_PersonId : _pacientBl.AddPacient(ref _operationResult, PopulatePeronsDto(record), Globals.ClientSession.GetAsList());
+            var oPersonDto = _pacientBl.GetPersonByNroDocument(ref _operationResult, record.NroDocument);
+            if (oPersonDto != null)
+            {
+                oPersonDto.v_CurrentOccupation = record.CurrentOccupation;
+                _pacientBl.UpdatePacient(ref _operationResult, oPersonDto, Globals.ClientSession.GetAsList(), oPersonDto.v_DocNumber, oPersonDto.v_DocNumber);
+                return oPersonDto.v_PersonId;
+            }
+
+            return  _pacientBl.AddPacient(ref _operationResult, PopulatePeronsDto(record), Globals.ClientSession.GetAsList());
         }
 
         private personDto PopulatePeronsDto(ScheduleForProcess record)
@@ -560,7 +628,19 @@ namespace Sigesoft.Node.WinClient.UI
 
             if (!ValidateRecords()) return;
             if (ProcessRecords())
-                MessageBox.Show(@"fin");
+                Schedule();
+                MessageBox.Show(@"Se agendó correctamente");
+
+            _scheduleForProcess = null;
+            _listIdsPersonAndProtocols = null;
+            grdSchedule.DataSource = new BindingList<DynamicSchedule>();
+        }
+
+        private void Schedule()
+        {
+            ultraStatusBarSchedule.Panels["scheduling"].Visible = true;
+            Schedule(_listIdsPersonAndProtocols);
+            ultraStatusBarSchedule.Panels["scheduling"].Visible = false;
         }
         
         private void ReadRecords()
@@ -605,6 +685,14 @@ namespace Sigesoft.Node.WinClient.UI
                     else if (columnKey == "CurrentOccupation")
                     {
                         oScheduleForProcess.CurrentOccupation = cell.Value.ToString();
+                    }
+                    else if (columnKey == "GesoId")
+                    {
+                        oScheduleForProcess.GesoId = cell.Value.ToString();
+                    }
+                    else if (columnKey == "Geso")
+                    {
+                        oScheduleForProcess.Geso = cell.Value.ToString();
                     }
                     else if (columnKey == "Select" || columnKey == "Clone")
                     {

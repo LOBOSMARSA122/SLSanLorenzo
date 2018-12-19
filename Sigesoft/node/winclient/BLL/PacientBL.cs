@@ -319,6 +319,33 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        //public personDto GetPacientByNroDocument(ref OperationResult pobjOperationResult, string pstNroDocument)
+        //{
+        //    //mon.IsActive = true;
+        //    try
+        //    {
+        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //        personDto objDtoEntity = null;
+
+        //        var objEntity = (from a in dbContext.pacient
+        //                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+        //            where b.v_DocNumber == pstNroDocument && a.i_IsDeleted == 0 && b.i_IsDeleted == 0
+        //            select a).FirstOrDefault();
+
+        //        if (objEntity != null)
+        //            objDtoEntity = personAssembler.ToDTO(objEntity);
+
+        //        pobjOperationResult.Success = 1;
+        //        return objDtoEntity;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        pobjOperationResult.Success = 0;
+        //        pobjOperationResult.ExceptionMessage = ex.Message;
+        //        return null;
+        //    }
+        //}
+
         //public person_oldDto GetPersonByNroDocument_OLD(ref OperationResult pobjOperationResult, string pstNroDocument)
         //{
         //    //mon.IsActive = true;
