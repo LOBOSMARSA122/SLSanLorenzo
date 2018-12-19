@@ -81,6 +81,7 @@
     <Compile Include="OccupationBL.cs" />
     <Compile Include="OrganizationBL.cs" />
     <Compile Include="PacientBL.cs" />
+    <Compile Include="PagoEspecialistaOcupacionalBl.cs" />
     <Compile Include="PlanAtencionIntegralBL.cs" />
     <Compile Include="PlanIntegralBL.cs" />
     <Compile Include="ProblemaBL.cs" />

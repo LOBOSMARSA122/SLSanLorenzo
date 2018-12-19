@@ -87,6 +87,7 @@
     <Compile Include="Custom\MedicoList.cs" />
     <Compile Include="Custom\MedicoTratanteAtenciones.cs" />
     <Compile Include="Custom\Ninioo.cs" />
+    <Compile Include="Custom\PagoEspecialistaOcupacional.cs" />
     <Compile Include="Custom\PagosComisiones.cs" />
     <Compile Include="Custom\PlanesDeVida.cs" />
     <Compile Include="Custom\PlanList.cs" />

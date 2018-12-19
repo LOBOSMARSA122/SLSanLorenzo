@@ -103,7 +103,7 @@ namespace Sigesoft.Node.WinClient.UI
                 dataListOrganization,
                 DropDownListAction.All);
 
-            e.Layout.Bands[0].Columns["v_CustomerOrganizationId"].ValueList = cbOrganizationInvoice;
+            e.Layout.Bands[0].Columns["v_EmployerOrganizationId"].ValueList = cbOrganizationInvoice;
             #endregion
 
             #region Configura cbOrganization
@@ -127,7 +127,7 @@ namespace Sigesoft.Node.WinClient.UI
                 dataListOrganization1,
                 DropDownListAction.All);
 
-            e.Layout.Bands[0].Columns["v_EmployerOrganizationId"].ValueList = cbOrganization;
+            e.Layout.Bands[0].Columns["v_CustomerOrganizationId"].ValueList = cbOrganization;
             #endregion
 
             #region Configura cbIntermediaryOrganization
@@ -323,7 +323,6 @@ namespace Sigesoft.Node.WinClient.UI
             return message;
 
         }
-
 
         private void ReadRecords()
         {

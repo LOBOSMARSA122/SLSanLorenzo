@@ -1262,6 +1262,12 @@
     <Compile Include="frmPacient.Designer.cs">
       <DependentUpon>frmPacient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPagoEspecialistaOcupacional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPagoEspecialistaOcupacional.Designer.cs">
+      <DependentUpon>FrmPagoEspecialistaOcupacional.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPopupArea.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3645,6 +3651,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPacient.resx">
       <DependentUpon>frmPacient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPagoEspecialistaOcupacional.resx">
+      <DependentUpon>FrmPagoEspecialistaOcupacional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPopupArea.resx">
       <DependentUpon>frmPopupArea.cs</DependentUpon>
