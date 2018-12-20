@@ -119,7 +119,7 @@ namespace NetPdf
                 enteros.Add(0);
                 //if (liq.detalle.All(p=> p.d_Debe != 0))
                 //{
-                    cell = new PdfPCell(new Phrase(liq.v_OrganizationName, fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                    cell = new PdfPCell(new Phrase(liq.v_OrganizationName, fontColumnValueBold)) {BackgroundColor = BaseColor.GRAY , Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
                     cells.Add(cell);
                     cell = new PdfPCell(new Phrase("PERS. REF.", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
                     cells.Add(cell);

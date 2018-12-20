@@ -124,10 +124,27 @@ namespace Sigesoft.Node.WinClient.UI
 	                        }
                         }
                     }
+                    //deudores = deudores.OrderBy(o => o).ToList();
+
+                    List<string> nombres_Empresa = new List<string>();
+                    foreach (var ruc_1 in deudores)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc_1);
+                        nombres_Empresa.Add(empresa.v_Name);
+                    }
+
+                    nombres_Empresa = nombres_Empresa.OrderBy(o => o).ToList();
+                    
+                    List<string> rucs = new List<string>();
+                    foreach (var item in nombres_Empresa)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, item);
+                        rucs.Add(empresa.v_IdentificationNumber);
+                    }
 
                     List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
-                   
-                    foreach (var ruc in deudores)
+
+                    foreach (var ruc in rucs)
                     {
                         //var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, ruc);
                         var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc);
