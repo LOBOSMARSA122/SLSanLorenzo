@@ -50,6 +50,7 @@
     <Compile Include="Custom\Adolescente.cs" />
     <Compile Include="Custom\Adulto.cs" />
     <Compile Include="Custom\AdultoMayor.cs" />
+    <Compile Include="Custom\ConsultaGerencia.cs" />
     <Compile Include="Custom\DynamicSchedule.cs" />
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Custom\FacturaCobranza.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
     <Compile Include="Custom\AtencionNinio.cs" />
+    <Compile Include="Custom\GerenciaTipoPago.cs" />
     <Compile Include="Custom\GridKeyValueDTO.cs" />
     <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
@@ -445,6 +447,7 @@
     <Compile Include="Generated\obtenerproductoResultDto.cs" />
     <Compile Include="Generated\obtenerpreciotarifarioResultDto.cs" />
     <Compile Include="Generated\obtenernetoporcobrarResultDto.cs" />
+    <Compile Include="Generated\gerenciatipopagoResultDto.cs" />
     <Compile Include="Generated\facturadeudoraResultDto.cs" />
     <Compile Include="IRastreable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

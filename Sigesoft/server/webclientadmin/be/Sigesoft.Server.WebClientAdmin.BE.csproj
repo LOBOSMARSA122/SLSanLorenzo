@@ -58,6 +58,7 @@
     <Compile Include="Custom\DeploymentFileList.cs" />
     <Compile Include="Custom\DiagnosticRepositoryList.cs" />
     <Compile Include="Custom\FamilyMedicalAntecedentsList.cs" />
+    <Compile Include="Custom\GerenciaTreeTipoPago.cs" />
     <Compile Include="Custom\HistoryList.cs" />
     <Compile Include="Custom\ListConfDx.cs" />
     <Compile Include="Custom\ListOrgano.cs" />

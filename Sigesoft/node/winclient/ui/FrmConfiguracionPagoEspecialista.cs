@@ -13,14 +13,16 @@ namespace Sigesoft.Node.WinClient.UI
 {
     public partial class FrmConfiguracionPagoEspecialista : Form
     {
+        #region Declarations
         private OperationResult _operationResult = new OperationResult();
-        private UltraCombo cbOrganizationInvoice = new UltraCombo(); 
+        private UltraCombo cbOrganizationInvoice = new UltraCombo();
         private UltraCombo cbOrganization = new UltraCombo();
         private UltraCombo cbIntermediaryOrganization = new UltraCombo();
         private UltraCombo cbCategory = new UltraCombo();
         private UltraCombo cbSystemUser = new UltraCombo();
         private SpecialistConfigurationBl oSpecialistConfigurationBl = new SpecialistConfigurationBl();
         private List<SpecialistConfiguration> _list;
+        #endregion
         
         public FrmConfiguracionPagoEspecialista()
         {

@@ -102,7 +102,9 @@
     <Reference Include="Infragistics4.Win.Misc.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Infragistics4.Win.SupportDialogs.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinCalcManager.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v13.1.FormulaBuilder, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.UltraWinDataSource.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -121,6 +123,7 @@
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinListView.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.UltraWinStatusBar.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -1363,6 +1366,30 @@
     </Compile>
     <Compile Include="frmUsuariosExternos.Designer.cs">
       <DependentUpon>frmUsuariosExternos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gerencia\FrmCampanias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerencia\FrmCampanias.Designer.cs">
+      <DependentUpon>FrmCampanias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gerencia\FrmCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerencia\FrmCredito.Designer.cs">
+      <DependentUpon>FrmCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gerencia\FrmManagementReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerencia\FrmManagementReports.Designer.cs">
+      <DependentUpon>FrmManagementReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gerencia\FrmTipoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerencia\FrmTipoPago.Designer.cs">
+      <DependentUpon>FrmTipoPago.cs</DependentUpon>
     </Compile>
     <Compile Include="History\frmOtroEPP.cs">
       <SubType>Form</SubType>
@@ -3708,6 +3735,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsuariosExternos.resx">
       <DependentUpon>frmUsuariosExternos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\FrmCampanias.resx">
+      <DependentUpon>FrmCampanias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\FrmManagementReports.resx">
+      <DependentUpon>FrmManagementReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\FrmTipoPago.resx">
+      <DependentUpon>FrmTipoPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History\frmOtroEPP.resx">
       <DependentUpon>frmOtroEPP.cs</DependentUpon>
@@ -6058,9 +6094,13 @@
     <Content Include="Backgrounds\FOTO-20.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\user_home.png" />
     <None Include="Resources\alta-medica-400x400-1.png" />
     <None Include="Resources\alta-medica-400x400-2.png" />
     <None Include="Resources\alta-medica-400x400-3.png" />
+    <None Include="Resources\calendar_view_week.png" />
+    <None Include="Resources\chart_organisation.png" />
+    <None Include="Resources\creditcards.png" />
     <Content Include="Resources\cuadradoazul.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -6070,6 +6110,7 @@
     <None Include="Resources\repor_3.png" />
     <None Include="Resources\repor_4.png" />
     <None Include="Resources\repor_41.png" />
+    <None Include="Resources\money.png" />
     <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -6410,9 +6451,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\chart_pie.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\chart_organisation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\chart_bar.png">

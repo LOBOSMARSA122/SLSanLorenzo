@@ -31947,7 +31947,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.i_IsFac != 2
-                                //&& A.i_ServiceStatusId == 3
+                                && A.i_ServiceStatusId == 3
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
