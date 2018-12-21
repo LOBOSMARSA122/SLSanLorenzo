@@ -371,5 +371,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string VLDL { get; set; }
         public string CoeficienteIntelectual { get; set; } //goldfields
 
+        public string Mina { get; set; }
+
     }
 }

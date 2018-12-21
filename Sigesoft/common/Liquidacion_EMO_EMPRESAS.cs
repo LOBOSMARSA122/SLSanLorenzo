@@ -168,7 +168,7 @@ namespace NetPdf
 
                             int dias_mora = 0;
                             DateTime venc;
-                            if (liq.d_FechaVencimiento != null)
+                            if (item.FechaVencimiento != null)
                             {
                                 venc = item.FechaVencimiento.Value;
                             }
