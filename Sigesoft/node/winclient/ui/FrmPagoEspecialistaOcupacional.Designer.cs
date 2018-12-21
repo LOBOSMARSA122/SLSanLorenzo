@@ -59,10 +59,10 @@
             this.dtpDateTimeStar = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTotalPagar = new System.Windows.Forms.TextBox();
             this.btnPay = new System.Windows.Forms.Button();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.txtTotalPagar = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -213,6 +213,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(374, 386);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 114;
+            this.label4.Text = "Total a Pagar";
+            // 
+            // txtTotalPagar
+            // 
+            this.txtTotalPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalPagar.Location = new System.Drawing.Point(458, 382);
+            this.txtTotalPagar.Name = "txtTotalPagar";
+            this.txtTotalPagar.ReadOnly = true;
+            this.txtTotalPagar.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalPagar.TabIndex = 113;
+            this.txtTotalPagar.Text = "0";
+            // 
             // btnPay
             // 
             this.btnPay.BackColor = System.Drawing.SystemColors.Control;
@@ -246,8 +269,11 @@
             this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn1.Header.VisiblePosition = 1;
             ultraGridColumn2.Header.VisiblePosition = 2;
+            ultraGridColumn2.Width = 143;
             ultraGridColumn6.Header.VisiblePosition = 3;
+            ultraGridColumn6.Width = 137;
             ultraGridColumn7.Header.VisiblePosition = 4;
+            ultraGridColumn7.Width = 146;
             ultraGridColumn8.Header.VisiblePosition = 5;
             ultraGridColumn9.Header.VisiblePosition = 6;
             ultraGridColumn17.Header.VisiblePosition = 7;
@@ -264,9 +290,13 @@
             ultraGridColumn9,
             ultraGridColumn17,
             ultraGridColumn3});
+            ultraGridColumn18.ColSpan = ((short)(2));
             ultraGridColumn18.Header.VisiblePosition = 0;
-            ultraGridColumn18.Width = 17;
+            ultraGridColumn18.Width = 116;
+            ultraGridColumn19.ColSpan = ((short)(2));
             ultraGridColumn19.Header.VisiblePosition = 1;
+            ultraGridColumn19.Width = 280;
+            ultraGridColumn24.ColSpan = ((short)(2));
             ultraGridColumn24.Header.VisiblePosition = 2;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn18,
@@ -328,29 +358,6 @@
             this.grdData.Size = new System.Drawing.Size(800, 360);
             this.grdData.TabIndex = 45;
             this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
-            // 
-            // txtTotalPagar
-            // 
-            this.txtTotalPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalPagar.Location = new System.Drawing.Point(458, 382);
-            this.txtTotalPagar.Name = "txtTotalPagar";
-            this.txtTotalPagar.ReadOnly = true;
-            this.txtTotalPagar.Size = new System.Drawing.Size(100, 20);
-            this.txtTotalPagar.TabIndex = 113;
-            this.txtTotalPagar.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(374, 386);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
-            this.label4.TabIndex = 114;
-            this.label4.Text = "Total a Pagar";
             // 
             // FrmPagoEspecialistaOcupacional
             // 
