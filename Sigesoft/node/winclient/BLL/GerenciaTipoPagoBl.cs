@@ -74,13 +74,15 @@ namespace Sigesoft.Node.WinClient.BLL
                     oEmpresa.TipoPago = objTipo.CondicionPago;
                     oEmpresa.Cantidad = data.FindAll(p => p.Empresa == objEmpresa.Empresa && p.IdCondicionPago == objTipo.IdCondicionPago).Count;
                     oEmpresa.EmpresaNombre = objEmpresa.Empresa;
-                    var importeAgrupadoTipoEmpresa = data.GroupBy(p => p.IdCondicionPago == objTipo.IdCondicionPago && p.Comprobante == objEmpresa.Empresa).Select(s => s.First()).ToList();
+
+                    var xx = data.ToList().FindAll(p => p.Empresa == objEmpresa.Empresa && p.IdCondicionPago == objTipo.IdCondicionPago);
+                    var importeAgrupadoTipoEmpresa = xx.GroupBy(p => p.IdCondicionPago == objTipo.IdCondicionPago && p.Comprobante == objEmpresa.Empresa).Select(s => s.First()).ToList();
                     var totalEmpresas = importeAgrupadoTipoEmpresa.FindAll(p => p.Empresa == objEmpresa.Empresa && p.IdCondicionPago == objTipo.IdCondicionPago).ToList().Sum(s => s.Importe);
                     oEmpresa.Total = decimal.Parse(totalEmpresas.ToString());
                     empresas.Add(oEmpresa);
 
-                    var objTiposEsos = data.ToList().GroupBy(p => p.TipoEso == objTipo.TipoEso && p.IdCondicionPago == objTipo.IdCondicionPago && p.Comprobante == objEmpresa.Empresa).Select(s => s.First()).ToList().FindAll(f => f.ServiceId != null);
-
+                    var objTiposEsos = data.ToList().FindAll(p => p.Empresa == objEmpresa.Empresa && p.IdCondicionPago == objTipo.IdCondicionPago);
+                    objTiposEsos = objTiposEsos.GroupBy(p => p.TipoEso == objTipo.TipoEso).Select(s => s.First()).ToList().FindAll(f => f.ServiceId != null);
                     var tiposEsos = new List<TipoEso>();
 
                     foreach (var objTiposEso in objTiposEsos)
@@ -92,7 +94,9 @@ namespace Sigesoft.Node.WinClient.BLL
                         if (oTipoEso.Cantidad == 0) continue; 
                         oTipoEso.Eso = objTiposEso.TipoEso;
 
-                        var importeAgrupadoTipoEmpresaTipoEso = data.GroupBy(p => p.IdCondicionPago == objTipo.IdCondicionPago && p.Comprobante == objEmpresa.Empresa && p.TipoEso == objTiposEso.TipoEso).Select(s => s.First()).ToList();
+
+                        var x = data.ToList().FindAll(p => p.Empresa == objEmpresa.Empresa && p.IdCondicionPago == objTipo.IdCondicionPago);
+                        var importeAgrupadoTipoEmpresaTipoEso = x.GroupBy(p => p.IdCondicionPago == objTipo.IdCondicionPago && p.Comprobante == objEmpresa.Empresa && p.TipoEso == objTiposEso.TipoEso).Select(s => s.First()).ToList();
                         var totalTipoEso = importeAgrupadoTipoEmpresaTipoEso.FindAll(p => p.Empresa == objEmpresa.Empresa && p.IdCondicionPago == objTipo.IdCondicionPago).ToList().Sum(s => s.Importe);
 
                         oTipoEso.Total = decimal.Parse(totalTipoEso.ToString());

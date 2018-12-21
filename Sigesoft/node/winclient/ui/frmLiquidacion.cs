@@ -51,6 +51,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             Utils.LoadDropDownList(cbbEstadoLiq, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 327, null), DropDownListAction.Select);
             Utils.LoadDropDownList(cbbFac, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 328, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cboFacturacion, "Value1", "Id", BLL.Utils.GetOrganizationFacturacion(), DropDownListAction.Select);
             //
             btnLiqd1.Enabled = false;
             btnCarta.Enabled = false;
@@ -68,7 +69,13 @@ namespace Sigesoft.Node.WinClient.UI
             List<string> Filters = new List<string>();
             if (!string.IsNullOrEmpty(txtCCosto.Text)) Filters.Add("CCosto.Contains(\"" + txtCCosto.Text.Trim() + "\")");
             if (!string.IsNullOrEmpty(txtNroLiquidacion.Text)) Filters.Add("v_NroLiquidacion.Contains(\"" + txtNroLiquidacion.Text.Trim() + "\")");
-    
+
+            if (cboFacturacion.SelectedValue.ToString() != "-1")
+            {
+                var organizationId = cboFacturacion.SelectedValue.ToString();
+                Filters.Add("v_OrganizationId==" + "\"" + organizationId +"\" ");
+            }
+
             if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
             {
                 var id3 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
@@ -102,9 +109,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
                 strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
             }
-
-            var selectedTab = tabControl1.SelectedTab.Name;
-
+            
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
                 if (tabControl1.SelectedTab.Name == "tpESO")

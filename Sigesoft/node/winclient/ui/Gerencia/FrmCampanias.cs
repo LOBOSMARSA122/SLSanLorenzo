@@ -16,12 +16,25 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
             InitializeComponent();
         }
 
-        //protected override void OnLoad(EventArgs e)
-        //{
-        //    base.OnLoad(e);
-        //    ControlBox = false;
-        //    WindowState = FormWindowState.Maximized;
-        //    BringToFront();
-        //}
+        private void FrmCampanias_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+
+        }
+       
+        private void grdTree_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
+        {
+
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

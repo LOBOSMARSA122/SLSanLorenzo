@@ -6,7 +6,7 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
 {
     public partial class FrmCredito : Form
     {
-        public FrmCredito(List<ConsultaGerencia> dataDb)
+        public FrmCredito()
         {
             InitializeComponent();
         }

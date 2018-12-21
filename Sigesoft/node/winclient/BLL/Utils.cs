@@ -947,6 +947,36 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<KeyValueDTO> GetOrganizationFacturacion()
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from n in dbContext.service
+                             join b in dbContext.organization on n.v_OrganizationId equals b.v_OrganizationId
+                             where n.i_IsDeleted == 0
+                             select new KeyValueDTO
+                             {
+                                 Id = b.v_OrganizationId,
+                                 Value1 = b.v_Name
+                             }
+                          );
+
+
+                List<KeyValueDTO> keyValueDto =
+                    query.OrderBy(p => p.Value1).ToList().GroupBy(g => g.Id).Select(s => s.First()).ToList();
+
+                return keyValueDto;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
         public static List<GridKeyValueDTO> GetJoinOrganizationAndLocationUltra(ref OperationResult pobjOperationResult, int pintNodeId)
         {
             //Devart.Data.PostgreSql.PgSqlMonitor mon = new Devart.Data.PostgreSql.PgSqlMonitor();
