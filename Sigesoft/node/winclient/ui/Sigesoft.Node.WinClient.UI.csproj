@@ -1571,6 +1571,12 @@
     <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\crOccupationalMedicalAptitudeCertificateRetiros.cs">
+      <DependentUpon>crOccupationalMedicalAptitudeCertificateRetiros.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\crFichaAudiometriaMedico.cs">
       <DependentUpon>crFichaAudiometriaMedico.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2375,8 +2381,8 @@
       <DependentUpon>crInformeEcograficoProstata.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\crOccupationalMedicalAptitudeCertificateRetiros.cs">
-      <DependentUpon>crOccupationalMedicalAptitudeCertificateRetiros.rpt</DependentUpon>
+    <Compile Include="Reports\_crOccupationalMedicalAptitudeCertificateRetiros.cs">
+      <DependentUpon>_crOccupationalMedicalAptitudeCertificateRetiros.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -3830,6 +3836,10 @@
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crOccupationalMedicalAptitudeCertificateRetiros.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crOccupationalMedicalAptitudeCertificateRetiros.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crFichaAudiometriaMedico.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crFichaAudiometriaMedico.cs</LastGenOutput>
@@ -4354,9 +4364,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crInformeEcograficoProstata.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\crOccupationalMedicalAptitudeCertificateRetiros.rpt">
+    <EmbeddedResource Include="Reports\_crOccupationalMedicalAptitudeCertificateRetiros.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crOccupationalMedicalAptitudeCertificateRetiros.cs</LastGenOutput>
+      <LastGenOutput>_crOccupationalMedicalAptitudeCertificateRetiros.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crAntigenosFebriles.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -6869,7 +6879,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

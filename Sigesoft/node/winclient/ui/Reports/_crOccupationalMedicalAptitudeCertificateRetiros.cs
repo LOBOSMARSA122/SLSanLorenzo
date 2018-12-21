@@ -16,14 +16,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class crOccupationalMedicalAptitudeCertificate : ReportClass {
+    public class _crOccupationalMedicalAptitudeCertificateRetiros : ReportClass {
         
-        public crOccupationalMedicalAptitudeCertificate() {
+        public _crOccupationalMedicalAptitudeCertificateRetiros() {
         }
         
         public override string ResourceName {
             get {
-                return "crOccupationalMedicalAptitudeCertificate.rpt";
+                return "_crOccupationalMedicalAptitudeCertificateRetiros.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
         
         public override string FullResourceName {
             get {
-                return "Sigesoft.Node.WinClient.UI.Reports.crOccupationalMedicalAptitudeCertificate.rpt";
+                return "Sigesoft.Node.WinClient.UI.Reports._crOccupationalMedicalAptitudeCertificateRetir" +
+                    "os.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +107,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedcrOccupationalMedicalAptitudeCertificate : Component, ICachedReport {
+    public class Cached_crOccupationalMedicalAptitudeCertificateRetiros : Component, ICachedReport {
         
-        public CachedcrOccupationalMedicalAptitudeCertificate() {
+        public Cached_crOccupationalMedicalAptitudeCertificateRetiros() {
         }
         
         [Browsable(false)]
@@ -145,7 +146,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            crOccupationalMedicalAptitudeCertificate rpt = new crOccupationalMedicalAptitudeCertificate();
+            _crOccupationalMedicalAptitudeCertificateRetiros rpt = new _crOccupationalMedicalAptitudeCertificateRetiros();
             rpt.Site = this.Site;
             return rpt;
         }

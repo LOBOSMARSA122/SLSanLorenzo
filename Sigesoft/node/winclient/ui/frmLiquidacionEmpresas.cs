@@ -124,10 +124,27 @@ namespace Sigesoft.Node.WinClient.UI
 	                        }
                         }
                     }
+                    //deudores = deudores.OrderBy(o => o).ToList();
+
+                    List<string> nombres_Empresa = new List<string>();
+                    foreach (var ruc_1 in deudores)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc_1);
+                        nombres_Empresa.Add(empresa.v_Name);
+                    }
+
+                    nombres_Empresa = nombres_Empresa.OrderBy(o => o).ToList();
+                    
+                    List<string> rucs = new List<string>();
+                    foreach (var item in nombres_Empresa)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, item);
+                        rucs.Add(empresa.v_IdentificationNumber);
+                    }
 
                     List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
-                   
-                    foreach (var ruc in deudores)
+
+                    foreach (var ruc in rucs)
                     {
                         //var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, ruc);
                         var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc);
@@ -207,9 +224,25 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                     }
 
+                    List<string> nombres_Empresa = new List<string>();
+                    foreach (var ruc_1 in deudores)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc_1);
+                        nombres_Empresa.Add(empresa.v_Name);
+                    }
+
+                    nombres_Empresa = nombres_Empresa.OrderBy(o => o).ToList();
+
+                    List<string> rucs = new List<string>();
+                    foreach (var item in nombres_Empresa)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, item);
+                        rucs.Add(empresa.v_IdentificationNumber);
+                    }
+
                     List<LiquidacionEmpresa> ListaLiquidacion_1 = new List<LiquidacionEmpresa>();
 
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaFin_L1 = DateTime.Now;
                         DateTime? fechaInicio_L1 = DateTime.Now.AddDays(-30);
@@ -259,7 +292,7 @@ namespace Sigesoft.Node.WinClient.UI
                     }
 
                     List<LiquidacionEmpresa> ListaLiquidacion_2 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaFin_L2 = DateTime.Now.AddDays(-31);
                         DateTime? fechaInicio_L2 = new DateTime(2018, 1, 1, 0, 0, 0);
@@ -355,6 +388,22 @@ namespace Sigesoft.Node.WinClient.UI
                             }
                         }
                     }
+
+                    List<string> nombres_Empresa = new List<string>();
+                    foreach (var ruc_1 in deudores)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc_1);
+                        nombres_Empresa.Add(empresa.v_Name);
+                    }
+
+                    nombres_Empresa = nombres_Empresa.OrderBy(o => o).ToList();
+
+                    List<string> rucs = new List<string>();
+                    foreach (var item in nombres_Empresa)
+                    {
+                        var empresa = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, item);
+                        rucs.Add(empresa.v_IdentificationNumber);
+                    }
                     //var deudoras = new ServiceBL().GetListaLiquidaciones_Deudas(ref objOperationResult, inicioDeudas, FinDeudas);
 
                     //List<string> deudores = new List<string>();
@@ -383,7 +432,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #region años atrás
                     List<LiquidacionEmpresa> ListaAños_Atras = new List<LiquidacionEmpresa>();
 
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L1 = new DateTime(2018, 1, 1, 0, 0, 0);
                         DateTime? fechaFin_L1 = new DateTime(años_atras, 12, 31, 0, 0, 0);
@@ -430,7 +479,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #region enero
                     List<LiquidacionEmpresa> ListaLiquidacion_1 = new List<LiquidacionEmpresa>();
 
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L1 = new DateTime(año_inicio, 1, 1, 0, 0, 0);
                         DateTime? fechaFin_L1 = new DateTime(año_inicio, 1, 31, 0, 0, 0);
@@ -466,7 +515,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region febrero
                     List<LiquidacionEmpresa> ListaLiquidacion_2 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L2 = new DateTime(año_inicio, 2, 1, 0, 0, 0);
                         DateTime? fechaFin_L2 = new DateTime(año_inicio, 2, 28, 0, 0, 0);
@@ -503,7 +552,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region marzo
                     List<LiquidacionEmpresa> ListaLiquidacion_3 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L3 = new DateTime(año_inicio, 3, 1, 0, 0, 0);
                         DateTime? fechaFin_L3 = new DateTime(año_inicio, 3, 31, 0, 0, 0);
@@ -539,7 +588,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region abril
                     List<LiquidacionEmpresa> ListaLiquidacion_4 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L4 = new DateTime(año_inicio, 4, 1, 0, 0, 0);
                         DateTime? fechaFin_L4 = new DateTime(año_inicio, 4, 30, 0, 0, 0);
@@ -576,7 +625,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region mayo
                     List<LiquidacionEmpresa> ListaLiquidacion_5 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L5 = new DateTime(año_inicio, 5, 1, 0, 0, 0);
                         DateTime? fechaFin_L5 = new DateTime(año_inicio, 5, 31, 0, 0, 0);
@@ -613,7 +662,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region junio
                     List<LiquidacionEmpresa> ListaLiquidacion_6 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L6 = new DateTime(año_inicio, 6, 1, 0, 0, 0);
                         DateTime? fechaFin_L6 = new DateTime(año_inicio, 6, 30, 0, 0, 0);
@@ -649,7 +698,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region julio
                     List<LiquidacionEmpresa> ListaLiquidacion_7 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L7 = new DateTime(año_inicio, 7, 1, 0, 0, 0);
                         DateTime? fechaFin_L7 = new DateTime(año_inicio, 7, 31, 0, 0, 0);
@@ -685,7 +734,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region agosto
                     List<LiquidacionEmpresa> ListaLiquidacion_8 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L8 = new DateTime(año_inicio, 8, 1, 0, 0, 0);
                         DateTime? fechaFin_L8 = new DateTime(año_inicio, 8, 31, 0, 0, 0);
@@ -721,7 +770,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region setiembre
                     List<LiquidacionEmpresa> ListaLiquidacion_9 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L9 = new DateTime(año_inicio, 9, 1, 0, 0, 0);
                         DateTime? fechaFin_L9 = new DateTime(año_inicio, 9, 30, 0, 0, 0);
@@ -757,7 +806,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region octubre
                     List<LiquidacionEmpresa> ListaLiquidacion_10 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L10 = new DateTime(año_inicio, 10, 1, 0, 0, 0);
                         DateTime? fechaFin_L10 = new DateTime(año_inicio, 10, 31, 0, 0, 0);
@@ -793,7 +842,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region noviembre
                     List<LiquidacionEmpresa> ListaLiquidacion_11 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L11 = new DateTime(año_inicio, 11, 1, 0, 0, 0);
                         DateTime? fechaFin_L11 = new DateTime(año_inicio, 11, 30, 0, 0, 0);
@@ -829,7 +878,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     #region diciembre
                     List<LiquidacionEmpresa> ListaLiquidacion_12 = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_L12 = new DateTime(año_inicio, 12, 1, 0, 0, 0);
                         DateTime? fechaFin_L12 = new DateTime(año_inicio, 12, 31, 0, 0, 0);
@@ -866,7 +915,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                     #region total
                     List<LiquidacionEmpresa> ListaLiquidacion_total = new List<LiquidacionEmpresa>();
-                    foreach (var ruc in deudores)
+                    foreach (var ruc in rucs)
                     {
                         DateTime? fechaInicio_LT = new DateTime(2018, 1, 1, 0, 0, 0);
                         DateTime? fechaFin_LT = DateTime.Now;
@@ -944,6 +993,22 @@ namespace Sigesoft.Node.WinClient.UI
                             }
                         }
                     }
+
+                    //List<string> nombres_Empresa = new List<string>();
+                    //foreach (var ruc_1 in deudores)
+                    //{
+                    //    var empresa = new ServiceBL().GetOrganizationRuc(ref objOperationResult, ruc_1);
+                    //    nombres_Empresa.Add(empresa.v_Name);
+                    //}
+
+                    //nombres_Empresa = nombres_Empresa.OrderBy(o => o).ToList();
+
+                    //List<string> rucs = new List<string>();
+                    //foreach (var item in nombres_Empresa)
+                    //{
+                    //    var empresa = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, item);
+                    //    rucs.Add(empresa.v_IdentificationNumber);
+                    //}
                     var deudoraas = new ServiceBL().GetListaLiquidaciones_Deudas(ref objOperationResult, inicioDeudas, FinDeudas);
 
                     List<LiquidacionesConsolidado> ListaLiquidacion_detalle = new List<LiquidacionesConsolidado>();
@@ -976,6 +1041,7 @@ namespace Sigesoft.Node.WinClient.UI
                         ListaLiquidacion_detalle.Add(empresaLiquidacion);
 
                     }
+                    ListaLiquidacion_detalle = ListaLiquidacion_detalle.OrderBy(o => o.v_OrganizationName).ToList();
                     //List<string> deudores = new List<string>();
                     //string idEmpresa = "";
                     //foreach (var item in deudoras)
