@@ -120,6 +120,8 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.cboFacturacion = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -131,6 +133,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboFacturacion);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.cbbFac);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.cbbEstadoLiq);
@@ -156,7 +160,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1227, 107);
+            this.groupBox1.Size = new System.Drawing.Size(1227, 130);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
@@ -416,11 +420,11 @@
             this.groupBox2.Controls.Add(this.btnEditarServicio);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox2.Location = new System.Drawing.Point(11, 122);
+            this.groupBox2.Location = new System.Drawing.Point(11, 145);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(1227, 537);
+            this.groupBox2.Size = new System.Drawing.Size(1227, 514);
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
@@ -478,7 +482,7 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 18);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1137, 514);
+            this.tabControl1.Size = new System.Drawing.Size(1137, 491);
             this.tabControl1.TabIndex = 158;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
@@ -489,7 +493,7 @@
             this.tpESO.Location = new System.Drawing.Point(4, 22);
             this.tpESO.Name = "tpESO";
             this.tpESO.Padding = new System.Windows.Forms.Padding(3);
-            this.tpESO.Size = new System.Drawing.Size(1129, 488);
+            this.tpESO.Size = new System.Drawing.Size(1129, 465);
             this.tpESO.TabIndex = 0;
             this.tpESO.Text = "Agrupado por ESO";
             this.tpESO.UseVisualStyleBackColor = true;
@@ -500,7 +504,7 @@
             this.btnExportAramark.Enabled = false;
             this.btnExportAramark.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportAramark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportAramark.Location = new System.Drawing.Point(6, 458);
+            this.btnExportAramark.Location = new System.Drawing.Point(6, 435);
             this.btnExportAramark.Name = "btnExportAramark";
             this.btnExportAramark.Size = new System.Drawing.Size(114, 24);
             this.btnExportAramark.TabIndex = 49;
@@ -609,7 +613,7 @@
             this.grdData.Location = new System.Drawing.Point(6, 5);
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
-            this.grdData.Size = new System.Drawing.Size(1118, 448);
+            this.grdData.Size = new System.Drawing.Size(1118, 425);
             this.grdData.TabIndex = 152;
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
             this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
@@ -959,6 +963,29 @@
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
             // 
+            // cboFacturacion
+            // 
+            this.cboFacturacion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboFacturacion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboFacturacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFacturacion.FormattingEnabled = true;
+            this.cboFacturacion.Location = new System.Drawing.Point(96, 103);
+            this.cboFacturacion.Name = "cboFacturacion";
+            this.cboFacturacion.Size = new System.Drawing.Size(499, 21);
+            this.cboFacturacion.TabIndex = 148;
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(1, 102);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 30);
+            this.label12.TabIndex = 147;
+            this.label12.Text = "Emp. de Facturación";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmLiquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1032,5 +1059,7 @@
         private System.Windows.Forms.ComboBox cbbFac;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnEliminarLiquidacion;
+        private System.Windows.Forms.ComboBox cboFacturacion;
+        private System.Windows.Forms.Label label12;
     }
 }

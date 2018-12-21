@@ -1373,6 +1373,12 @@
     <Compile Include="Gerencia\FrmCampanias.Designer.cs">
       <DependentUpon>FrmCampanias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gerencia\FrmContrata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerencia\FrmContrata.Designer.cs">
+      <DependentUpon>FrmContrata.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gerencia\FrmCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1384,6 +1390,12 @@
     </Compile>
     <Compile Include="Gerencia\FrmManagementReports.Designer.cs">
       <DependentUpon>FrmManagementReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gerencia\FrmTipoExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerencia\FrmTipoExamen.Designer.cs">
+      <DependentUpon>FrmTipoExamen.cs</DependentUpon>
     </Compile>
     <Compile Include="Gerencia\FrmTipoPago.cs">
       <SubType>Form</SubType>
@@ -3739,8 +3751,17 @@
     <EmbeddedResource Include="Gerencia\FrmCampanias.resx">
       <DependentUpon>FrmCampanias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\FrmContrata.resx">
+      <DependentUpon>FrmContrata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\FrmCredito.resx">
+      <DependentUpon>FrmCredito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gerencia\FrmManagementReports.resx">
       <DependentUpon>FrmManagementReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\FrmTipoExamen.resx">
+      <DependentUpon>FrmTipoExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gerencia\FrmTipoPago.resx">
       <DependentUpon>FrmTipoPago.cs</DependentUpon>
@@ -6879,7 +6900,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

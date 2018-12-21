@@ -31382,6 +31382,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
+                                    v_OrganizationId = A.v_OrganizationId,
                                     v_PersonId = C.v_PersonId,
                                     i_EsoTypeId = B.i_EsoTypeId.Value,
                                     Esotype = J1.v_Value1,
@@ -31426,6 +31427,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                       v_PersonId = A.v_PersonId,
                                       v_ServiceId = A.v_ServiceId,
                                       i_EsoTypeId = A.i_EsoTypeId,
+                                      v_OrganizationId = A.v_OrganizationId,
                                       Esotype = A.Esotype,
                                       v_CustomerOrganizationId = A.v_CustomerOrganizationId,
                                       v_EmployerOrganizationId = A.v_EmployerOrganizationId,
@@ -31526,6 +31528,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     {
                                         v_ServiceId = A.v_ServiceId,
                                         v_PersonId = C.v_PersonId,
+                                        v_OrganizationId = A.v_OrganizationId,
                                         i_EsoTypeId = B.i_EsoTypeId.Value,
                                         Esotype = J1.v_Value1,
                                         v_CustomerOrganizationId = F.v_OrganizationId,
@@ -31668,6 +31671,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     {
                                         v_ServiceId = A.v_ServiceId,
                                         v_PersonId = C.v_PersonId,
+                                        v_OrganizationId = A.v_OrganizationId,
                                         i_EsoTypeId = B.i_EsoTypeId.Value,
                                         Esotype = J1.v_Value1,
                                         v_CustomerOrganizationId = F.v_OrganizationId,
@@ -31811,6 +31815,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 {
                                     v_ServiceId = A.v_ServiceId,
                                     v_PersonId = C.v_PersonId,
+                                    v_OrganizationId = A.v_OrganizationId,
                                     i_EsoTypeId = B.i_EsoTypeId.Value,
                                     Esotype = J1.v_Value1,
                                     v_CustomerOrganizationId = F.v_OrganizationId,
@@ -31952,6 +31957,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 {
                                     v_ServiceId = A.v_ServiceId,
                                     v_PersonId = C.v_PersonId,
+                                    v_OrganizationId = A.v_OrganizationId,
                                     i_EsoTypeId = B.i_EsoTypeId.Value,
                                     Esotype = J1.v_Value1,
                                     v_CustomerOrganizationId = F.v_OrganizationId,

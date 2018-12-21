@@ -12,9 +12,16 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
     {
         GerenciaTipoPagoBl oGerenciaTipoPagoBl = new GerenciaTipoPagoBl();
         private List<GerenciaTipoPago> _listGerenciaTipoPago = new List<GerenciaTipoPago>();
+
         public FrmTipoPago()
         {
             InitializeComponent();
+        }
+
+        private void FrmTipoPago_Load(object sender, EventArgs e)
+        {
+            dtpDateTimeStar.CustomFormat = @"dd/MM/yyyy";
+            dptDateTimeEnd.CustomFormat = @"dd/MM/yyyy";
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -26,74 +33,71 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
             grdTree.DataSource = oGerenciaTipoPagoBl.ProcessDataTreeView(_listGerenciaTipoPago);
 
         }
-
-        private void FrmTipoPago_Load(object sender, EventArgs e)
-        {
-            dtpDateTimeStar.CustomFormat = @"dd/MM/yyyy";
-            dptDateTimeEnd.CustomFormat = @"dd/MM/yyyy";
-        }
-
+        
         private void grdTree_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
         {
             if (grdTree.Selected.Rows.Count == 0) return;
-            if (grdTree.Selected.Rows[0].Cells != null)
+            if (grdTree.Selected.Rows[0].Cells == null) return;
+
+            grdData.DisplayLayout.Bands[0].Columns["Trabajador"].Hidden = true;
+            grdData.DisplayLayout.Bands[0].Columns["FechaServicio"].Hidden = true;
+            grdData.DisplayLayout.Bands[0].Columns["Compania"].Hidden = true;
+            grdData.DisplayLayout.Bands[0].Columns["Contratista"].Hidden = true;
+            grdData.DisplayLayout.Bands[0].Columns["CostoExamen"].Hidden = true;
+            grdData.DisplayLayout.Bands[0].Columns["TipoEso"].Hidden = true;
+
+            foreach (UltraGridRow rowSelected in grdTree.Selected.Rows)
             {
-                grdData.DisplayLayout.Bands[0].Columns["Trabajador"].Hidden = true;
-                grdData.DisplayLayout.Bands[0].Columns["FechaServicio"].Hidden = true;
-                grdData.DisplayLayout.Bands[0].Columns["Compania"].Hidden = true;
-                grdData.DisplayLayout.Bands[0].Columns["Contratista"].Hidden = true;
-                grdData.DisplayLayout.Bands[0].Columns["CostoExamen"].Hidden = true;
-                grdData.DisplayLayout.Bands[0].Columns["TipoEso"].Hidden = true;
-
-                foreach (UltraGridRow rowSelected in grdTree.Selected.Rows)
+                if (rowSelected.Band.Index.ToString() == "0")
                 {
-                    if (rowSelected.Band.Index.ToString() == "0")
-                    {
-                        grdData.DataSource = _listGerenciaTipoPago;
-                    }
-                    else if (rowSelected.Band.Index.ToString() == "1")
-                    {
-                        var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
+                    grdData.DataSource = _listGerenciaTipoPago;
+                }
+                else if (rowSelected.Band.Index.ToString() == "1")
+                {
+                    var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
 
-                        grdData.DataSource = _listGerenciaTipoPago.FindAll(p => p.CondicionPago == tipoPago);
-                    }
-                    else if (rowSelected.Band.Index.ToString() == "2")
-                    {
-                        var empresa = grdTree.Selected.Rows[0].Cells["EmpresaNombre"].Value.ToString();
-                        var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
+                    grdData.DataSource = _listGerenciaTipoPago.FindAll(p => p.CondicionPago == tipoPago);
+                }
+                else if (rowSelected.Band.Index.ToString() == "2")
+                {
+                    var empresa = grdTree.Selected.Rows[0].Cells["EmpresaNombre"].Value.ToString();
+                    var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
 
-                        List<GerenciaTipoPago> list = new List<GerenciaTipoPago>();
-                        var x = _listGerenciaTipoPago
-                            .FindAll(p => p.Empresa == empresa && p.CondicionPago == tipoPago).ToList()[0];
-                        list.Add(x);
-                        grdData.DataSource = list;
-                    }
-                    else if (rowSelected.Band.Index.ToString() == "3")
-                    {
-                        grdData.DisplayLayout.Bands[0].Columns["Trabajador"].Hidden = false;
-                        grdData.DisplayLayout.Bands[0].Columns["FechaServicio"].Hidden = false;
-                        grdData.DisplayLayout.Bands[0].Columns["Compania"].Hidden = false;
-                        grdData.DisplayLayout.Bands[0].Columns["Contratista"].Hidden = false;
-                        grdData.DisplayLayout.Bands[0].Columns["CostoExamen"].Hidden = false;
-                        grdData.DisplayLayout.Bands[0].Columns["TipoEso"].Hidden = false;
+                    List<GerenciaTipoPago> list = new List<GerenciaTipoPago>();
+                    var x = _listGerenciaTipoPago
+                        .FindAll(p => p.Empresa == empresa && p.CondicionPago == tipoPago).ToList()[0];
+                    list.Add(x);
+                    grdData.DataSource = list;
+                }
+                else if (rowSelected.Band.Index.ToString() == "3")
+                {
+                    grdData.DisplayLayout.Bands[0].Columns["Trabajador"].Hidden = false;
+                    grdData.DisplayLayout.Bands[0].Columns["FechaServicio"].Hidden = false;
+                    grdData.DisplayLayout.Bands[0].Columns["Compania"].Hidden = false;
+                    grdData.DisplayLayout.Bands[0].Columns["Contratista"].Hidden = false;
+                    grdData.DisplayLayout.Bands[0].Columns["CostoExamen"].Hidden = false;
+                    grdData.DisplayLayout.Bands[0].Columns["TipoEso"].Hidden = false;
 
-                        var empresa = grdTree.Selected.Rows[0].Cells["EmpresaNombre"].Value.ToString();
-                        var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
-                        grdData.DataSource = _listGerenciaTipoPago
-                            .FindAll(p => p.Empresa == empresa && p.CondicionPago == tipoPago).ToList();
-                    }
+                    var empresa = grdTree.Selected.Rows[0].Cells["EmpresaNombre"].Value.ToString();
+                    var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
+                    grdData.DataSource = _listGerenciaTipoPago
+                        .FindAll(p => p.Empresa == empresa && p.CondicionPago == tipoPago).ToList();
                 }
             }
         }
 
-        private void grdTree_MouseDown(object sender, MouseEventArgs e)
+        private void btnExportExcel_Click(object sender, EventArgs e)
         {
+            var  nombreArchivo = "Reporte Por Tipo de Pago de " + dtpDateTimeStar.Text + " hasta " + dptDateTimeEnd.Text;
 
-        }
+            nombreArchivo = nombreArchivo.Replace("/", "_");
+            nombreArchivo = nombreArchivo.Replace(":", "_");
 
-        private void grdData_InitializeRow(object sender, InitializeRowEventArgs e)
-        {
-
+            sfd.FileName = nombreArchivo;
+            sfd.Filter = @"Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            uge.Export(grdData, sfd.FileName);
+            MessageBox.Show(@"Se exportaron correctamente los datos.", @" ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
