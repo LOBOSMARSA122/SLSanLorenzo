@@ -5746,6 +5746,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                    //GrupoFactorSanguineo = a.GrupoFactorSanguineo == null ? "NO LLEVA" : a.GrupoFactorSanguineo,
                                    Procedencia = a.Procedencia == null ? "-" : a.Procedencia == "" ? "-" : a.Procedencia,
                                    Ocupacion = a.Ocupacion==null?"-":a.Ocupacion==""?"-":a.Ocupacion,
+                                   //MINA
+                                   Mina = a.General,
                                    Empresa = a.General == a.Subcontrata ? a.Contrata : a.General != a.Subcontrata ? a.Unida : a.Empresa,
                                    //Area = a.Area,
                                    NumeroHijos = a.NumeroHijos == null ? 0 : a.NumeroHijos,
