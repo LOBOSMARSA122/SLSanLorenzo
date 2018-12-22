@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaServicio");
@@ -80,6 +81,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.grdTree = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.sfd = new System.Windows.Forms.SaveFileDialog();
+            this.uge = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.gbAcciones.SuspendLayout();
             this.gbFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -430,5 +433,7 @@
         private System.Windows.Forms.Label label2;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdTree;
+        private System.Windows.Forms.SaveFileDialog sfd;
+        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter uge;
     }
 }

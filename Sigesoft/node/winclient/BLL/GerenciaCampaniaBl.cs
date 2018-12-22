@@ -69,10 +69,10 @@ namespace Sigesoft.Node.WinClient.BLL
             foreach (var compania in companias)
             {
                 var oCompania = new Compania();
-                
-                oCompania.Cantidad = data.FindAll(p => p.Contratista == compania.Compania).ToList().Count;
+
+                oCompania.Cantidad = data.FindAll(p => p.Compania == compania.Compania).ToList().Count;
                 oCompania.CompaniaName = compania.Compania;
-                oCompania.Total = data.FindAll(p => p.Contratista == compania.Compania).ToList().Sum(s => s.CostoExamen);
+                oCompania.Total = data.FindAll(p => p.Compania == compania.Compania).ToList().Sum(s => s.CostoExamen);
                 oCompania.Contratas = Contratas(oCompania, data);
                 listCompanias.Add(oCompania);
             }
@@ -84,16 +84,16 @@ namespace Sigesoft.Node.WinClient.BLL
         {
             var listContratas = new List<Contrata>();
 
-            var contratas = data.FindAll(p => p.Contratista == oCompania.CompaniaName).ToList();
+            var contratas = data.FindAll(p => p.Compania == oCompania.CompaniaName).ToList();
             var contratasAgrupadas = contratas.GroupBy(g => g.Contratista).Select(s => s.First());
 
             foreach (var contrata in contratasAgrupadas)
             {
                 var oContrata = new Contrata();
                 oContrata.CompaniaName = oCompania.CompaniaName;
-                oContrata.Cantidad = contratas.Count;
+                oContrata.Cantidad = contratas.FindAll(p => p.Contratista == contrata.Contratista).Count;
                 oContrata.ContrataName = contrata.Contratista;
-                oContrata.Total = contratas.Sum(s => s.CostoExamen);
+                oContrata.Total = contratas.FindAll(p => p.Contratista == contrata.Contratista).Sum(s => s.CostoExamen);
                 listContratas.Add(oContrata);
             }
 

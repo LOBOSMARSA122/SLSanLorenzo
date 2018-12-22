@@ -33,6 +33,16 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
+            var nombreArchivo = "Reporte Por Contrata de " + dtpDateTimeStar.Text + " hasta " + dptDateTimeEnd.Text;
+
+            nombreArchivo = nombreArchivo.Replace("/", "_");
+            nombreArchivo = nombreArchivo.Replace(":", "_");
+
+            sfd.FileName = nombreArchivo;
+            sfd.Filter = @"Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            uge.Export(grdData, sfd.FileName);
+            MessageBox.Show(@"Se exportaron correctamente los datos.", @" ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -59,15 +69,16 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
                     grdData.DisplayLayout.Bands[0].Columns["CostoExamen"].Hidden = false;
                     var contrataName = grdTree.Selected.Rows[0].Cells["ContrataName"].Value.ToString();
 
-                    grdData.DataSource = _listGerenciaTipoPago.FindAll(p => p.Compania == contrataName);
+                    grdData.DataSource = _listGerenciaTipoPago.FindAll(p => p.Contratista == contrataName);
                 }
                 else if (rowSelected.Band.Index.ToString() == "2")
                 {
                     grdData.DisplayLayout.Bands[0].Columns["Trabajador"].Hidden = false;
                     grdData.DisplayLayout.Bands[0].Columns["CondicionPago"].Hidden = false;
                     grdData.DisplayLayout.Bands[0].Columns["CostoExamen"].Hidden = false;
+                    var companiaName = grdTree.Selected.Rows[0].Cells["CompaniaName"].Value.ToString();
                     var contrataName = grdTree.Selected.Rows[0].Cells["ContrataName"].Value.ToString();
-                    grdData.DataSource = _listGerenciaTipoPago.FindAll(p => p.Compania == contrataName);
+                    grdData.DataSource = _listGerenciaTipoPago.FindAll(p => p.Contratista == contrataName && p.Compania == companiaName);
                 }
             }
         }

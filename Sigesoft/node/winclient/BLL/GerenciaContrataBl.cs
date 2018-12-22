@@ -70,9 +70,9 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 var oContrata = new Contrata_();
 
-                oContrata.Cantidad = data.FindAll(p => p.Contratista == contrata.Compania).ToList().Count;
+                oContrata.Cantidad = data.FindAll(p => p.Contratista == contrata.Contratista).ToList().Count;
                 oContrata.ContrataName = contrata.Contratista;
-                oContrata.Total = data.FindAll(p => p.Contratista == contrata.Compania).ToList().Sum(s => s.CostoExamen);
+                oContrata.Total = data.FindAll(p => p.Contratista == contrata.Contratista).ToList().Sum(s => s.CostoExamen);
                 oContrata.Companias = Companias(oContrata, data);
                 listContratas.Add(oContrata);
             }
@@ -91,9 +91,9 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 var oContrata = new Compania_();
                 oContrata.ContrataName = oVContrata.ContrataName;
-                oContrata.Cantidad = companias.Count;
+                oContrata.Cantidad = companias.FindAll(p => p.Compania == compania.Compania).Count;
                 oContrata.CompaniaName = compania.Compania;
-                oContrata.Total = companias.Sum(s => s.CostoExamen);
+                oContrata.Total = companias.FindAll(p => p.Compania == compania.Compania).Sum(s => s.CostoExamen);
                 listCompanias.Add(oContrata);
             }
 
