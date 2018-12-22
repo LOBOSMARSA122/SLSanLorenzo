@@ -5669,7 +5669,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                             TipoEmo = C.v_Value1,
                                             DniPasaporte = D.v_DocNumber,
                                             FechaExamen = A.d_ServiceDate.Value,
-                                            ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                            ApellidosNombres = D.v_FirstLastName + " " + D.v_SecondLastName + ", " + D.v_FirstName,
                                             FechaNacimiento = D.d_Birthdate.Value,
                                             TelefonoContacto = D.v_TelephoneNumber,
                                             _Sexo = D.i_SexTypeId,

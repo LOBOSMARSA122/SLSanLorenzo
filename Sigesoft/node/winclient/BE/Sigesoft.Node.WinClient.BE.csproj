@@ -67,6 +67,8 @@
     <Compile Include="Custom\AtencionNinio.cs" />
     <Compile Include="Custom\GerenciaCampanias.cs" />
     <Compile Include="Custom\GerenciaTipoPago.cs" />
+    <Compile Include="Custom\GerenciaTreeCapania.cs" />
+    <Compile Include="Custom\GerenciaTreeContrata.cs" />
     <Compile Include="Custom\GridKeyValueDTO.cs" />
     <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
