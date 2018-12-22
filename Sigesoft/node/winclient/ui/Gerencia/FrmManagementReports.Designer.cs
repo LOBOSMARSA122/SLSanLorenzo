@@ -33,7 +33,7 @@
             Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup1 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("rbgReportes");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool13 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmTipoPago");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmCredito");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmCompania");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmCampanias");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmContrata");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmTipoExamen");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmMes");
@@ -42,7 +42,7 @@
             Infragistics.Win.UltraWinToolbars.RibbonTab ribbonTab2 = new Infragistics.Win.UltraWinToolbars.RibbonTab("rbnAsistencial");
             Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup3 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("rbgReportes");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Por Tipo de Pago");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmCompania");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmCampanias");
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmContrata");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();

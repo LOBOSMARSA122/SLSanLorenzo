@@ -1,6 +1,6 @@
 ﻿namespace Sigesoft.Node.WinClient.UI.Gerencia
 {
-    partial class FrmCampanias
+    partial class FrmTipoExamen
     {
         /// <summary>
         /// Required designer variable.
@@ -187,7 +187,7 @@
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
             this.grdData.Size = new System.Drawing.Size(678, 427);
-            this.grdData.TabIndex = 157;
+            this.grdData.TabIndex = 161;
             // 
             // grdTree
             // 
@@ -287,8 +287,7 @@
             this.grdTree.Margin = new System.Windows.Forms.Padding(2);
             this.grdTree.Name = "grdTree";
             this.grdTree.Size = new System.Drawing.Size(413, 427);
-            this.grdTree.TabIndex = 156;
-            this.grdTree.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdTree_AfterSelectChange);
+            this.grdTree.TabIndex = 160;
             // 
             // gbAcciones
             // 
@@ -297,7 +296,7 @@
             this.gbAcciones.Location = new System.Drawing.Point(431, 11);
             this.gbAcciones.Name = "gbAcciones";
             this.gbAcciones.Size = new System.Drawing.Size(678, 59);
-            this.gbAcciones.TabIndex = 155;
+            this.gbAcciones.TabIndex = 159;
             this.gbAcciones.TabStop = false;
             this.gbAcciones.Text = "Acciones";
             // 
@@ -328,7 +327,6 @@
             this.btnExportExcel.Text = "Exportar Excel";
             this.btnExportExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExportExcel.UseVisualStyleBackColor = false;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // gbFiltro
             // 
@@ -340,7 +338,7 @@
             this.gbFiltro.Location = new System.Drawing.Point(12, 11);
             this.gbFiltro.Name = "gbFiltro";
             this.gbFiltro.Size = new System.Drawing.Size(413, 59);
-            this.gbFiltro.TabIndex = 154;
+            this.gbFiltro.TabIndex = 158;
             this.gbFiltro.TabStop = false;
             this.gbFiltro.Text = "Filtro";
             // 
@@ -363,7 +361,6 @@
             this.btnFilter.Text = "Filtrar";
             this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // dptDateTimeEnd
             // 
@@ -408,7 +405,7 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "y";
             // 
-            // FrmCampanias
+            // FrmTipoExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -418,13 +415,8 @@
             this.Controls.Add(this.grdTree);
             this.Controls.Add(this.gbAcciones);
             this.Controls.Add(this.gbFiltro);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FrmCampanias";
-            this.ShowIcon = false;
-            this.Text = "Consulta por Campaña";
-            this.Load += new System.EventHandler(this.FrmCampanias_Load);
+            this.Name = "FrmTipoExamen";
+            this.Text = "FrmTipoExamen";
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTree)).EndInit();
             this.gbAcciones.ResumeLayout(false);

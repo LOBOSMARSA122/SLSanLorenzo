@@ -9,6 +9,7 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public string v_PersonId { get; set; }
         public string v_ServiceId { get; set; }
+        public string v_OrganizationId { get; set; }
         public int? i_EsoTypeId { get; set; }
         public string Esotype { get; set; }
         public string v_CustomerOrganizationId { get; set; }
