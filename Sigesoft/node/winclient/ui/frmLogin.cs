@@ -120,8 +120,8 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         else
                         {
-                            txtUserName.Text = "";
-                            txtPassword.Text = "";
+                            txtUserName.Text = "sa";
+                            txtPassword.Text = "Alph@2536";
                         }
 
                         #endregion
