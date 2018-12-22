@@ -155,19 +155,19 @@ namespace Sigesoft.Node.WinClient.UI
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            #region Actualización
-            DateTime fechatxt = File.GetLastWriteTime(@"\\192.168.1.179\INSTALADORES\DEBUG_FIRMAS\Debug\Sigesoft.Node.WinClient.UI.exe");
-            DateTime fechatxt2 = File.GetLastWriteTime(@"C:\Program Files (x86)\NetMedical\Sigesoft.Node.WinClient.UI.exe");
-            if (fechatxt != fechatxt2)
-            {
-                System.Diagnostics.Process.Start(@"C:\Program Files (x86)\NetMedical\Actualizar Sigesoft.exe");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("NO HAY ACTUALICACIONES PENDIENTES...", "ACTUALICACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            #endregion
+            //#region Actualización
+            //DateTime fechatxt = File.GetLastWriteTime(@"\\192.168.1.179\INSTALADORES\DEBUG_FIRMAS\Debug\Sigesoft.Node.WinClient.UI.exe");
+            //DateTime fechatxt2 = File.GetLastWriteTime(@"C:\Program Files (x86)\NetMedical\Sigesoft.Node.WinClient.UI.exe");
+            //if (fechatxt != fechatxt2)
+            //{
+            //    System.Diagnostics.Process.Start(@"C:\Program Files (x86)\NetMedical\Actualizar Sigesoft.exe");
+            //    this.Close();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("NO HAY ACTUALICACIONES PENDIENTES...", "ACTUALICACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //#endregion
             
             OperationResult objOperationResult = new OperationResult();
 

@@ -409,7 +409,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmCampanias";
             this.ShowIcon = false;
-            this.Text = "Consulta por Campaña";
+            this.Text = "Consulta por Compañia";
             this.Load += new System.EventHandler(this.FrmCampanias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTree)).EndInit();
