@@ -32,8 +32,11 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
 
-            _listGerenciaTipoPago = oGerenciaCampaniaBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
-            grdTree.DataSource = oGerenciaCampaniaBl.ProcessDataTreeView(_listGerenciaTipoPago);
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                _listGerenciaTipoPago = oGerenciaCampaniaBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
+                grdTree.DataSource = oGerenciaCampaniaBl.ProcessDataTreeView(_listGerenciaTipoPago);
+            }
         }
        
         private void grdTree_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)

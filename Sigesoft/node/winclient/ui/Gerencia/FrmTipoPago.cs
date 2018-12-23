@@ -29,9 +29,12 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
 
-            _listGerenciaTipoPago = oGerenciaTipoPagoBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
-            grdTree.DataSource = oGerenciaTipoPagoBl.ProcessDataTreeView(_listGerenciaTipoPago);
-
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                _listGerenciaTipoPago = oGerenciaTipoPagoBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
+                grdTree.DataSource = oGerenciaTipoPagoBl.ProcessDataTreeView(_listGerenciaTipoPago);
+            }
+           
         }
         
         private void grdTree_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
@@ -80,8 +83,9 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
 
                     var empresa = grdTree.Selected.Rows[0].Cells["EmpresaNombre"].Value.ToString();
                     var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
+                    var tipoEso = grdTree.Selected.Rows[0].Cells["Eso"].Value.ToString();
                     grdData.DataSource = _listGerenciaTipoPago
-                        .FindAll(p => p.Empresa == empresa && p.CondicionPago == tipoPago).ToList();
+                        .FindAll(p => p.Empresa == empresa && p.CondicionPago == tipoPago && p.TipoEso == tipoEso).ToList();
                 }
             }
         }

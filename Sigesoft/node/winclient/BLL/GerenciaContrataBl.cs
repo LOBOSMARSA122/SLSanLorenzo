@@ -19,8 +19,8 @@ namespace Sigesoft.Node.WinClient.BLL
                              {
                                  IdCondicionPago = a.IdCondicionPago,
                                  CondicionPago = a.CondicionPago,
-                                 IdFormaPago = a.IdFormaPago,
-                                 FormaPago = a.FormaPago,
+                                 //IdFormaPago = a.IdFormaPago,
+                                 //FormaPago = a.FormaPago,
                                  FechaFactura = a.FechaFactura,
                                  Comprobante = a.Comprobante,
                                  Empresa = a.Empresa,
