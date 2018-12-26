@@ -27,7 +27,7 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
         private void btnFilter_Click(object sender, EventArgs e)
         {
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
-            DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
+            DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(0);
 
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
@@ -53,14 +53,20 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
             {
                 if (rowSelected.Band.Index.ToString() == "0")
                 {
-                    grdData.DataSource = _listGerenciaTipoPago;
+                    var agrupador = grdTree.Selected.Rows[0].Cells["Agrupador"].Value.ToString();
+                    var comprobantes = _listGerenciaTipoPago.FindAll(p => p.Agrupador == agrupador).GroupBy(g => g.Comprobante).Select(s => s.First()).ToList();
+                    grdData.DataSource = comprobantes;
+
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
                 {
+                    var agrupador = grdTree.Selected.Rows[0].Cells["Agrupador"].Value.ToString();
                     var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
-                    var x = _listGerenciaTipoPago.FindAll(p => p.CondicionPago == tipoPago).ToList();
-                    var y = x.ToList().GroupBy(g => g.Comprobante).Select(s => s.First()).ToList();
-                    grdData.DataSource = y;
+
+
+                    var listaIngresosPorTipoPago = _listGerenciaTipoPago.FindAll(p => p.CondicionPago == tipoPago && p.Agrupador == agrupador).ToList();
+                    var listaIngresosPorTipoPagoYComprobante = listaIngresosPorTipoPago.ToList().GroupBy(g => g.Comprobante).Select(s => s.First()).ToList();
+                    grdData.DataSource = listaIngresosPorTipoPagoYComprobante;
                 }
                 else if (rowSelected.Band.Index.ToString() == "2")
                 {

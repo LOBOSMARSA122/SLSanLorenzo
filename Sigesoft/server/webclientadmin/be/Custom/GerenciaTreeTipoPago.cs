@@ -14,6 +14,7 @@ namespace Sigesoft.Server.WebClientAdmin.BE
 
     public class Tipo
     {
+        public string Agrupador { get; set; }
         public int Cantidad { get; set; }
         public string TipoPago { get; set; }
         public decimal? Total { get; set; }
