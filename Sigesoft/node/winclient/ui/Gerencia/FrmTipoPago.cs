@@ -90,6 +90,7 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
 
                     var empresa = grdTree.Selected.Rows[0].Cells["EmpresaNombre"].Value.ToString();
                     var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
+                    if(grdTree.Selected.Rows[0].Cells["Eso"].Value == null) return;
                     var tipoEso = grdTree.Selected.Rows[0].Cells["Eso"].Value.ToString();
                     grdData.DataSource = _listGerenciaTipoPago
                         .FindAll(p => p.Empresa == empresa && p.CondicionPago == tipoPago && p.TipoEso == tipoEso).ToList();
