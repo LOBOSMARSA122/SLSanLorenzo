@@ -32900,8 +32900,9 @@ namespace Sigesoft.Node.WinClient.BLL
         public string ObtnerNroLiquidacion(int nodeId)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-            var objEntitySource = (from a in dbContext.liquidacion
-                                   select a).OrderByDescending(p => p.v_NroLiquidacion).FirstOrDefault();
+            var objEntitySource = (from a in dbContext.liquidacion 
+                                   where a.v_NroLiquidacion.Substring(6,1).Contains("0") 
+                                   select a ).OrderByDescending(p => p.v_NroLiquidacion).FirstOrDefault();
             if (objEntitySource == null) return string.Format("N{0}-{1}", nodeId.ToString("000"), "000000001"); ;
 
             var nro = int.Parse(objEntitySource.v_NroLiquidacion.ToString().Split('-').ToArray()[1].ToString()) + 1;

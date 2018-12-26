@@ -4,6 +4,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class GerenciaTipoPago
     {
+        public string Agrupador { get; set; }
         public int? IdCondicionPago { get; set; } 
         public string CondicionPago{ get; set; }
         public int?  IdFormaPago{ get; set; }
