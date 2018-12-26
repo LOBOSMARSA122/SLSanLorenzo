@@ -326,6 +326,7 @@
             ultraGridColumn59,
             ultraGridColumn60,
             ultraGridColumn61});
+            ultraGridColumn1.Header.Caption = "Cantidad de Comprobantes";
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn3.Header.VisiblePosition = 2;
@@ -336,6 +337,7 @@
             ultraGridColumn2,
             ultraGridColumn3,
             ultraGridColumn4});
+            ultraGridColumn5.Header.Caption = "Cantidad de Perfiles";
             ultraGridColumn5.Header.VisiblePosition = 0;
             ultraGridColumn6.Header.VisiblePosition = 1;
             ultraGridColumn7.Header.VisiblePosition = 2;
