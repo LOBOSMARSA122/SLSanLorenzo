@@ -13,7 +13,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Medico { get; set; }
         public int i_GrupoId { get; set; }
         public string Grupo { get; set; }
-        public decimal r_Clinica { get; set; }
-        public decimal r_Medico { get; set; }
+        public decimal? r_Clinica { get; set; }
+        public decimal? r_Medico { get; set; }
     }
 }
