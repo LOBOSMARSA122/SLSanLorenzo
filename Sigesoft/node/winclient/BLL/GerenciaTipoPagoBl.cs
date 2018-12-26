@@ -15,7 +15,7 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 var dbContext = new SigesoftEntitiesModel();
 
-                var query = (from a in dbContext.gerenciatipopago(startDate, endDate, -1) 
+                var query = (from a in dbContext.gerenciatipopago(startDate, endDate, 1) 
                             select new GerenciaTipoPago
                             {
                                 IdCondicionPago = a.IdCondicionPago,
@@ -58,7 +58,7 @@ namespace Sigesoft.Node.WinClient.BLL
             foreach (var objTipo in objTipos)
             {
                 var oTipo = new Tipo();
-                oTipo.Cantidad = data.FindAll(p => p.IdCondicionPago == objTipo.IdCondicionPago).Count;
+                oTipo.Cantidad = importeAgrupado.FindAll(p => p.IdCondicionPago == objTipo.IdCondicionPago).Count;
                 oTipo.TipoPago = objTipo.CondicionPago;
                 var importeAgrupadoTipo = data.GroupBy(p => new { p.IdCondicionPago, p.Comprobante }).Select(s => s.First()).ToList();
                 var totalTipoPago = importeAgrupadoTipo.FindAll(p => p.IdCondicionPago == objTipo.IdCondicionPago).ToList().Sum(s => s.Importe);

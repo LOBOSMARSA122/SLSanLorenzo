@@ -58,8 +58,9 @@ namespace Sigesoft.Node.WinClient.UI.Gerencia
                 else if (rowSelected.Band.Index.ToString() == "1")
                 {
                     var tipoPago = grdTree.Selected.Rows[0].Cells["TipoPago"].Value.ToString();
-
-                    grdData.DataSource = _listGerenciaTipoPago.FindAll(p => p.CondicionPago == tipoPago);
+                    var x = _listGerenciaTipoPago.FindAll(p => p.CondicionPago == tipoPago).ToList();
+                    var y = x.ToList().GroupBy(g => g.Comprobante).Select(s => s.First()).ToList();
+                    grdData.DataSource = y;
                 }
                 else if (rowSelected.Band.Index.ToString() == "2")
                 {
