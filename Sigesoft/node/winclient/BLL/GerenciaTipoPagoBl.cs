@@ -44,28 +44,6 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<GerenciaTreeTipoPago> Agrupador(List<GerenciaTipoPago> data)
-        {
-            var list = new List<GerenciaTreeTipoPago>();
-
-            var oGerenciaTreeTipoPago = new GerenciaTreeTipoPago();
-            var countEgresos = data.FindAll(p => p.Agrupador == "EGRESOS").ToList();
-            oGerenciaTreeTipoPago.Total = countEgresos.Count;
-            oGerenciaTreeTipoPago.Agrupador = "EGRESOS";
-            var totalEgresos = countEgresos.Sum(s => s.Importe);
-            oGerenciaTreeTipoPago.Total = totalEgresos;
-            list.Add(oGerenciaTreeTipoPago);
-            
-            oGerenciaTreeTipoPago = new GerenciaTreeTipoPago();
-            var countIngresos = data.FindAll(p => p.Agrupador == "INGRESOS").GroupBy(g => g.Comprobante).Select(s => s.First()).ToList();
-            oGerenciaTreeTipoPago.Total = countIngresos.Count;
-            oGerenciaTreeTipoPago.Agrupador = "INGRESOS";
-            oGerenciaTreeTipoPago.Total = countIngresos.Sum(s => s.Importe);
-            list.Add(oGerenciaTreeTipoPago);
-
-            return list;
-        }
-
         public List<GerenciaTreeTipoPago> ProcessDataTreeView(List<GerenciaTipoPago> data)
         {
             var list = Agrupador(data);
@@ -229,6 +207,28 @@ namespace Sigesoft.Node.WinClient.BLL
 
             //list.Add(oGerenciaTreeTipoPago);
             //return list;
+        }
+
+        public List<GerenciaTreeTipoPago> Agrupador(List<GerenciaTipoPago> data)
+        {
+            var list = new List<GerenciaTreeTipoPago>();
+
+            var oGerenciaTreeTipoPago = new GerenciaTreeTipoPago();
+            var countEgresos = data.FindAll(p => p.Agrupador == "EGRESOS").ToList();
+            oGerenciaTreeTipoPago.Total = countEgresos.Count;
+            oGerenciaTreeTipoPago.Agrupador = "EGRESOS";
+            var totalEgresos = countEgresos.Sum(s => s.Importe);
+            oGerenciaTreeTipoPago.Total = totalEgresos;
+            list.Add(oGerenciaTreeTipoPago);
+
+            oGerenciaTreeTipoPago = new GerenciaTreeTipoPago();
+            var countIngresos = data.FindAll(p => p.Agrupador == "INGRESOS").GroupBy(g => g.Comprobante).Select(s => s.First()).ToList();
+            oGerenciaTreeTipoPago.Total = countIngresos.Count;
+            oGerenciaTreeTipoPago.Agrupador = "INGRESOS";
+            oGerenciaTreeTipoPago.Total = countIngresos.Sum(s => s.Importe);
+            list.Add(oGerenciaTreeTipoPago);
+
+            return list;
         }
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="GerenciaBl.cs" />
     <Compile Include="GerenciaCampaniaBl.cs" />
     <Compile Include="GerenciaContrataBl.cs" />
+    <Compile Include="GerenciaTipoExamenBl.cs" />
     <Compile Include="GerenciaTipoPagoBl.cs" />
     <Compile Include="GerenciaTreeTipoPago.cs" />
     <Compile Include="GesBL.cs" />
