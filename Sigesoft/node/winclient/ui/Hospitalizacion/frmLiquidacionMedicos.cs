@@ -24,7 +24,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             InitializeComponent();
         }
-
+        
         private void frmLiquidacionMedicos_Load(object sender, EventArgs e)
         {
             OperationResult objOperationResult1 = new OperationResult();
@@ -90,13 +90,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     oLiquidacionMedicoList.Paciente = row.Cells["Paciente"].Value.ToString();
 
                     oLiquidacionMedicoList.Tipo = row.Cells["Tipo"].Value.ToString();
-                    oLiquidacionMedicoList.Aseguradora = row.Cells["Aseguradora"].Value == null  ? "" :row.Cells["Aseguradora"].Value.ToString();
+                    oLiquidacionMedicoList.Aseguradora = row.Cells["Aseguradora"].Value == null ? "" : row.Cells["Aseguradora"].Value.ToString();
                     oLiquidacionMedicoList.v_ServiceId = row.Cells["v_ServiceId"].Value.ToString();
                     oLiquidacionMedicoList.r_Comision = decimal.Parse(row.Cells["r_Comision"].Value.ToString());
 
                     _data.Add(oLiquidacionMedicoList);
-                    
-                        
+
                 }
             }
 
@@ -165,6 +164,70 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     idMedico = grdData.Selected.Rows[0].Cells["MedicoTratante"].Value.ToString();
                     
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UltraGridBand band = this.grdData.DisplayLayout.Bands[1];
+            List<LiquidacionServicios> _data = new List<LiquidacionServicios>();
+            foreach (UltraGridRow row in band.GetRowEnumerator(GridRowType.DataRow))
+            {
+                if ((bool)row.Cells["Select"].Value)
+                {
+                    var oLiquidacionMedicoList = new LiquidacionServicios();
+
+                    //string serviceId = row.Cells["v_ServiceId"].Value.ToString();
+                    //o.ActualizarPagoMedico(serviceId);
+
+                    oLiquidacionMedicoList.d_ServiceDate = DateTime.Parse(row.Cells["d_ServiceDate"].Value.ToString());
+                    oLiquidacionMedicoList.Paciente = row.Cells["Paciente"].Value.ToString();
+
+                    oLiquidacionMedicoList.Tipo = row.Cells["Tipo"].Value.ToString();
+                    oLiquidacionMedicoList.Aseguradora = row.Cells["Aseguradora"].Value == null ? "" : row.Cells["Aseguradora"].Value.ToString();
+                    oLiquidacionMedicoList.v_ServiceId = row.Cells["v_ServiceId"].Value.ToString();
+                    oLiquidacionMedicoList.r_Comision = decimal.Parse(row.Cells["r_Comision"].Value.ToString());
+
+                    _data.Add(oLiquidacionMedicoList);
+
+                }
+            }
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                OperationResult objOperationResult = new OperationResult();
+
+                DateTime? fechaInicio = dtpDateTimeStar.Value.Date;
+                DateTime? fechaFin = dptDateTimeEnd.Value.Date.AddDays(1);
+
+                string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
+                string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaPagoMedicos").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "Pago Medico - CSL";
+
+                var medico_info = new ServiceBL().GetSystemUser(ref objOperationResult, int.Parse(ddlUsuario.SelectedValue.ToString()));
+
+                PagoMedicoAsitencial.CreatePagoMedicoAsitencial(ruta + nombre + ".pdf", MedicalCenter, _data, fechaInicio_1, fechaFin_1, medico_info);
+                this.Enabled = true;
+            }
+        }
+
+        private void chkPagados_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkPagados.Checked == true)
+            {
+                btnPagar.Enabled = false;
+                btnImprimir.Enabled = true;
+            }
+            else
+            {
+                btnPagar.Enabled = true;
+                btnImprimir.Enabled = false;
             }
         }
     }
