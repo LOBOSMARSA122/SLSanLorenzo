@@ -76,6 +76,8 @@
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboFacturacion = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.cbbFac = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cbbEstadoLiq = new System.Windows.Forms.ComboBox();
@@ -120,8 +122,6 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.cboFacturacion = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -164,6 +164,29 @@
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // cboFacturacion
+            // 
+            this.cboFacturacion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboFacturacion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboFacturacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFacturacion.FormattingEnabled = true;
+            this.cboFacturacion.Location = new System.Drawing.Point(96, 103);
+            this.cboFacturacion.Name = "cboFacturacion";
+            this.cboFacturacion.Size = new System.Drawing.Size(499, 21);
+            this.cboFacturacion.TabIndex = 148;
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(1, 102);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 30);
+            this.label12.TabIndex = 147;
+            this.label12.Text = "Emp. de Facturación";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbbFac
             // 
@@ -462,7 +485,7 @@
             this.btnRepEmp.ForeColor = System.Drawing.Color.Black;
             this.btnRepEmp.Image = global::Sigesoft.Node.WinClient.UI.Resources.repor_1;
             this.btnRepEmp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRepEmp.Location = new System.Drawing.Point(1138, 487);
+            this.btnRepEmp.Location = new System.Drawing.Point(1139, 464);
             this.btnRepEmp.Margin = new System.Windows.Forms.Padding(2);
             this.btnRepEmp.Name = "btnRepEmp";
             this.btnRepEmp.Size = new System.Drawing.Size(85, 45);
@@ -631,7 +654,7 @@
             this.tpEmpresa.Location = new System.Drawing.Point(4, 22);
             this.tpEmpresa.Name = "tpEmpresa";
             this.tpEmpresa.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEmpresa.Size = new System.Drawing.Size(1129, 488);
+            this.tpEmpresa.Size = new System.Drawing.Size(1129, 465);
             this.tpEmpresa.TabIndex = 1;
             this.tpEmpresa.Text = "Agrupado por Empresa";
             this.tpEmpresa.UseVisualStyleBackColor = true;
@@ -837,7 +860,7 @@
             this.btnCarta.ForeColor = System.Drawing.Color.Black;
             this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCarta.Location = new System.Drawing.Point(1139, 433);
+            this.btnCarta.Location = new System.Drawing.Point(1138, 415);
             this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
             this.btnCarta.Name = "btnCarta";
             this.btnCarta.Size = new System.Drawing.Size(85, 38);
@@ -859,7 +882,7 @@
             this.btnLiqd1.ForeColor = System.Drawing.Color.Black;
             this.btnLiqd1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
             this.btnLiqd1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLiqd1.Location = new System.Drawing.Point(1138, 388);
+            this.btnLiqd1.Location = new System.Drawing.Point(1138, 361);
             this.btnLiqd1.Margin = new System.Windows.Forms.Padding(2);
             this.btnLiqd1.Name = "btnLiqd1";
             this.btnLiqd1.Size = new System.Drawing.Size(85, 41);
@@ -962,29 +985,6 @@
             this.btnEditarServicio.Text = "Editar Servicio";
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
-            // 
-            // cboFacturacion
-            // 
-            this.cboFacturacion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cboFacturacion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboFacturacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFacturacion.FormattingEnabled = true;
-            this.cboFacturacion.Location = new System.Drawing.Point(96, 103);
-            this.cboFacturacion.Name = "cboFacturacion";
-            this.cboFacturacion.Size = new System.Drawing.Size(499, 21);
-            this.cboFacturacion.TabIndex = 148;
-            // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(1, 102);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(95, 30);
-            this.label12.TabIndex = 147;
-            this.label12.Text = "Emp. de Facturación";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmLiquidacion
             // 
