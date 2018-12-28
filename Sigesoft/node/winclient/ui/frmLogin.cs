@@ -120,8 +120,17 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         else
                         {
-                            txtUserName.Text = "";
-                            txtPassword.Text = "";
+                            if (bool.Parse(Common.Utils.GetApplicationConfigValue("Developer")))
+                            {
+                                txtUserName.Text = "sa";
+                                txtPassword.Text = "Alph@2536";
+                            }
+                            else
+                            {
+                                txtUserName.Text = "";
+                                txtPassword.Text = "";
+                            }
+                            
                         }
 
                         #endregion
@@ -156,20 +165,23 @@ namespace Sigesoft.Node.WinClient.UI
         private void frmLogin_Load(object sender, EventArgs e)
         {
             #region Actualización
-            //string rutaserver = Common.Utils.GetApplicationConfigValue("RutaServer_Act").ToString();
-            //string rutapc = Common.Utils.GetApplicationConfigValue("RutaPC_Act").ToString();
-            //string rutaejecutable = Common.Utils.GetApplicationConfigValue("RutaAct_exe").ToString();
-            //DateTime fechatxt = File.GetLastWriteTime(rutaserver);
-            //DateTime fechatxt2 = File.GetLastWriteTime(rutapc);
-            //if (fechatxt != fechatxt2)
-            //{
-            //    System.Diagnostics.Process.Start(rutaejecutable);
-            //    this.Close();
-            //}
-            //else
-            //{
-            //    //MessageBox.Show("NO HAY ACTUALICACIONES PENDIENTES...", "ACTUALIZACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            string rutaserver = Common.Utils.GetApplicationConfigValue("RutaServer_Act").ToString();
+            string rutapc = Common.Utils.GetApplicationConfigValue("RutaPC_Act").ToString();
+            string rutaejecutable = Common.Utils.GetApplicationConfigValue("RutaAct_exe").ToString();
+            if (File.Exists(rutaserver) && File.Exists(rutapc) && File.Exists(rutaejecutable))
+            {
+                DateTime fechatxt = File.GetLastWriteTime(rutaserver);
+                DateTime fechatxt2 = File.GetLastWriteTime(rutapc);
+                if (fechatxt != fechatxt2)
+                {
+                    System.Diagnostics.Process.Start(rutaejecutable);
+                    this.Close();
+                }
+                else
+                {
+                    //MessageBox.Show("NO HAY ACTUALICACIONES PENDIENTES...", "ACTUALIZACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }                  
             #endregion
             
             OperationResult objOperationResult = new OperationResult();
@@ -202,6 +214,8 @@ namespace Sigesoft.Node.WinClient.UI
 
             // Obtener el ID del nodo del archivo de configuración
             _intNodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
+           
+
             string MAC = Common.Utils.GetApplicationConfigValue("ClientSettingsProviderx");
 
             // Leer el nodo

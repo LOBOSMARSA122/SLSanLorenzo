@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
 
@@ -14,34 +15,18 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 var dbContext = new SigesoftEntitiesModel();
 
-                //var query = (from a in dbContext.gerenciatipopago(startDate, endDate, -1)
-                //    select new GerenciaTipoPago
-                //    {
-                //        IdCondicionPago = a.IdCondicionPago,
-                //        CondicionPago = a.CondicionPago,
-                //        //IdFormaPago = a.IdFormaPago,
-                //        //FormaPago = a.FormaPago,
-                //        FechaFactura = a.FechaFactura,
-                //        Comprobante = a.Comprobante,
-                //        Empresa = a.Empresa,
-                //        Importe = a.Importe,
-                //        ServiceId = a.ServiceId,
-                //        Trabajador = a.Trabajador,
-                //        FechaServicio = a.FechaServicio,
-                //        Compania = a.Compania,
-                //        Contratista = a.Contratista,
-                //        CostoExamen = a.CostoExamen,
-                //        TipoEso = a.TipoEso
-                //    }).ToList();
-
                 var query = (from a in dbContext.service
-                            join b in dbContext.person on a.v_PersonId equals b.v_PersonId
-                            join c in dbContext.protocol on a.v_ProtocolId equals c.v_ProtocolId
-                            join d in dbContext.organization on c.v_CustomerOrganizationId equals d.v_OrganizationId
-                            join e in dbContext.organization on c.v_EmployerOrganizationId equals e.v_OrganizationId
-                            join et in dbContext.systemparameter on new { a = c.i_EsoTypeId.Value, b = 118 }
-                            equals new { a = et.i_ParameterId, b = et.i_GroupId } 
-                            where a.i_IsDeleted == 0
+                                join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+                                join c in dbContext.protocol on a.v_ProtocolId equals c.v_ProtocolId
+                                join d in dbContext.organization on c.v_CustomerOrganizationId equals d.v_OrganizationId into djoin
+                                from d in djoin.DefaultIfEmpty()
+                                join e in dbContext.organization on c.v_EmployerOrganizationId equals e.v_OrganizationId into ejoin
+                                from e in ejoin.DefaultIfEmpty()
+                                join f in dbContext.calendar on a.v_ServiceId equals f.v_ServiceId
+                                join et in dbContext.systemparameter on new { a = c.i_EsoTypeId.Value, b = 118 }
+                                equals new { a = et.i_ParameterId, b = et.i_GroupId } into etjoin 
+                                from et in etjoin.DefaultIfEmpty()
+                                where a.i_IsDeleted == 0 && a.d_ServiceDate.Value >= startDate && a.d_ServiceDate.Value <= endDate && f.i_LineStatusId == (int)LineStatus.EnCircuito && a.v_ProtocolId != null
                             select new GerenciaTipoPago
                             {
                                 ServiceId = a.v_ServiceId,

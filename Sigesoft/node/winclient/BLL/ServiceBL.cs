@@ -31352,6 +31352,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     if (fact == 1)
                     {
                         var query = from A in dbContext.service
+                                    join A1 in dbContext.calendar on A.v_ServiceId equals A1.v_ServiceId
                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
                                 join C in dbContext.person on A.v_PersonId equals C.v_PersonId
                                 join D in dbContext.groupoccupation on B.v_GroupOccupationId equals D.v_GroupOccupationId
@@ -31378,6 +31379,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 2
+                                    && A1.i_CalendarStatusId == 1
                                     //&& A.i_ServiceStatusId == 3
                                 select new Liquidacion
                                 {

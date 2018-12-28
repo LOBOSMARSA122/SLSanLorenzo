@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityDeveloper Version="5.7.436.0">
   <ModelSettings xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" AppConnectionStringName="SigesoftConnectionString" ConnectionStringInAppConfig="True" RegenareteConnectionStringInAppConfig="True" TargetFramework="Net40" DetectTPTInheritance="False" EntityFrameworkVersion="Version4" IncludeForeignKeysInModel="true" DetectFunctionBasedColumnDefault="false">
-    <Connection ConnectionString="Data Source=.;Initial Catalog=SanLorenzo2612;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=ILu05k0kIE" Provider="System.Data.SqlClient" />
+    <Connection ConnectionString="Data Source=.;Initial Catalog=SanLorenzo2612;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=ILu05k0kIE;Max Pool Size=200;Connect Timeout=60" Provider="System.Data.SqlClient" />
     <Generation />
     <DatabaseFirstNamingRules>
       <EntitySet PluralizationName="Unchanged" />

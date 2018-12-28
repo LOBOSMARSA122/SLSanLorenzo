@@ -53,6 +53,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Agrupador");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn61 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tipos");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Tipos", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
@@ -319,15 +320,19 @@
             appearance8.BackColor2 = System.Drawing.Color.Silver;
             appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdTree.DisplayLayout.Appearance = appearance8;
-            ultraGridColumn59.Header.VisiblePosition = 0;
-            ultraGridColumn60.Header.VisiblePosition = 1;
-            ultraGridColumn61.Header.VisiblePosition = 2;
+            ultraGridColumn59.Header.VisiblePosition = 1;
+            ultraGridColumn60.Header.VisiblePosition = 2;
+            ultraGridColumn12.Header.VisiblePosition = 0;
+            ultraGridColumn12.Width = 75;
+            ultraGridColumn61.Header.VisiblePosition = 3;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn59,
             ultraGridColumn60,
+            ultraGridColumn12,
             ultraGridColumn61});
             ultraGridColumn1.Header.Caption = "Cantidad de Comprobantes";
             ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn1.Width = 56;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn4.Header.VisiblePosition = 3;
@@ -339,6 +344,7 @@
             ultraGridColumn4});
             ultraGridColumn5.Header.Caption = "Cantidad de Perfiles";
             ultraGridColumn5.Header.VisiblePosition = 0;
+            ultraGridColumn5.Width = 37;
             ultraGridColumn6.Header.VisiblePosition = 1;
             ultraGridColumn7.Header.VisiblePosition = 2;
             ultraGridColumn8.Header.VisiblePosition = 3;
@@ -349,6 +355,7 @@
             ultraGridColumn7,
             ultraGridColumn8});
             ultraGridColumn9.Header.VisiblePosition = 0;
+            ultraGridColumn9.Width = 18;
             ultraGridColumn10.Header.VisiblePosition = 1;
             ultraGridColumn11.Header.VisiblePosition = 2;
             ultraGridBand5.Columns.AddRange(new object[] {
