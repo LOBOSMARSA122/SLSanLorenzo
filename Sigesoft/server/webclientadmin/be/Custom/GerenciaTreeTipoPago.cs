@@ -7,6 +7,7 @@ namespace Sigesoft.Server.WebClientAdmin.BE
 {
     public class GerenciaTreeTipoPago
     {
+        public int Cantidad { get; set; }
         public string Agrupador { get; set; }
         public decimal? Total { get; set; }
         public List<Tipo> Tipos { get; set; }
