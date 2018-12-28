@@ -120,8 +120,17 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         else
                         {
-                            txtUserName.Text = "";
-                            txtPassword.Text = "";
+                            if (bool.Parse(Common.Utils.GetApplicationConfigValue("Developer")))
+                            {
+                                txtUserName.Text = "sa";
+                                txtPassword.Text = "Alph@2536";
+                            }
+                            else
+                            {
+                                txtUserName.Text = "";
+                                txtPassword.Text = "";
+                            }
+                            
                         }
 
                         #endregion
@@ -205,6 +214,8 @@ namespace Sigesoft.Node.WinClient.UI
 
             // Obtener el ID del nodo del archivo de configuración
             _intNodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
+           
+
             string MAC = Common.Utils.GetApplicationConfigValue("ClientSettingsProviderx");
 
             // Leer el nodo

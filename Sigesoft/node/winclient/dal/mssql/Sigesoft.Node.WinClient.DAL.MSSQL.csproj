@@ -168,6 +168,7 @@
     <Compile Include="GeneratedAssemblers\obtenernetoporcobrarResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gerenciatipopagoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gerenciatipoexamenResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\gerenciacreditoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturadeudoraResultAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
