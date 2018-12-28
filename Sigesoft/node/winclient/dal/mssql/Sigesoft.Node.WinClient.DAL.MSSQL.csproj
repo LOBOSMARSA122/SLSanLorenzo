@@ -172,10 +172,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\server\webclientadmin\dal\MSSQL\Sigesoft.Server.WebClientAdmin.DAL.MSSQL.csproj">
-      <Project>{733B4265-75BB-431F-9B19-1D8A483CBAD8}</Project>
-      <Name>Sigesoft.Server.WebClientAdmin.DAL.MSSQL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\BE\Sigesoft.Node.WinClient.BE.csproj">
       <Project>{FF8E51F3-510E-4E90-9627-0AD3E9CB8F5C}</Project>
       <Name>Sigesoft.Node.WinClient.BE</Name>
