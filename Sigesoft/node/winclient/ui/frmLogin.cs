@@ -168,20 +168,20 @@ namespace Sigesoft.Node.WinClient.UI
             string rutaserver = Common.Utils.GetApplicationConfigValue("RutaServer_Act").ToString();
             string rutapc = Common.Utils.GetApplicationConfigValue("RutaPC_Act").ToString();
             string rutaejecutable = Common.Utils.GetApplicationConfigValue("RutaAct_exe").ToString();
-            //if (File.Exists(rutaserver) && File.Exists(rutapc) && File.Exists(rutaejecutable))
-            //{
-                DateTime fechatxt = File.GetLastWriteTime(rutaserver);
-                DateTime fechatxt2 = File.GetLastWriteTime(rutapc);
-                if (fechatxt != fechatxt2)
-                {
-                    System.Diagnostics.Process.Start(rutaejecutable);
-                    this.Close();
-                }
-                else
-                {
-                    //MessageBox.Show("NO HAY ACTUALICACIONES PENDIENTES...", "ACTUALIZACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            //}                  
+            if (File.Exists(rutaserver) && File.Exists(rutapc) && File.Exists(rutaejecutable))
+            {
+            DateTime fechatxt = File.GetLastWriteTime(rutaserver);
+            DateTime fechatxt2 = File.GetLastWriteTime(rutapc);
+            if (fechatxt != fechatxt2)
+            {
+                System.Diagnostics.Process.Start(rutaejecutable);
+                this.Close();
+            }
+            else
+            {
+                //MessageBox.Show("NO HAY ACTUALICACIONES PENDIENTES...", "ACTUALIZACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            }                  
             #endregion
             
             OperationResult objOperationResult = new OperationResult();
