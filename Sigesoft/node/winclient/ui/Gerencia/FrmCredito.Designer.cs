@@ -73,13 +73,13 @@
             this.grdTree = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.gbAcciones = new System.Windows.Forms.GroupBox();
             this.lblMensaje = new System.Windows.Forms.Label();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             this.gbFiltro = new System.Windows.Forms.GroupBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.dptDateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDateTimeStar = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnExportExcel = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTree)).BeginInit();
             this.gbAcciones.SuspendLayout();
@@ -99,19 +99,15 @@
             ultraGridColumn54.Header.VisiblePosition = 5;
             ultraGridColumn54.Hidden = true;
             ultraGridColumn1.Header.VisiblePosition = 1;
-            ultraGridColumn53.Header.VisiblePosition = 4;
-            ultraGridColumn53.Hidden = true;
-            ultraGridColumn3.Header.VisiblePosition = 3;
+            ultraGridColumn53.Header.VisiblePosition = 2;
+            ultraGridColumn3.Header.VisiblePosition = 4;
             ultraGridColumn58.Header.VisiblePosition = 10;
             ultraGridColumn58.Hidden = true;
             ultraGridColumn57.Header.VisiblePosition = 9;
-            ultraGridColumn57.Hidden = true;
             ultraGridColumn55.Header.VisiblePosition = 6;
-            ultraGridColumn55.Hidden = true;
             ultraGridColumn56.Header.VisiblePosition = 7;
-            ultraGridColumn56.Hidden = true;
             ultraGridColumn7.Header.VisiblePosition = 8;
-            ultraGridColumn38.Header.VisiblePosition = 2;
+            ultraGridColumn38.Header.VisiblePosition = 3;
             ultraGridColumn10.Header.VisiblePosition = 11;
             ultraGridColumn37.Header.VisiblePosition = 0;
             ultraGridColumn11.Header.VisiblePosition = 12;
@@ -296,6 +292,27 @@
             this.lblMensaje.Size = new System.Drawing.Size(0, 13);
             this.lblMensaje.TabIndex = 109;
             // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnExportExcel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnExportExcel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportExcel.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportExcel.ForeColor = System.Drawing.Color.Black;
+            this.btnExportExcel.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportExcel.Location = new System.Drawing.Point(5, 23);
+            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(75, 24);
+            this.btnExportExcel.TabIndex = 108;
+            this.btnExportExcel.Text = "Exportar Excel";
+            this.btnExportExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportExcel.UseVisualStyleBackColor = false;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
             // gbFiltro
             // 
             this.gbFiltro.Controls.Add(this.btnFilter);
@@ -309,6 +326,27 @@
             this.gbFiltro.TabIndex = 154;
             this.gbFiltro.TabStop = false;
             this.gbFiltro.Text = "Filtro";
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(333, 21);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 24);
+            this.btnFilter.TabIndex = 107;
+            this.btnFilter.Text = "Filtrar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // dptDateTimeEnd
             // 
@@ -352,48 +390,6 @@
             this.label2.Size = new System.Drawing.Size(12, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "y";
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.BackColor = System.Drawing.SystemColors.Control;
-            this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnExportExcel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnExportExcel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportExcel.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportExcel.ForeColor = System.Drawing.Color.Black;
-            this.btnExportExcel.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportExcel.Location = new System.Drawing.Point(5, 23);
-            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(2);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(75, 24);
-            this.btnExportExcel.TabIndex = 108;
-            this.btnExportExcel.Text = "Exportar Excel";
-            this.btnExportExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportExcel.UseVisualStyleBackColor = false;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(333, 21);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 24);
-            this.btnFilter.TabIndex = 107;
-            this.btnFilter.Text = "Filtrar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // FrmCredito
             // 
