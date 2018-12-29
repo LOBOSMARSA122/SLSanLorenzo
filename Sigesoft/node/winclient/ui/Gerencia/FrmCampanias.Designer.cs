@@ -101,6 +101,7 @@
             this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn54.Header.VisiblePosition = 2;
             ultraGridColumn38.Header.VisiblePosition = 3;
+            ultraGridColumn38.Hidden = true;
             ultraGridColumn55.Header.VisiblePosition = 8;
             ultraGridColumn56.Header.VisiblePosition = 9;
             ultraGridColumn58.Header.VisiblePosition = 10;

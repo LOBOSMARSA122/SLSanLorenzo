@@ -99,12 +99,12 @@ namespace Sigesoft.Node.WinClient.UI
                     //Verificar cuantos protocolos està asigando este usuario
                     var ListaProtocolos = new ProtocolBL().GetProtocolbySystemUserId(SystemUserID);
 
-                    //Verificar si el usuario esta en una empresa diferente
-                    if (ListaProtocolos.FindAll(p => p.v_CustomerOrganizationId != _EmpresaId).Count() > 0)
-                    {
-                        MessageBox.Show("El usuario: " + treeViewUserExternal.SelectedNode.Text + " ya se encuentra asiganado a la empresa: " + ListaProtocolos[0].v_CustomerOrganizationName, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    } 
+                    ////Verificar si el usuario esta en una empresa diferente
+                    //if (ListaProtocolos.FindAll(p => p.v_CustomerOrganizationId != _EmpresaId).Count() > 0)
+                    //{
+                    //    MessageBox.Show("El usuario: " + treeViewUserExternal.SelectedNode.Text + " ya se encuentra asiganado a la empresa: " + ListaProtocolos[0].v_CustomerOrganizationName, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    return;
+                    //} 
                     objProtocolSystemUSerExternalList.v_UserName = treeViewUserExternal.SelectedNode.Text;
                     objProtocolSystemUSerExternalList.i_SystemUserId = int.Parse(treeViewUserExternal.SelectedNode.Name.ToString());
                 //objProtocolSystemUSerExternalList.v_ProtocolId = 
