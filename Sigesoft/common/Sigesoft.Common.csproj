@@ -182,6 +182,7 @@
     </Compile>
     <Compile Include="Reporte_Egresos.cs" />
     <Compile Include="ReportPDF.cs" />
+    <Compile Include="SinLiquidar_General.cs" />
     <Compile Include="TestSomnolncia.cs" />
     <Compile Include="TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.cs" />
     <Compile Include="Utils.cs" />
