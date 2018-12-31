@@ -182,6 +182,8 @@ namespace Sigesoft.Node.WinClient.UI
             // Get the filters from the UI
             List<string> Filters = new List<string>();
             if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_PacientDocument.Contains(\"" + txtPacient.Text.Trim() + "\")");
+            if (!string.IsNullOrEmpty(txtServicioId.Text)) Filters.Add("v_ServiceId.Contains(\"" + txtServicioId.Text.Trim() + "\")");
+            
             //if (!string.IsNullOrEmpty(txtDiagnostico.Text)) Filters.Add("v_DiseasesName.Contains(\"" + txtDiagnostico.Text.Trim() + "\")");
             if (ddServiceStatusId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceStatusId==" + ddServiceStatusId.SelectedValue);
 

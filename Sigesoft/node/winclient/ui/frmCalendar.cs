@@ -189,20 +189,25 @@ namespace Sigesoft.Node.WinClient.UI
             if (ddlServiceTypeId.SelectedValue.ToString() == "-1")
             {
                 MessageBox.Show("Por favor seleccionar Tipo de Servicio", "Validación!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                return; 
             }
 
 
-            if (ddlMasterServiceId.SelectedValue.ToString() == "-1")
-            {
-                MessageBox.Show("Por favor seleccionar Servicio", "Validación!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            //if (ddlMasterServiceId.SelectedValue.ToString() == "-1")
+            //{
+            //    MessageBox.Show("Por favor seleccionar Servicio", "Validación!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
             // Get the filters from the UI
             List<string> Filters = new List<string>();
             //if (ddlServiceTypeId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceTypeId==" + ddlServiceTypeId.SelectedValue);
-            if (ddlMasterServiceId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceId==" + ddlMasterServiceId.SelectedValue);
+
+            if (ddlMasterServiceId.SelectedValue.ToString() != "-1") Filters.Add("i_MasterServiceId==" + ddlMasterServiceId.SelectedValue);
+            //if (ddlServiceTypeId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceTypeId==" + ddlServiceTypeId.SelectedValue);
+
+            //if (ddlMasterServiceId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceId==" + ddlMasterServiceId.SelectedValue);
             if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_Pacient.Contains(\"" + txtPacient.Text.Trim() + "\")");
+            if (!string.IsNullOrEmpty(txtServicioId.Text)) Filters.Add("v_ServiceId.Contains(\"" + txtServicioId.Text.Trim() + "\")");
             if (!string.IsNullOrEmpty(txtNroDocument.Text)) Filters.Add("v_NumberDocument==" + "\"" + txtNroDocument.Text.Trim() + "\"");
             if (ddlVipId.SelectedValue.ToString() != "-1") Filters.Add("i_IsVipId==" + ddlVipId.SelectedValue);
             if (ddlCalendarStatusId.SelectedValue.ToString() != "-1") Filters.Add("i_CalendarStatusId==" + ddlCalendarStatusId.SelectedValue);
@@ -3657,6 +3662,11 @@ namespace Sigesoft.Node.WinClient.UI
                 Historia_Clinica.CreateHistoria_Clinica(ruta + nombre + ".pdf", MedicalCenter, datosP, medicoTratante, exams);
                 this.Enabled = true;
             }
+        }
+
+        private void ddlServiceTypeId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
        
     }

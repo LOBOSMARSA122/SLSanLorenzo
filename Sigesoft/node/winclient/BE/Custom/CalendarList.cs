@@ -43,6 +43,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_ServiceStatusName { get; set; }
         public string v_AptitudeStatusName { get; set; }
 
+        public string i_ServicioId { get; set; }
+
         public string v_EsoTypeName { get; set; }
         public string v_ProtocolName { get; set; }
         public int i_EsoTypeId { get; set; }

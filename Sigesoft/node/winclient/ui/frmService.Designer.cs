@@ -164,6 +164,8 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
+            this.txtServicioId = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -172,17 +174,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtServicioId);
+            this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.cboUserMed);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.cboHistoriaGenerada);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.txtDiagnostico);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.chkFC);
-            this.groupBox1.Controls.Add(this.FechaControlFin);
             this.groupBox1.Controls.Add(this.ddlMasterServiceId);
-            this.groupBox1.Controls.Add(this.FechaControlIni);
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.ddlConsultorio);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.btnFilter);
@@ -288,13 +288,14 @@
             // chkFC
             // 
             this.chkFC.AutoSize = true;
-            this.chkFC.Location = new System.Drawing.Point(12, 96);
+            this.chkFC.Location = new System.Drawing.Point(191, -1);
             this.chkFC.Name = "chkFC";
-            this.chkFC.Size = new System.Drawing.Size(91, 17);
+            this.chkFC.Size = new System.Drawing.Size(92, 17);
             this.chkFC.TabIndex = 113;
             this.chkFC.Text = "Fecha Control";
             this.chkFC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkFC.UseVisualStyleBackColor = true;
+            this.chkFC.Visible = false;
             this.chkFC.CheckedChanged += new System.EventHandler(this.chkFC_CheckedChanged);
             // 
             // FechaControlFin
@@ -302,11 +303,12 @@
             this.FechaControlFin.Enabled = false;
             this.FechaControlFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FechaControlFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaControlFin.Location = new System.Drawing.Point(209, 92);
+            this.FechaControlFin.Location = new System.Drawing.Point(388, -5);
             this.FechaControlFin.Margin = new System.Windows.Forms.Padding(2);
             this.FechaControlFin.Name = "FechaControlFin";
             this.FechaControlFin.Size = new System.Drawing.Size(95, 20);
             this.FechaControlFin.TabIndex = 112;
+            this.FechaControlFin.Visible = false;
             // 
             // ddlMasterServiceId
             // 
@@ -327,22 +329,24 @@
             this.FechaControlIni.Enabled = false;
             this.FechaControlIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FechaControlIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaControlIni.Location = new System.Drawing.Point(109, 92);
+            this.FechaControlIni.Location = new System.Drawing.Point(288, -5);
             this.FechaControlIni.Margin = new System.Windows.Forms.Padding(2);
             this.FechaControlIni.Name = "FechaControlIni";
             this.FechaControlIni.Size = new System.Drawing.Size(82, 20);
             this.FechaControlIni.TabIndex = 111;
+            this.FechaControlIni.Visible = false;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(194, 96);
+            this.label12.Location = new System.Drawing.Point(373, -1);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(12, 13);
             this.label12.TabIndex = 110;
             this.label12.Text = "y";
+            this.label12.Visible = false;
             // 
             // ddlConsultorio
             // 
@@ -510,7 +514,7 @@
             this.ddServiceStatusId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddServiceStatusId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddServiceStatusId.FormattingEnabled = true;
-            this.ddServiceStatusId.Location = new System.Drawing.Point(96, 67);
+            this.ddServiceStatusId.Location = new System.Drawing.Point(96, 95);
             this.ddServiceStatusId.Margin = new System.Windows.Forms.Padding(2);
             this.ddServiceStatusId.Name = "ddServiceStatusId";
             this.ddServiceStatusId.Size = new System.Drawing.Size(208, 21);
@@ -521,7 +525,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(9, 71);
+            this.label8.Location = new System.Drawing.Point(9, 99);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
@@ -1987,6 +1991,26 @@
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
             // 
+            // txtServicioId
+            // 
+            this.txtServicioId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServicioId.Location = new System.Drawing.Point(96, 70);
+            this.txtServicioId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtServicioId.Name = "txtServicioId";
+            this.txtServicioId.Size = new System.Drawing.Size(208, 21);
+            this.txtServicioId.TabIndex = 144;
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(12, 73);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 16);
+            this.label19.TabIndex = 143;
+            this.label19.Text = "Id Servicio";
+            // 
             // frmService
             // 
             this.AcceptButton = this.btnFilter;
@@ -2001,9 +2025,13 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btnBotonOculto);
+            this.Controls.Add(this.chkFC);
             this.Controls.Add(this.btnInforme312);
+            this.Controls.Add(this.FechaControlFin);
             this.Controls.Add(this.btnGenerarIds);
+            this.Controls.Add(this.FechaControlIni);
             this.Controls.Add(this.btnGenerarLiquidacion);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnInformeOftalmo);
             this.Controls.Add(this.btnHis);
             this.Controls.Add(this.btnHistoriaClinica);
@@ -2135,5 +2163,7 @@
         private System.Windows.Forms.Button btnHistoriaCl;
         private System.Windows.Forms.Button btnReportAsync;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtServicioId;
+        private System.Windows.Forms.Label label19;
     }
 }
