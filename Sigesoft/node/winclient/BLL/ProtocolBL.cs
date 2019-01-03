@@ -198,6 +198,68 @@ namespace Sigesoft.Node.WinClient.BLL
                     dbContext.SaveChanges();
                 }
 
+
+                #region ProtocolSystemUser                
+                
+                var extUser = (from a in dbContext.systemuser where a.i_SystemUserTypeId == 2 select a).ToList();
+
+                var extUserWithCustomer = extUser.FindAll(p => p.v_SystemUserByOrganizationId == pobjProtocol.v_CustomerOrganizationId).ToList();
+                var extUserWithEmployer = extUser.FindAll(p => p.v_SystemUserByOrganizationId == pobjProtocol.v_EmployerOrganizationId).ToList();
+                var extUserWithWorking = extUser.FindAll(p => p.v_SystemUserByOrganizationId == pobjProtocol.v_WorkingOrganizationId).ToList();
+
+                foreach (var extUs in extUserWithCustomer)
+                {
+                    var getPermissionsExtUser = (from a in dbContext.protocolsystemuser where a.i_SystemUserId == extUs.i_SystemUserId select a).ToList().GroupBy(g => g.i_ApplicationHierarchyId).Select(s => s.First());
+
+                    var list = new List<protocolsystemuserDto>();
+                    foreach (var perm in getPermissionsExtUser )
+                    {
+                        var oProtocolSystemUserDto = new protocolsystemuserDto();
+                        oProtocolSystemUserDto.i_SystemUserId = extUs.i_SystemUserId;
+                        oProtocolSystemUserDto.v_ProtocolId = NewId0;
+                        oProtocolSystemUserDto.i_ApplicationHierarchyId = perm.i_ApplicationHierarchyId;
+                        list.Add(oProtocolSystemUserDto);
+                    }
+
+                    AddProtocolSystemUser(ref pobjOperationResult, list, extUs.i_SystemUserId, ClientSession, false);
+                }
+
+
+                foreach (var extUs in extUserWithEmployer)
+                {
+                    var getPermissionsExtUser = (from a in dbContext.protocolsystemuser where a.i_SystemUserId == extUs.i_SystemUserId select a).ToList().GroupBy(g => g.i_ApplicationHierarchyId).Select(s => s.First());
+
+                    var list = new List<protocolsystemuserDto>();
+                    foreach (var perm in getPermissionsExtUser)
+                    {
+                        var oProtocolSystemUserDto = new protocolsystemuserDto();
+                        oProtocolSystemUserDto.i_SystemUserId = extUs.i_SystemUserId;
+                        oProtocolSystemUserDto.v_ProtocolId = NewId0;
+                        oProtocolSystemUserDto.i_ApplicationHierarchyId = perm.i_ApplicationHierarchyId;
+                        list.Add(oProtocolSystemUserDto);
+                    }
+
+                    AddProtocolSystemUser(ref pobjOperationResult, list, extUs.i_SystemUserId, ClientSession, false);
+                }
+
+
+                foreach (var extUs in extUserWithWorking)
+                {
+                    var getPermissionsExtUser = (from a in dbContext.protocolsystemuser where a.i_SystemUserId == extUs.i_SystemUserId select a).ToList().GroupBy(g => g.i_ApplicationHierarchyId).Select(s => s.First());
+
+                    var list = new List<protocolsystemuserDto>();
+                    foreach (var perm in getPermissionsExtUser)
+                    {
+                        var oProtocolSystemUserDto = new protocolsystemuserDto();
+                        oProtocolSystemUserDto.i_SystemUserId = extUs.i_SystemUserId;
+                        oProtocolSystemUserDto.v_ProtocolId = NewId0;
+                        oProtocolSystemUserDto.i_ApplicationHierarchyId = perm.i_ApplicationHierarchyId;
+                        list.Add(oProtocolSystemUserDto);
+                    }
+
+                    AddProtocolSystemUser(ref pobjOperationResult, list, extUs.i_SystemUserId, ClientSession, false);
+                }
+                #endregion
                 pobjOperationResult.Success = 1;
                 // Llenar entidad Log
                 LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "PROTOCOLO", "v_ProtocolId=" + NewId0.ToString(), Success.Ok, null);
