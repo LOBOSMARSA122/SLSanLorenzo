@@ -433,7 +433,8 @@ namespace Sigesoft.Common
     public enum ExternalUserFunctionalityType
     {
         PermisosOpcionesUsuarioExternoWeb = 1,
-        NotificacionesUsuarioExternoWeb = 2
+        NotificacionesUsuarioExternoWeb = 2,
+        PermisosVigilancia = 3
     }
 
     public enum FileExtension

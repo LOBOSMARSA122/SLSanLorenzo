@@ -940,7 +940,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var query = (from ah in dbContext.applicationhierarchy
                              where ah.i_IsDeleted == 0 &&
-                             ah.i_ExternalUserFunctionalityTypeId == pintExternalUserFunctionalityTypeId
+                             ah.i_ExternalUserFunctionalityTypeId == pintExternalUserFunctionalityTypeId || ah.i_ExternalUserFunctionalityTypeId == 3
                              select new
                              {
                                  Id = ah.i_ApplicationHierarchyId,
@@ -2261,5 +2261,56 @@ namespace Sigesoft.Node.WinClient.BLL
             }           
          
         }
+
+        public List<ProtocolSystemUSerExternalList> GetProtocolSystemUserByExternalUserId(int? systemUserId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var list = (from A in dbContext.protocolsystemuser
+                            where A.i_SystemUserId == systemUserId  && A.i_IsDeleted == 0
+                            select new ProtocolSystemUSerExternalList { 
+                                v_ProtocolSystemUserId = A.v_ProtocolSystemUserId,
+                                i_SystemUserId = A.i_SystemUserId,
+                                v_ProtocolId = A.v_ProtocolId,
+                                i_ApplicationHierarchyId = A.i_ApplicationHierarchyId
+                            }).ToList();
+                return list;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        public void DeletePermissisoByExternalUser(int systemUserId, int applicationHierarchyId, string protocolId, List<string> ClientSession)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntitySource = (from a in dbContext.protocolsystemuser
+                                           where a.i_SystemUserId == systemUserId &&
+                                                 a.v_ProtocolId == protocolId &&
+                                                 a.i_ApplicationHierarchyId == applicationHierarchyId &&
+                                                 a.i_IsDeleted == 0
+                                           select a).FirstOrDefault();
+
+                    // Crear la entidad con los datos actualizados
+                    objEntitySource.d_UpdateDate = DateTime.Now;
+                    objEntitySource.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                    objEntitySource.i_IsDeleted = 1;
+                    dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+    
     }
 }
