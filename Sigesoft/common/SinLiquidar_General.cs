@@ -24,10 +24,10 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateLiquidaciones_Pendientes_Facturass(string filePDF,
-            organizationDto infoEmpresaPropietaria, List<LiquidacionEmpresa> Lista_1, string fechaInicio, string fechaFin, List<LiquidacionEmpresa> Lista_2, List<LiquidacionEmpresa> Lista_3, List<LiquidacionEmpresa> Lista_4
-            , List<LiquidacionEmpresa> Lista_5, List<LiquidacionEmpresa> Lista_6, List<LiquidacionEmpresa> Lista_7, List<LiquidacionEmpresa> Lista_8, List<LiquidacionEmpresa> Lista_9, List<LiquidacionEmpresa> Lista_10
-            , List<LiquidacionEmpresa> Lista_11, List<LiquidacionEmpresa> Lista_12, List<LiquidacionEmpresa> Lista_total, List<LiquidacionEmpresa> ListaAños_Atras)
+        public static void CreateEmpresasSinLiquidaciones_General(string filePDF,
+            organizationDto infoEmpresaPropietaria, List<GerenciaTreeCredito> Lista_1, string fechaInicio, string fechaFin, List<GerenciaTreeCredito> Lista_2, List<GerenciaTreeCredito> Lista_3, List<GerenciaTreeCredito> Lista_4
+            , List<GerenciaTreeCredito> Lista_5, List<GerenciaTreeCredito> Lista_6, List<GerenciaTreeCredito> Lista_7, List<GerenciaTreeCredito> Lista_8, List<GerenciaTreeCredito> Lista_9, List<GerenciaTreeCredito> Lista_10
+            , List<GerenciaTreeCredito> Lista_11, List<GerenciaTreeCredito> Lista_12, List<GerenciaTreeCredito> Lista_total, List<GerenciaTreeCredito> ListaAños_Atras)
         {
             //Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
@@ -92,7 +92,7 @@ namespace NetPdf
 
             var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("LIQUIDACIONES PENDIENTES DE FACTURACION", fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 18f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase("EMPRESAS SIN LIQUIDAR -- SIN FACTURAR", fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 18f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("", fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase(" AL " + fechaFin, fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 18f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("", fontTitle1)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 5f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
@@ -111,12 +111,19 @@ namespace NetPdf
             decimal _debe_la_4 = 0;
             foreach (var liq in ListaAños_Atras)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo =="SIN LIQUIDACION")
                     {
-                        _debe_la_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_la_1 += item2.Total.Value;
+                            }
+                        }
                     }
+                    
                 }
                 _debe_la_2 = _debe_la_1;
                 decimal _debe1 = decimal.Round(_debe_la_2, 2);
@@ -134,12 +141,19 @@ namespace NetPdf
             decimal _debe_l1_4 = 0;
             foreach (var liq in Lista_1)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l1_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l1_1 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l1_2 = _debe_l1_1;
                 decimal _debe1 = decimal.Round(_debe_l1_2, 2);
@@ -157,12 +171,19 @@ namespace NetPdf
             decimal _debe_l2_4 = 0;
             foreach (var liq in Lista_2)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l2_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l2_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l2_2 = _debe_l2_1;
                 decimal _debe1 = decimal.Round(_debe_l2_2, 2);
@@ -181,12 +202,19 @@ namespace NetPdf
             decimal _debe_l3_4 = 0;
             foreach (var liq in Lista_3)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l3_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l3_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l3_2 = _debe_l3_1;
                 decimal _debe1 = decimal.Round(_debe_l3_2, 2);
@@ -204,12 +232,19 @@ namespace NetPdf
             decimal _debe_l4_4 = 0;
             foreach (var liq in Lista_4)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l4_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l4_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l4_2 = _debe_l4_1;
                 decimal _debe1 = decimal.Round(_debe_l4_2, 2);
@@ -227,12 +262,19 @@ namespace NetPdf
             decimal _debe_l5_4 = 0;
             foreach (var liq in Lista_5)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l5_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l5_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l5_2 = _debe_l5_1;
                 decimal _debe1 = decimal.Round(_debe_l5_2, 2);
@@ -250,12 +292,19 @@ namespace NetPdf
             decimal _debe_l6_4 = 0;
             foreach (var liq in Lista_6)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l6_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l6_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l6_2 = _debe_l6_1;
                 decimal _debe1 = decimal.Round(_debe_l6_2, 2);
@@ -273,12 +322,19 @@ namespace NetPdf
             decimal _debe_l7_4 = 0;
             foreach (var liq in Lista_7)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l7_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l7_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l7_2 = _debe_l7_1;
                 decimal _debe1 = decimal.Round(_debe_l7_2, 2);
@@ -296,12 +352,19 @@ namespace NetPdf
             decimal _debe_l8_4 = 0;
             foreach (var liq in Lista_8)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l8_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l8_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l8_2 = _debe_l8_1;
                 decimal _debe1 = decimal.Round(_debe_l8_2, 2);
@@ -319,12 +382,19 @@ namespace NetPdf
             decimal _debe_l9_4 = 0;
             foreach (var liq in Lista_9)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l9_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l9_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l9_2 = _debe_l3_1;
                 decimal _debe1 = decimal.Round(_debe_l9_2, 2);
@@ -342,12 +412,19 @@ namespace NetPdf
             decimal _debe_l10_4 = 0;
             foreach (var liq in Lista_10)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l10_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l10_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l10_2 = _debe_l10_1;
                 decimal _debe1 = decimal.Round(_debe_l10_2, 2);
@@ -365,12 +442,19 @@ namespace NetPdf
             decimal _debe_l11_4 = 0;
             foreach (var liq in Lista_11)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l11_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l11_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l11_2 = _debe_l11_1;
                 decimal _debe1 = decimal.Round(_debe_l11_2, 2);
@@ -388,12 +472,19 @@ namespace NetPdf
             decimal _debe_l12_4 = 0;
             foreach (var liq in Lista_12)
             {
-                foreach (var item in liq.detalle)
+                foreach (var item1 in liq.Tipos)
                 {
-                    if (item.d_Pago != 0)
+                    if (item1.Tipo == "SIN LIQUIDACION")
                     {
-                        _debe_l12_1 += item.d_Pago.Value;
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                _debe_l12_2 += item2.Total.Value;
+                            }
+                        }
                     }
+
                 }
                 _debe_l12_2 = _debe_l12_1;
                 decimal _debe1 = decimal.Round(_debe_l12_2, 2);
@@ -492,10 +583,24 @@ namespace NetPdf
             decimal d_ant_2 = 0;
             foreach (var item in ListaAños_Atras)
             {
-                foreach (var deuda in item.detalle)
+                foreach (var item1 in item.Tipos)
                 {
-                    d_ant_1 += deuda.d_Pago.Value;
+                    if (item1.Tipo == "SIN LIQUIDACION")
+                    {
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            if (item2.Total != 0)
+                            {
+                                d_ant_1 += item2.Total.Value;
+                            }
+                        }
+                    }
+
                 }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_ant_1 += deuda.d_Pago.Value;
+                //}
                 d_ant_2 = d_ant_1;
                 _listaAnteriores.Add(d_ant_2);
                 d_ant_1 = 0;
@@ -506,10 +611,10 @@ namespace NetPdf
             decimal d_2_2 = 0;
             foreach (var item in Lista_2)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_2_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_2_1 += deuda.d_Pago.Value;
+                //}
                 d_2_2 = d_2_1;
                 _lista2.Add(d_2_2);
                 d_2_1 = 0;
@@ -520,10 +625,10 @@ namespace NetPdf
             decimal d_3_2 = 0;
             foreach (var item in Lista_3)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_3_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_3_1 += deuda.d_Pago.Value;
+                //}
                 d_3_2 = d_3_1;
                 _lista3.Add(d_3_2);
                 d_3_1 = 0;
@@ -534,10 +639,10 @@ namespace NetPdf
             decimal d_4_2 = 0;
             foreach (var item in Lista_4)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_4_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_4_1 += deuda.d_Pago.Value;
+                //}
                 d_4_2 = d_4_1;
                 _lista2.Add(d_4_2);
                 d_4_1 = 0;
@@ -548,10 +653,10 @@ namespace NetPdf
             decimal d_5_2 = 0;
             foreach (var item in Lista_5)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_5_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_5_1 += deuda.d_Pago.Value;
+                //}
                 d_5_2 = d_5_1;
                 _lista2.Add(d_5_2);
                 d_5_1 = 0;
@@ -561,10 +666,10 @@ namespace NetPdf
             decimal d_6_2 = 0;
             foreach (var item in Lista_6)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_6_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_6_1 += deuda.d_Pago.Value;
+                //}
                 d_6_2 = d_6_1;
                 _lista2.Add(d_6_2);
                 d_6_1 = 0;
@@ -575,10 +680,10 @@ namespace NetPdf
             decimal d_7_2 = 0;
             foreach (var item in Lista_7)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_7_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_7_1 += deuda.d_Pago.Value;
+                //}
                 d_7_2 = d_7_1;
                 _lista2.Add(d_7_2);
                 d_7_1 = 0;
@@ -589,10 +694,10 @@ namespace NetPdf
             decimal d_8_2 = 0;
             foreach (var item in Lista_8)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_8_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_8_1 += deuda.d_Pago.Value;
+                //}
                 d_8_2 = d_8_1;
                 _lista8.Add(d_8_2);
                 d_8_1 = 0;
@@ -603,10 +708,10 @@ namespace NetPdf
             decimal d_9_2 = 0;
             foreach (var item in Lista_9)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_9_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_9_1 += deuda.d_Pago.Value;
+                //}
                 d_9_2 = d_9_1;
                 _lista9.Add(d_9_2);
                 d_9_1 = 0;
@@ -617,10 +722,10 @@ namespace NetPdf
             decimal d_10_2 = 0;
             foreach (var item in Lista_10)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_10_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_10_1 += deuda.d_Pago.Value;
+                //}
                 d_10_2 = d_10_1;
                 _lista10.Add(d_10_2);
                 d_10_1 = 0;
@@ -631,10 +736,10 @@ namespace NetPdf
             decimal d_11_2 = 0;
             foreach (var item in Lista_11)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_11_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_11_1 += deuda.d_Pago.Value;
+                //}
                 d_11_2 = d_11_1;
                 _lista11.Add(d_11_2);
                 d_11_1 = 0;
@@ -645,10 +750,10 @@ namespace NetPdf
             decimal d_12_2 = 0;
             foreach (var item in Lista_12)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_12_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_12_1 += deuda.d_Pago.Value;
+                //}
                 d_12_2 = d_12_1;
                 _lista12.Add(d_12_2);
                 d_12_1 = 0;
@@ -659,10 +764,10 @@ namespace NetPdf
             decimal d_total_2 = 0;
             foreach (var item in Lista_total)
             {
-                foreach (var deuda in item.detalle)
-                {
-                    d_total_1 += deuda.d_Pago.Value;
-                }
+                //foreach (var deuda in item.detalle)
+                //{
+                //    d_total_1 += deuda.d_Pago.Value;
+                //}
                 d_total_2 = d_total_1;
                 _listatotal.Add(d_total_2);
                 d_total_1 = 0;
@@ -672,7 +777,7 @@ namespace NetPdf
             {
                 cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
-                cell = new PdfPCell(new Phrase(liq.v_OrganizationName, fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cell = new PdfPCell(new Phrase(liq.Agrupador, fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
 
                 if (ListaAños_Atras.Count != 0)
@@ -701,13 +806,13 @@ namespace NetPdf
                 //cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 //cells.Add(cell);
 
-                foreach (var item in liq.detalle)
-                {
-                    if (item.d_Pago != 0)
-                    {
-                        debe += item.d_Pago.Value;
-                    }
-                }
+                //foreach (var item in liq.detalle)
+                //{
+                //    if (item.d_Pago != 0)
+                //    {
+                //        debe += item.d_Pago.Value;
+                //    }
+                //}
                 debe_1 = debe;
                 decimal _debe1 = decimal.Round(debe_1, 2);
 
