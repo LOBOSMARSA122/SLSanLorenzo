@@ -1074,6 +1074,33 @@ namespace Sigesoft.Node.WinClient.UI
 
                 this.Enabled = false;
 
+                #region total_sl
+                List<GerenciaCredito> _listaSinLiquidar_Total = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Total1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_LT = new DateTime(2018, 1, 1, 0, 0, 0);
+                DateTime? fechaFin_LT = DateTime.Now;
+
+                _listaSinLiquidar_Total = oGerenciaCreditoBl.Filter(fechaInicio_LT.Value, fechaFin_LT.Value);
+                _listaSinLiquidar_Total1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Total);
+
+                #endregion
+
+                List<string> deudores = new List<string>();
+
+                foreach (var item in _listaSinLiquidar_Total1)
+                {
+                    foreach (var item1 in item.Tipos)
+                    {
+                        foreach (var item2 in item1.Empresas)
+                        {
+                            deudores.Add(item2.Empresa);
+                        }
+                    }
+                }
+
+                
+
+
                 #region años_atras
                 List<GerenciaCredito> _listaSinLiquidar_AñosAtras = new List<GerenciaCredito>();
                 List<GerenciaTreeCredito> _listaSinLiquidar_AñosAtras1 = new List<GerenciaTreeCredito>();
@@ -1093,8 +1120,18 @@ namespace Sigesoft.Node.WinClient.UI
                 DateTime? pdatBeginDate = new DateTime(2018, 1, 1, 0, 0, 0);
                 DateTime? pdatEndDate = new DateTime(años_atras, 12, 31, 0, 0, 0);
 
-                _listaSinLiquidar_AñosAtras = oGerenciaCreditoBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
-                _listaSinLiquidar_AñosAtras1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_AñosAtras);
+
+                foreach (var item in deudores)
+                {
+                    _listaSinLiquidar_AñosAtras = oGerenciaCreditoBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
+                    _listaSinLiquidar_AñosAtras1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_AñosAtras);
+
+                    foreach (var item1 in _listaSinLiquidar_AñosAtras1)
+                    {
+                        
+                    }
+                }
+               
 
                 #endregion
 
@@ -1230,15 +1267,7 @@ namespace Sigesoft.Node.WinClient.UI
                 _listaSinLiquidar_Diciembre1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Diciembre);
                 #endregion
 
-                #region total_sl
-                List<GerenciaCredito> _listaSinLiquidar_Total = new List<GerenciaCredito>();
-                List<GerenciaTreeCredito> _listaSinLiquidar_Total1 = new List<GerenciaTreeCredito>();
-                DateTime? fechaInicio_LT = new DateTime(2018, 1, 1, 0, 0, 0);
-                DateTime? fechaFin_LT = DateTime.Now;
-
-                _listaSinLiquidar_Total = oGerenciaCreditoBl.Filter(fechaInicio_LT.Value, fechaFin_LT.Value);
-                _listaSinLiquidar_Total1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Total);
-                #endregion
+                
 
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
@@ -1249,8 +1278,8 @@ namespace Sigesoft.Node.WinClient.UI
                 DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
                 string fechaInicio_2 = fechaInicio_1.ToString().Split(' ')[0];
                 string fechaFin_2 = fechaFin_1.ToString().Split(' ')[0];
-                //Liquidaciones_Pendientes_Facturass.CreateLiquidaciones_Pendientes_Facturass(ruta + nombre + ".pdf", MedicalCenter, ListaLiquidacion_1, fechaInicio_2, fechaFin_2, ListaLiquidacion_2, ListaLiquidacion_3, ListaLiquidacion_4, ListaLiquidacion_5, ListaLiquidacion_6, ListaLiquidacion_7, ListaLiquidacion_8,
-                //   ListaLiquidacion_9, ListaLiquidacion_10, ListaLiquidacion_11, ListaLiquidacion_12, ListaLiquidacion_total, ListaAños_Atras);
+                SinLiquidar_General.CreateEmpresasSinLiquidaciones_General(ruta + nombre + ".pdf", MedicalCenter, _listaSinLiquidar_Enero1, fechaInicio_2, fechaFin_2, _listaSinLiquidar_Febrero1, _listaSinLiquidar_Marzo1, _listaSinLiquidar_Abril1, _listaSinLiquidar_Mayo1, _listaSinLiquidar_Junio1, _listaSinLiquidar_Julio1, _listaSinLiquidar_Agosto1,
+                   _listaSinLiquidar_Setiembre1, _listaSinLiquidar_Octubre1, _listaSinLiquidar_Noviembre1, _listaSinLiquidar_Diciembre1, _listaSinLiquidar_Total1, _listaSinLiquidar_AñosAtras1);
                 this.Enabled = true;
             }
             else if (rbEmpresasDetalleSLSF.Checked)
