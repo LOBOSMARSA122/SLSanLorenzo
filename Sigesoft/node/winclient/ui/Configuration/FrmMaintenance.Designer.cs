@@ -507,6 +507,7 @@
             this.chklNotificaciones.Name = "chklNotificaciones";
             this.chklNotificaciones.Size = new System.Drawing.Size(243, 79);
             this.chklNotificaciones.TabIndex = 23;
+            this.chklNotificaciones.SelectedValueChanged += new System.EventHandler(this.chklNotificaciones_SelectedValueChanged);
             // 
             // groupBox5
             // 
@@ -529,6 +530,7 @@
             this.chklPermisosOpciones.Name = "chklPermisosOpciones";
             this.chklPermisosOpciones.Size = new System.Drawing.Size(404, 94);
             this.chklPermisosOpciones.TabIndex = 22;
+            this.chklPermisosOpciones.SelectedValueChanged += new System.EventHandler(this.chklPermisosOpciones_SelectedValueChanged);
             // 
             // groupBox3
             // 

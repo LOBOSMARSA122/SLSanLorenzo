@@ -237,19 +237,23 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             {
                 chklPermisosOpciones.SetItemChecked(i, false);
             }
+            this.chklPermisosOpciones.SelectedValueChanged -= new System.EventHandler(this.chklPermisosOpciones_SelectedValueChanged);
+
             chklPermisosOpciones.DataSource = _protocolBL.GetExternalPermisionForChekedListByTypeId(ref objOperationResult, (int)ExternalUserFunctionalityType.PermisosOpcionesUsuarioExternoWeb);
             chklPermisosOpciones.DisplayMember = "Value1";
             chklPermisosOpciones.ValueMember = "Id";
+
+            this.chklPermisosOpciones.SelectedValueChanged += new System.EventHandler(this.chklPermisosOpciones_SelectedValueChanged);
 
             for (int i = 0; i < chklNotificaciones.Items.Count - 1; i++)
             {
                 chklNotificaciones.SetItemChecked(i, false);
             }
-
+            this.chklNotificaciones.SelectedValueChanged -= new System.EventHandler(this.chklNotificaciones_SelectedValueChanged);
             chklNotificaciones.DataSource = _protocolBL.GetExternalPermisionForChekedListByTypeId(ref objOperationResult, (int)ExternalUserFunctionalityType.NotificacionesUsuarioExternoWeb);
             chklNotificaciones.DisplayMember = "Value1";
             chklNotificaciones.ValueMember = "Id";
-
+            this.chklNotificaciones.SelectedValueChanged += new System.EventHandler(this.chklNotificaciones_SelectedValueChanged);
         }
 
         private void grdData_ClickCell(object sender, ClickCellEventArgs e)
@@ -311,6 +315,11 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             }
             OperationResult objOperationResult = new OperationResult();
 
+            if (listNew.Count == 0 && listRemove.Count == 0)
+            {
+                MessageBox.Show("No hubo ningún cambio en los protocolos", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             _protocolBL.UpdateProtocolSystemUser(ref objOperationResult, listNew, listRemove, Globals.ClientSession.GetAsList());
 
             if (objOperationResult.Success == 1)
@@ -687,5 +696,45 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void chklPermisosOpciones_SelectedValueChanged(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+
+            var data = _protocolBL.GetProtocolSystemUserByExternalUserId(_systemUserId);
+
+            var groupByProtocol = data.GroupBy(g => g.v_ProtocolId).Select(s => s.First()).ToList();
+
+            var value = chklPermisosOpciones.GetItemChecked(chklPermisosOpciones.SelectedIndex);
+            var applicationHierarchyId = (KeyValueDTO)chklPermisosOpciones.SelectedItem;
+
+            if (value)
+            {
+                var list = new List<protocolsystemuserDto>();
+                foreach (var protocol in groupByProtocol)
+                {
+                    var oProtocolsystemuserDto = new protocolsystemuserDto();
+                    oProtocolsystemuserDto.i_SystemUserId = _systemUserId.Value;
+                    oProtocolsystemuserDto.v_ProtocolId = protocol.v_ProtocolId;
+                    oProtocolsystemuserDto.i_ApplicationHierarchyId = int.Parse(applicationHierarchyId.Id);
+                    list.Add(oProtocolsystemuserDto);
+                }
+
+                _protocolBL.AddProtocolSystemUser(ref objOperationResult, list, _systemUserId, Globals.ClientSession.GetAsList(), false);
+            }
+            else
+            {
+                foreach (var protocol in groupByProtocol)
+                {
+                    _protocolBL.DeletePermissisoByExternalUser(_systemUserId.Value, int.Parse(applicationHierarchyId.Id), protocol.v_ProtocolId, Globals.ClientSession.GetAsList());
+                }
+            }
+
+        }
+
+        private void chklNotificaciones_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }   
     }
 }
