@@ -129,6 +129,7 @@
     <Compile Include="GeneratedAssemblers\personAssembler.cs" />
     <Compile Include="GeneratedAssemblers\pacientmultimediadataAssembler.cs" />
     <Compile Include="GeneratedAssemblers\pacientAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\organizationpersonAssembler.cs" />
     <Compile Include="GeneratedAssemblers\organizationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ordenreporteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\occupationAssembler.cs" />

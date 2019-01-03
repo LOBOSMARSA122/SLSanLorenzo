@@ -164,7 +164,7 @@ namespace Sigesoft.Node.WinClient.UI
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            #region Actualización
+            //#region Actualización
             //string rutaserver = Common.Utils.GetApplicationConfigValue("RutaServer_Act").ToString();
             //string rutapc = Common.Utils.GetApplicationConfigValue("RutaPC_Act").ToString();
             //string rutaejecutable = Common.Utils.GetApplicationConfigValue("RutaAct_exe").ToString();
@@ -182,7 +182,7 @@ namespace Sigesoft.Node.WinClient.UI
             //        //MessageBox.Show("NO HAY ACTUALICACIONES PENDIENTES...", "ACTUALIZACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //    }
             //}                  
-            #endregion
+            //#endregion
             
             OperationResult objOperationResult = new OperationResult();
 
