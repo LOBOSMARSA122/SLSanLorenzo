@@ -947,6 +947,58 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+
+        public static List<KeyValueDTO> GetAllOrganizations(ref OperationResult pobjOperationResult, int pintNodeId)
+        {
+            //Devart.Data.PostgreSql.PgSqlMonitor mon = new Devart.Data.PostgreSql.PgSqlMonitor();
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from n in dbContext.node
+                             join a in dbContext.nodeorganizationlocationprofile on n.i_NodeId equals a.i_NodeId
+                             join J1 in dbContext.nodeorganizationprofile on new { a = a.i_NodeId, b = a.v_OrganizationId }
+                                                      equals new { a = J1.i_NodeId, b = J1.v_OrganizationId } into j1_join
+                             from J1 in j1_join.DefaultIfEmpty()
+                             join b in dbContext.organization on J1.v_OrganizationId equals b.v_OrganizationId                            
+                             where n.i_NodeId == pintNodeId &&
+                                   n.i_IsDeleted == 0 &&
+                                   a.i_IsDeleted == 0
+
+                             select new RestrictedWarehouseProfileList
+                             {
+                                 v_OrganizationName = b.v_Name,
+                                 v_OrganizationId = b.v_OrganizationId,
+                                 i_NodeId = J1.i_NodeId,
+                             }
+                          );
+
+                var q = from a in query.ToList()
+                        select new KeyValueDTO
+                        {
+                            Id = string.Format("{0}", a.v_OrganizationId),
+                            Value1 = string.Format("{0}",
+                                     a.v_OrganizationName,
+                                     a.v_LocationName
+                                    )
+                        };
+
+                List<KeyValueDTO> KeyValueDTO = q.OrderBy(p => p.Value1).ToList();
+
+                pobjOperationResult.Success = 1;
+                return KeyValueDTO;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
         public static List<KeyValueDTO> GetOrganizationFacturacion()
         {
             try
@@ -1858,6 +1910,45 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var query = from a in dbContext.systemuser
                             where a.i_IsDeleted == 0 && a.i_SystemUserTypeId == 1
+                            select a;
+
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                else
+                {
+                    query = query.OrderBy("v_UserName");
+                }
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_SystemUserId.ToString(),
+                                Value1 = x.v_UserName
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public static List<KeyValueDTO> GetAllExternalSystemUser(ref OperationResult pobjOperationResult, string pstrSortExpression)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.systemuser
+                            where a.i_IsDeleted == 0 && a.i_SystemUserTypeId == 2
                             select a;
 
                 if (!string.IsNullOrEmpty(pstrSortExpression))

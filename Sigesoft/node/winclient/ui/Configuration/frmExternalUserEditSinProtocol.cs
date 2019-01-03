@@ -192,9 +192,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     pobjSystemUser.v_UserName = txtUserName.Text.Trim();
                     pobjSystemUser.v_Password = SecurityBL.Encrypt(txtPassword2.Text.Trim());
                     pobjSystemUser.i_SystemUserTypeId = (int)SystemUserTypeId.External;
-                    //if (rbFEchaExpiracion.Checked)                  
-                    //    pobjSystemUser.d_ExpireDate = dtpExpiredDate.Value.Date;
-
 
                     // Graba persona                        
                     systemUserId = _protocolBL.AddPersonUsuarioExterno(ref objOperationResult,
@@ -202,6 +199,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                                                               null,
                                                               pobjSystemUser,
                                                               Globals.ClientSession.GetAsList());
+
+                    _systemUserId = systemUserId;
 
                     //Obtener Todos los protocolos de la Empresa             
                     var idEmpresa = cboEmpresa.SelectedValue.ToString().Split('|');
@@ -225,15 +224,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
                         // Graba UsuarioExterno                        
                         SihayError = _protocolBL.AddSystemUserExternal_(ref objOperationResult, _tmpListProtocolSystemUser, Globals.ClientSession.GetAsList(), systemUserId);
-        
-                        //for (int i = 0; i < chklNotificaciones.CheckedItems.Count; i++)
-                        //{
-                        //    protocolsystemuserDto protocolSystemUser = new protocolsystemuserDto();
-                        //    KeyValueDTO obj = (KeyValueDTO)chklNotificaciones.CheckedItems[i];
-                        //    protocolSystemUser.v_ProtocolId = item.v_ProtocolId;
-                        //    protocolSystemUser.i_ApplicationHierarchyId = int.Parse(obj.Id);
-                        //    _tmpListProtocolSystemUser.Add(protocolSystemUser);
-                        //} 
                     }
 
                   

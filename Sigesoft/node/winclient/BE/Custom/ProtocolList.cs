@@ -7,6 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class ProtocolList
     {
+        public bool select { get; set; }
         public string v_ProtocolId { get; set; }
         public string v_Protocol { get; set; }
         public string v_Name { get; set; }
@@ -53,5 +54,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_NombreVendedor { get; set; }
         public string v_ComponenteNombre { get; set; }
         public string AseguradoraId { get; set; }
+        public int i_RecordType { get; set; }
+        public int i_RecordStatus  { get; set; }
     }
 }

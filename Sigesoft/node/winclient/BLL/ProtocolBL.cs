@@ -2025,8 +2025,7 @@ namespace Sigesoft.Node.WinClient.BLL
             return s;
 
         }
-
-
+        
         public protocolcomponentDto GetProtocolComponentDto(ref OperationResult pobjOperationResult, string protocolComponentId)
         {
             //mon.IsActive = true;
@@ -2053,8 +2052,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
-
-
+        
         public void UpdateProtocolComponent(ref OperationResult pobjOperationResult, protocolcomponentDto pobjDtoEntity, List<string> ClientSession)
         {
             try
@@ -2085,6 +2083,121 @@ namespace Sigesoft.Node.WinClient.BLL
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
             }
         }
+        
+        public List<ProtocolList> GetProtocolsBySystemUserExternal(int systemUserExternalId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
+                 var list = new List<ProtocolList>();
+
+                var allProtocols = (from A in dbContext.protocol
+                                    join B in dbContext.organization on A.v_EmployerOrganizationId equals B.v_OrganizationId
+                                    join C in dbContext.location on A.v_EmployerLocationId equals C.v_LocationId
+                                    join D in dbContext.groupoccupation on A.v_GroupOccupationId equals D.v_GroupOccupationId
+                                    join E in dbContext.systemparameter on new { a = A.i_EsoTypeId.Value, b = 118 }
+                                                                        equals new { a = E.i_ParameterId, b = E.i_GroupId } into J3_join
+                                    from E in J3_join.DefaultIfEmpty()
+
+                                    join F in dbContext.organization on A.v_CustomerOrganizationId equals F.v_OrganizationId
+
+                                    join I in dbContext.location on A.v_CustomerLocationId equals I.v_LocationId
+
+                                    join G in dbContext.organization on A.v_WorkingOrganizationId equals G.v_OrganizationId into J4_join
+                                    from G in J4_join.DefaultIfEmpty()
+
+                                    join J in dbContext.location on A.v_WorkingLocationId equals J.v_LocationId into J6_join
+                                    from J in J6_join.DefaultIfEmpty()
+
+                                    join H in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 }
+                                                                        equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
+                                    from H in J5_join.DefaultIfEmpty()
+
+                                    where A.i_IsDeleted == 0
+                                    select new ProtocolList
+                                    {
+                                        v_ProtocolId = A.v_ProtocolId,
+                                        v_Protocol = A.v_Name,
+                                        v_Organization = B.v_Name + " / " + C.v_Name,
+                                        v_Location = C.v_Name,
+                                        v_EsoType = E.v_Value1,
+                                        v_GroupOccupation = D.v_Name,
+                                        v_OrganizationInvoice = F.v_Name + " / " + I.v_Name,
+                                        v_CostCenter = A.v_CostCenter,
+                                        v_IntermediaryOrganization = G.v_Name + " / " + J.v_Name,
+                                        i_ServiceTypeId = A.i_MasterServiceTypeId.Value,
+                                        v_MasterServiceName = H.v_Value1,
+                                        i_MasterServiceId = A.i_MasterServiceId.Value,
+                                        v_OrganizationId = B.v_OrganizationId,
+                                        i_EsoTypeId = A.i_EsoTypeId,
+                                        v_WorkingOrganizationId = G.v_OrganizationId,
+                                        v_OrganizationInvoiceId = F.v_OrganizationId,
+                                        v_GroupOccupationId = D.v_GroupOccupationId,                                       
+                                        v_LocationId = A.v_EmployerLocationId,
+                                        v_CustomerLocationId = A.v_CustomerLocationId,
+                                        v_WorkingLocationId = A.v_WorkingLocationId
+                                    }).ToList();
+
+                var protocolsBySystemUserId = (from A in dbContext.protocolsystemuser where A.i_SystemUserId == systemUserExternalId && A.i_IsDeleted == 0 select A).ToList();
+
+                if (protocolsBySystemUserId.Count == 0) return allProtocols;
+
+                foreach (var protocol in allProtocols)
+                {
+                    var oProtocolList = new ProtocolList();
+                    var findProtocol = protocolsBySystemUserId.Find(p => p.v_ProtocolId == protocol.v_ProtocolId);
+                    if (findProtocol != null)                    
+                        oProtocolList.select = true;
+                    else
+                        oProtocolList.select = false;
+
+                    oProtocolList.v_ProtocolId = protocol.v_ProtocolId;
+                    oProtocolList.v_Protocol = protocol.v_Protocol;
+                    oProtocolList.v_Organization = protocol.v_Organization;
+                    oProtocolList.v_Location = protocol.v_Location;
+                    oProtocolList.v_EsoType = protocol.v_EsoType;
+                    oProtocolList.v_GroupOccupation = protocol.v_GroupOccupation;
+                    oProtocolList.v_OrganizationInvoice = protocol.v_OrganizationInvoice;
+                    oProtocolList.v_CostCenter = protocol.v_CostCenter;
+                    oProtocolList.v_IntermediaryOrganization = protocol.v_IntermediaryOrganization;
+                    oProtocolList.i_ServiceTypeId = protocol.i_ServiceTypeId;
+                    oProtocolList.v_MasterServiceName = protocol.v_MasterServiceName;
+                    oProtocolList.i_MasterServiceId = protocol.i_MasterServiceId;
+                    oProtocolList.v_OrganizationId = protocol.v_OrganizationId;
+                    oProtocolList.i_EsoTypeId = protocol.i_EsoTypeId;
+                    oProtocolList.v_WorkingOrganizationId = protocol.v_WorkingOrganizationId;
+                    oProtocolList.v_OrganizationInvoiceId = protocol.v_OrganizationInvoiceId;
+                    oProtocolList.v_GroupOccupationId = protocol.v_GroupOccupationId;
+                    oProtocolList.v_LocationId = protocol.v_LocationId;
+                    oProtocolList.v_CustomerLocationId = protocol.v_CustomerLocationId;
+                    oProtocolList.v_WorkingLocationId = protocol.v_WorkingLocationId;
+                    oProtocolList.i_RecordType = (int)RecordType.NoTemporal;
+                    oProtocolList.i_RecordStatus = (int)RecordStatus.Grabado;
+                    list.Add(oProtocolList);     
+                }
+
+                return list;          
+            }
+            catch (Exception ex)
+            {              
+                return null;
+            }
+
+        }
+
+        public void UpdateProtocolSystemUser(ref OperationResult pobjOperationResult, List<protocolsystemuserDto> protocolsNew, List<protocolsystemuserDto> protocolsRemove, List<string> ClientSession)
+        {
+            if (protocolsNew.Count > 0)
+            {
+                new ProtocolBL().AddProtocolSystemUser(ref pobjOperationResult, protocolsNew, protocolsNew[0].i_SystemUserId, ClientSession, false);    
+            }
+
+            if (protocolsRemove.Count > 0)
+            {
+                new ProtocolBL().DeleteProtocolSystemUser(ref pobjOperationResult, protocolsRemove, ClientSession);       
+            }           
+         
+        }
     }
 }

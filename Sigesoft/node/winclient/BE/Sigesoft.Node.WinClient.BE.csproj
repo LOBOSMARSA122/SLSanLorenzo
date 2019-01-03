@@ -418,6 +418,7 @@
     <Compile Include="Generated\personDto.cs" />
     <Compile Include="Generated\pacientmultimediadataDto.cs" />
     <Compile Include="Generated\pacientDto.cs" />
+    <Compile Include="Generated\organizationpersonDto.cs" />
     <Compile Include="Generated\organizationDto.cs" />
     <Compile Include="Generated\ordenreporteDto.cs" />
     <Compile Include="Generated\occupationDto.cs" />
