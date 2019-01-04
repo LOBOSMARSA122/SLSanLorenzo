@@ -1069,7 +1069,222 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else if (rbEmpresasSLSF.Checked)
             {
+                GerenciaCreditoBl oGerenciaCreditoBl = new GerenciaCreditoBl();
+                
 
+                this.Enabled = false;
+
+                #region total_sl
+                List<GerenciaCredito> _listaSinLiquidar_Total = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Total1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_LT = new DateTime(2018, 1, 1, 0, 0, 0);
+                DateTime? fechaFin_LT = DateTime.Now;
+
+                _listaSinLiquidar_Total = oGerenciaCreditoBl.Filter(fechaInicio_LT.Value, fechaFin_LT.Value);
+                _listaSinLiquidar_Total1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Total);
+
+                #endregion
+
+                List<string> deudores = new List<string>();
+
+                foreach (var item in _listaSinLiquidar_Total1)
+                {
+                    foreach (var item1 in item.Tipos)
+                    {
+                        if (item1.Tipo == "SIN LIQUIDACION")
+                        {
+                            foreach (var item2 in item1.Empresas)
+                            {
+                                deudores.Add(item2.Empresa);
+                            }
+                        }
+                        
+                    }
+                }
+
+                
+
+
+                #region años_atras
+                List<GerenciaCredito> _listaSinLiquidar_AñosAtras = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_AñosAtras1 = new List<GerenciaTreeCredito>();
+                int años_atras = 2018;
+                if (DateTime.Now.Year != años_atras)
+                {
+                    años_atras = DateTime.Now.Year - 1;
+                }
+                else if (años_atras == 2018)
+                {
+                    años_atras = años_atras - 1;
+                }
+                else
+                {
+                    años_atras = 2018;
+                }
+                DateTime? pdatBeginDate = new DateTime(2018, 1, 1, 0, 0, 0);
+                DateTime? pdatEndDate = new DateTime(años_atras, 12, 31, 0, 0, 0);
+
+
+                foreach (var item in deudores)
+                {
+                    _listaSinLiquidar_AñosAtras = oGerenciaCreditoBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
+                    _listaSinLiquidar_AñosAtras1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_AñosAtras);
+
+                    foreach (var item1 in _listaSinLiquidar_AñosAtras1)
+                    {
+                        
+                    }
+                }
+               
+
+                #endregion
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                OperationResult objOperationResult = new OperationResult();
+
+                int año_inicio = 2018;
+                if (DateTime.Now.Year != año_inicio)
+                {
+                    año_inicio = DateTime.Now.Year;
+                }
+                else
+                {
+                    año_inicio = 2018;
+                }
+                #region enero_sl
+                List<GerenciaCredito> _listaSinLiquidar_Enero = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Enero1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L1 = new DateTime(año_inicio, 1, 1, 0, 0, 0);
+                DateTime? fechaFin_L1 = new DateTime(año_inicio, 1, 31, 0, 0, 0);
+
+                _listaSinLiquidar_Enero = oGerenciaCreditoBl.Filter(fechaInicio_L1.Value, fechaFin_L1.Value);
+                _listaSinLiquidar_Enero1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Enero);
+                #endregion
+
+                #region febrero_sl
+                List<GerenciaCredito> _listaSinLiquidar_Febrero = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Febrero1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L2 = new DateTime(año_inicio, 2, 1, 0, 0, 0);
+                DateTime? fechaFin_L2 = new DateTime(año_inicio, 2, 28, 0, 0, 0);
+
+                _listaSinLiquidar_Febrero = oGerenciaCreditoBl.Filter(fechaInicio_L2.Value, fechaFin_L2.Value);
+                _listaSinLiquidar_Febrero1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Febrero);
+                #endregion
+
+                #region marzo_sl
+                List<GerenciaCredito> _listaSinLiquidar_Marzo = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Marzo1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L3 = new DateTime(año_inicio, 3, 1, 0, 0, 0);
+                DateTime? fechaFin_L3 = new DateTime(año_inicio, 3, 31, 0, 0, 0);
+
+                _listaSinLiquidar_Marzo = oGerenciaCreditoBl.Filter(fechaInicio_L3.Value, fechaFin_L3.Value);
+                _listaSinLiquidar_Marzo1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Marzo);
+                #endregion
+
+                #region abril_sl
+                List<GerenciaCredito> _listaSinLiquidar_Abril = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Abril1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L4 = new DateTime(año_inicio, 4, 1, 0, 0, 0);
+                DateTime? fechaFin_L4 = new DateTime(año_inicio, 4, 30, 0, 0, 0);
+
+                _listaSinLiquidar_Abril = oGerenciaCreditoBl.Filter(fechaInicio_L4.Value, fechaFin_L4.Value);
+                _listaSinLiquidar_Abril1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Abril);
+                #endregion
+
+                #region mayo_sl
+                List<GerenciaCredito> _listaSinLiquidar_Mayo = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Mayo1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L5 = new DateTime(año_inicio, 5, 1, 0, 0, 0);
+                DateTime? fechaFin_L5 = new DateTime(año_inicio, 5, 31, 0, 0, 0);
+
+                _listaSinLiquidar_Mayo = oGerenciaCreditoBl.Filter(fechaInicio_L5.Value, fechaFin_L5.Value);
+                _listaSinLiquidar_Mayo1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Mayo);
+                #endregion
+
+                #region junio_sl
+                List<GerenciaCredito> _listaSinLiquidar_Junio = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Junio1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L6 = new DateTime(año_inicio, 6, 1, 0, 0, 0);
+                DateTime? fechaFin_L6 = new DateTime(año_inicio, 6, 30, 0, 0, 0);
+
+                _listaSinLiquidar_Junio = oGerenciaCreditoBl.Filter(fechaInicio_L6.Value, fechaFin_L6.Value);
+                _listaSinLiquidar_Junio1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Junio);
+                #endregion
+
+                #region julio_sl
+                List<GerenciaCredito> _listaSinLiquidar_Julio = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Julio1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L7 = new DateTime(año_inicio, 7, 1, 0, 0, 0);
+                DateTime? fechaFin_L7 = new DateTime(año_inicio, 7, 31, 0, 0, 0);
+
+                _listaSinLiquidar_Julio = oGerenciaCreditoBl.Filter(fechaInicio_L7.Value, fechaFin_L7.Value);
+                _listaSinLiquidar_Julio1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Julio);
+                #endregion
+
+                #region agosto_sl
+                List<GerenciaCredito> _listaSinLiquidar_Agosto = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Agosto1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L8 = new DateTime(año_inicio, 8, 1, 0, 0, 0);
+                DateTime? fechaFin_L8 = new DateTime(año_inicio, 8, 31, 0, 0, 0);
+
+                _listaSinLiquidar_Agosto = oGerenciaCreditoBl.Filter(fechaInicio_L8.Value, fechaFin_L8.Value);
+                _listaSinLiquidar_Agosto1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Agosto);
+                #endregion
+
+                #region setiembre_sl
+                List<GerenciaCredito> _listaSinLiquidar_Setiembre = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Setiembre1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L9 = new DateTime(año_inicio, 9, 1, 0, 0, 0);
+                DateTime? fechaFin_L9 = new DateTime(año_inicio, 9, 30, 0, 0, 0);
+
+                _listaSinLiquidar_Setiembre = oGerenciaCreditoBl.Filter(fechaInicio_L9.Value, fechaFin_L9.Value);
+                _listaSinLiquidar_Setiembre1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Setiembre);
+                #endregion
+
+                #region octubre_sl
+                List<GerenciaCredito> _listaSinLiquidar_Octubre = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Octubre1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L10 = new DateTime(año_inicio, 10, 1, 0, 0, 0);
+                DateTime? fechaFin_L10 = new DateTime(año_inicio, 10, 31, 0, 0, 0);
+
+                _listaSinLiquidar_Octubre = oGerenciaCreditoBl.Filter(fechaInicio_L10.Value, fechaFin_L10.Value);
+                _listaSinLiquidar_Octubre1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Octubre);
+                #endregion
+
+                #region noviembre_sl
+                List<GerenciaCredito> _listaSinLiquidar_Noviembre = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Noviembre1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L11 = new DateTime(año_inicio, 11, 1, 0, 0, 0);
+                DateTime? fechaFin_L11 = new DateTime(año_inicio, 11, 30, 0, 0, 0);
+
+                _listaSinLiquidar_Noviembre = oGerenciaCreditoBl.Filter(fechaInicio_L11.Value, fechaFin_L11.Value);
+                _listaSinLiquidar_Noviembre1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Noviembre);
+                #endregion
+
+                #region diciembre_sl
+                List<GerenciaCredito> _listaSinLiquidar_Diciembre = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Diciembre1 = new List<GerenciaTreeCredito>();
+                DateTime? fechaInicio_L12 = new DateTime(año_inicio, 12, 1, 0, 0, 0);
+                DateTime? fechaFin_L12 = new DateTime(año_inicio, 12, 31, 0, 0, 0);
+
+                _listaSinLiquidar_Diciembre = oGerenciaCreditoBl.Filter(fechaInicio_L12.Value, fechaFin_L12.Value);
+                _listaSinLiquidar_Diciembre1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Diciembre);
+                #endregion
+
+                
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "EMPRESAS SIN LIQUIDAR - CSL";
+
+                DateTime? fechaFin_1 = DateTime.Now;
+                DateTime? fechaInicio_1 = DateTime.Now.AddDays(-30);
+                string fechaInicio_2 = fechaInicio_1.ToString().Split(' ')[0];
+                string fechaFin_2 = fechaFin_1.ToString().Split(' ')[0];
+                SinLiquidar_General.CreateEmpresasSinLiquidaciones_General(ruta + nombre + ".pdf", MedicalCenter, _listaSinLiquidar_Enero1, fechaInicio_2, fechaFin_2, _listaSinLiquidar_Febrero1, _listaSinLiquidar_Marzo1, _listaSinLiquidar_Abril1, _listaSinLiquidar_Mayo1, _listaSinLiquidar_Junio1, _listaSinLiquidar_Julio1, _listaSinLiquidar_Agosto1,
+                   _listaSinLiquidar_Setiembre1, _listaSinLiquidar_Octubre1, _listaSinLiquidar_Noviembre1, _listaSinLiquidar_Diciembre1, _listaSinLiquidar_Total1, _listaSinLiquidar_AñosAtras1);
+                this.Enabled = true;
             }
             else if (rbEmpresasDetalleSLSF.Checked)
             {

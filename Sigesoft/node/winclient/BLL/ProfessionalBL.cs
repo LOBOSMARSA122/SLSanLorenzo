@@ -32,7 +32,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  v_PersonName = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
                                  v_RolVenta = J1.v_Value1,
                                  i_RolVenta = su1.i_RolVentaId,
-                                 InfAdicional = B.v_ProfessionalInformation
+                                 InfAdicional = B.v_ProfessionalInformation,
+                                v_PersonId = B.v_PersonId
                              }
                             ).FirstOrDefault();
 
@@ -53,6 +54,37 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+
+        public SystemUserList GetSystemUserNameExternal(ref OperationResult pobjOperationResult, int SystemUserId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from su1 in dbContext.systemuser
+                             join A in dbContext.person on su1.v_PersonId equals A.v_PersonId   
+                             where su1.i_IsDeleted == 0 && su1.i_SystemUserId == SystemUserId
+
+                             select new SystemUserList
+                             {
+                                 v_PersonName = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,                               
+                                 v_PersonId = A.v_PersonId,
+                                 i_SystemUserId = su1.i_SystemUserId
+                             }
+                            ).FirstOrDefault();
+                pobjOperationResult.Success = 1;
+                return query;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+
+
+        }
         public List<ProduccionCategoria> GetFilterProduccionCategoria(DateTime? pdatBeginDate, DateTime? pdatEndDate) 
         {
             try

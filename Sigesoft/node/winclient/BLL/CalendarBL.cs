@@ -104,6 +104,7 @@ namespace Sigesoft.Node.WinClient.BLL
                            //let a = new ServiceBL().GetRestrictionByServiceId(A.v_ServiceId)
                            select new CalendarList
                            {
+                               i_ServicioId = D.v_ServiceId,
                                b_Seleccionar =false,
                                d_ServiceDate = D.d_ServiceDate,
                                 v_CalendarId = A.v_CalendarId,
@@ -201,6 +202,7 @@ namespace Sigesoft.Node.WinClient.BLL
                var q = (from a in objData
                         select new CalendarList
                         {
+                            ServicioId = a.ServicioId,
                             v_CalendarId =a.v_CalendarId,
                             d_ServiceDate = a.d_ServiceDate,
                             d_DateTimeCalendar =a.d_DateTimeCalendar,

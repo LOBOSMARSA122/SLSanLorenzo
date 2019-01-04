@@ -207,6 +207,12 @@
     <Compile Include="Configuration\frmExternalUserEdit.Designer.cs">
       <DependentUpon>frmExternalUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\FrmMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration\FrmMaintenance.Designer.cs">
+      <DependentUpon>FrmMaintenance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\frmProtocolComponentEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1367,6 +1373,17 @@
     <Compile Include="frmUsuariosExternos.Designer.cs">
       <DependentUpon>frmUsuariosExternos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gerencia\Crystals\crGerenciaMes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crGerenciaMes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gerencia\Crystals\DsGerenciaMes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsGerenciaMes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Gerencia\FrmCampanias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1390,6 +1407,12 @@
     </Compile>
     <Compile Include="Gerencia\FrmManagementReports.Designer.cs">
       <DependentUpon>FrmManagementReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gerencia\FrmMes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerencia\FrmMes.Designer.cs">
+      <DependentUpon>FrmMes.cs</DependentUpon>
     </Compile>
     <Compile Include="Gerencia\FrmTipoExamen.cs">
       <SubType>Form</SubType>
@@ -3488,6 +3511,9 @@
       <DependentUpon>frmExternalUserEdit.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Configuration\FrmMaintenance.resx">
+      <DependentUpon>FrmMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuration\frmProtocolComponentEdit.resx">
       <DependentUpon>frmProtocolComponentEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -3748,6 +3774,10 @@
     <EmbeddedResource Include="frmUsuariosExternos.resx">
       <DependentUpon>frmUsuariosExternos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\Crystals\crGerenciaMes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crGerenciaMes.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gerencia\FrmCampanias.resx">
       <DependentUpon>FrmCampanias.cs</DependentUpon>
     </EmbeddedResource>
@@ -3759,6 +3789,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gerencia\FrmManagementReports.resx">
       <DependentUpon>FrmManagementReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerencia\FrmMes.resx">
+      <DependentUpon>FrmMes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gerencia\FrmTipoExamen.resx">
       <DependentUpon>FrmTipoExamen.cs</DependentUpon>
@@ -5993,6 +6026,17 @@
     </None>
     <None Include="Dataset\ReportCarneVacuna.xss">
       <DependentUpon>ReportCarneVacuna.xsd</DependentUpon>
+    </None>
+    <None Include="Gerencia\Crystals\DsGerenciaMes.xsc">
+      <DependentUpon>DsGerenciaMes.xsd</DependentUpon>
+    </None>
+    <None Include="Gerencia\Crystals\DsGerenciaMes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsGerenciaMes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Gerencia\Crystals\DsGerenciaMes.xss">
+      <DependentUpon>DsGerenciaMes.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

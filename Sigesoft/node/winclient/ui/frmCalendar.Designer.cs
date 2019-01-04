@@ -62,6 +62,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CompMinera");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tercero");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Empresa");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -87,31 +88,33 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_DateTimeCalendar");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_DocNumber");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LineStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_SalidaCM");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_NewContinuationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_EsoTypeName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CalendarStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn13 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn14 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_IsVipName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CreationUser");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn18 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn19 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationProtocol");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn20 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationService");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn21 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_EntryTimeCM");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn22 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("b_Seleccionar");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn23 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_DateTimeCalendar");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn24 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn25 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_DocNumber");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn26 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LineStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn27 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn28 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_SalidaCM");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn29 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn30 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn31 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn32 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_NewContinuationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn33 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_EsoTypeName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn34 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CalendarStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn35 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn36 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_IsVipName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn37 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CreationUser");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn38 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn39 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn40 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn41 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationProtocol");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn42 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationService");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn43 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_EntryTimeCM");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn44 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("b_Seleccionar");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ddlConsultorio = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.txtServicioId = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ddlConsultorio = new System.Windows.Forms.ComboBox();
             this.chkServiciosTerminados = new System.Windows.Forms.CheckBox();
             this.cbCustomerOrganization = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -220,8 +223,10 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.ddlConsultorio);
             this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.txtServicioId);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.ddlConsultorio);
             this.groupBox1.Controls.Add(this.chkServiciosTerminados);
             this.groupBox1.Controls.Add(this.cbCustomerOrganization);
             this.groupBox1.Controls.Add(this.label18);
@@ -257,29 +262,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(761, 39);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(59, 13);
+            this.label20.TabIndex = 114;
+            this.label20.Text = "Consultorio";
+            // 
+            // txtServicioId
+            // 
+            this.txtServicioId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServicioId.Location = new System.Drawing.Point(824, 63);
+            this.txtServicioId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtServicioId.MaxLength = 200;
+            this.txtServicioId.Name = "txtServicioId";
+            this.txtServicioId.Size = new System.Drawing.Size(249, 20);
+            this.txtServicioId.TabIndex = 113;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(763, 68);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 13);
+            this.label21.TabIndex = 112;
+            this.label21.Text = "Id Servicio";
+            // 
             // ddlConsultorio
             // 
             this.ddlConsultorio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ddlConsultorio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlConsultorio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlConsultorio.FormattingEnabled = true;
-            this.ddlConsultorio.Location = new System.Drawing.Point(824, 43);
+            this.ddlConsultorio.Location = new System.Drawing.Point(824, 36);
             this.ddlConsultorio.Margin = new System.Windows.Forms.Padding(2);
             this.ddlConsultorio.Name = "ddlConsultorio";
             this.ddlConsultorio.Size = new System.Drawing.Size(249, 21);
             this.ddlConsultorio.TabIndex = 111;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(761, 48);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(62, 13);
-            this.label20.TabIndex = 110;
-            this.label20.Text = "Consultorio";
             // 
             // chkServiciosTerminados
             // 
@@ -301,7 +328,7 @@
             this.cbCustomerOrganization.FormattingEnabled = true;
             this.cbCustomerOrganization.Location = new System.Drawing.Point(111, 88);
             this.cbCustomerOrganization.Name = "cbCustomerOrganization";
-            this.cbCustomerOrganization.Size = new System.Drawing.Size(479, 21);
+            this.cbCustomerOrganization.Size = new System.Drawing.Size(480, 21);
             this.cbCustomerOrganization.TabIndex = 4;
             // 
             // label18
@@ -327,13 +354,12 @@
             this.btnFilter.ForeColor = System.Drawing.Color.Black;
             this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
             this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(942, 84);
+            this.btnFilter.Location = new System.Drawing.Point(987, 85);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 24);
+            this.btnFilter.Size = new System.Drawing.Size(86, 24);
             this.btnFilter.TabIndex = 12;
             this.btnFilter.Text = "Filtrar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
@@ -439,7 +465,7 @@
             this.txtNroDocument.Margin = new System.Windows.Forms.Padding(2);
             this.txtNroDocument.MaxLength = 20;
             this.txtNroDocument.Name = "txtNroDocument";
-            this.txtNroDocument.Size = new System.Drawing.Size(102, 20);
+            this.txtNroDocument.Size = new System.Drawing.Size(153, 20);
             this.txtNroDocument.TabIndex = 3;
             this.txtNroDocument.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNroDocument_KeyPress);
             // 
@@ -458,11 +484,11 @@
             // txtPacient
             // 
             this.txtPacient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPacient.Location = new System.Drawing.Point(824, 15);
+            this.txtPacient.Location = new System.Drawing.Point(824, 11);
             this.txtPacient.Margin = new System.Windows.Forms.Padding(2);
             this.txtPacient.MaxLength = 200;
             this.txtPacient.Name = "txtPacient";
-            this.txtPacient.Size = new System.Drawing.Size(193, 20);
+            this.txtPacient.Size = new System.Drawing.Size(249, 20);
             this.txtPacient.TabIndex = 11;
             this.txtPacient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPacient_KeyPress);
             // 
@@ -513,6 +539,7 @@
             this.ddlServiceTypeId.Name = "ddlServiceTypeId";
             this.ddlServiceTypeId.Size = new System.Drawing.Size(126, 21);
             this.ddlServiceTypeId.TabIndex = 5;
+            this.ddlServiceTypeId.SelectedIndexChanged += new System.EventHandler(this.ddlServiceTypeId_SelectedIndexChanged);
             this.ddlServiceTypeId.TextChanged += new System.EventHandler(this.ddlServiceTypeId_TextChanged);
             // 
             // label3
@@ -534,7 +561,7 @@
             this.dptDateTimeEnd.Location = new System.Drawing.Point(114, 39);
             this.dptDateTimeEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dptDateTimeEnd.Name = "dptDateTimeEnd";
-            this.dptDateTimeEnd.Size = new System.Drawing.Size(102, 20);
+            this.dptDateTimeEnd.Size = new System.Drawing.Size(153, 20);
             this.dptDateTimeEnd.TabIndex = 2;
             // 
             // dtpDateTimeStar
@@ -544,7 +571,7 @@
             this.dtpDateTimeStar.Location = new System.Drawing.Point(114, 13);
             this.dtpDateTimeStar.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateTimeStar.Name = "dtpDateTimeStar";
-            this.dtpDateTimeStar.Size = new System.Drawing.Size(102, 20);
+            this.dtpDateTimeStar.Size = new System.Drawing.Size(153, 20);
             this.dtpDateTimeStar.TabIndex = 1;
             // 
             // label2
@@ -609,7 +636,6 @@
             ultraGridColumn25.Hidden = true;
             ultraGridColumn26.Header.Caption = "Servicio";
             ultraGridColumn26.Header.VisiblePosition = 21;
-            ultraGridColumn26.Hidden = true;
             ultraGridColumn26.Width = 161;
             ultraGridColumn27.Header.Caption = "Modalidad";
             ultraGridColumn27.Header.VisiblePosition = 10;
@@ -674,6 +700,7 @@
             ultraGridColumn4.Header.VisiblePosition = 15;
             ultraGridColumn4.Width = 196;
             ultraGridColumn5.Header.VisiblePosition = 12;
+            ultraGridColumn18.Header.VisiblePosition = 31;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn13,
             ultraGridColumn14,
@@ -705,7 +732,8 @@
             ultraGridColumn64,
             ultraGridColumn3,
             ultraGridColumn4,
-            ultraGridColumn5});
+            ultraGridColumn5,
+            ultraGridColumn18});
             this.grdDataCalendar.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdDataCalendar.DisplayLayout.InterBandSpacing = 10;
             this.grdDataCalendar.DisplayLayout.MaxColScrollRegions = 1;
@@ -1680,28 +1708,28 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6,
-            ultraDataColumn7,
-            ultraDataColumn8,
-            ultraDataColumn9,
-            ultraDataColumn10,
-            ultraDataColumn11,
-            ultraDataColumn12,
-            ultraDataColumn13,
-            ultraDataColumn14,
-            ultraDataColumn15,
-            ultraDataColumn16,
-            ultraDataColumn17,
-            ultraDataColumn18,
-            ultraDataColumn19,
-            ultraDataColumn20,
-            ultraDataColumn21,
-            ultraDataColumn22});
+            ultraDataColumn23,
+            ultraDataColumn24,
+            ultraDataColumn25,
+            ultraDataColumn26,
+            ultraDataColumn27,
+            ultraDataColumn28,
+            ultraDataColumn29,
+            ultraDataColumn30,
+            ultraDataColumn31,
+            ultraDataColumn32,
+            ultraDataColumn33,
+            ultraDataColumn34,
+            ultraDataColumn35,
+            ultraDataColumn36,
+            ultraDataColumn37,
+            ultraDataColumn38,
+            ultraDataColumn39,
+            ultraDataColumn40,
+            ultraDataColumn41,
+            ultraDataColumn42,
+            ultraDataColumn43,
+            ultraDataColumn44});
             // 
             // frmCalendar
             // 
@@ -1832,5 +1860,7 @@
         private System.Windows.Forms.Button btnHistoria;
         private System.Windows.Forms.ComboBox ddlConsultorio;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtServicioId;
+        private System.Windows.Forms.Label label21;
     }
 }

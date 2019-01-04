@@ -66,10 +66,13 @@
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
     <Compile Include="Custom\AtencionNinio.cs" />
     <Compile Include="Custom\GerenciaCampanias.cs" />
+    <Compile Include="Custom\GerenciaCredito.cs" />
+    <Compile Include="Custom\GerenciaMes.cs" />
     <Compile Include="Custom\GerenciaTipoExamen.cs" />
     <Compile Include="Custom\GerenciaTipoPago.cs" />
     <Compile Include="Custom\GerenciaTreeCapania.cs" />
     <Compile Include="Custom\GerenciaTreeContrata.cs" />
+    <Compile Include="Custom\GerenciaTreeCredito.cs" />
     <Compile Include="Custom\GerenciaTreeTipoExamen.cs" />
     <Compile Include="Custom\GridKeyValueDTO.cs" />
     <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
@@ -415,6 +418,7 @@
     <Compile Include="Generated\personDto.cs" />
     <Compile Include="Generated\pacientmultimediadataDto.cs" />
     <Compile Include="Generated\pacientDto.cs" />
+    <Compile Include="Generated\organizationpersonDto.cs" />
     <Compile Include="Generated\organizationDto.cs" />
     <Compile Include="Generated\ordenreporteDto.cs" />
     <Compile Include="Generated\occupationDto.cs" />
@@ -454,6 +458,7 @@
     <Compile Include="Generated\obtenernetoporcobrarResultDto.cs" />
     <Compile Include="Generated\gerenciatipopagoResultDto.cs" />
     <Compile Include="Generated\gerenciatipoexamenResultDto.cs" />
+    <Compile Include="Generated\gerenciacreditoResultDto.cs" />
     <Compile Include="Generated\facturadeudoraResultDto.cs" />
     <Compile Include="IRastreable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
