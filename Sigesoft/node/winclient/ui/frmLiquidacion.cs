@@ -607,10 +607,20 @@ namespace Sigesoft.Node.WinClient.UI
         private void brnRepEmp_Click(object sender, EventArgs e)
         {
             //var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-            empresaId = grdEmpresa.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
+            if (grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value == null)
+            {
+                frmLiquidacionEmpresas reportsEmpresas = new frmLiquidacionEmpresas(dtpDateTimeStar.Value.Date, dptDateTimeEnd.Value.Date, string.Empty);
+                reportsEmpresas.ShowDialog();
+            }
+            else
+            {
+                empresaId = grdEmpresa.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
 
-            frmLiquidacionEmpresas reportsEmpresas = new frmLiquidacionEmpresas(dtpDateTimeStar.Value.Date, dptDateTimeEnd.Value.Date, empresaId);
-            reportsEmpresas.ShowDialog();
+                frmLiquidacionEmpresas reportsEmpresas = new frmLiquidacionEmpresas(dtpDateTimeStar.Value.Date, dptDateTimeEnd.Value.Date, empresaId);
+                reportsEmpresas.ShowDialog();
+            }
+
+            
 
             
         }
@@ -644,6 +654,7 @@ namespace Sigesoft.Node.WinClient.UI
                 ddlEmployerOrganization.Enabled = true;
                 cbbSubContratas.Enabled = true;
                 cbbEstadoLiq.Enabled = true;
+                btnNoLiquidados.Enabled = true;
                 cbbFac.Enabled = true;
             }
             else if (tabControl1.SelectedTab.Name == "tpEmpresa")
@@ -656,6 +667,7 @@ namespace Sigesoft.Node.WinClient.UI
                 cbbFac.SelectedValue = "-1";
 
                 txtCCosto.Enabled = false;
+                btnNoLiquidados.Enabled = false;
                 ddlCustomerOrganization.Enabled = false;
                 ddlEmployerOrganization.Enabled = false;
                 cbbSubContratas.Enabled = false;
@@ -698,6 +710,32 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+                OperationResult objOperationResult = new OperationResult();
+
+                //DateTime? inicioDeudas = _fInicio;
+                //DateTime? FinDeudas = DateTime.Now;
+
+                var NoLiquidados = new ServiceBL().NoLiquidados(ref objOperationResult, dtpDateTimeStar.Value, dptDateTimeEnd.Value);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "EMPRESAS SIN LIQUIDAR - CSL";
+
+                string fechaInicio_2 = dtpDateTimeStar.Value.ToString().Split(' ')[0];
+                string fechaFin_2 = dptDateTimeEnd.Value.ToString().Split(' ')[0];
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                EmpresasSinLiquidarSF.CreateEmpresasSinLiquidar(ruta + nombre + ".pdf", MedicalCenter, fechaInicio_2, fechaFin_2, NoLiquidados);
+                this.Enabled = true;
+            }
 
         }
     }

@@ -1341,7 +1341,16 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmLiquidacionEmpresas_Load(object sender, EventArgs e)
         {
-
+            if (_empresa == "")
+            {
+                rbCuentasXCobrar.Checked = true;
+                rbEstadoCuentaEmpresa.Enabled = false;
+            }
+            else
+            {
+                rbEstadoCuentaEmpresa.Checked = true;
+                rbEstadoCuentaEmpresa.Enabled = true;
+            }
         }
     }
 }

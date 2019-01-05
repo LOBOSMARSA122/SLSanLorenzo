@@ -6176,6 +6176,7 @@
     <None Include="Resources\repor_4.png" />
     <None Include="Resources\repor_41.png" />
     <None Include="Resources\money.png" />
+    <None Include="Resources\no liq.png" />
     <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
