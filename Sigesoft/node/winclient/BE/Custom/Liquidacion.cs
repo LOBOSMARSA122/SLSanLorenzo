@@ -13,6 +13,11 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_EsoTypeId { get; set; }
         public string Esotype { get; set; }
         public string v_CustomerOrganizationId { get; set; }
+        public string v_EmployerName { get; set; }
+        public string v_EmployerRuc { get; set; }
+        public string v_EmployerDireccion { get; set; }
+        public string v_EmployerRepr { get; set; }
+        public string v_EmployerTelefono { get; set; }
         public string v_EmployerOrganizationId { get; set; }
         public string v_WorkingOrganizationId { get; set; }
         public string v_NroLiquidacion { get; set; }
@@ -37,6 +42,8 @@ namespace Sigesoft.Node.WinClient.BE
         //
 
         public List<LiquidacionDetalle> Detalle { get; set; }
+
+        public string UsuarioCrea { get; set; }
     }
 
     public class LiquidacionDetalle
@@ -58,5 +65,8 @@ namespace Sigesoft.Node.WinClient.BE
         public float Igv { get; set; }
         public float Precio { get; set; }
         public string CCosto { get; set; }
+
+        public string Esotype { get; set; }
+        public string UsuarioCrea { get; set; }
     }
 }

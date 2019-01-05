@@ -111,6 +111,7 @@
     <Compile Include="Declaracion_Jurada_EMPO_YANACOCHA.cs" />
     <Compile Include="DynamicLinq.cs" />
     <Compile Include="Ecografias_P_JP.cs" />
+    <Compile Include="EmpresasSinLiquidarSF.cs" />
     <Compile Include="EntregaExamenMedicoOcipacional.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="CustomDtos\KeyValueDTO.cs" />

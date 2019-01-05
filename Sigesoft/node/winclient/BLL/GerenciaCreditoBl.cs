@@ -35,6 +35,33 @@ namespace Sigesoft.Node.WinClient.BLL
             return query;
         }
 
+        public List<GerenciaCredito> SinLiquidarXEmpresa(DateTime startDate, DateTime endDate, string empresa)
+        {
+            var dbContext = new SigesoftEntitiesModel();
+            var query = (from a in dbContext.gerenciacreditoxempresa(startDate, endDate, -1, 2, empresa)
+                         select new GerenciaCredito
+                         {
+                             FechaServicio = a.FechaServicio,
+                             ServiceId = a.ServiceId,
+                             Trabajador = a.Trabajador,
+                             Ocupacion = a.Ocupacion,
+                             TipoEso = a.TipoEso,
+                             CostoExamen = a.CostoExamen,
+                             Compania = a.Compania,
+                             Contratista = a.Contratista,
+                             EmpresaFacturacion = a.EmpresaFacturacion,
+                             Comprobante = a.Comprobante,
+                             NroLiquidacion = a.NroLiquidacion,
+                             FechaFactura = a.FechaFactura,
+                             ImporteTotalFactura = a.ImporteTotalFactura,
+                             d_NetoXCobrarFactura = a.d_NetoXCobrarFactura,
+                             CondicionFactura = a.CondicionFactura,
+                             xxx = a.xxx
+                         }).ToList();
+
+            return query;
+        }
+
         public List<GerenciaTreeCredito> ProcessDataTreeView(List<GerenciaCredito> data)
         {
             var list = Agrupador(data);

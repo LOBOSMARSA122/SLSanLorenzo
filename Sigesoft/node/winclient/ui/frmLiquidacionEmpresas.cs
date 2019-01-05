@@ -1108,6 +1108,10 @@ namespace Sigesoft.Node.WinClient.UI
                 #region años_atras
                 List<GerenciaCredito> _listaSinLiquidar_AñosAtras = new List<GerenciaCredito>();
                 List<GerenciaTreeCredito> _listaSinLiquidar_AñosAtras1 = new List<GerenciaTreeCredito>();
+
+
+                List<GerenciaCredito> _listaSinLiquidar_Prueba = new List<GerenciaCredito>();
+                List<GerenciaTreeCredito> _listaSinLiquidar_Prueba1 = new List<GerenciaTreeCredito>();
                 int años_atras = 2018;
                 if (DateTime.Now.Year != años_atras)
                 {
@@ -1124,16 +1128,12 @@ namespace Sigesoft.Node.WinClient.UI
                 DateTime? pdatBeginDate = new DateTime(2018, 1, 1, 0, 0, 0);
                 DateTime? pdatEndDate = new DateTime(años_atras, 12, 31, 0, 0, 0);
 
-
+                _listaSinLiquidar_AñosAtras = oGerenciaCreditoBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
+                _listaSinLiquidar_AñosAtras1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_AñosAtras);
                 foreach (var item in deudores)
                 {
-                    _listaSinLiquidar_AñosAtras = oGerenciaCreditoBl.Filter(pdatBeginDate.Value, pdatEndDate.Value);
-                    _listaSinLiquidar_AñosAtras1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_AñosAtras);
-
-                    foreach (var item1 in _listaSinLiquidar_AñosAtras1)
-                    {
-                        
-                    }
+                    _listaSinLiquidar_Prueba = oGerenciaCreditoBl.SinLiquidarXEmpresa(pdatBeginDate.Value, pdatEndDate.Value, item);
+                    _listaSinLiquidar_Prueba1 = oGerenciaCreditoBl.ProcessDataTreeView(_listaSinLiquidar_Prueba);
                 }
                
 
@@ -1288,6 +1288,24 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else if (rbEmpresasDetalleSLSF.Checked)
             {
+                this.Enabled = false;
+                OperationResult objOperationResult = new OperationResult();
+
+                //DateTime? inicioDeudas = _fInicio;
+                //DateTime? FinDeudas = DateTime.Now;
+
+                var NoLiquidados = new ServiceBL().NoLiquidados(ref objOperationResult, _fInicio, _fFin);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "EMPRESAS SIN LIQUIDAR - CSL";
+
+                string fechaInicio_2 = _fInicio.ToString().Split(' ')[0];
+                string fechaFin_2 = _fFin.ToString().Split(' ')[0];
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                EmpresasSinLiquidarSF.CreateEmpresasSinLiquidar(ruta + nombre + ".pdf", MedicalCenter, fechaInicio_2, fechaFin_2, NoLiquidados);
+                this.Enabled = true;
 
             }
             else
