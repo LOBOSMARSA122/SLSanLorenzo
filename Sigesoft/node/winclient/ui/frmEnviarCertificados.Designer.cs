@@ -43,6 +43,9 @@
             this.txtLabel = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSomnolencia = new System.Windows.Forms.RadioButton();
+            this.rbToxicologico = new System.Windows.Forms.RadioButton();
+            this.rbAltura18 = new System.Windows.Forms.RadioButton();
             this.rbSinDx = new System.Windows.Forms.RadioButton();
             this.rb312 = new System.Windows.Forms.RadioButton();
             this.rbEmpresarial = new System.Windows.Forms.RadioButton();
@@ -53,9 +56,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.rbSomnolencia = new System.Windows.Forms.RadioButton();
-            this.rbToxicologico = new System.Windows.Forms.RadioButton();
-            this.rbAltura18 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabel)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -133,12 +133,42 @@
             this.groupBox1.Controls.Add(this.rbSinDx);
             this.groupBox1.Controls.Add(this.rb312);
             this.groupBox1.Controls.Add(this.rbEmpresarial);
-            this.groupBox1.Location = new System.Drawing.Point(57, 5);
+            this.groupBox1.Location = new System.Drawing.Point(58, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(476, 68);
             this.groupBox1.TabIndex = 105;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccionar archivo adjunto";
+            // 
+            // rbSomnolencia
+            // 
+            this.rbSomnolencia.AutoSize = true;
+            this.rbSomnolencia.Location = new System.Drawing.Point(246, 42);
+            this.rbSomnolencia.Name = "rbSomnolencia";
+            this.rbSomnolencia.Size = new System.Drawing.Size(110, 17);
+            this.rbSomnolencia.TabIndex = 33;
+            this.rbSomnolencia.Text = "Test Somnolencia";
+            this.rbSomnolencia.UseVisualStyleBackColor = true;
+            // 
+            // rbToxicologico
+            // 
+            this.rbToxicologico.AutoSize = true;
+            this.rbToxicologico.Location = new System.Drawing.Point(6, 42);
+            this.rbToxicologico.Name = "rbToxicologico";
+            this.rbToxicologico.Size = new System.Drawing.Size(85, 17);
+            this.rbToxicologico.TabIndex = 31;
+            this.rbToxicologico.Text = "Toxicológico";
+            this.rbToxicologico.UseVisualStyleBackColor = true;
+            // 
+            // rbAltura18
+            // 
+            this.rbAltura18.AutoSize = true;
+            this.rbAltura18.Location = new System.Drawing.Point(108, 42);
+            this.rbAltura18.Name = "rbAltura18";
+            this.rbAltura18.Size = new System.Drawing.Size(129, 17);
+            this.rbAltura18.TabIndex = 32;
+            this.rbAltura18.Text = "Altura Estructural 1.80";
+            this.rbAltura18.UseVisualStyleBackColor = true;
             // 
             // rbSinDx
             // 
@@ -244,36 +274,6 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // rbSomnolencia
-            // 
-            this.rbSomnolencia.AutoSize = true;
-            this.rbSomnolencia.Location = new System.Drawing.Point(246, 42);
-            this.rbSomnolencia.Name = "rbSomnolencia";
-            this.rbSomnolencia.Size = new System.Drawing.Size(110, 17);
-            this.rbSomnolencia.TabIndex = 33;
-            this.rbSomnolencia.Text = "Test Somnolencia";
-            this.rbSomnolencia.UseVisualStyleBackColor = true;
-            // 
-            // rbToxicologico
-            // 
-            this.rbToxicologico.AutoSize = true;
-            this.rbToxicologico.Location = new System.Drawing.Point(6, 42);
-            this.rbToxicologico.Name = "rbToxicologico";
-            this.rbToxicologico.Size = new System.Drawing.Size(85, 17);
-            this.rbToxicologico.TabIndex = 31;
-            this.rbToxicologico.Text = "Toxicológico";
-            this.rbToxicologico.UseVisualStyleBackColor = true;
-            // 
-            // rbAltura18
-            // 
-            this.rbAltura18.AutoSize = true;
-            this.rbAltura18.Location = new System.Drawing.Point(108, 42);
-            this.rbAltura18.Name = "rbAltura18";
-            this.rbAltura18.Size = new System.Drawing.Size(129, 17);
-            this.rbAltura18.TabIndex = 32;
-            this.rbAltura18.Text = "Altura Estructural 1.80";
-            this.rbAltura18.UseVisualStyleBackColor = true;
             // 
             // frmEnviarCertificados
             // 

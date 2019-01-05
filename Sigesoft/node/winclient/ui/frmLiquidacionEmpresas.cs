@@ -1091,10 +1091,14 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     foreach (var item1 in item.Tipos)
                     {
-                        foreach (var item2 in item1.Empresas)
+                        if (item1.Tipo == "SIN LIQUIDACION")
                         {
-                            deudores.Add(item2.Empresa);
+                            foreach (var item2 in item1.Empresas)
+                            {
+                                deudores.Add(item2.Empresa);
+                            }
                         }
+                        
                     }
                 }
 
