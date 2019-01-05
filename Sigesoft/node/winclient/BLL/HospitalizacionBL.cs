@@ -924,8 +924,10 @@ namespace Sigesoft.Node.WinClient.BLL
                             join E in dbContext.systemparameter on new { a = A1.i_MasterServiceId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
                             from E in E_join.DefaultIfEmpty()
                             join F in dbContext.component on A.v_ComponentId equals F.v_ComponentId
+                            join L in dbContext.calendar on A1.v_ServiceId equals L.v_ServiceId into L_join
+                            from L in L_join.DefaultIfEmpty()
 
-                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && (A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados && A1.i_IsDeleted != 1
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && (A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados && A1.i_IsDeleted != 1 && L.i_LineStatusId == (int)LineStatus.EnCircuito
 
                             select new LiquidacionMedicoList
                             {

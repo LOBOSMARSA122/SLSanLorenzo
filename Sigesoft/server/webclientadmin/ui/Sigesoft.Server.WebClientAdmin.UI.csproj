@@ -3253,9 +3253,6 @@
     <Content Include="Sync\FRM029A.aspx" />
     <Content Include="Sync\FRM030.aspx" />
     <Content Include="Trabajadores\FRM080.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministradorServicios\cr.CertficadoObservado1.cs">
@@ -5176,6 +5173,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\SLPublicado.pubxml" />
     <None Include="Properties\PublishProfiles\SLSanlorenzoPublish.pubxml" />
+    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
