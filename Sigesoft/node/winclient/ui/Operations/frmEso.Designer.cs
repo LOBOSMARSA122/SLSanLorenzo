@@ -1332,7 +1332,7 @@
             // txtFechaUltimaMamo
             // 
             this.txtFechaUltimaMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaUltimaMamo.Location = new System.Drawing.Point(947, 46);
+            this.txtFechaUltimaMamo.Location = new System.Drawing.Point(947, 50);
             this.txtFechaUltimaMamo.Name = "txtFechaUltimaMamo";
             this.txtFechaUltimaMamo.Size = new System.Drawing.Size(194, 20);
             this.txtFechaUltimaMamo.TabIndex = 46;
@@ -1350,7 +1350,7 @@
             this.label146.AutoSize = true;
             this.label146.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label146.ForeColor = System.Drawing.Color.Black;
-            this.label146.Location = new System.Drawing.Point(787, 109);
+            this.label146.Location = new System.Drawing.Point(780, 112);
             this.label146.Name = "label146";
             this.label146.Size = new System.Drawing.Size(131, 13);
             this.label146.TabIndex = 43;
@@ -1359,7 +1359,7 @@
             // txtResultadoMamo
             // 
             this.txtResultadoMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultadoMamo.Location = new System.Drawing.Point(929, 109);
+            this.txtResultadoMamo.Location = new System.Drawing.Point(947, 108);
             this.txtResultadoMamo.Name = "txtResultadoMamo";
             this.txtResultadoMamo.Size = new System.Drawing.Size(194, 20);
             this.txtResultadoMamo.TabIndex = 44;
@@ -1369,7 +1369,7 @@
             this.label147.AutoSize = true;
             this.label147.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label147.ForeColor = System.Drawing.Color.Black;
-            this.label147.Location = new System.Drawing.Point(780, 86);
+            this.label147.Location = new System.Drawing.Point(780, 85);
             this.label147.Name = "label147";
             this.label147.Size = new System.Drawing.Size(96, 13);
             this.label147.TabIndex = 41;
@@ -1378,7 +1378,7 @@
             // txtResultadoPAP
             // 
             this.txtResultadoPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultadoPAP.Location = new System.Drawing.Point(929, 83);
+            this.txtResultadoPAP.Location = new System.Drawing.Point(947, 81);
             this.txtResultadoPAP.Name = "txtResultadoPAP";
             this.txtResultadoPAP.Size = new System.Drawing.Size(194, 20);
             this.txtResultadoPAP.TabIndex = 42;
@@ -1416,7 +1416,7 @@
             // 
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ForeColor = System.Drawing.Color.Black;
-            this.label36.Location = new System.Drawing.Point(780, 49);
+            this.label36.Location = new System.Drawing.Point(780, 50);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(160, 21);
             this.label36.TabIndex = 27;
@@ -1427,7 +1427,7 @@
             // 
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(390, 86);
+            this.label22.Location = new System.Drawing.Point(390, 81);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(149, 20);
             this.label22.TabIndex = 19;
@@ -1457,7 +1457,7 @@
             // txtCiruGine
             // 
             this.txtCiruGine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCiruGine.Location = new System.Drawing.Point(560, 86);
+            this.txtCiruGine.Location = new System.Drawing.Point(560, 81);
             this.txtCiruGine.Name = "txtCiruGine";
             this.txtCiruGine.Size = new System.Drawing.Size(194, 20);
             this.txtCiruGine.TabIndex = 20;
@@ -1467,7 +1467,7 @@
             this.dtpFur.Checked = false;
             this.dtpFur.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFur.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFur.Location = new System.Drawing.Point(174, 53);
+            this.dtpFur.Location = new System.Drawing.Point(174, 50);
             this.dtpFur.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFur.Name = "dtpFur";
             this.dtpFur.ShowCheckBox = true;
@@ -1478,7 +1478,7 @@
             // 
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(8, 86);
+            this.label11.Location = new System.Drawing.Point(8, 81);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(149, 20);
             this.label11.TabIndex = 13;
@@ -1489,7 +1489,7 @@
             this.cbMac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMac.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMac.FormattingEnabled = true;
-            this.cbMac.Location = new System.Drawing.Point(560, 53);
+            this.cbMac.Location = new System.Drawing.Point(560, 50);
             this.cbMac.Name = "cbMac";
             this.cbMac.Size = new System.Drawing.Size(194, 21);
             this.cbMac.TabIndex = 16;
@@ -1499,7 +1499,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(8, 57);
+            this.label10.Location = new System.Drawing.Point(8, 54);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 13);
             this.label10.TabIndex = 11;
@@ -1509,7 +1509,7 @@
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(390, 53);
+            this.label12.Location = new System.Drawing.Point(390, 50);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(160, 20);
             this.label12.TabIndex = 15;
@@ -1518,7 +1518,7 @@
             // txtRegimenCatamenial
             // 
             this.txtRegimenCatamenial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegimenCatamenial.Location = new System.Drawing.Point(174, 86);
+            this.txtRegimenCatamenial.Location = new System.Drawing.Point(174, 81);
             this.txtRegimenCatamenial.Name = "txtRegimenCatamenial";
             this.txtRegimenCatamenial.Size = new System.Drawing.Size(194, 20);
             this.txtRegimenCatamenial.TabIndex = 14;
@@ -7536,7 +7536,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 725);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 742);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -7569,7 +7569,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 742);
+            this.ClientSize = new System.Drawing.Size(1350, 759);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;

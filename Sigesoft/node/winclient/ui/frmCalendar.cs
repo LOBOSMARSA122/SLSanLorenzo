@@ -938,74 +938,79 @@ namespace Sigesoft.Node.WinClient.UI
         private List<string> _filesNameToMerge = new List<string>();
         private void btnDetallado_Click(object sender, EventArgs e)
         {
-            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-            {
-                   
-            OperationResult objOperationResult = new OperationResult();
-            ServiceBL objServiceBL = new ServiceBL();
-            List<CalendarDetail> Services = new List<CalendarDetail>();
-            CalendarDetail oCalendarDetail;
+            //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            //{
+               #region Detallado OLD
+            //    //OperationResult objOperationResult = new OperationResult();
+            //    //ServiceBL objServiceBL = new ServiceBL();
+            //    //List<CalendarDetail> Services = new List<CalendarDetail>();
+            //    //CalendarDetail oCalendarDetail;
 
-            foreach (var item in grdDataCalendar.Rows)
-            {
-                var serviceId = item.Cells["v_ServiceId"].Value.ToString();
-                oCalendarDetail = new CalendarDetail();
+            //    //foreach (var item in grdDataCalendar.Rows)
+            //    //{
+            //    //    var serviceId = item.Cells["v_ServiceId"].Value.ToString();
+            //    //    oCalendarDetail = new CalendarDetail();
 
 
-                oCalendarDetail.v_ServiceId = serviceId;
-                oCalendarDetail.Pacient = item.Cells["v_Pacient"].Value.ToString();
-                oCalendarDetail.EmpresaCliente = item.Cells["v_OrganizationLocationProtocol"].Value.ToString();
-                oCalendarDetail.EmpresaEmpleadora = item.Cells["v_OrganizationIntermediaryName"].Value.ToString();
-                oCalendarDetail.EmpresaTrabajo = item.Cells["CompMinera"].Value.ToString();
-                oCalendarDetail.FechaService = item.Cells["d_ServiceDate"].Value.ToString();
-                oCalendarDetail.Protocol = item.Cells["v_ProtocolName"].Value.ToString();
+            //    //    oCalendarDetail.v_ServiceId = serviceId;
+            //    //    oCalendarDetail.Pacient = item.Cells["v_Pacient"].Value.ToString();
+            //    //    oCalendarDetail.EmpresaCliente = item.Cells["v_OrganizationLocationProtocol"].Value.ToString();
+            //    //    oCalendarDetail.EmpresaEmpleadora = item.Cells["v_OrganizationIntermediaryName"].Value.ToString();
+            //    //    oCalendarDetail.EmpresaTrabajo = item.Cells["CompMinera"].Value.ToString();
+            //    //    oCalendarDetail.FechaService = item.Cells["d_ServiceDate"].Value.ToString();
+            //    //    oCalendarDetail.Protocol = item.Cells["v_ProtocolName"].Value.ToString();
 
-                List<Category> oCategories = new List<Category>();
-                Category oCategory;
-                var Categories = objServiceBL.GetAllComponentsByService(ref objOperationResult, serviceId);
-                foreach (var category in Categories)
-                {
-                    oCategory = new Category();
-                    oCategory.CategoryId = category.i_CategoryId.Value;
-                    oCategory.CategoryName = category.v_CategoryName;
-                    oCategories.Add(oCategory);
+            //    //    List<Category> oCategories = new List<Category>();
+            //    //    Category oCategory;
+            //    //    var Categories = objServiceBL.GetAllComponentsByService(ref objOperationResult, serviceId);
+            //    //    foreach (var category in Categories)
+            //    //    {
+            //    //        oCategory = new Category();
+            //    //        oCategory.CategoryId = category.i_CategoryId.Value;
+            //    //        oCategory.CategoryName = category.v_CategoryName;
+            //    //        oCategories.Add(oCategory);
 
-                    List<Components> oComponents = new List<Components>();
-                    Components oComponent;
-                    var components = category.Componentes;
-                    foreach (var component in components)
-                    {
-                        oComponent = new Components();
-                        oComponent.ComponentId = component.v_ComponentId;
-                        oComponent.Component = component.v_ComponentName;
-                        oComponent.StatusComponentId = component.StatusComponentId;
-                        oComponent.StatusComponent = component.StatusComponent;
-                        oComponent.User = component.ApprovedUpdateUser;
-                        oComponents.Add(oComponent);
-                    }
+            //    //        List<Components> oComponents = new List<Components>();
+            //    //        Components oComponent;
+            //    //        var components = category.Componentes;
+            //    //        foreach (var component in components)
+            //    //        {
+            //    //            oComponent = new Components();
+            //    //            oComponent.ComponentId = component.v_ComponentId;
+            //    //            oComponent.Component = component.v_ComponentName;
+            //    //            oComponent.StatusComponentId = component.StatusComponentId;
+            //    //            oComponent.StatusComponent = component.StatusComponent;
+            //    //            oComponent.User = component.ApprovedUpdateUser;
+            //    //            oComponents.Add(oComponent);
+            //    //        }
 
-                    oCategory.Components = oComponents;
-                }
+            //    //        oCategory.Components = oComponents;
+            //    //    }
 
-                oCalendarDetail.Categories = oCategories;
+            //    //    oCalendarDetail.Categories = oCategories;
 
-                Services.Add(oCalendarDetail);
-            }
+            //    //    Services.Add(oCalendarDetail);
+            //    //}
+
+            //    //string ruta;
+            //    //ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+            //    //var pathFile = string.Format("{0}.pdf", Path.Combine(ruta, "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy")));
+            //    //AgendaDetallada.CreateAgendaDetallada(Services, pathFile);
+
+            //    //_filesNameToMerge.Add(ruta + "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy") + ".pdf");
+
+            //    //_mergeExPDF.FilesName = _filesNameToMerge;
+            //    ////_mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
+            //    //_mergeExPDF.DestinationFile = ruta + "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy") + "1.pdf"; ;
+            //    //_mergeExPDF.Execute();
+            //    //_mergeExPDF.RunFile();
+                #endregion      
+            //};
+                OperationResult objOperationResult = new OperationResult();
+                var frm = new Reports.frmRoadMapDetaail(_serviceId, _calendarId);
+                frm.ShowDialog();
+
             
-            string ruta;
-            ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
-            var pathFile = string.Format("{0}.pdf", Path.Combine(ruta, "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy")));
-            AgendaDetallada.CreateAgendaDetallada(Services, pathFile);
-
-            _filesNameToMerge.Add(ruta + "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy") + ".pdf");
-
-            _mergeExPDF.FilesName = _filesNameToMerge;
-            //_mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
-            _mergeExPDF.DestinationFile = ruta + "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy") + "1.pdf"; ;
-            _mergeExPDF.Execute();
-            _mergeExPDF.RunFile();
-
-            };
 
         }
 
