@@ -19,6 +19,14 @@ using CrystalDecisions.Shared;
 using Sigesoft.Node.Contasol.Integration;
 using NetPdf;
 
+using System.Threading;
+using System.ComponentModel;
+using System.IO;
+using Microsoft.Win32;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
+using System.Configuration;
+
 namespace Sigesoft.Node.WinClient.UI
 {
     public partial class frmLiquidacion : Form
@@ -278,13 +286,35 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.FileName = string.Empty;
-            saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            //saveFileDialog1.FileName = string.Empty;
+            //saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
+            //    MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}     
+            try
             {
-                this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
-                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }     
+                BackgroundWorker _hilo1 = new BackgroundWorker();
+                _hilo1.DoWork += new DoWorkEventHandler(creaExcel);
+
+                TaskInfo ti = new TaskInfo();
+
+                ti.mensaje = "Procesando carga de datos...";
+                _hilo1.RunWorkerAsync(ti);
+            }
+            catch
+            {
+                new System.Threading.Thread(delegate()
+                {   //Creo un Thread nuevo para hacer la anotación del error
+                    Thread.Sleep(2000);
+                    //Creamos un Thread nuevo
+                    //this.Dispatcher.BeginInvoke((ThreadStart)delegate
+                    //{
+                    //    texto.Text += ex.Source.ToString() + " - " + ex.Message + "\r\n";
+                    //});
+                }).Start();
+            }
         }
 
         private void grdData_ClickCell(object sender, ClickCellEventArgs e)
@@ -302,6 +332,194 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
+        public void creaExcel(object sender, DoWorkEventArgs e)
+        {
+            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+
+            var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+            TaskInfo ti = (TaskInfo)e.Argument;
+            BackgroundWorker bw = sender as BackgroundWorker;
+
+            Excel.Application excel = new Excel.Application();
+            Excel._Workbook libro = null;
+            Excel._Worksheet hoja = null;
+            Excel.Range rango = null;
+
+            try
+            {
+                //string titulo = "EJEMPLO CREACIÓN ARCHIVO EXCEL ";
+                //ti.mensaje = "Procesando datos " + titulo + "...";
+                bw.WorkerReportsProgress = true;
+                bw.ReportProgress(0, ti);
+
+                Thread.Sleep(500);  //No es necesario. Lo he añadido para que dé tiempo a ver el mensaje
+
+                //creamos un libro nuevo y la hoja con la que vamos a trabajar
+                libro = (Excel._Workbook)excel.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+                hoja = (Excel._Worksheet)libro.Worksheets.Add();
+                hoja.Name = "LIQUIDACION N° "+ liquidacionID;
+                ((Excel.Worksheet)excel.ActiveWorkbook.Sheets["Hoja1"]).Delete();   //Borramos la hoja que crea en el libro por defecto
+
+                ti.max = 20;
+                bw.WorkerReportsProgress = true;
+                bw.ReportProgress(0, ti);
+
+                //Montamos las cabeceras 
+                montaCabeceras(3, ref hoja);
+
+                //Rellenamos las celdas
+                int fila = 7;
+                int count = 1;
+                int cantidad = lista.Count();
+                for (int i = 0; i <= cantidad; i++)
+                {
+                    //ti.mensaje = "Agregando datos registro " + (i + 1).ToString();
+                    //bw.WorkerReportsProgress = true;
+                    //bw.ReportProgress(i + 1, ti);
+                    //Asignamos los datos a las celdas de la fila
+                    hoja.Cells[fila + i, 2] = "N°";
+                    hoja.Cells[fila + i, 3] = "PACIENTE ";
+                    hoja.Cells[fila + i, 4] = "EDAD ";
+                    hoja.Cells[fila + i, 5] = "F. EXAMEN ";
+                    hoja.Cells[fila + i, 6] = "DNI ";
+                    hoja.Cells[fila + i, 7] = "CARGO ";
+                    hoja.Cells[fila + i, 8] = "PERFIL ";
+                    hoja.Cells[fila + i, 9] = "IGV ";
+                    hoja.Cells[fila + i, 10] = "SUB TOTAL ";
+                    hoja.Cells[fila + i, 11] = "TOTAL ";
+                    hoja.Cells[fila + i, 12] = "REF./OBSE. ";
+
+                    //for (int i = 0; i < length; i++)
+                    //{
+                        
+                    //}
+                    //Definimos la fila y la columna del rango 
+                    string x = "B" + (fila + i).ToString();
+                    string y = "D" + (fila + i).ToString();
+                    rango = hoja.Range[x, y];
+                    rango.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+
+                    Thread.Sleep(500);  //No es necesario. Lo he añadido para que dé tiempo a ver el mensaje
+                    count++;
+                }
+
+                ti.mensaje = "Se ha generado el libro excel...";
+                bw.WorkerReportsProgress = true;
+                bw.ReportProgress(100, ti);
+
+                libro.Saved = true;
+                libro.SaveAs(Environment.CurrentDirectory + @"\Ejemplo.xlsx");  // Si es un libro nuevo
+                //libro.Save();                // Si el libro ya existía
+
+                ti.mensaje = "Liberando recursos...";
+                bw.WorkerReportsProgress = true;
+                bw.ReportProgress(100, ti);
+
+                libro.Close();
+                releaseObject(libro);
+
+                excel.UserControl = false;
+                excel.Quit();
+                releaseObject(excel);
+
+                ti.mensaje = "Proceso terminado.";
+                bw.WorkerReportsProgress = true;
+                bw.ReportProgress(100, ti);
+
+                Thread.Sleep(500);  //No es necesario. Lo he añadido para que dé tiempo a ver el mensaje
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, "Error en creación/actualización del Ejemplo", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                libro.Saved = true;
+                libro.SaveAs(Environment.CurrentDirectory + @"\Ejemplo.xlsx");
+                //    libro.Save();
+
+                libro.Close();
+                releaseObject(libro);
+
+                excel.UserControl = false;
+                excel.Quit();
+                releaseObject(excel);
+
+                System.Threading.Thread.Sleep(2000);
+            }
+
+        }
+
+        private void montaCabeceras(int fila, ref Excel._Worksheet hoja)
+        {
+            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var traerEmpresa = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, liquidacionID);
+            string idEmpresa = traerEmpresa.v_OrganizationId;
+            var obtenerInformacionEmpresas = new ServiceBL().GetOrganizationId(ref _objOperationResult, idEmpresa);
+            try
+            {
+                Excel.Range rango;
+
+                //** Montamos el título en la línea 1 **
+                //hoja.Cells[1, 2] = MedicalCenter.b_Image;
+                hoja.Cells[2, 4] = "LIQUIDACIÓN DE EXAMENES MÉDICOS OCUPACIONALES N° " + liquidacionID;
+
+                //** Montamos las cabeceras en la línea 3 **
+                hoja.Cells[4, 2] = "EMPRESA A FACTURAR: ";
+                hoja.Cells[4, 4] = obtenerInformacionEmpresas.v_Name;
+
+                hoja.Cells[5, 2] = "RUC: ";
+                hoja.Cells[5, 4] = obtenerInformacionEmpresas.v_IdentificationNumber;
+
+                hoja.Cells[6, 2] = "DIRECCION: ";
+                hoja.Cells[6, 4] = obtenerInformacionEmpresas.v_Address;
+
+                
+                //Ponemos borde a las celdas
+                rango = hoja.Range["B4", "L6"];
+                rango.Borders.LineStyle = Excel.XlLineStyle.xlDouble;
+
+                //Centramos los textos
+                rango = hoja.Rows[3];
+                rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                //Modificamos los anchos de las columnas
+                rango = hoja.Columns[1];
+                rango.ColumnWidth = 1;
+                rango = hoja.Columns[2];
+                rango.ColumnWidth = 10;
+                rango = hoja.Columns[3];
+                rango.ColumnWidth = 20;
+                rango = hoja.Columns[4];
+                rango.ColumnWidth = 20;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, "Error de redondeo", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Error mientras liberaba objecto " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab.Name == "tpESO")
@@ -323,17 +541,7 @@ namespace Sigesoft.Node.WinClient.UI
                     string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                     string nombre = "Liquidación N° " + liquidacionID + " - CSL";
 
-                    string idLiq = "";
-                    foreach (var item in lista)
-                    {
-                        foreach (var item_1 in item.Detalle)
-                        {
-                            idLiq = item_1.v_NroLiquidacion;
-                            break;
-                        }
-                        break;
-                    }
-                    var traerEmpresa = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, idLiq);
+                    var traerEmpresa = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, liquidacionID);
                     string idEmpresa = traerEmpresa.v_OrganizationId;
                     var obtenerInformacionEmpresas = new ServiceBL().GetOrganizationId(ref _objOperationResult, idEmpresa);
                     Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas);
