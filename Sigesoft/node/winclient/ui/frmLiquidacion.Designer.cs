@@ -563,6 +563,7 @@
             this.grdData.TabIndex = 152;
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
             this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
+            this.grdData.AfterSortChange += new Infragistics.Win.UltraWinGrid.BandEventHandler(this.grdData_AfterSortChange);
             // 
             // tpEmpresa
             // 
