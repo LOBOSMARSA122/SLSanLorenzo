@@ -186,38 +186,103 @@ namespace NetPdf
                     cell = new PdfPCell(new Phrase(item.Perfil, fontColumnValue1)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                     cells.Add(cell);
                     decimal _SubTotal = (decimal)item.Precio / (decimal)1.18;
+                    _SubTotal = _SubTotal + (decimal)0.00000000000001;
                     _SubTotal = decimal.Round(_SubTotal, 2);
                     decimal _igv =_SubTotal * (decimal)0.18;
+                    _igv = _igv + (decimal)0.000000000000000001;
                     _igv = decimal.Round(_igv, 2);
-                    cell = new PdfPCell(new Phrase(_igv.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(_SubTotal.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                    cells.Add(cell);
+                    string[] _PcadenaIgv = _igv.ToString().Split('.');
+                    if (_PcadenaIgv.Count() > 1)
+                    {
+                        cell = new PdfPCell(new Phrase(_igv.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                        cells.Add(cell);
+                    }
+                    else
+                    {
+                        cell = new PdfPCell(new Phrase(_igv.ToString() + ".00", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                        cells.Add(cell);
+                    }
+                    string[] _PcadenaSubTotAL = _igv.ToString().Split('.');
+                    if (_PcadenaSubTotAL.Count() > 1)
+                    {
+                        cell = new PdfPCell(new Phrase(_SubTotal.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                        cells.Add(cell);
+                    }
+                    else
+                    {
+                        cell = new PdfPCell(new Phrase(_SubTotal.ToString()+ ".00", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                        cells.Add(cell);
+                    }
+                    
                     decimal _Precio = (decimal)item.Precio;
+                    _Precio = _Precio + (decimal)0.0000001;
                     _Precio = decimal.Round(_Precio, 2);
-                    cell = new PdfPCell(new Phrase(_Precio.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                    cells.Add(cell);
+
+                    string[] _Pcadena = _Precio.ToString().Split('.');
+                    if (_Pcadena.Count() > 1)
+                    {
+                        cell = new PdfPCell(new Phrase(_Precio.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                        cells.Add(cell);
+                    }
+                    else
+                    {
+                        cell = new PdfPCell(new Phrase(_Precio.ToString() +".00", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                        cells.Add(cell);
+                    }
+                   
                     cell = new PdfPCell(new Phrase(item.CCosto, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                     cells.Add(cell);
                     sumatipoExm += (decimal)item.Precio;
+                    sumatipoExm = sumatipoExm + (decimal)0.0000000000000000001;
                     igvPerson += (decimal)_igv;
+                    igvPerson = igvPerson + (decimal)0.0000000000000000001;
                     subTotalPerson += (decimal)_SubTotal;
+                    subTotalPerson = subTotalPerson + (decimal)0.0000000000000000000001;
                     nroreco++;
 
                 }
                 sumatipoExm_1 = decimal.Round(sumatipoExm,2);
+
                 _igvPerson = decimal.Round(igvPerson,2);
                 _subTotalPerson = decimal.Round(subTotalPerson,2);
                 cell = new PdfPCell(new Phrase("", fontColumnValueBold)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase("TOTAL EXAMEN: " + liq.Esotype + " = ", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
-                cell = new PdfPCell(new Phrase(_igvPerson.ToString(), fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                cells.Add(cell);
-                cell = new PdfPCell(new Phrase(_subTotalPerson.ToString(), fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                cells.Add(cell);
-                cell = new PdfPCell(new Phrase(sumatipoExm_1.ToString(), fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                cells.Add(cell);
+                string[] _PcadenaigvPerson = _igvPerson.ToString().Split('.');
+                if (_PcadenaigvPerson.Count() > 1)
+                {
+                    cell = new PdfPCell(new Phrase(_igvPerson.ToString(), fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                    cells.Add(cell);
+                }
+                else
+                {
+                    cell = new PdfPCell(new Phrase(_igvPerson.ToString() +".00", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                    cells.Add(cell);
+                }
+                string[] _Pcadena_subTotalPerson = _subTotalPerson.ToString().Split('.');
+                if (_Pcadena_subTotalPerson.Count() > 1)
+                {
+                    cell = new PdfPCell(new Phrase(_subTotalPerson.ToString(), fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                    cells.Add(cell);
+                }
+                else
+                {
+                    cell = new PdfPCell(new Phrase(_subTotalPerson.ToString() + ".00", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                    cells.Add(cell);
+                }
+                string[] _Pcadena_sumatipoExm_1 = sumatipoExm_1.ToString().Split('.');
+                if (_Pcadena_sumatipoExm_1.Count() > 1)
+                {
+                    cell = new PdfPCell(new Phrase(sumatipoExm_1.ToString(), fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                    cells.Add(cell);
+                }
+                else
+                {
+                    cell = new PdfPCell(new Phrase(sumatipoExm_1.ToString() +".00", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                    cells.Add(cell);
+                }
+                
                 cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
                 //decimal IGV = totalFinal * (decimal)0.18;
@@ -226,6 +291,7 @@ namespace NetPdf
                 igvPerson = 0;
                 subTotalPerson = 0;
                 totalFinal += (decimal)sumatipoExm_1;
+                totalFinal = totalFinal + (decimal)0.00000000000000001;
             }
             totalFinal_1 = decimal.Round(totalFinal, 2);
             decimal subTotalFinal = decimal.Round(totalFinal_1 / (decimal)1.18,2);
@@ -236,8 +302,17 @@ namespace NetPdf
             cells.Add(cell);
             cell = new PdfPCell(new Phrase("SUB TOTAL = S/. ", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
             cells.Add(cell);
-            cell = new PdfPCell(new Phrase(subTotalFinal.ToString(), fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
-            cells.Add(cell);
+            string[] _Pcadena_subTotalFinal = subTotalFinal.ToString().Split('.');
+            if (_Pcadena_subTotalFinal.Count() > 1)
+            {
+                cell = new PdfPCell(new Phrase(subTotalFinal.ToString(), fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                cells.Add(cell);
+            }
+            else {
+                cell = new PdfPCell(new Phrase(subTotalFinal.ToString() +".00", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                cells.Add(cell);
+            }
+            
             cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
             cells.Add(cell);
 
@@ -245,8 +320,18 @@ namespace NetPdf
             cells.Add(cell);
             cell = new PdfPCell(new Phrase("IGV = S/. ", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
             cells.Add(cell);
-            cell = new PdfPCell(new Phrase(IGV.ToString(), fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-            cells.Add(cell);
+            string[] _Pcadena_IGV = IGV.ToString().Split('.');
+            if (_Pcadena_IGV.Count() > 1)
+            {
+                cell = new PdfPCell(new Phrase(IGV.ToString(), fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cells.Add(cell);
+            }
+            else
+            {
+                cell = new PdfPCell(new Phrase(IGV.ToString() + ".00", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cells.Add(cell);
+            }
+            
             cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
             cells.Add(cell);
 
@@ -254,8 +339,18 @@ namespace NetPdf
             cells.Add(cell);
             cell = new PdfPCell(new Phrase("TOTAL LIQUIDACIÓN = S/. ", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
             cells.Add(cell);
-            cell = new PdfPCell(new Phrase(totalFinal_1.ToString(), fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-            cells.Add(cell);
+            string[] _PcadenatotalFinal_1 = totalFinal_1.ToString().Split('.');
+            if (_PcadenatotalFinal_1.Count() > 1)
+            {
+                cell = new PdfPCell(new Phrase(totalFinal_1.ToString(), fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cells.Add(cell);
+            }
+            else
+            {
+                cell = new PdfPCell(new Phrase(totalFinal_1.ToString()+".00", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cells.Add(cell);
+            }
+            
             cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
             cells.Add(cell);
             columnWidths = new float[] { 4f, 20f, 5f, 10f, 8f, 13f, 15f, 5f, 5f, 8f, 10f };

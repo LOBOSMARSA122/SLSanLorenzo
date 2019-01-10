@@ -26,6 +26,7 @@ using Microsoft.Win32;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -334,9 +335,12 @@ namespace Sigesoft.Node.WinClient.UI
 
         public void creaExcel(object sender, DoWorkEventArgs e)
         {
+            OperationResult objOperationResult = new OperationResult();
+
             var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
             var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+            string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
             var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
             TaskInfo ti = (TaskInfo)e.Argument;
@@ -346,106 +350,205 @@ namespace Sigesoft.Node.WinClient.UI
             Excel._Workbook libro = null;
             Excel._Worksheet hoja = null;
             Excel.Range rango = null;
-
+            
             try
             {
-                //string titulo = "EJEMPLO CREACIÓN ARCHIVO EXCEL ";
-                //ti.mensaje = "Procesando datos " + titulo + "...";
-                bw.WorkerReportsProgress = true;
-                bw.ReportProgress(0, ti);
-
-                Thread.Sleep(500);  //No es necesario. Lo he añadido para que dé tiempo a ver el mensaje
-
-                //creamos un libro nuevo y la hoja con la que vamos a trabajar
-                libro = (Excel._Workbook)excel.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
-                hoja = (Excel._Worksheet)libro.Worksheets.Add();
-                hoja.Name = "LIQUIDACION N° "+ liquidacionID;
-                ((Excel.Worksheet)excel.ActiveWorkbook.Sheets["Hoja1"]).Delete();   //Borramos la hoja que crea en el libro por defecto
-
-                ti.max = 20;
-                bw.WorkerReportsProgress = true;
-                bw.ReportProgress(0, ti);
-
-                //Montamos las cabeceras 
-                montaCabeceras(3, ref hoja);
-
-                //Rellenamos las celdas
-                int fila = 7;
-                int count = 1;
-                int cantidad = lista.Count();
-                for (int i = 0; i <= cantidad; i++)
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                 {
-                    //ti.mensaje = "Agregando datos registro " + (i + 1).ToString();
-                    //bw.WorkerReportsProgress = true;
-                    //bw.ReportProgress(i + 1, ti);
-                    //Asignamos los datos a las celdas de la fila
-                    hoja.Cells[fila + i, 2] = "N°";
-                    hoja.Cells[fila + i, 3] = "PACIENTE ";
-                    hoja.Cells[fila + i, 4] = "EDAD ";
-                    hoja.Cells[fila + i, 5] = "F. EXAMEN ";
-                    hoja.Cells[fila + i, 6] = "DNI ";
-                    hoja.Cells[fila + i, 7] = "CARGO ";
-                    hoja.Cells[fila + i, 8] = "PERFIL ";
-                    hoja.Cells[fila + i, 9] = "IGV ";
-                    hoja.Cells[fila + i, 10] = "SUB TOTAL ";
-                    hoja.Cells[fila + i, 11] = "TOTAL ";
-                    hoja.Cells[fila + i, 12] = "REF./OBSE. ";
+                    //creamos un libro nuevo y la hoja con la que vamos a trabajar
+                    libro = (Excel._Workbook)excel.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
 
-                    //for (int i = 0; i < length; i++)
-                    //{
-                        
-                    //}
-                    //Definimos la fila y la columna del rango 
-                    string x = "B" + (fila + i).ToString();
-                    string y = "D" + (fila + i).ToString();
-                    rango = hoja.Range[x, y];
-                    rango.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    hoja = (Excel._Worksheet)libro.Worksheets.Add();
+                    hoja.Application.ActiveWindow.DisplayGridlines = false;
+                    hoja.Name = "LIQUIDACION N° " + liquidacionID;
+                    ((Excel.Worksheet)excel.ActiveWorkbook.Sheets["Hoja1"]).Delete();   //Borro hoja que crea en el libro por defecto
 
-                    Thread.Sleep(500);  //No es necesario. Lo he añadido para que dé tiempo a ver el mensaje
-                    count++;
+                    //DatosEmpresa
+                    montaCabeceras(3, ref hoja);
+
+                    //DatosDinamicos
+                    int fila = 7;
+                    int count = 1;
+                    int i = 0;
+                    decimal sumatipoExm = 0;
+                    decimal sumatipoExm_1 = 0;
+                    decimal igvPerson = 0;
+                    decimal _igvPerson = 0;
+                    decimal subTotalPerson = 0;
+                    decimal _subTotalPerson = 0;
+                    decimal totalFinal = 0;
+                    decimal totalFinal_1 = 0;
+                    foreach (var lista1 in lista)
+                    {
+                        //Asignamos los datos a las celdas de la fila
+                        hoja.Cells[fila + i, 2] = "TIPO EXAMEN: " + lista1.Esotype;
+                        string x1 = "B" + (fila + i).ToString();
+                        string y1 = "L" + (fila + i).ToString();
+                        rango = hoja.Range[x1, y1];
+                        rango.Merge(true);
+                        rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                        rango.Interior.Color = Color.Gray;
+                        rango.Font.Size = 14;
+                        rango.RowHeight = 30;
+                        rango.Font.Bold = true;
+                        i++;
+
+                        hoja.Cells[fila + i, 2] = "N°";
+                        hoja.Cells[fila + i, 3] = "PACIENTE ";
+                        hoja.Cells[fila + i, 4] = "EDAD ";
+                        hoja.Cells[fila + i, 5] = "F. EXAMEN ";
+                        hoja.Cells[fila + i, 6] = "DNI ";
+                        hoja.Cells[fila + i, 7] = "CARGO ";
+                        hoja.Cells[fila + i, 8] = "PERFIL ";
+                        hoja.Cells[fila + i, 9] = "IGV ";
+                        hoja.Cells[fila + i, 10] = "SUB TOTAL ";
+                        hoja.Cells[fila + i, 11] = "TOTAL ";
+                        hoja.Cells[fila + i, 12] = "REF./OBSE. ";
+                        string x2 = "B" + (fila + i).ToString();
+                        string y2 = "L" + (fila + i).ToString();
+                        rango = hoja.Range[x2, y2];
+                        rango.Borders.LineStyle = Excel.XlLineStyle.xlDash;
+                        rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        rango.RowHeight = 20;
+                        rango.Font.Bold = true;
+                        i++;
+                        foreach (var item in lista1.Detalle)
+                        {
+                            hoja.Cells[fila + i, 2] = count + ".";
+                            hoja.Cells[fila + i, 3] = item.Trabajador;
+                            hoja.Cells[fila + i, 4] = item.Edad;
+                            hoja.Cells[fila + i, 5] = item.FechaExamen.ToString().Split(' ')[0];
+                            hoja.Cells[fila + i, 6] = item.NroDocumemto;
+                            hoja.Cells[fila + i, 7] = item.Cargo;
+                            hoja.Cells[fila + i, 8] = item.Perfil;
+                            decimal _SubTotal = (decimal)item.Precio / (decimal)1.18;
+                            _SubTotal = _SubTotal + (decimal)0.0000000000000000000000000000001;
+                            _SubTotal = decimal.Round(_SubTotal, 2);
+                            decimal _igv = _SubTotal * (decimal)0.18;
+                            _igv = _igv + (decimal)0.00000000000000000000000000001;
+                            _igv = decimal.Round(_igv, 2);
+                            hoja.Cells[fila + i, 9] = _igv;
+                            hoja.Cells[fila + i, 10] = _SubTotal;
+                            decimal Precio = (decimal)item.Precio;
+                            Precio = Precio + (decimal)0.0000000000000000000001;
+                            Precio = decimal.Round(Precio, 2);
+                            string[] _Pcadena = Precio.ToString().Split('.');
+                            if (_Pcadena.Count() > 1)
+                            {
+                                hoja.Cells[fila + i, 11] = Precio;
+                            }
+                            else
+                            {
+                                hoja.Cells[fila + i, 11] = Precio.ToString() + ".00";
+                            }
+                            hoja.Cells[fila + i, 12] = item.CCosto;
+
+                            count++;
+                            sumatipoExm += (decimal)item.Precio;
+                            igvPerson += (decimal)_igv;
+                            subTotalPerson += (decimal)_SubTotal;
+                            i++;
+                        }
+                        sumatipoExm_1 = decimal.Round(sumatipoExm, 2);
+                        _igvPerson = decimal.Round(igvPerson, 2);
+                        _subTotalPerson = decimal.Round(subTotalPerson, 2);
+
+                        hoja.Cells[fila + i, 2] = "TOTAL EXAMEN: " + lista1.Esotype + " = ";
+                        string x3 = "B" + (fila + i).ToString();
+                        string y3 = "H" + (fila + i).ToString();
+                        rango = hoja.Range[x3, y3];
+                        rango.Merge(true);
+                        rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                        rango.Font.Bold = true;
+                        rango.Font.Size = 14;
+                        hoja.Cells[fila + i, 9] = _igvPerson;
+                        hoja.Cells[fila + i, 10] = _subTotalPerson;
+                        hoja.Cells[fila + i, 11] = sumatipoExm_1;
+
+                        i++;
+
+                        sumatipoExm = 0;
+                        igvPerson = 0;
+                        subTotalPerson = 0;
+                        totalFinal += (decimal)sumatipoExm_1;
+
+                    }
+
+                    totalFinal_1 = decimal.Round(totalFinal, 2);
+                    decimal subTotalFinal = decimal.Round(totalFinal_1 / (decimal)1.18, 2);
+                    decimal IGV = decimal.Round(subTotalFinal * (decimal)0.18, 2);
+
+                    hoja.Cells[fila + i, 2] = "SUB TOTAL = ";
+                    string x4 = "B" + (fila + i).ToString();
+                    string y4 = "H" + (fila + i).ToString();
+                    rango = hoja.Range[x4, y4];
+                    rango.Merge(true);
+                    rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    rango.Font.Bold = true;
+                    rango.Font.Size = 13;
+                    hoja.Cells[fila + i, 11] = subTotalFinal;
+
+                    i++;
+                    hoja.Cells[fila + i, 2] = "IGV = ";
+                    string x5 = "B" + (fila + i).ToString();
+                    string y5 = "H" + (fila + i).ToString();
+                    rango = hoja.Range[x5, y5];
+                    rango.Merge(true);
+                    rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    rango.Font.Bold = true;
+                    rango.Font.Size = 13;
+                    hoja.Cells[fila + i, 11] = IGV;
+
+                    i++;
+                    hoja.Cells[fila + i, 2] = "TOTAL LIQUIDACIÓN = ";
+                    string x6 = "B" + (fila + i).ToString();
+                    string y6 = "H" + (fila + i).ToString();
+                    rango = hoja.Range[x6, y6];
+                    rango.Merge(true);
+                    rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    rango.Font.Bold = true;
+                    rango.Font.Size = 13;
+                    hoja.Cells[fila + i, 11] = totalFinal_1;
+
+                    ti.mensaje = "Se ha generado el libro excel...";
+                    bw.WorkerReportsProgress = true;
+                    bw.ReportProgress(100, ti);
+
+                    libro.Saved = true;
+
+                    libro.SaveAs(ruta + @"\" + "Liquidacion N° " + liquidacionID + ".xlsx");
+
+                    
+
+                    ti.mensaje = "Liberando recursos...";
+                    bw.WorkerReportsProgress = true;
+                    bw.ReportProgress(100, ti);
+
+                    libro.Close();
+                    releaseObject(libro);
+
+                    excel.UserControl = false;
+                    excel.Quit();
+                    releaseObject(excel);
                 }
-
-                ti.mensaje = "Se ha generado el libro excel...";
-                bw.WorkerReportsProgress = true;
-                bw.ReportProgress(100, ti);
-
-                libro.Saved = true;
-                libro.SaveAs(Environment.CurrentDirectory + @"\Ejemplo.xlsx");  // Si es un libro nuevo
-                //libro.Save();                // Si el libro ya existía
-
-                ti.mensaje = "Liberando recursos...";
-                bw.WorkerReportsProgress = true;
-                bw.ReportProgress(100, ti);
-
-                libro.Close();
-                releaseObject(libro);
-
-                excel.UserControl = false;
-                excel.Quit();
-                releaseObject(excel);
-
-                ti.mensaje = "Proceso terminado.";
-                bw.WorkerReportsProgress = true;
-                bw.ReportProgress(100, ti);
-
-                Thread.Sleep(500);  //No es necesario. Lo he añadido para que dé tiempo a ver el mensaje
+                Process.Start(ruta + @"\" + "Liquidacion N° " + liquidacionID + ".xlsx");
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message, "Error en creación/actualización del Ejemplo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Error en creación/actualización de la Liquidación N° " + liquidacionID, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    libro.Saved = true;
+                    libro.SaveAs(ruta + @"\" + "Liquidacion N° " + liquidacionID + "_fail.xlsx");
 
-                libro.Saved = true;
-                libro.SaveAs(Environment.CurrentDirectory + @"\Ejemplo.xlsx");
-                //    libro.Save();
+                    libro.Close();
+                    releaseObject(libro);
 
-                libro.Close();
-                releaseObject(libro);
-
-                excel.UserControl = false;
-                excel.Quit();
-                releaseObject(excel);
-
-                System.Threading.Thread.Sleep(2000);
+                    excel.UserControl = false;
+                    excel.Quit();
+                    releaseObject(excel);
+                }
+                Process.Start(ruta + @"\" + "Liquidacion N° " + liquidacionID + "_fail.xlsx");
             }
 
         }
@@ -464,42 +567,118 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 Excel.Range rango;
 
-                //** Montamos el título en la línea 1 **
+                //** TITULO DEL LIBRO **
                 //hoja.Cells[1, 2] = MedicalCenter.b_Image;
-                hoja.Cells[2, 4] = "LIQUIDACIÓN DE EXAMENES MÉDICOS OCUPACIONALES N° " + liquidacionID;
+                hoja.get_Range("B1", "C1");
 
-                //** Montamos las cabeceras en la línea 3 **
+                hoja.Cells[2, 4] = "LIQUIDACIÓN DE EXAMENES MÉDICOS OCUPACIONALES N° " + liquidacionID;
+                hoja.get_Range("B2", "L2").Merge(true);
+                hoja.get_Range("B2", "L2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("B2", "L2").Font.Bold = true;
+                hoja.get_Range("B2", "L2").Font.Size = 18;
+                hoja.get_Range("B2", "L2").RowHeight = 35;
+                hoja.get_Range("B2", "L2").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
                 hoja.Cells[4, 2] = "EMPRESA A FACTURAR: ";
                 hoja.Cells[4, 4] = obtenerInformacionEmpresas.v_Name;
+                hoja.get_Range("B4", "C4").Merge(true);
+                hoja.get_Range("D4", "L4").Merge(true);
+                hoja.get_Range("B4", "C4").Font.Bold = true;
+                hoja.get_Range("B4", "C4").BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlMedium, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
+                hoja.get_Range("B4", "C4").RowHeight = 30;
+                hoja.get_Range("D4", "L4").RowHeight = 30;
+                hoja.get_Range("B4", "C4").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("D4", "L4").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                 hoja.Cells[5, 2] = "RUC: ";
                 hoja.Cells[5, 4] = obtenerInformacionEmpresas.v_IdentificationNumber;
+                hoja.get_Range("B5", "C5").Merge(true);
+                hoja.get_Range("D5", "L5").Merge(true);
+                hoja.get_Range("D5", "L5").HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                hoja.get_Range("B5", "C5").Font.Bold = true;
+                hoja.get_Range("B5", "C5").RowHeight = 30;
+                hoja.get_Range("D5", "L5").RowHeight = 30;
+                hoja.get_Range("B5", "C5").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("D5", "L5").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                 hoja.Cells[6, 2] = "DIRECCION: ";
                 hoja.Cells[6, 4] = obtenerInformacionEmpresas.v_Address;
+                hoja.get_Range("B6", "C6").Merge(true);
+                hoja.get_Range("D6", "L6").Merge(true);
+                hoja.get_Range("B6", "C6").Font.Bold = true;
+                hoja.get_Range("B6", "C6").RowHeight = 30;
+                hoja.get_Range("D6", "L6").RowHeight = 30;
+                hoja.get_Range("B6", "C6").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("D6", "L6").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                
-                //Ponemos borde a las celdas
+                //Asigna borde
                 rango = hoja.Range["B4", "L6"];
-                rango.Borders.LineStyle = Excel.XlLineStyle.xlDouble;
-
-                //Centramos los textos
-                rango = hoja.Rows[3];
-                rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.Borders.LineStyle = Excel.XlLineStyle.xlDot;
 
                 //Modificamos los anchos de las columnas
                 rango = hoja.Columns[1];
                 rango.ColumnWidth = 1;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
                 rango = hoja.Columns[2];
-                rango.ColumnWidth = 10;
+                rango.ColumnWidth = 5;
+                rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
                 rango = hoja.Columns[3];
-                rango.ColumnWidth = 20;
+                rango.ColumnWidth = 40;
+                rango.Cells.WrapText = true;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
                 rango = hoja.Columns[4];
+                rango.ColumnWidth = 7;
+                rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                rango = hoja.Columns[5];
+                rango.ColumnWidth = 12;
+                rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                rango = hoja.Columns[6];
+                rango.ColumnWidth = 10;
+                rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                rango = hoja.Columns[7];
+                rango.ColumnWidth = 30;
+                rango.Cells.WrapText = true;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                rango = hoja.Columns[8];
+                rango.ColumnWidth = 40;
+                rango.Cells.WrapText = true;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                rango = hoja.Columns[9];
+                rango.ColumnWidth = 8;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.NumberFormat = "#0.00";
+
+                rango = hoja.Columns[10];
+                rango.ColumnWidth = 12;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.NumberFormat = "#0.00";
+
+                rango = hoja.Columns[11];
+                rango.ColumnWidth = 8;
+                rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                rango.NumberFormat = "#0.00";
+
+                rango = hoja.Columns[12];
                 rango.ColumnWidth = 20;
+                rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message, "Error de redondeo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Error de redondeo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
