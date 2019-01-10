@@ -27,6 +27,8 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Configuration;
 using System.Diagnostics;
+using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Excel;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -65,7 +67,12 @@ namespace Sigesoft.Node.WinClient.UI
             btnLiqd1.Enabled = false;
             btnCarta.Enabled = false;
             btnRepEmp.Enabled = false;
+            btnExportarExcel.Enabled = false;
             btnEliminarLiquidacion.Enabled = false;
+            btnEditarServicio.Enabled = false;
+            btnGenerarLiq.Enabled = false;
+            btnLiberarRegistro.Enabled = false;
+            btnNoLiquidados.Enabled = false;
             //
             UltraGridColumn c = grdData.DisplayLayout.Bands[1].Columns["b_Seleccionar"];
             c.CellActivation = Activation.AllowEdit;
@@ -126,12 +133,22 @@ namespace Sigesoft.Node.WinClient.UI
                     BindGrid();
                     btnLiqd1.Enabled = false;
                     btnRepEmp.Enabled = true;
+
+                    btnEditarServicio.Enabled = true;
+                    btnGenerarLiq.Enabled = true;
+                    btnLiberarRegistro.Enabled = true;
+                    btnNoLiquidados.Enabled = true;
                 }
                 else if (tabControl1.SelectedTab.Name == "tpEmpresa")
                 {
                     BindGridEmpresa();
                     btnLiqd1.Enabled = false;
                     btnRepEmp.Enabled = true;
+
+                    btnEditarServicio.Enabled = false;
+                    btnGenerarLiq.Enabled = false;
+                    btnLiberarRegistro.Enabled = false;
+                    btnNoLiquidados.Enabled = false;
                 }
             };
         }
@@ -287,15 +304,10 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            //saveFileDialog1.FileName = string.Empty;
-            //saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
-            //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
-            //    MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}     
+                
             try
             {
+                btnExportarExcel.Enabled = false;
                 BackgroundWorker _hilo1 = new BackgroundWorker();
                 _hilo1.DoWork += new DoWorkEventHandler(creaExcel);
 
@@ -303,18 +315,11 @@ namespace Sigesoft.Node.WinClient.UI
 
                 ti.mensaje = "Procesando carga de datos...";
                 _hilo1.RunWorkerAsync(ti);
+                btnExportarExcel.Enabled = true;
             }
             catch
             {
-                new System.Threading.Thread(delegate()
-                {   //Creo un Thread nuevo para hacer la anotación del error
-                    Thread.Sleep(2000);
-                    //Creamos un Thread nuevo
-                    //this.Dispatcher.BeginInvoke((ThreadStart)delegate
-                    //{
-                    //    texto.Text += ex.Source.ToString() + " - " + ex.Message + "\r\n";
-                    //});
-                }).Start();
+                
             }
         }
 
@@ -336,10 +341,17 @@ namespace Sigesoft.Node.WinClient.UI
         public void creaExcel(object sender, DoWorkEventArgs e)
         {
             OperationResult objOperationResult = new OperationResult();
-
-            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
-            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+            string liquidacionID = null;
+            string serviceID;
+            string protocolId;
+            if (tabControl1.SelectedTab.Name == "tpESO")
+            {
+                liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();                
+            }
+            else if (tabControl1.SelectedTab.Name == "tpEmpresa")
+            {
+                liquidacionID = grdEmpresa.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+            }
             string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
             var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
@@ -350,7 +362,7 @@ namespace Sigesoft.Node.WinClient.UI
             Excel._Workbook libro = null;
             Excel._Worksheet hoja = null;
             Excel.Range rango = null;
-            
+           
             try
             {
                 using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
@@ -364,10 +376,25 @@ namespace Sigesoft.Node.WinClient.UI
                     ((Excel.Worksheet)excel.ActiveWorkbook.Sheets["Hoja1"]).Delete();   //Borro hoja que crea en el libro por defecto
 
                     //DatosEmpresa
+                    rango = (Microsoft.Office.Interop.Excel.Range)hoja.get_Range("B2", "D5");
+                    rango.Select();
+                    rango.RowHeight = 25;
+                    hoja.get_Range("B2", "D5").Merge(true);
+
+                    Microsoft.Office.Interop.Excel.Pictures oPictures = (Microsoft.Office.Interop.Excel.Pictures)hoja.Pictures(System.Reflection.Missing.Value);
+
+                    hoja.Shapes.AddPicture(@"C:\Program Files (x86)\NetMedical\Banner\banner.jpg", 
+                        Microsoft.Office.Core.MsoTriState.msoFalse, 
+                        Microsoft.Office.Core.MsoTriState.msoCTrue, 
+                        float.Parse(rango.Left.ToString()), 
+                        float.Parse(rango.Top.ToString()), 
+                        200, 
+                        90);
+
                     montaCabeceras(3, ref hoja);
 
                     //DatosDinamicos
-                    int fila = 7;
+                    int fila = 11;
                     int count = 1;
                     int i = 0;
                     decimal sumatipoExm = 0;
@@ -409,7 +436,7 @@ namespace Sigesoft.Node.WinClient.UI
                         rango = hoja.Range[x2, y2];
                         rango.Borders.LineStyle = Excel.XlLineStyle.xlDash;
                         rango.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                        rango.RowHeight = 20;
+                        rango.RowHeight = 25;
                         rango.Font.Bold = true;
                         i++;
                         foreach (var item in lista1.Detalle)
@@ -442,7 +469,9 @@ namespace Sigesoft.Node.WinClient.UI
                                 hoja.Cells[fila + i, 11] = Precio.ToString() + ".00";
                             }
                             hoja.Cells[fila + i, 12] = item.CCosto;
-
+                            string x_1 = "B" + (fila + i).ToString();
+                            string y_1 = "H" + (fila + i).ToString();
+                            hoja.get_Range(x_1, y_1).RowHeight = 25;
                             count++;
                             sumatipoExm += (decimal)item.Precio;
                             igvPerson += (decimal)_igv;
@@ -510,9 +539,23 @@ namespace Sigesoft.Node.WinClient.UI
                     rango.Font.Size = 13;
                     hoja.Cells[fila + i, 11] = totalFinal_1;
 
-                    ti.mensaje = "Se ha generado el libro excel...";
-                    bw.WorkerReportsProgress = true;
-                    bw.ReportProgress(100, ti);
+                    i += 5;
+
+                    string x7 = "B" + (fila + i).ToString();
+                    string y7 = "L" + (fila + i).ToString();
+                    rango = (Microsoft.Office.Interop.Excel.Range)hoja.get_Range(x7,y7);
+                    rango.Select();
+                    hoja.get_Range(x7,y7).Merge(true);
+
+                    Microsoft.Office.Interop.Excel.Pictures oPictures2 = (Microsoft.Office.Interop.Excel.Pictures)hoja.Pictures(System.Reflection.Missing.Value);
+
+                    hoja.Shapes.AddPicture(@"C:\Program Files (x86)\NetMedical\Banner\banner2.jpg",
+                        Microsoft.Office.Core.MsoTriState.msoFalse,
+                        Microsoft.Office.Core.MsoTriState.msoCTrue,
+                        float.Parse(rango.Left.ToString()),
+                        float.Parse(rango.Top.ToString()),
+                        float.Parse(rango.Width.ToString()),
+                        80);
 
                     libro.Saved = true;
 
@@ -555,10 +598,17 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void montaCabeceras(int fila, ref Excel._Worksheet hoja)
         {
-            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
-            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
 
+            string liquidacionID = null;
+
+            if (tabControl1.SelectedTab.Name == "tpESO")
+            {
+                liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+            }
+            else if (tabControl1.SelectedTab.Name == "tpEmpresa")
+            {
+                liquidacionID = grdEmpresa.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+            }
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var traerEmpresa = new ServiceBL().ListaLiquidacionById(ref _objOperationResult, liquidacionID);
             string idEmpresa = traerEmpresa.v_OrganizationId;
@@ -567,57 +617,58 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 Excel.Range rango;
 
+
                 //** TITULO DEL LIBRO **
-                //hoja.Cells[1, 2] = MedicalCenter.b_Image;
-                hoja.get_Range("B1", "C1");
+                ////hoja.Cells[1, 2] = MedicalCenter.b_Image;
+                //hoja.get_Range("B1", "C1");
 
-                hoja.Cells[2, 4] = "LIQUIDACIÓN DE EXAMENES MÉDICOS OCUPACIONALES N° " + liquidacionID;
-                hoja.get_Range("B2", "L2").Merge(true);
-                hoja.get_Range("B2", "L2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                hoja.get_Range("B2", "L2").Font.Bold = true;
-                hoja.get_Range("B2", "L2").Font.Size = 18;
-                hoja.get_Range("B2", "L2").RowHeight = 35;
-                hoja.get_Range("B2", "L2").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.Cells[6, 4] = "LIQUIDACIÓN DE EXAMENES MÉDICOS OCUPACIONALES N° " + liquidacionID;
+                hoja.get_Range("B6", "L6").Merge(true);
+                hoja.get_Range("B6", "L6").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("B6", "L6").Font.Bold = true;
+                hoja.get_Range("B6", "L6").Font.Size = 18;
+                hoja.get_Range("B6", "L6").RowHeight = 35;
+                hoja.get_Range("B6", "L6").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                hoja.Cells[4, 2] = "EMPRESA A FACTURAR: ";
-                hoja.Cells[4, 4] = obtenerInformacionEmpresas.v_Name;
-                hoja.get_Range("B4", "C4").Merge(true);
-                hoja.get_Range("D4", "L4").Merge(true);
-                hoja.get_Range("B4", "C4").Font.Bold = true;
-                hoja.get_Range("B4", "C4").BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlMedium, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
-                hoja.get_Range("B4", "C4").RowHeight = 30;
-                hoja.get_Range("D4", "L4").RowHeight = 30;
-                hoja.get_Range("B4", "C4").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                hoja.get_Range("D4", "L4").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.Cells[8, 2] = "EMPRESA A FACTURAR: ";
+                hoja.Cells[8, 4] = obtenerInformacionEmpresas.v_Name;
+                hoja.get_Range("B8", "C8").Merge(true);
+                hoja.get_Range("D8", "L8").Merge(true);
+                hoja.get_Range("B8", "C8").Font.Bold = true;
+                hoja.get_Range("B8", "C8").BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlMedium, Excel.XlColorIndex.xlColorIndexAutomatic, Excel.XlColorIndex.xlColorIndexAutomatic);
+                hoja.get_Range("B8", "C8").RowHeight = 30;
+                hoja.get_Range("D8", "L8").RowHeight = 30;
+                hoja.get_Range("B8", "C8").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("D8", "L8").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                hoja.Cells[5, 2] = "RUC: ";
-                hoja.Cells[5, 4] = obtenerInformacionEmpresas.v_IdentificationNumber;
-                hoja.get_Range("B5", "C5").Merge(true);
-                hoja.get_Range("D5", "L5").Merge(true);
-                hoja.get_Range("D5", "L5").HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-                hoja.get_Range("B5", "C5").Font.Bold = true;
-                hoja.get_Range("B5", "C5").RowHeight = 30;
-                hoja.get_Range("D5", "L5").RowHeight = 30;
-                hoja.get_Range("B5", "C5").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                hoja.get_Range("D5", "L5").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.Cells[9, 2] = "RUC: ";
+                hoja.Cells[9, 4] = obtenerInformacionEmpresas.v_IdentificationNumber;
+                hoja.get_Range("B9", "C9").Merge(true);
+                hoja.get_Range("D9", "L9").Merge(true);
+                hoja.get_Range("D9", "L9").HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                hoja.get_Range("B9", "C9").Font.Bold = true;
+                hoja.get_Range("B9", "C9").RowHeight = 30;
+                hoja.get_Range("D9", "L9").RowHeight = 30;
+                hoja.get_Range("B9", "C9").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("D9", "L9").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                hoja.Cells[6, 2] = "DIRECCION: ";
-                hoja.Cells[6, 4] = obtenerInformacionEmpresas.v_Address;
-                hoja.get_Range("B6", "C6").Merge(true);
-                hoja.get_Range("D6", "L6").Merge(true);
-                hoja.get_Range("B6", "C6").Font.Bold = true;
-                hoja.get_Range("B6", "C6").RowHeight = 30;
-                hoja.get_Range("D6", "L6").RowHeight = 30;
-                hoja.get_Range("B6", "C6").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                hoja.get_Range("D6", "L6").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.Cells[10, 2] = "DIRECCION: ";
+                hoja.Cells[10, 4] = obtenerInformacionEmpresas.v_Address;
+                hoja.get_Range("B10", "C10").Merge(true);
+                hoja.get_Range("D10", "L10").Merge(true);
+                hoja.get_Range("B10", "C10").Font.Bold = true;
+                hoja.get_Range("B10", "C10").RowHeight = 30;
+                hoja.get_Range("D10", "L10").RowHeight = 30;
+                hoja.get_Range("B10", "C10").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                hoja.get_Range("D10", "L10").VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                 //Asigna borde
-                rango = hoja.Range["B4", "L6"];
+                rango = hoja.Range["B8", "L10"];
                 rango.Borders.LineStyle = Excel.XlLineStyle.xlDot;
 
                 //Modificamos los anchos de las columnas
                 rango = hoja.Columns[1];
-                rango.ColumnWidth = 1;
+                rango.ColumnWidth = 3;
                 rango.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                 rango = hoja.Columns[2];
@@ -761,6 +812,7 @@ namespace Sigesoft.Node.WinClient.UI
                 if (rowSelected.Band.Index.ToString() == "0")
                 {
                     btnLiqd1.Enabled = false;
+                    btnExportarExcel.Enabled = false;
                     btnCarta.Enabled = false;
                     btnEliminarLiquidacion.Enabled = false;
                     btnRepEmp.Enabled = true;
@@ -772,6 +824,7 @@ namespace Sigesoft.Node.WinClient.UI
                     if (liquidacionID == null || liquidacionID =="")
                     {
                         btnLiqd1.Enabled = false;
+                        btnExportarExcel.Enabled = false;
                         btnCarta.Enabled = false;
                         btnEliminarLiquidacion.Enabled = false;
                         btnRepEmp.Enabled = true;
@@ -780,6 +833,7 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                         btnLiqd1.Enabled = true;
                         btnCarta.Enabled = true;
+                        btnExportarExcel.Enabled = true;
                         btnEliminarLiquidacion.Enabled = false;
                         btnRepEmp.Enabled = true;
                     }
@@ -787,6 +841,7 @@ namespace Sigesoft.Node.WinClient.UI
                 else
                 {
                     btnLiqd1.Enabled = false;
+                    btnExportarExcel.Enabled = false;
                     btnCarta.Enabled = false;
                     btnRepEmp.Enabled = true;
                     btnEliminarLiquidacion.Enabled = false;
@@ -933,6 +988,7 @@ namespace Sigesoft.Node.WinClient.UI
                     
                     btnLiqd1.Enabled = false;
                     btnCarta.Enabled = false;
+                    btnExportarExcel.Enabled = false;
                     btnRepEmp.Enabled = true;
                     btnEliminarLiquidacion.Enabled = false;
                 }
@@ -945,6 +1001,7 @@ namespace Sigesoft.Node.WinClient.UI
                     if (liquidacionID == null || liquidacionID == "")
                     {
                         btnLiqd1.Enabled = false;
+                        btnExportarExcel.Enabled = false;
                         btnCarta.Enabled = false;
                         btnRepEmp.Enabled = true;
                         btnEliminarLiquidacion.Enabled = false;
@@ -961,6 +1018,7 @@ namespace Sigesoft.Node.WinClient.UI
                             btnEliminarLiquidacion.Enabled = false;
                         }
                         btnLiqd1.Enabled = true;
+                        btnExportarExcel.Enabled = true;
                         btnCarta.Enabled = true;
                         btnRepEmp.Enabled = true;
                         
@@ -971,6 +1029,7 @@ namespace Sigesoft.Node.WinClient.UI
                     btnLiqd1.Enabled = false;
                     btnCarta.Enabled = false;
                     btnRepEmp.Enabled = false;
+                    btnExportarExcel.Enabled = false;
                     btnEliminarLiquidacion.Enabled = false;
                 }
             }
@@ -988,7 +1047,26 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnExportAramark_Click(object sender, EventArgs e)
         {
-
+            if (tabControl1.SelectedTab.Name == "tpESO")
+            {
+                saveFileDialog1.FileName = string.Empty;
+                saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
+                    MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (tabControl1.SelectedTab.Name == "tpEmpresa")
+            {
+                saveFileDialog1.FileName = string.Empty;
+                saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    this.ultraGridExcelExporter1.Export(this.grdEmpresa, saveFileDialog1.FileName);
+                    MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void brnRepEmp_Click(object sender, EventArgs e)
@@ -1043,6 +1121,12 @@ namespace Sigesoft.Node.WinClient.UI
                 cbbEstadoLiq.Enabled = true;
                 btnNoLiquidados.Enabled = true;
                 cbbFac.Enabled = true;
+
+                btnEditarServicio.Enabled = true;
+                btnGenerarLiq.Enabled = true;
+                btnLiberarRegistro.Enabled = true;
+                btnNoLiquidados.Enabled = true;
+
             }
             else if (tabControl1.SelectedTab.Name == "tpEmpresa")
             {
@@ -1060,6 +1144,11 @@ namespace Sigesoft.Node.WinClient.UI
                 cbbSubContratas.Enabled = false;
                 cbbEstadoLiq.Enabled = false;
                 cbbFac.Enabled = false;
+
+                btnEditarServicio.Enabled = false;
+                btnGenerarLiq.Enabled = false;
+                btnLiberarRegistro.Enabled = false;
+                btnNoLiquidados.Enabled = false;
             }
         }
 
