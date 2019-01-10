@@ -336,7 +336,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 if (grd.Selected.Rows.Count == 0) 
                     return;
 
-                _pstrProtocolId = grd.Selected.Rows[0].Cells[0].Value.ToString();
+                _pstrProtocolId = grd.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
                 this.DialogResult = DialogResult.OK;
                 
             }

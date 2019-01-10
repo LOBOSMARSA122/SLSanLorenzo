@@ -56,7 +56,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Moneda");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Valor");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UsuarioMedicina");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PacientDocument", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, true);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PacientDocument");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Diagnosticos");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Diagnosticos", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
@@ -72,17 +72,15 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmService));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtServicioId = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.cboUserMed = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.cboHistoriaGenerada = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtDiagnostico = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.chkFC = new System.Windows.Forms.CheckBox();
-            this.FechaControlFin = new System.Windows.Forms.DateTimePicker();
             this.ddlMasterServiceId = new System.Windows.Forms.ComboBox();
-            this.FechaControlIni = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.ddlConsultorio = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
@@ -105,6 +103,10 @@
             this.dtpDateTimeStar = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkFC = new System.Windows.Forms.CheckBox();
+            this.FechaControlFin = new System.Windows.Forms.DateTimePicker();
+            this.FechaControlIni = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -164,8 +166,6 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
-            this.txtServicioId = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -216,6 +216,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtServicioId
+            // 
+            this.txtServicioId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServicioId.Location = new System.Drawing.Point(96, 70);
+            this.txtServicioId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtServicioId.Name = "txtServicioId";
+            this.txtServicioId.Size = new System.Drawing.Size(208, 21);
+            this.txtServicioId.TabIndex = 144;
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(12, 73);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 16);
+            this.label19.TabIndex = 143;
+            this.label19.Text = "Id Servicio";
             // 
             // cboUserMed
             // 
@@ -285,31 +305,6 @@
             this.label16.TabIndex = 137;
             this.label16.Text = "Diagnóstico";
             // 
-            // chkFC
-            // 
-            this.chkFC.AutoSize = true;
-            this.chkFC.Location = new System.Drawing.Point(191, -1);
-            this.chkFC.Name = "chkFC";
-            this.chkFC.Size = new System.Drawing.Size(92, 17);
-            this.chkFC.TabIndex = 113;
-            this.chkFC.Text = "Fecha Control";
-            this.chkFC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkFC.UseVisualStyleBackColor = true;
-            this.chkFC.Visible = false;
-            this.chkFC.CheckedChanged += new System.EventHandler(this.chkFC_CheckedChanged);
-            // 
-            // FechaControlFin
-            // 
-            this.FechaControlFin.Enabled = false;
-            this.FechaControlFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FechaControlFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaControlFin.Location = new System.Drawing.Point(388, -5);
-            this.FechaControlFin.Margin = new System.Windows.Forms.Padding(2);
-            this.FechaControlFin.Name = "FechaControlFin";
-            this.FechaControlFin.Size = new System.Drawing.Size(95, 20);
-            this.FechaControlFin.TabIndex = 112;
-            this.FechaControlFin.Visible = false;
-            // 
             // ddlMasterServiceId
             // 
             this.ddlMasterServiceId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -323,30 +318,6 @@
             this.ddlMasterServiceId.Size = new System.Drawing.Size(273, 21);
             this.ddlMasterServiceId.TabIndex = 32;
             this.ddlMasterServiceId.SelectedIndexChanged += new System.EventHandler(this.ddlMasterServiceId_SelectedIndexChanged_1);
-            // 
-            // FechaControlIni
-            // 
-            this.FechaControlIni.Enabled = false;
-            this.FechaControlIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FechaControlIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaControlIni.Location = new System.Drawing.Point(288, -5);
-            this.FechaControlIni.Margin = new System.Windows.Forms.Padding(2);
-            this.FechaControlIni.Name = "FechaControlIni";
-            this.FechaControlIni.Size = new System.Drawing.Size(82, 20);
-            this.FechaControlIni.TabIndex = 111;
-            this.FechaControlIni.Visible = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(373, -1);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(12, 13);
-            this.label12.TabIndex = 110;
-            this.label12.Text = "y";
-            this.label12.Visible = false;
             // 
             // ddlConsultorio
             // 
@@ -623,6 +594,55 @@
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fecha Atención";
+            // 
+            // chkFC
+            // 
+            this.chkFC.AutoSize = true;
+            this.chkFC.Location = new System.Drawing.Point(191, -1);
+            this.chkFC.Name = "chkFC";
+            this.chkFC.Size = new System.Drawing.Size(92, 17);
+            this.chkFC.TabIndex = 113;
+            this.chkFC.Text = "Fecha Control";
+            this.chkFC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkFC.UseVisualStyleBackColor = true;
+            this.chkFC.Visible = false;
+            this.chkFC.CheckedChanged += new System.EventHandler(this.chkFC_CheckedChanged);
+            // 
+            // FechaControlFin
+            // 
+            this.FechaControlFin.Enabled = false;
+            this.FechaControlFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FechaControlFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.FechaControlFin.Location = new System.Drawing.Point(388, -5);
+            this.FechaControlFin.Margin = new System.Windows.Forms.Padding(2);
+            this.FechaControlFin.Name = "FechaControlFin";
+            this.FechaControlFin.Size = new System.Drawing.Size(95, 20);
+            this.FechaControlFin.TabIndex = 112;
+            this.FechaControlFin.Visible = false;
+            // 
+            // FechaControlIni
+            // 
+            this.FechaControlIni.Enabled = false;
+            this.FechaControlIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FechaControlIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.FechaControlIni.Location = new System.Drawing.Point(288, -5);
+            this.FechaControlIni.Margin = new System.Windows.Forms.Padding(2);
+            this.FechaControlIni.Name = "FechaControlIni";
+            this.FechaControlIni.Size = new System.Drawing.Size(82, 20);
+            this.FechaControlIni.TabIndex = 111;
+            this.FechaControlIni.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(373, -1);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(12, 13);
+            this.label12.TabIndex = 110;
+            this.label12.Text = "y";
+            this.label12.Visible = false;
             // 
             // label15
             // 
@@ -1093,7 +1113,6 @@
             // 
             this.btnActualizarCulminado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizarCulminado.BackColor = System.Drawing.SystemColors.Control;
-            this.btnActualizarCulminado.Enabled = false;
             this.btnActualizarCulminado.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnActualizarCulminado.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnActualizarCulminado.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -1110,7 +1129,6 @@
             this.btnActualizarCulminado.Text = "Actualizar Culminado";
             this.btnActualizarCulminado.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnActualizarCulminado.UseVisualStyleBackColor = false;
-            this.btnActualizarCulminado.Visible = false;
             this.btnActualizarCulminado.Click += new System.EventHandler(this.btnActualizarCulminado_Click);
             // 
             // btnActualizarPerson
@@ -1153,7 +1171,6 @@
             // 
             this.btnActualizarAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizarAptitud.BackColor = System.Drawing.SystemColors.Control;
-            this.btnActualizarAptitud.Enabled = false;
             this.btnActualizarAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnActualizarAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnActualizarAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -1170,7 +1187,6 @@
             this.btnActualizarAptitud.Text = "Actualizar Aptitud";
             this.btnActualizarAptitud.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnActualizarAptitud.UseVisualStyleBackColor = false;
-            this.btnActualizarAptitud.Visible = false;
             this.btnActualizarAptitud.Click += new System.EventHandler(this.btnActualizarAptitud_Click);
             // 
             // btnGeneracionMasivaReportes
@@ -1990,26 +2006,6 @@
             this.btnImprimirCertificadoAptitud.UseVisualStyleBackColor = false;
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
-            // 
-            // txtServicioId
-            // 
-            this.txtServicioId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServicioId.Location = new System.Drawing.Point(96, 70);
-            this.txtServicioId.Margin = new System.Windows.Forms.Padding(2);
-            this.txtServicioId.Name = "txtServicioId";
-            this.txtServicioId.Size = new System.Drawing.Size(208, 21);
-            this.txtServicioId.TabIndex = 144;
-            // 
-            // label19
-            // 
-            this.label19.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(12, 73);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(75, 16);
-            this.label19.TabIndex = 143;
-            this.label19.Text = "Id Servicio";
             // 
             // frmService
             // 
