@@ -647,23 +647,18 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void brnRepEmp_Click(object sender, EventArgs e)
         {
-            //var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-            if (grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value == null)
+            if (tabControl1.SelectedTab.Name == "tpESO")
             {
                 frmLiquidacionEmpresas reportsEmpresas = new frmLiquidacionEmpresas(dtpDateTimeStar.Value.Date, dptDateTimeEnd.Value.Date, string.Empty);
                 reportsEmpresas.ShowDialog();
             }
-            else
+            else if (tabControl1.SelectedTab.Name == "tpEmpresa")
             {
                 empresaId = grdEmpresa.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
 
                 frmLiquidacionEmpresas reportsEmpresas = new frmLiquidacionEmpresas(dtpDateTimeStar.Value.Date, dptDateTimeEnd.Value.Date, empresaId);
                 reportsEmpresas.ShowDialog();
             }
-
-            
-
-            
         }
 
         private void cbbEstadoLiq_SelectedIndexChanged(object sender, EventArgs e)
