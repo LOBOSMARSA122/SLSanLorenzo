@@ -289,8 +289,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni, serviceId) { _serviceId = serviceId };
             frm.ShowDialog();
 
-            if (frm.DialogResult == DialogResult.Cancel)
-                return;
+            if (frm.DialogResult == DialogResult.OK)
+                btnFilter_Click(sender,e);
+                
         }
 
         private void btnReportePDF_Click(object sender, EventArgs e)

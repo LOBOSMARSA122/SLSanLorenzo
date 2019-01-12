@@ -29,6 +29,8 @@
                                     <Items>
                                         <x:Label ID="Label1" Width="50px" runat="server" CssClass="inline" ShowLabel="false" Text="Usuario:" />
                                         <x:TextBox ID="txtUserNameFilter" runat="server" />
+                                        <x:Label ID="Label2" Width="50px" runat="server" CssClass="inline" ShowLabel="false" Text="Tipo de Usuario:" />
+                                        <x:DropDownList ID="ddlUSerType" Label="Tipo de Usuario" runat="server" />
                                         <x:Button ID="btnFilter" Text="Filtrar" Icon="Find" IconAlign="Left" runat="server" AjaxLoadingType="Mask"
                                             OnClick="btnFilter_Click">
                                         </x:Button>

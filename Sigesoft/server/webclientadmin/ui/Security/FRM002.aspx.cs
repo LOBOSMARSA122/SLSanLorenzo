@@ -29,6 +29,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Security
                 btnNew.OnClientClick = winEditUser.GetShowReference("FRM002A.aspx?Mode=New");
                 Sigesoft.Server.WebClientAdmin.BLL.Utils.SetFormActionsInSession("FRM002");
                 btnNew.Enabled = Sigesoft.Server.WebClientAdmin.BLL.Utils.IsActionEnabled("FRM002_ADD");
+
+                OperationResult objOperationResult = new OperationResult();
+                Utils.LoadDropDownList(ddlUSerType, "Value1", "Id", new SystemParameterBL().GetSystemParameterForCombo(ref objOperationResult, 132), DropDownListAction.All);
+
                 BindGrid();
                 var cond = true;
                 cond = ((ClientSession)Session["objClientSession"]).i_SystemUserId == 11 ? false : true;
@@ -104,7 +108,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Security
         private List<SystemUserList> GetData(int pintPageIndex, int pintPageSize, string pstrSortExpression, string pstrFilterExpression)
         {
             OperationResult objOperationResult = new OperationResult();
-            List<SystemUserList> objUserList = _objSecurityBL.GetSystemUserPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression,1);         
+            List<SystemUserList> objUserList = _objSecurityBL.GetSystemUserPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression,int.Parse(ddlUSerType.SelectedValue));         
 
             if (objOperationResult.Success != 1)
             {
