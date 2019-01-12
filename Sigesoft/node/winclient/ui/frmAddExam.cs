@@ -104,6 +104,7 @@ namespace Sigesoft.Node.WinClient.UI
                         oservicecomponentDto = new ServiceBL().GetServiceComponent(ref objOperationResult,
                             servicesComponent.v_ServiceComponentId);
                         oservicecomponentDto.i_MedicoTratanteId = 11;
+                        oservicecomponentDto.i_IsVisibleId = 1;
                         oservicecomponentDto.v_ServiceComponentId = servicesComponent.v_ServiceComponentId;
                         new ServiceBL().UpdateServiceComponent(ref objOperationResult, oservicecomponentDto, Globals.ClientSession.GetAsList());
                     }
