@@ -2310,7 +2310,6 @@ namespace Sigesoft.Node.WinClient.BLL
                 throw;
             }
         }
-
-    
+        
     }
 }

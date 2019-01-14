@@ -148,7 +148,8 @@ namespace Sigesoft.Common
         ConsultaPsicológica = 7,
         ProcEnfermería = 8,
         AtxMedica = 9,
-        AtxMedicaParticular = 10
+        AtxMedicaParticular = 10,
+        Hospitalizacion = 19
     }
 
     public enum MotiveType

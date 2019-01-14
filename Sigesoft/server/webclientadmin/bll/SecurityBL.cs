@@ -446,7 +446,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                              join su3 in dbContext.systemuser on new { i_UpdateUserId = su1.i_UpdateUserId.Value }
                                                            equals new { i_UpdateUserId = su3.i_SystemUserId } into su3_join
                              from su3 in su3_join.DefaultIfEmpty()
-                             where su1.i_SystemUserTypeId == pintTipoUsuario
+                             where (pintTipoUsuario == -1 || su1.i_SystemUserTypeId == pintTipoUsuario)
                              select new SystemUserList
                              {
                                  i_SystemUserId = su1.i_SystemUserId,
