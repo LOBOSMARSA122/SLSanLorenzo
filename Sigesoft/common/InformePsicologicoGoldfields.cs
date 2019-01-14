@@ -186,11 +186,11 @@ namespace NetPdf
 
             #region MOTIVO DE CONSULTA
             string preOcp = "", Ocup = "", postOcup = "";
-            if (DataService.i_EsoTypeId == 1)
+            if (filiationData.i_EsoTypeId == 1)
             {
                 preOcp = "X";
             }
-            else if (DataService.i_EsoTypeId == 2)
+            else if (filiationData.i_EsoTypeId == 2)
             {
                 Ocup = "X";
             }

@@ -23,5 +23,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string Contratista { get; set; }
         public double? CostoExamen { get; set; }
         public string TipoEso { get; set; }
+        public string UsuarioAgenda { get; set; }
     }
 }

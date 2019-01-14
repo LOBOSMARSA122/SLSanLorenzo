@@ -27,6 +27,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 equals new { a = et.i_ParameterId, b = et.i_GroupId } into etjoin 
                                 from et in etjoin.DefaultIfEmpty()
                                 where a.i_IsDeleted == 0 && a.d_ServiceDate.Value >= startDate && a.d_ServiceDate.Value <= endDate && f.i_LineStatusId == (int)LineStatus.EnCircuito && a.v_ProtocolId != null
+                                            && (c.v_CustomerOrganizationId != "N009-OO000000052" || c.v_EmployerOrganizationId != "N009-OO000000052" || c.v_WorkingOrganizationId != "N009-OO000000052")
                             select new GerenciaTipoPago
                             {
                                 ServiceId = a.v_ServiceId,

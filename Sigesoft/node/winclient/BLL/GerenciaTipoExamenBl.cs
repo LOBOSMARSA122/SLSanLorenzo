@@ -27,6 +27,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 FechaServicio = a.FechaServicio,
                                 CostoExamen = a.CostoExamen,
                                 TipoEso = a.TipoEso,
+                                UsuarioAgenda = a.UsuarioAgenda
                             }).ToList();
 
                 return query;
