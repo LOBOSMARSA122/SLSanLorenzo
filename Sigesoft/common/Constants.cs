@@ -6056,6 +6056,12 @@ namespace Sigesoft.Common
         #endregion
         #endregion
 
+
+        #region Protocol HardCode
+
+        public const string Prot_Hospi_Adic= "N009-PR000000636";
+
+        #endregion
     }
 
 

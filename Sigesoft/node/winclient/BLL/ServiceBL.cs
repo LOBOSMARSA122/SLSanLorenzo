@@ -2028,7 +2028,8 @@ namespace Sigesoft.Node.WinClient.BLL
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
 				var query = (from A in dbContext.servicecomponent
-                             join C in dbContext.systemuser on A.i_MedicoTratanteId equals C.i_SystemUserId
+                             join C in dbContext.systemuser on A.i_MedicoTratanteId equals C.i_SystemUserId into C_join
+                             from C in C_join.DefaultIfEmpty()
                              join D in dbContext.person on C.v_PersonId equals D.v_PersonId
                             join B in dbContext.component on A.v_ComponentId equals B.v_ComponentId
                             join F in dbContext.systemparameter on new { a = B.i_CategoryId.Value, b = 116 } 
@@ -3432,6 +3433,31 @@ namespace Sigesoft.Node.WinClient.BLL
 				return null;
 			}
 		}
+
+
+
+        public List<servicecomponentDto> GetServiceComponentsDto(ref OperationResult pobjOperationResult, string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                
+                var objEntity = (from a in dbContext.servicecomponent
+                                 where a.v_ServiceId == pstrServiceId
+                    select new servicecomponentDto
+                    {
+                        v_ServiceComponentId = a.v_ServiceComponentId
+                    }).ToList();
+
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
 
 		public servicecomponentDto GetServiceComponentByServiceIdAndComponentId(string pstrServiceId, string pstrComponentId)
 		{

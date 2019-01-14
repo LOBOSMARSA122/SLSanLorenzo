@@ -65,8 +65,65 @@ namespace Sigesoft.Node.WinClient.UI
                                
                 if (DialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    var frm = new frmCalendar(_nroHospitalizacion, _dni, _serviceId);
-                    frm.ShowDialog();
+                    #region Agenda Automática
+                    CalendarBL calendarBl =  new CalendarBL();
+                    OperationResult objOperationResult = new OperationResult();
+
+                    var protocolId = Constants.Prot_Hospi_Adic;
+                    
+                    var objCalendarDto = new calendarDto();
+                    objCalendarDto.v_PersonId = new PacientBL().GetPersonByNroDocument(ref objOperationResult,_dni).v_PersonId;// item.PersonId;
+                    objCalendarDto.d_DateTimeCalendar = DateTime.Now;
+                    objCalendarDto.d_CircuitStartDate = DateTime.Now;
+                    objCalendarDto.d_EntryTimeCM = DateTime.Now;
+                    objCalendarDto.i_ServiceTypeId = (int)ServiceType.Particular;
+                    objCalendarDto.i_ServiceId = (int)MasterService.Hospitalizacion;
+                    
+                    objCalendarDto.i_CalendarStatusId = (int)CalendarStatus.Agendado;
+                    objCalendarDto.i_LineStatusId = (int) LineStatus.EnCircuito; 
+                    objCalendarDto.v_ProtocolId = protocolId;
+                    objCalendarDto.i_NewContinuationId = 1;
+                    objCalendarDto.i_LineStatusId = (int)LineStatus.EnCircuito;
+                    objCalendarDto.i_IsVipId = (int)SiNo.NO;
+
+                    var serviceId =  calendarBl.AddShedule(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), protocolId, objCalendarDto.v_PersonId, (int)MasterService.Eso, "Nuevo");
+                    
+                    serviceDto objServiceDto = new serviceDto();
+                    objServiceDto = new ServiceBL().GetService(ref objOperationResult, serviceId);
+                    objServiceDto.d_ServiceDate = DateTime.Now;
+                    
+                    objServiceDto.i_ServiceStatusId = (int)Common.ServiceStatus.Iniciado;
+                    new ServiceBL().UpdateService(ref objOperationResult, objServiceDto, Globals.ClientSession.GetAsList());
+
+
+                    var servicesComponents = new ServiceBL().GetServiceComponents(ref objOperationResult,serviceId);
+
+                    foreach (var servicesComponent in servicesComponents)
+                    {
+                        servicecomponentDto  oservicecomponentDto  = new servicecomponentDto();
+                        oservicecomponentDto = new ServiceBL().GetServiceComponent(ref objOperationResult,
+                            servicesComponent.v_ServiceComponentId);
+                        oservicecomponentDto.i_MedicoTratanteId = 11;
+                        oservicecomponentDto.i_IsVisibleId = 1;
+                        oservicecomponentDto.v_ServiceComponentId = servicesComponent.v_ServiceComponentId;
+                        new ServiceBL().UpdateServiceComponent(ref objOperationResult, oservicecomponentDto, Globals.ClientSession.GetAsList());
+                    }
+                    
+
+
+
+                    var oHospitalizacionserviceDto = new hospitalizacionserviceDto();
+
+                    oHospitalizacionserviceDto.v_HopitalizacionId = _nroHospitalizacion;
+                    oHospitalizacionserviceDto.v_ServiceId = serviceId;
+
+                    new HospitalizacionBL().AddHospitalizacionService(ref objOperationResult, oHospitalizacionserviceDto, Globals.ClientSession.GetAsList());
+                    #endregion
+
+                    MessageBox.Show("Se generó el servicio: " + serviceId, " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;                    
+                    //var frm = new frmCalendar(_nroHospitalizacion, _dni, _serviceId);
+                    //frm.ShowDialog();
                 }
                 
             }
@@ -134,6 +191,7 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 cboMedico.Enabled = true;
                 Utils.LoadDropDownList(cboMedico, "Value1", "Id", BLL.Utils.GetProfessionalName(ref objOperationResult), DropDownListAction.Select);
+                cboMedico.SelectedValue = "11";
             }
             else
             {
@@ -155,6 +213,11 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if (cboMedico.SelectedValue.ToString() == "-1")
+            {
+                MessageBox.Show("Seleccionar un médico tratante", " ¡ VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (_auxiliaryExams == null)
                 _auxiliaryExams = new List<ServiceComponentList>();
 
@@ -294,7 +357,6 @@ namespace Sigesoft.Node.WinClient.UI
                 MedicalExamName = string.Empty;
             }
         }
-
-       
+        
     }
 }
