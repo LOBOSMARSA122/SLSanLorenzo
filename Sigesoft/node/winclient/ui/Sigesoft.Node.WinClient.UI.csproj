@@ -502,6 +502,12 @@
     <Compile Include="FrmConfigurationProtocols.Designer.cs">
       <DependentUpon>FrmConfigurationProtocols.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConsultarExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultarExamen.Designer.cs">
+      <DependentUpon>frmConsultarExamen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDynamicSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3547,6 +3553,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfigurationProtocols.resx">
       <DependentUpon>FrmConfigurationProtocols.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarExamen.resx">
+      <DependentUpon>frmConsultarExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDynamicSchedule.resx">
       <DependentUpon>FrmDynamicSchedule.cs</DependentUpon>

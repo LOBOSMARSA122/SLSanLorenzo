@@ -555,5 +555,10 @@ namespace Sigesoft.Node.WinClient.UI
         
         }
 
+        private void ddlCategoryId_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

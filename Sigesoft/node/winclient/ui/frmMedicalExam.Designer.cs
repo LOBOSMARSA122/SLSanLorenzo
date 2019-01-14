@@ -67,35 +67,36 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedicalExam));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ddlCategoryId = new ComboTreeBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grdDataMedicalExam = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.contextMenuMedicalExam = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuGridNewMedicalExam = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuGridEditMedicalExam = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuGridDeleteMedicalExam = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordCountMedicalExam = new System.Windows.Forms.Label();
             this.lblRecordCountMedicalExamFields = new System.Windows.Forms.Label();
             this.grdDataMedicalExamFields = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.contextMenuMedicalExamFields = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuGridNewMedicalExamField = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuGridEditMedicalExamField = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuGridDeleteMedicalExamField = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.importarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button7 = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.mnuGridNewMedicalExam = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGridEditMedicalExam = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGridDeleteMedicalExam = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGridNewMedicalExamField = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGridEditMedicalExamField = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGridDeleteMedicalExamField = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataMedicalExam)).BeginInit();
@@ -139,6 +140,7 @@
             this.ddlCategoryId.ShowPath = true;
             this.ddlCategoryId.Size = new System.Drawing.Size(230, 20);
             this.ddlCategoryId.TabIndex = 11;
+            this.ddlCategoryId.Click += new System.EventHandler(this.ddlCategoryId_Click);
             // 
             // txtName
             // 
@@ -159,22 +161,6 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Nombre";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(563, 20);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(60, 24);
-            this.btnFilter.TabIndex = 2;
-            this.btnFilter.Text = "Filtrar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label1
             // 
@@ -320,30 +306,6 @@
             this.mnuGridDeleteMedicalExam});
             this.contextMenuMedicalExam.Name = "contextMenuStrip1";
             this.contextMenuMedicalExam.Size = new System.Drawing.Size(126, 70);
-            // 
-            // mnuGridNewMedicalExam
-            // 
-            this.mnuGridNewMedicalExam.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
-            this.mnuGridNewMedicalExam.Name = "mnuGridNewMedicalExam";
-            this.mnuGridNewMedicalExam.Size = new System.Drawing.Size(125, 22);
-            this.mnuGridNewMedicalExam.Text = "Nuevo";
-            this.mnuGridNewMedicalExam.Click += new System.EventHandler(this.mnuGridNewMedicalExam_Click);
-            // 
-            // mnuGridEditMedicalExam
-            // 
-            this.mnuGridEditMedicalExam.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
-            this.mnuGridEditMedicalExam.Name = "mnuGridEditMedicalExam";
-            this.mnuGridEditMedicalExam.Size = new System.Drawing.Size(125, 22);
-            this.mnuGridEditMedicalExam.Text = "Modificar";
-            this.mnuGridEditMedicalExam.Click += new System.EventHandler(this.mnuGridEditMedicalExam_Click);
-            // 
-            // mnuGridDeleteMedicalExam
-            // 
-            this.mnuGridDeleteMedicalExam.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
-            this.mnuGridDeleteMedicalExam.Name = "mnuGridDeleteMedicalExam";
-            this.mnuGridDeleteMedicalExam.Size = new System.Drawing.Size(125, 22);
-            this.mnuGridDeleteMedicalExam.Text = "Eliminar";
-            this.mnuGridDeleteMedicalExam.Click += new System.EventHandler(this.mnuGridDeleteMedicalExam_Click);
             // 
             // lblRecordCountMedicalExam
             // 
@@ -495,42 +457,10 @@
             this.contextMenuMedicalExamFields.Name = "contextMenuStrip1";
             this.contextMenuMedicalExamFields.Size = new System.Drawing.Size(126, 98);
             // 
-            // mnuGridNewMedicalExamField
-            // 
-            this.mnuGridNewMedicalExamField.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
-            this.mnuGridNewMedicalExamField.Name = "mnuGridNewMedicalExamField";
-            this.mnuGridNewMedicalExamField.Size = new System.Drawing.Size(125, 22);
-            this.mnuGridNewMedicalExamField.Text = "Nuevo";
-            this.mnuGridNewMedicalExamField.Click += new System.EventHandler(this.mnuGridNewMedicalExamField_Click);
-            // 
-            // mnuGridEditMedicalExamField
-            // 
-            this.mnuGridEditMedicalExamField.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
-            this.mnuGridEditMedicalExamField.Name = "mnuGridEditMedicalExamField";
-            this.mnuGridEditMedicalExamField.Size = new System.Drawing.Size(125, 22);
-            this.mnuGridEditMedicalExamField.Text = "Modificar";
-            this.mnuGridEditMedicalExamField.Click += new System.EventHandler(this.mnuGridEditMedicalExamField_Click);
-            // 
-            // mnuGridDeleteMedicalExamField
-            // 
-            this.mnuGridDeleteMedicalExamField.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
-            this.mnuGridDeleteMedicalExamField.Name = "mnuGridDeleteMedicalExamField";
-            this.mnuGridDeleteMedicalExamField.Size = new System.Drawing.Size(125, 22);
-            this.mnuGridDeleteMedicalExamField.Text = "Eliminar";
-            this.mnuGridDeleteMedicalExamField.Click += new System.EventHandler(this.mnuGridDeleteMedicalExamField_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(122, 6);
-            // 
-            // importarToolStripMenuItem
-            // 
-            this.importarToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
-            this.importarToolStripMenuItem.Name = "importarToolStripMenuItem";
-            this.importarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.importarToolStripMenuItem.Text = "Importar";
-            this.importarToolStripMenuItem.Click += new System.EventHandler(this.importarToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -554,56 +484,40 @@
             this.splitContainer1.TabIndex = 2;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
-            // button7
+            // btnFilter
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(828, 143);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 24);
-            this.button7.TabIndex = 103;
-            this.button7.Text = "Eliminar";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(563, 20);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(60, 24);
+            this.btnFilter.TabIndex = 2;
+            this.btnFilter.Text = "Filtrar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // btnEditar
+            // button4
             // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.Black;
-            this.btnEditar.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_edit;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(828, 115);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 24);
-            this.btnEditar.TabIndex = 101;
-            this.btnEditar.Text = "     Editar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNuevo.BackColor = System.Drawing.SystemColors.Control;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
-            this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
-            this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(828, 87);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 24);
-            this.btnNuevo.TabIndex = 100;
-            this.btnNuevo.Text = "     Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button4.BackColor = System.Drawing.SystemColors.Control;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(828, 380);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 24);
+            this.button4.TabIndex = 107;
+            this.button4.Text = "     Importar";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
@@ -656,24 +570,112 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // button7
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button4.BackColor = System.Drawing.SystemColors.Control;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(828, 380);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 24);
-            this.button4.TabIndex = 107;
-            this.button4.Text = "     Importar";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(828, 143);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 24);
+            this.button7.TabIndex = 103;
+            this.button7.Text = "Eliminar";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.Black;
+            this.btnEditar.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_edit;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(828, 115);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 24);
+            this.btnEditar.TabIndex = 101;
+            this.btnEditar.Text = "     Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
+            this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNuevo.Location = new System.Drawing.Point(828, 87);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 24);
+            this.btnNuevo.TabIndex = 100;
+            this.btnNuevo.Text = "     Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // mnuGridNewMedicalExam
+            // 
+            this.mnuGridNewMedicalExam.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridNewMedicalExam.Image")));
+            this.mnuGridNewMedicalExam.Name = "mnuGridNewMedicalExam";
+            this.mnuGridNewMedicalExam.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridNewMedicalExam.Text = "Nuevo";
+            this.mnuGridNewMedicalExam.Click += new System.EventHandler(this.mnuGridNewMedicalExam_Click);
+            // 
+            // mnuGridEditMedicalExam
+            // 
+            this.mnuGridEditMedicalExam.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridEditMedicalExam.Image")));
+            this.mnuGridEditMedicalExam.Name = "mnuGridEditMedicalExam";
+            this.mnuGridEditMedicalExam.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridEditMedicalExam.Text = "Modificar";
+            this.mnuGridEditMedicalExam.Click += new System.EventHandler(this.mnuGridEditMedicalExam_Click);
+            // 
+            // mnuGridDeleteMedicalExam
+            // 
+            this.mnuGridDeleteMedicalExam.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.mnuGridDeleteMedicalExam.Name = "mnuGridDeleteMedicalExam";
+            this.mnuGridDeleteMedicalExam.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridDeleteMedicalExam.Text = "Eliminar";
+            this.mnuGridDeleteMedicalExam.Click += new System.EventHandler(this.mnuGridDeleteMedicalExam_Click);
+            // 
+            // mnuGridNewMedicalExamField
+            // 
+            this.mnuGridNewMedicalExamField.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridNewMedicalExamField.Image")));
+            this.mnuGridNewMedicalExamField.Name = "mnuGridNewMedicalExamField";
+            this.mnuGridNewMedicalExamField.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridNewMedicalExamField.Text = "Nuevo";
+            this.mnuGridNewMedicalExamField.Click += new System.EventHandler(this.mnuGridNewMedicalExamField_Click);
+            // 
+            // mnuGridEditMedicalExamField
+            // 
+            this.mnuGridEditMedicalExamField.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridEditMedicalExamField.Image")));
+            this.mnuGridEditMedicalExamField.Name = "mnuGridEditMedicalExamField";
+            this.mnuGridEditMedicalExamField.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridEditMedicalExamField.Text = "Modificar";
+            this.mnuGridEditMedicalExamField.Click += new System.EventHandler(this.mnuGridEditMedicalExamField_Click);
+            // 
+            // mnuGridDeleteMedicalExamField
+            // 
+            this.mnuGridDeleteMedicalExamField.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.mnuGridDeleteMedicalExamField.Name = "mnuGridDeleteMedicalExamField";
+            this.mnuGridDeleteMedicalExamField.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridDeleteMedicalExamField.Text = "Eliminar";
+            this.mnuGridDeleteMedicalExamField.Click += new System.EventHandler(this.mnuGridDeleteMedicalExamField_Click);
+            // 
+            // importarToolStripMenuItem
+            // 
+            this.importarToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
+            this.importarToolStripMenuItem.Name = "importarToolStripMenuItem";
+            this.importarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.importarToolStripMenuItem.Text = "Importar";
+            this.importarToolStripMenuItem.Click += new System.EventHandler(this.importarToolStripMenuItem_Click);
             // 
             // frmMedicalExam
             // 
