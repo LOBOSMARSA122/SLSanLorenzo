@@ -1556,6 +1556,32 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
+        private void GenerateAccidentesTrabajoF1(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+
+            AccidentesTrabajo_F1.CreateAccidentesTrabajoF1(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+        }
+
+        private void GenerateAccidentesTrabajoF2(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+
+            AccidentesTrabajo_F2.CreateAccidentesTrabajoF2 (_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+        }
+
         private void GenerateExamenSuficienciaMedicaOperadores(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -5485,6 +5511,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID:
                     GenerateCertificadoPsicosensometricoDatos(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ACCIDENTES_DE_TRABAJO_F1:
+                    GenerateAccidentesTrabajoF1(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ACCIDENTES_DE_TRABAJO_F1)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ACCIDENTES_DE_TRABAJO_F2:
+                    GenerateAccidentesTrabajoF2(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ACCIDENTES_DE_TRABAJO_F2)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.EXAMEN_SUF_MED__OPERADORES_ID:

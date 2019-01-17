@@ -552,6 +552,208 @@ namespace Sigesoft.Common
 
         #endregion
 
+        #region ACCIDENTES DE TRABAJO - F1 - NOTIFICACIÓN DE LOS ACCIDENTES DE TRABAJO MORTALES E INCIDENTES PELIGROSOS
+        public const string ACCIDENTES_DE_TRABAJO_F1 = "N009-ME000000527";
+
+        public const string F1_I_AÑO = "N009-MF000004461";
+        public const string F1_I_MES = "N009-MF000004462";
+        public const string F1_I_ACCIDENTE_NO_MORTAL = "N009-MF000004463";
+        public const string F1_I_INCIDENTE_PELIGROSO = "N009-MF000004464";
+        public const string F1_I_FECHA_PRES = "N009-MF000004465";
+
+        //
+        public const string F1_II_1_RUC = "N009-MF000004466";
+        public const string F1_II_1_DENOMINACION_SOCIAL = "N009-MF000004467";
+
+        public const string F1_II_2_NOMBRE_CONCESIONARIA_MINERA = "N009-MF000004468";
+        public const string F1_II_2_CODIGO_CONCESIONARIA_MINERA = "N009-MF000004469";
+
+        public const string F1_II_3_CODIGO_OSINERMING = "N009-MF000004470";
+        public const string F1_II_3_REGISTRO_DGH = "N009-MF000004471";
+
+        public const string F1_II_4_TAMAÑO_EMPRESA = "N009-MF000004472";
+        public const string F1_II_4_DOMICILIO_PRINCIPAL = "N009-MF000004473";
+        public const string F1_II_4_DEPARTAMENTO = "N009-MF000004474";
+        public const string F1_II_4_PROVINCIA = "N009-MF000004475";
+        public const string F1_II_4_DISTRITO = "N009-MF000004476";
+        public const string F1_II_4_UBIGEO = "N009-MF000004477";
+        public const string F1_II_4_ACTIVIDAD_ECONOMICA_P = "N009-MF000004478";
+        public const string F1_II_4_CIIU = "N009-MF000004479";
+        public const string F1_II_4_ER = "N009-MF000004480";
+        public const string F1_II_4_N_HOMBRES = "N009-MF000004482";
+        public const string F1_II_4_N_MUJERES = "N009-MF000004483";
+        public const string F1_II_4_CODIGO_TELEFONO = "N009-MF000004484";
+
+        //
+        public const string F1_III_1_RUC = "N009-MF000004485";
+        public const string F1_III_1_DENOMINACION_SOCIAL = "N009-MF000004486";
+
+        public const string F1_III_2_NOMBRE_CONCESIONARIA_MINERA = "N009-MF000004487";
+        public const string F1_III_2_CODIGO_CONCESIONARIA_MINERA = "N009-MF000004488";
+
+        public const string F1_III_3_CODIGO_OSINERMING = "N009-MF000004489";
+        public const string F1_III_3_REGISTRO_DGH = "N009-MF000004490";
+
+        public const string F1_III_4_TAMAÑO_EMPRESA = "N009-MF000004491";
+        public const string F1_III_4_DOMICILIO_PRINCIPAL = "N009-MF000004492";
+        public const string F1_III_4_DEPARTAMENTO = "N009-MF000004493";
+        public const string F1_III_4_PROVINCIA = "N009-MF000004494";
+        public const string F1_III_4_DISTRITO = "N009-MF000004495";
+        public const string F1_III_4_UBIGEO = "N009-MF000004496";
+        public const string F1_III_4_ACTIVIDAD_ECONOMICA_P = "N009-MF000004497";
+        public const string F1_III_4_CIIU = "N009-MF000004498";
+        public const string F1_III_4_ER = "N009-MF000004499";
+        public const string F1_III_4_N_HOMBRES = "N009-MF000004501";
+        public const string F1_III_4_N_MUJERES = "N009-MF000004502";
+        public const string F1_III_4_CODIGO_TELEFONO = "N009-MF000004503";
+
+        public const string F1_IV_DNI_CE = "N009-MF000004504";
+        public const string F1_IV_APELLIDOS = "N009-MF000004505";
+        public const string F1_IV_NOMBRES = "N009-MF000004506";
+        public const string F1_IV_DOMICILIO = "N009-MF000004507";
+        public const string F1_IV_DEPARTAMENTO = "N009-MF000004508";
+        public const string F1_IV_PROVINCIA = "N009-MF000004509";
+        public const string F1_IV_DISTRITO = "N009-MF000004510";
+        public const string F1_IV_UBIGEO = "N009-MF000004511";
+        public const string F1_IV_CODIGO_TELEFONO = "N009-MF000004512";
+        public const string F1_IV_CATEGORIA_OCUPACIONAL = "N009-MF000004513";
+        public const string F1_IV_ASEGURADO = "N009-MF000004514";
+        public const string F1_IV_ESSALUD = "N009-MF000004516";
+        public const string F1_IV_EPS = "N009-MF000004517";
+        public const string F1_IV_EDAD = "N009-MF000004518";
+        public const string F1_IV_SCTR = "N009-MF000004519";
+        public const string F1_IV_FECHA_ACCIDENTE = "N009-MF000004520";
+        public const string F1_IV_HORA_ACCIDENTE = "N009-MF000004521";
+        public const string F1_IV_LUGAR_ACCIDENTE = "N009-MF000004522";
+        public const string F1_IV_GENERO = "N009-MF000004523";
+
+        public const string F1_IV_1_TIPO_ACCIDENTE_1 = "N009-MF000004524";
+        public const string F1_IV_1_TIPO_ACCIDENTE_2 = "N009-MF000004525";
+        public const string F1_IV_1_AGENTE_CAUSANTE_1 = "N009-MF000004526";
+        public const string F1_IV_1_AGENTE_CAUSANTE_2 = "N009-MF000004527";
+        public const string F1_IV_1_AGENTE_CAUSANTE_3 = "N009-MF000004528";
+        public const string F1_IV_1_DESCRIPCION_ACCIDENTE = "N009-MF000004529";
+
+        public const string F1_V_FECHA = "N009-MF000004530";
+        public const string F1_V_HORA_ACCIDENTE = "N009-MF000004531";
+        public const string F1_V_TIPO_INCIDENTE = "N009-MF000004532";
+        public const string F1_V_DESCRIPCION_INCIDENTE = "N009-MF000004533";
+        public const string F1_V_DAÑOS_MATERIALES = "N009-MF000004535";
+        public const string F1_V_CUANTIFICACION_PRELIMINAR = "N009-MF000004536";
+        #endregion
+
+        #region ACCIDENTES DE TRABAJO - F2 - NOTIFICACIÓN DE LOS ACCIDENTES DE TRABAJO NO MORTALES Y ENFERMEDADES OCUPACIONALES
+        public const string ACCIDENTES_DE_TRABAJO_F2 = "N009-ME000000528";
+
+        public const string F2_I_AÑO = "N009-MF000004537";
+        public const string F2_I_MES = "N009-MF000004538";
+        public const string F2_I_ACCIDENTE_NO_MORTAL = "N009-MF000004539";
+        public const string F2_I_ENFERMEDADES_OCUPACIONALES = "N009-MF000004540";
+        public const string F2_I_FECHA_PRES = "N009-MF000004541";
+
+        //
+        public const string F2_II_1_RUC = "N009-MF000004542";
+        public const string F2_II_1_DENOMINACION_SOCIAL = "N009-MF000004543";
+
+        public const string F2_II_2_NOMBRE_CONCESIONARIA_MINERA = "N009-MF000004544";
+        public const string F2_II_2_CODIGO_CONCESIONARIA_MINERA = "N009-MF000004545";
+
+        public const string F2_II_3_CODIGO_OSINERMING = "N009-MF000004546";
+        public const string F2_II_3_REGISTRO_DGH = "N009-MF000004547";
+
+        public const string F2_II_4_TAMAÑO_EMPRESA = "N009-MF000004548";
+        public const string F2_II_4_DOMICILIO_PRINCIPAL = "N009-MF000004549";
+        public const string F2_II_4_DEPARTAMENTO = "N009-MF000004550";
+        public const string F2_II_4_PROVINCIA = "N009-MF000004551";
+        public const string F2_II_4_DISTRITO = "N009-MF000004552";
+        public const string F2_II_4_UBIGEO = "N009-MF000004553";
+        public const string F2_II_4_ACTIVIDAD_ECONOMICA_P = "N009-MF000004554";
+        public const string F2_II_4_CIIU = "N009-MF000004555";
+        public const string F2_II_4_ER = "N009-MF000004556";
+        public const string F2_II_4_N_HOMBRES = "N009-MF000004558";
+        public const string F2_II_4_N_MUJERES = "N009-MF000004559";
+        public const string F2_II_4_CODIGO_TELEFONO = "N009-MF000004560";
+
+        //
+        public const string F2_III_1_RUC = "N009-MF000004561";
+        public const string F2_III_1_DENOMINACION_SOCIAL = "N009-MF000004562";
+
+        public const string F2_III_2_NOMBRE_CONCESIONARIA_MINERA = "N009-MF000004563";
+        public const string F2_III_2_CODIGO_CONCESIONARIA_MINERA = "N009-MF000004564";
+
+        public const string F2_III_3_CODIGO_OSINERMING = "N009-MF000004565";
+        public const string F2_III_3_REGISTRO_DGH = "N009-MF000004566";
+
+        public const string F2_III_4_TAMAÑO_EMPRESA = "N009-MF000004567";
+        public const string F2_III_4_DOMICILIO_PRINCIPAL = "N009-MF000004568";
+        public const string F2_III_4_DEPARTAMENTO = "N009-MF000004569";
+        public const string F2_III_4_PROVINCIA = "N009-MF000004570";
+        public const string F2_III_4_DISTRITO = "N009-MF000004571";
+        public const string F2_III_4_UBIGEO = "N009-MF000004572";
+        public const string F2_III_4_ACTIVIDAD_ECONOMICA_P = "N009-MF000004573";
+        public const string F2_III_4_CIIU = "N009-MF000004574";
+        public const string F2_III_4_ER = "N009-MF000004575";
+        public const string F2_III_4_N_HOMBRES = "N009-MF000004577";
+        public const string F2_III_4_N_MUJERES = "N009-MF000004578";
+        public const string F2_III_4_CODIGO_TELEFONO = "N009-MF000004579";
+
+        public const string F2_IV_DNI_CE = "N009-MF000004581";
+        public const string F2_IV_APELLIDOS = "N009-MF000004582";
+        public const string F2_IV_NOMBRES = "N009-MF000004583";
+        public const string F2_IV_DOMICILIO = "N009-MF000004584";
+        public const string F2_IV_DEPARTAMENTO = "N009-MF000004585";
+        public const string F2_IV_PROVINCIA = "N009-MF000004586";
+        public const string F2_IV_DISTRITO = "N009-MF000004557";
+        public const string F2_IV_UBIGEO = "N009-MF000004587";
+        public const string F2_IV_CATEGORIA_OCUPACIONAL = "N009-MF000004588";
+        public const string F2_IV_ASEGURADO = "N009-MF000004589";
+        public const string F2_IV_ESSALUD = "N009-MF000004591";
+        public const string F2_IV_EPS = "N009-MF000004592";
+        public const string F2_IV_EDAD = "N009-MF000004593";
+        public const string F2_IV_SCTR = "N009-MF000004594";
+        public const string F2_IV_GENERO = "N009-MF000004595";
+
+        public const string F2_V_1_FECHA_ACCIDENTE = "N009-MF000004596";
+        public const string F2_V_1_HORA_ACCIDENTE = "N009-MF000004597";
+        public const string F2_V_1_TIPO_ACCIDENTE_1 = "N009-MF000004598";
+        public const string F2_V_1_TIPO_ACCIDENTE_2 = "N009-MF000004599";
+        public const string F2_V_1_AGENTE_CAUSANTE_1 = "N009-MF000004600";
+        public const string F2_V_1_AGENTE_CAUSANTE_2 = "N009-MF000004601";
+        public const string F2_V_1_AGENTE_CAUSANTE_3 = "N009-MF000004602";
+
+        public const string F2_V_2_RUC = "N009-MF000004603";
+        public const string F2_V_2_FECHA_INGRESO = "N009-MF000004604";
+        public const string F2_V_2_CENTRO_MEDICO_ASISTENCIAL = "N009-MF000004605";
+        public const string F2_V_2_TIPO_CENTRO_MEDICO = "N009-MF000004606";
+        public const string F2_V_2_PARTE_CUERPO_AFECTADO = "N009-MF000004607";
+        public const string F2_V_2_NATURALEZA_LESION = "N009-MF000004608";
+
+        public const string F2_V_3_ACCIDENTE_LEVE = "N009-MF000004609";
+        public const string F2_V_3_TOTAL_TEMPORAL = "N009-MF000004613";
+        public const string F2_V_3_PARCIAL_TEMPORAL = "N009-MF000004614";
+        public const string F2_V_3_PARCIAL_PERMANENTE = "N009-MF000004615";
+        public const string F2_V_3_TOTAL_PERMANENTE = "N009-MF000004616";
+        public const string F2_V_3_ACCIDENTE_MORTAL = "N009-MF000004617";
+        public const string F2_V_3_FECHA_FALLECIMIENTO = "N009-MF000004618";
+
+        public const string F2_VI_FISICOS = "N009-MF000004619";
+        public const string F2_VI_QUIMICOS = "N009-MF000004620";
+        public const string F2_VI_BIOLOGICOS = "N009-MF000004621";
+        public const string F2_VI_DISERGONOMICOS = "N009-MF000004622";
+        public const string F2_VI_PSICO_SOCIALES = "N009-MF000004623";
+        public const string F2_VI_NOMBRE_NATURALEZA_ENFERMEDAD_PROFESIONAL_U_OCUPACIONAL = "N009-MF000004625";
+        public const string F2_VI_CIE_10 = "N009-MF000004626";
+
+        public const string F2_VI_1_RUC = "N009-MF000004627";
+        public const string F2_VI_1_FECHA_INGRESO = "N009-MF000004628";
+        public const string F2_VI_1_CENTRO_MEDICO = "N009-MF000004629";
+        public const string F2_VI_1_TIPO_CENTRO_MEDICO = "N009-MF000004630";
+
+        public const string F2_VI_2_ENFERMEDAD_PROFESIONAL_U_OCUPACIONAL = "N009-MF000004631";
+
+        #endregion
+
+
         #region CERTIFICADO SUFICIENcIA MÉDICA PARA TRABAJO EN ALTURA
         public const string CERT_SUF_MED_ALTURA_ID = "N009-ME000000467";
 
