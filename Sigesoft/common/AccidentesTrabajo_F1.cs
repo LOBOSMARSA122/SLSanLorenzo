@@ -136,10 +136,10 @@ namespace NetPdf
             var F1_I_FECHA_PRES = ficha1.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.F1_I_FECHA_PRES) == null ? "" : ficha1.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.F1_I_FECHA_PRES).v_Value1;
             string d_1 = "", d_2 = "", d_3 = "", d_4 = "", d_5 = "", d_6 = "";
             string[] separador = F1_I_FECHA_PRES.ToString().Split('/');
-            //if (separador[0] )
-            //{
-                
-            //}
+            if (separador[0].Length >= 1 )
+            {
+                d_1 = separador[0].Substring(1);
+            }
 
             ServiceComponentList psicosensometrico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
 
