@@ -138,7 +138,8 @@ namespace NetPdf
             string[] separador = F1_I_FECHA_PRES.ToString().Split('/');
             if (separador[0].Length >= 1 )
             {
-                d_1 = separador[0].Substring(1);
+                d_1 = separador[0].Substring(0,1);
+                d_2 = separador[0].Substring(1,1);
             }
 
             ServiceComponentList psicosensometrico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
