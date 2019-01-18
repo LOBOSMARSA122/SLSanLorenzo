@@ -2354,6 +2354,7 @@ namespace Sigesoft.Common
         public const string PARASITOLOGICO_SERIADO_CIELO_AZUL_ID = "N009-ME000000452";
         public const string METODO_DIRECTO_C_A = "N009-MF000003663";
         public const string METODO_SEDIMENTACION_C_A = "N009-MF000003664";
+        public const string CANTIDAD_DE_EXAMENES = "N009-MF000004633";
 
         public const string COPROCULTIVO_ID = "N009-ME000000453";
         public const string COPROCULTIVO = "N009-MF000003665";
