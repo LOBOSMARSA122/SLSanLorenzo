@@ -17483,25 +17483,25 @@ namespace Sigesoft.Node.WinClient.BLL
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 			try
 			{
-				List<ServiceComponentFieldValuesList> serviceComponentFieldValues = (from A in dbContext.service
-																					 join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
-																					 join C in dbContext.servicecomponentfields on B.v_ServiceComponentId equals C.v_ServiceComponentId
-																					 join D in dbContext.servicecomponentfieldvalues on C.v_ServiceComponentFieldsId equals D.v_ServiceComponentFieldsId
+                List<ServiceComponentFieldValuesList> serviceComponentFieldValues = (from A in dbContext.service
+                                                                                     join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                                                                                     join C in dbContext.servicecomponentfields on B.v_ServiceComponentId equals C.v_ServiceComponentId
+                                                                                     join D in dbContext.servicecomponentfieldvalues on C.v_ServiceComponentFieldsId equals D.v_ServiceComponentFieldsId
 
-																					 where (A.v_ServiceId == pstrServiceId)
-																						   && (B.v_ComponentId == pstrComponentId)
-																						   && (B.i_IsDeleted == 0)
-																						   && (C.i_IsDeleted == 0)
+                                                                                     where (A.v_ServiceId == pstrServiceId)
+                                                                                           && (B.v_ComponentId == pstrComponentId)
+                                                                                           && (B.i_IsDeleted == 0)
+                                                                                           && (C.i_IsDeleted == 0)
 
-																					 select new ServiceComponentFieldValuesList
-																					 {
-																						 //v_ComponentId = B.v_ComponentId,
-																						 v_ComponentFieldId = C.v_ComponentFieldId,
-																						 //v_ComponentFieldId = G.v_ComponentFieldId,
-																						 //v_ComponentFielName = G.v_TextLabel,
-																						 v_ServiceComponentFieldsId = C.v_ServiceComponentFieldsId,
-																						 v_Value1 = D.v_Value1
-																					 }).ToList();
+                                                                                     select new ServiceComponentFieldValuesList
+                                                                                     {
+                                                                                         //v_ComponentId = B.v_ComponentId,
+                                                                                         v_ComponentFieldId = C.v_ComponentFieldId,
+                                                                                         //v_ComponentFieldId = G.v_ComponentFieldId,
+                                                                                         //v_ComponentFielName = G.v_TextLabel,
+                                                                                         v_ServiceComponentFieldsId = C.v_ServiceComponentFieldsId,
+                                                                                         v_Value1 = D.v_Value1
+                                                                                     }).ToList();
 
 
 				return serviceComponentFieldValues;
@@ -26145,6 +26145,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      Dni = B.v_DocNumber
                                  });
                 var ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, pstrComponentId).ToList();
+                var ValorUSe1r = ValoresComponente(pstrserviceId, pstrComponentId).ToList();
                 var MedicalCenter = GetInfoMedicalCenter();
                 var sql = (from a in objEntity.ToList()
                            select new UcOsteo
@@ -28925,7 +28926,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 join b in dbContext.component on a.v_ComponentId equals b.v_ComponentId
 							 join c in dbContext.service on a.v_ServiceId equals c.v_ServiceId
 							 join d in dbContext.person on c.v_PersonId equals d.v_PersonId
-							 where b.i_CategoryId == CategoriaId && ServiceIds.Contains(c.v_ServiceId)
+							 where b.i_CategoryId == CategoriaId && ServiceIds.Contains(c.v_ServiceId) && a.i_IsRequiredId == 1
 							 //orderby b.i_UIIndex
 							 select new ObtenerIdsImporacion
 							 {
@@ -28941,10 +28942,12 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				objEntity.Sort((x, y) => x.ComponentId.CompareTo(y.ComponentId));
 
-				var objData = objEntity.AsEnumerable()
-						   .GroupBy(x => new { x.CategoriaId, x.ServicioId })
-						   .Select(group => group.First())
-						   .OrderBy(o => o.i_UIIndex);
+                var objData = objEntity.AsEnumerable()
+                           .GroupBy(x => new { x.CategoriaId, x.ServicioId })
+                           .Select(group => group.First())
+                           .OrderBy(o => o.ServicioComponentId);
+                //var objData = objEntity.AsEnumerable()
+                //           .OrderBy(o => o.ServicioComponentId);
 
 
 
