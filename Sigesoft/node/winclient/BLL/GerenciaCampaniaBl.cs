@@ -57,6 +57,54 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<GerenciaTipoPago> _Filter(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var dbContext = new SigesoftEntitiesModel();
+
+                var query = (from a in dbContext.service
+                             join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+                             join c in dbContext.protocol on a.v_ProtocolId equals c.v_ProtocolId
+                             join d in dbContext.organization on c.v_CustomerOrganizationId equals d.v_OrganizationId into djoin
+                             from d in djoin.DefaultIfEmpty()
+                             join e in dbContext.organization on c.v_EmployerOrganizationId equals e.v_OrganizationId into ejoin
+                             from e in ejoin.DefaultIfEmpty()
+                             join f in dbContext.calendar on a.v_ServiceId equals f.v_ServiceId
+                             join et in dbContext.systemparameter on new { a = c.i_EsoTypeId.Value, b = 118 }
+                             equals new { a = et.i_ParameterId, b = et.i_GroupId } into etjoin
+                             from et in etjoin.DefaultIfEmpty()
+                             where a.i_IsDeleted == 0 && a.d_ServiceDate.Value >= startDate && a.d_ServiceDate.Value <= endDate && f.i_LineStatusId == (int)LineStatus.EnCircuito && a.v_ProtocolId != null
+                                         && (c.v_CustomerOrganizationId == "N009-OO000000052" || c.v_EmployerOrganizationId == "N009-OO000000052" || c.v_WorkingOrganizationId == "N009-OO000000052")
+                             select new GerenciaTipoPago
+                             {
+                                 ServiceId = a.v_ServiceId,
+                                 Trabajador = b.v_FirstLastName + " " + b.v_SecondLastName + " " + b.v_FirstName,
+                                 FechaServicio = a.d_ServiceDate,
+                                 Compania = d.v_Name,
+                                 Contratista = e.v_Name,
+                                 TipoEso = et.v_Value1
+                             }).ToList();
+
+                var result = (from a in query
+                              select new GerenciaTipoPago
+                              {
+                                  ServiceId = a.ServiceId,
+                                  Trabajador = a.Trabajador,
+                                  FechaServicio = a.FechaServicio,
+                                  Compania = a.Compania,
+                                  Contratista = a.Contratista,
+                                  TipoEso = a.TipoEso,
+                                  CostoExamen = double.Parse(new ServiceBL().GetServiceCost(a.ServiceId))
+                              }).ToList();
+                return result;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public List<GerenciaTreeCapania> ProcessDataTreeView(List<GerenciaTipoPago> data)
         {
             var list = Agrupador(data);

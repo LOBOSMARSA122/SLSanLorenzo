@@ -28,7 +28,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                         join h in dbContext.organization on c.v_WorkingOrganizationId equals h.v_OrganizationId
 
                                          where a.i_ApprovedUpdateUserId == systemUserId && a.i_IsDeleted == 0 &&
-                                              b.i_PagoEspecialista == flagPagado
+                                              ( b.i_PagoEspecialista  == null || b.i_PagoEspecialista == flagPagado)
                                         select new
                                         {
                                             serviceId = a.v_ServiceId,

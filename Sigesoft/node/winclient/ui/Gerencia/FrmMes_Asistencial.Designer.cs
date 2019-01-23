@@ -1,6 +1,6 @@
 ﻿namespace Sigesoft.Node.WinClient.UI.Gerencia
 {
-    partial class FrmMes
+    partial class FrmMes_Asistencial
     {
         /// <summary>
         /// Required designer variable.
@@ -28,48 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.crvPorMes = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.gbFiltro = new System.Windows.Forms.GroupBox();
             this.dtpAnio = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.crvPorMes = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbFiltro.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // gbFiltro
-            // 
-            this.gbFiltro.Controls.Add(this.dtpAnio);
-            this.gbFiltro.Controls.Add(this.btnFilter);
-            this.gbFiltro.Controls.Add(this.label1);
-            this.gbFiltro.Location = new System.Drawing.Point(12, 12);
-            this.gbFiltro.Name = "gbFiltro";
-            this.gbFiltro.Size = new System.Drawing.Size(413, 59);
-            this.gbFiltro.TabIndex = 155;
-            this.gbFiltro.TabStop = false;
-            this.gbFiltro.Text = "Filtro";
-            // 
-            // dtpAnio
-            // 
-            this.dtpAnio.CustomFormat = "yyyy";
-            this.dtpAnio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpAnio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAnio.Location = new System.Drawing.Point(34, 21);
-            this.dtpAnio.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpAnio.Name = "dtpAnio";
-            this.dtpAnio.Size = new System.Drawing.Size(80, 21);
-            this.dtpAnio.TabIndex = 108;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(5, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Año";
             // 
             // crvPorMes
             // 
@@ -83,8 +48,31 @@
             this.crvPorMes.Name = "crvPorMes";
             this.crvPorMes.ShowLogo = false;
             this.crvPorMes.Size = new System.Drawing.Size(1097, 426);
-            this.crvPorMes.TabIndex = 156;
+            this.crvPorMes.TabIndex = 158;
             this.crvPorMes.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // gbFiltro
+            // 
+            this.gbFiltro.Controls.Add(this.dtpAnio);
+            this.gbFiltro.Controls.Add(this.btnFilter);
+            this.gbFiltro.Controls.Add(this.label1);
+            this.gbFiltro.Location = new System.Drawing.Point(12, 12);
+            this.gbFiltro.Name = "gbFiltro";
+            this.gbFiltro.Size = new System.Drawing.Size(413, 59);
+            this.gbFiltro.TabIndex = 157;
+            this.gbFiltro.TabStop = false;
+            this.gbFiltro.Text = "Filtro";
+            // 
+            // dtpAnio
+            // 
+            this.dtpAnio.CustomFormat = "yyyy";
+            this.dtpAnio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAnio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpAnio.Location = new System.Drawing.Point(34, 21);
+            this.dtpAnio.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpAnio.Name = "dtpAnio";
+            this.dtpAnio.Size = new System.Drawing.Size(80, 21);
+            this.dtpAnio.TabIndex = 108;
             // 
             // btnFilter
             // 
@@ -107,7 +95,19 @@
             this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // FrmMes
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(5, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(25, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Año";
+            // 
+            // FrmMes_Asistencial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,9 +115,10 @@
             this.ClientSize = new System.Drawing.Size(1121, 515);
             this.Controls.Add(this.crvPorMes);
             this.Controls.Add(this.gbFiltro);
-            this.Name = "FrmMes";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "FrmMes_Asistencial";
             this.ShowIcon = false;
-            this.Text = "Vista Anual Ocupacional";
+            this.Text = "Vista Anual Asistencial";
             this.gbFiltro.ResumeLayout(false);
             this.gbFiltro.PerformLayout();
             this.ResumeLayout(false);
@@ -126,10 +127,10 @@
 
         #endregion
 
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crvPorMes;
         private System.Windows.Forms.GroupBox gbFiltro;
+        private System.Windows.Forms.DateTimePicker dtpAnio;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Label label1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crvPorMes;
-        private System.Windows.Forms.DateTimePicker dtpAnio;
     }
 }
