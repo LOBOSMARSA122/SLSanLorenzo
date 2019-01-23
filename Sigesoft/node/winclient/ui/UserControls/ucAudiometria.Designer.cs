@@ -1104,7 +1104,7 @@
             chartArea1.AxisY.Interval = 10D;
             chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea1.AxisY.IsReversed = true;
-            chartArea1.AxisY.Maximum = 100D;
+            chartArea1.AxisY.Maximum = 150D;
             chartArea1.AxisY.Minimum = -10D;
             chartArea1.AxisY.ScaleView.SizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea1.AxisY2.IsReversed = true;
@@ -1132,7 +1132,7 @@
             chartArea2.AxisY.Interval = 10D;
             chartArea2.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea2.AxisY.IsReversed = true;
-            chartArea2.AxisY.Maximum = 100D;
+            chartArea2.AxisY.Maximum = 150D;
             chartArea2.AxisY.Minimum = -10D;
             chartArea2.AxisY.ScaleView.SizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea2.AxisY2.IsReversed = true;
