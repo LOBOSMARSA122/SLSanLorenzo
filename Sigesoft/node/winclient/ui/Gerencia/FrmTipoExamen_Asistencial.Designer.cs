@@ -1,6 +1,6 @@
 ﻿namespace Sigesoft.Node.WinClient.UI.Gerencia
 {
-    partial class FrmTipoPago
+    partial class FrmTipoExamen_Asistencial
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CondicionPago");
@@ -43,6 +42,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Contratista");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CostoExamen");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoEso");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UsuarioAgenda");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -51,124 +51,42 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Agrupador");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Agrupador");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn61 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tipos");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Tipos", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoPago");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Empresas");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Empresas", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EmpresaNombre");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoEsos");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("TipoEsos", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Eso");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Perfiles");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Perfile");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Perfile", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoEso");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Empresas");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Empresas", 1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cantidad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.grdTree = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.gbAcciones = new System.Windows.Forms.GroupBox();
+            this.lblMensaje = new System.Windows.Forms.Label();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             this.gbFiltro = new System.Windows.Forms.GroupBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.dptDateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDateTimeStar = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.gbAcciones = new System.Windows.Forms.GroupBox();
-            this.lblMensaje = new System.Windows.Forms.Label();
-            this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.uge = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.grdTree = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.btnExportExcel = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.gbFiltro.SuspendLayout();
-            this.gbAcciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTree)).BeginInit();
+            this.gbAcciones.SuspendLayout();
+            this.gbFiltro.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // gbFiltro
-            // 
-            this.gbFiltro.Controls.Add(this.btnFilter);
-            this.gbFiltro.Controls.Add(this.dptDateTimeEnd);
-            this.gbFiltro.Controls.Add(this.label1);
-            this.gbFiltro.Controls.Add(this.dtpDateTimeStar);
-            this.gbFiltro.Controls.Add(this.label2);
-            this.gbFiltro.Location = new System.Drawing.Point(12, 12);
-            this.gbFiltro.Name = "gbFiltro";
-            this.gbFiltro.Size = new System.Drawing.Size(413, 59);
-            this.gbFiltro.TabIndex = 0;
-            this.gbFiltro.TabStop = false;
-            this.gbFiltro.Text = "Filtro";
-            // 
-            // dptDateTimeEnd
-            // 
-            this.dptDateTimeEnd.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dptDateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dptDateTimeEnd.Location = new System.Drawing.Point(202, 23);
-            this.dptDateTimeEnd.Margin = new System.Windows.Forms.Padding(2);
-            this.dptDateTimeEnd.Name = "dptDateTimeEnd";
-            this.dptDateTimeEnd.Size = new System.Drawing.Size(95, 21);
-            this.dptDateTimeEnd.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(5, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Fecha Atención";
-            // 
-            // dtpDateTimeStar
-            // 
-            this.dtpDateTimeStar.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateTimeStar.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateTimeStar.Location = new System.Drawing.Point(89, 23);
-            this.dtpDateTimeStar.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpDateTimeStar.Name = "dtpDateTimeStar";
-            this.dtpDateTimeStar.Size = new System.Drawing.Size(95, 21);
-            this.dtpDateTimeStar.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(187, 27);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "y";
-            // 
-            // gbAcciones
-            // 
-            this.gbAcciones.Controls.Add(this.lblMensaje);
-            this.gbAcciones.Controls.Add(this.btnExportExcel);
-            this.gbAcciones.Location = new System.Drawing.Point(431, 12);
-            this.gbAcciones.Name = "gbAcciones";
-            this.gbAcciones.Size = new System.Drawing.Size(678, 59);
-            this.gbAcciones.TabIndex = 1;
-            this.gbAcciones.TabStop = false;
-            this.gbAcciones.Text = "Acciones";
-            // 
-            // lblMensaje
-            // 
-            this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Location = new System.Drawing.Point(106, 23);
-            this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(0, 13);
-            this.lblMensaje.TabIndex = 109;
             // 
             // grdData
             // 
@@ -181,24 +99,23 @@
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn28.Header.VisiblePosition = 0;
+            ultraGridColumn28.Hidden = true;
             ultraGridColumn37.Header.VisiblePosition = 1;
             ultraGridColumn38.Header.VisiblePosition = 2;
             ultraGridColumn39.Header.VisiblePosition = 3;
             ultraGridColumn40.Header.VisiblePosition = 4;
+            ultraGridColumn40.Hidden = true;
             ultraGridColumn52.Header.VisiblePosition = 5;
             ultraGridColumn52.Hidden = true;
             ultraGridColumn53.Header.VisiblePosition = 6;
-            ultraGridColumn53.Hidden = true;
             ultraGridColumn54.Header.VisiblePosition = 7;
-            ultraGridColumn54.Hidden = true;
             ultraGridColumn55.Header.VisiblePosition = 8;
             ultraGridColumn55.Hidden = true;
             ultraGridColumn56.Header.VisiblePosition = 9;
             ultraGridColumn56.Hidden = true;
             ultraGridColumn57.Header.VisiblePosition = 10;
-            ultraGridColumn57.Hidden = true;
             ultraGridColumn58.Header.VisiblePosition = 11;
-            ultraGridColumn58.Hidden = true;
+            ultraGridColumn1.Header.VisiblePosition = 12;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn28,
             ultraGridColumn37,
@@ -211,7 +128,8 @@
             ultraGridColumn55,
             ultraGridColumn56,
             ultraGridColumn57,
-            ultraGridColumn58});
+            ultraGridColumn58,
+            ultraGridColumn1});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.grdData.DisplayLayout.InterBandSpacing = 10;
@@ -263,11 +181,11 @@
             this.grdData.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.grdData.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdData.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.grdData.Location = new System.Drawing.Point(431, 77);
+            this.grdData.Location = new System.Drawing.Point(431, 76);
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
             this.grdData.Size = new System.Drawing.Size(678, 427);
-            this.grdData.TabIndex = 153;
+            this.grdData.TabIndex = 165;
             // 
             // grdTree
             // 
@@ -278,52 +196,43 @@
             appearance8.BackColor2 = System.Drawing.Color.Silver;
             appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdTree.DisplayLayout.Appearance = appearance8;
-            ultraGridColumn59.Header.VisiblePosition = 1;
+            ultraGridColumn7.Header.VisiblePosition = 1;
             ultraGridColumn60.Header.VisiblePosition = 2;
-            ultraGridColumn12.Header.VisiblePosition = 0;
-            ultraGridColumn12.Width = 75;
-            ultraGridColumn61.Header.VisiblePosition = 3;
-            ultraGridBand2.Columns.AddRange(new object[] {
-            ultraGridColumn59,
-            ultraGridColumn60,
-            ultraGridColumn12,
-            ultraGridColumn61});
-            ultraGridColumn1.Header.Caption = "Cantidad de Comprobantes";
-            ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn1.Width = 75;
-            ultraGridColumn2.Header.VisiblePosition = 1;
-            ultraGridColumn3.Header.VisiblePosition = 2;
-            ultraGridColumn4.Header.VisiblePosition = 3;
-            ultraGridColumn4.Hidden = true;
-            ultraGridBand3.Columns.AddRange(new object[] {
-            ultraGridColumn1,
-            ultraGridColumn2,
-            ultraGridColumn3,
-            ultraGridColumn4});
-            ultraGridColumn5.Header.Caption = "Cantidad de Perfiles";
-            ultraGridColumn5.Header.VisiblePosition = 0;
-            ultraGridColumn5.Width = 75;
-            ultraGridColumn6.Header.VisiblePosition = 1;
-            ultraGridColumn7.Header.VisiblePosition = 2;
+            ultraGridColumn2.Header.VisiblePosition = 0;
             ultraGridColumn8.Header.VisiblePosition = 3;
-            ultraGridColumn8.Hidden = true;
-            ultraGridBand4.Columns.AddRange(new object[] {
+            ultraGridColumn3.Header.VisiblePosition = 4;
+            ultraGridBand2.Columns.AddRange(new object[] {
+            ultraGridColumn7,
+            ultraGridColumn60,
+            ultraGridColumn2,
+            ultraGridColumn8,
+            ultraGridColumn3});
+            ultraGridColumn4.Header.VisiblePosition = 0;
+            ultraGridColumn4.Hidden = true;
+            ultraGridColumn5.Header.VisiblePosition = 1;
+            ultraGridColumn5.Hidden = true;
+            ultraGridColumn6.Header.VisiblePosition = 2;
+            ultraGridColumn6.Hidden = true;
+            ultraGridColumn15.Header.VisiblePosition = 3;
+            ultraGridColumn15.Hidden = true;
+            ultraGridBand3.Columns.AddRange(new object[] {
+            ultraGridColumn4,
             ultraGridColumn5,
             ultraGridColumn6,
-            ultraGridColumn7,
-            ultraGridColumn8});
-            ultraGridColumn9.Header.VisiblePosition = 0;
-            ultraGridColumn9.Width = 75;
-            ultraGridColumn10.Header.VisiblePosition = 1;
-            ultraGridColumn11.Header.VisiblePosition = 2;
-            ultraGridBand5.Columns.AddRange(new object[] {
-            ultraGridColumn9,
-            ultraGridColumn10,
-            ultraGridColumn11});
+            ultraGridColumn15});
+            ultraGridColumn17.Header.VisiblePosition = 0;
+            ultraGridColumn17.Hidden = true;
+            ultraGridColumn18.Header.VisiblePosition = 1;
+            ultraGridColumn18.Hidden = true;
+            ultraGridColumn19.Header.VisiblePosition = 2;
+            ultraGridColumn19.Hidden = true;
+            ultraGridBand4.Columns.AddRange(new object[] {
+            ultraGridColumn17,
+            ultraGridColumn18,
+            ultraGridColumn19});
             this.grdTree.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdTree.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.grdTree.DisplayLayout.BandsSerializer.Add(ultraGridBand4);
-            this.grdTree.DisplayLayout.BandsSerializer.Add(ultraGridBand5);
             this.grdTree.DisplayLayout.InterBandSpacing = 10;
             this.grdTree.DisplayLayout.MaxColScrollRegions = 1;
             this.grdTree.DisplayLayout.MaxRowScrollRegions = 1;
@@ -372,12 +281,31 @@
             this.grdTree.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.grdTree.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdTree.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdTree.Location = new System.Drawing.Point(12, 77);
+            this.grdTree.Location = new System.Drawing.Point(12, 76);
             this.grdTree.Margin = new System.Windows.Forms.Padding(2);
             this.grdTree.Name = "grdTree";
             this.grdTree.Size = new System.Drawing.Size(413, 427);
-            this.grdTree.TabIndex = 4;
+            this.grdTree.TabIndex = 164;
             this.grdTree.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdTree_AfterSelectChange);
+            // 
+            // gbAcciones
+            // 
+            this.gbAcciones.Controls.Add(this.lblMensaje);
+            this.gbAcciones.Controls.Add(this.btnExportExcel);
+            this.gbAcciones.Location = new System.Drawing.Point(431, 11);
+            this.gbAcciones.Name = "gbAcciones";
+            this.gbAcciones.Size = new System.Drawing.Size(678, 59);
+            this.gbAcciones.TabIndex = 163;
+            this.gbAcciones.TabStop = false;
+            this.gbAcciones.Text = "Acciones";
+            // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.Location = new System.Drawing.Point(106, 23);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(0, 13);
+            this.lblMensaje.TabIndex = 109;
             // 
             // btnExportExcel
             // 
@@ -398,7 +326,20 @@
             this.btnExportExcel.Text = "Exportar Excel";
             this.btnExportExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExportExcel.UseVisualStyleBackColor = false;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
+            // gbFiltro
+            // 
+            this.gbFiltro.Controls.Add(this.btnFilter);
+            this.gbFiltro.Controls.Add(this.dptDateTimeEnd);
+            this.gbFiltro.Controls.Add(this.label1);
+            this.gbFiltro.Controls.Add(this.dtpDateTimeStar);
+            this.gbFiltro.Controls.Add(this.label2);
+            this.gbFiltro.Location = new System.Drawing.Point(12, 11);
+            this.gbFiltro.Name = "gbFiltro";
+            this.gbFiltro.Size = new System.Drawing.Size(413, 59);
+            this.gbFiltro.TabIndex = 162;
+            this.gbFiltro.TabStop = false;
+            this.gbFiltro.Text = "Filtro";
             // 
             // btnFilter
             // 
@@ -421,7 +362,50 @@
             this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // FrmTipoPago
+            // dptDateTimeEnd
+            // 
+            this.dptDateTimeEnd.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dptDateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dptDateTimeEnd.Location = new System.Drawing.Point(202, 23);
+            this.dptDateTimeEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dptDateTimeEnd.Name = "dptDateTimeEnd";
+            this.dptDateTimeEnd.Size = new System.Drawing.Size(95, 21);
+            this.dptDateTimeEnd.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(5, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Fecha Atención";
+            // 
+            // dtpDateTimeStar
+            // 
+            this.dtpDateTimeStar.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateTimeStar.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateTimeStar.Location = new System.Drawing.Point(89, 23);
+            this.dtpDateTimeStar.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpDateTimeStar.Name = "dtpDateTimeStar";
+            this.dtpDateTimeStar.Size = new System.Drawing.Size(95, 21);
+            this.dtpDateTimeStar.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(187, 27);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "y";
+            // 
+            // FrmTipoExamen_Asistencial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -432,38 +416,32 @@
             this.Controls.Add(this.gbAcciones);
             this.Controls.Add(this.gbFiltro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FrmTipoPago";
+            this.Name = "FrmTipoExamen_Asistencial";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Consulta Por Tipo de Pago";
-            this.Load += new System.EventHandler(this.FrmTipoPago_Load);
-            this.gbFiltro.ResumeLayout(false);
-            this.gbFiltro.PerformLayout();
-            this.gbAcciones.ResumeLayout(false);
-            this.gbAcciones.PerformLayout();
+            this.Text = "Tipos de Examen";
+            this.Load += new System.EventHandler(this.FrmTipoExamen_Asistencial_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTree)).EndInit();
+            this.gbAcciones.ResumeLayout(false);
+            this.gbAcciones.PerformLayout();
+            this.gbFiltro.ResumeLayout(false);
+            this.gbFiltro.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdTree;
+        private System.Windows.Forms.GroupBox gbAcciones;
+        private System.Windows.Forms.Label lblMensaje;
+        private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.GroupBox gbFiltro;
+        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.DateTimePicker dptDateTimeEnd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDateTimeStar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnFilter;
-        private System.Windows.Forms.GroupBox gbAcciones;
-        private System.Windows.Forms.Button btnExportExcel;
-        private System.Windows.Forms.Label lblMensaje;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
-        private System.Windows.Forms.SaveFileDialog sfd;
-        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter uge;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grdTree;
-
     }
 }

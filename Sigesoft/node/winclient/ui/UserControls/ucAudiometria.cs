@@ -2025,7 +2025,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             {
                 var res = int.TryParse(senderCtrl.Text, out var_rango);
 
-                if (var_rango >= -10 && var_rango <= 150)
+                if (var_rango >= -10 && var_rango <= 120)
                 {
                     //e.Cancel = false;
                 }
@@ -2033,7 +2033,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                 {
                     //e.Cancel = true;
                     senderCtrl.Select(0, 3);
-                    MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango [-10 - 150]. ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango [-10 - 120]. ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -2072,7 +2072,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
                 var res = int.TryParse(senderCtrl.Text, out var_rango);
 
-                if (var_rango >= -10 && var_rango <= 150)
+                if (var_rango >= -10 && var_rango <= 120)
                 {
                     //e.Cancel = false;
                 }
@@ -2080,7 +2080,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                 {
                     //e.Cancel = true;
                     senderCtrl.Select(0, 3);
-                    MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango (-10 ; 150). ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango (-10 ; 120). ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -2167,14 +2167,14 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                 var_rango = 0;
             }
 
-            if (var_rango >= -10 && var_rango <= 150)
+            if (var_rango >= -10 && var_rango <= 120)
             {
                 e.Cancel = false;
             }
             else
             {
                 e.Cancel = true;
-                MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango (-10-150). ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango (-10-120). ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -2201,14 +2201,14 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                 var_rango = 0;
             }
 
-            if (var_rango >= -10 && var_rango <= 150)
+            if (var_rango >= -10 && var_rango <= 120)
             {
                 e.Cancel = false;
             }
             else
             {
                 e.Cancel = true;
-                MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango (-10-150). ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El valor : " + senderCtrl.Text + " está fuera del rango (-10-120). ", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
