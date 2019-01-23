@@ -1555,7 +1555,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
+        private void GenerateAltura_Fisica_F_Yanacocha(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
 
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+
+            Altura_Fisica_F_Yanacocha.CreateAltura_Fisica_F_Yanacocha(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+        }
         private void GenerateAccidentesTrabajoF1(string pathFile)
         {
             var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
@@ -5511,6 +5522,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID:
                     GenerateCertificadoPsicosensometricoDatos(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.T_A_1_8_ID:
+                    GenerateAltura_Fisica_F_Yanacocha(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.T_A_1_8_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.ACCIDENTES_DE_TRABAJO_F1:

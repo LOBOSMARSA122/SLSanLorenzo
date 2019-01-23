@@ -80,6 +80,7 @@
     <Compile Include="AccidentesTrabajo_F1.cs" />
     <Compile Include="AccidentesTrabajo_F2.cs" />
     <Compile Include="AgendaDetallada.cs" />
+    <Compile Include="Altura_Fisica_F_Yanacocha.cs" />
     <Compile Include="Altura_Fisica_Shahuindo.cs" />
     <Compile Include="Anexo16A.cs" />
     <Compile Include="Anexo3_Exo_Resp_Yanacocha.cs" />
