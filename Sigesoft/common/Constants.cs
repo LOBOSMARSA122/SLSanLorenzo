@@ -597,6 +597,7 @@ namespace Sigesoft.Common
         public const string T_A_1_8_V_NO_APTO = "N009-MF000004669";
 
         #endregion
+
         #region ACCIDENTES DE TRABAJO - F1 - NOTIFICACIÓN DE LOS ACCIDENTES DE TRABAJO MORTALES E INCIDENTES PELIGROSOS
         public const string ACCIDENTES_DE_TRABAJO_F1 = "N009-ME000000527";
 
