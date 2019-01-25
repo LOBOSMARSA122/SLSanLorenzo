@@ -552,6 +552,52 @@ namespace Sigesoft.Common
 
         #endregion
 
+        #region EXAMEN MEDICO PARA TRABAJOS EN ALTURA MAYOR A 1.8 Mts - FORMATO YANACOCHA
+        public const string T_A_1_8_ID = "N009-ME000000530";
+
+        public const string T_A_1_8_I_ANTECEDENTES = "N009-MF000004634";
+
+        public const string T_A_1_8_II_AGOROFOBIA = "N009-MF000004635";
+        public const string T_A_1_8_II_CONVULSIONES = "N009-MF000004636";
+        public const string T_A_1_8_II_HTA = "N009-MF000004637";
+        public const string T_A_1_8_II_ACROFOBIA = "N009-MF000004638";
+        public const string T_A_1_8_II_CEFALEA = "N009-MF000004639";
+        public const string T_A_1_8_II_ASMA = "N009-MF000004640";
+        public const string T_A_1_8_II_MAREOS = "N009-MF000004641";
+        public const string T_A_1_8_II_ALCOHOL = "N009-MF000004642";
+        public const string T_A_1_8_II_DIABETES = "N009-MF000004643";
+        public const string T_A_1_8_II_VERTIGO = "N009-MF000004644";
+        public const string T_A_1_8_II_DROGAS = "N009-MF000004645";
+        public const string T_A_1_8_II_TEC = "N009-MF000004646";
+        public const string T_A_1_8_II_MIOCLONIAS = "N009-MF000004647";
+        public const string T_A_1_8_II_PSIQUIATRIA = "N009-MF000004648";
+        public const string T_A_1_8_II_FARMACOS = "N009-MF000004679";
+        public const string T_A_1_8_II_ACATISIA = "N009-MF000004650";
+        public const string T_A_1_8_II_CARDIO = "N009-MF000004651";
+
+        public const string T_A_1_8_III_ENTRENAMIENTO_ALTURA = "N009-MF000004652";
+        public const string T_A_1_8_III_ENTRENAMIENTO_PRIMEROS_AUXILIOS = "N009-MF000004653";
+
+        public const string T_A_1_8_IV_IMC = "N009-MF000004654";
+        public const string T_A_1_8_IV_DEFICIT_M_SUPERIORES = "N009-MF000004655";
+        public const string T_A_1_8_IV_DEFICIT_M_INFERIORES = "N009-MF000004656";
+        public const string T_A_1_8_IV_TIMPANOS = "N009-MF000004657";
+        public const string T_A_1_8_IV_HIPOACUSIA = "N009-MF000004658";
+        public const string T_A_1_8_IV_SUSTENTACION_PIE_15S = "N009-MF000004659";
+        public const string T_A_1_8_IV_CAMINAR_LIBRE_3M = "N009-MF000004660";
+        public const string T_A_1_8_IV_CAMINAR_LIBRE_OJOS_VENDADOS_3M = "N009-MF000004661";
+        public const string T_A_1_8_IV_CAMINAR_LIBRE_OJOS_VENDADOS_PUNTA_TALON_3M = "N009-MF000004662";
+        public const string T_A_1_8_IV_NISTAGMUS = "N009-MF000004663";
+        public const string T_A_1_8_IV_ROMBERG = "N009-MF000004664";
+        public const string T_A_1_8_IV_ADIADOCOQUINESIA_DIRECTA = "N009-MF000004665";
+        public const string T_A_1_8_IV_ADIADOCOQUINESIA_CRUZADA = "N009-MF000004666";
+        public const string T_A_1_8_IV_COMENTARIO = "N009-MF000004667";
+
+        public const string T_A_1_8_V_APTO = "N009-MF000004668";
+        public const string T_A_1_8_V_NO_APTO = "N009-MF000004669";
+
+        #endregion
+
         #region ACCIDENTES DE TRABAJO - F1 - NOTIFICACIÓN DE LOS ACCIDENTES DE TRABAJO MORTALES E INCIDENTES PELIGROSOS
         public const string ACCIDENTES_DE_TRABAJO_F1 = "N009-ME000000527";
 

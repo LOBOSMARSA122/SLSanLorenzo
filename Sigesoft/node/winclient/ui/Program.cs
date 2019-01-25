@@ -13,7 +13,7 @@ namespace Sigesoft.Node.WinClient.UI
         /// </summary>
         [STAThread]
         static void Main()
-            {
+        {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmLogin());
@@ -42,7 +42,7 @@ namespace Sigesoft.Node.WinClient.UI
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new frmLogin());
-            }      
+            }
         }
     }
 }
