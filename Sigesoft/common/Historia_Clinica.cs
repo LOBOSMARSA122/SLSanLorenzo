@@ -87,7 +87,8 @@ namespace NetPdf
             //imagenMinsa.ScalePercent(10);
             //imagenMinsa.SetAbsolutePosition(400, 785);
             //document.Add(imagenMinsa);
-            
+            string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
+
             var cellsTit = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase(servicio[0] + "               ", fontTitle1_1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 12f},
@@ -107,7 +108,6 @@ namespace NetPdf
             #region Primera página
             #region Datos del Servicio
 
-            string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
             string fechaInforme = DateTime.Now.ToString().Split(' ')[0];
             string[] fechaNac = datosPac.d_Birthdate.ToString().Split(' ');
             string med = "";
