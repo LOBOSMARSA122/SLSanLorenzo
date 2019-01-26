@@ -747,7 +747,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join C in dbContext.systemuser on B.i_MedicoTratanteId equals C.i_SystemUserId
                                  join D in dbContext.person on C.v_PersonId equals D.v_PersonId
                                  join E in dbContext.professional on D.v_PersonId equals E.v_PersonId
-                                 where A.v_ServiceId == pstrServiceId
+                                 where A.v_ServiceId == pstrServiceId && B.i_IsRequiredId == 1
 
                                  select new MedicoTratanteAtenciones
                                  {
