@@ -96,9 +96,11 @@
     <Compile Include="Certificado_Suficiencia_Medica_Brigadistas.cs" />
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
     <Compile Include="Certificado_Suficiencia_Medica_Trabajo_Altura_V4.cs" />
+    <Compile Include="ConexionSigesoft.cs" />
     <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="Coprocultivo_PSeriado.cs" />
+    <Compile Include="Pago_Especialsta_Report.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomDtos\FileInfoDto.cs" />

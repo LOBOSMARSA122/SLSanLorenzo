@@ -178,12 +178,13 @@
             // dtpDateTimeStar
             // 
             this.dtpDateTimeStar.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateTimeStar.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateTimeStar.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateTimeStar.Location = new System.Drawing.Point(89, 18);
             this.dtpDateTimeStar.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateTimeStar.Name = "dtpDateTimeStar";
             this.dtpDateTimeStar.Size = new System.Drawing.Size(95, 21);
             this.dtpDateTimeStar.TabIndex = 4;
+            this.dtpDateTimeStar.Value = new System.DateTime(2019, 1, 27, 0, 0, 0, 0);
             // 
             // label1
             // 
