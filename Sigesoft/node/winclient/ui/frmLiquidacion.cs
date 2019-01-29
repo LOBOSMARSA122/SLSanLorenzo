@@ -922,7 +922,8 @@ namespace Sigesoft.Node.WinClient.UI
                             hoja.Cells[fila + i, 2] = count + ".";
                             hoja.Cells[fila + i, 3] = item.Trabajador;
                             hoja.Cells[fila + i, 4] = item.Edad;
-                            hoja.Cells[fila + i, 5] = item.FechaExamen.ToString().Split(' ')[0];
+                            DateTime fecha = item.FechaExamen.Value.Date;
+                            hoja.Cells[fila + i, 5] = fecha;
                             hoja.Cells[fila + i, 6] = item.NroDocumemto;
                             hoja.Cells[fila + i, 7] = item.Cargo;
                             hoja.Cells[fila + i, 8] = item.Perfil;
