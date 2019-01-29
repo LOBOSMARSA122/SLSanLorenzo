@@ -36,7 +36,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             {
                                 d_FechaAlta = A.d_FechaAlta,
                                 d_FechaIngreso = A.d_FechaIngreso,
-                                v_Paciente = B.v_SecondLastName + ", " +B.v_FirstName +" " +  B.v_FirstLastName,
+                                v_Paciente = B.v_FirstLastName + " " +B.v_SecondLastName + ", " +B.v_FirstName,
                                 v_HopitalizacionId = A.v_HopitalizacionId,
                                 v_PersonId = A.v_PersonId,
                                 v_DocNumber = B.v_DocNumber,
