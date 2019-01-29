@@ -4597,6 +4597,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 case ControlType.Lista:
                     if (ComponentFieldsId == Tag_ComponentFieldsId)
                     {
+                        // ERROR DE LOG -  CARGA DE v_value1 como NULL  //COMP.FIELD-3120
                         var cb = (ComboBox)ctrl;
                         cb.SelectedValue = Value1;
                     }

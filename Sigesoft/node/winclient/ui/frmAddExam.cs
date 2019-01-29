@@ -315,6 +315,11 @@ namespace Sigesoft.Node.WinClient.UI
                             objServiceComponentDto.d_SaldoAseguradora = decimal.Parse(objServiceComponentDto.r_Price.ToString()) - objServiceComponentDto.d_SaldoPaciente;
                         }
                     }
+                    else
+                    {
+                        objServiceComponentDto.d_SaldoPaciente = 0;
+                        objServiceComponentDto.d_SaldoAseguradora = 0;
+                    }
 
                     //_calendarBL.UpdateAdditionalExam(_auxiliaryExams, _serviceId, (int?)SiNo.SI, Globals.ClientSession.GetAsList());
                     _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());
