@@ -5593,6 +5593,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     List<string> PersonIds = new List<string>();
 
                     var objEntity = from A in dbContext.service
+                                        join A1 in dbContext.calendar on A.v_ServiceId equals A1.v_ServiceId
 
                                         join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
                                         from B in B_join.DefaultIfEmpty()
@@ -5650,8 +5651,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                         join CC in dbContext.organization on B.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
                                         from CC in CC_join.DefaultIfEmpty()
 
-                                        
-                                        where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
+
+                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin && A1.i_CalendarStatusId != 4
+
                                         select new MatrizShauindo
                                         {
                                             ServiceId = A.v_ServiceId,
