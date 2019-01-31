@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Sigesoft.Common
 {
-    class ConexionSigesoft
+    public class ConexionSigesoft
     {
         string cadena = @"Data Source = 192.168.1.179; Initial Catalog=SigesoftDesarrollo_2; Integrated Security=True";
         public SqlConnection conectarsigesoft = new SqlConnection();

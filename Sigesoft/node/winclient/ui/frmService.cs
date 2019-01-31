@@ -391,7 +391,7 @@ namespace Sigesoft.Node.WinClient.UI
                //Obtener Estado del servicio
                var estadoAptitud = int.Parse(grdDataService.Selected.Rows[0].Cells["i_AptitudeStatusId"].Value.ToString());
 
-               if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud != (int)AptitudeStatus.AptoObs)
+               if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud == (int)AptitudeStatus.AptoObs)
                {
                    //Obtener el usuario
                    int UserId= Globals.ClientSession.i_SystemUserId ;
