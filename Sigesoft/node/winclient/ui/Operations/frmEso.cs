@@ -28,6 +28,7 @@ using System.Web.Script.Serialization;
 using System.IO;
 using CrystalDecisions.Shared;
 using System.Transactions;
+using System.Data.SqlClient;
 
 namespace Sigesoft.Node.WinClient.UI.Operations
 {
@@ -3836,126 +3837,361 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     isReadOnly = false;
                     btnGuardarExamen.Enabled = true;
                 }
-                else
+                else if (componentProfile.i_Read == (int)SiNo.SI && componentProfile.i_Write == (int)SiNo.NO)
                 {
-                    isReadOnly = true;
-                    btnGuardarExamen.Enabled = false;
-                }
-
-                if (componentProfile.i_Write == (int)SiNo.SI)
-                {
-                    isWriteOnly = true;
+                    //isReadOnly = true;
                     btnGuardarExamen.Enabled = true;
                 }
+
+                //if (componentProfile.i_Write == (int)SiNo.SI)
+                //{
+                //    isWriteOnly = true;
+                //    btnGuardarExamen.Enabled = true;
+                //}
                 else
                 {
-                    isWriteOnly = false;
-                    btnGuardarExamen.Enabled = false;
+                    //isWriteOnly = false;
+                    //btnGuardarExamen.Enabled = false;
                 }
 
                 #region Establecer permisos Lectura / escritura a cada campo de un examen componente
 
-                foreach (ComponentFieldsList cf in componentFields)
-                {
-                    var ctrl__ = tcExamList.SelectedTab.TabPage.Controls.Find(cf.v_ComponentFieldId, true);
+                int usuario = Globals.ClientSession.i_SystemUserId;
+                #region Conexion Sigesoft
+                Sigesoft.Common.ConexionSigesoft conectaSigesoft = new ConexionSigesoft();
+                conectaSigesoft.opensigesoft();
+                #endregion
 
-                    if (ctrl__.Length != 0)
+                #region Query
+
+                var cadena = "select CF.v_ComponentFieldId " +
+                             "from systemuserrolenode SUR " +
+                             "Inner Join rolenodecomponentprofile RNCP " +
+                             "On SUR.i_RoleId = RNCP.i_RoleId " +
+                             "Inner Join componentfields CF " +
+                             "On RNCP.v_ComponentId=CF.v_ComponentId " +
+                             "where SUR.i_SystemUserId=" + usuario + " and SUR.i_IsDeleted=0 and RNCP.i_Write=0";
+                #endregion
+               
+               
+               
+                
+
+                    foreach (ComponentFieldsList cf in componentFields)
                     {
-                        #region Setear valor
-
-                        switch ((ControlType)cf.i_ControlId)
-                        {
-                            case ControlType.CadenaTextual:
-                                TextBox txtt = (TextBox)ctrl__[0];
-                                txtt.CreateControl();
-                                txtt.ReadOnly = isReadOnly;
-                                if (_action == "View")
-                                {
-                                    txtt.ReadOnly = false;
-                                }
-                                break;
-                            case ControlType.CadenaMultilinea:
-                                TextBox txtm = (TextBox)ctrl__[0];
-                                txtm.CreateControl();
-                                txtm.ReadOnly = isReadOnly;
-                                if (_action == "View")
-                                {
-                                    txtm.ReadOnly = false;
-                                }
-                                break;
-                            case ControlType.NumeroEntero:
-                                UltraNumericEditor uni = (UltraNumericEditor)ctrl__[0];
-                                uni.CreateControl();
-                                uni.ReadOnly = isReadOnly;
-                                if (_action == "View")
-                                {
-                                    uni.ReadOnly = true;
-                                }
-                                break;
-                            case ControlType.NumeroDecimal:
-                                UltraNumericEditor und = (UltraNumericEditor)ctrl__[0];
-                                und.CreateControl();
-                                und.ReadOnly = isReadOnly;
-                                if (_action == "View")
-                                {
-                                    und.ReadOnly = false;
-                                }
-                                break;
-                            case ControlType.SiNoCheck:
-                                CheckBox chkSiNo = (CheckBox)ctrl__[0];
-                                chkSiNo.CreateControl();
-                                chkSiNo.Enabled = isWriteOnly;
-                                if (_action == "View")
-                                {
-                                    chkSiNo.Enabled = true;
-                                }
-                                break;
-                            case ControlType.SiNoRadioButton:
-                                RadioButton rbSiNo = (RadioButton)ctrl__[0];
-                                rbSiNo.CreateControl();
-                                rbSiNo.Enabled = isWriteOnly;
-                                if (_action == "View")
-                                {
-                                    rbSiNo.Enabled = true;
-                                }
-                                break;
-                            case ControlType.Radiobutton:
-                                RadioButton rb = (RadioButton)ctrl__[0];
-                                rb.CreateControl();
-                                rb.Enabled = isWriteOnly;
-                                if (_action == "View")
-                                {
-                                    rb.Enabled = true;
-                                }
-                                break;
-                            case ControlType.SiNoCombo:
-                                ComboBox cbSiNo = (ComboBox)ctrl__[0];
-                                cbSiNo.CreateControl();
-                                cbSiNo.Enabled = isWriteOnly;
-                                if (_action == "View")
-                                {
-                                    cbSiNo.Enabled = true;
-                                }
-                                break;
-                            case ControlType.UcFileUpload:
-                                break;
-                            case ControlType.Lista:
-                                ComboBox cbList = (ComboBox)ctrl__[0];
-                                cbList.CreateControl();
-                                cbList.Enabled = isWriteOnly;
-                                if (_action == "View")
-                                {
-                                    cbList.Enabled = true;
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-
+                        var ctrl__ = tcExamList.SelectedTab.TabPage.Controls.Find(cf.v_ComponentFieldId, true);
+                        #region Lector Open
+                        SqlCommand comando = new SqlCommand(cadena, connection: conectaSigesoft.conectarsigesoft);
+                        SqlDataReader lector = comando.ExecuteReader();
                         #endregion
-                    }
-                }
+                        //lector.Read();
+                        
+                            if (ctrl__.Length != 0)
+                            {
+                                #region Setear valor
+                                bool result = false;
+                                switch ((ControlType)cf.i_ControlId)
+                                {
+                                    case ControlType.CadenaTextual:
+                                        TextBox txtt = (TextBox)ctrl__[0];
+                                        txtt.CreateControl();
+                                        txtt.ReadOnly = isReadOnly;
+                                        if (_action == "View")
+                                        {
+                                            txtt.ReadOnly = true;
+                                        }
+                                        else
+                                        {
+                                            txtt.ReadOnly = false;  
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                txtt.ReadOnly = true;
+                                                result = true;
+                                            }
 
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        
+                                        break;
+                                    case ControlType.CadenaMultilinea:
+                                        TextBox txtm = (TextBox)ctrl__[0];
+                                        txtm.CreateControl();
+                                        txtm.ReadOnly = isReadOnly;
+                                        if (_action == "View")
+                                        {
+                                            txtm.ReadOnly = true;
+                                        }
+                                        else
+                                        {
+                                            txtm.ReadOnly = false;
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                txtm.ReadOnly = true;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.NumeroEntero:
+                                        UltraNumericEditor uni = (UltraNumericEditor)ctrl__[0];
+                                        uni.CreateControl();
+                                        uni.ReadOnly = isReadOnly;
+                                        if (_action == "View")
+                                        {
+                                            uni.ReadOnly = true;
+                                        }
+                                        else
+                                        {
+                                            uni.ReadOnly = false;   
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                uni.ReadOnly = true;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.NumeroDecimal:
+                                        UltraNumericEditor und = (UltraNumericEditor)ctrl__[0];
+                                        und.CreateControl();
+                                        und.ReadOnly = isReadOnly;
+                                        if (_action == "View")
+                                        {
+                                            und.ReadOnly = true;
+                                        }
+                                        else
+                                        {
+                                            und.ReadOnly = false;  
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                und.ReadOnly = true;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.SiNoCheck:
+                                        CheckBox chkSiNo = (CheckBox)ctrl__[0];
+                                        chkSiNo.CreateControl();
+                                        chkSiNo.Enabled = isWriteOnly;
+                                        if (_action == "View")
+                                        {
+                                            chkSiNo.Enabled = false;
+                                        }
+                                        else
+                                        {
+                                            chkSiNo.Enabled = true;  
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                if (cf.v_ComponentFieldId == "N009-MF000000111" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000000226" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000002128" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000002129" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000002130" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000004300" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000004301" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000004302" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000004303" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000004304" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000004305" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000004306")
+                                                {
+                                                    chkSiNo.Enabled = true; 
+                                                }
+                                                else
+                                                {
+                                                    chkSiNo.Enabled = false;
+                                                }
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.SiNoRadioButton:
+                                        RadioButton rbSiNo = (RadioButton)ctrl__[0];
+                                        rbSiNo.CreateControl();
+                                        rbSiNo.Enabled = isWriteOnly;
+                                        if (_action == "View")
+                                        {
+                                            rbSiNo.Enabled = false;
+                                        }
+                                        else
+                                        {
+                                            rbSiNo.Enabled = true;
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                rbSiNo.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.Radiobutton:
+                                        RadioButton rb = (RadioButton)ctrl__[0];
+                                        rb.CreateControl();
+                                        rb.Enabled = isWriteOnly;
+                                        if (_action == "View")
+                                        {
+                                            rb.Enabled = false;
+                                        }
+                                        else
+                                        {
+                                            rb.Enabled = true;  
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                if (cf.v_ComponentFieldId == "N009-MF000003210" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000003211")
+                                                {
+                                                    rb.Enabled = true;
+                                                }
+                                                else
+                                                {
+                                                    rb.Enabled = false;
+                                                }
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.SiNoCombo:
+                                        ComboBox cbSiNo = (ComboBox)ctrl__[0];
+                                        cbSiNo.CreateControl();
+                                        cbSiNo.Enabled = isWriteOnly;
+                                        if (_action == "View")
+                                        {
+                                            cbSiNo.Enabled = false;
+                                        }
+                                        else
+                                        {
+                                            cbSiNo.Enabled = true;  
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                cbSiNo.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.UcAudiometria:
+                                        UserControl ucAudio = (UserControl)ctrl__[0];
+                                        ucAudio.CreateControl();
+                                        ucAudio.Enabled = isReadOnly;
+                                        if (_action == "View")
+                                        {
+                                            ucAudio.Enabled = false;
+                                        }
+                                        else
+                                        {
+                                            ucAudio.Enabled = true;  
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            string r = lector.GetValue(0).ToString();
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                ucAudio.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case ControlType.Lista:
+                                        ComboBox cbList = (ComboBox)ctrl__[0];
+                                        cbList.CreateControl();
+                                        cbList.Enabled = isWriteOnly;
+                                        if (_action == "View")
+                                        {
+                                            cbList.Enabled = false;
+                                        }
+                                        else
+                                        {
+                                            cbList.Enabled = true;  
+                                        }
+                                        
+                                        while (lector.Read())
+                                        {
+                                            if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                            {
+                                                cbList.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                #endregion
+                            }
+
+                            lector.Close();    
+                    }
+                    
+                
                 #endregion
 
                 #region Es Diagnosticable
@@ -3999,11 +4235,30 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else
             {
                 #region Establecer permisos Lectura / escritura a cada campo de un examen componente
+                int usuario = Globals.ClientSession.i_SystemUserId;
+                #region Conexion Sigesoft
+                Sigesoft.Common.ConexionSigesoft conectaSigesoft = new ConexionSigesoft();
+                conectaSigesoft.opensigesoft();
+                #endregion
 
+                #region Query
+
+                var cadena = "select CF.v_ComponentFieldId " +
+                             "from systemuserrolenode SUR " +
+                             "Inner Join rolenodecomponentprofile RNCP " +
+                             "On SUR.i_RoleId = RNCP.i_RoleId " +
+                             "Inner Join componentfields CF " +
+                             "On RNCP.v_ComponentId=CF.v_ComponentId " +
+                             "where SUR.i_SystemUserId=" + usuario + " and SUR.i_IsDeleted=0 and RNCP.i_Write=0";
+                #endregion
                 foreach (ComponentFieldsList cf in componentFields)
                 {
                     var ctrl__ = tcExamList.SelectedTab.TabPage.Controls.Find(cf.v_ComponentFieldId, true);
-
+                    #region Lector Open
+                    SqlCommand comando1 = new SqlCommand(cadena, connection: conectaSigesoft.conectarsigesoft);
+                    SqlDataReader lector1 = comando1.ExecuteReader();
+                    #endregion
+                    lector1.Read();
                     if (ctrl__.Length != 0)
                     {
                         #region Setear valor
@@ -4018,6 +4273,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 {
                                     txtt.ReadOnly = true;
                                 }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        txtt.ReadOnly = true;
+                                    }
+                                }
                                 break;
                             case ControlType.CadenaMultilinea:
                                 TextBox txtm = (TextBox)ctrl__[0];
@@ -4026,6 +4288,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 if (_action == "View")
                                 {
                                     txtm.ReadOnly = true;
+                                }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        txtm.ReadOnly = true;
+                                    }
                                 }
                                 break;
                             case ControlType.NumeroEntero:
@@ -4036,6 +4305,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 {
                                     uni.ReadOnly = true;
                                 }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        uni.ReadOnly = true;
+                                    }
+                                }
                                 break;
                             case ControlType.NumeroDecimal:
                                 UltraNumericEditor und = (UltraNumericEditor)ctrl__[0];
@@ -4044,6 +4320,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 if (_action == "View")
                                 {
                                     und.ReadOnly = true;
+                                }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        und.ReadOnly = true;
+                                    }
                                 }
                                 break;
                             case ControlType.SiNoCheck:
@@ -4063,6 +4346,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 {
                                     rbSiNo.Enabled = false;
                                 }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        rbSiNo.Enabled = false;
+                                    }
+                                }
                                 break;
                             case ControlType.Radiobutton:
                                 RadioButton rb = (RadioButton)ctrl__[0];
@@ -4072,6 +4362,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 {
                                     rb.Enabled = false;
                                 }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        rb.Enabled = false;
+                                    }
+                                }
                                 break;
                             case ControlType.SiNoCombo:
                                 ComboBox cbSiNo = (ComboBox)ctrl__[0];
@@ -4080,6 +4377,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 if (_action == "View")
                                 {
                                     cbSiNo.Enabled = false;
+                                }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        cbSiNo.Enabled = false;
+                                    }
                                 }
                                 break;
                             case ControlType.UcFileUpload:
@@ -4092,6 +4396,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 {
                                     cbList.Enabled = false;
                                 }
+                                while (lector1.Read())
+                                {
+                                    if (lector1.GetValue(0).ToString() == cf.v_ComponentFieldId)
+                                    {
+                                        cbList.Enabled = false;
+                                    }
+                                }
                                 break;
                             default:
                                 break;
@@ -4099,8 +4410,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                         #endregion
                     }
+                    lector1.Close(); 
                 }
-
+                 
                 #endregion
 
                 // toda la sección esta desactivada, pero los diagnósticos automáticos deben seguir funcionando y reportándose.
