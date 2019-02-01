@@ -9,7 +9,7 @@ namespace Sigesoft.Common
 {
     public class ConexionSigesoft
     {
-        string cadena = @"Data Source = 192.168.1.179; Initial Catalog=SigesoftDesarrollo_2; Integrated Security=True";
+        string cadena = @"Data Source = 192.168.1.179; Initial Catalog=SigesoftDesarrollo_2; User Id=sa; Password=123456";
         public SqlConnection conectarsigesoft = new SqlConnection();
         public ConexionSigesoft()
         {
@@ -24,7 +24,7 @@ namespace Sigesoft.Common
             catch (Exception ex)
             {
 
-                MessageBox.Show("Error al abrir la BD Sigesoft" + ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(@"Error al abrir la BD Sigesoft" + ex.Message, @"Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         public void closesigesoft()

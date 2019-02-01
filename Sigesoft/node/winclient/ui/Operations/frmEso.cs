@@ -3889,7 +3889,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             if (ctrl__.Length != 0)
                             {
                                 #region Setear valor
-
+                                bool result = false;
                                 switch ((ControlType)cf.i_ControlId)
                                 {
                                     case ControlType.CadenaTextual:
@@ -3904,11 +3904,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             txtt.ReadOnly = false;  
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 txtt.ReadOnly = true;
+                                                result = true;
+                                            }
+
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         
@@ -3925,11 +3932,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             txtm.ReadOnly = false;
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 txtm.ReadOnly = true;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -3945,11 +3958,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             uni.ReadOnly = false;   
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 uni.ReadOnly = true;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -3965,11 +3984,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             und.ReadOnly = false;  
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 und.ReadOnly = true;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -3985,6 +4010,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             chkSiNo.Enabled = true;  
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
@@ -4008,6 +4034,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                                 {
                                                     chkSiNo.Enabled = false;
                                                 }
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -4023,11 +4054,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             rbSiNo.Enabled = true;
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 rbSiNo.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -4043,11 +4080,25 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             rb.Enabled = true;  
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
-                                                rb.Enabled = false;
+                                                if (cf.v_ComponentFieldId == "N009-MF000003210" ||
+                                                    cf.v_ComponentFieldId == "N009-MF000003211")
+                                                {
+                                                    rb.Enabled = true;
+                                                }
+                                                else
+                                                {
+                                                    rb.Enabled = false;
+                                                }
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -4063,11 +4114,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             cbSiNo.Enabled = true;  
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 cbSiNo.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -4083,12 +4140,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             ucAudio.Enabled = true;  
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             string r = lector.GetValue(0).ToString();
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 ucAudio.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
@@ -4104,11 +4167,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         {
                                             cbList.Enabled = true;  
                                         }
+                                        
                                         while (lector.Read())
                                         {
                                             if (lector.GetValue(0).ToString() == cf.v_ComponentFieldId)
                                             {
                                                 cbList.Enabled = false;
+                                                result = true;
+                                            }
+                                            if (result == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         break;
