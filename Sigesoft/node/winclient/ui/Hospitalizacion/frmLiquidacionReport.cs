@@ -119,7 +119,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                         }
 
-                        int tSpan = fin.Day - inicio.Day;
+                        TimeSpan nDias = fin - inicio;
+
+                        int tSpan = nDias.Days;
 
                         int dias = 0;
                         if (tSpan == 0)

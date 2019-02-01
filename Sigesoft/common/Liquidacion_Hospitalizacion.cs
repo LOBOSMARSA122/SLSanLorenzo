@@ -368,8 +368,10 @@ namespace NetPdf
                             fin = DateTime.Now;
                             
                         }
-                        
-                        int tSpan = fin.Day - inicio.Day;
+
+                        TimeSpan nDias = fin - inicio;
+
+                        int tSpan = nDias.Days;
 
                         //+ 1
                         int dias = 0;
