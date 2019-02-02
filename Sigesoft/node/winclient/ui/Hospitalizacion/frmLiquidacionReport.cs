@@ -123,15 +123,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                         int tSpan = nDias.Days;
 
-                        int dias = 0;
-                        if (tSpan == 0)
-                        {
-                            dias = tSpan + 1;
-                        }
-                        else
-                        {
-                            dias = tSpan;
-                        }
+                        int dias = tSpan + 1;
+                        //if (tSpan == 0)
+                        //{
+                        //    dias = tSpan + 1;
+                        //}
+                        //else
+                        //{
+                        //    dias = tSpan;
+                        //}
 
                         decimal _habitacionPrecio = (decimal)habitacion.d_Precio;
                         _habitacionPrecio = decimal.Round(_habitacionPrecio, 2);
@@ -246,18 +246,19 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                             fin = DateTime.Now;
 
                         }
+                        TimeSpan nDias = fin - inicio;
 
-                        int tSpan = fin.Day - inicio.Day;
+                        int tSpan = nDias.Days;
 
-                        int dias = 0;
-                        if (tSpan == 0)
-                        {
-                            dias = tSpan + 1;
-                        }
-                        else
-                        {
-                            dias = tSpan;
-                        }
+                        int dias = tSpan + 1;
+                        //if (tSpan == 0)
+                        //{
+                        //    dias = tSpan + 1;
+                        //}
+                        //else
+                        //{
+                        //    dias = tSpan;
+                        //}
 
                         decimal _habitacionPrecio = (decimal)habitacion.d_Precio;
                         _habitacionPrecio = decimal.Round(_habitacionPrecio, 2);
