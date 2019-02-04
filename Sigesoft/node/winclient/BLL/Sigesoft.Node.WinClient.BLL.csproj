@@ -87,6 +87,8 @@
     <Compile Include="Natclar.cs" />
     <Compile Include="NodeBL.cs" />
     <Compile Include="OccupationBL.cs" />
+    <Compile Include="OperationsNatclarBe.cs" />
+    <Compile Include="OperationsNatclarBl.cs" />
     <Compile Include="OrganizationBL.cs" />
     <Compile Include="PacientBL.cs" />
     <Compile Include="PagoEspecialistaOcupacionalBl.cs" />
@@ -126,6 +128,9 @@
       <Project>{0b732067-fec9-4da2-afd9-6da773094e3e}</Project>
       <Name>Sigesoft.Node.WinClient.DAL.MSSQL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
