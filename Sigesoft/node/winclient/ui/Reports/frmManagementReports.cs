@@ -1567,6 +1567,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Altura_Fisica_F_Yanacocha.CreateAltura_Fisica_F_Yanacocha(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
+        private void GenerateOsteMuscular_Mibanco(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+
+            AccidentesTrabajo_F1.CreateAccidentesTrabajoF1(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+        }
         private void GenerateAccidentesTrabajoF1(string pathFile)
         {
             var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
