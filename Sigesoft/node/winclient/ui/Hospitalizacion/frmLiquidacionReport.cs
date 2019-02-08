@@ -106,16 +106,16 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     
                     foreach (var habitacion in ListaHabitaciones)
                     {
-                        DateTime inicio = habitacion.d_StartDate.Value;
+                        DateTime inicio = habitacion.d_StartDate.Value.Date;
                         DateTime fin;
 
                         if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString() == "00/00/0000 0:0:0")
                         {
-                            fin = habitacion.d_EndDate.Value;
+                            fin = habitacion.d_EndDate.Value.Date;
                         }
                         else
                         {
-                            fin = DateTime.Now;
+                            fin = DateTime.Now.Date;
 
                         }
 
@@ -123,15 +123,16 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                         int tSpan = nDias.Days;
 
-                        int dias = tSpan + 1;
-                        //if (tSpan == 0)
-                        //{
-                        //    dias = tSpan + 1;
-                        //}
-                        //else
-                        //{
-                        //    dias = tSpan;
-                        //}
+                        //+ 1
+                        int dias = 0;
+                        if (tSpan == 0)
+                        {
+                            dias = tSpan + 1;
+                        }
+                        else
+                        {
+                            dias = tSpan;
+                        }
 
                         decimal _habitacionPrecio = (decimal)habitacion.d_Precio;
                         _habitacionPrecio = decimal.Round(_habitacionPrecio, 2);
@@ -234,31 +235,32 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                     foreach (var habitacion in ListaHabitaciones)
                     {
-                        DateTime inicio = habitacion.d_StartDate.Value;
+                        DateTime inicio = habitacion.d_StartDate.Value.Date;
                         DateTime fin;
 
                         if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString() == "00/00/0000 0:0:0")
                         {
-                            fin = habitacion.d_EndDate.Value;
+                            fin = habitacion.d_EndDate.Value.Date;
                         }
                         else
                         {
-                            fin = DateTime.Now;
+                            fin = DateTime.Now.Date;
 
                         }
                         TimeSpan nDias = fin - inicio;
 
                         int tSpan = nDias.Days;
 
-                        int dias = tSpan + 1;
-                        //if (tSpan == 0)
-                        //{
-                        //    dias = tSpan + 1;
-                        //}
-                        //else
-                        //{
-                        //    dias = tSpan;
-                        //}
+                        //+ 1
+                        int dias = 0;
+                        if (tSpan == 0)
+                        {
+                            dias = tSpan + 1;
+                        }
+                        else
+                        {
+                            dias = tSpan;
+                        }
 
                         decimal _habitacionPrecio = (decimal)habitacion.d_Precio;
                         _habitacionPrecio = decimal.Round(_habitacionPrecio, 2);

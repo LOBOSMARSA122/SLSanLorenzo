@@ -807,7 +807,7 @@ namespace Sigesoft.Common
         public const string OSTEO_MB_CV_EX_F_PALPACION_DORSAL = "N009-MF000004918";
         public const string OSTEO_MB_CV_EX_F_PALPACION_LUMBAR = "N009-MF000004919";
 
-        public const string OSTEO_MB_COMENTARIOS_OBSERVACIONES = "N009-MF000004919";
+        public const string OSTEO_MB_COMENTARIOS_OBSERVACIONES = "N009-MF000004920";
 
         #endregion
 

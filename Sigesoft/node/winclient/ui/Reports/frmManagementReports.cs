@@ -1576,8 +1576,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            AccidentesTrabajo_F1.CreateAccidentesTrabajoF1(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            Osteomuscular_MiBanco.CreateOsteoMuscularMibanco(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
         }
         private void GenerateAccidentesTrabajoF1(string pathFile)
         {
@@ -5539,6 +5540,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.T_A_1_8_ID:
                     GenerateAltura_Fisica_F_Yanacocha(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.T_A_1_8_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.OSTEO_MB_ID:
+                    GenerateOsteMuscular_Mibanco(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.OSTEO_MB_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.ACCIDENTES_DE_TRABAJO_F1:
