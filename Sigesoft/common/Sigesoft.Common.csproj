@@ -80,6 +80,7 @@
     <Compile Include="AccidentesTrabajo_F1.cs" />
     <Compile Include="AccidentesTrabajo_F2.cs" />
     <Compile Include="AgendaDetallada.cs" />
+    <Compile Include="Altura_Fisica_F_Yanacocha.cs" />
     <Compile Include="Altura_Fisica_Shahuindo.cs" />
     <Compile Include="Anexo16A.cs" />
     <Compile Include="Anexo3_Exo_Resp_Yanacocha.cs" />
@@ -95,9 +96,12 @@
     <Compile Include="Certificado_Suficiencia_Medica_Brigadistas.cs" />
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
     <Compile Include="Certificado_Suficiencia_Medica_Trabajo_Altura_V4.cs" />
+    <Compile Include="ConexionSigesoft.cs" />
     <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="Coprocultivo_PSeriado.cs" />
+    <Compile Include="Osteomuscular_MiBanco.cs" />
+    <Compile Include="Pago_Especialsta_Report.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomDtos\FileInfoDto.cs" />

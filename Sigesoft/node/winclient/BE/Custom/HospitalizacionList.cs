@@ -27,6 +27,8 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_PacientePago { get; set; }
         public string PacientePago { get; set; }
 
+        public string v_MedicoTratante { get; set; }
+
 
         public List<HospitalizacionServiceList> Servicios{ get; set; }
         public List<HospitalizacionHabitacionList> Habitaciones { get; set; }

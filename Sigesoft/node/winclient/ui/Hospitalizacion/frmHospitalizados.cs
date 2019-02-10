@@ -87,6 +87,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var objData = GetData(0, null, "v_HopitalizacionId ASC", strFilterExpression);
             grdData.DataSource = objData;
             lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+            if (objData.Count() >= 1)
+            {
+                btnExport.Enabled = true;
+            }
+            else
+            {
+                btnExport.Enabled = false;
+            }
 
             this.grdData.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
 
@@ -278,6 +286,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
+            //saveFileDialog1.FileName = string.Empty;
+            //saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
+            //    MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}      
         }
 
         private void btnAgregarExamenes_Click(object sender, EventArgs e)
@@ -306,7 +323,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void frmHospitalizados_Load(object sender, EventArgs e)
         {
-
+            btnExport.Enabled = false;
         }
 
         private void btnDarAlta_Click(object sender, EventArgs e)

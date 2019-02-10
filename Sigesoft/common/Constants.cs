@@ -552,6 +552,312 @@ namespace Sigesoft.Common
 
         #endregion
 
+        #region EVALUACION OSTEOMUSCULAR - MI BANCO
+        public const string OSTEO_MB_ID = "N009-ME000000531";
+
+        public const string OSTEO_MB_TRABAJO_AREA = "N009-MF000004672";
+        public const string OSTEO_MB_TRABAJO_MANIPULACCION = "N009-MF000004673";
+        public const string OSTEO_MB_TRABAJO_POSTURA_SENTADO = "N009-MF000004674";
+        public const string OSTEO_MB_TRABAJO_POSTURA_PIE = "N009-MF000004675";
+        public const string OSTEO_MB_TRABAJO_MOVIMIENTO_CABEZA = "N009-MF000004676";
+        public const string OSTEO_MB_TRABAJO_MOVIMIENTO_TRONCO = "N009-MF000004677";
+        public const string OSTEO_MB_TRABAJO_MOVIMIENTO_MMSS = "N009-MF000004678";
+        public const string OSTEO_MB_TRABAJO_MOVIMIENTO_MMII = "N009-MF000004679";
+        public const string OSTEO_MB_TRABAJO_PERIODO = "N009-MF000004680";
+
+        public const string OSTEO_MB_CUESTIONARIO_P1_1 = "N009-MF000004682";
+        public const string OSTEO_MB_CUESTIONARIO_P1_2 = "N009-MF000004684";
+        public const string OSTEO_MB_CUESTIONARIO_P1_3 = "N009-MF000004685";
+        public const string OSTEO_MB_CUESTIONARIO_P1_4 = "N009-MF000004686";
+        public const string OSTEO_MB_CUESTIONARIO_P1_5 = "N009-MF000004687";
+        public const string OSTEO_MB_CUESTIONARIO_P1_6 = "N009-MF000004688";
+        public const string OSTEO_MB_CUESTIONARIO_P1_7 = "N009-MF000004689";
+        public const string OSTEO_MB_CUESTIONARIO_P1_8 = "N009-MF000004690";
+        public const string OSTEO_MB_CUESTIONARIO_P1_9 = "N009-MF000004691";
+        public const string OSTEO_MB_CUESTIONARIO_P1_10 = "N009-MF000004692";
+        public const string OSTEO_MB_CUESTIONARIO_P1_11 = "N009-MF000004693";
+        public const string OSTEO_MB_CUESTIONARIO_P1_12 = "N009-MF000004694";
+        public const string OSTEO_MB_CUESTIONARIO_P1_13 = "N009-MF000004695";
+        public const string OSTEO_MB_CUESTIONARIO_P1_14 = "N009-MF000004696";
+        public const string OSTEO_MB_CUESTIONARIO_P1_15 = "N009-MF000004697";
+
+        public const string OSTEO_MB_CUESTIONARIO_P2_1 = "N009-MF000004698";
+        public const string OSTEO_MB_CUESTIONARIO_P2_2 = "N009-MF000004700";
+        public const string OSTEO_MB_CUESTIONARIO_P2_3 = "N009-MF000004701";
+        public const string OSTEO_MB_CUESTIONARIO_P2_4 = "N009-MF000004702";
+        public const string OSTEO_MB_CUESTIONARIO_P2_5 = "N009-MF000004703";
+        public const string OSTEO_MB_CUESTIONARIO_P2_6 = "N009-MF000004704";
+        public const string OSTEO_MB_CUESTIONARIO_P2_7 = "N009-MF000004705";
+        public const string OSTEO_MB_CUESTIONARIO_P2_8 = "N009-MF000004706";
+        public const string OSTEO_MB_CUESTIONARIO_P2_9 = "N009-MF000004707";
+        public const string OSTEO_MB_CUESTIONARIO_P2_10 = "N009-MF000004708";
+        public const string OSTEO_MB_CUESTIONARIO_P2_11 = "N009-MF000004709";
+        public const string OSTEO_MB_CUESTIONARIO_P2_12 = "N009-MF000004710";
+        public const string OSTEO_MB_CUESTIONARIO_P2_13 = "N009-MF000004711";
+        public const string OSTEO_MB_CUESTIONARIO_P2_14 = "N009-MF000004712";
+        public const string OSTEO_MB_CUESTIONARIO_P2_15 = "N009-MF000004713";
+
+        public const string OSTEO_MB_CUESTIONARIO_P3_1 = "N009-MF000004714";
+        public const string OSTEO_MB_CUESTIONARIO_P3_2 = "N009-MF000004716";
+        public const string OSTEO_MB_CUESTIONARIO_P3_3 = "N009-MF000004717";
+        public const string OSTEO_MB_CUESTIONARIO_P3_4 = "N009-MF000004718";
+        public const string OSTEO_MB_CUESTIONARIO_P3_5 = "N009-MF000004719";
+        public const string OSTEO_MB_CUESTIONARIO_P3_6 = "N009-MF000004720";
+        public const string OSTEO_MB_CUESTIONARIO_P3_7 = "N009-MF000004721";
+        public const string OSTEO_MB_CUESTIONARIO_P3_8 = "N009-MF000004722";
+        public const string OSTEO_MB_CUESTIONARIO_P3_9 = "N009-MF000004723";
+        public const string OSTEO_MB_CUESTIONARIO_P3_10 = "N009-MF000004724";
+        public const string OSTEO_MB_CUESTIONARIO_P3_11 = "N009-MF000004725";
+        public const string OSTEO_MB_CUESTIONARIO_P3_12 = "N009-MF000004726";
+        public const string OSTEO_MB_CUESTIONARIO_P3_13 = "N009-MF000004727";
+        public const string OSTEO_MB_CUESTIONARIO_P3_14 = "N009-MF000004728";
+        public const string OSTEO_MB_CUESTIONARIO_P3_15 = "N009-MF000004729";
+
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_1 = "N009-MF000004740";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_2 = "N009-MF000004741";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_3 = "N009-MF000004742";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_4 = "N009-MF000004743";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_5 = "N009-MF000004744";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_6 = "N009-MF000004745";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_7 = "N009-MF000004746";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_8 = "N009-MF000004747";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_D_9 = "N009-MF000004748";
+
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_1 = "N009-MF000004749";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_2 = "N009-MF000004750";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_3 = "N009-MF000004751";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_4 = "N009-MF000004752";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_5 = "N009-MF000004753";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_6 = "N009-MF000004754";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_7 = "N009-MF000004755";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_8 = "N009-MF000004756";
+        public const string OSTEO_MB_ARTICULACIONES_HOMBRO_I_9 = "N009-MF000004757";
+
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_1 = "N009-MF000004758";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_2 = "N009-MF000004759";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_3 = "N009-MF000004760";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_4 = "N009-MF000004761";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_5 = "N009-MF000004762";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_6 = "N009-MF000004763";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_7 = "N009-MF000004764";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_8 = "N009-MF000004765";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_D_9 = "N009-MF000004766";
+
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_1 = "N009-MF000004767";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_2 = "N009-MF000004768";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_3 = "N009-MF000004769";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_4 = "N009-MF000004770";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_5 = "N009-MF000004771";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_6 = "N009-MF000004772";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_7 = "N009-MF000004773";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_8 = "N009-MF000004774";
+        public const string OSTEO_MB_ARTICULACIONES_CODO_I_9 = "N009-MF000004775";
+
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_1 = "N009-MF000004776";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_2 = "N009-MF000004777";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_3 = "N009-MF000004778";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_4 = "N009-MF000004779";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_5 = "N009-MF000004780";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_6 = "N009-MF000004781";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_7 = "N009-MF000004782";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_8 = "N009-MF000004783";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_D_9 = "N009-MF000004784";
+
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_1 = "N009-MF000004785";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_2 = "N009-MF000004786";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_3 = "N009-MF000004787";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_4 = "N009-MF000004788";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_5 = "N009-MF000004789";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_6 = "N009-MF000004790";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_7 = "N009-MF000004791";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_8 = "N009-MF000004792";
+        public const string OSTEO_MB_ARTICULACIONES_MUÑECA_I_9 = "N009-MF000004793";
+        
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_1 = "N009-MF000004794";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_2 = "N009-MF000004795";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_3 = "N009-MF000004796";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_4 = "N009-MF000004797";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_5 = "N009-MF000004798";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_6 = "N009-MF000004799";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_7 = "N009-MF000004800";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_8 = "N009-MF000004801";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_D_9 = "N009-MF000004802";
+
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_1 = "N009-MF000004803";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_2 = "N009-MF000004804";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_3 = "N009-MF000004805";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_4 = "N009-MF000004806";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_5 = "N009-MF000004807";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_6 = "N009-MF000004808";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_7 = "N009-MF000004809";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_8 = "N009-MF000004810";
+        public const string OSTEO_MB_ARTICULACIONES_MANO_DEDOS_I_9 = "N009-MF000004811";
+
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_1 = "N009-MF000004812";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_2 = "N009-MF000004813";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_3 = "N009-MF000004814";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_4 = "N009-MF000004815";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_5 = "N009-MF000004816";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_6 = "N009-MF000004817";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_7 = "N009-MF000004818";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_8 = "N009-MF000004819";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_D_9 = "N009-MF000004820";
+
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_1 = "N009-MF000004821";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_2 = "N009-MF000004822";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_3 = "N009-MF000004823";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_4 = "N009-MF000004824";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_5 = "N009-MF000004825";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_6 = "N009-MF000004826";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_7 = "N009-MF000004827";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_8 = "N009-MF000004828";
+        public const string OSTEO_MB_ARTICULACIONES_CADERA_I_9 = "N009-MF000004829";
+
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_1 = "N009-MF000004830";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_2 = "N009-MF000004831";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_3 = "N009-MF000004832";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_4 = "N009-MF000004833";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_5 = "N009-MF000004834";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_6 = "N009-MF000004835";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_7 = "N009-MF000004836";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_8 = "N009-MF000004837";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_D_9 = "N009-MF000004838";
+
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_1 = "N009-MF000004839";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_2 = "N009-MF000004840";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_3 = "N009-MF000004841";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_4 = "N009-MF000004842";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_5 = "N009-MF000004843";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_6 = "N009-MF000004844";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_7 = "N009-MF000004845";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_8 = "N009-MF000004846";
+        public const string OSTEO_MB_ARTICULACIONES_RODILLA_I_9 = "N009-MF000004847";
+
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_1 = "N009-MF000004848";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_2 = "N009-MF000004849";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_3 = "N009-MF000004850";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_4 = "N009-MF000004851";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_5 = "N009-MF000004852";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_6 = "N009-MF000004853";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_7 = "N009-MF000004854";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_8 = "N009-MF000004855";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_D_9 = "N009-MF000004856";
+
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_1 = "N009-MF000004857";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_2 = "N009-MF000004858";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_3 = "N009-MF000004859";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_4 = "N009-MF000004860";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_5 = "N009-MF000004861";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_6 = "N009-MF000004862";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_7 = "N009-MF000004863";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_8 = "N009-MF000004864";
+        public const string OSTEO_MB_ARTICULACIONES_TOBILLO_I_9 = "N009-MF000004865";
+
+        public const string OSTEO_MB_TEST_PHALEN_D = "N009-MF000004871";
+        public const string OSTEO_MB_TEST_PHALEN_I = "N009-MF000004872";
+
+        public const string OSTEO_MB_TEST_TINEL_D = "N009-MF000004873";
+        public const string OSTEO_MB_TEST_TINEL_I = "N009-MF000004874";
+
+        public const string OSTEO_MB_TEST_FINKELSTEIN_D = "N009-MF000004875";
+        public const string OSTEO_MB_TEST_FINKELSTEIN_I = "N009-MF000004876";
+
+        public const string OSTEO_MB_TEST_NEER_D = "N009-MF000004877";
+        public const string OSTEO_MB_TEST_NEER_I = "N009-MF000004878";
+
+        public const string OSTEO_MB_TEST_BRAZO_CAIDO_D = "N009-MF000004879";
+        public const string OSTEO_MB_TEST_BRAZO_CAIDO_I = "N009-MF000004880";
+
+        public const string OSTEO_MB_SIMETRIA_MMSS_1 = "N009-MF000004881";
+        public const string OSTEO_MB_SIMETRIA_MMSS_2 = "N009-MF000004882";
+
+        public const string OSTEO_MB_SIMETRIA_MMI_1 = "N009-MF000004883";
+        public const string OSTEO_MB_SIMETRIA_MMI_2 = "N009-MF000004884";
+
+        public const string OSTEO_MB_CV_INSPECCION_EJE_ANTERO_CERVICAL = "N009-MF000004885";
+        public const string OSTEO_MB_CV_INSPECCION_EJE_ANTERO_DORSAL = "N009-MF000004886";
+        public const string OSTEO_MB_CV_INSPECCION_EJE_ANTERO_LUMBAR = "N009-MF000004887";
+
+        public const string OSTEO_MB_CV_INSPECCION_EJE_LATERAL_DORSAL = "N009-MF000004888";
+        public const string OSTEO_MB_CV_INSPECCION_EJE_LATERAL_LUMBAR = "N009-MF000004889";
+
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_1 = "N009-MF000004898";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_2 = "N009-MF000004899";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_3 = "N009-MF000004900";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_4 = "N009-MF000004901";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_5 = "N009-MF000004902";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_6 = "N009-MF000004903";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_7 = "N009-MF000004904";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_CERVICAL_8 = "N009-MF000004905";
+
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_1 = "N009-MF000004906";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_2 = "N009-MF000004907";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_3 = "N009-MF000004908";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_4 = "N009-MF000004909";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_5 = "N009-MF000004910";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_6 = "N009-MF000004911";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_7 = "N009-MF000004912";
+        public const string OSTEO_MB_CV_EX_F_MOV_DOLOR_LUMBAR_8 = "N009-MF000004913";
+
+        public const string OSTEO_MB_CV_EX_F_TEST_LASEGUE_D = "N009-MF000004914";
+        public const string OSTEO_MB_CV_EX_F_TEST_LASEGUE_I = "N009-MF000004915";
+        public const string OSTEO_MB_CV_EX_F_TEST_SCHOBER = "N009-MF000004916";
+
+        public const string OSTEO_MB_CV_EX_F_PALPACION_CERVICAL = "N009-MF000004917"; 
+        public const string OSTEO_MB_CV_EX_F_PALPACION_DORSAL = "N009-MF000004918";
+        public const string OSTEO_MB_CV_EX_F_PALPACION_LUMBAR = "N009-MF000004919";
+
+        public const string OSTEO_MB_COMENTARIOS_OBSERVACIONES = "N009-MF000004920";
+
+        #endregion
+
+
+        #region EXAMEN MEDICO PARA TRABAJOS EN ALTURA MAYOR A 1.8 Mts - FORMATO YANACOCHA
+        public const string T_A_1_8_ID = "N009-ME000000530";
+
+        public const string T_A_1_8_I_ANTECEDENTES = "N009-MF000004634";
+
+        public const string T_A_1_8_II_AGOROFOBIA = "N009-MF000004635";
+        public const string T_A_1_8_II_CONVULSIONES = "N009-MF000004636";
+        public const string T_A_1_8_II_HTA = "N009-MF000004637";
+        public const string T_A_1_8_II_ACROFOBIA = "N009-MF000004638";
+        public const string T_A_1_8_II_CEFALEA = "N009-MF000004639";
+        public const string T_A_1_8_II_ASMA = "N009-MF000004640";
+        public const string T_A_1_8_II_MAREOS = "N009-MF000004641";
+        public const string T_A_1_8_II_ALCOHOL = "N009-MF000004642";
+        public const string T_A_1_8_II_DIABETES = "N009-MF000004643";
+        public const string T_A_1_8_II_VERTIGO = "N009-MF000004644";
+        public const string T_A_1_8_II_DROGAS = "N009-MF000004645";
+        public const string T_A_1_8_II_TEC = "N009-MF000004646";
+        public const string T_A_1_8_II_MIOCLONIAS = "N009-MF000004647";
+        public const string T_A_1_8_II_PSIQUIATRIA = "N009-MF000004648";
+        public const string T_A_1_8_II_FARMACOS = "N009-MF000004679";
+        public const string T_A_1_8_II_ACATISIA = "N009-MF000004650";
+        public const string T_A_1_8_II_CARDIO = "N009-MF000004651";
+
+        public const string T_A_1_8_III_ENTRENAMIENTO_ALTURA = "N009-MF000004652";
+        public const string T_A_1_8_III_ENTRENAMIENTO_PRIMEROS_AUXILIOS = "N009-MF000004653";
+
+        public const string T_A_1_8_IV_IMC = "N009-MF000004654";
+        public const string T_A_1_8_IV_DEFICIT_M_SUPERIORES = "N009-MF000004655";
+        public const string T_A_1_8_IV_DEFICIT_M_INFERIORES = "N009-MF000004656";
+        public const string T_A_1_8_IV_TIMPANOS = "N009-MF000004657";
+        public const string T_A_1_8_IV_HIPOACUSIA = "N009-MF000004658";
+        public const string T_A_1_8_IV_SUSTENTACION_PIE_15S = "N009-MF000004659";
+        public const string T_A_1_8_IV_CAMINAR_LIBRE_3M = "N009-MF000004660";
+        public const string T_A_1_8_IV_CAMINAR_LIBRE_OJOS_VENDADOS_3M = "N009-MF000004661";
+        public const string T_A_1_8_IV_CAMINAR_LIBRE_OJOS_VENDADOS_PUNTA_TALON_3M = "N009-MF000004662";
+        public const string T_A_1_8_IV_NISTAGMUS = "N009-MF000004663";
+        public const string T_A_1_8_IV_ROMBERG = "N009-MF000004664";
+        public const string T_A_1_8_IV_ADIADOCOQUINESIA_DIRECTA = "N009-MF000004665";
+        public const string T_A_1_8_IV_ADIADOCOQUINESIA_CRUZADA = "N009-MF000004666";
+        public const string T_A_1_8_IV_COMENTARIO = "N009-MF000004667";
+
+        public const string T_A_1_8_V_APTO = "N009-MF000004668";
+        public const string T_A_1_8_V_NO_APTO = "N009-MF000004669";
+
+        #endregion
+
         #region ACCIDENTES DE TRABAJO - F1 - NOTIFICACIÓN DE LOS ACCIDENTES DE TRABAJO MORTALES E INCIDENTES PELIGROSOS
         public const string ACCIDENTES_DE_TRABAJO_F1 = "N009-ME000000527";
 
@@ -1764,10 +2070,17 @@ namespace Sigesoft.Common
 
         #endregion
 
+        #region GAMMA GLUTAMIL TRANSPEPTIDASA
+
+        public const string GAMMA_GLUTAMIL_ID = "N009-ME000000532";
+
+        public const string GAMMA_GLUTAMIL_VALOR_RESULTADO = "N009-MF000004921";
+        public const string GAMMA_GLUTAMIL_VALOR_DESEABLE = "N009-MF000004922";
+
+        #endregion
+
         #region GLUCOSA
 
-
-     
         public const string GLUCOSA_GLUCOSA_VALOR_RESULTADO_ID = "N009-MF000000261";
         public const string GLUCOSA_GLUCOSA_VALOR_DESEABLE_ID = "N009-MF000000418";
 

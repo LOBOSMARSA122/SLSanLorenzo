@@ -60,6 +60,7 @@ namespace NetPdf
 
             #region Fonts
             Font fontTitle1 = FontFactory.GetFont("Calibri", 10, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitle1_1 = FontFactory.GetFont("Calibri", 8, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontTitle2 = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontTitleTable = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             Font fontTitleTableNegro = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
@@ -86,9 +87,12 @@ namespace NetPdf
             //imagenMinsa.ScalePercent(10);
             //imagenMinsa.SetAbsolutePosition(400, 785);
             //document.Add(imagenMinsa);
-            
+            string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
+
             var cellsTit = new List<PdfPCell>()
                 { 
+                    new PdfPCell(new Phrase(servicio[0] + "               ", fontTitle1_1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 12f},
+
                     new PdfPCell(new Phrase("ATENCIÓN MÉDICA - HISTORIA CLÍNICA", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f},
                 };
             columnWidths = new float[] { 100f };
@@ -104,7 +108,6 @@ namespace NetPdf
             #region Primera página
             #region Datos del Servicio
 
-            string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
             string fechaInforme = DateTime.Now.ToString().Split(' ')[0];
             string[] fechaNac = datosPac.d_Birthdate.ToString().Split(' ');
             string med = "";
@@ -457,7 +460,7 @@ namespace NetPdf
 
             #endregion
             #endregion
-
+            #endregion
             document.Close();
             writer.Close();
             writer.Dispose();
@@ -465,4 +468,3 @@ namespace NetPdf
         }
     }
 }
-#endregion

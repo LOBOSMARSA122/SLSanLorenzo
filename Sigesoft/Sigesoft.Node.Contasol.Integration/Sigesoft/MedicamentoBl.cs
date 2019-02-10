@@ -269,7 +269,7 @@ namespace Sigesoft.Node.Contasol.Integration
                 " from venta v " +
                 " inner join cliente c on c.v_IdCliente =  v.v_IdCliente " +
                 " left join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
-                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' and v.i_Eliminado = 0 " +
+                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' and v.i_Eliminado = 0" +
                 " group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
 
                 var result = cnx.Query<FacturaCobranza>(query).ToList();

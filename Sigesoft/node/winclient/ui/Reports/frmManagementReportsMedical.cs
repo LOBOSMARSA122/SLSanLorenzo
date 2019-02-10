@@ -286,7 +286,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-            TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.CreateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Laboratorio, _serviceId);
+
+            TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.CreateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, datosGrabo);
         }
         private void GenerateAtencionIntegral(string pathFile)
         {

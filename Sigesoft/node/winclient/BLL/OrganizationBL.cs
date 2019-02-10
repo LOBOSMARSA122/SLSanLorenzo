@@ -183,58 +183,58 @@ namespace Sigesoft.Node.WinClient.BLL
 
        public List<EmpresaMigracion> EmpresasSalus()
        {
-            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-            var list = new List<EmpresaMigracion>();
-            var query =  dbContext.empresassalus().ToList();
+            //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            //var list = new List<EmpresaMigracion>();
+            //var query =  dbContext.empresassalus().ToList();
 
-            var empresas = query.GroupBy(g => g.v_Name).Select(s => s.First()).ToList();
+            //var empresas = query.GroupBy(g => g.v_Name).Select(s => s.First()).ToList();
 
-              foreach (var empresa in empresas)
-              {
-                  var oEmpresaMigracion = new EmpresaMigracion();
+            //  foreach (var empresa in empresas)
+            //  {
+            //      var oEmpresaMigracion = new EmpresaMigracion();
 
-                  oEmpresaMigracion.i_OrganizationTypeId = empresa.i_OrganizationTypeId;
-                  oEmpresaMigracion.v_IdentificationNumber = empresa.v_IdentificationNumber;
-                  oEmpresaMigracion.i_SectorTypeId = empresa.i_SectorTypeId;
-                  oEmpresaMigracion.v_Name = empresa.v_Name;
-                  oEmpresaMigracion.v_Address = empresa.v_Address;
-                  oEmpresaMigracion.v_PhoneNumber = empresa.v_PhoneNumber;
-                  oEmpresaMigracion.v_Mail = empresa.v_Mail;
-                  oEmpresaMigracion.v_ContacName = empresa.v_ContacName;
-                  oEmpresaMigracion.v_Observation = empresa.v_Observation;
+            //      oEmpresaMigracion.i_OrganizationTypeId = empresa.i_OrganizationTypeId;
+            //      oEmpresaMigracion.v_IdentificationNumber = empresa.v_IdentificationNumber;
+            //      oEmpresaMigracion.i_SectorTypeId = empresa.i_SectorTypeId;
+            //      oEmpresaMigracion.v_Name = empresa.v_Name;
+            //      oEmpresaMigracion.v_Address = empresa.v_Address;
+            //      oEmpresaMigracion.v_PhoneNumber = empresa.v_PhoneNumber;
+            //      oEmpresaMigracion.v_Mail = empresa.v_Mail;
+            //      oEmpresaMigracion.v_ContacName = empresa.v_ContacName;
+            //      oEmpresaMigracion.v_Observation = empresa.v_Observation;
 
-                  var sedes = empresas.FindAll(p => p.v_Name == oEmpresaMigracion.v_Name).ToList();
-                  var listSedes = new List<SedeMigracion>();
+            //      var sedes = empresas.FindAll(p => p.v_Name == oEmpresaMigracion.v_Name).ToList();
+            //      var listSedes = new List<SedeMigracion>();
 
-                  foreach (var sede in sedes)
-                  {
-                      var oSedeMigracion = new SedeMigracion();
-                      oSedeMigracion.Sede = sede.Sede;
+            //      foreach (var sede in sedes)
+            //      {
+            //          var oSedeMigracion = new SedeMigracion();
+            //          oSedeMigracion.Sede = sede.Sede;
                       
 
-                      var gesos = sedes.FindAll(p => p.Sede == sede.Sede).ToList();
-                      var listGesos = new List<GesoMigracion>();
-                      foreach (var geso in gesos)
-                      {
-                          var oGesoMigracion = new GesoMigracion();
-                          oGesoMigracion.Geso = geso.GESO;
-                          listGesos.Add(oGesoMigracion);
-                      }
+            //          var gesos = sedes.FindAll(p => p.Sede == sede.Sede).ToList();
+            //          var listGesos = new List<GesoMigracion>();
+            //          foreach (var geso in gesos)
+            //          {
+            //              var oGesoMigracion = new GesoMigracion();
+            //              oGesoMigracion.Geso = geso.GESO;
+            //              listGesos.Add(oGesoMigracion);
+            //          }
 
-                      oSedeMigracion.Gesos = listGesos;
-                      listSedes.Add(oSedeMigracion);
+            //          oSedeMigracion.Gesos = listGesos;
+            //          listSedes.Add(oSedeMigracion);
 
-                  }
+            //      }
 
 
 
-                  oEmpresaMigracion.Sedes = listSedes;
+            //      oEmpresaMigracion.Sedes = listSedes;
 
-                  list.Add(oEmpresaMigracion);
-              }
+            //      list.Add(oEmpresaMigracion);
+            //  }
 
-              return list;
-
+            //  return list;
+            return null;
        }
 
        public void UpdateOrganization(ref OperationResult pobjOperationResult, organizationDto pobjDtoEntity, List<string> ClientSession)

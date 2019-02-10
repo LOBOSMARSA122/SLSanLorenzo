@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
+using NetPdf;
+using Sigesoft.Common;
+using System.IO;
+using System.Configuration;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -49,7 +54,15 @@ namespace Sigesoft.Node.WinClient.UI
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
 
-            grdData.DataSource = oPagoEspecialistaOcupacionalBl.LoadGrid(pdatBeginDate, pdatEndDate,int.Parse(cboSystemUser.SelectedValue.ToString()), chkPaid.Checked ? 1: 0);
+            if (chkPaid.Checked==true)
+            {
+                grdData.DataSource = oPagoEspecialistaOcupacionalBl.LoadGrid(pdatBeginDate, pdatEndDate, int.Parse(cboSystemUser.SelectedValue.ToString()), chkPaid.Checked ? 1 : 0); 
+            }
+            else
+            {
+                grdData.DataSource = oPagoEspecialistaOcupacionalBl.LoadGrid_(pdatBeginDate, pdatEndDate, int.Parse(cboSystemUser.SelectedValue.ToString()), chkPaid.Checked ? 1 : 0);   
+            }
+            txtTotalPagar.Text = "0";
         }
 
         private void grdData_ClickCell(object sender, ClickCellEventArgs e)
@@ -62,10 +75,16 @@ namespace Sigesoft.Node.WinClient.UI
                     var rowIndex = e.Cell.Row.Index;
                     var total = decimal.Parse(grdData.Rows[rowIndex].Cells["Total"].Text);
                     txtTotalPagar.Text = (decimal.Parse(txtTotalPagar.Text) + total).ToString();
+                    e.Cell.Activated=false;
+
                 }
                 else
                 {
                     e.Cell.Value = false;
+                    var rowIndex = e.Cell.Row.Index;
+                    var total = decimal.Parse(grdData.Rows[rowIndex].Cells["Total"].Text);
+                    txtTotalPagar.Text = (decimal.Parse(txtTotalPagar.Text) - total).ToString();
+                    e.Cell.Activated = false;
                 }
 
             }
@@ -73,13 +92,39 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            #region Pagar
             var ids = grdData.Rows.Where(c => Convert.ToBoolean(c.Cells["Select"].Value.ToString()))
                 .Select(p => p.Cells["ServiceIds"].Value.ToString()).ToList();
-
             if (oPagoEspecialistaOcupacionalBl.Pay(ids)) MessageBox.Show(@"Se Pagó correctamente", @"INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show(@"Hubo un error en el grabado", @"INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            #endregion
+
+            #region Reporte
+            
+            GeneratePagoEspecialistaReport();
+
+            #endregion
+
             btnFilter_Click(sender, e);
+        }
+
+        private void GeneratePagoEspecialistaReport()
+        {
+            ServiceBL _serviceBL = new ServiceBL();
+            var ids = grdData.Rows.Where(c => Convert.ToBoolean(c.Cells["Select"].Value.ToString()))
+                .Select(p => p.Cells["ServiceIds"].Value.ToString()).ToList();
+            string monto = txtTotalPagar.Text, fechaInicio = dtpDateTimeStar.Value.ToString(), fechaFin = dptDateTimeEnd.Value.ToString(), usuarioMedico = lblNombreProfesional.Text;
+            int usuarioPaga = Globals.ClientSession.i_SystemUserId;
+            string ruta = GetApplicationConfigValue("rutaLiquidacion").ToString();
+            var path = string.Format("{0}.pdf", Path.Combine(ruta, "Report"));
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            Pago_Especialsta_Report.CreatePago_Especialsta_Report(monto, fechaInicio, fechaFin, usuarioMedico, usuarioPaga, ids, ruta, path, MedicalCenter);
+        }
+
+        private object GetApplicationConfigValue(string nombre)
+        {
+            return Convert.ToString(ConfigurationManager.AppSettings[nombre]);
         }
     }
 }

@@ -357,23 +357,25 @@ namespace NetPdf
                     {
                         cell = new PdfPCell(new Phrase("Del " + habitacion.d_StartDate.ToString().Split(' ')[0] + "\n" + "Al   " + habitacion.d_EndDate.ToString().Split(' ')[0], fontColumnValue)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                         cells.Add(cell);
-                        DateTime inicio = habitacion.d_StartDate.Value;
+                        DateTime inicio = habitacion.d_StartDate.Value.Date;
                         DateTime fin;
 
                         if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString()=="00/00/0000 0:0:0")
                         {
-                            fin = habitacion.d_EndDate.Value;
+                            fin = habitacion.d_EndDate.Value.Date;
                         }
                         else {
-                            fin = DateTime.Now;
+                            fin = DateTime.Now.Date;
                             
                         }
-                        
-                        int tSpan = fin.Day - inicio.Day;
+
+                        TimeSpan nDias = fin - inicio;
+
+                        int tSpan = nDias.Days;
 
                         //+ 1
                         int dias = 0;
-                        if (tSpan== 0)
+                        if (tSpan == 0)
                         {
                             dias = tSpan + 1;
                         }
@@ -407,20 +409,22 @@ namespace NetPdf
                     {
                         cell = new PdfPCell(new Phrase("Del " + habitacion.d_StartDate.ToString().Split(' ')[0] + "\n" + "Al   " + habitacion.d_EndDate.ToString().Split(' ')[0], fontColumnValue)) {Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                         cells.Add(cell);
-                        DateTime inicio = habitacion.d_StartDate.Value;
+                        DateTime inicio = habitacion.d_StartDate.Value.Date;
                         DateTime fin;
 
                         if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString() == "00/00/0000 0:0:0")
                         {
-                            fin = habitacion.d_EndDate.Value;
+                            fin = habitacion.d_EndDate.Value.Date;
                         }
                         else
                         {
-                            fin = DateTime.Now;
+                            fin = DateTime.Now.Date;
 
                         }
 
-                        int tSpan = fin.Day - inicio.Day;
+                        TimeSpan nDias = fin - inicio;
+
+                        int tSpan = nDias.Days;
 
                         //+ 1
                         int dias = 0;
@@ -432,7 +436,6 @@ namespace NetPdf
                         {
                             dias = tSpan;
                         }
-
 
                         cell = new PdfPCell(new Phrase("Habitación N  " + '\u0022' + habitacion.NroHabitacion + '\u0022', fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                         cells.Add(cell);

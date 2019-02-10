@@ -50,7 +50,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedAssemblers\empresassalusResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\adolescenteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\adultoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\adultomayorAssembler.cs" />

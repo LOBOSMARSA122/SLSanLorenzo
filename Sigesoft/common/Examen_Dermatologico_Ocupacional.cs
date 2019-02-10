@@ -68,6 +68,8 @@ namespace NetPdf
             Font fontColumnValue1 = FontFactory.GetFont("Calibri", 8, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontColumnValueBold1 = FontFactory.GetFont("Calibri", 8, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
 
+            Font fontColumnValue_3 = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            fontColumnValue_3.SetStyle(Font.BOLD | Font.UNDERLINE);
             #endregion
 
             #region TÍTULO
@@ -608,24 +610,71 @@ namespace NetPdf
 
             int nro = 1;
             var dx = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EVALUACION_DERMATOLOGICA_OC_ID);
+
+            cell = new PdfPCell(new Phrase("", fontColumnValue_3)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
+            cells.Add(cell);
+            cell = new PdfPCell(new Phrase("N°", fontColumnValue_3)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
+            cells.Add(cell);
+            cell = new PdfPCell(new Phrase("CIE 10", fontColumnValue_3)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
+            cells.Add(cell);
+            cell = new PdfPCell(new Phrase("DIAGNOSTICO", fontColumnValue_3)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
+            cells.Add(cell);
+            cell = new PdfPCell(new Phrase("RECOMENDACIONES", fontColumnValue_3)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
+            cells.Add(cell);
+            cell = new PdfPCell(new Phrase("", fontColumnValue_3)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
+            cells.Add(cell);
             if (dx != null && dx.Count > 0)
             {
+                int n = 0;
                 foreach (var item in dx)
                 {
-                    cell = new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    if (item.Recomendations.Count() == 0)
+                        n = 1;
+                    else
+                        n = item.Recomendations.Count();
+
+                    cell = new PdfPCell(new Phrase("", fontColumnValue)) { Rowspan = n, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(nro.ToString() + ". ", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(nro.ToString() + ". ", fontColumnValue)) { Rowspan = n, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(item.i_DiagnosticTypeId == (int)Sigesoft.Common.TipoDx.Normal ? "---" : item.v_Dx_CIE10, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.i_DiagnosticTypeId == (int)Sigesoft.Common.TipoDx.Normal ? "---" : item.v_Dx_CIE10, fontColumnValue)) { Rowspan = n, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { Rowspan = n, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, MinimumHeight = 14f };
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
-                    cells.Add(cell);
+                    if (item.Recomendations.Count() == 0)
+                    {
+                        cell = new PdfPCell(new Phrase("-", fontColumnValue))
+                        {
+                            Colspan = 2,
+                            HorizontalAlignment = Element.ALIGN_LEFT,
+                            VerticalAlignment = Element.ALIGN_MIDDLE,
+                            MinimumHeight = 14f
+                        };
+                    }
+                    else
+                    {
+                        foreach (var Reco in item.Recomendations)
+                        {
+                            cell = new PdfPCell(new Phrase(Reco.v_RecommendationName, fontColumnValue))
+                            {
+                                HorizontalAlignment = Element.ALIGN_LEFT,
+                                VerticalAlignment = Element.ALIGN_MIDDLE,
+                                MinimumHeight = 14f
+                            };
+                            cells.Add(cell);
+                            cell = new PdfPCell(new Phrase("", fontColumnValue))
+                            {
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_MIDDLE,
+                                MinimumHeight = 14f
+                            };
+                            cells.Add(cell);
+                        }
+                    }
                     nro++;
                 }
 
-                columnWidths = new float[] { 5f, 5f, 20f, 65f, 5f };
+                columnWidths = new float[] { 5f, 5f, 10f, 40f, 35f, 5f };
             }
             else
             {

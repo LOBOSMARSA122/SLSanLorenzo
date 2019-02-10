@@ -3654,7 +3654,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 var datosP = new PacientBL().DevolverDatosPaciente(serviceID);
                 var exams = new ServiceBL().GetServiceComponentsReport(serviceID);
-                var medicoTratante = new ServiceBL().GetMedicoTratante(serviceID);
+                var medicoTratante = new ServiceBL().GetMedicoTratante(serviceID);  
 
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaHistoriaClinica").ToString();
 

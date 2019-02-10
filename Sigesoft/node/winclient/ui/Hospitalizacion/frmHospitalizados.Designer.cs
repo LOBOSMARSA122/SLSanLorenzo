@@ -44,6 +44,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MedicoPago");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PagoPaciente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PacientePago");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_MedicoTratante");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Habitaciones");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
@@ -81,23 +82,23 @@
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHospitalizados));
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_ServiceDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_MasterServiceName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LocationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn13 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_FechaEntrega");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn14 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Liq");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn120 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn121 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_ServiceDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn122 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn123 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn124 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_MasterServiceName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn125 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn126 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn127 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LocationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn128 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn129 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn130 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn131 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn132 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_FechaEntrega");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn133 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Liq");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn134 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn135 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn136 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.txtPacient = new System.Windows.Forms.TextBox();
@@ -134,6 +135,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnFilter);
             this.groupBox1.Controls.Add(this.txtPacient);
             this.groupBox1.Controls.Add(this.label5);
@@ -285,6 +288,7 @@
             ultraGridColumn16.Header.VisiblePosition = 0;
             ultraGridColumn16.Width = 177;
             ultraGridColumn4.Header.VisiblePosition = 1;
+            ultraGridColumn4.Hidden = true;
             ultraGridColumn17.Header.Caption = "Nombre de Paciente";
             ultraGridColumn17.Header.VisiblePosition = 2;
             ultraGridColumn17.Width = 117;
@@ -298,13 +302,14 @@
             ultraGridColumn19.Header.VisiblePosition = 6;
             ultraGridColumn20.Header.Caption = "Precio Total";
             ultraGridColumn20.Header.VisiblePosition = 7;
-            ultraGridColumn1.Header.VisiblePosition = 8;
-            ultraGridColumn23.Header.VisiblePosition = 9;
-            ultraGridColumn25.Header.VisiblePosition = 10;
-            ultraGridColumn26.Header.VisiblePosition = 11;
-            ultraGridColumn27.Header.VisiblePosition = 12;
-            ultraGridColumn21.Header.VisiblePosition = 13;
-            ultraGridColumn22.Header.VisiblePosition = 14;
+            ultraGridColumn1.Header.VisiblePosition = 9;
+            ultraGridColumn23.Header.VisiblePosition = 10;
+            ultraGridColumn25.Header.VisiblePosition = 11;
+            ultraGridColumn26.Header.VisiblePosition = 12;
+            ultraGridColumn27.Header.VisiblePosition = 13;
+            ultraGridColumn28.Header.VisiblePosition = 8;
+            ultraGridColumn21.Header.VisiblePosition = 14;
+            ultraGridColumn22.Header.VisiblePosition = 15;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn16,
             ultraGridColumn4,
@@ -319,6 +324,7 @@
             ultraGridColumn25,
             ultraGridColumn26,
             ultraGridColumn27,
+            ultraGridColumn28,
             ultraGridColumn21,
             ultraGridColumn22});
             ultraGridColumn5.Header.VisiblePosition = 0;
@@ -467,27 +473,27 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6,
-            ultraDataColumn7,
-            ultraDataColumn8,
-            ultraDataColumn9,
-            ultraDataColumn10,
-            ultraDataColumn11,
-            ultraDataColumn12,
-            ultraDataColumn13,
-            ultraDataColumn14,
-            ultraDataColumn15,
-            ultraDataColumn16,
-            ultraDataColumn17});
+            ultraDataColumn120,
+            ultraDataColumn121,
+            ultraDataColumn122,
+            ultraDataColumn123,
+            ultraDataColumn124,
+            ultraDataColumn125,
+            ultraDataColumn126,
+            ultraDataColumn127,
+            ultraDataColumn128,
+            ultraDataColumn129,
+            ultraDataColumn130,
+            ultraDataColumn131,
+            ultraDataColumn132,
+            ultraDataColumn133,
+            ultraDataColumn134,
+            ultraDataColumn135,
+            ultraDataColumn136});
             // 
             // btnGenerarLiq
             // 
-            this.btnGenerarLiq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerarLiq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGenerarLiq.BackColor = System.Drawing.SystemColors.Control;
             this.btnGenerarLiq.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnGenerarLiq.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -497,19 +503,21 @@
             this.btnGenerarLiq.ForeColor = System.Drawing.Color.Black;
             this.btnGenerarLiq.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
             this.btnGenerarLiq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarLiq.Location = new System.Drawing.Point(6, 523);
+            this.btnGenerarLiq.Location = new System.Drawing.Point(6, 524);
             this.btnGenerarLiq.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerarLiq.Name = "btnGenerarLiq";
-            this.btnGenerarLiq.Size = new System.Drawing.Size(134, 47);
+            this.btnGenerarLiq.Size = new System.Drawing.Size(134, 46);
             this.btnGenerarLiq.TabIndex = 154;
             this.btnGenerarLiq.Text = "Generar Liquidación Hospitalización";
             this.btnGenerarLiq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenerarLiq.UseVisualStyleBackColor = false;
+            this.btnGenerarLiq.Visible = false;
             this.btnGenerarLiq.Click += new System.EventHandler(this.btnGenerarLiq_Click);
             // 
             // btnDarAlta
             // 
-            this.btnDarAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDarAlta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDarAlta.BackColor = System.Drawing.SystemColors.Control;
             this.btnDarAlta.Enabled = false;
             this.btnDarAlta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -532,7 +540,8 @@
             // 
             // btnReportePDF
             // 
-            this.btnReportePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReportePDF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReportePDF.BackColor = System.Drawing.SystemColors.Control;
             this.btnReportePDF.Enabled = false;
             this.btnReportePDF.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -554,7 +563,8 @@
             // 
             // btnEditarHabitacion
             // 
-            this.btnEditarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditarHabitacion.BackColor = System.Drawing.SystemColors.Control;
             this.btnEditarHabitacion.Enabled = false;
             this.btnEditarHabitacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -577,7 +587,8 @@
             // 
             // btnAsignarHabitacion
             // 
-            this.btnAsignarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAsignarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAsignarHabitacion.BackColor = System.Drawing.SystemColors.Control;
             this.btnAsignarHabitacion.Enabled = false;
             this.btnAsignarHabitacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -600,7 +611,8 @@
             // 
             // btnAgregarExamenes
             // 
-            this.btnAgregarExamenes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarExamenes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgregarExamenes.BackColor = System.Drawing.SystemColors.Control;
             this.btnAgregarExamenes.Enabled = false;
             this.btnAgregarExamenes.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -624,12 +636,11 @@
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.Enabled = false;
             this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(1049, 523);
+            this.btnExport.Location = new System.Drawing.Point(1022, 523);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(85, 46);
+            this.btnExport.Size = new System.Drawing.Size(112, 47);
             this.btnExport.TabIndex = 103;
             this.btnExport.Text = "Exportar a Excel";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -638,7 +649,8 @@
             // 
             // btnEliminarTicket
             // 
-            this.btnEliminarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminarTicket.BackColor = System.Drawing.SystemColors.Control;
             this.btnEliminarTicket.Enabled = false;
             this.btnEliminarTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -661,7 +673,8 @@
             // 
             // btnEditarTicket
             // 
-            this.btnEditarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditarTicket.BackColor = System.Drawing.SystemColors.Control;
             this.btnEditarTicket.Enabled = false;
             this.btnEditarTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -684,7 +697,8 @@
             // 
             // btnTicket
             // 
-            this.btnTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTicket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTicket.BackColor = System.Drawing.SystemColors.Control;
             this.btnTicket.Enabled = false;
             this.btnTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -707,7 +721,8 @@
             // 
             // btnEliminarHabitacion
             // 
-            this.btnEliminarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminarHabitacion.BackColor = System.Drawing.SystemColors.Control;
             this.btnEliminarHabitacion.Enabled = false;
             this.btnEliminarHabitacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;

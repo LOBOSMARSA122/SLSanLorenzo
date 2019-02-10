@@ -106,21 +106,24 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     
                     foreach (var habitacion in ListaHabitaciones)
                     {
-                        DateTime inicio = habitacion.d_StartDate.Value;
+                        DateTime inicio = habitacion.d_StartDate.Value.Date;
                         DateTime fin;
 
                         if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString() == "00/00/0000 0:0:0")
                         {
-                            fin = habitacion.d_EndDate.Value;
+                            fin = habitacion.d_EndDate.Value.Date;
                         }
                         else
                         {
-                            fin = DateTime.Now;
+                            fin = DateTime.Now.Date;
 
                         }
 
-                        int tSpan = fin.Day - inicio.Day;
+                        TimeSpan nDias = fin - inicio;
 
+                        int tSpan = nDias.Days;
+
+                        //+ 1
                         int dias = 0;
                         if (tSpan == 0)
                         {
@@ -232,21 +235,23 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                     foreach (var habitacion in ListaHabitaciones)
                     {
-                        DateTime inicio = habitacion.d_StartDate.Value;
+                        DateTime inicio = habitacion.d_StartDate.Value.Date;
                         DateTime fin;
 
                         if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString() == "00/00/0000 0:0:0")
                         {
-                            fin = habitacion.d_EndDate.Value;
+                            fin = habitacion.d_EndDate.Value.Date;
                         }
                         else
                         {
-                            fin = DateTime.Now;
+                            fin = DateTime.Now.Date;
 
                         }
+                        TimeSpan nDias = fin - inicio;
 
-                        int tSpan = fin.Day - inicio.Day;
+                        int tSpan = nDias.Days;
 
+                        //+ 1
                         int dias = 0;
                         if (tSpan == 0)
                         {

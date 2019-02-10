@@ -30,9 +30,9 @@
         {
             this.gbFiltro = new System.Windows.Forms.GroupBox();
             this.dtpAnio = new System.Windows.Forms.DateTimePicker();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.crvPorMes = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.gbFiltro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,27 +58,6 @@
             this.dtpAnio.Name = "dtpAnio";
             this.dtpAnio.Size = new System.Drawing.Size(80, 21);
             this.dtpAnio.TabIndex = 108;
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(333, 21);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 24);
-            this.btnFilter.TabIndex = 107;
-            this.btnFilter.Text = "Filtrar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label1
             // 
@@ -107,6 +86,27 @@
             this.crvPorMes.TabIndex = 156;
             this.crvPorMes.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
+            // btnFilter
+            // 
+            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(333, 21);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 24);
+            this.btnFilter.TabIndex = 107;
+            this.btnFilter.Text = "Filtrar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
             // FrmMes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,7 +116,8 @@
             this.Controls.Add(this.crvPorMes);
             this.Controls.Add(this.gbFiltro);
             this.Name = "FrmMes";
-            this.Text = "FrmMes";
+            this.ShowIcon = false;
+            this.Text = "Vista Anual Ocupacional";
             this.gbFiltro.ResumeLayout(false);
             this.gbFiltro.PerformLayout();
             this.ResumeLayout(false);

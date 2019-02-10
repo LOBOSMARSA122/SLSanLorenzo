@@ -98,6 +98,7 @@
     <Compile Include="Custom\MedicoList.cs" />
     <Compile Include="Custom\MedicoTratanteAtenciones.cs" />
     <Compile Include="Custom\Ninioo.cs" />
+    <Compile Include="Custom\OperationsNatclarBe.cs" />
     <Compile Include="Custom\PagoEspecialistaOcupacional.cs" />
     <Compile Include="Custom\PagosComisiones.cs" />
     <Compile Include="Custom\PlanesDeVida.cs" />
@@ -340,7 +341,6 @@
     <Compile Include="Custom\WorkerData.cs" />
     <Compile Include="Custom\WorkstationDangersList.cs" />
     <Compile Include="Custom\XmlNatclar.cs" />
-    <Compile Include="Generated\empresassalusResultDto.cs" />
     <Compile Include="Generated\adolescenteDto.cs" />
     <Compile Include="Generated\adultoDto.cs" />
     <Compile Include="Generated\adultomayorDto.cs" />
