@@ -54,7 +54,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.cboEmpresa = new System.Windows.Forms.ComboBox();
             this.txtPassword2 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtPassword1 = new System.Windows.Forms.TextBox();
@@ -88,6 +87,7 @@
             this.btnAddExternalUser = new System.Windows.Forms.Button();
             this.bgwSendEmail = new System.ComponentModel.BackgroundWorker();
             this.uvPacient = new Infragistics.Win.Misc.UltraValidator(this.components);
+            this.chkEmpresas = new System.Windows.Forms.CheckedListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -151,7 +151,6 @@
             this.groupBox2.Controls.Add(this.groupBox7);
             this.groupBox2.Controls.Add(this.txtMail);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.btnSaveExternalUser);
             this.groupBox2.Controls.Add(this.txtDocNumber);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtName);
@@ -171,8 +170,9 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.chkEmpresas);
             this.groupBox7.Controls.Add(this.label17);
-            this.groupBox7.Controls.Add(this.cboEmpresa);
+            this.groupBox7.Controls.Add(this.btnSaveExternalUser);
             this.groupBox7.Controls.Add(this.txtPassword2);
             this.groupBox7.Controls.Add(this.label25);
             this.groupBox7.Controls.Add(this.txtPassword1);
@@ -183,7 +183,7 @@
             this.groupBox7.ForeColor = System.Drawing.Color.Red;
             this.groupBox7.Location = new System.Drawing.Point(8, 119);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(412, 97);
+            this.groupBox7.Size = new System.Drawing.Size(412, 439);
             this.groupBox7.TabIndex = 31;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Usuario";
@@ -199,21 +199,6 @@
             this.label17.Size = new System.Drawing.Size(48, 13);
             this.label17.TabIndex = 25;
             this.label17.Text = "Empresa";
-            // 
-            // cboEmpresa
-            // 
-            this.cboEmpresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboEmpresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboEmpresa.FormattingEnabled = true;
-            this.cboEmpresa.Location = new System.Drawing.Point(64, 62);
-            this.cboEmpresa.Margin = new System.Windows.Forms.Padding(2);
-            this.cboEmpresa.Name = "cboEmpresa";
-            this.cboEmpresa.Size = new System.Drawing.Size(339, 21);
-            this.cboEmpresa.TabIndex = 24;
-            this.uvPacient.GetValidationSettings(this.cboEmpresa).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvPacient.GetValidationSettings(this.cboEmpresa).IsRequired = true;
             // 
             // txtPassword2
             // 
@@ -310,10 +295,10 @@
             this.btnSaveExternalUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSaveExternalUser.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnSaveExternalUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveExternalUser.Location = new System.Drawing.Point(261, 221);
+            this.btnSaveExternalUser.Location = new System.Drawing.Point(217, 411);
             this.btnSaveExternalUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveExternalUser.Name = "btnSaveExternalUser";
-            this.btnSaveExternalUser.Size = new System.Drawing.Size(159, 23);
+            this.btnSaveExternalUser.Size = new System.Drawing.Size(186, 23);
             this.btnSaveExternalUser.TabIndex = 28;
             this.btnSaveExternalUser.Text = "Guardar Datos de Usuario Externo";
             this.btnSaveExternalUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -693,6 +678,16 @@
             this.bgwSendEmail.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwSendEmail_ProgressChanged);
             this.bgwSendEmail.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwSendEmail_RunWorkerCompleted);
             // 
+            // chkEmpresas
+            // 
+            this.chkEmpresas.CheckOnClick = true;
+            this.chkEmpresas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEmpresas.FormattingEnabled = true;
+            this.chkEmpresas.Location = new System.Drawing.Point(9, 90);
+            this.chkEmpresas.Name = "chkEmpresas";
+            this.chkEmpresas.Size = new System.Drawing.Size(394, 319);
+            this.chkEmpresas.TabIndex = 32;
+            // 
             // FrmMaintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -765,8 +760,8 @@
         private System.Windows.Forms.TextBox txtPassword2;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox cboEmpresa;
         private System.ComponentModel.BackgroundWorker bgwSendEmail;
         private Infragistics.Win.Misc.UltraValidator uvPacient;
+        private System.Windows.Forms.CheckedListBox chkEmpresas;
     }
 }

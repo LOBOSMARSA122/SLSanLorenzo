@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GeneratedAssemblers\empresassalusResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\adolescenteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\adultoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\adultomayorAssembler.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="GeneratedAssemblers\embarzoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\workstationdangersAssembler.cs" />
     <Compile Include="GeneratedAssemblers\warehouseAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\vigilanciaserviceAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\vigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
@@ -123,6 +126,8 @@
     <Compile Include="GeneratedAssemblers\productAssembler.cs" />
     <Compile Include="GeneratedAssemblers\procedurebyserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\problemaAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\planvigilanciadiseasesAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\planvigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planintegralAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personmedicalhistoryAssembler.cs" />

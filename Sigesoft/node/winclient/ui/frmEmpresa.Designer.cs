@@ -329,6 +329,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnObtenerProtocolos = new System.Windows.Forms.Button();
             this.btnAsignarOrden = new System.Windows.Forms.Button();
+            this.btnProcesar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -3171,6 +3172,27 @@
             this.btnAsignarOrden.UseVisualStyleBackColor = false;
             this.btnAsignarOrden.Click += new System.EventHandler(this.btnAsignarOrden_Click);
             // 
+            // btnProcesar
+            // 
+            this.btnProcesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnProcesar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnProcesar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnProcesar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnProcesar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcesar.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
+            this.btnProcesar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProcesar.Location = new System.Drawing.Point(1074, 268);
+            this.btnProcesar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnProcesar.Name = "btnProcesar";
+            this.btnProcesar.Size = new System.Drawing.Size(75, 24);
+            this.btnProcesar.TabIndex = 104;
+            this.btnProcesar.Text = "Procesar Emp";
+            this.btnProcesar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Visible = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
+            // 
             // frmEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3178,6 +3200,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1163, 567);
+            this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.btnAsignarOrden);
             this.Controls.Add(this.btnObtenerProtocolos);
             this.Controls.Add(this.button2);
@@ -3446,6 +3469,7 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox txtContactoeMedico;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Button btnProcesar;
     }
 }
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Linq.Dynamic;
+using System.Threading;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
 using Sigesoft.Common;
@@ -177,6 +179,62 @@ namespace Sigesoft.Node.WinClient.BLL
                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "ORGANIZACIÓN", "i_OrganizationId=" + NewId.ToString(), Success.Failed, pobjOperationResult.ExceptionMessage);
                return null;
            }
+       }
+
+       public List<EmpresaMigracion> EmpresasSalus()
+       {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var list = new List<EmpresaMigracion>();
+            var query =  dbContext.empresassalus().ToList();
+
+            var empresas = query.GroupBy(g => g.v_Name).Select(s => s.First()).ToList();
+
+              foreach (var empresa in empresas)
+              {
+                  var oEmpresaMigracion = new EmpresaMigracion();
+
+                  oEmpresaMigracion.i_OrganizationTypeId = empresa.i_OrganizationTypeId;
+                  oEmpresaMigracion.v_IdentificationNumber = empresa.v_IdentificationNumber;
+                  oEmpresaMigracion.i_SectorTypeId = empresa.i_SectorTypeId;
+                  oEmpresaMigracion.v_Name = empresa.v_Name;
+                  oEmpresaMigracion.v_Address = empresa.v_Address;
+                  oEmpresaMigracion.v_PhoneNumber = empresa.v_PhoneNumber;
+                  oEmpresaMigracion.v_Mail = empresa.v_Mail;
+                  oEmpresaMigracion.v_ContacName = empresa.v_ContacName;
+                  oEmpresaMigracion.v_Observation = empresa.v_Observation;
+
+                  var sedes = empresas.FindAll(p => p.v_Name == oEmpresaMigracion.v_Name).ToList();
+                  var listSedes = new List<SedeMigracion>();
+
+                  foreach (var sede in sedes)
+                  {
+                      var oSedeMigracion = new SedeMigracion();
+                      oSedeMigracion.Sede = sede.Sede;
+                      
+
+                      var gesos = sedes.FindAll(p => p.Sede == sede.Sede).ToList();
+                      var listGesos = new List<GesoMigracion>();
+                      foreach (var geso in gesos)
+                      {
+                          var oGesoMigracion = new GesoMigracion();
+                          oGesoMigracion.Geso = geso.GESO;
+                          listGesos.Add(oGesoMigracion);
+                      }
+
+                      oSedeMigracion.Gesos = listGesos;
+                      listSedes.Add(oSedeMigracion);
+
+                  }
+
+
+
+                  oEmpresaMigracion.Sedes = listSedes;
+
+                  list.Add(oEmpresaMigracion);
+              }
+
+              return list;
+
        }
 
        public void UpdateOrganization(ref OperationResult pobjOperationResult, organizationDto pobjDtoEntity, List<string> ClientSession)

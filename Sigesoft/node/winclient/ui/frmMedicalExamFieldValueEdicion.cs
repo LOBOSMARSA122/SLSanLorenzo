@@ -110,7 +110,7 @@ namespace Sigesoft.Node.WinClient.UI
                   ddlOperatorId.SelectedValue = _objmedicalexamfieldValuesDto.i_OperatorId.ToString();
                   txtLegalStandard.Text = _objmedicalexamfieldValuesDto.v_LegalStandard;
                   ddlIsAnormal.SelectedValue = _objmedicalexamfieldValuesDto.i_IsAnormal.ToString();
-                  objdiseasesDto=   _objMedicalExamFieldsBL.GetDiseases(ref objOperationResult, _objmedicalexamfieldValuesDto.v_Diseases);
+                  objdiseasesDto=   _objMedicalExamFieldsBL.GetDiseases(ref objOperationResult, _objmedicalexamfieldValuesDto.v_DiseasesId);
 
                   ddlSexTypeId.SelectedValue = _objmedicalexamfieldValuesDto.i_GenderId.ToString()  ;
 
@@ -156,7 +156,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _objmedicalexamfieldValuesDto.i_GenderId = int.Parse(ddlSexTypeId.SelectedValue.ToString());
                     _objmedicalexamfieldValuesDto.v_LegalStandard =txtLegalStandard.Text;
                     _objmedicalexamfieldValuesDto.i_IsAnormal = Int32.Parse( ddlIsAnormal.SelectedValue.ToString());
-                    _objmedicalexamfieldValuesDto.v_Diseases = _objDiseasesList.v_DiseasesId;
+                    _objmedicalexamfieldValuesDto.v_DiseasesId = _objDiseasesList.v_DiseasesId;
                     // Save the data
                   _MedicalExamFliedValueId= _objMedicalExamFieldsBL.AddMedicalExamFieldValues(ref objOperationResult,_TempComponentFieldValuesRestrictionList,_TempComponentFieldValuesRecommendationList, _objmedicalexamfieldValuesDto, Globals.ClientSession.GetAsList());
                     
@@ -174,7 +174,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                     _objmedicalexamfieldValuesDto.v_LegalStandard = txtLegalStandard.Text;
                     _objmedicalexamfieldValuesDto.i_IsAnormal = Int32.Parse(ddlIsAnormal.SelectedValue.ToString());
-                    _objmedicalexamfieldValuesDto.v_Diseases = _objDiseasesList.v_DiseasesId;
+                    _objmedicalexamfieldValuesDto.v_DiseasesId = _objDiseasesList.v_DiseasesId;
 
                     //Temporal de Restricción
                     foreach (var item in _TempComponentFieldValuesRestrictionList)

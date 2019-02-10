@@ -27,7 +27,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             join C in dbContext.systemparameter on new { a = A.i_IsAnormal.Value, b = 111 } equals new { a = C.i_ParameterId, b = C.i_GroupId }
                             //join D in dbContext.diseases on new { A.v_Diseases equals D.v_DiseasesId }
 
-                            join D in dbContext.diseases on new { a = A.v_Diseases }
+                            join D in dbContext.diseases on new { a = A.v_DiseasesId }
                                          equals new { a = D.v_DiseasesId } into D_join
                             from D in D_join.DefaultIfEmpty()
 
@@ -352,7 +352,7 @@ namespace Sigesoft.Node.WinClient.BLL
         {
              SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
              var query = (from A in dbContext.componentfieldvalues
-                         where A.v_Diseases == pDiseases && A.v_ComponentFieldId == pComponentFieldId
+                         where A.v_DiseasesId == pDiseases && A.v_ComponentFieldId == pComponentFieldId
 
                          select new
                          {

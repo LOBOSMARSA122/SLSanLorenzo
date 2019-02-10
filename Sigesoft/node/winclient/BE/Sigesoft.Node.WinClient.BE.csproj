@@ -61,6 +61,7 @@
     <Compile Include="Custom\DatosPersonales.cs" />
     <Compile Include="Custom\DiagnosticoSeguimientoSigesoft.cs" />
     <Compile Include="Custom\Embarazo.cs" />
+    <Compile Include="Custom\EmpresaMigracion.cs" />
     <Compile Include="Custom\EnviarSeguimientoSigesoft.cs" />
     <Compile Include="Custom\FacturaCobranza.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
@@ -339,6 +340,7 @@
     <Compile Include="Custom\WorkerData.cs" />
     <Compile Include="Custom\WorkstationDangersList.cs" />
     <Compile Include="Custom\XmlNatclar.cs" />
+    <Compile Include="Generated\empresassalusResultDto.cs" />
     <Compile Include="Generated\adolescenteDto.cs" />
     <Compile Include="Generated\adultoDto.cs" />
     <Compile Include="Generated\adultomayorDto.cs" />
@@ -372,6 +374,8 @@
     <Compile Include="Generated\embarzoDto.cs" />
     <Compile Include="Generated\workstationdangersDto.cs" />
     <Compile Include="Generated\warehouseDto.cs" />
+    <Compile Include="Generated\vigilanciaserviceDto.cs" />
+    <Compile Include="Generated\vigilanciaDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
     <Compile Include="Generated\ticketdetalleDto.cs" />
     <Compile Include="Generated\ticketDto.cs" />
@@ -412,6 +416,8 @@
     <Compile Include="Generated\productDto.cs" />
     <Compile Include="Generated\procedurebyserviceDto.cs" />
     <Compile Include="Generated\problemaDto.cs" />
+    <Compile Include="Generated\planvigilanciadiseasesDto.cs" />
+    <Compile Include="Generated\planvigilanciaDto.cs" />
     <Compile Include="Generated\planintegralDto.cs" />
     <Compile Include="Generated\planDto.cs" />
     <Compile Include="Generated\personmedicalhistoryDto.cs" />

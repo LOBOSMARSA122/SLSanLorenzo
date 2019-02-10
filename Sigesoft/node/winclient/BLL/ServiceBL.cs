@@ -2437,7 +2437,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 			List<ComponentFieldValues> fieldValues = (from A in dbContext.componentfieldvalues
 
-													  join ddd in dbContext.diseases on A.v_Diseases equals ddd.v_DiseasesId into J3_join // Diagnosticos
+													  join ddd in dbContext.diseases on A.v_DiseasesId equals ddd.v_DiseasesId into J3_join // Diagnosticos
 													  from ddd in J3_join.DefaultIfEmpty()
 													  join D in dbContext.componentfields on A.v_ComponentFieldId equals D.v_ComponentFieldId
 													  join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
@@ -2462,7 +2462,7 @@ namespace Sigesoft.Node.WinClient.BLL
 														  i_IsAnormal = A.i_IsAnormal,
 														  i_ValidationMonths = A.i_ValidationMonths,
 														  v_DiseasesName = ddd.v_Name,
-														  v_DiseasesId = A.v_Diseases,
+														  v_DiseasesId = A.v_DiseasesId,
 														  v_ComponentId = D.v_ComponentId
 													  }).ToList();
 
@@ -2722,7 +2722,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
 									join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
 									join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
-									join dise in dbContext.diseases on cfsv.v_Diseases equals dise.v_DiseasesId
+									join dise in dbContext.diseases on cfsv.v_DiseasesId equals dise.v_DiseasesId
 									where (cfsv.i_IsDeleted == isDeleted) &&
 										  (s.v_ServiceId == pstrServiceId)&&
 										  (sc.i_IsDeleted == isDeleted)&&
@@ -2739,7 +2739,7 @@ namespace Sigesoft.Node.WinClient.BLL
 										i_IsAnormal = cfsv.i_IsAnormal,
 										i_ValidationMonths = cfsv.i_ValidationMonths,
 										v_DiseasesName = cfsv.diseases.v_Name,
-										v_DiseasesId = cfsv.v_Diseases,
+										v_DiseasesId = cfsv.v_DiseasesId,
 										v_ComponentId = sc.v_ComponentId,
 										i_GenderId = cfsv.i_GenderId,
 										v_CIE10 = dise.v_CIE10Id
@@ -5134,7 +5134,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				List<DiagnosticRepositoryList> query = (from ccc in dbContext.componentfieldvalues
 														//join bbb in dbContext.component on ccc.v_ComponentId equals bbb.v_ComponentId
 
-														join ddd in dbContext.diseases on ccc.v_Diseases equals ddd.v_DiseasesId into J6_join  // Diagnosticos
+														join ddd in dbContext.diseases on ccc.v_DiseasesId equals ddd.v_DiseasesId into J6_join  // Diagnosticos
 														from ddd in J6_join.DefaultIfEmpty()
 
 														join eee in dbContext.systemparameter on new { a = (int)AutoManual.Automático, b = 136 } // Auto / Manual
@@ -5159,7 +5159,7 @@ namespace Sigesoft.Node.WinClient.BLL
 															//v_DiagnosticRepositoryId = ccc.v_DiagnosticRepositoryId,
 															//v_ServiceId = ccc.v_ServiceId,
 															//v_ComponentId = ccc.v_ComponentId,
-															v_DiseasesId = ccc.v_Diseases,
+															v_DiseasesId = ccc.v_DiseasesId,
 															//i_AutoManualId = ccc.i_AutoManualId,
 															//i_PreQualificationId = ccc.i_PreQualificationId,
 															//i_FinalQualificationId = ccc.i_FinalQualificationId,
@@ -33531,7 +33531,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
                                     join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
                                     join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
-                                    join dise in dbContext.diseases on cfsv.v_Diseases equals dise.v_DiseasesId
+                                    join dise in dbContext.diseases on cfsv.v_DiseasesId equals dise.v_DiseasesId
                                     where (cfsv.i_IsDeleted == isDeleted) &&
                                           (s.v_ServiceId == pstrServiceId) &&
                                         //(sc.v_ComponentId == pstrComponentId)
@@ -33547,7 +33547,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                         i_IsAnormal = cfsv.i_IsAnormal,
                                         i_ValidationMonths = cfsv.i_ValidationMonths,
                                         v_DiseasesName = cfsv.diseases.v_Name,
-                                        v_DiseasesId = cfsv.v_Diseases,
+                                        v_DiseasesId = cfsv.v_DiseasesId,
                                         v_ComponentId = sc.v_ComponentId,
                                         i_GenderId = cfsv.i_GenderId,
                                         v_CIE10 = dise.v_CIE10Id
