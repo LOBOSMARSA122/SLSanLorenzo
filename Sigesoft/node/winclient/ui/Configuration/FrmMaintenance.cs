@@ -67,6 +67,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void cboExternalUser_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             ProfessionalBL oProfessionalBL = new ProfessionalBL();
             OperationResult objOperationResult = new OperationResult();
 
@@ -158,22 +159,26 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             _objSystemUserTemp = _objSecurityBL.GetSystemUser(ref objOperationResult, _systemUserId.Value);
 
             //cboEmpresa.SelectedItem = item;// _objSystemUserTemp.v_SystemUserByOrganizationId == null ? "-1" : _objSystemUserTemp.v_SystemUserByOrganizationId;
-            var organizationIds = _objSystemUserTemp.v_SystemUserByOrganizationId.Split(',').ToList();
-
-            foreach (var item in organizationIds)
+            if (!string.IsNullOrEmpty(_objSystemUserTemp.v_SystemUserByOrganizationId))
             {
-                for (int i = 0; i < chkEmpresas.Items.Count; i++)
-                {
-                    KeyValueDTO obj = (KeyValueDTO)chkEmpresas.Items[i];
+                var organizationIds = _objSystemUserTemp.v_SystemUserByOrganizationId.Split(',').ToList();
 
-                    if (obj.Id.Trim() == item.Trim())
+                foreach (var item in organizationIds)
+                {
+                    for (int i = 0; i < chkEmpresas.Items.Count; i++)
                     {
-                        chkEmpresas.SetItemChecked(i, true);
-                        break;
+                        KeyValueDTO obj = (KeyValueDTO)chkEmpresas.Items[i];
+
+                        if (obj.Id.Trim() == item.Trim())
+                        {
+                            chkEmpresas.SetItemChecked(i, true);
+                            break;
+                        }
                     }
                 }
+   
             }
-
+           
 
 
             txtUserName.Text = _objSystemUserTemp.v_UserName;
@@ -482,9 +487,19 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     pobjSystemUser.v_UserName = txtUserName.Text.Trim();
                     pobjSystemUser.v_Password = SecurityBL.Encrypt(txtPassword2.Text.Trim());
                     pobjSystemUser.i_SystemUserTypeId = (int)SystemUserTypeId.External;
-                    //pobjSystemUser.v_SystemUserByOrganizationId = cboEmpresa.SelectedValue.ToString();
                     //if (rbFEchaExpiracion.Checked)                  
                     //    pobjSystemUser.d_ExpireDate = dtpExpiredDate.Value.Date;
+                    var ListIds = new List<string>();
+
+                    for (int i = 0; i < chkEmpresas.CheckedItems.Count; i++)
+                    {
+                        KeyValueDTO obj = (KeyValueDTO)chkEmpresas.CheckedItems[i];
+                        ListIds.Add(obj.Id);
+                    }
+
+                    var concateOrganizationId = string.Join(",", ListIds.ToList().Select(p => p));
+
+                    pobjSystemUser.v_SystemUserByOrganizationId = concateOrganizationId;
 
 
                     // Graba persona                        
