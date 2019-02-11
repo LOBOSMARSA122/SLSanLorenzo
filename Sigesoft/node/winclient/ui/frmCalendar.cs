@@ -183,7 +183,6 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-
         private void btnFilter_Click(object sender, EventArgs e)
         {
             if (ddlServiceTypeId.SelectedValue.ToString() == "-1")

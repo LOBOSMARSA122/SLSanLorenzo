@@ -40,7 +40,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             CustomGrid();
             loadCombo();
             LoadAllchkList();
-
         }
 
         private void CustomGrid()
@@ -59,15 +58,18 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             Utils.LoadDropDownList(ddlDocType, "Value1", "Id", _docType, DropDownListAction.Select);
 
             var clientOrganization = BLL.Utils.GetAllOrganizations(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
-             Utils.LoadDropDownList(cboEmpresa, "Value1", "Id", clientOrganization, DropDownListAction.Select);
-           
+
+            chkEmpresas.DataSource = clientOrganization;
+            chkEmpresas.DisplayMember = "Value1";
+            chkEmpresas.ValueMember = "Id";
+            
         }
 
         private void cboExternalUser_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             ProfessionalBL oProfessionalBL = new ProfessionalBL();
             OperationResult objOperationResult = new OperationResult();
-            SystemUserList oSystemUserList = new SystemUserList();
 
             if (cboExternalUser.SelectedValue == null)
                 return;
@@ -78,10 +80,12 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 return;
             }
 
+
+
             clearForm();
             LoadAllchkList();
             _mode = "Edit";
-            oSystemUserList = oProfessionalBL.GetSystemUserNameExternal(ref objOperationResult, int.Parse(cboExternalUser.SelectedValue.ToString()));
+            var oSystemUserList = oProfessionalBL.GetSystemUserNameExternal(ref objOperationResult, int.Parse(cboExternalUser.SelectedValue.ToString()));
             lblNameExternalUser.Text = oSystemUserList== null? "": oSystemUserList.v_PersonName;
             _systemUserId = int.Parse(cboExternalUser.SelectedValue.ToString());
             _personId = oSystemUserList== null? null: oSystemUserList.v_PersonId;
@@ -105,7 +109,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             txtUserName.Text = "";
             txtPassword1.Text = "";
             txtPassword2.Text = "";
-            cboEmpresa.SelectedValue = "-1";
+            //cboEmpresa.SelectedValue = "-1";
             LoadGrid();
             //chklNotificaciones.DataSource = new List<KeyValueDTO>();
             //chklPermisosOpciones.DataSource = new List<KeyValueDTO>();
@@ -127,14 +131,13 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void LoadDataExternalUser()
         {
-
             // Setear lenght dimamicos de numero de documento
             SetLenght(ddlDocType.SelectedValue.ToString());
 
             OperationResult objCommonOperationResultedit = new OperationResult();
             objPerson = _objPacientBL.GetPerson(ref objCommonOperationResultedit, _personId);
 
-            this.Text = this.Text + " (" + objPerson.v_FirstName + " " + objPerson.v_FirstLastName + " " + objPerson.v_SecondLastName + ")";
+            Text = this.Text + " (" + objPerson.v_FirstName + " " + objPerson.v_FirstLastName + " " + objPerson.v_SecondLastName + ")";
 
             // Informacion de la persona
             txtName.Text = objPerson.v_FirstName;
@@ -144,12 +147,40 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             ddlDocType.SelectedValue = objPerson.i_DocTypeId.ToString();
             txtDocNumber.Text = objPerson.v_DocNumber;
             txtMail.Text = objPerson.v_Mail;
-            
+
+
+            for (int i = 0; i < chkEmpresas.Items.Count - 1; i++)
+            {
+                chkEmpresas.SetItemChecked(i, false);
+            }
+
             // Informacion del usuario
             OperationResult objOperationResult = new OperationResult();
             _objSystemUserTemp = _objSecurityBL.GetSystemUser(ref objOperationResult, _systemUserId.Value);
 
-            cboEmpresa.SelectedValue = _objSystemUserTemp.v_SystemUserByOrganizationId == null ? "-1" : _objSystemUserTemp.v_SystemUserByOrganizationId;
+            //cboEmpresa.SelectedItem = item;// _objSystemUserTemp.v_SystemUserByOrganizationId == null ? "-1" : _objSystemUserTemp.v_SystemUserByOrganizationId;
+            if (!string.IsNullOrEmpty(_objSystemUserTemp.v_SystemUserByOrganizationId))
+            {
+                var organizationIds = _objSystemUserTemp.v_SystemUserByOrganizationId.Split(',').ToList();
+
+                foreach (var item in organizationIds)
+                {
+                    for (int i = 0; i < chkEmpresas.Items.Count; i++)
+                    {
+                        KeyValueDTO obj = (KeyValueDTO)chkEmpresas.Items[i];
+
+                        if (obj.Id.Trim() == item.Trim())
+                        {
+                            chkEmpresas.SetItemChecked(i, true);
+                            break;
+                        }
+                    }
+                }
+   
+            }
+           
+
+
             txtUserName.Text = _objSystemUserTemp.v_UserName;
             txtPassword1.Text = _objSystemUserTemp.v_Password;
             txtPassword2.Text = _objSystemUserTemp.v_Password;
@@ -168,7 +199,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             LoadchkListByProtocolIdAndSystemUserId();
 
         }
-
+        
         private void LoadchkListByProtocolIdAndSystemUserId()
         {
             OperationResult objOperationResult = new OperationResult();
@@ -456,9 +487,19 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     pobjSystemUser.v_UserName = txtUserName.Text.Trim();
                     pobjSystemUser.v_Password = SecurityBL.Encrypt(txtPassword2.Text.Trim());
                     pobjSystemUser.i_SystemUserTypeId = (int)SystemUserTypeId.External;
-                    pobjSystemUser.v_SystemUserByOrganizationId = cboEmpresa.SelectedValue.ToString();
                     //if (rbFEchaExpiracion.Checked)                  
                     //    pobjSystemUser.d_ExpireDate = dtpExpiredDate.Value.Date;
+                    var ListIds = new List<string>();
+
+                    for (int i = 0; i < chkEmpresas.CheckedItems.Count; i++)
+                    {
+                        KeyValueDTO obj = (KeyValueDTO)chkEmpresas.CheckedItems[i];
+                        ListIds.Add(obj.Id);
+                    }
+
+                    var concateOrganizationId = string.Join(",", ListIds.ToList().Select(p => p));
+
+                    pobjSystemUser.v_SystemUserByOrganizationId = concateOrganizationId;
 
 
                     // Graba persona                        
@@ -550,7 +591,18 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     _objSystemUserTemp.d_InsertDate = _objSystemUserTemp.d_InsertDate;
                     _objSystemUserTemp.i_InsertUserId = _objSystemUserTemp.i_SystemUserId;
                     _objSystemUserTemp.i_IsDeleted = _objSystemUserTemp.i_IsDeleted;
-                    _objSystemUserTemp.v_SystemUserByOrganizationId = cboEmpresa.SelectedValue.ToString();
+
+                    var ListIds = new List<string>();
+
+                    for (int i = 0; i < chkEmpresas.CheckedItems.Count; i++)
+                    {
+                        KeyValueDTO obj = (KeyValueDTO)chkEmpresas.CheckedItems[i];
+                        ListIds.Add(obj.Id);
+                    }
+
+                    var concateOrganizationId = string.Join(",", ListIds.ToList().Select(p => p));
+
+                    _objSystemUserTemp.v_SystemUserByOrganizationId = concateOrganizationId;
                     if (rbFEchaExpiracion.Checked)
                         _objSystemUserTemp.d_ExpireDate = dtpExpiredDate.Value.Date;
                     else if (rbNuncaCaduca.Checked)

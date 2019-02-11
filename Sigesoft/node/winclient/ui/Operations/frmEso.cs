@@ -3042,7 +3042,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 if (packageForSave.ServiceComponent.d_UpdateDate == null)
                 {
-                    result = _serviceBL.AddServiceComponentValues(ref objOperationResult,
+                        result = _serviceBL.AddServiceComponentValues(ref objOperationResult,
                                                        _serviceComponentFieldsList,
                                                        Globals.ClientSession.GetAsList(),
                                                        _personId,

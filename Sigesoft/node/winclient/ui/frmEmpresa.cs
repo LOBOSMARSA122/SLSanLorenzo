@@ -2258,5 +2258,53 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
+        private void btnProcesar_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+           var empresas =  _objBL.EmpresasSalus();
+
+           foreach (var empresa in empresas)
+           {
+               objOrganizationDto = new organizationDto();
+               // Populate the entity
+               objOrganizationDto.i_OrganizationTypeId = empresa.i_OrganizationTypeId;
+               objOrganizationDto.i_SectorTypeId = empresa.i_SectorTypeId;
+               objOrganizationDto.v_IdentificationNumber = empresa.v_IdentificationNumber;
+               objOrganizationDto.v_Name = empresa.v_Name;
+               objOrganizationDto.v_Address = empresa.v_Address;
+               objOrganizationDto.v_PhoneNumber = empresa.v_PhoneNumber;
+               objOrganizationDto.v_ContacName = empresa.v_ContacName;
+               objOrganizationDto.v_Observation = empresa.v_Observation;
+               objOrganizationDto.v_Mail = empresa.v_Mail;
+
+               _organizationId = _objBL.AddOrganization(ref objOperationResult, objOrganizationDto, Globals.ClientSession.GetAsList());
+
+               foreach (var sede in empresa.Sedes)
+               {
+                   objLocationDto = new locationDto();
+                   objLocationDto.v_OrganizationId = _organizationId;
+                   objLocationDto.v_Name = sede.Sede;
+                   // Save the data
+                   var locationId = _objLocationBL.AddLocation(ref objOperationResult, objLocationDto, Globals.ClientSession.GetAsList());
+                   NodeOrganizationLoactionWarehouseList objNodeOrganizationLoactionWarehouseList = new NodeOrganizationLoactionWarehouseList();
+
+                   objNodeOrganizationLoactionWarehouseList.i_NodeId = Globals.ClientSession.i_CurrentExecutionNodeId;
+                   objNodeOrganizationLoactionWarehouseList.v_OrganizationId = _organizationId;
+                   objNodeOrganizationLoactionWarehouseList.v_LocationId = locationId;
+
+                   _objBL.AddNodeOrganizationLoactionWarehouse(ref objOperationResult, objNodeOrganizationLoactionWarehouseList, null, Globals.ClientSession.GetAsList());
+
+                   foreach (var geso in sede.Gesos)
+                   {
+                       objgroupoccupationDto = new groupoccupationDto();
+                       objgroupoccupationDto.v_Name = geso.Geso;
+                       objgroupoccupationDto.v_LocationId = locationId;
+                       // Save the data
+                       _objGroupOccupationBL.AddGroupOccupation(ref objOperationResult, objgroupoccupationDto, Globals.ClientSession.GetAsList());
+                   }
+               }
+           }
+        }
+
     }
 }
