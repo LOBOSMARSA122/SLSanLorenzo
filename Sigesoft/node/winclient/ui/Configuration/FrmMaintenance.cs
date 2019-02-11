@@ -585,7 +585,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                         ListIds.Add(obj.Id);
                     }
 
-                    var concateOrganizationId = string.Join(", ", ListIds.ToList().Select(p => p));
+                    var concateOrganizationId = string.Join(",", ListIds.ToList().Select(p => p));
 
                     _objSystemUserTemp.v_SystemUserByOrganizationId = concateOrganizationId;
                     if (rbFEchaExpiracion.Checked)
