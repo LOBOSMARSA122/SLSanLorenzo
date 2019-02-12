@@ -11,7 +11,27 @@ namespace Sigesoft.Node.WinClient.BLL
 {
     public class AtencionesIntegralesBL
     {
+        public serviceDto GetService(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                serviceDto objDtoEntity = null;
 
+                var objEntity = (from a in dbContext.service
+                                 where a.v_ServiceId == serviceId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = serviceAssembler.ToDTO(objEntity);
+
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public string AddAdolescente(ref OperationResult objOperationResult, adolescenteDto objAdolDto, List<string> ClientSession)
         {
             string NewId0 = null;
@@ -100,27 +120,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public serviceDto GetService(string serviceId)
-        {
-            try
-            {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                serviceDto objDtoEntity = null;
-
-                var objEntity = (from a in dbContext.service
-                                 where a.v_ServiceId == serviceId
-                                 select a).FirstOrDefault();
-
-                if (objEntity != null)
-                    objDtoEntity = serviceAssembler.ToDTO(objEntity);
-
-                return objDtoEntity;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
+        
 
         public string AddAdulto(ref OperationResult objOperationResult, adultoDto objAdultDto, List<string> ClientSession)
         {
