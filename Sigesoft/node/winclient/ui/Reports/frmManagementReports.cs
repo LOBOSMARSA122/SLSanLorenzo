@@ -2524,6 +2524,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 OperationResult objOperationResult = new OperationResult();
 
+
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
                 string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
                 string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
@@ -2536,6 +2537,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 if (Result == System.Windows.Forms.DialogResult.Yes)
                 {
+
+                    if (!Common.Utils.AccesoInternet())
+                    {
+                        MessageBox.Show("Verifique la conexión de Internet para publicar", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return ; 
+                    }
+
+
                     var x = _filesNameToMerge.ToList();
                     _mergeExPDF.FilesName = x;
                     _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
@@ -2553,8 +2562,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     //Cambiar de estado a generado de reportes
                     _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
+
+                    //if (AccesoInternet())
+                    //{
+                        Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", ruta + _serviceId + ".pdf");
+                    //}
                     
-                    Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", ruta + _serviceId + ".pdf");
                 }
                 else
                 {

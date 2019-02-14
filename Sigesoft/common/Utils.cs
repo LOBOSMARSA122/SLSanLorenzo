@@ -1485,5 +1485,21 @@ namespace Sigesoft.Common
 
             }	
         }
+
+        public static bool AccesoInternet()       {
+
+            try
+            {
+                System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry("www.google.com");
+                return true;
+
+            }
+            catch (Exception es)
+            {
+
+                return false;
+            }
+
+        }
     }
 }
