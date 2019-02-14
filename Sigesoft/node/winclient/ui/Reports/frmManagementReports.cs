@@ -2539,7 +2539,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     var x = _filesNameToMerge.ToList();
                     _mergeExPDF.FilesName = x;
                     _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
-                    _mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; ;
+                    _mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; 
                     _mergeExPDF.Execute();
                     _mergeExPDF.RunFile();
 
@@ -2553,6 +2553,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     //Cambiar de estado a generado de reportes
                     _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
+                    
+                    Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", ruta + _serviceId + ".pdf");
                 }
                 else
                 {
