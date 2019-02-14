@@ -228,36 +228,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
         public List<KeyValueDTO> GetFormAction(ref OperationResult pobjOperationResult, int pintNodeId, int pintRoleId, int pintSystemUserId, string pstrFormCode)
         {
-            //var dd = "frmEso_ANADX_ADDDX".Substring(0, "frmEso_ANADX_ADDDX".IndexOf('_'));
-
-            //mon.IsActive = true;
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-
-                //var query1 = (from rnp in dbContext.rolenodeprofile
-                //             join rn in dbContext.rolenode on new { a = rnp.i_NodeId, b = rnp.i_RoleId }
-                //                                     equals new { a = rn.i_NodeId, b = rn.i_RoleId } into rn_join
-                //             from rnj in rn_join.DefaultIfEmpty()
-
-                //             join surn in dbContext.systemuserrolenode on new { a = rnp.i_NodeId, b = rnp.i_RoleId }
-                //                                    equals new { a = surn.i_NodeId, b = surn.i_RoleId } into surn_join
-                //             from surnj in surn_join.DefaultIfEmpty()
-
-                //             join ah in dbContext.applicationhierarchy on rnp.i_ApplicationHierarchyId equals ah.i_ApplicationHierarchyId
-                //             where (surnj.i_NodeId == pintNodeId) &&
-                //                   (surnj.i_RoleId == pintRoleId) &&
-                //                   (surnj.i_SystemUserId == pintSystemUserId) &&
-                //                   (ah.i_ApplicationHierarchyTypeId == 3) &&   // solo acciones                                 
-                //                   (ah.v_Code.Contains(pstrFormCode)) &&
-                //                   //(ah.v_Code.Substring(0 - 1, (int)ah.v_Code.ToUpper().IndexOf("_".ToUpper()) + 1) == pstrFormCode) &&
-                //                   (rnp.i_IsDeleted == 0)
-                //             select new KeyValueDTO
-                //             {
-                //                 Value1 = ah.v_Description,
-                //                 Value2 = ah.v_Code
-                //             }).ToList();
-
 
                 var query = (from rnp in dbContext.rolenodeprofile
                              join rn in dbContext.rolenode on new { a = rnp.i_NodeId, b = rnp.i_RoleId }
