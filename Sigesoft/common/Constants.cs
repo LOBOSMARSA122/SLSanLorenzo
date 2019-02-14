@@ -340,6 +340,10 @@ namespace Sigesoft.Common
         public const string LABORATORIO_TGO_VALOR = "N009-MF000004318";
         public const string LABORATORIO_TGO_VALORDESEABLE_VALOR = "N009-MF000004319";
         #endregion
+        #region Declaracion Jurada SECURITAS
+        public const string REGISTRO_ENTREGA_INFORME_RESULTADOS_BUENAVENTURA = "REGISTRO_ENTREGA_INFORME_BUENAVENTURA";
+        #endregion
+
         #region TGP
         public const string LABORATORIO_TGP_ID = "N009-ME000000470";
         public const string LABORATORIO_TGP_VALOR = "N009-MF000004320";

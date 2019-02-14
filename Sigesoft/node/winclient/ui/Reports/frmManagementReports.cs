@@ -124,6 +124,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 76, v_ComponentName = "PARASITOLOGICO COPROCULTIVO CIELO AZUL", v_ComponentId = Constants.PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "MARCOBRE PASE MÉDICO", v_ComponentId = Constants.MARCOBRE_PASE_MEDICO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "DECLARACIÓN JURADA", v_ComponentId = Constants.DECLARACION_JURADA });
+                serviceComponents.Add(new ServiceComponentList { Orden = 82, v_ComponentName = "REGISTRO ENTREGA INFORME RESULTADOS EMO BUENAVENTURA", v_ComponentId = Constants.REGISTRO_ENTREGA_INFORME_RESULTADOS_BUENAVENTURA });
 
                 serviceComponents.Add(new ServiceComponentList { Orden = 78, v_ComponentName = "ENTREGA DE EXAMEN MEDICO OCUPACIONAL", v_ComponentId = Constants.ENTREGA_DE_XAMEN_MEDICO_OCUPACIONAL });
 
@@ -1519,6 +1520,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             FichaPsicologicaGoldfields.CreateFichaPsicologicaGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
+        
+
         public void GenerateDeclaracionJuradaCoimolacheLaZanja(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -1665,6 +1668,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             ExoneracionEspirometria.CreateExoneracionEspirometria(filiationData, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
+        public void GenerateRegistroInformeEMOBuenaventura(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+
+            Registro_Entrega_Informe_Resultados_EMO_BUENAVENTURA.CreateRegistroInformeEMOBuenaventura(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, datosGrabo);
+        }
+
         private void GenerateDeclaracionJuradaRX(string pathFile)
         {
             //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
@@ -5652,6 +5667,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.MARCOBRE_PASE_MEDICO:
                     GenerateMarcobrePaseMedico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.MARCOBRE_PASE_MEDICO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.REGISTRO_ENTREGA_INFORME_RESULTADOS_BUENAVENTURA:
+                    GenerateRegistroInformeEMOBuenaventura(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.REGISTRO_ENTREGA_INFORME_RESULTADOS_BUENAVENTURA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.DECLARACION_JURADA:
