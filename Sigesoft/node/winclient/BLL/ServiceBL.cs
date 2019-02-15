@@ -26362,12 +26362,14 @@ namespace Sigesoft.Node.WinClient.BLL
 								 join C in dbContext.organization on B.v_CustomerOrganizationId equals C.v_OrganizationId into C_join
 								 from C in C_join.DefaultIfEmpty()
 								 join D in dbContext.person on A.v_PersonId equals D.v_PersonId
-
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
 								 where A.v_ServiceId == pstrServiceId
 
 								 select new ServiceShort
 								 {
 									 Empresa = C.v_Name,
+                                     Contract = C1.v_Name,
 									 Paciente = D.v_FirstLastName + " " + D.v_SecondLastName + " " + D.v_FirstName,
 									 FechaServicio = A.d_ServiceDate,
 									 DNI = D.v_DocNumber
@@ -26379,6 +26381,7 @@ namespace Sigesoft.Node.WinClient.BLL
 						   select new ServiceShort
 						   {
 							   Empresa = a.Empresa,
+                               Contract = a.Contract,
 							   Paciente = a.Paciente,
 							   FechaServicio = a.FechaServicio,
 							   DNI = a.DNI
