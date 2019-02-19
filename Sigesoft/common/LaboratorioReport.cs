@@ -243,8 +243,6 @@ namespace NetPdf
 
                         cells.Add(cell);
                         //*****************************************
-                        if (xPerfilLipidico.ServiceComponentFields.Count > 0)
-                        {
                             cells = new List<PdfPCell>();
 
                             //cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) {BackgroundColor=BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -304,153 +302,104 @@ namespace NetPdf
                             cells.Add(new PdfPCell(new Phrase(colesterolvldl == null ? string.Empty : colesterolvldl.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                             cells.Add(new PdfPCell(new Phrase("", fontColumnValueBold)) { BackgroundColor = BaseColor.BLACK, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = 1f });
-
-                            if (xUrea != null)
-                            {
-                                var urea = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA);
-                                var ureaDeseable = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA_DESEABLE);
-
-                                cells.Add(new PdfPCell(new Phrase("UREA SERICA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(ureaDeseable == null ? string.Empty : ureaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-
-                            }
-                                if (xTrigliceridos != null)
-                                {
-                                    var Triglicerido = xTrigliceridos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS);
-                                    var TrigliceridoValord = xTrigliceridos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS_DESEABLE);
-
-                                    cells.Add(new PdfPCell(new Phrase("TRIGLICÉRIDOS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(Triglicerido == null ? string.Empty : Triglicerido.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(TrigliceridoValord == null ? string.Empty : TrigliceridoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(Triglicerido == null ? string.Empty : Triglicerido.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                }
-                                if (xColesterol != null)
-                                {
-                                    var colesterol = xColesterol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_COLESTEROL_TOTAL_ID);
-                                    var colesterolValord = xColesterol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_COLESTEROL_TOTAL_DESEABLE_ID);
-
-                                    cells.Add(new PdfPCell(new Phrase("COLESTEROL", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(colesterol == null ? string.Empty : colesterol.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(colesterolValord == null ? string.Empty : colesterolValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(colesterol == null ? string.Empty : colesterol.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                               }
-
-                                if (xGlucosa != null)
-                                {
-                                    var glucosa = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_RESULTADO_ID);
-                                    var glucosaValord = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_DESEABLE_ID);
-
-                                    cells.Add(new PdfPCell(new Phrase("GLUCOSA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(glucosaValord == null ? string.Empty : glucosaValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                }
-                                if (xAcidoUrico != null)
-                                {
-                                    var acidourico = xAcidoUrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ACIDO_URICO_BIOQUIMICA_ACIDO_URICO);
-                                    var acidouricoValord = xAcidoUrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ACIDO_URICO_BIOQUIMICA_ACIDO_URICO_DESEABLE);
-
-                                    cells.Add(new PdfPCell(new Phrase("ÁCIDO ÚRICO", fontColumnValueBold)));
-                                    cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(acidouricoValord == null ? string.Empty : acidouricoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                }
-                                if (xUrea != null)
-                                {
-                                    var urea = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA);
-                                    var ureaDeseable = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA_DESEABLE);
-
-                                    cells.Add(new PdfPCell(new Phrase("UREA SERICA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(ureaDeseable == null ? string.Empty : ureaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                }
-                                if (xCreatinina != null)
-                                {
-                                    var creatinina = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA);
-                                    var creatininaDeseable = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA_DESEABLE);
-
-                                    cells.Add(new PdfPCell(new Phrase("CREATININA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(creatininaDeseable == null ? string.Empty : creatininaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                    cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                }
                                 
-                        }
-                        else
-                        {
-                            if (xTrigliceridos != null)
-                            {
-                                var Triglicerido = xTrigliceridos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS);
-                                var TrigliceridoValord = xTrigliceridos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS_DESEABLE);
-
-                                cells.Add(new PdfPCell(new Phrase("TRIGLICÉRIDOS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(Triglicerido == null ? string.Empty : Triglicerido.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(TrigliceridoValord == null ? string.Empty : TrigliceridoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(Triglicerido == null ? string.Empty : Triglicerido.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                            }
-
-
-                            if (xColesterol != null)
-                            {
-                                var colesterol = xColesterol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_COLESTEROL_TOTAL_ID);
-                                var colesterolValord = xColesterol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_COLESTEROL_TOTAL_DESEABLE_ID);
-
-                                cells.Add(new PdfPCell(new Phrase("COLESTEROL", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(colesterol == null ? string.Empty : colesterol.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(colesterolValord == null ? string.Empty : colesterolValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(colesterol == null ? string.Empty : colesterol.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                            }
-
-                            if (xGlucosa != null)
-                            {
-                                var glucosa = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_RESULTADO_ID);
-                                var glucosaValord = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_DESEABLE_ID);
-
-                                cells.Add(new PdfPCell(new Phrase("GLUCOSA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(glucosaValord == null ? string.Empty : glucosaValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                            }
-                            if (xAcidoUrico != null)
-                            {
-                                var acidourico = xAcidoUrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ACIDO_URICO_BIOQUIMICA_ACIDO_URICO);
-                                var acidouricoValord = xAcidoUrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ACIDO_URICO_BIOQUIMICA_ACIDO_URICO_DESEABLE);
-
-                                cells.Add(new PdfPCell(new Phrase("ÁCIDO ÚRICO", fontColumnValueBold)));
-                                cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(acidouricoValord == null ? string.Empty : acidouricoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                            }
-                            if (xUrea != null)
-                            {
-                                var urea = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA);
-                                var ureaDeseable = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA_DESEABLE);
-
-                                cells.Add(new PdfPCell(new Phrase("UREA SERICA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(ureaDeseable == null ? string.Empty : ureaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                            }
-                            if (xCreatinina != null)
-                            {
-                                var creatinina = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA);
-                                var creatininaDeseable = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA_DESEABLE);
-
-                                cells.Add(new PdfPCell(new Phrase("CREATININA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(creatininaDeseable == null ? string.Empty : creatininaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                                cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                            }
-                        }
-
                         #endregion
                     }
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
+                    cells = new List<PdfPCell>();
+                    if (xTrigliceridos != null)
+                    {
+                        cells = new List<PdfPCell>();
+                        var Triglicerido = xTrigliceridos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS);
+                        var TrigliceridoValord = xTrigliceridos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS_DESEABLE);
+
+                        cells.Add(new PdfPCell(new Phrase("TRIGLICÉRIDOS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(Triglicerido == null ? string.Empty : Triglicerido.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(TrigliceridoValord == null ? string.Empty : TrigliceridoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(Triglicerido == null ? string.Empty : Triglicerido.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                        document.Add(table);
+                    }
+
+
+                    if (xColesterol != null)
+                    {
+                        cells = new List<PdfPCell>();
+                        var colesterol = xColesterol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_COLESTEROL_TOTAL_ID);
+                        var colesterolValord = xColesterol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_COLESTEROL_TOTAL_DESEABLE_ID);
+
+                        cells.Add(new PdfPCell(new Phrase("COLESTEROL", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(colesterol == null ? string.Empty : colesterol.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(colesterolValord == null ? string.Empty : colesterolValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(colesterol == null ? string.Empty : colesterol.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                        document.Add(table);
+                    }
+
+                    if (xGlucosa != null)
+                    {
+                        cells = new List<PdfPCell>();
+                        var glucosa = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_RESULTADO_ID);
+                        var glucosaValord = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_DESEABLE_ID);
+
+                        cells.Add(new PdfPCell(new Phrase("GLUCOSA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(glucosaValord == null ? string.Empty : glucosaValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                        document.Add(table);
+                    }
+                    if (xAcidoUrico != null)
+                    {
+                        cells = new List<PdfPCell>();
+                        var acidourico = xAcidoUrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ACIDO_URICO_BIOQUIMICA_ACIDO_URICO);
+                        var acidouricoValord = xAcidoUrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ACIDO_URICO_BIOQUIMICA_ACIDO_URICO_DESEABLE);
+
+                        cells.Add(new PdfPCell(new Phrase("ÁCIDO ÚRICO", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(acidouricoValord == null ? string.Empty : acidouricoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                        document.Add(table);
+                    }
+                    if (xUrea != null)
+                    {
+                        cells = new List<PdfPCell>();
+                        var urea = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA);
+                        var ureaDeseable = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA_DESEABLE);
+
+                        cells.Add(new PdfPCell(new Phrase("UREA SERICA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(ureaDeseable == null ? string.Empty : ureaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                        document.Add(table);
+                    }
+                    if (xCreatinina != null)
+                    {
+                        cells = new List<PdfPCell>();
+                        var creatinina = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA);
+                        var creatininaDeseable = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA_DESEABLE);
+
+                        cells.Add(new PdfPCell(new Phrase("CREATININA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(creatininaDeseable == null ? string.Empty : creatininaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                        columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                        document.Add(table);
+                    }
+                        
+                        
+                    
 
                     if (xPerfilHepatico != null)
                     {
@@ -577,11 +526,12 @@ namespace NetPdf
                             columnWidths = new float[] { 100f };
                         }
                         #endregion
+                        columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                        document.Add(table);
                     }
 
-                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
-                    document.Add(table);
+                    
                     //columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     //table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     //document.Add(table);

@@ -2108,7 +2108,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
 
-             
+                //_personId
                 if (_age <= 12)
                 {
                     Utils.LoadDropDownList(listaEstadoCivilMujer, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
