@@ -9,7 +9,7 @@ namespace Sigesoft.Common
 {
     public class ConexionSigesoft
     {
-        string cadena = @"Data Source = 192.168.1.179; Initial Catalog=SigesoftDesarrollo_2; User Id=sa; Password=123456";
+        string cadena = @"Data Source = 192.168.0.101\OMEGANET_2019; Initial Catalog=SanLorenzo1102; User Id=sa; Password=123456";
         public SqlConnection conectarsigesoft = new SqlConnection();
         public ConexionSigesoft()
         {

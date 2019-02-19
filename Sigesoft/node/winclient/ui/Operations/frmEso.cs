@@ -29,6 +29,8 @@ using System.IO;
 using CrystalDecisions.Shared;
 using System.Transactions;
 using System.Data.SqlClient;
+using System.DirectoryServices.Protocols;
+using System.Threading.Tasks;
 
 namespace Sigesoft.Node.WinClient.UI.Operations
 {
@@ -3026,6 +3028,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //{
             using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
             {
+
+                
                 RunWorkerAsyncPackage packageForSave = (RunWorkerAsyncPackage)e.Argument;
 
                 bool result = false;
@@ -3041,6 +3045,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 //Verficar si es nuevo o es una actualización
                 try
                 {
+                    //throw new ErrorResponseException();
+
                     if (packageForSave.ServiceComponent.d_UpdateDate == null)
                     {
                         result = _serviceBL.AddServiceComponentValues(ref objOperationResult,
@@ -3108,7 +3114,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Intente de nuevo por favor", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Red saturada. Se intentará nuevamente.", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Invoke(new MethodInvoker(() => { SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage); }));
+
+                    return;
                 }
 
 
