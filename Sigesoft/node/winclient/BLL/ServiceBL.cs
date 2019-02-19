@@ -4961,146 +4961,6 @@ namespace Sigesoft.Node.WinClient.BLL
 						#endregion
 					}
 
-					//var aaaa = pobjServicecomponentfields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-					//var search = aaaa.FindAll(p => p.v_Value1 != "1" && p.v_Value1 != "-1");
-
-					//pobjServicecomponentfields.Select(p => p.ServiceComponentFieldValues).ToList() = null;
-					//foreach (var item in pobjServicecomponentfields)
-					//{
-					//    item.ServiceComponentFieldValues = search;
-					//}
-
-					//pobjServicecomponentfields.SelectMany(p => p.ServiceComponentFieldValues);
-
-					//foreach (var cf in pobjServicecomponentfields)
-					//{
-					//    var q = (from a in dbContext.servicecomponentfields
-					//             where a.v_ComponentFieldId == cf.v_ComponentFieldsId &&
-					//             a.v_ServiceComponentId == cf.v_ServiceComponentId
-					//             select a).FirstOrDefault();
-
-					//    if (q == null)   // ADD
-					//    {
-					//        #region GRABAR CAMPOS DE UN SERVICE COMPONENT
-
-					//        servicecomponentfields objEntity = new servicecomponentfields();
-
-					//        objEntity.v_ComponentFieldId = cf.v_ComponentFieldsId;
-					//        objEntity.v_ServiceComponentId = cf.v_ServiceComponentId;
-					//        objEntity.d_InsertDate = DateTime.Now;
-					//        objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
-					//        objEntity.i_IsDeleted = 0;
-
-					//        // Autogeneramos el Pk de la tabla               
-					//        NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 35), "CF");
-					//        objEntity.v_ServiceComponentFieldsId = NewId;
-
-					//        dbContext.AddToservicecomponentfields(objEntity);
-					//        //dbContext.SaveChanges();
-
-					//        #endregion
-
-					//        foreach (var fv in cf.ServiceComponentFieldValues)
-					//        {
-					//            #region Buscar y almacenar GRUPO y FACTOR SANGUINEO en una lista temp
-
-					//            if (cf.v_ComponentFieldsId == Constants.GRUPO_SANGUINEO_ID)
-					//            {
-					//                grupoFactorSanguineo.Add(fv.v_Value1);
-					//            }
-
-					//            if (cf.v_ComponentFieldsId == Constants.FACTOR_SANGUINEO_ID)
-					//            {
-					//                grupoFactorSanguineo.Add(fv.v_Value1);
-					//            }
-
-					//            #endregion
-
-					//            #region GRABAR VALORES DE UN SERVICE COMPONENT
-
-					//            servicecomponentfieldvalues objEntity1 = new servicecomponentfieldvalues();
-
-					//            objEntity1.v_ComponentFieldValuesId = fv.v_ComponentFieldValuesId;
-					//            objEntity1.v_Value1 = fv.v_Value1;
-					//            objEntity1.d_InsertDate = DateTime.Now;
-					//            objEntity1.i_InsertUserId = Int32.Parse(ClientSession[2]);
-					//            objEntity1.i_IsDeleted = 0;
-
-					//            // Autogeneramos el Pk de la tabla               
-					//            var NewId1 = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 36), "CV");
-					//            objEntity1.v_ServiceComponentFieldValuesId = NewId1;
-					//            objEntity1.v_ServiceComponentFieldsId = NewId;
-
-					//            dbContext.AddToservicecomponentfieldvalues(objEntity1);
-					//            //dbContext.SaveChanges();
-
-					//            #endregion
-					//        }
-					//    }
-					//    else         // UPDATE
-					//    {
-					//        #region ACTUALIZAR CAMPOS DE UN SERVICE COMPONENT
-
-					//        //q.v_ComponentFieldId = cf.v_ComponentFieldsId;
-					//        //q.v_ServiceComponentId = cf.v_ServiceComponentId;
-					//        q.d_UpdateDate = DateTime.Now;
-					//        q.i_UpdateUserId = Int32.Parse(ClientSession[2]);
-
-					//        // Guardar los cambios
-					//        //dbContext.SaveChanges();
-
-					//        #endregion
-
-					//        foreach (var fv in cf.ServiceComponentFieldValues)
-					//        {
-					//            #region Buscar y almacenar GRUPO y FACTOR SANGUINEO en una lista temp
-
-					//            if (cf.v_ComponentFieldsId == Constants.GRUPO_SANGUINEO_ID)
-					//            {
-					//                grupoFactorSanguineo.Add(fv.v_Value1);
-					//            }
-
-					//            if (cf.v_ComponentFieldsId == Constants.FACTOR_SANGUINEO_ID)
-					//            {
-					//                grupoFactorSanguineo.Add(fv.v_Value1);
-					//            }
-
-					//            #endregion
-
-					//            #region ACTUALIZAR VALORES DE UN SERVICE COMPONENT FIELD VALUES
-
-					//            var q1 = (from a in dbContext.servicecomponentfieldvalues
-					//                      where a.v_ServiceComponentFieldsId == q.v_ServiceComponentFieldsId
-					//                      select a).FirstOrDefault();
-
-					//            //q1.v_ComponentFieldValuesId = fv.v_ComponentFieldValuesId;
-					//            q1.v_Value1 = fv.v_Value1;
-					//            q1.d_UpdateDate = DateTime.Now;
-					//            q1.i_UpdateUserId = Int32.Parse(ClientSession[2]);
-
-					//            dbContext.SaveChanges();
-
-					//            #endregion
-					//        }
-					//    }
-					//}
-
-					//if (grupoFactorSanguineo.Count != 0)
-					//{
-					//    #region GRABAR GRUPO y FACTOR SANGUINEO
-
-					//    var person = (from a in dbContext.person
-					//                  where a.v_PersonId == pstrPersonId
-					//                  select a).FirstOrDefault();
-
-					//    person.i_BloodGroupId = int.Parse(grupoFactorSanguineo[0]);
-					//    person.i_BloodFactorId = int.Parse(grupoFactorSanguineo[1]);
-					//    person.d_UpdateDate = DateTime.Now;
-					//    person.i_UpdateUserId = Int32.Parse(ClientSession[2]);
-					//    //dbContext.SaveChanges();
-
-					//    #endregion
-					//}
 
 					result = (dbContext.SaveChanges() > 0);
 
@@ -5115,8 +4975,9 @@ namespace Sigesoft.Node.WinClient.BLL
 			{
 				pobjOperationResult.Success = 0;
 				pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
-				// Llenar entidad Log
-				LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "CAMPOS DE UN COMPONENTE DE SERVICIO", "v_ServiceComponentId=" + NewId.ToString(), Success.Failed, pobjOperationResult.ExceptionMessage);
+                //// Llenar entidad Log
+                //LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "CAMPOS DE UN COMPONENTE DE SERVICIO", "v_ServiceComponentId=" + NewId.ToString(), Success.Failed, pobjOperationResult.ExceptionMessage);
+                throw;
 
 			}
 
