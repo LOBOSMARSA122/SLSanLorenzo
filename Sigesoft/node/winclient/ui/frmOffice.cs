@@ -341,7 +341,7 @@ namespace Sigesoft.Node.WinClient.UI
                 _Flag = 1;
 
                 Form frm;
-                if (_TserviceId == (int)MasterService.AtxMedicaParticular)
+                if (_TserviceId == (int)MasterService.AtxMedicaParticular || _TserviceId == (int)MasterService.AtxMedicaSeguros)
                 {
                     #region ESO V1
                     frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
@@ -452,7 +452,7 @@ namespace Sigesoft.Node.WinClient.UI
                 _Flag = 1;
 
                 Form frm;
-                if (_TserviceId == (int)MasterService.AtxMedicaParticular)
+                if (_TserviceId == (int)MasterService.AtxMedicaParticular || _TserviceId == (int)MasterService.AtxMedicaSeguros)
                 {
                     #region ESO V1
                     //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);

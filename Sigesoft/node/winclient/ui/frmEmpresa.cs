@@ -430,6 +430,7 @@ namespace Sigesoft.Node.WinClient.UI
                 txtEmailMedico.Text = objOrganizationDto.v_EmailMedico;
                 txtEmailContacto.Text = objOrganizationDto.v_EmailContacto;
                 Temp_IdentificationNumber = objOrganizationDto.v_IdentificationNumber;
+                txtFactor.Text = objOrganizationDto.r_Factor.ToString();
 
 
                 pbEmpresaImage.Image = Common.Utils.BytesArrayToImage(objOrganizationDto.b_Image, pbEmpresaImage);
@@ -694,6 +695,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objOrganizationDto.v_EmailMedico = txtEmailMedico.Text;
                     objOrganizationDto.v_EmailContacto = txtEmailContacto.Text;
                     objOrganizationDto.i_NumberQuotasMen = rbConDx.Checked == true ? (int)EmpresaDx.ConDx : (int)EmpresaDx.SinDx;
+                    objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text);
 
                     var arr = txtAddress.Text.Split('-').Reverse().ToArray();
                     var sede = arr[0].ToString();
@@ -796,6 +798,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objOrganizationDto.v_EmailMedico = txtEmailMedico.Text;
                     objOrganizationDto.v_EmailContacto = txtEmailContacto.Text;
                     objOrganizationDto.i_NumberQuotasMen = rbConDx.Checked == true ? (int)EmpresaDx.ConDx : (int)EmpresaDx.SinDx;
+                    objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text);
 
                     if (pbEmpresaImage.Image != null)
                     {
@@ -2304,6 +2307,25 @@ namespace Sigesoft.Node.WinClient.UI
                    }
                }
            }
+        }
+
+        private void ddlOrganizationypeId1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (ddlOrganizationypeId1.SelectedValue != null)
+            {
+                if (ddlOrganizationypeId1.SelectedValue.ToString() == "4")
+                {
+                    lblFactor.Visible = true;
+                    txtFactor.Visible = true;
+                }
+                else
+                {
+                    lblFactor.Visible = false;
+                    txtFactor.Visible = false;
+                }
+            }
+            
+            
         }
 
     }

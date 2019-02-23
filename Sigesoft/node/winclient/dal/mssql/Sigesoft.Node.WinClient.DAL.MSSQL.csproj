@@ -93,6 +93,7 @@
     <Compile Include="GeneratedAssemblers\systemuserAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemparameterAssembler.cs" />
     <Compile Include="GeneratedAssemblers\supplierAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\subscriptionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\softwarecomponentreleaseAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderAssembler.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="GeneratedAssemblers\ordenreporteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\occupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\noxioushabitsAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\notificationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodesyncstatusAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeserviceprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeorganizationprofileAssembler.cs" />
@@ -155,6 +157,7 @@
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\liquidacionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\identitystringAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />

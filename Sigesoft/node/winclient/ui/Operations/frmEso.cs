@@ -375,7 +375,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
                 // PESTAÑA Antecedentes X DEFECTO
-                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
                 {
                     tcSubMain.TabPages.Remove(tpAntecedentes);
                     tcSubMain.TabPages.Remove(General);
@@ -437,7 +437,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 GetConclusionesDiagnosticasForGridView();
                 ConclusionesyTratamiento_LoadAllGrid();
                 gbEdicionDiagnosticoTotal.Enabled = false;
-                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
                 {
                     ConstruirFormularioAntecedentes();
                     ConstruirFormularioCuidadosPreventivos();
@@ -8235,7 +8235,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else // todos los examenes están con el estado evaluado
             {
 
-                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
                 {
                     MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     serviceDto objserviceDto = new serviceDto();

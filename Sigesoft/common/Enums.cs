@@ -149,6 +149,7 @@ namespace Sigesoft.Common
         ProcEnfermería = 8,
         AtxMedica = 9,
         AtxMedicaParticular = 10,
+        AtxMedicaSeguros = 12,
         Hospitalizacion = 19
     }
 

@@ -1977,7 +1977,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ViewMode(string mode)
         {
-            if (_tipo == (int)MasterService.AtxMedicaParticular)
+            if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
             {
                 //tcSubMain.TabPages.Remove(tp);
                 tcSubMain.TabPages.Remove(General);
@@ -2025,7 +2025,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             GetConclusionesDiagnosticasForGridView();
             ConclusionesyTratamiento_LoadAllGrid();
             gbEdicionDiagnosticoTotal.Enabled = false;
-            if (_tipo == (int)MasterService.AtxMedicaParticular)
+            if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
             {
                 ConstruirFormularioAntecedentes();
                 ConstruirFormularioCuidadosPreventivos();

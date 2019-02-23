@@ -749,7 +749,7 @@ namespace Sigesoft.Node.WinClient.UI
                             objCalendarDto.i_CalendarStatusId = Int32.Parse(ddlCalendarStatusId.SelectedValue.ToString());
                             objCalendarDto.i_ServiceId = Int32.Parse(ddlMasterServiceId.SelectedValue.ToString());
 
-                            //if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString())
+                            //if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros).ToString())
                             //{
                             //    objCalendarDto.v_ProtocolId = Constants.CONSULTAMEDICA;
                             //}
@@ -772,7 +772,7 @@ namespace Sigesoft.Node.WinClient.UI
                                 NuevoContinuacion = "Continuacion";
                             }
 
-                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString())
+                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
                             {
                                 serviceId = _objCalendarBL.AddShedule_Atx(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion, Int32.Parse(cboMedicoTratante.SelectedValue.ToString()));
                             }
@@ -805,7 +805,7 @@ namespace Sigesoft.Node.WinClient.UI
                             objCalendarDto.v_CalendarId = _CalendarId;
                             objCalendarDto.v_ServiceId = _ServiceId;
 
-                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString())
+                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
                             {
                                 objCalendarDto.v_ProtocolId = Constants.CONSULTAMEDICA;
                             }
@@ -830,7 +830,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                             ServiceBL objServiceBL = new ServiceBL();
 
-                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString())
+                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
                             {
                                 objCalendarBL.Reschedule(ref objOperationResult, Globals.ClientSession.GetAsList(), _CalendarId, dtpDateTimeCalendar.Value, Int32.Parse(ddlVipId.SelectedValue.ToString()), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()));
                             }
@@ -1025,7 +1025,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             if (ddlMasterServiceId.SelectedValue == null) return;
 
-            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString())
+            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
             {
                 uvschedule.GetValidationSettings(txtViewProtocol).Condition = new OperatorCondition(ConditionOperator.NotEquals, "", false, typeof(string));
                 uvschedule.GetValidationSettings(txtViewProtocol).IsRequired = false;

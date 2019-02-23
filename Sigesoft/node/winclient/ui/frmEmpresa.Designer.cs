@@ -330,6 +330,8 @@
             this.btnObtenerProtocolos = new System.Windows.Forms.Button();
             this.btnAsignarOrden = new System.Windows.Forms.Button();
             this.btnProcesar = new System.Windows.Forms.Button();
+            this.lblFactor = new System.Windows.Forms.Label();
+            this.txtFactor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -777,6 +779,8 @@
             this.groupBox2.Controls.Add(this.label43);
             this.groupBox2.Controls.Add(this.txtContacto);
             this.groupBox2.Controls.Add(this.label40);
+            this.groupBox2.Controls.Add(this.txtFactor);
+            this.groupBox2.Controls.Add(this.lblFactor);
             this.groupBox2.Controls.Add(this.txtCiiu);
             this.groupBox2.Controls.Add(this.label41);
             this.groupBox2.Controls.Add(this.txtSector);
@@ -813,7 +817,7 @@
             // txtEmailMedico
             // 
             this.txtEmailMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailMedico.Location = new System.Drawing.Point(825, 148);
+            this.txtEmailMedico.Location = new System.Drawing.Point(825, 143);
             this.txtEmailMedico.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmailMedico.MaxLength = 8000;
             this.txtEmailMedico.Name = "txtEmailMedico";
@@ -824,7 +828,7 @@
             // 
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.ForeColor = System.Drawing.Color.Black;
-            this.label44.Location = new System.Drawing.Point(788, 148);
+            this.label44.Location = new System.Drawing.Point(788, 143);
             this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(33, 19);
@@ -835,7 +839,7 @@
             // txtEmailContacto
             // 
             this.txtEmailContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailContacto.Location = new System.Drawing.Point(825, 124);
+            this.txtEmailContacto.Location = new System.Drawing.Point(825, 119);
             this.txtEmailContacto.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmailContacto.MaxLength = 8000;
             this.txtEmailContacto.Name = "txtEmailContacto";
@@ -845,7 +849,7 @@
             // txtContactoeMedico
             // 
             this.txtContactoeMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactoeMedico.Location = new System.Drawing.Point(376, 148);
+            this.txtContactoeMedico.Location = new System.Drawing.Point(376, 143);
             this.txtContactoeMedico.Margin = new System.Windows.Forms.Padding(2);
             this.txtContactoeMedico.Multiline = true;
             this.txtContactoeMedico.Name = "txtContactoeMedico";
@@ -856,7 +860,7 @@
             // 
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.ForeColor = System.Drawing.Color.Black;
-            this.label42.Location = new System.Drawing.Point(788, 124);
+            this.label42.Location = new System.Drawing.Point(788, 119);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(33, 19);
@@ -868,7 +872,7 @@
             // 
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.ForeColor = System.Drawing.Color.Black;
-            this.label43.Location = new System.Drawing.Point(274, 148);
+            this.label43.Location = new System.Drawing.Point(274, 143);
             this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(106, 19);
@@ -879,7 +883,7 @@
             // txtContacto
             // 
             this.txtContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContacto.Location = new System.Drawing.Point(376, 124);
+            this.txtContacto.Location = new System.Drawing.Point(376, 119);
             this.txtContacto.Margin = new System.Windows.Forms.Padding(2);
             this.txtContacto.Multiline = true;
             this.txtContacto.Name = "txtContacto";
@@ -890,7 +894,7 @@
             // 
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.ForeColor = System.Drawing.Color.Black;
-            this.label40.Location = new System.Drawing.Point(274, 124);
+            this.label40.Location = new System.Drawing.Point(274, 119);
             this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(106, 19);
@@ -998,7 +1002,7 @@
             // txtObservation
             // 
             this.txtObservation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservation.Location = new System.Drawing.Point(376, 195);
+            this.txtObservation.Location = new System.Drawing.Point(376, 190);
             this.txtObservation.Margin = new System.Windows.Forms.Padding(2);
             this.txtObservation.Multiline = true;
             this.txtObservation.Name = "txtObservation";
@@ -1008,7 +1012,7 @@
             // txtContacName1
             // 
             this.txtContacName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContacName1.Location = new System.Drawing.Point(377, 100);
+            this.txtContacName1.Location = new System.Drawing.Point(377, 95);
             this.txtContacName1.Margin = new System.Windows.Forms.Padding(2);
             this.txtContacName1.Multiline = true;
             this.txtContacName1.Name = "txtContacName1";
@@ -1019,7 +1023,7 @@
             // 
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.Black;
-            this.label30.Location = new System.Drawing.Point(274, 100);
+            this.label30.Location = new System.Drawing.Point(274, 95);
             this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(106, 19);
@@ -1030,7 +1034,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(825, 100);
+            this.txtEmail.Location = new System.Drawing.Point(825, 95);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.MaxLength = 8000;
             this.txtEmail.Name = "txtEmail";
@@ -1041,7 +1045,7 @@
             // 
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(788, 100);
+            this.label18.Location = new System.Drawing.Point(788, 95);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(33, 19);
@@ -1052,7 +1056,7 @@
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(825, 195);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(825, 190);
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhoneNumber.MaxLength = 8000;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
@@ -1063,7 +1067,7 @@
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(780, 195);
+            this.label8.Location = new System.Drawing.Point(780, 190);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 19);
@@ -1074,7 +1078,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(376, 74);
+            this.txtName.Location = new System.Drawing.Point(376, 69);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.MaxLength = 250;
             this.txtName.Name = "txtName";
@@ -1095,11 +1099,12 @@
             this.uvOrganization.GetValidationSettings(this.ddlOrganizationypeId1).DataType = typeof(string);
             this.uvOrganization.GetValidationSettings(this.ddlOrganizationypeId1).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
             this.uvOrganization.GetValidationSettings(this.ddlOrganizationypeId1).IsRequired = true;
+            this.ddlOrganizationypeId1.SelectedValueChanged += new System.EventHandler(this.ddlOrganizationypeId1_SelectedValueChanged);
             // 
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(376, 173);
+            this.txtAddress.Location = new System.Drawing.Point(376, 168);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.MaxLength = 250;
             this.txtAddress.Multiline = true;
@@ -1136,7 +1141,7 @@
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(274, 173);
+            this.label4.Location = new System.Drawing.Point(274, 168);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 19);
@@ -1148,7 +1153,7 @@
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(274, 74);
+            this.label6.Location = new System.Drawing.Point(274, 69);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 19);
@@ -1184,7 +1189,7 @@
             // 
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.Black;
-            this.label31.Location = new System.Drawing.Point(274, 195);
+            this.label31.Location = new System.Drawing.Point(274, 190);
             this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(82, 19);
@@ -3193,6 +3198,33 @@
             this.btnProcesar.Visible = false;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
+            // lblFactor
+            // 
+            this.lblFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFactor.ForeColor = System.Drawing.Color.Black;
+            this.lblFactor.Location = new System.Drawing.Point(274, 214);
+            this.lblFactor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFactor.Name = "lblFactor";
+            this.lblFactor.Size = new System.Drawing.Size(64, 19);
+            this.lblFactor.TabIndex = 100;
+            this.lblFactor.Text = "Factor";
+            this.lblFactor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFactor.Visible = false;
+            // 
+            // txtFactor
+            // 
+            this.txtFactor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFactor.Location = new System.Drawing.Point(376, 214);
+            this.txtFactor.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFactor.MaxLength = 11;
+            this.txtFactor.Name = "txtFactor";
+            this.txtFactor.Size = new System.Drawing.Size(92, 20);
+            this.txtFactor.TabIndex = 99;
+            this.txtFactor.Text = "1";
+            this.txtFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFactor.Visible = false;
+            // 
             // frmEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3470,6 +3502,8 @@
         private System.Windows.Forms.TextBox txtContactoeMedico;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Button btnProcesar;
+        private System.Windows.Forms.TextBox txtFactor;
+        private System.Windows.Forms.Label lblFactor;
     }
 }
 

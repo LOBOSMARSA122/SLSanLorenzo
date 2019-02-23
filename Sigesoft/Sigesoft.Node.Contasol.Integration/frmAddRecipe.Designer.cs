@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinEditors.EditorButton editorButton1 = new Infragistics.Win.UltraWinEditors.EditorButton();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraFormManager1 = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.frmAddRecipe_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtPrecio = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtUnidadProductiva = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel6 = new Infragistics.Win.Misc.UltraLabel();
             this.txtMedicamento = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -53,22 +57,18 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Top = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this._frmAddRecipe_UltraFormManager_Dock_Area_Bottom = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this.uvDatos = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.ultraLabel6 = new Infragistics.Win.Misc.UltraLabel();
-            this.txtUnidadProductiva = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.txtPrecio = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFormManager1)).BeginInit();
             this.frmAddRecipe_Fill_Panel.ClientArea.SuspendLayout();
             this.frmAddRecipe_Fill_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUnidadProductiva)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedicamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosologia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvDatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUnidadProductiva)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraFormManager1
@@ -83,9 +83,9 @@
             this.frmAddRecipe_Fill_Panel.ClientArea.Controls.Add(this.gbReceta);
             this.frmAddRecipe_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.frmAddRecipe_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmAddRecipe_Fill_Panel.Location = new System.Drawing.Point(4, 27);
+            this.frmAddRecipe_Fill_Panel.Location = new System.Drawing.Point(4, 28);
             this.frmAddRecipe_Fill_Panel.Name = "frmAddRecipe_Fill_Panel";
-            this.frmAddRecipe_Fill_Panel.Size = new System.Drawing.Size(423, 258);
+            this.frmAddRecipe_Fill_Panel.Size = new System.Drawing.Size(423, 257);
             this.frmAddRecipe_Fill_Panel.TabIndex = 0;
             // 
             // gbReceta
@@ -111,6 +111,48 @@
             this.gbReceta.Size = new System.Drawing.Size(407, 244);
             this.gbReceta.TabIndex = 0;
             this.gbReceta.Text = "Receta";
+            // 
+            // txtPrecio
+            // 
+            appearance1.TextHAlignAsString = "Right";
+            this.txtPrecio.Appearance = appearance1;
+            this.txtPrecio.Enabled = false;
+            this.txtPrecio.Location = new System.Drawing.Point(278, 78);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(110, 21);
+            this.txtPrecio.TabIndex = 10;
+            this.uvDatos.GetValidationSettings(this.txtPrecio).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvDatos.GetValidationSettings(this.txtPrecio).IsRequired = true;
+            // 
+            // ultraLabel7
+            // 
+            this.ultraLabel7.AutoSize = true;
+            this.ultraLabel7.Location = new System.Drawing.Point(219, 82);
+            this.ultraLabel7.Name = "ultraLabel7";
+            this.ultraLabel7.Size = new System.Drawing.Size(36, 14);
+            this.ultraLabel7.TabIndex = 11;
+            this.ultraLabel7.Text = "Precio";
+            this.ultraLabel7.Visible = false;
+            // 
+            // txtUnidadProductiva
+            // 
+            appearance2.TextHAlignAsString = "Right";
+            this.txtUnidadProductiva.Appearance = appearance2;
+            this.txtUnidadProductiva.Location = new System.Drawing.Point(103, 51);
+            this.txtUnidadProductiva.Name = "txtUnidadProductiva";
+            this.txtUnidadProductiva.Size = new System.Drawing.Size(110, 21);
+            this.txtUnidadProductiva.TabIndex = 9;
+            this.uvDatos.GetValidationSettings(this.txtUnidadProductiva).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvDatos.GetValidationSettings(this.txtUnidadProductiva).IsRequired = true;
+            // 
+            // ultraLabel6
+            // 
+            this.ultraLabel6.AutoSize = true;
+            this.ultraLabel6.Location = new System.Drawing.Point(22, 56);
+            this.ultraLabel6.Name = "ultraLabel6";
+            this.ultraLabel6.Size = new System.Drawing.Size(81, 14);
+            this.ultraLabel6.TabIndex = 8;
+            this.ultraLabel6.Text = "Uni. Procudtiva";
             // 
             // txtMedicamento
             // 
@@ -246,9 +288,9 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Name = "_frmAddRecipe_UltraFormManager_Dock_Area_Left";
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 258);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 257);
             // 
             // _frmAddRecipe_UltraFormManager_Dock_Area_Right
             // 
@@ -258,9 +300,9 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(427, 27);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(427, 28);
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Name = "_frmAddRecipe_UltraFormManager_Dock_Area_Right";
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 258);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 257);
             // 
             // _frmAddRecipe_UltraFormManager_Dock_Area_Top
             // 
@@ -271,7 +313,7 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Name = "_frmAddRecipe_UltraFormManager_Dock_Area_Top";
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(431, 27);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(431, 28);
             // 
             // _frmAddRecipe_UltraFormManager_Dock_Area_Bottom
             // 
@@ -284,48 +326,6 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 285);
             this._frmAddRecipe_UltraFormManager_Dock_Area_Bottom.Name = "_frmAddRecipe_UltraFormManager_Dock_Area_Bottom";
             this._frmAddRecipe_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(431, 4);
-            // 
-            // ultraLabel6
-            // 
-            this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(22, 56);
-            this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(81, 14);
-            this.ultraLabel6.TabIndex = 8;
-            this.ultraLabel6.Text = "Uni. Procudtiva";
-            // 
-            // txtUnidadProductiva
-            // 
-            appearance2.TextHAlignAsString = "Right";
-            this.txtUnidadProductiva.Appearance = appearance2;
-            this.txtUnidadProductiva.Location = new System.Drawing.Point(103, 51);
-            this.txtUnidadProductiva.Name = "txtUnidadProductiva";
-            this.txtUnidadProductiva.Size = new System.Drawing.Size(110, 21);
-            this.txtUnidadProductiva.TabIndex = 9;
-            this.uvDatos.GetValidationSettings(this.txtUnidadProductiva).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvDatos.GetValidationSettings(this.txtUnidadProductiva).IsRequired = true;
-            // 
-            // txtPrecio
-            // 
-            appearance1.TextHAlignAsString = "Right";
-            this.txtPrecio.Appearance = appearance1;
-            this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(278, 78);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(110, 21);
-            this.txtPrecio.TabIndex = 10;
-            this.uvDatos.GetValidationSettings(this.txtPrecio).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvDatos.GetValidationSettings(this.txtPrecio).IsRequired = true;
-            // 
-            // ultraLabel7
-            // 
-            this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(219, 82);
-            this.ultraLabel7.Name = "ultraLabel7";
-            this.ultraLabel7.Size = new System.Drawing.Size(36, 14);
-            this.ultraLabel7.TabIndex = 11;
-            this.ultraLabel7.Text = "Precio";
-            this.ultraLabel7.Visible = false;
             // 
             // frmAddRecipe
             // 
@@ -354,13 +354,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).EndInit();
             this.gbReceta.ResumeLayout(false);
             this.gbReceta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUnidadProductiva)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedicamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuracion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosologia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvDatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUnidadProductiva)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).EndInit();
             this.ResumeLayout(false);
 
         }
