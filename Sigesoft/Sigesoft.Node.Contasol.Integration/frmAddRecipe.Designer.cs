@@ -123,6 +123,8 @@
             this.txtPrecio.TabIndex = 10;
             this.uvDatos.GetValidationSettings(this.txtPrecio).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
             this.uvDatos.GetValidationSettings(this.txtPrecio).IsRequired = true;
+            this.txtPrecio.Visible = false;
+            this.txtPrecio.ValueChanged += new System.EventHandler(this.txtPrecio_ValueChanged);
             // 
             // ultraLabel7
             // 
@@ -133,6 +135,7 @@
             this.ultraLabel7.TabIndex = 11;
             this.ultraLabel7.Text = "Precio";
             this.ultraLabel7.Visible = false;
+            this.ultraLabel7.Click += new System.EventHandler(this.ultraLabel7_Click);
             // 
             // txtUnidadProductiva
             // 

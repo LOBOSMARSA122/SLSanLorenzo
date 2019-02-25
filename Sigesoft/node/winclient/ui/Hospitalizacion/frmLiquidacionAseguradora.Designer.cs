@@ -256,13 +256,13 @@
             ultraGridColumn33.Header.VisiblePosition = 0;
             ultraGridColumn34.Header.VisiblePosition = 1;
             ultraGridColumn39.Header.VisiblePosition = 2;
-            ultraGridColumn35.Header.VisiblePosition = 3;
+            ultraGridColumn35.Header.VisiblePosition = 6;
             ultraGridColumn35.Width = 321;
-            ultraGridColumn36.Header.VisiblePosition = 4;
+            ultraGridColumn36.Header.VisiblePosition = 7;
             ultraGridColumn36.Width = 446;
-            ultraGridColumn37.Header.VisiblePosition = 7;
-            ultraGridColumn1.Header.VisiblePosition = 5;
-            ultraGridColumn2.Header.VisiblePosition = 6;
+            ultraGridColumn37.Header.VisiblePosition = 5;
+            ultraGridColumn1.Header.VisiblePosition = 4;
+            ultraGridColumn2.Header.VisiblePosition = 3;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn33,
             ultraGridColumn34,

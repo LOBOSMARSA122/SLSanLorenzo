@@ -176,6 +176,10 @@
             this.label43 = new System.Windows.Forms.Label();
             this.txtContacto = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
+            this.txtFactorMed = new System.Windows.Forms.TextBox();
+            this.lblFactorMed = new System.Windows.Forms.Label();
+            this.txtFactor = new System.Windows.Forms.TextBox();
+            this.lblFactor = new System.Windows.Forms.Label();
             this.txtCiiu = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.txtSector = new System.Windows.Forms.TextBox();
@@ -330,8 +334,6 @@
             this.btnObtenerProtocolos = new System.Windows.Forms.Button();
             this.btnAsignarOrden = new System.Windows.Forms.Button();
             this.btnProcesar = new System.Windows.Forms.Button();
-            this.lblFactor = new System.Windows.Forms.Label();
-            this.txtFactor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -779,6 +781,8 @@
             this.groupBox2.Controls.Add(this.label43);
             this.groupBox2.Controls.Add(this.txtContacto);
             this.groupBox2.Controls.Add(this.label40);
+            this.groupBox2.Controls.Add(this.txtFactorMed);
+            this.groupBox2.Controls.Add(this.lblFactorMed);
             this.groupBox2.Controls.Add(this.txtFactor);
             this.groupBox2.Controls.Add(this.lblFactor);
             this.groupBox2.Controls.Add(this.txtCiiu);
@@ -901,6 +905,62 @@
             this.label40.TabIndex = 102;
             this.label40.Text = "Contacto RRHH";
             this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtFactorMed
+            // 
+            this.txtFactorMed.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFactorMed.Enabled = false;
+            this.txtFactorMed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFactorMed.Location = new System.Drawing.Point(586, 215);
+            this.txtFactorMed.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFactorMed.MaxLength = 11;
+            this.txtFactorMed.Name = "txtFactorMed";
+            this.txtFactorMed.Size = new System.Drawing.Size(92, 20);
+            this.txtFactorMed.TabIndex = 99;
+            this.txtFactorMed.Text = "1";
+            this.txtFactorMed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFactorMed.Visible = false;
+            // 
+            // lblFactorMed
+            // 
+            this.lblFactorMed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFactorMed.ForeColor = System.Drawing.Color.Black;
+            this.lblFactorMed.Location = new System.Drawing.Point(484, 215);
+            this.lblFactorMed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFactorMed.Name = "lblFactorMed";
+            this.lblFactorMed.Size = new System.Drawing.Size(98, 19);
+            this.lblFactorMed.TabIndex = 100;
+            this.lblFactorMed.Text = "Factor Medicina";
+            this.lblFactorMed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFactorMed.Visible = false;
+            // 
+            // txtFactor
+            // 
+            this.txtFactor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFactor.Enabled = false;
+            this.txtFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFactor.Location = new System.Drawing.Point(376, 214);
+            this.txtFactor.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFactor.MaxLength = 11;
+            this.txtFactor.Name = "txtFactor";
+            this.txtFactor.Size = new System.Drawing.Size(92, 20);
+            this.txtFactor.TabIndex = 99;
+            this.txtFactor.Text = "1";
+            this.txtFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFactor.Visible = false;
+            // 
+            // lblFactor
+            // 
+            this.lblFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFactor.ForeColor = System.Drawing.Color.Black;
+            this.lblFactor.Location = new System.Drawing.Point(274, 214);
+            this.lblFactor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFactor.Name = "lblFactor";
+            this.lblFactor.Size = new System.Drawing.Size(98, 19);
+            this.lblFactor.TabIndex = 100;
+            this.lblFactor.Text = "Factor Atenciones";
+            this.lblFactor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFactor.Visible = false;
             // 
             // txtCiiu
             // 
@@ -3198,33 +3258,6 @@
             this.btnProcesar.Visible = false;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
-            // lblFactor
-            // 
-            this.lblFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFactor.ForeColor = System.Drawing.Color.Black;
-            this.lblFactor.Location = new System.Drawing.Point(274, 214);
-            this.lblFactor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFactor.Name = "lblFactor";
-            this.lblFactor.Size = new System.Drawing.Size(64, 19);
-            this.lblFactor.TabIndex = 100;
-            this.lblFactor.Text = "Factor";
-            this.lblFactor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblFactor.Visible = false;
-            // 
-            // txtFactor
-            // 
-            this.txtFactor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFactor.Location = new System.Drawing.Point(376, 214);
-            this.txtFactor.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFactor.MaxLength = 11;
-            this.txtFactor.Name = "txtFactor";
-            this.txtFactor.Size = new System.Drawing.Size(92, 20);
-            this.txtFactor.TabIndex = 99;
-            this.txtFactor.Text = "1";
-            this.txtFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtFactor.Visible = false;
-            // 
             // frmEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3504,6 +3537,8 @@
         private System.Windows.Forms.Button btnProcesar;
         private System.Windows.Forms.TextBox txtFactor;
         private System.Windows.Forms.Label lblFactor;
+        private System.Windows.Forms.TextBox txtFactorMed;
+        private System.Windows.Forms.Label lblFactorMed;
     }
 }
 

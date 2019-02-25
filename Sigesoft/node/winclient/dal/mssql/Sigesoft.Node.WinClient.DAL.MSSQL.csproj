@@ -88,6 +88,7 @@
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\testcorrunceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserrolenodeAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemusergobalprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserAssembler.cs" />
