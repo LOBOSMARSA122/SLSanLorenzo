@@ -479,6 +479,12 @@
     <Compile Include="FrmAddPlain.Designer.cs">
       <DependentUpon>FrmAddPlain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddSolicitudCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddSolicitudCarta.Designer.cs">
+      <DependentUpon>frmAddSolicitudCarta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAdjuntarDeclaracionJurada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3572,6 +3578,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddPlain.resx">
       <DependentUpon>FrmAddPlain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddSolicitudCarta.resx">
+      <DependentUpon>frmAddSolicitudCarta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdjuntarDeclaracionJurada.resx">
       <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
@@ -7021,7 +7030,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

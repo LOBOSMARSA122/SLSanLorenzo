@@ -397,8 +397,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                              equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
                            from et in et_join.DefaultIfEmpty()
 
-                           where F.i_IsDeleted == 0  && F.i_StatusLiquidation ==2
-                           //&& F.i_ServiceStatusId == (int)Common.ServiceStatus.Culminado
+                           where F.i_IsDeleted == 0  && F.i_StatusLiquidation ==2 && F.i_ServiceStatusId == (int)Common.ServiceStatus.Culminado
                           
                            select new ServiceList
                            {
@@ -407,7 +406,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                v_Trabajador = H.v_FirstLastName + " " + H.v_SecondLastName + " " + H.v_FirstName,
                                d_ServiceDate = F.d_ServiceDate.Value,
                                i_AptitudeId = F.i_AptitudeStatusId.Value,
-                               i_TypeEsoId = F.i_MasterServiceId.Value,
+                               i_TypeEsoId = D.i_EsoTypeId, // F.i_MasterServiceId.Value,
                                v_ProtocolId = F.v_ProtocolId,
                                v_HCL = F.v_ServiceId,
                                v_AptitudeStatusName = J4.v_Value1,

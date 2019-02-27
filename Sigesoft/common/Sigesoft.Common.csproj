@@ -100,6 +100,7 @@
     <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="Coprocultivo_PSeriado.cs" />
+    <Compile Include="LiquidacionAseguradoraReport.cs" />
     <Compile Include="Osteomuscular_MiBanco.cs" />
     <Compile Include="Pago_Especialsta_Report.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />

@@ -92,6 +92,7 @@
     <Compile Include="OrganizationBL.cs" />
     <Compile Include="PacientBL.cs" />
     <Compile Include="PagoEspecialistaOcupacionalBl.cs" />
+    <Compile Include="PersonList_2.cs" />
     <Compile Include="PlanAtencionIntegralBL.cs" />
     <Compile Include="PlanIntegralBL.cs" />
     <Compile Include="ProblemaBL.cs" />

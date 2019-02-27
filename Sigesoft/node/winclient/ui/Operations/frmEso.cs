@@ -3114,14 +3114,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 catch (Exception ex)
                 {
-                    
-                    //backgroundWorker1.Abort();
-                    backgroundWorker1.Dispose();
-                    //bgwSaveExamen_RunWorkerCompleted();
-                    MessageBox.Show("Red saturada. Se intentará nuevamente.", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    Invoke(new MethodInvoker(() => { SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage); }));
-
+                    MessageBox.Show("Red saturada. Intente grabar nuevamente.", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 

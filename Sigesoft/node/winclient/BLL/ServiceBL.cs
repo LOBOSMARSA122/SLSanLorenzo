@@ -11,6 +11,7 @@ using System.Transactions;
 using System.Data.Linq.SqlClient;
 using System.Threading;
 using Sigesoft.Node.WinClient.BE.Custom;
+using System.Data.SqlClient;
 
 
 namespace Sigesoft.Node.WinClient.BLL
@@ -31433,7 +31434,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 2
-                                    && A1.i_CalendarStatusId != 4
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
                                     //&& A.i_ServiceStatusId == 3
                                 select new Liquidacion
                                 {
@@ -31580,7 +31581,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 1
-                                    && A1.i_CalendarStatusId != 4
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
                                     //&& A.i_ServiceStatusId == 3
                                     select new Liquidacion
                                     {
@@ -31725,7 +31726,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != ""
-                                    && A1.i_CalendarStatusId != 4
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
                                     //&& A.i_ServiceStatusId == 3
                                     select new Liquidacion
                                     {
@@ -31874,7 +31875,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 //&& A1.i_CalendarStatusId != 4
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "")
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "") && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
                                 //&& A.i_ServiceStatusId == 3  
                                 select new Liquidacion
                                 {
@@ -32017,7 +32018,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 from H in J5_join.DefaultIfEmpty()
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
@@ -32153,7 +32154,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var query = from A in dbContext.liquidacion
                             //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
                             join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
-                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate 
                             //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
                             //ARNOLD , REPORTE JUAN LIZA
                             select new LiquidacionEmpresa
@@ -32986,9 +32987,53 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var nroLiquidacion = ObtnerNroLiquidacion(intNodeId);
                 float monto = 0;
+                bool ocupacional = false;
                 foreach (var serviceId in serviceIds)
                 {
-                    monto += GetServiceComponentsLiquidacion(ref objOperationResult1, serviceId).Sum(s => s.r_Price).Value;
+                    #region Conexion SAM
+                    ConexionSigesoft conectasam = new ConexionSigesoft();
+                    conectasam.opensigesoft();
+                    #endregion
+                    var cadena1 = "select SC.d_SaldoAseguradora from service SR inner join servicecomponent SC on SR.v_ServiceId = SC.v_ServiceId where SR.v_ServiceId='" + serviceId + "' and SC.r_Price<>0";
+                    SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                    SqlDataReader lector = comando.ExecuteReader();
+                    
+                    while (lector.Read())
+                    {
+                        var _monto = lector.GetValue(0).ToString();
+                        if (_monto == "")
+                        {
+                            ocupacional = true;
+                        }
+                        else
+                        {
+                            monto += float.Parse(lector.GetValue(0).ToString());
+                        }
+                    }
+                    lector.Close();
+                    cadena1 = "select RC.d_SaldoAseguradora from receta RC inner join diagnosticrepository DR on RC.v_DiagnosticRepositoryId = DR.v_DiagnosticRepositoryId inner join service SC on SC.v_ServiceId = DR.v_ServiceId where SC.v_ServiceId='"+serviceId+"'";
+                    comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                    lector = comando.ExecuteReader();
+
+                    while (lector.Read())
+                    {
+                        var _monto = lector.GetValue(0).ToString();
+                        if (_monto == "")
+                        {
+                            ocupacional = true;
+                        }
+                        else
+                        {
+                            monto += float.Parse(lector.GetValue(0).ToString());
+                        }
+                    }
+                    lector.Close();
+
+                    if (ocupacional == true)
+                    {
+                        monto += GetServiceComponentsLiquidacion(ref objOperationResult1, serviceId).Sum(s => s.r_Price).Value;
+                    }
+                    
                 }
                     organizationId = organizationId.Split('|').ToArray()[0].ToString();
                     var oliquidacionDto = new liquidacionDto();

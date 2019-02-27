@@ -5171,6 +5171,7 @@
     <Content Include="Dataset\dsSintomaticoRes.xss">
       <DependentUpon>dsSintomaticoRes.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\PublicadoDesarrollo.pubxml" />
     <None Include="Properties\PublishProfiles\SLPublicado.pubxml" />
     <None Include="Properties\PublishProfiles\SLSanlorenzoPublish.pubxml" />
     <Content Include="Web.config" />

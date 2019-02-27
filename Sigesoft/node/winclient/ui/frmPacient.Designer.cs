@@ -49,6 +49,18 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
@@ -129,7 +141,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.ddlPlaceWorkId = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtNombreTitular = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.ddlRelationshipId = new System.Windows.Forms.ComboBox();
             this.Parentesco = new System.Windows.Forms.Label();
@@ -162,6 +173,7 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAntecedentes = new System.Windows.Forms.Button();
             this.txtCurrentOccupation = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.txtNombreTitular = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -173,6 +185,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPacient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentOccupation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombreTitular)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -1127,16 +1140,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Preventivo";
             // 
-            // txtNombreTitular
-            // 
-            this.txtNombreTitular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreTitular.Location = new System.Drawing.Point(391, 12);
-            this.txtNombreTitular.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNombreTitular.MaxLength = 250;
-            this.txtNombreTitular.Name = "txtNombreTitular";
-            this.txtNombreTitular.Size = new System.Drawing.Size(418, 20);
-            this.txtNombreTitular.TabIndex = 1;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -1556,59 +1559,115 @@
             // 
             // txtCurrentOccupation
             // 
-            appearance8.BackColor = System.Drawing.SystemColors.Window;
-            appearance8.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtCurrentOccupation.DisplayLayout.Appearance = appearance8;
+            appearance20.BackColor = System.Drawing.SystemColors.Window;
+            appearance20.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCurrentOccupation.DisplayLayout.Appearance = appearance20;
             this.txtCurrentOccupation.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.txtCurrentOccupation.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance9.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance9.BorderColor = System.Drawing.SystemColors.Window;
-            this.txtCurrentOccupation.DisplayLayout.GroupByBox.Appearance = appearance9;
-            appearance10.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtCurrentOccupation.DisplayLayout.GroupByBox.BandLabelAppearance = appearance10;
+            appearance21.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance21.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.Appearance = appearance21;
+            appearance22.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.BandLabelAppearance = appearance22;
             this.txtCurrentOccupation.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance11.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance11.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance11.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtCurrentOccupation.DisplayLayout.GroupByBox.PromptAppearance = appearance11;
-            appearance12.BackColor = System.Drawing.SystemColors.Window;
-            appearance12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCurrentOccupation.DisplayLayout.Override.ActiveCellAppearance = appearance12;
-            appearance13.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance13.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.txtCurrentOccupation.DisplayLayout.Override.ActiveRowAppearance = appearance13;
+            appearance23.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance23.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance23.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance23.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.PromptAppearance = appearance23;
+            appearance24.BackColor = System.Drawing.SystemColors.Window;
+            appearance24.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCurrentOccupation.DisplayLayout.Override.ActiveCellAppearance = appearance24;
+            appearance25.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance25.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.txtCurrentOccupation.DisplayLayout.Override.ActiveRowAppearance = appearance25;
             this.txtCurrentOccupation.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
             this.txtCurrentOccupation.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.txtCurrentOccupation.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance14.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCurrentOccupation.DisplayLayout.Override.CardAreaAppearance = appearance14;
-            appearance15.BorderColor = System.Drawing.Color.Silver;
-            appearance15.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.txtCurrentOccupation.DisplayLayout.Override.CellAppearance = appearance15;
+            appearance26.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.Override.CardAreaAppearance = appearance26;
+            appearance27.BorderColor = System.Drawing.Color.Silver;
+            appearance27.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.txtCurrentOccupation.DisplayLayout.Override.CellAppearance = appearance27;
             this.txtCurrentOccupation.DisplayLayout.Override.CellPadding = 0;
             this.txtCurrentOccupation.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
-            appearance16.BackColor = System.Drawing.SystemColors.Control;
-            appearance16.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance16.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance16.BorderColor = System.Drawing.SystemColors.Window;
-            this.txtCurrentOccupation.DisplayLayout.Override.GroupByRowAppearance = appearance16;
-            appearance17.TextHAlignAsString = "Left";
-            this.txtCurrentOccupation.DisplayLayout.Override.HeaderAppearance = appearance17;
+            appearance28.BackColor = System.Drawing.SystemColors.Control;
+            appearance28.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance28.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance28.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance28.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.Override.GroupByRowAppearance = appearance28;
+            appearance29.TextHAlignAsString = "Left";
+            this.txtCurrentOccupation.DisplayLayout.Override.HeaderAppearance = appearance29;
             this.txtCurrentOccupation.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance18.BackColor = System.Drawing.SystemColors.Window;
-            appearance18.BorderColor = System.Drawing.Color.Silver;
-            this.txtCurrentOccupation.DisplayLayout.Override.RowAppearance = appearance18;
-            appearance19.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtCurrentOccupation.DisplayLayout.Override.TemplateAddRowAppearance = appearance19;
+            appearance30.BackColor = System.Drawing.SystemColors.Window;
+            appearance30.BorderColor = System.Drawing.Color.Silver;
+            this.txtCurrentOccupation.DisplayLayout.Override.RowAppearance = appearance30;
+            appearance31.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtCurrentOccupation.DisplayLayout.Override.TemplateAddRowAppearance = appearance31;
             this.txtCurrentOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentOccupation.Location = new System.Drawing.Point(754, 363);
             this.txtCurrentOccupation.Name = "txtCurrentOccupation";
             this.txtCurrentOccupation.Size = new System.Drawing.Size(420, 22);
             this.txtCurrentOccupation.TabIndex = 148;
+            // 
+            // txtNombreTitular
+            // 
+            appearance8.BackColor = System.Drawing.SystemColors.Window;
+            appearance8.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtNombreTitular.DisplayLayout.Appearance = appearance8;
+            this.txtNombreTitular.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.txtNombreTitular.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance9.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtNombreTitular.DisplayLayout.GroupByBox.Appearance = appearance9;
+            appearance10.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtNombreTitular.DisplayLayout.GroupByBox.BandLabelAppearance = appearance10;
+            this.txtNombreTitular.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance11.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance11.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance11.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtNombreTitular.DisplayLayout.GroupByBox.PromptAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.SystemColors.Window;
+            appearance12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNombreTitular.DisplayLayout.Override.ActiveCellAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance13.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.txtNombreTitular.DisplayLayout.Override.ActiveRowAppearance = appearance13;
+            this.txtNombreTitular.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.txtNombreTitular.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.txtNombreTitular.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance14.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNombreTitular.DisplayLayout.Override.CardAreaAppearance = appearance14;
+            appearance15.BorderColor = System.Drawing.Color.Silver;
+            appearance15.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.txtNombreTitular.DisplayLayout.Override.CellAppearance = appearance15;
+            this.txtNombreTitular.DisplayLayout.Override.CellPadding = 0;
+            this.txtNombreTitular.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            appearance16.BackColor = System.Drawing.SystemColors.Control;
+            appearance16.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance16.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance16.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtNombreTitular.DisplayLayout.Override.GroupByRowAppearance = appearance16;
+            appearance17.TextHAlignAsString = "Left";
+            this.txtNombreTitular.DisplayLayout.Override.HeaderAppearance = appearance17;
+            this.txtNombreTitular.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance18.BackColor = System.Drawing.SystemColors.Window;
+            appearance18.BorderColor = System.Drawing.Color.Silver;
+            this.txtNombreTitular.DisplayLayout.Override.RowAppearance = appearance18;
+            appearance19.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtNombreTitular.DisplayLayout.Override.TemplateAddRowAppearance = appearance19;
+            this.txtNombreTitular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreTitular.Location = new System.Drawing.Point(384, 11);
+            this.txtNombreTitular.Name = "txtNombreTitular";
+            this.txtNombreTitular.Size = new System.Drawing.Size(428, 22);
+            this.txtNombreTitular.TabIndex = 120;
             // 
             // frmPacient
             // 
@@ -1656,6 +1715,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPacient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentOccupation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombreTitular)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1749,7 +1809,6 @@
         private System.Windows.Forms.Label Parentesco;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox txtNombreTitular;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -1764,6 +1823,7 @@
         private System.Windows.Forms.TextBox txtResideAnte;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtReligion;
+        private Infragistics.Win.UltraWinGrid.UltraCombo txtNombreTitular;
     }
 }
 

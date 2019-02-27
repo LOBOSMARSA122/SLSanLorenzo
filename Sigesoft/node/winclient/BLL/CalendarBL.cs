@@ -2767,5 +2767,10 @@ namespace Sigesoft.Node.WinClient.BLL
        }
 
        #endregion
+
+       public void RegistrarCarta(string _service, string nroCarta)
+       {
+           throw new NotImplementedException();
+       }
    }
 }

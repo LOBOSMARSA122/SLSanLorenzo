@@ -29,7 +29,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         FechaServicio = A.d_ServiceDate.Value,
                         Paciente = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
                         PacientDocument = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_DocNumber,
-                        EmpresaId = C.v_EmployerOrganizationId,
+                        EmpresaId = E.v_OrganizationSeguroId,
                         Aseguradora = D.v_Name,
                         Protocolo = C.v_ProtocolId
                     };
@@ -73,7 +73,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         string simbolo = "";
                         if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
                         {
-                            simbolo = " S/";
+                            simbolo = " S/.";
                         }
                         else
                         {
@@ -85,7 +85,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.SaldoAseguradora = componente.d_SaldoAseguradora.Value;
                         TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
                         oLiquiAseguradoraDetalle.SubTotal = componente.d_SaldoPaciente.Value + componente.d_SaldoAseguradora.Value;
-                        oLiquiAseguradoraDetalle.Cantidad = 1;
+                        oLiquiAseguradoraDetalle.Cantidad = 1M;
                         oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(componente.r_Price.ToString());
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
@@ -100,17 +100,17 @@ namespace Sigesoft.Node.WinClient.BLL
                         string simbolo = "";
                         if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
                         {
-                            simbolo = " S/";
+                            simbolo = " S/.";
                         }
                         else
                         {
                             simbolo = " %";
                         }    
                         oLiquiAseguradoraDetalle.Valor = ticket.d_Importe.ToString() + simbolo;
-                        oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente;
-                        oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora;
-                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
-                        oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente + ticket.d_SaldoAseguradora;
+                        oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente.Value;
+                        oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora.Value;
+                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora.Value;
+                        oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente.Value + ticket.d_SaldoAseguradora.Value;
                         oLiquiAseguradoraDetalle.Cantidad = ticket.d_Cantidad;
                         oLiquiAseguradoraDetalle.PrecioUnitario = ticket.d_PrecioVenta;
                         detalle.Add(oLiquiAseguradoraDetalle);
@@ -126,18 +126,18 @@ namespace Sigesoft.Node.WinClient.BLL
                         string simbolo = "";
                         if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
                         {
-                            simbolo = " S/";
+                            simbolo = " S/.";
                         }
                         else
                         {
                             simbolo = " %";
                         }    
                         oLiquiAseguradoraDetalle.Valor = receta.d_Importe.ToString() + simbolo;
-                        oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad;
+                        oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad.Value;
                         oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
                         oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
                         TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
-                        oLiquiAseguradoraDetalle.SubTotal = (oLiquiAseguradoraDetalle.SaldoPaciente + oLiquiAseguradoraDetalle.SaldoAseguradora);
+                        oLiquiAseguradoraDetalle.SubTotal = (oLiquiAseguradoraDetalle.SaldoPaciente.Value + oLiquiAseguradoraDetalle.SaldoAseguradora.Value);
                         #region Conexion SAM
                         ConexionSigesoft conectasam = new ConexionSigesoft();
                         conectasam.opensigesoft();
@@ -151,7 +151,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             factor = lector.GetValue(0).ToString();
                         }
                         lector.Close();
-                        oLiquiAseguradoraDetalle.PrecioUnitario = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].d_PrecioVenta * decimal.Parse(factor);
+                        oLiquiAseguradoraDetalle.PrecioUnitario = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].d_PrecioVenta.Value * decimal.Parse(factor);
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 

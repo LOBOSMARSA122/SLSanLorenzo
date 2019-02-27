@@ -68,6 +68,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnLiquidacion = new System.Windows.Forms.Button();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountCalendar = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
@@ -216,8 +217,10 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.btnLiquidacion);
             this.groupBox2.Controls.Add(this.grdData);
             this.groupBox2.Controls.Add(this.lblRecordCountCalendar);
+            this.groupBox2.Controls.Add(this.btnExport);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox2.Location = new System.Drawing.Point(6, 80);
@@ -228,6 +231,19 @@
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
+            // 
+            // btnLiquidacion
+            // 
+            this.btnLiquidacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnLiquidacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLiquidacion.Location = new System.Drawing.Point(1073, 81);
+            this.btnLiquidacion.Name = "btnLiquidacion";
+            this.btnLiquidacion.Size = new System.Drawing.Size(128, 33);
+            this.btnLiquidacion.TabIndex = 153;
+            this.btnLiquidacion.Text = "Generar Liquidación";
+            this.btnLiquidacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLiquidacion.UseVisualStyleBackColor = true;
+            this.btnLiquidacion.Click += new System.EventHandler(this.btnLiquidacion_Click);
             // 
             // grdData
             // 
@@ -242,9 +258,9 @@
             ultraGridColumn29.Header.VisiblePosition = 0;
             ultraGridColumn30.Header.VisiblePosition = 1;
             ultraGridColumn31.Header.VisiblePosition = 2;
-            ultraGridColumn31.Width = 321;
+            ultraGridColumn31.Width = 186;
             ultraGridColumn38.Header.VisiblePosition = 3;
-            ultraGridColumn38.Width = 446;
+            ultraGridColumn38.Width = 191;
             ultraGridColumn32.Header.VisiblePosition = 4;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn29,
@@ -255,14 +271,18 @@
             ultraGridColumn33.ColSpan = ((short)(2));
             ultraGridColumn33.Header.VisiblePosition = 0;
             ultraGridColumn34.Header.VisiblePosition = 1;
+            ultraGridColumn34.Width = 186;
             ultraGridColumn39.Header.VisiblePosition = 2;
+            ultraGridColumn39.Width = 191;
             ultraGridColumn35.Header.VisiblePosition = 6;
-            ultraGridColumn35.Width = 321;
+            ultraGridColumn35.Width = 107;
             ultraGridColumn36.Header.VisiblePosition = 7;
-            ultraGridColumn36.Width = 446;
+            ultraGridColumn36.Width = 102;
             ultraGridColumn37.Header.VisiblePosition = 5;
+            ultraGridColumn37.Width = 68;
             ultraGridColumn1.Header.VisiblePosition = 4;
             ultraGridColumn2.Header.VisiblePosition = 3;
+            ultraGridColumn2.Width = 61;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn33,
             ultraGridColumn34,
@@ -336,7 +356,7 @@
             this.grdData.Location = new System.Drawing.Point(6, 29);
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
-            this.grdData.Size = new System.Drawing.Size(1210, 474);
+            this.grdData.Size = new System.Drawing.Size(1049, 474);
             this.grdData.TabIndex = 152;
             // 
             // lblRecordCountCalendar
@@ -344,7 +364,7 @@
             this.lblRecordCountCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCountCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCountCalendar.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountCalendar.Location = new System.Drawing.Point(985, 8);
+            this.lblRecordCountCalendar.Location = new System.Drawing.Point(824, 8);
             this.lblRecordCountCalendar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountCalendar.Name = "lblRecordCountCalendar";
             this.lblRecordCountCalendar.Size = new System.Drawing.Size(231, 19);
@@ -357,9 +377,9 @@
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(6, 588);
+            this.btnExport.Location = new System.Drawing.Point(1073, 29);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(109, 33);
+            this.btnExport.Size = new System.Drawing.Size(128, 33);
             this.btnExport.TabIndex = 104;
             this.btnExport.Text = "Exportar a Excel";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -395,7 +415,6 @@
             this.ClientSize = new System.Drawing.Size(1238, 622);
             this.Controls.Add(this.txtTotalAseguradora);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -435,6 +454,7 @@
         private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ultraGridExcelExporter1;
         private System.Windows.Forms.TextBox txtTotalAseguradora;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnLiquidacion;
 
     }
 }

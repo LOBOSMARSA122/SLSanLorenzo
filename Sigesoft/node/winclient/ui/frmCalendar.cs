@@ -3672,6 +3672,13 @@ namespace Sigesoft.Node.WinClient.UI
         {
 
         }
+
+        private void registrarSolicitudCartaDeGarantíaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            frmAddSolicitudCarta frm = new frmAddSolicitudCarta(_serviceId);
+            frm.Show();
+        }
        
     }
 }
