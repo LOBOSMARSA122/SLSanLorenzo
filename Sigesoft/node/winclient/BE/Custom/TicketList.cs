@@ -14,7 +14,7 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_tipoCuenta { get; set; }
         public int? i_TicketInterno { get; set; }
         public string TicketInterno { get; set; }
-
+        public DateTime? d_FechaAlta { get; set; }
         public List<TicketDetalleList> Productos { get; set; }
     }
 }

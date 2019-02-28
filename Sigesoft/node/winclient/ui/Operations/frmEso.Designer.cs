@@ -399,6 +399,7 @@
             this.lblRecordCountTotalDiagnosticos = new System.Windows.Forms.Label();
             this.btnAceptarDX = new System.Windows.Forms.Button();
             this.tpConclusion = new System.Windows.Forms.TabPage();
+            this.checkFirmaYanacocha = new System.Windows.Forms.CheckBox();
             this.btnSubirInterconsulta = new System.Windows.Forms.Button();
             this.btn7C = new System.Windows.Forms.Button();
             this.btnInterConsulta = new System.Windows.Forms.Button();
@@ -3205,6 +3206,7 @@
             // 
             // tpConclusion
             // 
+            this.tpConclusion.Controls.Add(this.checkFirmaYanacocha);
             this.tpConclusion.Controls.Add(this.btnSubirInterconsulta);
             this.tpConclusion.Controls.Add(this.btn7C);
             this.tpConclusion.Controls.Add(this.btnInterConsulta);
@@ -3229,6 +3231,18 @@
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
             this.tpConclusion.UseVisualStyleBackColor = true;
+            // 
+            // checkFirmaYanacocha
+            // 
+            this.checkFirmaYanacocha.AutoSize = true;
+            this.checkFirmaYanacocha.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkFirmaYanacocha.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.checkFirmaYanacocha.Location = new System.Drawing.Point(957, 569);
+            this.checkFirmaYanacocha.Name = "checkFirmaYanacocha";
+            this.checkFirmaYanacocha.Size = new System.Drawing.Size(121, 34);
+            this.checkFirmaYanacocha.TabIndex = 107;
+            this.checkFirmaYanacocha.Text = "Firma Yanacocha \r\n   (Dra. Rocío)";
+            this.checkFirmaYanacocha.UseVisualStyleBackColor = true;
             // 
             // btnSubirInterconsulta
             // 
@@ -3917,7 +3931,7 @@
             this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarConclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarConclusiones.Image")));
             this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1101, 567);
+            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1103, 574);
             this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
             this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);
@@ -8204,5 +8218,6 @@
         private System.Windows.Forms.TextBox txtResultadoPAP;
         private System.Windows.Forms.TextBox txtFechaUltimaMamo;
         private System.Windows.Forms.TextBox txtFechaUltimoPAP;
+        private System.Windows.Forms.CheckBox checkFirmaYanacocha;
     }
 }

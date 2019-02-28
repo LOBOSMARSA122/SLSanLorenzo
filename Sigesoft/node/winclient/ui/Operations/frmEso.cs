@@ -216,6 +216,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void frmEso_Load(object sender, EventArgs e)
         {
+            OperationResult objOperationResult = new OperationResult();
             //obenter la profesión del usuario
             _profesionId = int.Parse(Globals.ClientSession.i_ProfesionId.ToString());
 
@@ -454,6 +455,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 btnAceptarDX.Enabled = true;
                 cbAptitudEso.Enabled = true;
                 btnGuardarExamen.Enabled = true;
+            }
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+
+            if (personData.v_CustomerOrganizationId == "N009-OO000000587" || personData.v_EmployerOrganizationId == "N009-OO000000587" || personData.v_WorkingOrganizationId == "N009-OO000000587")
+            {
+                checkFirmaYanacocha.Visible = true;
+                checkFirmaYanacocha.Enabled = true;
+            }
+            else
+            {
+                checkFirmaYanacocha.Visible = false;
+                checkFirmaYanacocha.Enabled = false;
             }
         }
 
@@ -6368,9 +6381,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void btnGuardarConclusiones_Click(object sender, EventArgs e)
         {
             DialogResult Result = MessageBox.Show("¿Está seguro de grabar este registro?:", "CONFIRMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            OperationResult objOperationResult = new OperationResult();
 
+            ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, _serviceId);
 
-            //#region API TRACKING
+            #region API TRACKING
 
             //Sigesoft.Api.Api API = new Sigesoft.Api.Api();
 
@@ -6444,12 +6459,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
 
-            //#endregion
+            #endregion
 
             if (Result == DialogResult.Yes)
             {
-
-                OperationResult objOperationResult = new OperationResult();
 
                 var serviceDTO = new serviceDto();
 
@@ -6463,6 +6476,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 serviceDTO.i_AptitudeStatusId = int.Parse(cbAptitudEso.SelectedValue.ToString());
                 serviceDTO.v_ObsStatusService = txtComentarioAptitud.Text;
                 serviceDTO.d_GlobalExpirationDate = dptDateGlobalExp.Value;
+                
                 #region UTILIZAR FIRMA (Suplantar profesional)
 
                 if (chkUtilizaFirmaAptitud.Checked)
@@ -6492,7 +6506,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                            _tmpRecomendationConclusionesList,
                                            serviceDTO,
                                            null,
-                                           Globals.ClientSession.GetAsList());
+                                           Globals.ClientSession.GetAsList(), checkFirmaYanacocha.Checked );
 
 
                 // Refrescar todas las grillas

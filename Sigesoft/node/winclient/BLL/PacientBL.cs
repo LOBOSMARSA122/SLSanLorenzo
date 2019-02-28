@@ -6558,7 +6558,18 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
                                     from K in K_join.DefaultIfEmpty()
 
-                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
+                                    join L in dbContext.servicecomponent on A.v_ServiceId equals L.v_ServiceId
+
+                                    join me in dbContext.systemuser on L.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                    from me in me_join.DefaultIfEmpty()
+
+                                    join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                    from pme in pme_join.DefaultIfEmpty()
+
+                                    join p in dbContext.person on me.v_PersonId equals p.v_PersonId
+
+                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin &&
+                                          (L.v_ComponentId == Constants.EXAMEN_FISICO_ID || L.v_ComponentId == Constants.EXAMEN_FISICO_7C_ID)
                                     select new MatrizMiBanco
                                     {
                                         ServiceId = A.v_ServiceId,
@@ -6579,7 +6590,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                         FechaIngreso = A.d_ServiceDate.Value,
                                         Area = K.v_Name,
                                         Puesto = D.v_CurrentOccupation,
-                                        GrupoSanguineo = H.v_Value1 + " " + I.v_Value1,                                        
+                                        GrupoSanguineo = H.v_Value1 + " " + I.v_Value1,
+                                        MedicoFirmante = p.v_FirstLastName + " " + p.v_SecondLastName + " " + p.v_FirstName
 
                                     };
 
@@ -6593,7 +6605,6 @@ namespace Sigesoft.Node.WinClient.BLL
                         PersonIds.Add(item.PersonId);
                         ServicioIds.Add(item.ServiceId);
                     }
-
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
                     var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
@@ -6619,7 +6630,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Area = a.Area,
                                    Puesto = a.Puesto,
                                    GrupoSanguineo = a.GrupoSanguineo,
-
+                                   MedicoFirmante = a.MedicoFirmante,
                                    Talla = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000007") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000007").Valor,
                                    Peso = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000008") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000008").Valor,
                                    Imc = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000009") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000009").Valor,

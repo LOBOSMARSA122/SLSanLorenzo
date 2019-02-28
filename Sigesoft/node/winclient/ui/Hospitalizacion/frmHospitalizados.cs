@@ -86,6 +86,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var objData = GetData(0, null, "v_HopitalizacionId ASC", strFilterExpression);
             grdData.DataSource = objData;
+            
             lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
             if (objData.Count() >= 1)
             {
@@ -113,6 +114,13 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             _objData = _objHospBL.GetHospitalizacionPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
 
+            //foreach (var datos in _objData)
+            //{
+            //    if (datos.d_FechaAlta.Value.ToString() != "" || datos.d_FechaAlta.Value.ToString() != null)
+            //    {
+            //        grdData.Row[0].Band.AutoPreviewEnabled = false;
+            //    }
+            //}
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -173,79 +181,160 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void grd_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
         {
+            bool activador = false;
             foreach (UltraGridRow rowSelected in this.grdData.Selected.Rows)
             {
-                if (rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
+                if (rowSelected.Band.Index.ToString() == "0")
                 {
-                    btnAsignarHabitacion.Enabled = false;
-                    btnEditarHabitacion.Enabled = false;
-                    btnReportePDF.Enabled = false;
-                    btnDarAlta.Enabled = false;
-                    btnDarAlta.Enabled = false;
-                }
-                else
-                {
-                    btnAsignarHabitacion.Enabled = true;
-                    btnReportePDF.Enabled = true;
-                    btnDarAlta.Enabled = true;
+                    if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
+                    {
+                        btnTicket.Enabled = false;
+                        btnEditarTicket.Enabled = false;
+                        btnEliminarTicket.Enabled = false;
+                        btnAgregarExamenes.Enabled = false;
+                        btnAsignarHabitacion.Enabled = false;
+                        btnEditarHabitacion.Enabled = false;
+                        btnEliminarHabitacion.Enabled = false;
+                        btnDarAlta.Enabled = false;
+                        activador = true;
+                        btnReportePDF.Enabled = true;
+
+                    }
+                    else
+                    {
+                        btnAsignarHabitacion.Enabled = true;
+                        btnReportePDF.Enabled = true;
+                        btnDarAlta.Enabled = true;
+                        btnReportePDF.Enabled = true;
+
+                    }
                 }
 
-                if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
+                if (rowSelected.Band.Index.ToString() == "1")
+                {
+                    if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
+                    {
+                        btnTicket.Enabled = false;
+                        btnEditarTicket.Enabled = false;
+                        btnEliminarTicket.Enabled = false;
+                        btnAgregarExamenes.Enabled = false;
+                        btnAsignarHabitacion.Enabled = false;
+                        btnEditarHabitacion.Enabled = false;
+                        btnEliminarHabitacion.Enabled = false;
+                        btnDarAlta.Enabled = false;
+                        activador = true;
+                        btnGenerarLiq.Enabled = false;
+                        btnReportePDF.Enabled = false;
+
+                    }
+                    else
+                    {
+                        btnTicket.Enabled = true;
+                        btnAgregarExamenes.Enabled = true;
+                        btnEditarTicket.Enabled = false;
+                        btnEliminarTicket.Enabled = false;
+                        btnAsignarHabitacion.Enabled = false;
+                        btnEditarHabitacion.Enabled = false;
+                        btnEliminarHabitacion.Enabled = false;
+                        btnDarAlta.Enabled = false;
+                        btnReportePDF.Enabled = false;
+
+                    }
+                }
+
+                if (rowSelected.Band.Index.ToString() == "2")
+                {
+                    if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
+                    {
+                        btnTicket.Enabled = false;
+                        btnEditarTicket.Enabled = false;
+                        btnEliminarTicket.Enabled = false;
+                        btnAgregarExamenes.Enabled = false;
+                        btnAsignarHabitacion.Enabled = false;
+                        btnEditarHabitacion.Enabled = false;
+                        btnEliminarHabitacion.Enabled = false;
+                        btnDarAlta.Enabled = false;
+                        btnGenerarLiq.Enabled = false;
+                        activador = true;
+                        btnReportePDF.Enabled = false;
+
+                    }
+                    else
+                    {
+                        btnEditarTicket.Enabled = true;
+                        btnEliminarTicket.Enabled = true;
+                        btnTicket.Enabled = false;
+                        btnAgregarExamenes.Enabled = false;
+                        btnAsignarHabitacion.Enabled = false;
+                        btnEditarHabitacion.Enabled = false;
+                        btnEliminarHabitacion.Enabled = false;
+                        btnDarAlta.Enabled = false;
+                        btnReportePDF.Enabled = false;
+
+                    }
+                }
+                if (rowSelected.Band.Index.ToString() == "3")
                 {
                     btnTicket.Enabled = false;
-                    btnAgregarExamenes.Enabled = false;
-                    btnEditarHabitacion.Enabled = false;
-                    
-                    //btnReportePDF.Enabled = false;
-
-                    if (rowSelected.Band.Index.ToString() == "0")
-                        btnGenerarLiq.Enabled = true;
-                    else
-                        btnGenerarLiq.Enabled = false;
-                }
-                else
-                {
-                    btnTicket.Enabled = true;
-                    btnGenerarLiq.Enabled = false;
-                    btnAgregarExamenes.Enabled = true;
-                    //btnReportePDF.Enabled = true;
-                    btnEditarHabitacion.Enabled = false;
-                    var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-                    OperationResult pobjOperationResult = new OperationResult();
-                    ServiceBL oServiceBL = new ServiceBL();
-                    var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, serviceId);
-                    
-                    ListaComponentes = new List<string>();
-                    foreach (var item in componentes)
-                    {
-                        ListaComponentes.Add(item.v_ComponentId);
-                    }
-
-                }
-
-                if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
-                {
                     btnEditarTicket.Enabled = false;
                     btnEliminarTicket.Enabled = false;
-                }
-                else
-                {
-                    btnEditarTicket.Enabled = true;
-                    btnEliminarTicket.Enabled = true;
-                }
-
-                if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4")
-                {
+                    btnAgregarExamenes.Enabled = false;
+                    btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
                     btnEliminarHabitacion.Enabled = false;
+                    btnDarAlta.Enabled = false;
+                    activador = true;
+                    btnReportePDF.Enabled = false;
+
                 }
-                else
+                if (rowSelected.Band.Index.ToString() == "4")
                 {
-                    btnEditarHabitacion.Enabled = true;
-                    btnEliminarHabitacion.Enabled = true;
+                    btnTicket.Enabled = false;
+                    btnEditarTicket.Enabled = false;
+                    btnEliminarTicket.Enabled = false;
+                    btnAgregarExamenes.Enabled = false;
+                    btnAsignarHabitacion.Enabled = false;
+                    btnEditarHabitacion.Enabled = false;
+                    btnEliminarHabitacion.Enabled = false;
+                    btnDarAlta.Enabled = false;
+                    activador = true;
+                    btnReportePDF.Enabled = false;
+
                 }
+                if (rowSelected.Band.Index.ToString() == "5")
+                {
+                    if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
+                    {
+                        btnTicket.Enabled = false;
+                        btnEditarTicket.Enabled = false;
+                        btnEliminarTicket.Enabled = false;
+                        btnAgregarExamenes.Enabled = false;
+                        btnAsignarHabitacion.Enabled = false;
+                        btnEditarHabitacion.Enabled = false;
+                        btnEliminarHabitacion.Enabled = false;
+                        btnDarAlta.Enabled = false;
+                        activador = true;
+                        btnReportePDF.Enabled = false;
+
+                    }
+                    else
+                    {
+                        btnEditarHabitacion.Enabled = true;
+                        btnEliminarHabitacion.Enabled = true;
+                        btnTicket.Enabled = false;
+                        btnEditarTicket.Enabled = false;
+                        btnEliminarTicket.Enabled = false;
+                        btnAgregarExamenes.Enabled = false;
+                        btnDarAlta.Enabled = false;
+                        btnReportePDF.Enabled = false;
+                    }
+                }
+
+                
+
+
             }
-            
+
             if (grdData.Selected.Rows.Count == 0)
                  return;
 
@@ -254,22 +343,43 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnAsignarHabitacion_Click(object sender, EventArgs e)
         {
-            var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-            frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New", "");
-            frm.ShowDialog();
-            btnFilter_Click(sender, e);
-            btnAsignarHabitacion.Enabled = false;
+            try
+            {
+                var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New", "");
+                frm.ShowDialog();
+                btnFilter_Click(sender, e);
+                btnAsignarHabitacion.Enabled = false;
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex);
+                MessageBox.Show("NO SE PUEDE DAR DE ALTA - YA ASIGNADO", "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                //throw;
+            }
 
         }
 
         private void btnEditarHabitacion_Click(object sender, EventArgs e)
         {
-            var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-            var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
-            frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId);
-            frm.ShowDialog();
-            btnFilter_Click(sender, e);
-            btnEditarHabitacion.Enabled = false;
+            try
+            {
+                var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                var hospitalizacionHabitacionId =
+                    grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
+                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId);
+                frm.ShowDialog();
+                btnFilter_Click(sender, e);
+                btnEditarHabitacion.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex);
+                MessageBox.Show("NO SE PUEDE EDITAR HABITACIÓN - YA ASIGNADO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //throw;
+            }
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -328,12 +438,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnDarAlta_Click(object sender, EventArgs e)
         {
-            var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-            DateTime? fechaAlta = (DateTime?)(grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value == null ? (ValueType)null : DateTime.Parse(grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value.ToString()));
-            var comentario = grdData.Selected.Rows[0].Cells["v_Comentario"].Value == null ?"" : grdData.Selected.Rows[0].Cells["v_Comentario"].Value.ToString();
-            var frm = new frmDarAlta(hospitalizacionId, "Edit", fechaAlta, comentario);
-            frm.ShowDialog();
-            btnFilter_Click(sender,e);
+            try
+            {
+                var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                DateTime? fechaAlta = (DateTime?) (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value == null
+                    ? (ValueType) null
+                    : DateTime.Parse(grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value.ToString()));
+                var comentario = grdData.Selected.Rows[0].Cells["v_Comentario"].Value == null
+                    ? ""
+                    : grdData.Selected.Rows[0].Cells["v_Comentario"].Value.ToString();
+                var frm = new frmDarAlta(hospitalizacionId, "Edit", fechaAlta, comentario);
+                frm.ShowDialog();
+                btnFilter_Click(sender, e);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex);
+                MessageBox.Show("NO SE PUEDE DAR DE ALTA - YA ASIGNADO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //throw;
+            }
         }
 
         private void grdData_InitializeRow(object sender, InitializeRowEventArgs e)
@@ -350,8 +473,27 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         {
                             e.Row.Appearance.BackColor = Color.Yellow;
                             e.Row.Appearance.BackColor2 = Color.White;
+                            btnTicket.Enabled = false;
+                            btnEditarTicket.Enabled = false;
+                            btnEliminarTicket.Enabled = false;
+                            btnAgregarExamenes.Enabled = false;
+                            btnAsignarHabitacion.Enabled = false;
+                            btnEditarHabitacion.Enabled = false;
+                            btnEliminarHabitacion.Enabled = false;
+                            btnDarAlta.Enabled = false;
+
                             //Y doy el efecto degradado vertical
                             e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                            
+   
+                            //grdData.DisplayLayout.Bands[1].Override.SelectTypeGroupByRow = SelectType.None;
+                            //e.Row.Band.Override.ExpansionIndicator = ShowExpansionIndicator.CheckOnDisplay;
+
+                            //e.Row.Band.Override.SelectTypeGroupByRow = SelectType.None;
+
+                            //rowSelected.IsActiveRow = false;
+                            //grdData.Selected.Rows[0].Band.Override.SelectTypeRow = SelectType.None;
+
                         }
                     }
                 }
@@ -475,6 +617,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             //btnFilter_Click(sender, e);
             //btnEliminarHabitacion.Enabled = false;
+        }
+
+        private void grdData_AfterRowUpdate(object sender, RowEventArgs e)
+        {
+
         }           
 
     }

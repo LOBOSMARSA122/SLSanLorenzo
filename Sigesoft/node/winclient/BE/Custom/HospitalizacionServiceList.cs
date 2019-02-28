@@ -16,7 +16,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_ProtocolId { get; set; }
         public string v_DocNumber { get; set; }
         public List<TicketList> Tickets { get; set; }
-
+        public DateTime? d_FechaAlta { get; set; }
         public List<ComponentesHospitalizacion> Componentes { get; set; }
     }
 }

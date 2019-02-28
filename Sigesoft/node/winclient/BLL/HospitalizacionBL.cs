@@ -74,7 +74,6 @@ namespace Sigesoft.Node.WinClient.BLL
                 }
 
                 List<HospitalizacionList> objData = query.ToList();
-
                 // en hospitalizaciones tienes los padres
                 var hospitalizaciones = (from a in objData
                          select new HospitalizacionList
@@ -144,6 +143,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             oHospitalizacionServiceList.v_ProtocolName = servicio.v_ProtocolName;
                             oHospitalizacionServiceList.v_ProtocolId = servicio.v_ProtocolId;
                             oHospitalizacionServiceList.v_DocNumber = servicio.v_DocNumber;
+                            oHospitalizacionServiceList.d_FechaAlta = servicio.d_FechaAlta;
                             // acá estoy agregando a las lista
                             HospitalizacionServicios.Add(servicio);
                         }
@@ -163,6 +163,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oHospitalizacionHabitacionList.NroHabitacion = habitacion.NroHabitacion;
                         oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;
                         oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
+                        oHospitalizacionHabitacionList.d_FechaAlta = habitacion.d_FechaAlta;
                         oHospitalizacionHabitacionList.d_Precio = decimal.Round((decimal)habitacion.d_Precio, 2);
                         if (habitacion.d_Precio != null)
                             oHospitalizacionHabitacionList.Total =
@@ -287,6 +288,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
                         oHospitalizacionHabitacionList.d_Precio = habitacion.d_Precio;
                         oHospitalizacionHabitacionList.i_conCargoA = habitacion.i_conCargoA;
+                        oHospitalizacionHabitacionList.d_FechaAlta = habitacion.d_FechaAlta;
                         if (habitacion.d_Precio != null)
                             oHospitalizacionHabitacionList.Total =
                                 CalcularCostoHabitacion(habitacion.d_Precio.ToString(), habitacion.d_StartDate,
@@ -362,6 +364,7 @@ namespace Sigesoft.Node.WinClient.BLL
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
               var habitaciones = (from A in dbContext.hospitalizacionhabitacion
+                                 join B in dbContext.hospitalizacion on A.v_HopitalizacionId equals B.v_HopitalizacionId
                                  join D in dbContext.systemparameter on new { a = A.i_HabitacionId.Value, b = 309 } equals new { a = D.i_ParameterId, b = D.i_GroupId }
                                  where A.v_HopitalizacionId == hospitalizacionId && A.i_IsDeleted == 0
                                  select new HospitalizacionHabitacionList
@@ -373,7 +376,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      d_StartDate = A.d_StartDate,
                                      d_EndDate = A.d_EndDate,
                                      i_conCargoA = A.i_ConCargoA,
-                                     d_Precio = A.d_Precio.Value
+                                     d_Precio = A.d_Precio.Value,
+                                     d_FechaAlta = B.d_FechaAlta
                                  }).ToList();
               List<HospitalizacionHabitacionList> obj = habitaciones;
 
@@ -400,7 +404,9 @@ namespace Sigesoft.Node.WinClient.BLL
                            d_ServiceDate = D.d_ServiceDate.Value,
                            v_ProtocolName = E.v_Name,
                            v_ProtocolId = E.v_ProtocolId,
-                           v_DocNumber = F.v_DocNumber
+                           v_DocNumber = F.v_DocNumber,
+                           d_FechaAlta = A.d_FechaAlta
+                           
                         };
             List<HospitalizacionServiceList> objData = queryservice.ToList();
             var hospitalizacionesservicios = (from a in objData
@@ -412,7 +418,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                         d_ServiceDate = a.d_ServiceDate,
                                         v_ProtocolName = a.v_ProtocolName,
                                         v_ProtocolId = a.v_ProtocolId,
-                                        v_DocNumber = a.v_DocNumber
+                                        v_DocNumber = a.v_DocNumber,
+                                        d_FechaAlta = a.d_FechaAlta
                                      }).ToList();
 
             List<HospitalizacionServiceList> obj = hospitalizacionesservicios;
@@ -432,7 +439,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.v_ProtocolName = item.v_ProtocolName;
                 tickets.v_ProtocolId = item.v_ProtocolId;
                 tickets.v_DocNumber = item.v_DocNumber;
-                
+                tickets.d_FechaAlta = item.d_FechaAlta;
                 #region Tickets
 
                 // estos son los hijos de 1 hopitalización
@@ -454,6 +461,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketslist.i_TicketInterno = tick.i_TicketInterno;
                         ticketslist.TicketInterno = tick.i_TicketInterno == 1 ? "SI" : "NO";
                         ticketslist.Productos = tick.Productos;
+                        ticketslist.d_FechaAlta = tick.d_FechaAlta;
                         // acá estoy agregando a las lista
                         Tickets.Add(ticketslist);
                     }
@@ -515,7 +523,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                    i_conCargoA = E.i_ConCargoA,
                                    i_tipoCuenta = E.i_TipoCuentaId,
                                   i_TicketInterno = E.i_TicketInterno,
-                                   
+                                   d_FechaAlta = A.d_FechaAlta
                                };
             List<TicketList> objData = queryticket.ToList();
             // en hospitalizaciones tienes los padres
@@ -527,7 +535,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                                   d_Fecha = a.d_Fecha,
                                                   i_conCargoA = a.i_conCargoA,
                                                   i_tipoCuenta = a.i_tipoCuenta,
-                                                  i_TicketInterno = a.i_TicketInterno
+                                                  i_TicketInterno = a.i_TicketInterno,
+                                                  d_FechaAlta = a.d_FechaAlta
                                               }).ToList();
 
             var objtData = ticket.AsEnumerable()
@@ -550,6 +559,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.i_conCargoA = item.i_conCargoA;
                 tickets.i_tipoCuenta = item.i_tipoCuenta;
                 tickets.i_TicketInterno = item.i_TicketInterno;
+                tickets.d_FechaAlta = item.d_FechaAlta;
                 // estos son los hijos de 1 hopitalización
                 var ticketssdetalle = BuscarTicketsDetalle(item.v_TicketId).ToList();
 

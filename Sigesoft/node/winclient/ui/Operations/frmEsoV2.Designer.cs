@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -338,6 +338,7 @@
             this.chkApproved = new System.Windows.Forms.CheckBox();
             this.cbEstadoComponente = new System.Windows.Forms.ComboBox();
             this.EXAMENES_lblComentarios = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.cbTipoProcedenciaExamen = new System.Windows.Forms.ComboBox();
             this.txtComentario = new System.Windows.Forms.TextBox();
@@ -749,7 +750,7 @@
             this.btnPerson = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.ultraFlowLayoutManager2 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
-            this.label27 = new System.Windows.Forms.Label();
+            this.checkFirmaYanacocha = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -888,14 +889,14 @@
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance103.BackColor2 = System.Drawing.Color.Transparent;
+            appearance103.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance103.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance103.BorderColor = System.Drawing.Color.Red;
+            appearance103.BorderColor2 = System.Drawing.Color.Red;
+            appearance103.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance103;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -906,12 +907,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsmverMas});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(122, 26);
             // 
             // TsmverMas
             // 
             this.TsmverMas.Name = "TsmverMas";
-            this.TsmverMas.Size = new System.Drawing.Size(122, 22);
+            this.TsmverMas.Size = new System.Drawing.Size(121, 22);
             this.TsmverMas.Text = "Ver Mas..";
             this.TsmverMas.Click += new System.EventHandler(this.TsmverMas_Click);
             // 
@@ -942,6 +943,7 @@
             // 
             // tpConclusion
             // 
+            this.tpConclusion.Controls.Add(this.checkFirmaYanacocha);
             this.tpConclusion.Controls.Add(this.btn7C);
             this.tpConclusion.Controls.Add(this.btn312);
             this.tpConclusion.Controls.Add(this.btnCertificadoAptitud);
@@ -1675,7 +1677,7 @@
             this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarConclusiones.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1039, 607);
+            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1123, 594);
             this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
             this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);
@@ -2623,6 +2625,17 @@
             this.EXAMENES_lblComentarios.Size = new System.Drawing.Size(97, 13);
             this.EXAMENES_lblComentarios.TabIndex = 49;
             this.EXAMENES_lblComentarios.Text = "Comentarios de {0}";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.DarkGray;
+            this.label27.Location = new System.Drawing.Point(497, 6);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(94, 24);
+            this.label27.TabIndex = 52;
+            this.label27.Text = "CERRAR";
             // 
             // label23
             // 
@@ -7861,16 +7874,17 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Visible = false;
             // 
-            // label27
+            // checkFirmaYanacocha
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.DarkGray;
-            this.label27.Location = new System.Drawing.Point(497, 6);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(94, 24);
-            this.label27.TabIndex = 52;
-            this.label27.Text = "CERRAR";
+            this.checkFirmaYanacocha.AutoSize = true;
+            this.checkFirmaYanacocha.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkFirmaYanacocha.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.checkFirmaYanacocha.Location = new System.Drawing.Point(968, 587);
+            this.checkFirmaYanacocha.Name = "checkFirmaYanacocha";
+            this.checkFirmaYanacocha.Size = new System.Drawing.Size(121, 34);
+            this.checkFirmaYanacocha.TabIndex = 111;
+            this.checkFirmaYanacocha.Text = "Firma Yanacocha \r\n   (Dra. Rocío)";
+            this.checkFirmaYanacocha.UseVisualStyleBackColor = true;
             // 
             // FrmEsoV2
             // 
@@ -8567,5 +8581,6 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.CheckBox checkFirmaYanacocha;
     }
 }

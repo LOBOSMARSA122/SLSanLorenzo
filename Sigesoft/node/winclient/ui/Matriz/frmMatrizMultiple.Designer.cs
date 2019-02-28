@@ -2186,7 +2186,7 @@
             this.grdLaZanja.Location = new System.Drawing.Point(0, 6);
             this.grdLaZanja.Margin = new System.Windows.Forms.Padding(2);
             this.grdLaZanja.Name = "grdLaZanja";
-            this.grdLaZanja.Size = new System.Drawing.Size(941, 358);
+            this.grdLaZanja.Size = new System.Drawing.Size(1246, 445);
             this.grdLaZanja.TabIndex = 52;
             this.grdLaZanja.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdLaZanja_InitializeLayout);
             // 
@@ -2195,7 +2195,7 @@
             this.btnExportLaZanja.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportLaZanja.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportLaZanja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportLaZanja.Location = new System.Drawing.Point(6, 369);
+            this.btnExportLaZanja.Location = new System.Drawing.Point(6, 456);
             this.btnExportLaZanja.Name = "btnExportLaZanja";
             this.btnExportLaZanja.Size = new System.Drawing.Size(114, 24);
             this.btnExportLaZanja.TabIndex = 51;
@@ -2518,7 +2518,7 @@
             this.grdGolFields.Location = new System.Drawing.Point(6, 6);
             this.grdGolFields.Margin = new System.Windows.Forms.Padding(2);
             this.grdGolFields.Name = "grdGolFields";
-            this.grdGolFields.Size = new System.Drawing.Size(941, 358);
+            this.grdGolFields.Size = new System.Drawing.Size(1240, 448);
             this.grdGolFields.TabIndex = 54;
             // 
             // btnExportGolFields
@@ -2526,7 +2526,7 @@
             this.btnExportGolFields.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportGolFields.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportGolFields.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportGolFields.Location = new System.Drawing.Point(6, 369);
+            this.btnExportGolFields.Location = new System.Drawing.Point(3, 459);
             this.btnExportGolFields.Name = "btnExportGolFields";
             this.btnExportGolFields.Size = new System.Drawing.Size(114, 24);
             this.btnExportGolFields.TabIndex = 53;
@@ -2551,7 +2551,7 @@
             this.btnExportSoluc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportSoluc.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportSoluc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportSoluc.Location = new System.Drawing.Point(14, 363);
+            this.btnExportSoluc.Location = new System.Drawing.Point(3, 459);
             this.btnExportSoluc.Name = "btnExportSoluc";
             this.btnExportSoluc.Size = new System.Drawing.Size(114, 24);
             this.btnExportSoluc.TabIndex = 56;
@@ -2896,7 +2896,7 @@
             this.grdSoluc.Location = new System.Drawing.Point(2, 0);
             this.grdSoluc.Margin = new System.Windows.Forms.Padding(2);
             this.grdSoluc.Name = "grdSoluc";
-            this.grdSoluc.Size = new System.Drawing.Size(941, 358);
+            this.grdSoluc.Size = new System.Drawing.Size(1244, 454);
             this.grdSoluc.TabIndex = 55;
             // 
             // tpMiBanco
@@ -2915,7 +2915,7 @@
             this.btnExportMiBanco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportMiBanco.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportMiBanco.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportMiBanco.Location = new System.Drawing.Point(3, 365);
+            this.btnExportMiBanco.Location = new System.Drawing.Point(3, 460);
             this.btnExportMiBanco.Name = "btnExportMiBanco";
             this.btnExportMiBanco.Size = new System.Drawing.Size(114, 24);
             this.btnExportMiBanco.TabIndex = 54;
@@ -3254,7 +3254,7 @@
             this.grdMiBanco.Location = new System.Drawing.Point(2, 2);
             this.grdMiBanco.Margin = new System.Windows.Forms.Padding(2);
             this.grdMiBanco.Name = "grdMiBanco";
-            this.grdMiBanco.Size = new System.Drawing.Size(941, 358);
+            this.grdMiBanco.Size = new System.Drawing.Size(1244, 453);
             this.grdMiBanco.TabIndex = 53;
             // 
             // groupBox1

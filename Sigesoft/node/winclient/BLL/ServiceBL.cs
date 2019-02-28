@@ -6507,12 +6507,12 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-		public void AddConclusiones(ref OperationResult pobjOperationResult, List<RestrictionList> pobjRestriction, List<RecomendationList> pobjRecomendation, serviceDto pobjService, servicecomponentDto pobjServiceComponent, List<string> ClientSession)
+		public void AddConclusiones(ref OperationResult pobjOperationResult, List<RestrictionList> pobjRestriction, List<RecomendationList> pobjRecomendation, serviceDto pobjService, servicecomponentDto pobjServiceComponent, List<string> ClientSession, bool firma_Yana)
 		{
 			//mon.IsActive = true;
 			string NewId0 = "(No generado)";
 			int intNodeId = int.Parse(ClientSession[0]);
-
+            OperationResult objOperationResult = new OperationResult();
 			try
 			{
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -6641,12 +6641,21 @@ namespace Sigesoft.Node.WinClient.BLL
 					}
 
 					//hola
-                    if (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador)
-					{
-						// ID usuario Médico ocupacional
-						objService.d_UpdateDateOccupationalMedical = DateTime.Now;
-						objService.i_UpdateUserOccupationalMedicaltId = Int32.Parse(ClientSession[2]);
-					}
+                    if (firma_Yana == true)
+                    {
+                        objService.d_UpdateDateOccupationalMedical = DateTime.Now;
+                        objService.i_UpdateUserOccupationalMedicaltId = 169;
+                    }
+                    else
+                    {
+                        if (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador)
+                        {
+                            // ID usuario Médico ocupacional
+                            objService.d_UpdateDateOccupationalMedical = DateTime.Now;
+                            objService.i_UpdateUserOccupationalMedicaltId = Int32.Parse(ClientSession[2]);
+                        }
+                    }
+                    
 
 
 					// Guardar los cambios
@@ -6660,7 +6669,6 @@ namespace Sigesoft.Node.WinClient.BLL
 				if (pobjServiceComponent != null)
 				{
 					// Actualizar algunos valores de ServiceComponent
-					OperationResult objOperationResult = new OperationResult();
 					UpdateServiceComponentFromEso(ref objOperationResult, pobjServiceComponent, ClientSession, null,null);
 				}
 

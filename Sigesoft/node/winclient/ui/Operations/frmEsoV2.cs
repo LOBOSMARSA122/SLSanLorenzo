@@ -144,6 +144,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         {
             InitializeForm();
             ViewMode(_action);
+
+            OperationResult objOperationResult = new OperationResult();
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+
+            if (personData.v_CustomerOrganizationId == "N009-OO000000587" || personData.v_EmployerOrganizationId == "N009-OO000000587" || personData.v_WorkingOrganizationId == "N009-OO000000587")
+            {
+                checkFirmaYanacocha.Visible = true;
+                checkFirmaYanacocha.Enabled = true;
+            }
+            else
+            {
+                checkFirmaYanacocha.Visible = false;
+                checkFirmaYanacocha.Enabled = false;
+            }
         }
 
         private void InitializeForm()
@@ -5475,7 +5489,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                            _tmpRecomendationConclusionesList,
                                            serviceDTO,
                                            null,
-                                           Globals.ClientSession.GetAsList());
+                                           Globals.ClientSession.GetAsList(), checkFirmaYanacocha.Checked);
 
 
                 // Refrescar todas las grillas

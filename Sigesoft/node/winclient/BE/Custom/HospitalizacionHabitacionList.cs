@@ -15,7 +15,7 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? d_EndDate { get; set; }
         public decimal? d_Precio { get; set; }
         public decimal Total { get; set; }
-
+        public DateTime? d_FechaAlta { get; set; }
         public int? i_conCargoA { get; set; }
     }
 }
