@@ -6,6 +6,7 @@ using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.UI.Operations.Popups;
 using Sigesoft.Node.WinClient.BLL;
+using System.Data.SqlClient;
 
 namespace Sigesoft.Node.Contasol.Integration
 {
@@ -114,14 +115,24 @@ namespace Sigesoft.Node.Contasol.Integration
                 {
                     if (resultplan[0].i_EsCoaseguro == 1)
                     {
-                        _recetaDto.d_SaldoPaciente = resultplan[0].d_Importe;
-                        _recetaDto.d_SaldoAseguradora = (decimal.Parse(txtPrecio.Text) * _recetaDto.d_Cantidad) - resultplan[0].d_Importe;
+                        #region Conexion SAM
+                        ConexionSigesoft conectasam = new ConexionSigesoft();
+                        conectasam.opensigesoft();
+                        #endregion
+                        var cadena1 = "select OO.r_FactorMed, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + _protocolId + "'";
+                        SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                        SqlDataReader lector = comando.ExecuteReader();
+                        string factor = ""; 
+                        while (lector.Read())
+                        {
+                            factor = lector.GetValue(0).ToString();
+                        }
+                        lector.Close();
+                        decimal nuevoPrecio = decimal.Parse(factor) * decimal.Parse(txtPrecio.Text);
+                        _recetaDto.d_SaldoPaciente = (resultplan[0].d_Importe / 100) * (nuevoPrecio * _recetaDto.d_Cantidad);
+                        _recetaDto.d_SaldoAseguradora = (nuevoPrecio * _recetaDto.d_Cantidad) - _recetaDto.d_SaldoPaciente;
                     }
-                    if (resultplan[0].i_EsDeducible == 1)
-                    {
-                        _recetaDto.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(txtPrecio.Text) * _recetaDto.d_Cantidad / 100;
-                        _recetaDto.d_SaldoAseguradora = (decimal.Parse(txtPrecio.Text) * _recetaDto.d_Cantidad) - _recetaDto.d_SaldoPaciente;
-                    }
+                    
                 }
 
 
@@ -163,6 +174,16 @@ namespace Sigesoft.Node.Contasol.Integration
                 txtUnidadProductiva.Text = medicamento.IdLinea;
                 txtPrecio.Text = medicamento.PrecioVenta.ToString();
             }
+        }
+
+        private void ultraLabel7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrecio_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

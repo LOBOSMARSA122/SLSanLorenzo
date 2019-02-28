@@ -7,6 +7,7 @@ using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
 using Sigesoft.Common;
 using System.Data.Objects;
+using System.Data.SqlClient;
 
 namespace Sigesoft.Node.WinClient.BLL
 {
@@ -2767,5 +2768,17 @@ namespace Sigesoft.Node.WinClient.BLL
        }
 
        #endregion
+
+       public void RegistrarCarta(string _service, string nroCarta)
+       {
+           #region Conexion SAM
+           ConexionSigesoft conectasam = new ConexionSigesoft();
+           conectasam.opensigesoft();
+           #endregion
+           var cadena1 = "update service set v_NroCartaSolicitud ='"+nroCarta+"' where v_ServiceId='"+_service+"'";
+           SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+           SqlDataReader lector = comando.ExecuteReader();
+           lector.Close();
+       }
    }
 }

@@ -321,6 +321,8 @@ namespace Sigesoft.Node.WinClient.UI
             ddlSectorTypeId.Enabled = valor;
             txtName.ReadOnly = !valor;
             txtIdentificationNumber.ReadOnly = !valor;
+            txtFactor.ReadOnly = !valor;
+            txtFactorMed.ReadOnly = !valor;
             txtContacName1.ReadOnly = !valor;
             txtObservation.ReadOnly = !valor;
             rbConDx.Enabled = valor;
@@ -430,6 +432,8 @@ namespace Sigesoft.Node.WinClient.UI
                 txtEmailMedico.Text = objOrganizationDto.v_EmailMedico;
                 txtEmailContacto.Text = objOrganizationDto.v_EmailContacto;
                 Temp_IdentificationNumber = objOrganizationDto.v_IdentificationNumber;
+                txtFactor.Text = objOrganizationDto.r_Factor.ToString();
+                txtFactorMed.Text = objOrganizationDto.r_FactorMed.ToString();
 
 
                 pbEmpresaImage.Image = Common.Utils.BytesArrayToImage(objOrganizationDto.b_Image, pbEmpresaImage);
@@ -694,6 +698,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objOrganizationDto.v_EmailMedico = txtEmailMedico.Text;
                     objOrganizationDto.v_EmailContacto = txtEmailContacto.Text;
                     objOrganizationDto.i_NumberQuotasMen = rbConDx.Checked == true ? (int)EmpresaDx.ConDx : (int)EmpresaDx.SinDx;
+                    objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text);
+                    objOrganizationDto.r_FactorMed = decimal.Parse(txtFactorMed.Text);
 
                     var arr = txtAddress.Text.Split('-').Reverse().ToArray();
                     var sede = arr[0].ToString();
@@ -796,6 +802,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objOrganizationDto.v_EmailMedico = txtEmailMedico.Text;
                     objOrganizationDto.v_EmailContacto = txtEmailContacto.Text;
                     objOrganizationDto.i_NumberQuotasMen = rbConDx.Checked == true ? (int)EmpresaDx.ConDx : (int)EmpresaDx.SinDx;
+                    objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text);
+                    objOrganizationDto.r_FactorMed = decimal.Parse(txtFactorMed.Text);
 
                     if (pbEmpresaImage.Image != null)
                     {
@@ -1812,6 +1820,7 @@ namespace Sigesoft.Node.WinClient.UI
             btnAgregarSector.Enabled = true;
             btnOK.Enabled = true;
             btnNuevo.Enabled = false;
+            
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -1839,7 +1848,9 @@ namespace Sigesoft.Node.WinClient.UI
             txtAddress.Text = "";
             txtSector.Text = "";
             ddlOrganizationypeId1.SelectedValue = "1";
-
+            txtFactor.Text = "1";
+            txtFactorMed.Text = "1";
+           
 
         }
 
@@ -2304,6 +2315,37 @@ namespace Sigesoft.Node.WinClient.UI
                    }
                }
            }
+        }
+
+        private void ddlOrganizationypeId1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (ddlOrganizationypeId1.SelectedValue != null)
+            {
+                if (ddlOrganizationypeId1.SelectedValue.ToString() == "4")
+                {
+                    lblFactor.Visible = true;
+                    txtFactor.Visible = true;
+                    lblFactorMed.Visible = true;
+                    txtFactorMed.Visible = true;
+                    if (Mode == "New" || Mode == "Edit")
+                    {
+                        txtFactor.Enabled = true;
+                        txtFactorMed.Enabled = true;
+                    }
+                    
+                }
+                else
+                {
+                    lblFactor.Visible = false;
+                    txtFactor.Visible = false;
+                    lblFactorMed.Visible = false;
+                    txtFactorMed.Visible = false;
+                    txtFactor.Enabled = false;
+                    txtFactorMed.Enabled = false;
+                }
+            }
+            
+            
         }
 
     }

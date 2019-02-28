@@ -234,7 +234,7 @@ namespace Sigesoft.Node.WinClient.UI
                 _Flag = 1;
 
                 Form frm;
-                if (_TserviceId == (int)MasterService.AtxMedicaParticular)
+                if (_TserviceId == (int)MasterService.AtxMedicaParticular || _TserviceId == (int)MasterService.AtxMedicaSeguros)
                 {
                     frm = new Operations.frmMedicalConsult(_serviceId, string.Join("|", _componentIds.Select(p => p)), null);
                     frm.ShowDialog();

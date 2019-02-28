@@ -14,7 +14,7 @@ namespace Sigesoft.Server.WebClientAdmin.BE
         public string v_AptitudeStatusName { get; set; }
         public string v_ProtocolName { get; set; }
 
-        public int i_TypeEsoId { get; set; }
+        public int? i_TypeEsoId { get; set; }
         public int i_AptitudeId { get; set; }
         public string v_ProtocolId { get; set; }
         public string v_HCL { get; set; }

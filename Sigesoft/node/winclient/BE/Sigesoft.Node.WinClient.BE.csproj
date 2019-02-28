@@ -379,11 +379,13 @@
     <Compile Include="Generated\typeofeepDto.cs" />
     <Compile Include="Generated\ticketdetalleDto.cs" />
     <Compile Include="Generated\ticketDto.cs" />
+    <Compile Include="Generated\testcorrunceDto.cs" />
     <Compile Include="Generated\systemuserrolenodeDto.cs" />
     <Compile Include="Generated\systemusergobalprofileDto.cs" />
     <Compile Include="Generated\systemuserDto.cs" />
     <Compile Include="Generated\systemparameterDto.cs" />
     <Compile Include="Generated\supplierDto.cs" />
+    <Compile Include="Generated\subscriptionDto.cs" />
     <Compile Include="Generated\softwarecomponentreleaseDto.cs" />
     <Compile Include="Generated\serviceorderdetailDto.cs" />
     <Compile Include="Generated\serviceorderDto.cs" />
@@ -429,6 +431,7 @@
     <Compile Include="Generated\ordenreporteDto.cs" />
     <Compile Include="Generated\occupationDto.cs" />
     <Compile Include="Generated\noxioushabitsDto.cs" />
+    <Compile Include="Generated\notificationDto.cs" />
     <Compile Include="Generated\nodesyncstatusDto.cs" />
     <Compile Include="Generated\nodeserviceprofileDto.cs" />
     <Compile Include="Generated\nodeorganizationprofileDto.cs" />
@@ -446,6 +449,7 @@
     <Compile Include="Generated\logDto.cs" />
     <Compile Include="Generated\locationDto.cs" />
     <Compile Include="Generated\liquidacionDto.cs" />
+    <Compile Include="Generated\identitystringDto.cs" />
     <Compile Include="Generated\hospitalizacionserviceDto.cs" />
     <Compile Include="Generated\hospitalizacionhabitacionDto.cs" />
     <Compile Include="Generated\hospitalizacionDto.cs" />

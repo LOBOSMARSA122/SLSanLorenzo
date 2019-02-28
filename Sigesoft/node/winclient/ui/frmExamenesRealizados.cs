@@ -793,7 +793,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             Form frm;
             string TserviceId = grdDataService.Selected.Rows[0].Cells["ServiceId"].Value.ToString();
-            //if (TserviceId == (int)MasterService.AtxMedicaParticular)
+            //if (TserviceId == (int)MasterService.AtxMedicaParticular|| TserviceId == (int)MasterService.AtxMedicaSeguros)
             //{
             //    frm = new Operations.frmMedicalConsult(_serviceId, null, null);
             //    frm.ShowDialog();

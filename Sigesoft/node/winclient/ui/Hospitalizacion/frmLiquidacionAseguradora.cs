@@ -13,6 +13,7 @@ using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 {
@@ -50,9 +51,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
         }
 
+        public List<LiquidacionAseguradora> _dataReport = new List<LiquidacionAseguradora>();
         private void BindGrid()
         {
             var objData = GetData(strFilterExpression);
+            _dataReport = objData;
             grdData.DataSource = objData;
             lblRecordCountCalendar.Text = string.Format("Se encontraron {0} registros.", objData.Count());
         }
@@ -97,6 +100,37 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnLiquidacion_Click(object sender, EventArgs e)
+        {
+            string organizationId = grdData.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
+            #region Conexion SAM
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            #endregion
+            var cadena1 = "select v_OrganizationId from organization where v_Name='"+organizationId+"'";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            while (lector.Read())
+            {
+                organizationId = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            var serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+            var serviceIdarray = new List<string>();
+            serviceIdarray.Add(serviceId);
+            OperationResult objOperationResult = new OperationResult();
+            ServiceBL _serviceBL = new ServiceBL();
+            _serviceBL.GenerarLiquidacion(ref objOperationResult, serviceIdarray.ToArray(),Globals.ClientSession.GetAsList(), organizationId );
+
+            var data = _dataReport;
+            var x = grdData.Selected.Rows[0].Cells["ServicioId"].Value;
+            var result = data.FindAll(p => p.ServicioId == x).ToList();
+            string ruta = Common.Utils.GetApplicationConfigValue("rutaPagoMedicos").ToString();
+            var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+            string nombre = " Liquidacion - CSL";
+            LiquidacionAseguradoraReport.CreateLiquidacionAseguradora(ruta + nombre + ".pdf", result, MedicalCenter);
         }
 
     }

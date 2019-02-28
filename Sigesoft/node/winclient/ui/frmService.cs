@@ -375,7 +375,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
            Form frm;
            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
-           if (TserviceId == (int)MasterService.AtxMedicaParticular)
+           if (TserviceId == (int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros)
            {
                #region ESO V1
                    frm = new Operations.frmEso(_serviceId, null, null, TserviceId);

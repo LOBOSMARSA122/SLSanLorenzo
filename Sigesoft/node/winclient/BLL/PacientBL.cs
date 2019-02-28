@@ -7845,7 +7845,39 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-       
+
+
+        public List<PersonList_2> LlenarPerson(ref OperationResult objOperationResult)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+                var query = (from A in dbContext.person
+                    join P in dbContext.pacient on A.v_PersonId equals P.v_PersonId
+                             where A.i_IsDeleted == isNotDeleted
+                    select new PersonList_2
+                    {
+                        v_name = A.v_FirstLastName + " " + A.v_SecondLastName + " " + A.v_FirstName + " | " + A.v_PersonId,
+                        v_personId = A.v_PersonId
+                    }).ToList();
+
+
+                var objData = query.AsEnumerable().
+                    GroupBy(g => g.v_name)
+                    .Select(s => s.First());
+
+                List<PersonList_2> x = objData.ToList();
+                objOperationResult.Success = 1;
+                return x;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
     }
 }
 

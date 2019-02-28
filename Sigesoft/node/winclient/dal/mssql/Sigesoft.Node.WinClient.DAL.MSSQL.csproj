@@ -88,11 +88,13 @@
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\testcorrunceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserrolenodeAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemusergobalprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemparameterAssembler.cs" />
     <Compile Include="GeneratedAssemblers\supplierAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\subscriptionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\softwarecomponentreleaseAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderAssembler.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="GeneratedAssemblers\ordenreporteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\occupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\noxioushabitsAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\notificationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodesyncstatusAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeserviceprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeorganizationprofileAssembler.cs" />
@@ -155,6 +158,7 @@
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\liquidacionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\identitystringAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
@@ -178,6 +182,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Server\WebClientAdmin\DAL\MSSQL\Sigesoft.Server.WebClientAdmin.DAL.MSSQL.csproj">
+      <Project>{733B4265-75BB-431F-9B19-1D8A483CBAD8}</Project>
+      <Name>Sigesoft.Server.WebClientAdmin.DAL.MSSQL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\BE\Sigesoft.Node.WinClient.BE.csproj">
       <Project>{FF8E51F3-510E-4E90-9627-0AD3E9CB8F5C}</Project>
       <Name>Sigesoft.Node.WinClient.BE</Name>

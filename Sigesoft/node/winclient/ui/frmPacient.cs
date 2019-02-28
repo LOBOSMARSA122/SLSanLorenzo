@@ -95,6 +95,21 @@ namespace Sigesoft.Node.WinClient.UI
             contextMenuStrip1.Items["mnuGridModificar"].Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmPacient_EDIT", _formActions);
             contextMenuStrip1.Items["mnuGridAntecedent"].Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmPacient_VIEW", _formActions);
 
+            List<PersonList_2> ListaPerson = new List<PersonList_2>();
+            PacientBL _PacientBL = new PacientBL();
+            txtNombreTitular.Select();
+            var lista = _PacientBL.LlenarPerson(ref objOperationResult);
+            txtNombreTitular.DataSource = lista;
+            txtNombreTitular.DisplayMember = "v_name";
+            txtNombreTitular.ValueMember = "v_personId";
+
+            txtNombreTitular.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+            txtNombreTitular.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.txtNombreTitular.DropDownWidth = 550;
+
+            txtNombreTitular.DisplayLayout.Bands[0].Columns[0].Width = 20;
+            txtNombreTitular.DisplayLayout.Bands[0].Columns[1].Width = 400;
+
             btnFilter_Click(sender, e);
         }
 

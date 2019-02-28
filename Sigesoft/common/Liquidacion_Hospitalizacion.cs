@@ -465,7 +465,16 @@ namespace NetPdf
                 totalFinal = decimal.Round(totalFinal, 2);
                 IGV = decimal.Round(IGV, 2);
                 subTotalFinal = decimal.Round(subTotalFinal, 2);
-                cell = new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cell = new PdfPCell(new Phrase("", fontColumnValue)) 
+                    {   Colspan = 4, 
+                        HorizontalAlignment = PdfPCell.ALIGN_RIGHT,
+                        UseVariableBorders = true, 
+                        BorderColorLeft = BaseColor.WHITE, 
+                        BorderColorRight = BaseColor.WHITE, 
+                        BorderColorBottom = BaseColor.WHITE, 
+                        BorderColorTop = BaseColor.WHITE, 
+                        MinimumHeight = 15f
+                    };
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase("Sub Total: S/.", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);

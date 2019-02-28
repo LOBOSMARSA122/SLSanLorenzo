@@ -29,6 +29,8 @@ using System.IO;
 using CrystalDecisions.Shared;
 using System.Transactions;
 using System.Data.SqlClient;
+using System.DirectoryServices.Protocols;
+using System.Threading.Tasks;
 
 namespace Sigesoft.Node.WinClient.UI.Operations
 {
@@ -374,7 +376,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
                 // PESTAÑA Antecedentes X DEFECTO
-                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
                 {
                     tcSubMain.TabPages.Remove(tpAntecedentes);
                     tcSubMain.TabPages.Remove(General);
@@ -436,7 +438,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 GetConclusionesDiagnosticasForGridView();
                 ConclusionesyTratamiento_LoadAllGrid();
                 gbEdicionDiagnosticoTotal.Enabled = false;
-                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
                 {
                     ConstruirFormularioAntecedentes();
                     ConstruirFormularioCuidadosPreventivos();
@@ -3039,6 +3041,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //{
             using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
             {
+
+                
                 RunWorkerAsyncPackage packageForSave = (RunWorkerAsyncPackage)e.Argument;
 
                 bool result = false;
@@ -3052,70 +3056,81 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
                 //Verficar si es nuevo o es una actualización
-
-                if (packageForSave.ServiceComponent.d_UpdateDate == null)
+                try
                 {
+                    //throw new ErrorResponseException();
+
+                    if (packageForSave.ServiceComponent.d_UpdateDate == null)
+                    {
                         result = _serviceBL.AddServiceComponentValues(ref objOperationResult,
                                                        _serviceComponentFieldsList,
                                                        Globals.ClientSession.GetAsList(),
                                                        _personId,
                                                        _serviceComponentId);
-                }
-                else
-                {
-
-
-                   var DatosAntiguos = _oListValidacionAMC.AsEnumerable()
-                  .GroupBy(x => x.v_ServiceComponentFieldValuesId)
-                  .Select(group => group.First()).ToList();
-
-                    List<DatosModificados> ListaDatoModificado = new List<DatosModificados>();
-                    DatosModificados oDatosModificados = null;
-
-                    foreach (var itemAntiguo in DatosAntiguos)
+                    }
+                    else
                     {
-                        var Coincidencia = _serviceComponentFieldsList.FindAll(p => p.v_ComponentFieldsId == itemAntiguo.v_ComponentFieldsId);
 
-                        if (Coincidencia.Count != 0)
+
+                        var DatosAntiguos = _oListValidacionAMC.AsEnumerable()
+                       .GroupBy(x => x.v_ServiceComponentFieldValuesId)
+                       .Select(group => group.First()).ToList();
+
+                        List<DatosModificados> ListaDatoModificado = new List<DatosModificados>();
+                        DatosModificados oDatosModificados = null;
+
+                        foreach (var itemAntiguo in DatosAntiguos)
                         {
-                            if (itemAntiguo.v_Value1 != Coincidencia[0].ServiceComponentFieldValues[0].v_Value1)
+                            var Coincidencia = _serviceComponentFieldsList.FindAll(p => p.v_ComponentFieldsId == itemAntiguo.v_ComponentFieldsId);
+
+                            if (Coincidencia.Count != 0)
+                            {
+                                if (itemAntiguo.v_Value1 != Coincidencia[0].ServiceComponentFieldValues[0].v_Value1)
+                                {
+                                    oDatosModificados = new DatosModificados();
+                                    oDatosModificados.v_ComponentFieldsId = itemAntiguo.v_ComponentFieldsId;
+                                    ListaDatoModificado.Add(oDatosModificados);
+                                }
+                            }
+                        }
+
+                        //Agregar los datos nuevos
+
+                        foreach (var item in _serviceComponentFieldsList)
+                        {
+                            var Coincidencia = DatosAntiguos.FindAll(p => p.v_ComponentFieldsId == item.v_ComponentFieldsId);
+                            if (Coincidencia.Count == 0)
                             {
                                 oDatosModificados = new DatosModificados();
-                                oDatosModificados.v_ComponentFieldsId = itemAntiguo.v_ComponentFieldsId;
+                                oDatosModificados.v_ComponentFieldsId = item.v_ComponentFieldsId;
                                 ListaDatoModificado.Add(oDatosModificados);
                             }
-                        }                       
-                    }
-
-                    //Agregar los datos nuevos
-
-                    foreach (var item in _serviceComponentFieldsList)
-                    {
-                        var Coincidencia = DatosAntiguos.FindAll(p => p.v_ComponentFieldsId == item.v_ComponentFieldsId);
-                        if (Coincidencia.Count ==0)
-                        {
-                            oDatosModificados = new DatosModificados();
-                            oDatosModificados.v_ComponentFieldsId = item.v_ComponentFieldsId;
-                            ListaDatoModificado.Add(oDatosModificados);
                         }
+
+                        string[] ListaDatoModificado_ = new string[ListaDatoModificado.Count()];
+                        for (int i = 0; i < ListaDatoModificado.Count(); i++)
+                        {
+                            ListaDatoModificado_[i] = ListaDatoModificado[i].v_ComponentFieldsId;
+                        }
+
+                        //var DatosGrabar = _serviceComponentFieldsList.FindAll(p => p.v_ComponentFieldsId.Contains(ListaDatoModificado.));
+                        var DatosGrabar = _serviceComponentFieldsList.FindAll(p => ListaDatoModificado_.Contains(p.v_ComponentFieldsId));
+
+
+                        result = _serviceBL.AddServiceComponentValues(ref objOperationResult,
+                                                                    DatosGrabar,
+                                                                    Globals.ClientSession.GetAsList(),
+                                                                    _personId,
+                                                                    _serviceComponentId);
                     }
-                   
-                    string[] ListaDatoModificado_ = new string[ListaDatoModificado.Count()];
-                    for (int i = 0; i < ListaDatoModificado.Count(); i++)
-                    {
-                        ListaDatoModificado_[i] = ListaDatoModificado[i].v_ComponentFieldsId;
-                    }
 
-                    //var DatosGrabar = _serviceComponentFieldsList.FindAll(p => p.v_ComponentFieldsId.Contains(ListaDatoModificado.));
-                    var DatosGrabar = _serviceComponentFieldsList.FindAll(p => ListaDatoModificado_.Contains(p.v_ComponentFieldsId));
-
-
-                    result = _serviceBL.AddServiceComponentValues(ref objOperationResult,
-                                                                DatosGrabar,
-                                                                Globals.ClientSession.GetAsList(),
-                                                                _personId,
-                                                                _serviceComponentId);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Red saturada. Intente grabar nuevamente.", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
 
 
 
@@ -8227,7 +8242,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else // todos los examenes están con el estado evaluado
             {
 
-                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
                 {
                     MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     serviceDto objserviceDto = new serviceDto();
