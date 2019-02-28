@@ -63,6 +63,7 @@
             this.btnGrabar.Text = "Guardar";
             this.btnGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // btnCancel
             // 
@@ -100,6 +101,7 @@
             this.Name = "frmAddSolicitudCarta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar";
+            this.Load += new System.EventHandler(this.frmAddSolicitudCarta_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -3678,6 +3678,7 @@ namespace Sigesoft.Node.WinClient.UI
             
             frmAddSolicitudCarta frm = new frmAddSolicitudCarta(_serviceId);
             frm.Show();
+
         }
        
     }

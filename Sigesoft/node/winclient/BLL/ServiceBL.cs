@@ -20052,8 +20052,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				var MedicalCenter = GetInfoMedicalCenter();
 
+                var Valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.OIT_ID);
 				var sql = (from a in objEntity.ToList()
-						   let Valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.OIT_ID)
+						
 						   select new ReportInformeRadiografico
 						   {
 
