@@ -1308,6 +1308,12 @@
     <Compile Include="frmRegistroElectrocardiograma.Designer.cs">
       <DependentUpon>frmRegistroElectrocardiograma.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRegistroEmAmHos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistroEmAmHos.Designer.cs">
+      <DependentUpon>frmRegistroEmAmHos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistroEspecialista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3795,6 +3801,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistroElectrocardiograma.resx">
       <DependentUpon>frmRegistroElectrocardiograma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroEmAmHos.resx">
+      <DependentUpon>frmRegistroEmAmHos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistroEspecialista.resx">
       <DependentUpon>frmRegistroEspecialista.cs</DependentUpon>

@@ -17,6 +17,24 @@ namespace Sigesoft.Node.WinClient.UI
             InitializeComponent();
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            string tabName = utcSusalud.SelectedTab.Text;
+            frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName);
+            frmRegistroEm.Text = "Registrar: "+tabName;
+            if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Procedimientos" || tabName == "Partos" || tabName == "Cirugías")
+            {
+                frmRegistroEm.Size = new Size(638, 196);
+            }
+            else if (tabName == "Hospitalización")
+            {
+                frmRegistroEm.Size = new Size(638, 236);
+            } 
+            frmRegistroEm.Show();
+
+           
+        }
+
        
        
         

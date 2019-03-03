@@ -739,6 +739,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
+            this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -8219,5 +8220,6 @@
         private System.Windows.Forms.TextBox txtFechaUltimaMamo;
         private System.Windows.Forms.TextBox txtFechaUltimoPAP;
         private System.Windows.Forms.CheckBox checkFirmaYanacocha;
+        private Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
     }
 }

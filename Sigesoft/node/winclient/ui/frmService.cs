@@ -2144,49 +2144,56 @@ namespace Sigesoft.Node.WinClient.UI
             List<ServiceComponentList> oServiceComponentList = new List<ServiceComponentList>();
             StringBuilder Cadena = new StringBuilder();
 
-
-            // if we are not entering a cell, then don't anything
-            if (!(e.Element is CellUIElement))
+            if (_serviceId == null)
             {
                 return;
             }
-
-            // find the cell that the cursor is over, if any
-            UltraGridCell cell = e.Element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
-
-            if (cell != null)
+            // if we are not entering a cell, then don't anything
+            else
             {
-                //int categoryId = int.Parse(cell.Row.Cells["i_CategoryId"].Value.ToString());
-                //oServiceComponentList = oServiceBL.GetServiceComponentByCategoryId(ref objOperationResult, categoryId, _serviceId);
-                string serviceId = cell.Row.Cells["v_ServiceId"].Value.ToString();
-                oServiceComponentList = oServiceBL.GetServiceComponents(ref objOperationResult, serviceId);
-                //if (categoryId != -1)
-                //{
-
-                foreach (var item in oServiceComponentList)
+                if (!(e.Element is CellUIElement))
                 {
-                    Cadena.Append(item.v_CategoryName + " - ");
-                    Cadena.Append(item.v_ServiceComponentStatusName);
-                    Cadena.Append("\n");
+                    return;
                 }
 
-                var FirmaMedicoMedicina = new ServiceBL().ObtenerFirmaMedicoExamen(serviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
-                if (FirmaMedicoMedicina != null )
+                // find the cell that the cursor is over, if any
+                UltraGridCell cell = e.Element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
+
+                if (cell != null)
                 {
-                    Cadena.Append("\n");
-                    Cadena.Append("MÉDICO");
-                    Cadena.Append("\n");
-                    Cadena.Append(FirmaMedicoMedicina.Value2);
+                    //int categoryId = int.Parse(cell.Row.Cells["i_CategoryId"].Value.ToString());
+                    //oServiceComponentList = oServiceBL.GetServiceComponentByCategoryId(ref objOperationResult, categoryId, _serviceId);
+                    string serviceId = cell.Row.Cells["v_ServiceId"].Value.ToString();
+                    oServiceComponentList = oServiceBL.GetServiceComponents(ref objOperationResult, serviceId);
+                    //if (categoryId != -1)
+                    //{
+
+                    foreach (var item in oServiceComponentList)
+                    {
+                        Cadena.Append(item.v_CategoryName + " - ");
+                        Cadena.Append(item.v_ServiceComponentStatusName);
+                        Cadena.Append("\n");
+                    }
+
+                    var FirmaMedicoMedicina = new ServiceBL().ObtenerFirmaMedicoExamen(serviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                    if (FirmaMedicoMedicina != null)
+                    {
+                        Cadena.Append("\n");
+                        Cadena.Append("MÉDICO");
+                        Cadena.Append("\n");
+                        Cadena.Append(FirmaMedicoMedicina.Value2);
+                    }
+
+                    _customizedToolTip.AutomaticDelay = 1;
+                    _customizedToolTip.AutoPopDelay = 20000;
+                    _customizedToolTip.ToolTipMessage = Cadena.ToString();
+                    _customizedToolTip.StopTimerToolTip();
+                    _customizedToolTip.StartTimerToolTip();
+                    //}
+
                 }
-
-                _customizedToolTip.AutomaticDelay = 1;
-                _customizedToolTip.AutoPopDelay = 20000;
-                _customizedToolTip.ToolTipMessage = Cadena.ToString() ;
-                _customizedToolTip.StopTimerToolTip();
-                _customizedToolTip.StartTimerToolTip();
-                //}
-
             }
+            
         }
 
       
