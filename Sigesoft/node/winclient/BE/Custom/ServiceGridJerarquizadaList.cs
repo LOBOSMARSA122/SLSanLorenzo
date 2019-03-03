@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -44,7 +45,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_MasterServiceName { get; set; }
         public string v_EsoTypeName { get; set; }
         public string CIE10 { get; set; }
-        public List<DiagnosticRepositoryJerarquizada> Diagnosticos { get; set; }
+        public BindingList<DiagnosticRepositoryJerarquizada> Diagnosticos { get; set; }
         public DateTime? d_FechaNacimiento { get; set; }
         public string NroPoliza { get; set; }
         public string Moneda { get; set; }

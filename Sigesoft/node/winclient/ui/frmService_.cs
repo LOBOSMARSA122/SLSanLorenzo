@@ -12,16 +12,16 @@ using Sigesoft.Node.WinClient.BE;
 using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
-using System.Diagnostics;
-  
+using System.Diagnostics;  
 //using iTextSharp.text;
 //using iTextSharp.text.pdf;
 //using iTextSharp.text.pdf.draw;
 
 namespace Sigesoft.Node.WinClient.UI
 {
-    public partial class frmConsultaFacturacion : Form
+    public partial class frmService_ : Form
     {
+        OperationResult _objOperationResult = new OperationResult();
         List<ServiceComponentList> ConsolidadoReportes = new List<ServiceComponentList>();
         List<string> _componentIds;
         PacientBL _pacientBL = new PacientBL();
@@ -30,24 +30,27 @@ namespace Sigesoft.Node.WinClient.UI
         string strFilterExpression;
         ServiceBL _serviceBL = new ServiceBL();
         private string _serviceId;
+        private string _EmpresaClienteId;
         private string _pacientId;
         private string _protocolId;
         private string _customerOrganizationName;
         private string _personFullName;
         List<string> _ListaServicios;
+        List<string> _ListaServiciosHistoria;
         List<string> _ListaServiciosAdjuntar;
         private SaveFileDialog saveFileDialog1 = new SaveFileDialog();
         private Sigesoft.Node.WinClient.UI.Utils.CustomizedToolTip _customizedToolTip = null;
         private SaveFileDialog saveFileDialog2 = new SaveFileDialog();
         private List<ServiceGridJerarquizadaList> ListaGrilla = new List<ServiceGridJerarquizadaList>();
         private MergeExPDF _mergeExPDF = new MergeExPDF();
-        public frmConsultaFacturacion()
+        public frmService_()
         {
             InitializeComponent();
         }
 
         private void frmService_Load(object sender, EventArgs e)
         {
+            this.Show();
             #region Simular sesion
             //ClientSession objClientSession = new ClientSession();
             //objClientSession.i_SystemUserId = 1;
@@ -70,12 +73,17 @@ namespace Sigesoft.Node.WinClient.UI
             ddlConsultorio.SelectedValueChanged -= ddlConsultorio_SelectedValueChanged;
 
 
-            dtpDateTimeStar.Value = dtpDateTimeStar.Value.AddDays(-1);
+            dtpDateTimeStar.Value = dtpDateTimeStar.Value.AddDays(0);
 
             OperationResult objOperationResult = new OperationResult();
 
             Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
             Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            ////Llenado de los tipos de servicios [Emp/Part]
+            //Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.Select);
+            //// combo servicio
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
+          
             //Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.All);
 
             Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.All);
@@ -87,7 +95,7 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(ddServiceStatusId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 125, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlStatusAptitudId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 124, null), DropDownListAction.All);
 
-         
+            Utils.LoadDropDownList(cboHistoriaGenerada, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 258, null), DropDownListAction.All);
 
             // Obtener permisos de cada examen de un rol especifico
             var componentProfile = _serviceBL.GetRoleNodeComponentProfileByRoleNodeId(Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_RoleId.Value);
@@ -101,8 +109,8 @@ namespace Sigesoft.Node.WinClient.UI
              groupComponentList.AddRange(_componentListTemp.ToList().FindAll(p => p.Value4 == -1));
              // Remover los componentes que no estan asignados al rol del usuario
              var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
-         
 
+             Utils.LoadDropDownList(cboUserMed, "Value1", "Id", BLL.Utils.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
           
             Utils.LoadDropDownList(ddlConsultorio, "Value1", "Id", results, DropDownListAction.Select);
 
@@ -112,6 +120,9 @@ namespace Sigesoft.Node.WinClient.UI
             strFilterExpression = null;
 
             ddlConsultorio.SelectedValueChanged += ddlConsultorio_SelectedValueChanged;
+
+
+            btnHistoriaCl.Enabled = false;
 
           
      
@@ -171,7 +182,24 @@ namespace Sigesoft.Node.WinClient.UI
             // Get the filters from the UI
             List<string> Filters = new List<string>();
             if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_PacientDocument.Contains(\"" + txtPacient.Text.Trim() + "\")");
+            if (!string.IsNullOrEmpty(txtServicioId.Text)) Filters.Add("v_ServiceId.Contains(\"" + txtServicioId.Text.Trim() + "\")");
+            
+            //if (!string.IsNullOrEmpty(txtDiagnostico.Text)) Filters.Add("v_DiseasesName.Contains(\"" + txtDiagnostico.Text.Trim() + "\")");
             if (ddServiceStatusId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceStatusId==" + ddServiceStatusId.SelectedValue);
+
+            if (cboHistoriaGenerada.SelectedValue.ToString() != "-1")
+            {
+                if (cboHistoriaGenerada.SelectedValue.ToString() =="2")
+                {
+                    Filters.Add("i_StatusLiquidation==2");
+                }
+                else
+                {
+                    Filters.Add("i_StatusLiquidation==NULL");
+                }
+                //Filters.Add("i_StatusLiquidation==" + cboHistoriaGenerada.SelectedValue.ToString() == "2" ? "2" : "i_StatusLiquidation==NULL");
+            }
+
 
             var id1 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
 
@@ -188,6 +216,9 @@ namespace Sigesoft.Node.WinClient.UI
             if (ddlEsoType.SelectedValue.ToString() != "-1") Filters.Add("i_EsoTypeId==" + ddlEsoType.SelectedValue);
             if (ddlProtocolId.SelectedValue.ToString() != "-1") Filters.Add("v_ProtocolId=="+ "\"" + ddlProtocolId.SelectedValue + "\"");
             if (ddlStatusAptitudId.SelectedValue.ToString() != "-1") Filters.Add("i_AptitudeStatusId==" + ddlStatusAptitudId.SelectedValue);
+            if (cboUserMed.SelectedValue.ToString() != "-1") Filters.Add("i_ApprovedUpdateUserId==" + cboUserMed.SelectedValue);
+
+
             
             // Create the Filter Expression
             strFilterExpression = null;   
@@ -236,7 +267,7 @@ namespace Sigesoft.Node.WinClient.UI
                 FCF = DateTime.Parse("01/01/2050");
             }
 
-            //var _objData = _serviceBL.GetServicesPagedAndFiltered_(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, _componentIds, FCI, FCF);
+            //var _objData = _serviceBL.GetServicesPagedAndFiltered_F(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, _componentIds, FCI, FCF, txtDiagnostico.Text);
 
             if (objOperationResult.Success != 1)
             {
@@ -277,10 +308,13 @@ namespace Sigesoft.Node.WinClient.UI
                 ddlMasterServiceId.Enabled = false;
                 return;
             }
-
-            ddlMasterServiceId.Enabled = true;
-            OperationResult objOperationResult = new OperationResult();
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            else
+            {
+                ddlMasterServiceId.Enabled = true;
+            }
+            //ddlMasterServiceId.Enabled = true;
+            //OperationResult objOperationResult = new OperationResult();
+            //Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
           
         }
 
@@ -339,34 +373,44 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnEditarESO_Click(object sender, EventArgs e)
         {
-            Form frm;
+           Form frm;
            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
            if (TserviceId == (int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros)
            {
-               frm = new Operations.frmMedicalConsult(_serviceId, null, null);
-               frm.ShowDialog();
+               #region ESO V1
+                   frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                   frm.ShowDialog();
+               #endregion
+               #region ESO V2 (Asíncrono)
+               //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+               //frm.ShowDialog();
+               #endregion   
            }
            else
            {
                //Obtener Estado del servicio
-               var EstadoServicio = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceStatusId"].Value.ToString());
+               var estadoAptitud = int.Parse(grdDataService.Selected.Rows[0].Cells["i_AptitudeStatusId"].Value.ToString());
 
-               if (EstadoServicio == (int)ServiceStatus.Culminado)
+               if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud == (int)AptitudeStatus.AptoObs)
                {
                    //Obtener el usuario
                    int UserId= Globals.ClientSession.i_SystemUserId ;
-                   if (UserId==11)
+                   if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
 	                {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
+                        frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
                         frm.ShowDialog();
+                        //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        //frm.ShowDialog();
                         this.Enabled = true;
 	                }
                    else
                    {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "View", (int)MasterService.Eso);
+                        frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
                         frm.ShowDialog();
+                        //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        //frm.ShowDialog();
                         this.Enabled = true;                   
                    }
                   
@@ -374,7 +418,7 @@ namespace Sigesoft.Node.WinClient.UI
                else 
                {
                    this.Enabled = false;
-                   frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
+                   frm = new Operations.frmEso(_serviceId, null, "Service",(int)MasterService.Eso);
                    frm.ShowDialog();
                    this.Enabled = true;
                }
@@ -386,79 +430,7 @@ namespace Sigesoft.Node.WinClient.UI
                   
            
         }
-
-        private void grdDataService_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
-        {
-            foreach (UltraGridRow rowSelected in this.grdDataService.Selected.Rows)
-            {
-                if (rowSelected.Band.Index.ToString() == "1")
-                {
-                    btnEditarESO.Enabled = false;
-                    btnAdminReportes.Enabled = false;
-                    btnGenerarLiquidacion.Enabled = false;
-                    btnInterconsulta.Enabled = false;
-                    btnTiempos.Enabled = false;
-                    btnFechaEntrega.Enabled = false;
-                 
-                    return;                
-                } 
-            }
-            if (_ListaServicios != null)
-            {
-                btnFechaEntrega.Enabled = true;
-            }
-            else
-            {
-                btnFechaEntrega.Enabled = false;
-            }
-            btn7D.Enabled = 
-            btnOdontograma.Enabled =
-            btnHistoriaOcupacional.Enabled = 
-            btnRadiologico.Enabled =
-            btnOsteomuscular.Enabled = 
-            btnPruebaEsfuerzo.Enabled = 
-            btnInformeRadiologicoOIT.Enabled = 
-            btnEstudioEKG.Enabled =
-            btnDermatologico.Enabled = 
-            btnEditarESO.Enabled = 
-            btnImprimirCertificadoAptitud.Enabled = 
-            btnInformeMedicoTrabajador.Enabled =
-            btnImprimirInformeMedicoEPS.Enabled = 
-            btnAdminReportes.Enabled = 
-            btnInforme312.Enabled = 
-            btnInformeMusculoEsqueletico.Enabled = 
-            btnInformeAlturaEstructural.Enabled = 
-            btnInformePsicologico.Enabled = 
-            btnInformeOftalmo.Enabled = 
-            btnGenerarLiquidacion.Enabled =
-            btnInterconsulta.Enabled=
-            btnTiempos.Enabled=
-
-               
-            //btnFechaEntrega.Enabled =
-            //btnImprimirFichaOcupacional.Enabled = 
-            (grdDataService.Selected.Rows.Count > 0);
-       
-            if (grdDataService.Selected.Rows.Count == 0)
-                return;
-
-            
-            _serviceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            _pacientId = grdDataService.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
-            _protocolId = grdDataService.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-            _customerOrganizationName = grdDataService.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
-            _personFullName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
-
-            if (grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value== null)
-            {
-                btnImprimirExamenes.Enabled = false;
-            }
-            else
-            {
-                btnImprimirExamenes.Enabled = true;
-            }
-        }
-
+        
         private void Examenes_Click(object sender, EventArgs e)
         {
            List<string>  _filesNameToMerge = new List<string>();
@@ -837,11 +809,44 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnConsolidadoReportes_Click(object sender, EventArgs e)
         {
-            int flagPantalla = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
 
+            var StatusLiquidation = grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null ? 1 : int.Parse(grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value.ToString());
 
-            var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, "", 1);
-                frm.ShowDialog();         
+            if (StatusLiquidation == 2)
+            {
+                var DialogResult = MessageBox.Show("Este servicio ya tiene, reportes generados, ¿Desea volver a generar?", "INFORMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (DialogResult == DialogResult.No) 
+                   {
+                       string ruta = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+                       System.Diagnostics.Process.Start(ruta);
+                       Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());
+
+                       //var companiaMinera = grdDataService.Selected.Rows[0].Cells["CompMinera"].Value.ToString();
+                       //var paciente = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+                       //var fecha = DateTime.Parse(grdDataService.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString()).ToString("dd MMMM,  yyyy");
+
+                       //var namePdf = companiaMinera + " - " + paciente + " - " + fecha;
+                       //string pdfPath = Path.Combine(ruta, namePdf + ".pdf");
+
+                       //Process.Start(pdfPath);
+                       return;
+                   }
+ 
+            }
+
+            int flagPantalla = int.Parse(grdDataService.Selected.Rows[0].Cells["i_MasterServiceId"].Value.ToString()); // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+            int eso = 1;
+            if (flagPantalla == 2)
+            {
+                var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, _EmpresaClienteId, eso);
+                frm.ShowDialog();
+            }
+            else
+            {
+                var edad = int.Parse(grdDataService.Selected.Rows[0].Cells["i_age"].Value.ToString());
+                var frm = new Reports.frmManagementReportsMedical(_serviceId, _pacientId, _customerOrganizationName, _personFullName, _EmpresaClienteId, edad);
+                frm.ShowDialog();
+            }     
 
         }
 
@@ -873,11 +878,6 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
-        private void grdDataService_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
-        {
-          
-        }
-
         private void grdDataService_InitializeRow(object sender, InitializeRowEventArgs e)
         {
 
@@ -898,7 +898,7 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         else if (e.Row.Cells["i_ServiceStatusId"].Value.ToString() == ((int)ServiceStatus.Culminado).ToString())
                         {
-                            e.Row.Appearance.BackColor = Color.SkyBlue;
+                            e.Row.Appearance.BackColor = Color.GreenYellow;
                             e.Row.Appearance.BackColor2 = Color.White;
                             //Y doy el efecto degradado vertical
                             e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
@@ -914,11 +914,11 @@ namespace Sigesoft.Node.WinClient.UI
                         e.Row.Cells["Liq"].ToolTipText = "Generada";
                     }
                 }
-  
+
             }
 
 
-         
+
 
         }
 
@@ -1256,7 +1256,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                         ListaDxByComponent,
                                                         serviceComponentDto,
                                                         Globals.ClientSession.GetAsList(),
-                                                        false,false);
+                                                        false, false);
 
 
 
@@ -1746,8 +1746,6 @@ namespace Sigesoft.Node.WinClient.UI
 
                     foreach (var item in serviceComponents)
                     {
-
-
                         if (item.v_ComponentId == Constants.ALTURA_7D_ID)
                         {
                             var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
@@ -1957,7 +1955,7 @@ namespace Sigesoft.Node.WinClient.UI
                     //ConsolidadoReportes.Add(new ServiceComponentList { Orden = 7, v_ComponentName = "INFORME MÉDICO RESUMEN", v_ComponentId = Constants.INFORME_MEDICO_RESUMEN });
                     ConsolidadoReportes.Add(new ServiceComponentList { Orden = 3, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 1", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR });
                     ConsolidadoReportes.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 2", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2 });
-
+                    serviceComponents.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 3", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_3 });
                     var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(item_0.ServiceId);
                     var ResultadoAnexo3121 = serviceComponents11.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
                     if (ResultadoAnexo3121.Count() != 0)
@@ -1979,37 +1977,107 @@ namespace Sigesoft.Node.WinClient.UI
                     ConsolidadoReportes.AddRange(serviceComponents.FindAll(p => ConsolidadoReportesForPrint.Contains(p.v_ComponentId)));
 
                     ListaOrdenada = ConsolidadoReportes.OrderBy(p => p.Orden).ToList();
+
+
+
+
+
+
+                    //Verificar si tiene orden de resportes
                     List<string> reportesId = new List<string>();
-
-
-
-                    foreach (var item1 in ListaOrdenada)
+                    OrganizationBL oOrganizationBL = new OrganizationBL();
+                    OperationResult objOperationResult = new OperationResult();
+                    List<ServiceComponentList> ListaFinalOrdena = new List<ServiceComponentList>();
+                    var ListaOrdenReportes = oOrganizationBL.GetOrdenReportes(ref objOperationResult, item_0.EmpresaCliente);
+                    if (ListaOrdenReportes.Count > 0)
                     {
-                        reportesId.Add(item1.v_ComponentId);
+                        serviceComponents = new List<ServiceComponentList>();
+                        serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(item_0.ServiceId);
+
+                        //serviceComponents.Add(new ServiceComponentList {  v_ComponentName = "CONSENTIMIENTO INFORMADO ", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO });
+
+                        serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "CONSENTIMIENTO INFORMADO ", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO });
+                        serviceComponents.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD SIN Diagnósticos ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_SIN_DX });
+                        serviceComponents.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD EMPRESARIAL ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_EMPRESARIAL });
+                        serviceComponents.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD });
+                        serviceComponents.Add(new ServiceComponentList { Orden = 3, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 1", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR });
+                        serviceComponents.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 2", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2 });
+                        serviceComponents.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 3", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_3 });
+                        serviceComponents.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "INFORME DE LABORATORIO", v_ComponentId = Constants.INFORME_LABORATORIO_CLINICO });
+
+                        //var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
+                        var ResultadoAnexo312 = serviceComponents.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
+                        if (ResultadoAnexo312.Count() != 0)
+                        {
+                            serviceComponents.Add(new ServiceComponentList { Orden = 5, v_ComponentName = "ANEXO 312", v_ComponentId = Constants.INFORME_ANEXO_312 });
+                        }
+                        var ResultadoFisico7C = serviceComponents.FindAll(p => InformeFisico7C1.Contains(p.v_ComponentId)).ToList();
+                        if (ResultadoFisico7C.Count() != 0)
+                        {
+                            serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 7C", v_ComponentId = Constants.INFORME_ANEXO_7C });
+                        }
+                        serviceComponents.Add(new ServiceComponentList { Orden = 7, v_ComponentName = "HISTORIA OCUPACIONAL", v_ComponentId = Constants.INFORME_HISTORIA_OCUPACIONAL });
+            
+
+
+                        ListaOrdenada = new List<ServiceComponentList>();
+                        ServiceComponentList oServiceComponentList = null;
+
+
+                        foreach (var item in ListaOrdenReportes)
+                        {
+                            oServiceComponentList = new ServiceComponentList();
+                            oServiceComponentList.v_ComponentName = item.v_NombreReporte;
+                            oServiceComponentList.v_ComponentId = item.v_ComponenteId +'|' +item.i_NombreCrystalId;
+                            ListaOrdenada.Add(oServiceComponentList);
+                        }
+
+
+                        foreach (var item in ListaOrdenada)
+                        {
+                            //var ComponenteId = "";
+                            //if (item.v_ComponentId.Length > 16)
+                            //{
+                            //    ComponenteId = item.v_ComponentId.Substring(0, 16);
+                            //}
+                            //else
+                            //{
+                            //    ComponenteId = item.v_ComponentId;
+                            //}
+                            var array = item.v_ComponentId.Split('|');
+                            foreach (var item1 in serviceComponents)
+                            {
+                                if (array[0].ToString() == item1.v_ComponentId)
+                                {
+                                    ListaFinalOrdena.Add(item);
+                                }
+                            }
+                        }
+
+                       
+                        foreach (var item1 in ListaFinalOrdena)
+                        {
+                            reportesId.Add(item1.v_ComponentId);
+                        }
+
+
+                    }
+                    else
+                    {                       
+                        foreach (var item1 in ListaOrdenada)
+                        {
+                            reportesId.Add(item1.v_ComponentId);
+                        }
                     }
 
-                    Reports.frmManagementReports frm = new Reports.frmManagementReports();
+                                       
+                        Reports.frmManagementReports frm = new Reports.frmManagementReports();
 
-                    frm.GenerarReportes(item_0.ServiceId,item_0.PacienteId, reportesId);
-
-
-
-                }
-
-                //Cambiar de estado a generado de reportes
-
-                   OperationResult objOperationResult = new OperationResult();
-                foreach (var item in ListaServicios)
-                {
-
-                    _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult,2, item.ServiceId, Globals.ClientSession.GetAsList());
-
+                        frm.GenerarReportes(item_0.ServiceId, item_0.PacienteId, reportesId);
+                  
                 }
 
                 BindGrid();
-
-
-
 
             }
 
@@ -2039,72 +2107,82 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 //int categoryId = int.Parse(cell.Row.Cells["i_CategoryId"].Value.ToString());
                 //oServiceComponentList = oServiceBL.GetServiceComponentByCategoryId(ref objOperationResult, categoryId, _serviceId);
-                string serviceId =cell.Row.Cells["v_ServiceId"].Value.ToString();
+                string serviceId = cell.Row.Cells["v_ServiceId"].Value.ToString();
                 oServiceComponentList = oServiceBL.GetServiceComponents(ref objOperationResult, serviceId);
                 //if (categoryId != -1)
                 //{
 
-                    foreach (var item in oServiceComponentList)
-                    {
-                        Cadena.Append(item.v_CategoryName + " - ");
-                        Cadena.Append(item.v_ServiceComponentStatusName);
-                        Cadena.Append("\n");
-                    }
+                foreach (var item in oServiceComponentList)
+                {
+                    Cadena.Append(item.v_CategoryName + " - ");
+                    Cadena.Append(item.v_ServiceComponentStatusName);
+                    Cadena.Append("\n");
+                }
 
-                    _customizedToolTip.AutomaticDelay = 1;
-                    _customizedToolTip.AutoPopDelay = 20000;
-                    _customizedToolTip.ToolTipMessage = Cadena.ToString();
-                    _customizedToolTip.StopTimerToolTip();
-                    _customizedToolTip.StartTimerToolTip();
+                var FirmaMedicoMedicina = new ServiceBL().ObtenerFirmaMedicoExamen(serviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                if (FirmaMedicoMedicina != null )
+                {
+                    Cadena.Append("\n");
+                    Cadena.Append("MÉDICO");
+                    Cadena.Append("\n");
+                    Cadena.Append(FirmaMedicoMedicina.Value2);
+                }
+
+                _customizedToolTip.AutomaticDelay = 1;
+                _customizedToolTip.AutoPopDelay = 20000;
+                _customizedToolTip.ToolTipMessage = Cadena.ToString() ;
+                _customizedToolTip.StopTimerToolTip();
+                _customizedToolTip.StartTimerToolTip();
                 //}
 
             }
         }
 
-        private void grdDataService_MouseLeaveElement(object sender, Infragistics.Win.UIElementEventArgs e)
-        {
-            // if we are not leaving a cell, then don't anything
-            if (!(e.Element is CellUIElement))
-            {
-                return;
-            }
-
-            // prevent the timer from ticking again
-            _customizedToolTip.StopTimerToolTip();
-
-            // destroy the tooltip
-            _customizedToolTip.DestroyToolTip(this);
-        }
+      
 
         private void btnImprimirExamenes_Click(object sender, EventArgs e)
         {
-            List<string> _filesNameToMerge = new List<string>();
-            string ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            string Paciente = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
-            var ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+
+          //  //obtener  todos los dx eliminados
+          //var LDxEliminados=  _serviceBL.DevolverDxELiminados();
+
+          //foreach (var item in LDxEliminados)
+          //{
+          //    _serviceBL.ObtenerRecomendacionesPorDiagnosticRepository(item.v_DiagnosticRepositoryId);            
+              
+          //}
+
+
+
+
+
+            //List<string> _filesNameToMerge = new List<string>();
+            //string ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            //string Paciente = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+            //var ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
       
-            string[] files = Directory.GetFiles(ruta, "*.pdf");
+            //string[] files = Directory.GetFiles(ruta, "*.pdf");
 
-            int strIndex = 0;
-            string findThisString = ruta + ServiceId;
-            for (int i = 0; i < files.Length; i++)
-            {
+            //int strIndex = 0;
+            //string findThisString = ruta + ServiceId;
+            //for (int i = 0; i < files.Length; i++)
+            //{
 
-                strIndex = files[i].IndexOf(findThisString);
+            //    strIndex = files[i].IndexOf(findThisString);
 
-                if (strIndex >= 0)
-                {
-                    _filesNameToMerge.Add(files[i].ToString());
+            //    if (strIndex >= 0)
+            //    {
+            //        _filesNameToMerge.Add(files[i].ToString());
 
-                }
-            }
+            //    }
+            //}
 
-            var x = _filesNameToMerge.ToList();
-            _mergeExPDF.FilesName = x;
-            _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
-            _mergeExPDF.DestinationFile = ruta + "Paciente" + ".pdf";
-            _mergeExPDF.Execute();
-            _mergeExPDF.RunFile();
+            //var x = _filesNameToMerge.ToList();
+            //_mergeExPDF.FilesName = x;
+            //_mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
+            //_mergeExPDF.DestinationFile = ruta + "Paciente" + ".pdf";
+            //_mergeExPDF.Execute();
+            //_mergeExPDF.RunFile();
    
         }
 
@@ -2136,6 +2214,1116 @@ namespace Sigesoft.Node.WinClient.UI
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnBotonOculto_Click(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                //Obtener Lista de MultifileId
+                OperationResult operationResult = new OperationResult();
+                MultimediaFileBL oMultimediaFileBL = new MultimediaFileBL();
+                var Lista = oMultimediaFileBL.DevolverTodosArchivos();
+                foreach (var item in Lista)
+                {
+                    var multimediaFile = oMultimediaFileBL.GetMultimediaFileById(ref operationResult, item.v_MultimediaFileId);
+
+                    if (multimediaFile != null)
+                    {
+                        string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                        using (SaveFileDialog sfd = new SaveFileDialog())
+                        {
+
+                            string Fecha = multimediaFile.FechaServicio.Value.Day.ToString().PadLeft(2, '0') + multimediaFile.FechaServicio.Value.Month.ToString().PadLeft(2, '0') + multimediaFile.FechaServicio.Value.Year.ToString();
+
+                            //Obtener la extensión del archivo
+                            string Ext = multimediaFile.FileName.Substring(multimediaFile.FileName.Length - 3, 3);
+
+                            sfd.Title = multimediaFile.dni + "-" + Fecha + "-" + multimediaFile.FileName + "." + Ext;
+                            sfd.FileName = mdoc + "\\" + sfd.Title;
+
+                            string path = sfd.FileName;
+                            if (multimediaFile.ByteArrayFile != null)
+                            {
+                                File.WriteAllBytes(path, multimediaFile.ByteArrayFile);
+                            }
+                          
+                            
+                        }
+                    }
+                  
+                }
+            }
+
+        }
+
+        private void btnQuitarChek_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+
+            foreach (var item in grdDataService.Selected.Rows)
+            {
+                var serviceId = item.Cells["v_ServiceId"].Value.ToString(); // grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+                _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, null, serviceId, Globals.ClientSession.GetAsList());
+            }
+         
+
+            MessageBox.Show("Se actualizó estado", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            btnFilter_Click(sender, e);
+
+        }
+
+        private void btnActualizarPerson_Click(object sender, EventArgs e)
+        {
+            _serviceBL.ActualizarContrasenaPersona();
+            MessageBox.Show("Se actualizó", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            
+        }
+
+        private void btnActualizarAptitud_Click(object sender, EventArgs e)
+        {
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                foreach (var item in grdDataService.Rows)
+                {
+                    if (item.Cells["i_ServiceStatusId"].Value.ToString() == "6")
+                    {
+                        var pServiceId = item.Cells["v_ServiceId"].Value.ToString();
+
+                        _serviceBL.ListarServiciosEsperandoAptitud(pServiceId,Globals.ClientSession.GetAsList());
+                    }
+                }
+                btnFilter_Click(sender, e);
+            };
+
+          
+                    
+
+        }
+
+        private void btnActualizarCulminado_Click(object sender, EventArgs e)
+        {
+
+            if (grdDataService.Rows.Count ==0)
+            {
+                 MessageBox.Show("No hay ningún registro en la búsqueda", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 return;    
+            }
+            OperationResult objOperationResult = new OperationResult();
+            frmCulminarMasivo frm = new frmCulminarMasivo();
+            frm.ShowDialog();
+
+            if (frm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                return;
+
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                foreach (var item in grdDataService.Rows)
+                {
+                    //if (item.Cells["i_ServiceStatusId"].Value.ToString() == "2")
+                    //{
+                        //Actualizar Firmas
+                        var pServiceId = item.Cells["v_ServiceId"].Value.ToString();
+                        _serviceBL.BuscarServiceComponentParaFirmas(pServiceId, frm.CategoriaId.Value, frm.TecnicoId.Value, frm.MedicoId.Value);
+
+                        var alert = _serviceBL.GetServiceComponentsCulminados(ref objOperationResult, pServiceId);
+
+                        if (alert != null && alert.Count > 0)// consulta trae datos.... examenes que no estan evaluados
+                        {
+
+                        }
+                        else
+                        {
+                            serviceDto objserviceDto = new serviceDto();
+                            objserviceDto = _serviceBL.GetService(ref objOperationResult, pServiceId);
+                            objserviceDto.i_ServiceStatusId = (int)ServiceStatus.EsperandoAptitud;
+                            objserviceDto.v_Motive = "Esperando Aptitud";
+                            _serviceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                        }
+                    //}     
+                }
+            }
+
+            btnFilter_Click(sender, e);
+
+        }
+
+        private void btnCargoHistorias_Click(object sender, EventArgs e)
+        {
+          var resultado =  MessageBox.Show("¿Desea enviar historia?","¡ INFORMACIÓN !", MessageBoxButtons.YesNo , MessageBoxIcon.Information);
+
+          
+
+          if (resultado ==DialogResult.Yes)
+          {
+              //Actualizar Flag i_EnvioHistoria
+            _ListaServiciosHistoria = new List<string>();
+            foreach (var item in grdDataService.Rows)
+            {
+                    string x = item.Cells["v_ServiceId"].Value.ToString();
+                    _serviceBL.ActualizarEnvioHistoria(x, 1);
+            }                            
+
+          }
+
+            var frm = new Reports.frmCargoHistoria(ListaGrilla);
+            frm.ShowDialog();
+        }
+
+        private void btnCargoFactura_Click(object sender, EventArgs e)
+        {
+            frmCargoFactura frm = new frmCargoFactura();
+            frm.ShowDialog();
+        }
+
+        private void btnMigrarEmpresa_Click(object sender, EventArgs e)
+        {
+            ////Obtener empresa antiguas
+            //OrganizationBL oOrganizationBL = new OrganizationBL();
+            //LocationBL oLocationBL = new LocationBL();
+            //GroupOccupationBL _objGroupOccupationBL = new GroupOccupationBL();
+            //MigracionBL oMigracionBL = new MigracionBL();
+            //OperationResult objOperationResult = new OperationResult();
+
+            //var lEmpresasOLD = oMigracionBL.DevolverDatosEmpresaOLD();
+            //int count = 0;
+            //organizationDto objOrganizationDto;
+
+            //foreach (var item in lEmpresasOLD)
+            //{
+            //    if (!oMigracionBL.VerificarSiExisteEmpresaAntigua(item.v_IdentificationNumber))
+            //    {
+            //        count++;
+            //        objOrganizationDto = new organizationDto();
+            //        // Populate the entity
+            //        objOrganizationDto.i_OrganizationTypeId = item.i_OrganizationTypeId;
+            //        objOrganizationDto.i_SectorTypeId = item.i_OrganizationTypeId;
+            //        objOrganizationDto.v_SectorName = item.v_SectorName;
+            //        objOrganizationDto.v_SectorCodigo = item.v_SectorCodigo;
+            //        objOrganizationDto.v_IdentificationNumber = item.v_IdentificationNumber;
+            //        objOrganizationDto.v_Name = item.v_Name;
+            //        objOrganizationDto.v_Address = item.v_Address;
+            //        objOrganizationDto.v_PhoneNumber = item.v_PhoneNumber;
+            //        objOrganizationDto.v_Mail = item.v_Mail;
+            //        objOrganizationDto.v_ContacName = item.v_ContacName;
+            //        objOrganizationDto.v_Contacto = item.v_Contacto;
+            //        objOrganizationDto.v_EmailContacto = item.v_EmailContacto;
+            //        objOrganizationDto.v_Observation = item.v_Observation;
+            //        objOrganizationDto.i_NumberQuotasOrganization = item.i_NumberQuotasOrganization;
+            //        objOrganizationDto.i_NumberQuotasMen = item.i_NumberQuotasMen;
+            //        objOrganizationDto.i_DepartmentId = item.i_DepartmentId;
+            //        objOrganizationDto.i_ProvinceId = item.i_ProvinceId;
+            //        objOrganizationDto.i_DistrictId = item.i_DistrictId;
+            //        objOrganizationDto.i_IsDeleted = item.i_IsDeleted;
+            //        objOrganizationDto.i_InsertUserId = item.i_InsertUserId;
+            //        objOrganizationDto.d_InsertDate = item.d_InsertDate;
+            //        objOrganizationDto.i_UpdateUserId = item.i_UpdateUserId;
+            //        objOrganizationDto.d_UpdateDate = item.d_UpdateDate;
+            //        objOrganizationDto.b_Image = item.b_Image;
+            //        objOrganizationDto.v_ContactoMedico = item.v_ContactoMedico;
+            //        objOrganizationDto.v_EmailMedico = item.v_EmailMedico;
+            //        var OrganizationId_Old = item.v_OrganizationId;
+            //        var OrganizationId = oOrganizationBL.AddOrganization(ref objOperationResult, objOrganizationDto, Globals.ClientSession.GetAsList());
+
+            //        //Obtener Lista de Sedes Antiguos por IdEmpresa
+
+            //        var ListaSedesAntiguas = oMigracionBL.DevolverSedesAntiguasPorIdEmpresa(OrganizationId_Old);
+            //        locationDto objLocationDto;
+            //        foreach (var itemSede in ListaSedesAntiguas)
+            //        {
+            //            objLocationDto = new locationDto();
+            //            objLocationDto.v_OrganizationId = OrganizationId;
+            //            objLocationDto.v_Name = itemSede.v_Name;
+            //            objLocationDto.i_IsDeleted = itemSede.i_IsDeleted;
+            //            objLocationDto.i_InsertUserId = itemSede.i_InsertUserId;
+            //            objLocationDto.d_InsertDate = itemSede.d_InsertDate;
+            //            objLocationDto.i_UpdateUserId = itemSede.i_UpdateUserId;
+            //            objLocationDto.d_UpdateDate = itemSede.d_UpdateDate;
+
+            //            var v_LocationId_OLD = itemSede.v_LocationId;
+            //            var locationId = oLocationBL.AddLocation(ref objOperationResult, objLocationDto, Globals.ClientSession.GetAsList());
+
+            //            //Rutina para Asignar la Empresa creada automaticamente al nodo actual
+            //            NodeOrganizationLoactionWarehouseList objNodeOrganizationLoactionWarehouseList = new NodeOrganizationLoactionWarehouseList();
+            //            List<nodeorganizationlocationwarehouseprofileDto> objnodeorganizationlocationwarehouseprofileDto = new List<nodeorganizationlocationwarehouseprofileDto>();
+
+            //            //Llenar Entidad Empresa/sede
+            //            objNodeOrganizationLoactionWarehouseList.i_NodeId = Globals.ClientSession.i_CurrentExecutionNodeId;
+            //            objNodeOrganizationLoactionWarehouseList.v_OrganizationId = OrganizationId;
+            //            objNodeOrganizationLoactionWarehouseList.v_LocationId = locationId;
+
+            //            oOrganizationBL.AddNodeOrganizationLoactionWarehouse(ref objOperationResult, objNodeOrganizationLoactionWarehouseList, null, Globals.ClientSession.GetAsList());
+
+            //            //Obtener GESO antiguos
+
+            //            var ListaGESOAntiguas = oMigracionBL.DevolverGESOporLocationId(v_LocationId_OLD);
+            //            groupoccupationDto objgroupoccupationDto;
+            //            foreach (var itemGESO in ListaGESOAntiguas)
+            //            {
+            //                objgroupoccupationDto = new groupoccupationDto();
+            //                objgroupoccupationDto.v_Name = itemGESO.v_Name;
+            //                objgroupoccupationDto.v_LocationId = locationId;
+            //                // Save the data
+            //                _objGroupOccupationBL.AddGroupOccupation(ref objOperationResult, objgroupoccupationDto, Globals.ClientSession.GetAsList());
+            //            }
+            //        }
+            //    }
+            //}
+
+            //var x = count;
+        }
+
+        private void btnPErson_Click(object sender, EventArgs e)
+        {
+            //MigracionBL oMigracionBL = new MigracionBL();
+            //PacientBL oPacientBL = new PacientBL();
+            //personDto objpersonDto = null;
+            //HistoryBL oHistoryBL = new HistoryBL();
+
+            //int count = 0;
+            ////Obtener PErsonasOLD
+            //var ListaPacientOLD = oMigracionBL.DevolverDatosPacientLD();
+            //foreach (var item in ListaPacientOLD)
+            //{
+            //    //Verificar si la persona existe en la BD Actual
+            //    var oPacient = oPacientBL.GetPersonByNroDocument(ref _objOperationResult, item.v_DocNumber);
+            //    if (oPacient == null)
+            //    {
+            //        var PersonId_OLD = item.v_PersonId;
+            //        objpersonDto = new personDto();
+            //        objpersonDto.v_PersonId = item.v_PersonId;
+            //        objpersonDto.v_FirstName = item.v_FirstName;
+            //        objpersonDto.v_FirstLastName = item.v_FirstLastName;
+            //        objpersonDto.v_SecondLastName = item.v_SecondLastName;
+            //        objpersonDto.i_DocTypeId = item.i_DocTypeId;
+            //        objpersonDto.v_DocNumber = item.v_DocNumber;
+            //        objpersonDto.d_Birthdate = item.d_Birthdate;
+            //        objpersonDto.v_BirthPlace = item.v_BirthPlace;
+            //        objpersonDto.i_SexTypeId = item.i_SexTypeId;
+            //        objpersonDto.i_MaritalStatusId = item.i_MaritalStatusId;
+            //        objpersonDto.i_LevelOfId = item.i_LevelOfId;
+            //        objpersonDto.v_TelephoneNumber = item.v_TelephoneNumber;
+            //        objpersonDto.v_AdressLocation = item.v_AdressLocation;
+            //        objpersonDto.v_GeografyLocationId = item.v_GeografyLocationId;
+            //        objpersonDto.v_ContactName = item.v_ContactName;
+            //        objpersonDto.v_EmergencyPhone = item.v_EmergencyPhone;
+            //        objpersonDto.b_PersonImage = item.b_PersonImage;
+            //        objpersonDto.v_Mail = item.v_Mail;
+            //        objpersonDto.i_BloodGroupId = item.i_BloodGroupId;
+            //        objpersonDto.i_BloodFactorId = item.i_BloodFactorId;
+            //        objpersonDto.b_FingerPrintTemplate = item.b_FingerPrintTemplate;
+            //        objpersonDto.b_RubricImage = item.b_RubricImage;
+            //        objpersonDto.b_FingerPrintImage = item.b_FingerPrintImage;
+            //        objpersonDto.t_RubricImageText = item.t_RubricImageText;
+            //        objpersonDto.v_CurrentOccupation = item.v_CurrentOccupation;
+            //        objpersonDto.i_DepartmentId = item.i_DepartmentId;
+            //        objpersonDto.i_ProvinceId = item.i_ProvinceId;
+            //        objpersonDto.i_DistrictId = item.i_DistrictId;
+            //        objpersonDto.i_ResidenceInWorkplaceId = item.i_ResidenceInWorkplaceId;
+            //        objpersonDto.v_ResidenceTimeInWorkplace = item.v_ResidenceTimeInWorkplace;
+            //        objpersonDto.i_TypeOfInsuranceId = item.i_TypeOfInsuranceId;
+            //        objpersonDto.i_NumberLivingChildren = item.i_NumberLivingChildren;
+            //        objpersonDto.i_NumberDependentChildren = item.i_NumberDependentChildren;
+            //        objpersonDto.i_OccupationTypeId = item.i_OccupationTypeId;
+            //        objpersonDto.v_OwnerName = item.v_OwnerName;
+            //        objpersonDto.i_NumberLiveChildren = item.i_NumberLiveChildren;
+            //        objpersonDto.i_NumberDeadChildren = item.i_NumberDeadChildren;
+            //        objpersonDto.i_IsDeleted = item.i_IsDeleted;
+            //        objpersonDto.i_InsertUserId = item.i_InsertUserId;
+            //        objpersonDto.d_InsertDate = item.d_InsertDate.Value;
+            //        objpersonDto.i_UpdateUserId = item.i_UpdateUserId;
+            //        objpersonDto.d_UpdateDate = item.d_UpdateDate;
+            //        objpersonDto.i_InsertNodeId = item.i_InsertNodeId;
+            //        objpersonDto.i_UpdateNodeId = item.i_UpdateNodeId;
+            //        objpersonDto.i_Relationship = item.i_Relationship;
+            //        objpersonDto.v_ExploitedMineral = item.v_ExploitedMineral;
+            //        objpersonDto.i_AltitudeWorkId = item.i_AltitudeWorkId;
+            //        objpersonDto.i_PlaceWorkId = item.i_PlaceWorkId;
+            //        objpersonDto.v_NroPoliza = item.v_NroPoliza;
+            //        objpersonDto.v_Deducible = item.v_Deducible == null ? 0 : item.v_Deducible.Value;
+            //        objpersonDto.i_NroHermanos = item.i_NroHermanos;
+            //        objpersonDto.v_Password = item.v_Password;
+
+            //        var PersonId_Nuevo = oPacientBL.AddPacient(ref _objOperationResult, objpersonDto, Globals.ClientSession.GetAsList());
+
+                    //#region Ocupacional
+
+                    //Obtener historia Ocupacional por PersonaId
+                    //var ListaHistoriaPErsonId = oMigracionBL.ObtenerLisatHistoriaPorPersonId(PersonId_OLD);
+                    //List<WorkstationDangersList> _TempWorkstationDangersList = new List<WorkstationDangersList>();
+                    //WorkstationDangersList oWorkstationDangersList;
+                    //List<TypeOfEEPList> _TempTypeOfEEPList = new List<TypeOfEEPList>();
+                    //TypeOfEEPList oTypeOfEEPList;
+                    //historyDto _objhistoryDto;
+                    //foreach (var itemHistoria in ListaHistoriaPErsonId)
+                    //{
+                    //    Cargar Tabla History
+                    //    _objhistoryDto = new historyDto();
+                    //    _objhistoryDto.v_PersonId = PersonId_Nuevo;
+                    //    _objhistoryDto.d_StartDate = itemHistoria.d_StartDate;
+                    //    _objhistoryDto.d_EndDate = itemHistoria.d_EndDate;
+                    //    _objhistoryDto.v_Organization = itemHistoria.v_Organization;
+                    //    _objhistoryDto.v_TypeActivity = itemHistoria.v_TypeActivity;
+                    //    _objhistoryDto.i_GeografixcaHeight = itemHistoria.i_GeografixcaHeight;
+                    //    _objhistoryDto.v_workstation = itemHistoria.v_workstation;
+
+                    //    _objhistoryDto.b_RubricImage = itemHistoria.b_RubricImage;
+                    //    _objhistoryDto.b_FingerPrintImage = itemHistoria.b_FingerPrintImage;
+                    //    _objhistoryDto.t_RubricImageText = itemHistoria.t_RubricImageText;
+                    //    _objhistoryDto.i_TypeOperationId = itemHistoria.i_TypeOperationId;
+
+                    //    Obtener Lista Peligros en puesto
+                    //    var ListaPeligros = oMigracionBL.ObtenerListaPeligrosPorHistoryId(itemHistoria.v_HistoryId);
+
+                    //    foreach (var itemPeligros in ListaPeligros)
+                    //    {
+                    //        oWorkstationDangersList = new WorkstationDangersList();
+                    //        oWorkstationDangersList.i_DangerId = itemPeligros.i_DangerId;
+                    //        oWorkstationDangersList.i_NoiseSource = itemPeligros.i_NoiseSource;
+                    //        oWorkstationDangersList.i_NoiseLevel = itemPeligros.i_NoiseLevel;
+                    //        oWorkstationDangersList.v_TimeOfExposureToNoise = itemPeligros.v_TimeOfExposureToNoise;
+                    //        _TempWorkstationDangersList.Add(oWorkstationDangersList);
+
+                    //    }
+
+                    //    Obtener Lista EPP
+                    //    var ListaEpps = oMigracionBL.ObtenerListaEPPSPorHistoryId(itemHistoria.v_HistoryId);
+                    //    foreach (var itemEpp in ListaEpps)
+                    //    {
+                    //        oTypeOfEEPList = new TypeOfEEPList();
+                    //        oTypeOfEEPList.i_TypeofEEPId = itemEpp.i_TypeofEEPId;
+                    //        oTypeOfEEPList.r_Percentage = itemEpp.r_Percentage;
+                    //        _TempTypeOfEEPList.Add(oTypeOfEEPList);
+
+                    //    }
+
+                    //    oHistoryBL.AddHistory(ref _objOperationResult, _TempWorkstationDangersList, _TempTypeOfEEPList, _objhistoryDto, Globals.ClientSession.GetAsList());
+
+
+                    //}
+
+                    //#endregion
+
+                    //#region Personal
+                    //var ListaPersonal = oMigracionBL.DevolverListaMedicoPersonalesPorPersonId(PersonId_OLD);
+                    //List<personmedicalhistoryDto> _personmedicalhistoryDto = new List<personmedicalhistoryDto>();
+                    //personmedicalhistoryDto opersonmedicalhistoryDto;
+                    //foreach (var itemPersonal in ListaPersonal)
+                    //{
+                    //    opersonmedicalhistoryDto = new personmedicalhistoryDto();
+                    //    opersonmedicalhistoryDto.v_PersonId = PersonId_Nuevo;
+                    //    Verificar si Existe Disease
+                    //    var DiseaseId = oMigracionBL.ValidarDiseaseSiExiste(itemPersonal.v_CIE10Id, itemPersonal.v_Name, Globals.ClientSession.GetAsList());
+                    //    opersonmedicalhistoryDto.v_DiseasesId = DiseaseId;// itemPersonal.v_DiseasesId;
+
+                    //    opersonmedicalhistoryDto.i_TypeDiagnosticId = itemPersonal.i_TypeDiagnosticId;
+                    //    opersonmedicalhistoryDto.d_StartDate = itemPersonal.d_StartDate;
+                    //    opersonmedicalhistoryDto.v_DiagnosticDetail = itemPersonal.v_DiagnosticDetail;
+                    //    opersonmedicalhistoryDto.v_TreatmentSite = itemPersonal.v_TreatmentSite;
+                    //    opersonmedicalhistoryDto.i_AnswerId = itemPersonal.i_Answer;
+
+                    //    _personmedicalhistoryDto.Add(opersonmedicalhistoryDto);
+                    //}
+
+                    //oHistoryBL.AddPersonMedicalHistory(ref _objOperationResult,
+                    //                             _personmedicalhistoryDto,
+                    //                             null,
+                    //                             null,
+                    //                             Globals.ClientSession.GetAsList());
+                    //#endregion
+
+                    //#region Familiar
+                    //var ListaFamiliar = oMigracionBL.DevolverListaMedicoFamiliaresPorPersonId(PersonId_OLD);
+                    //List<familymedicalantecedentsDto> _familymedicalantecedentsDto = new List<familymedicalantecedentsDto>();
+                    //familymedicalantecedentsDto ofamilymedicalantecedentsDto;
+                    //foreach (var itemFamiliar in ListaFamiliar)
+                    //{
+                    //    ofamilymedicalantecedentsDto = new familymedicalantecedentsDto();
+                    //    ofamilymedicalantecedentsDto.v_PersonId = PersonId_Nuevo;
+                    //    var DiseaseId = oMigracionBL.ValidarDiseaseSiExiste(itemFamiliar.v_CIE10Id, itemFamiliar.v_Name, Globals.ClientSession.GetAsList());
+
+                    //    ofamilymedicalantecedentsDto.v_DiseasesId = DiseaseId;
+                    //    ofamilymedicalantecedentsDto.i_TypeFamilyId = itemFamiliar.i_TypeFamilyId;
+                    //    ofamilymedicalantecedentsDto.v_Comment = itemFamiliar.v_Comment;
+                    //    _familymedicalantecedentsDto.Add(ofamilymedicalantecedentsDto);
+                    //}
+                    //oHistoryBL.AddFamilyMedicalAntecedents(ref _objOperationResult,
+                    //                             _familymedicalantecedentsDto,
+                    //                             null,
+                    //                             null,
+                    //                             Globals.ClientSession.GetAsList());
+
+                    //#endregion
+
+                    //#region Habitos
+
+                    //var ListaHabitos = oMigracionBL.DevolverListaHabitosPorPersonId(PersonId_OLD);
+                    //List<noxioushabitsDto> _noxioushabitsDto = new List<noxioushabitsDto>();
+                    //noxioushabitsDto onoxioushabitsDto;
+                    //foreach (var itemHabitos in ListaHabitos)
+                    //{
+                    //    onoxioushabitsDto = new noxioushabitsDto();
+                    //    onoxioushabitsDto.v_PersonId = PersonId_Nuevo;
+
+                    //    onoxioushabitsDto.i_TypeHabitsId = itemHabitos.i_TypeHabitsId;
+                    //    onoxioushabitsDto.v_Frequency = itemHabitos.v_Frequency; ;
+                    //    onoxioushabitsDto.v_Comment = itemHabitos.v_Comment; ;
+                    //    onoxioushabitsDto.v_DescriptionHabit = itemHabitos.v_DescriptionHabit; ;
+                    //    onoxioushabitsDto.v_DescriptionQuantity = itemHabitos.v_DescriptionQuantity; ;
+
+                    //    _noxioushabitsDto.Add(onoxioushabitsDto);
+                    //}
+
+
+                    //oHistoryBL.AddNoxiousHabits(ref _objOperationResult,
+                    //                                        _noxioushabitsDto,
+                    //                                        null,
+                    //                                        null,
+                    //                                        Globals.ClientSession.GetAsList());
+                    //#endregion
+
+            //    }
+            //}
+        }
+
+        private void btnServicios_Click(object sender, EventArgs e)
+        {
+            //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            //{
+            //    ProcesoSErvicio();
+            //}
+        }
+
+        private void btnClonar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            frmClonServicio frm = new frmClonServicio(_serviceId);
+            frm.ShowDialog();
+            if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                // Refrescar grilla
+                btnFilter_Click(sender, e);
+            }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grdDataService_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
+        {
+            if (grdDataService.Selected.Rows.Count == 0) return ;
+            if (grdDataService.Selected.Rows[0].Cells != null)
+            {
+                OperationResult objOperationResult = new OperationResult();
+                List<string> Filters = new List<string>();
+
+                foreach (UltraGridRow rowSelected in this.grdDataService.Selected.Rows)
+                {
+
+                    if (rowSelected.Band.Index.ToString() == "0")
+                    {
+                            var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                            ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
+
+                            if (personData.i_ServiceTypeId == 1)
+                            {
+                                btnHistoriaCl.Enabled = false;
+                            }
+                            else
+                            {
+                                btnHistoriaCl.Enabled = true;
+                            }
+
+                    }
+                    if (rowSelected.Band.Index.ToString() == "1")
+                    {
+                        btnEditarESO.Enabled = false;
+                        button1.Enabled = false;
+                        button1.Enabled = false;
+                        btnAdminReportes.Enabled = false;
+                        btnReportAsync.Enabled = false;
+                        btnGenerarLiquidacion.Enabled = false;
+                        btnInterconsulta.Enabled = false;
+                        btnTiempos.Enabled = false;
+                        btnFechaEntrega.Enabled = false;
+
+                        return;
+                    }
+                }
+                    if (_ListaServicios != null)
+                    {
+                        btnFechaEntrega.Enabled = true;
+                    }
+                    else
+                    {
+                        btnFechaEntrega.Enabled = false;
+                    }
+                    btn7D.Enabled =
+                    btnOdontograma.Enabled =
+                    btnHistoriaOcupacional.Enabled =
+                    btnRadiologico.Enabled =
+                    btnOsteomuscular.Enabled =
+                    btnPruebaEsfuerzo.Enabled =
+                    btnInformeRadiologicoOIT.Enabled =
+                    btnEstudioEKG.Enabled =
+                    btnDermatologico.Enabled =
+                    btnEditarESO.Enabled =
+                    button1.Enabled =
+                    btnImprimirCertificadoAptitud.Enabled =
+                    btnInformeMedicoTrabajador.Enabled =
+                    btnImprimirInformeMedicoEPS.Enabled =
+                    btnAdminReportes.Enabled =
+                    btnReportAsync.Enabled =
+                    btnInforme312.Enabled =
+                    btnInformeMusculoEsqueletico.Enabled =
+                    btnInformeAlturaEstructural.Enabled =
+                    btnInformePsicologico.Enabled =
+                    btnInformeOftalmo.Enabled =
+                    btnGenerarLiquidacion.Enabled =
+                    btnInterconsulta.Enabled =
+                    btnTiempos.Enabled =
+
+
+                    //btnFechaEntrega.Enabled =
+                        //btnImprimirFichaOcupacional.Enabled = 
+                    (grdDataService.Selected.Rows.Count > 0);
+
+                    if (grdDataService.Selected.Rows.Count == 0)
+                        return;
+
+
+                    _serviceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                    _EmpresaClienteId = grdDataService.Selected.Rows[0].Cells["v_CustomerOrganizationId"].Value.ToString();
+                    _pacientId = grdDataService.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
+                    _protocolId = grdDataService.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+                    _customerOrganizationName = grdDataService.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
+                    _personFullName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+
+                    if (grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null)
+                    {
+                        btnImprimirExamenes.Enabled = false;
+                    }
+                    else
+                    {
+                        btnImprimirExamenes.Enabled = true;
+                    }
+            }
+            
+           
+        }
+
+        private void grdDataService_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+
+        }
+
+        private void grdDataService_MouseLeaveElement(object sender, Infragistics.Win.UIElementEventArgs e)
+        {
+            // if we are not leaving a cell, then don't anything
+            if (!(e.Element is CellUIElement))
+            {
+                return;
+            }
+
+            // prevent the timer from ticking again
+            _customizedToolTip.StopTimerToolTip();
+
+            // destroy the tooltip
+            _customizedToolTip.DestroyToolTip(this);
+        }
+
+        private void btnEditarESO_Click(object sender, DoubleClickRowEventArgs e)
+        {
+            Form frm;
+            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+            if (TserviceId == (int)MasterService.AtxMedicaParticular)
+            {
+                #region ESO V1
+                //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                //frm.ShowDialog();
+                #endregion
+                #region ESO V2 (Asíncrono)
+                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                frm.ShowDialog();
+                #endregion
+                
+            }
+            else
+            {
+                //Obtener Estado del servicio
+                var EstadoServicio = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceStatusId"].Value.ToString());
+
+                if (EstadoServicio == (int)ServiceStatus.Culminado)
+                {
+                    //Obtener el usuario
+                    int UserId = Globals.ClientSession.i_SystemUserId;
+                    if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                    {
+                        this.Enabled = false;
+                        frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
+                        frm.ShowDialog();
+                        this.Enabled = true;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
+                        frm.ShowDialog();
+                        this.Enabled = true;
+                    }
+
+                }
+                else
+                {
+                    this.Enabled = false;
+                    frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
+                    frm.ShowDialog();
+                    this.Enabled = true;
+                }
+
+
+            }
+
+            btnFilter_Click(sender, e);
+                  
+        }
+
+
+        private void btnHistoriaCl_Click(object sender, EventArgs e)
+        {
+            OperationResult _objOperationResult = new OperationResult();
+            //var doc = grdDataCalendar.Selected.Rows[0].Cells["v_DocDumber"].Value.ToString();
+            var serviceID = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+
+                var exams = new ServiceBL().GetServiceComponentsReport(serviceID);
+
+                var datosP = new PacientBL().DevolverDatosPaciente(serviceID);
+
+                var _DataService = new ServiceBL().GetMedicoTratante(serviceID);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaHistoriaClinica").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "Historia Clinica N° " + serviceID + " - CSL";
+
+                //var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
+
+                Historia_Clinica.CreateHistoria_Clinica(ruta + nombre + ".pdf", MedicalCenter, datosP, _DataService, exams);
+                this.Enabled = true;
+            }
+        }
+
+        private void btnReportAsync_Click(object sender, EventArgs e)
+        {
+            var frm = new Reports.frmManagementReportAsync(_EmpresaClienteId, _serviceId,_pacientId);
+            frm.ShowDialog();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+
+                //var lista = new ServiceBL().GetListaLiquidacionByEmpresa_Name(ref objOperationResult, fechaInicio, fechaFin, _empresa);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "EGRESOS DE PRUEBA - CSL";
+
+                Reporte_Egresos.CreateReporte_Egresos(ruta + nombre + ".pdf", MedicalCenter);
+                this.Enabled = true;
+            }
+        }
+
+        private void ddlServiceTypeId_TextChanged(object sender, EventArgs e)
+        {
+            if (ddlServiceTypeId.SelectedIndex == 0 || ddlServiceTypeId.SelectedIndex == -1)
+                return;
+
+            OperationResult objOperationResult = new OperationResult();
+            var id = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
+
+        }
+
+        private void frmService_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void grdDataService_DoubleClick(object sender, EventArgs e)
+        {
+            Form frm;
+            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+            if (TserviceId == (int)MasterService.AtxMedicaParticular)
+            {
+                #region ESO V1
+                //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                //frm.ShowDialog();
+                #endregion
+                #region ESO V2 (Asíncrono)
+                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                frm.ShowDialog();
+                #endregion
+
+            }
+            else
+            {
+                //Obtener Estado del servicio
+                var EstadoServicio = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceStatusId"].Value.ToString());
+
+                if (EstadoServicio == (int)ServiceStatus.Culminado)
+                {
+                    //Obtener el usuario
+                    int UserId = Globals.ClientSession.i_SystemUserId;
+                    if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                    {
+                        this.Enabled = false;
+                        #region ESO V1
+                        //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                        //frm.ShowDialog();
+                        #endregion
+                        #region ESO V2 (Asíncrono)
+                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm.ShowDialog();
+                        #endregion
+                        this.Enabled = true;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        #region ESO V1
+                        //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                        //frm.ShowDialog();
+                        #endregion
+                        #region ESO V2 (Asíncrono)
+                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm.ShowDialog();
+                        #endregion
+                        this.Enabled = true;
+                    }
+
+                }
+                else
+                {
+                    this.Enabled = false;
+                    #region ESO V1
+                    //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                    //frm.ShowDialog();
+                    #endregion
+                    #region ESO V2 (Asíncrono)
+                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                    frm.ShowDialog();
+                    #endregion
+                    this.Enabled = true;
+                }
+
+
+            }
+
+            btnFilter_Click(sender, e);
+            
+        }
+        
+        //void ProcesoSErvicio()
+        //{
+        //    MigracionBL oMigracionBL = new MigracionBL();
+        //    PacientBL oPacientBL = new PacientBL();
+        //    serviceDto oserviceDto;
+        //    ServiceBL oServiceBL = new ServiceBL();
+        //    List<ServiceImportacionList> lGrilla = new List<ServiceImportacionList>();
+        //    ServiceImportacionList oServiceImportacionList;
+        //    var ListaServiciosOLD = oMigracionBL.DevolverListaServiciosOLD();
+
+
+        //    foreach (var item in ListaServiciosOLD)
+        //    {
+
+
+        //        oserviceDto = new serviceDto();
+        //        var ServiceID_OLD = item.v_ServiceId;
+        //        var ProtocolId_OLD = item.v_ProtocolId;
+        //        var FechaServicio = item.d_ServiceDate.ToString();
+
+        //        var ProtocolID_Nuevo = oMigracionBL.DevolverProtocoloOLD(ProtocolId_OLD, Globals.ClientSession.GetAsList());
+        //        if (ProtocolID_Nuevo == null)
+        //        {
+
+        //        }
+        //        oserviceDto.v_ProtocolId = ProtocolID_Nuevo;
+
+        //        var oPersonNew = oPacientBL.GetPersonByNroDocument(ref _objOperationResult, item.v_DocNumber);
+        //        var Paciente = oPersonNew.v_FirstName + " " + oPersonNew.v_FirstLastName + " " + oPersonNew.v_SecondLastName;
+        //        oserviceDto.v_PersonId = oPersonNew.v_PersonId;
+        //        item.d_EndDateRestriction = item.d_EndDateRestriction;
+        //        oserviceDto.d_FechaEntrega = item.d_FechaEntrega;
+        //        oserviceDto.d_Fur = item.d_Fur;
+        //        oserviceDto.d_GlobalExpirationDate = item.d_GlobalExpirationDate;
+        //        oserviceDto.d_InsertDateMedicalAnalyst = item.d_InsertDateMedicalAnalyst;
+        //        oserviceDto.d_InsertDateOccupationalMedical = item.d_InsertDateOccupationalMedical;
+        //        oserviceDto.d_Mamografia = item.d_Mamografia;
+        //        oserviceDto.d_MedicalBreakEndDate = item.d_MedicalBreakEndDate;
+        //        oserviceDto.d_MedicalBreakStartDate = item.d_MedicalBreakStartDate;
+        //        oserviceDto.d_NextAppointment = item.d_NextAppointment;
+        //        oserviceDto.d_ObsExpirationDate = item.d_ObsExpirationDate;
+        //        oserviceDto.d_PAP = item.d_PAP;
+        //        oserviceDto.d_ServiceDate = item.d_ServiceDate;
+        //        oserviceDto.d_StartDateRestriction = item.d_StartDateRestriction;
+        //        oserviceDto.d_UpdateDate = item.d_UpdateDate;
+        //        oserviceDto.d_UpdateDateMedicalAnalyst = item.d_UpdateDateMedicalAnalyst;
+        //        oserviceDto.d_UpdateDateOccupationalMedical = item.d_UpdateDateOccupationalMedical;
+        //        oserviceDto.i_AppetiteId = item.i_AppetiteId;
+        //        oserviceDto.i_AptitudeStatusId = item.i_AptitudeStatusId;
+        //        oserviceDto.i_CursoEnf = item.i_CursoEnf;
+        //        oserviceDto.i_DepositionId = item.i_DepositionId;
+        //        oserviceDto.i_DestinationMedicationId = item.i_DestinationMedicationId;
+        //        oserviceDto.i_DreamId = item.i_DreamId;
+        //        oserviceDto.i_Evolucion = item.i_Evolucion;
+        //        oserviceDto.i_FlagAgentId = item.i_FlagAgentId;
+        //        oserviceDto.i_HasMedicalBreakId = item.i_HasMedicalBreakId;
+        //        oserviceDto.i_HasRestrictionId = item.i_HasRestrictionId;
+        //        oserviceDto.i_HasSymptomId = item.i_HasSymptomId;
+        //        oserviceDto.i_HazInterconsultationId = item.i_HazInterconsultationId;
+        //        oserviceDto.i_InicioEnf = item.i_InicioEnf;
+        //        oserviceDto.i_InsertUserMedicalAnalystId = item.i_InsertUserMedicalAnalystId;
+        //        oserviceDto.i_InsertUserOccupationalMedicalId = item.i_InsertUserOccupationalMedicalId;
+        //        oserviceDto.i_IsDeleted = item.i_IsDeleted;
+        //        oserviceDto.i_IsFac = item.i_IsFac;
+        //        oserviceDto.i_IsNewControl = item.i_IsNewControl;
+        //        oserviceDto.i_MacId = item.i_MacId;
+        //        oserviceDto.i_MasterServiceId = item.i_MasterServiceId;
+        //        oserviceDto.i_ModalityOfInsurance = item.i_ModalityOfInsurance;
+        //        oserviceDto.i_SendToTracking = item.i_SendToTracking;
+        //        oserviceDto.i_ServiceStatusId = item.i_ServiceStatusId;
+        //        oserviceDto.i_ServiceTypeOfInsurance = item.i_ServiceTypeOfInsurance;
+        //        oserviceDto.i_StatusLiquidation = item.i_StatusLiquidation;
+        //        oserviceDto.i_ThirstId = item.i_ThirstId;
+        //        oserviceDto.i_TimeOfDisease = item.i_TimeOfDisease;
+        //        oserviceDto.i_TimeOfDiseaseTypeId = item.i_TimeOfDiseaseTypeId;
+        //        oserviceDto.i_TransportMedicationId = item.i_TransportMedicationId;
+        //        oserviceDto.i_UpdateUserMedicalAnalystId = item.i_UpdateUserMedicalAnalystId;
+        //        oserviceDto.i_UpdateUserOccupationalMedicaltId = item.i_UpdateUserOccupationalMedicaltId;
+        //        oserviceDto.i_UrineId = item.i_UrineId;
+        //        //oserviceDto.r_Costo = item.r_Costo;
+        //        oserviceDto.v_AreaId = item.v_AreaId;
+        //        oserviceDto.v_CatemenialRegime = item.v_CatemenialRegime;
+        //        oserviceDto.v_CiruGine = item.v_CiruGine;
+        //        oserviceDto.v_ExaAuxResult = item.v_ExaAuxResult;
+        //        oserviceDto.v_FechaUltimaMamo = item.v_FechaUltimaMamo;
+        //        oserviceDto.v_FechaUltimoPAP = item.v_FechaUltimoPAP;
+        //        oserviceDto.v_Findings = item.v_Findings;
+        //        oserviceDto.v_GeneralRecomendations = item.v_GeneralRecomendations;
+        //        oserviceDto.v_Gestapara = item.v_Gestapara;
+        //        oserviceDto.v_LocationId = item.v_LocationId;
+        //        oserviceDto.v_MainSymptom = item.v_MainSymptom;
+        //        oserviceDto.v_Menarquia = item.v_Menarquia;
+        //        oserviceDto.v_Motive = item.v_Motive;
+        //        oserviceDto.v_ObsStatusService = item.v_ObsStatusService;
+        //        oserviceDto.v_OrganizationId = item.v_OrganizationId;
+        //        oserviceDto.v_ResultadoMamo = item.v_ResultadoMamo;
+        //        oserviceDto.v_ResultadosPAP = item.v_ResultadosPAP;
+        //        oserviceDto.v_ServiceId = item.v_ServiceId;
+        //        oserviceDto.v_Story = item.v_Story;
+
+        //        var ServiceId_New = oServiceBL.AddService(ref _objOperationResult, oserviceDto, Globals.ClientSession.GetAsList());
+
+
+
+
+        //        //obtener Lista de DX por SevicioID_OLD
+
+        //        var ListaDx_OLD = oMigracionBL.DevolverListaDiagnosticOLD(ServiceID_OLD);
+        //        List<DiagnosticRepositoryList> oListDiagnosticRepositoryList = new List<DiagnosticRepositoryList>();
+        //        DiagnosticRepositoryList oDiagnosticRepositoryList;
+        //        foreach (var itemDx in ListaDx_OLD)
+        //        {
+        //            oDiagnosticRepositoryList = new DiagnosticRepositoryList();
+
+        //            oDiagnosticRepositoryList.v_ServiceId = ServiceId_New;
+        //            oDiagnosticRepositoryList.v_DiseasesId = oMigracionBL.ValidarDiseaseSiExiste(itemDx.v_Cie10, itemDx.v_Name, Globals.ClientSession.GetAsList());
+        //            oDiagnosticRepositoryList.v_ComponentId = itemDx.v_ComponentId;
+        //            oDiagnosticRepositoryList.v_ComponentFieldId = itemDx.v_ComponentFieldId;
+        //            oDiagnosticRepositoryList.i_AutoManualId = itemDx.i_AutoManualId == null ? (int?)null : itemDx.i_AutoManualId.Value;
+        //            oDiagnosticRepositoryList.i_PreQualificationId = itemDx.i_PreQualificationId == null ? (int?)null : itemDx.i_PreQualificationId.Value;
+        //            oDiagnosticRepositoryList.i_FinalQualificationId = itemDx.i_FinalQualificationId == null ? (int?)null : itemDx.i_FinalQualificationId.Value;
+
+        //            oDiagnosticRepositoryList.i_DiagnosticTypeId = itemDx.i_DiagnosticTypeId == null ? (int?)null : itemDx.i_DiagnosticTypeId.Value;
+        //            oDiagnosticRepositoryList.i_IsSentToAntecedent = itemDx.i_IsSentToAntecedent == null ? (int?)null : itemDx.i_IsSentToAntecedent.Value;
+        //            oDiagnosticRepositoryList.d_ExpirationDateDiagnostic = itemDx.d_ExpirationDateDiagnostic;
+        //            oDiagnosticRepositoryList.i_GenerateMedicalBreak = itemDx.i_GenerateMedicalBreak == null ? (int?)null : itemDx.i_GenerateMedicalBreak.Value;
+        //            oDiagnosticRepositoryList.v_Recomendations = itemDx.v_Recomendations;
+
+        //            oDiagnosticRepositoryList.i_DiagnosticSourceId = itemDx.i_DiagnosticSourceId == null ? (int?)null : itemDx.i_DiagnosticSourceId.Value;
+        //            oDiagnosticRepositoryList.i_ShapeAccidentId = itemDx.i_ShapeAccidentId == null ? (int?)null : itemDx.i_ShapeAccidentId.Value;
+        //            oDiagnosticRepositoryList.i_BodyPartId = itemDx.i_BodyPartId == null ? (int?)null : itemDx.i_BodyPartId.Value;
+        //            oDiagnosticRepositoryList.i_ClassificationOfWorkAccidentId = itemDx.i_ClassificationOfWorkAccidentId == null ? (int?)null : itemDx.i_ClassificationOfWorkAccidentId.Value;
+        //            oDiagnosticRepositoryList.i_RiskFactorId = itemDx.i_RiskFactorId == null ? (int?)null : itemDx.i_RiskFactorId.Value;
+        //            oDiagnosticRepositoryList.i_RecordStatus = (int)RecordStatus.Agregado;
+        //            oDiagnosticRepositoryList.i_RecordType = (int)RecordType.Temporal;
+        //            oDiagnosticRepositoryList.i_ClassificationOfWorkdiseaseId = itemDx.i_ClassificationOfWorkdiseaseId == null ? (int?)null : itemDx.i_ClassificationOfWorkdiseaseId.Value;
+        //            oDiagnosticRepositoryList.i_SendToInterconsultationId = itemDx.i_SendToInterconsultationId == null ? (int?)null : itemDx.i_SendToInterconsultationId.Value;
+        //            oDiagnosticRepositoryList.i_InterconsultationDestinationId = itemDx.i_InterconsultationDestinationId == null ? (int?)null : itemDx.i_InterconsultationDestinationId.Value;
+        //            oDiagnosticRepositoryList.v_InterconsultationDestinationId = itemDx.v_InterconsultationDestinationId;
+
+        //            oListDiagnosticRepositoryList.Add(oDiagnosticRepositoryList);
+        //        }
+
+        //        oServiceBL.AddDiagnosticRepository(ref _objOperationResult,
+        //                                                   oListDiagnosticRepositoryList,
+        //                                                   null,
+        //                                                   Globals.ClientSession.GetAsList(),
+        //                                                   null);
+
+        //        //Obtener la Lista de Calendar por SevicioID_OLD
+        //        var ListaCalendarOLD = oMigracionBL.DevolverListaCalendarOLD(ServiceID_OLD);
+        //        calendarDto ocalendarDto;
+        //        CalendarBL oCalendarBL = new CalendarBL();
+
+        //        foreach (var itemCalendar in ListaCalendarOLD)
+        //        {
+        //            ocalendarDto = new calendarDto();
+        //            ocalendarDto.v_PersonId = oPersonNew.v_PersonId;
+        //            ocalendarDto.v_ProtocolId = ProtocolID_Nuevo;
+        //            ocalendarDto.v_ServiceId = ServiceId_New;
+        //            ocalendarDto.d_CircuitStartDate = itemCalendar.d_CircuitStartDate;
+        //            ocalendarDto.d_DateTimeCalendar = itemCalendar.d_DateTimeCalendar;
+        //            ocalendarDto.d_EntryTimeCM = itemCalendar.d_EntryTimeCM;
+        //            ocalendarDto.d_SalidaCM = itemCalendar.d_SalidaCM;
+        //            ocalendarDto.i_CalendarStatusId = itemCalendar.i_CalendarStatusId;
+        //            ocalendarDto.i_IsVipId = itemCalendar.i_IsVipId;
+        //            ocalendarDto.i_LineStatusId = itemCalendar.i_LineStatusId;
+        //            ocalendarDto.i_NewContinuationId = itemCalendar.i_NewContinuationId;
+        //            ocalendarDto.i_ServiceId = itemCalendar.i_ServiceId;
+        //            ocalendarDto.i_ServiceTypeId = itemCalendar.i_ServiceTypeId;
+
+        //            oCalendarBL.AddCalendar(ref _objOperationResult, ocalendarDto, Globals.ClientSession.GetAsList());
+        //        }
+
+        //        ////Obtener ServiceComponent con ServiceID_OLD
+
+        //        //var ListaServiceComponenteOLD = oMigracionBL.GetServiceComponents_OLD(ServiceID_OLD);
+        //        //var ServiceComponentId_NEW = "";
+        //        //servicecomponentDto oservicecomponentDto;
+        //        //foreach (var itemSC in ListaServiceComponenteOLD)
+        //        //{
+        //        //    oservicecomponentDto = new servicecomponentDto();
+        //        //    var ServiceComponentId_OLD = itemSC.v_ServiceComponentId;
+        //        //    oservicecomponentDto.v_ComponentId = itemSC.v_ComponentId;
+        //        //    oservicecomponentDto.i_ServiceComponentStatusId = itemSC.i_ServiceComponentStatusId;
+        //        //    oservicecomponentDto.d_StartDate = itemSC.d_StartDate == null ? (DateTime?)null : itemSC.d_StartDate.Value;
+        //        //    oservicecomponentDto.d_EndDate = itemSC.d_EndDate == null ? (DateTime?)null : itemSC.d_EndDate.Value;
+        //        //    oservicecomponentDto.i_QueueStatusId = itemSC.i_QueueStatusId;
+        //        //    oservicecomponentDto.v_ServiceComponentId = itemSC.v_ServiceComponentId;
+        //        //    oservicecomponentDto.d_ApprovedInsertDate = itemSC.d_ApprovedInsertDate;
+        //        //    oservicecomponentDto.d_ApprovedUpdateDate = itemSC.d_ApprovedUpdateDate;
+        //        //    oservicecomponentDto.d_CalledDate = itemSC.d_CalledDate;
+        //        //    oservicecomponentDto.d_InsertDateMedicalAnalyst = itemSC.d_InsertDateMedicalAnalyst;
+        //        //    oservicecomponentDto.d_InsertDateTechnicalDataRegister = itemSC.d_InsertDateTechnicalDataRegister;
+        //        //    oservicecomponentDto.d_UpdateDateMedicalAnalyst = itemSC.d_UpdateDateMedicalAnalyst;
+        //        //    oservicecomponentDto.d_UpdateDateTechnicalDataRegister = itemSC.d_UpdateDateTechnicalDataRegister;
+        //        //    oservicecomponentDto.i_ApprovedInsertUserId = itemSC.i_ApprovedInsertUserId;
+        //        //    oservicecomponentDto.i_ApprovedUpdateUserId = itemSC.i_ApprovedUpdateUserId;
+        //        //    oservicecomponentDto.i_ExternalInternalId = itemSC.i_ExternalInternalId;
+        //        //    oservicecomponentDto.i_index = itemSC.i_index;
+        //        //    oservicecomponentDto.i_InsertUserMedicalAnalystId = itemSC.i_InsertUserMedicalAnalystId;
+        //        //    oservicecomponentDto.i_InsertUserTechnicalDataRegisterId = itemSC.i_InsertUserTechnicalDataRegisterId;
+        //        //    oservicecomponentDto.i_IsApprovedId = itemSC.i_IsApprovedId;
+        //        //    oservicecomponentDto.i_Iscalling = itemSC.i_Iscalling;
+        //        //    oservicecomponentDto.i_Iscalling_1 = itemSC.i_Iscalling_1;
+        //        //    oservicecomponentDto.i_IsInheritedId = itemSC.i_IsInheritedId;
+        //        //    oservicecomponentDto.i_IsInvoicedId = itemSC.i_IsInvoicedId;
+        //        //    oservicecomponentDto.i_IsManuallyAddedId = itemSC.i_IsManuallyAddedId;
+        //        //    oservicecomponentDto.i_IsRequiredId = itemSC.i_IsRequiredId;
+        //        //    oservicecomponentDto.i_IsVisibleId = itemSC.i_IsVisibleId;
+        //        //    oservicecomponentDto.i_ServiceComponentTypeId = itemSC.i_ServiceComponentTypeId;
+        //        //    oservicecomponentDto.i_UpdateUserMedicalAnalystId = itemSC.i_UpdateUserMedicalAnalystId;
+        //        //    oservicecomponentDto.i_UpdateUserTechnicalDataRegisterId = itemSC.i_UpdateUserTechnicalDataRegisterId;
+        //        //    oservicecomponentDto.r_Price = itemSC.r_Price;
+        //        //    oservicecomponentDto.v_Comment = itemSC.v_Comment;
+        //        //    oservicecomponentDto.v_NameOfice = itemSC.v_NameOfice;
+        //        //    oservicecomponentDto.v_ServiceId = ServiceId_New;
+
+        //        //    ServiceComponentId_NEW = oMigracionBL.AddServiceComponent(ref _objOperationResult, oservicecomponentDto, Globals.ClientSession.GetAsList());
+
+
+        //        //    //Obtener Lista de ServiceComponentFields Antiguo 
+        //        //    var ListaServiceComponentFields = oMigracionBL.GetServiceComponentFields_Y_Values_OLD(ServiceComponentId_OLD, ServiceComponentId_NEW, Globals.ClientSession.GetAsList());
+
+        //        //    //servicecomponentfieldsDto oservicecomponentfieldsDto;
+        //        //    //  foreach (var itemFileds in ListaServiceComponentFields)
+        //        //    //{
+        //        //    //    var Fileds_OLD = itemFileds.v_ServiceComponentFieldsId;
+
+        //        //    //    oservicecomponentfieldsDto = new servicecomponentfieldsDto();
+        //        //    //    oservicecomponentfieldsDto.v_ServiceComponentId = ServiceComponentId_NEW;
+        //        //    //    oservicecomponentfieldsDto.v_ComponentId = itemFileds.v_ComponentId;
+        //        //    //    oservicecomponentfieldsDto.v_ComponentFieldId = itemFileds.v_ComponentFieldId;
+
+        //        //    //    //var Fileds_NEW = oMigracionBL.AddServiceComponentField(oservicecomponentfieldsDto,Globals.ClientSession.GetAsList());
+
+
+        //        //    //    //obtener valores antiguos
+        //        //    //    var ListaValores_OLD = oMigracionBL.GetServiceComponentFieldsValues_OLD(Fileds_OLD);
+
+        //        //    //    servicecomponentfieldvaluesDto oservicecomponentfieldvaluesDto;
+        //        //    //    List<servicecomponentfieldvaluesDto> lservicecomponentfieldvaluesDto = new List<servicecomponentfieldvaluesDto>();
+        //        //    //    foreach (var itemValores in ListaValores_OLD)
+        //        //    //    {
+
+        //        //    //        oservicecomponentfieldvaluesDto = new servicecomponentfieldvaluesDto();
+
+        //        //    //        oservicecomponentfieldvaluesDto.v_ComponentFieldValuesId = itemValores.v_ComponentFieldValuesId;
+        //        //    //        //oservicecomponentfieldvaluesDto.v_ServiceComponentFieldsId = Fileds_NEW;
+        //        //    //        oservicecomponentfieldvaluesDto.v_Value1 = itemValores.v_Value1;
+        //        //    //        oservicecomponentfieldvaluesDto.v_Value2 = itemValores.v_Value2;
+        //        //    //        oservicecomponentfieldvaluesDto.i_Index = itemValores.i_Index;
+        //        //    //        oservicecomponentfieldvaluesDto.i_Value1 = itemValores.i_Value1;
+        //        //    //        lservicecomponentfieldvaluesDto.Add(oservicecomponentfieldvaluesDto);
+        //        //    //    }
+
+        //        //    //    //oMigracionBL.AddServiceComponentFieldValues(lservicecomponentfieldvaluesDto, Globals.ClientSession.GetAsList());
+
+
+        //        //    //}
+        //        //}
+        //        //oServiceImportacionList = new ServiceImportacionList();
+        //        //oServiceImportacionList.v_ServiceId = ServiceId_New;
+        //        //oServiceImportacionList.v_FechaService = FechaServicio;
+        //        //oServiceImportacionList.v_Paciente = Paciente;
+
+
+        //        //lGrilla.Add(oServiceImportacionList);
+
+        //        //grdDataService.DataSource = lGrilla;
+        //        //lblContadoServicio.Text = lGrilla.Count().ToString();
+        //    }
+
+        //}
+
 
     }
 }

@@ -98,14 +98,14 @@ namespace Sigesoft.Node.WinClient.UI
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
 
-            var _objData = _serviceBL.GetServicesPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, _componentIds, DateTime.Parse("01/01/2000"), DateTime.Parse("01/01/2050"));
+            //var _objData = _serviceBL.GetServicesPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, _componentIds, DateTime.Parse("01/01/2000"), DateTime.Parse("01/01/2050"));
 
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return _objData;
+            return null;
         }
 
         private void grdDataService_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
