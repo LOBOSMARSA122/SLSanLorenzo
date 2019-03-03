@@ -185,7 +185,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     v_DiagnosticRepositoryId = ccc.v_DiagnosticRepositoryId,
                     v_DiseaseName = ddd.v_Name,
-                    v_ServiceId = ccc.v_ServiceId
+                    v_ServiceId = ccc.v_ServiceId,
+                    v_DiseaseId = ddd.v_DiseasesId
                 }).ToList();
 
             diagnostics = diagnostics.GroupBy(g => g.v_DiseaseId).Select(s => s.First()).ToList();

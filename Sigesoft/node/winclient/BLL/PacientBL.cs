@@ -7878,6 +7878,15 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public object LlenarDxs(ref OperationResult objOperationResult)
+        {
+            SigesoftEntitiesModel dbcontext = new SigesoftEntitiesModel();
+            int isNotDeleted = (int)SiNo.NO;
+            var query = (from A in dbcontext.diseases
+                    where A.i_IsDeleted == isNotDeleted
+                          select new Diagnosticos
+        }
     }
 }
 

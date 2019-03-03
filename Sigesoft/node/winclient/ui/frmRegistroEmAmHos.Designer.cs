@@ -28,6 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.cbGenero = new System.Windows.Forms.ComboBox();
@@ -35,7 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbRangoEdad = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbDx = new System.Windows.Forms.ComboBox();
             this.txtCie10 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpFechaAlta = new System.Windows.Forms.DateTimePicker();
@@ -82,6 +93,7 @@
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.cbDx = new Infragistics.Win.UltraWinGrid.UltraCombo();
             ((System.ComponentModel.ISupportInitialize)(this.uegbAmb)).BeginInit();
             this.uegbAmb.SuspendLayout();
             this.ultraExpandableGroupBoxPanel1.SuspendLayout();
@@ -97,6 +109,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uegbCirugia)).BeginInit();
             this.uegbCirugia.SuspendLayout();
             this.ultraExpandableGroupBoxPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbDx)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -160,14 +173,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Diagnóstico: ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cbDx
-            // 
-            this.cbDx.FormattingEnabled = true;
-            this.cbDx.Location = new System.Drawing.Point(97, 34);
-            this.cbDx.Name = "cbDx";
-            this.cbDx.Size = new System.Drawing.Size(283, 21);
-            this.cbDx.TabIndex = 2;
             // 
             // txtCie10
             // 
@@ -277,6 +282,7 @@
             // 
             // ultraExpandableGroupBoxPanel1
             // 
+            this.ultraExpandableGroupBoxPanel1.Controls.Add(this.cbDx);
             this.ultraExpandableGroupBoxPanel1.Controls.Add(this.dtpFechaIngreso);
             this.ultraExpandableGroupBoxPanel1.Controls.Add(this.label1);
             this.ultraExpandableGroupBoxPanel1.Controls.Add(this.label2);
@@ -285,7 +291,6 @@
             this.ultraExpandableGroupBoxPanel1.Controls.Add(this.label3);
             this.ultraExpandableGroupBoxPanel1.Controls.Add(this.cbRangoEdad);
             this.ultraExpandableGroupBoxPanel1.Controls.Add(this.label5);
-            this.ultraExpandableGroupBoxPanel1.Controls.Add(this.cbDx);
             this.ultraExpandableGroupBoxPanel1.Controls.Add(this.cbGenero);
             this.ultraExpandableGroupBoxPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraExpandableGroupBoxPanel1.Location = new System.Drawing.Point(3, 17);
@@ -617,6 +622,62 @@
             this.comboBox8.Size = new System.Drawing.Size(121, 21);
             this.comboBox8.TabIndex = 2;
             // 
+            // cbDx
+            // 
+            appearance1.BackColor = System.Drawing.SystemColors.Window;
+            appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cbDx.DisplayLayout.Appearance = appearance1;
+            this.cbDx.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.cbDx.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance2.BorderColor = System.Drawing.SystemColors.Window;
+            this.cbDx.DisplayLayout.GroupByBox.Appearance = appearance2;
+            appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.cbDx.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
+            this.cbDx.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance4.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.cbDx.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
+            appearance5.BackColor = System.Drawing.SystemColors.Window;
+            appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cbDx.DisplayLayout.Override.ActiveCellAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.cbDx.DisplayLayout.Override.ActiveRowAppearance = appearance6;
+            this.cbDx.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.cbDx.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.cbDx.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance7.BackColor = System.Drawing.SystemColors.Window;
+            this.cbDx.DisplayLayout.Override.CardAreaAppearance = appearance7;
+            appearance8.BorderColor = System.Drawing.Color.Silver;
+            appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.cbDx.DisplayLayout.Override.CellAppearance = appearance8;
+            this.cbDx.DisplayLayout.Override.CellPadding = 0;
+            this.cbDx.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            appearance9.BackColor = System.Drawing.SystemColors.Control;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.cbDx.DisplayLayout.Override.GroupByRowAppearance = appearance9;
+            appearance10.TextHAlignAsString = "Left";
+            this.cbDx.DisplayLayout.Override.HeaderAppearance = appearance10;
+            this.cbDx.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance11.BackColor = System.Drawing.SystemColors.Window;
+            appearance11.BorderColor = System.Drawing.Color.Silver;
+            this.cbDx.DisplayLayout.Override.RowAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbDx.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            this.cbDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDx.Location = new System.Drawing.Point(83, 32);
+            this.cbDx.Name = "cbDx";
+            this.cbDx.Size = new System.Drawing.Size(292, 22);
+            this.cbDx.TabIndex = 121;
+            // 
             // frmRegistroEmAmHos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,6 +713,7 @@
             this.uegbCirugia.ResumeLayout(false);
             this.ultraExpandableGroupBoxPanel5.ResumeLayout(false);
             this.ultraExpandableGroupBoxPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbDx)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -665,7 +727,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbRangoEdad;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbDx;
         private System.Windows.Forms.TextBox txtCie10;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpFechaAlta;
@@ -712,5 +773,6 @@
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox comboBox8;
+        private Infragistics.Win.UltraWinGrid.UltraCombo cbDx;
     }
 }

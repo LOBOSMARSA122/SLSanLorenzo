@@ -2158,7 +2158,8 @@ namespace Sigesoft.Node.WinClient.UI
 
                 // find the cell that the cursor is over, if any
                 UltraGridCell cell = e.Element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
-
+                if(cell.Band.ToString() == "Diagnosticos")return;
+                
                 if (cell != null)
                 {
                     //int categoryId = int.Parse(cell.Row.Cells["i_CategoryId"].Value.ToString());

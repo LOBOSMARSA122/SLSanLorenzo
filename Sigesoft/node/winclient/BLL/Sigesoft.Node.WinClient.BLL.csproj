@@ -56,6 +56,8 @@
     <Compile Include="CalendarBL.cs" />
     <Compile Include="CustomReportBL.cs" />
     <Compile Include="DataHierarchyBL.cs" />
+    <Compile Include="Diagnosticos.cs" />
+    <Compile Include="DiagnosticosBL.cs" />
     <Compile Include="DxFrecuenteBL.cs" />
     <Compile Include="DynamicScheduleBl.cs" />
     <Compile Include="EmailBL.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="SupplierBL.cs" />
     <Compile Include="SystemParameterBL.cs" />
     <Compile Include="TicketBL.cs" />
+    <Compile Include="TramasBL.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WarehouseBL.cs" />
   </ItemGroup>
