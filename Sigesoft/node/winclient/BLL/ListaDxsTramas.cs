@@ -5,7 +5,9 @@ using System.Text;
 
 namespace Sigesoft.Node.WinClient.BLL
 {
-    class DiagnosticosBL
+    public class ListaDxsTramas
     {
+        public string v_Name { get; set; }
+        public string v_CIE10Id { get; set; }
     }
 }

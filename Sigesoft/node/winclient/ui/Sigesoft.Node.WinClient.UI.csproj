@@ -461,7 +461,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportCarneVacuna.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Diagnosticos.cs" />
     <Compile Include="FormPrecioComponente.cs">
       <SubType>Form</SubType>
     </Compile>

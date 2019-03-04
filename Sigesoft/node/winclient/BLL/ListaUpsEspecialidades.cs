@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Sigesoft.Node.WinClient.BLL
 {
-    public class Diagnosticos
+    public class ListaUpsEspecialidades
     {
-        public string v_Name { get; set; }
-        public string v_CIE10Id { get; set; }
+        public string v_Value1 { get; set; }
+        public int i_ParameterId { get; set; }
     }
 }

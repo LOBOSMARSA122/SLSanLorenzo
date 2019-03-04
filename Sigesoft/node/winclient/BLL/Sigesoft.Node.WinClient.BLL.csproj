@@ -56,8 +56,6 @@
     <Compile Include="CalendarBL.cs" />
     <Compile Include="CustomReportBL.cs" />
     <Compile Include="DataHierarchyBL.cs" />
-    <Compile Include="Diagnosticos.cs" />
-    <Compile Include="DiagnosticosBL.cs" />
     <Compile Include="DxFrecuenteBL.cs" />
     <Compile Include="DynamicScheduleBl.cs" />
     <Compile Include="EmailBL.cs" />
@@ -77,6 +75,9 @@
     <Compile Include="HospitalizacionBL.cs" />
     <Compile Include="HospitalizacionHabitacionBL.cs" />
     <Compile Include="LiquidacionBL.cs" />
+    <Compile Include="ListaDxsTramas.cs" />
+    <Compile Include="ListaProcedimientos.cs" />
+    <Compile Include="ListaUpsEspecialidades.cs" />
     <Compile Include="LocationBL.cs" />
     <Compile Include="LogBL.cs" />
     <Compile Include="MasterRecommendationRestricctionBL.cs" />

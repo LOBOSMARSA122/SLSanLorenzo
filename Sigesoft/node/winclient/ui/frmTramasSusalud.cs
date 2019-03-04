@@ -22,13 +22,17 @@ namespace Sigesoft.Node.WinClient.UI
             string tabName = utcSusalud.SelectedTab.Text;
             frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName);
             frmRegistroEm.Text = "Registrar: "+tabName;
-            if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Procedimientos" || tabName == "Partos" || tabName == "Cirugías")
+            if (tabName == "Ambulatorio" || tabName == "Emergencia"  || tabName == "Partos" || tabName == "Cirugías")
             {
                 frmRegistroEm.Size = new Size(638, 196);
             }
-            else if (tabName == "Hospitalización")
+            else if (tabName == "Hospitalización" )
             {
                 frmRegistroEm.Size = new Size(638, 236);
+            }
+            else if (tabName == "Procedimientos / Cirugía")
+            {
+                frmRegistroEm.Size = new Size(638, 300);
             } 
             frmRegistroEm.Show();
 
