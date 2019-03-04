@@ -12,7 +12,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string ProtocolId { get; set; }
         public string v_CustomerOrganizationId { get; set; }
         public string v_CustomerLocationId { get; set; }
-
+        public string v_EmployerOrganizationId { get; set; }
+        public string v_EmployerLocationId { get; set; }
         public string Dni { get; set; }
         public string Protocolo { get; set; }
         public string TipoEmo { get; set; }
