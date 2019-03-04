@@ -236,14 +236,14 @@ namespace Sigesoft.Node.WinClient.UI
                 FCF = DateTime.Parse("01/01/2050");
             }
 
-            var _objData = _serviceBL.GetServicesPagedAndFiltered_(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, _componentIds, FCI, FCF);
+            //var _objData = _serviceBL.GetServicesPagedAndFiltered_(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, _componentIds, FCI, FCF);
 
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return _objData;
+            return null;
         }
 
         private void ddlOrganizationLocationId_SelectedIndexChanged(object sender, EventArgs e)

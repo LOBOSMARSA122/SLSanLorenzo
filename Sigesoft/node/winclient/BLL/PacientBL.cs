@@ -7880,6 +7880,93 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+
+
+        public object LlenarDxsTramas(ref OperationResult objOperationResult)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isYesDeleted = (int)SiNo.SI;
+                var query = (from A in dbContext.cie10
+                    where A.i_IsDeleted == isYesDeleted
+                          select new ListaDxsTramas
+                          {
+                              v_Name = A.v_CIE10Description1,
+                              v_CIE10Id = A.v_CIE10Id
+                    }).ToList();
+                var objData = query.AsEnumerable().
+                    GroupBy(g => g.v_Name)
+                    .Select(s => s.First());
+                List<ListaDxsTramas> x = objData.ToList();
+                objOperationResult.Success = 1;
+                return x;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+
+        }
+
+        public object LlenarListaProc(ref OperationResult objOperationResult)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+                var query = (from A in dbContext.systemparameter
+                             where A.i_IsDeleted == isNotDeleted && A.i_GroupId==348
+                    select new ListaProcedimientos
+                    {
+                        v_Value1 = A.v_Value1.ToUpper(),
+                        i_ParameterId = A.i_ParameterId
+                    }).ToList();
+                var objData = query.AsEnumerable().
+                    GroupBy(g => g.v_Value1)
+                    .Select(s => s.First());
+                List<ListaProcedimientos> x = objData.ToList();
+                objOperationResult.Success = 1;
+                return x;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public object LlenarListaUps(ref OperationResult objOperationResult)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+                var query = (from A in dbContext.systemparameter
+                    where A.i_IsDeleted == isNotDeleted && A.i_GroupId == 349
+                    select new ListaUpsEspecialidades
+                    {
+                        v_Value1 = A.v_Value1,
+                        i_ParameterId = A.i_ParameterId
+                    }).ToList();
+                var objData = query.AsEnumerable().
+                    GroupBy(g => g.v_Value1)
+                    .Select(s => s.First());
+                List<ListaUpsEspecialidades> x = objData.ToList();
+                objOperationResult.Success = 1;
+                return x;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
     }
 }
 

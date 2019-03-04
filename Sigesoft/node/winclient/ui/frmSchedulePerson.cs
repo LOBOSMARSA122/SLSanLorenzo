@@ -331,13 +331,13 @@ namespace Sigesoft.Node.WinClient.UI
 
                     ModePacient = "Edit";
 
-                    objServiceList = objServiceBL.GetServicesPagedAndFiltered(ref objOperationResult, null, null, "", "v_PersonId=" + "\"" + PacientId + "\"", null, null, null, DateTime.Parse("01/01/2000"), DateTime.Parse("01/01/2050"));
-                    //_ProtocolId = objServiceList[0].v_ProtocolId;
-                    grdDataService.DataSource = objServiceList;
+                    ////////////objServiceList = objServiceBL.GetServicesPagedAndFiltered(ref objOperationResult, null, null, "", "v_PersonId=" + "\"" + PacientId + "\"", null, null, null, DateTime.Parse("01/01/2000"), DateTime.Parse("01/01/2050"),"");
+                    //////////////_ProtocolId = objServiceList[0].v_ProtocolId;
+                    ////////////grdDataService.DataSource = objServiceList;
 
-                    // para mostrar un formulario cuando tiene datos o existe
-                    frmHistorialServicio frmServicios = new frmHistorialServicio(objServiceList);
-                    frmServicios.ShowDialog();
+                    ////////////// para mostrar un formulario cuando tiene datos o existe
+                    ////////////frmHistorialServicio frmServicios = new frmHistorialServicio(objServiceList);
+                    ////////////frmServicios.ShowDialog();
 
                     if (objServiceList.Count != 0)
                     {

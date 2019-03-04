@@ -165,5 +165,49 @@ namespace Sigesoft.Node.WinClient.BLL
 
        
         #endregion
+
+        public class DiagnosticCustom
+        {
+            public string v_DiagnosticRepositoryId { get; set; }
+            public string v_ServiceId { get; set; }
+            public string v_DiseaseId { get; set; }
+            public string v_DiseaseName { get; set; }
+        }
+
+        public List<DiagnosticRepositoryJerarquizada> getDataService(string serviceId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var diagnostics = (from ccc in dbContext.diagnosticrepository
+                join ddd in dbContext.diseases on ccc.v_DiseasesId equals ddd.v_DiseasesId
+                where ccc.v_ServiceId == serviceId &&
+                      ccc.i_IsDeleted == 0 && ccc.i_FinalQualificationId != 4
+                select new DiagnosticCustom
+                {
+                    v_DiagnosticRepositoryId = ccc.v_DiagnosticRepositoryId,
+                    v_DiseaseName = ddd.v_Name,
+                    v_ServiceId = ccc.v_ServiceId,
+                    v_DiseaseId = ddd.v_DiseasesId
+                }).ToList();
+
+            diagnostics = diagnostics.GroupBy(g => g.v_DiseaseId).Select(s => s.First()).ToList();
+            var list = new List<DiagnosticRepositoryJerarquizada>();
+
+            foreach (var dx in diagnostics)
+            {
+                var oDiagnosticRepositoryJerarquizada = new DiagnosticRepositoryJerarquizada();
+                oDiagnosticRepositoryJerarquizada.v_DiseasesName = dx.v_DiseaseName;
+                oDiagnosticRepositoryJerarquizada.v_RecomendationsName =
+                    new ServiceBL().GetRecommendationByServiceIdAndDiagnostic(dx.v_ServiceId,
+                        dx.v_DiagnosticRepositoryId);
+
+                oDiagnosticRepositoryJerarquizada.v_RestricctionName =
+                    new ServiceBL().GetResstrictionByServiceIdAndDiagnostic(dx.v_ServiceId,
+                        dx.v_DiagnosticRepositoryId);
+
+                list.Add(oDiagnosticRepositoryJerarquizada);
+            }
+
+            return list;
+        }
     }
 }

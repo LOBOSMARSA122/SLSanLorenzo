@@ -1308,6 +1308,12 @@
     <Compile Include="frmRegistroElectrocardiograma.Designer.cs">
       <DependentUpon>frmRegistroElectrocardiograma.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRegistroEmAmHos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistroEmAmHos.Designer.cs">
+      <DependentUpon>frmRegistroEmAmHos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistroEspecialista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1356,6 +1362,12 @@
     <Compile Include="frmSelectOrganization.Designer.cs">
       <DependentUpon>frmSelectOrganization.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmService.Designer.cs">
+      <DependentUpon>frmService.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmServicioFacturado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1373,6 +1385,12 @@
     </Compile>
     <Compile Include="frmSubirInterconsulta.Designer.cs">
       <DependentUpon>frmSubirInterconsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTramasSusalud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTramasSusalud.Designer.cs">
+      <DependentUpon>frmTramasSusalud.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTriaje.cs">
       <SubType>Form</SubType>
@@ -2981,11 +2999,11 @@
     <Compile Include="frmSchedulePerson.Designer.cs">
       <DependentUpon>frmSchedulePerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmService.cs">
+    <Compile Include="frmService_.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmService.Designer.cs">
-      <DependentUpon>frmService.cs</DependentUpon>
+    <Compile Include="frmService_.Designer.cs">
+      <DependentUpon>frmService_.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStock.cs">
       <SubType>Form</SubType>
@@ -3784,6 +3802,9 @@
     <EmbeddedResource Include="frmRegistroElectrocardiograma.resx">
       <DependentUpon>frmRegistroElectrocardiograma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroEmAmHos.resx">
+      <DependentUpon>frmRegistroEmAmHos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRegistroEspecialista.resx">
       <DependentUpon>frmRegistroEspecialista.cs</DependentUpon>
     </EmbeddedResource>
@@ -3808,6 +3829,9 @@
     <EmbeddedResource Include="frmSelectOrganization.resx">
       <DependentUpon>frmSelectOrganization.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmService.resx">
+      <DependentUpon>frmService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmServicioFacturado.resx">
       <DependentUpon>frmServicioFacturado.cs</DependentUpon>
     </EmbeddedResource>
@@ -3816,6 +3840,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSubirInterconsulta.resx">
       <DependentUpon>frmSubirInterconsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTramasSusalud.resx">
+      <DependentUpon>frmTramasSusalud.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTriaje.resx">
       <DependentUpon>frmTriaje.cs</DependentUpon>
@@ -4770,8 +4797,8 @@
     <EmbeddedResource Include="frmSchedulePerson.resx">
       <DependentUpon>frmSchedulePerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmService.resx">
-      <DependentUpon>frmService.cs</DependentUpon>
+    <EmbeddedResource Include="frmService_.resx">
+      <DependentUpon>frmService_.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>

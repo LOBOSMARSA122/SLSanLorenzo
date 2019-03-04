@@ -75,6 +75,9 @@
     <Compile Include="HospitalizacionBL.cs" />
     <Compile Include="HospitalizacionHabitacionBL.cs" />
     <Compile Include="LiquidacionBL.cs" />
+    <Compile Include="ListaDxsTramas.cs" />
+    <Compile Include="ListaProcedimientos.cs" />
+    <Compile Include="ListaUpsEspecialidades.cs" />
     <Compile Include="LocationBL.cs" />
     <Compile Include="LogBL.cs" />
     <Compile Include="MasterRecommendationRestricctionBL.cs" />
@@ -109,6 +112,7 @@
     <Compile Include="SupplierBL.cs" />
     <Compile Include="SystemParameterBL.cs" />
     <Compile Include="TicketBL.cs" />
+    <Compile Include="TramasBL.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WarehouseBL.cs" />
   </ItemGroup>

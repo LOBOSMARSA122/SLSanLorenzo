@@ -12,6 +12,7 @@ using System.Data.Linq.SqlClient;
 using System.Threading;
 using Sigesoft.Node.WinClient.BE.Custom;
 using System.Data.SqlClient;
+using System.ComponentModel;
 
 
 namespace Sigesoft.Node.WinClient.BLL
@@ -21,231 +22,231 @@ namespace Sigesoft.Node.WinClient.BLL
 
 		#region Service
 
-		public List<ServiceList> GetServicesPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf)
-		{
-			//mon.IsActive = true;
+        //public List<ServiceList> GetServicesPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf)
+        //{
+        //    //mon.IsActive = true;
 
-			try
-			{
-				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-				var query = from A in dbContext.service
+        //    try
+        //    {
+        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //        var query = from A in dbContext.service
 
-							join A1 in dbContext.servicecomponent on A.v_ServiceId equals A1.v_ServiceId into A1_join
-							from A1 in A1_join.DefaultIfEmpty()
+        //                    join A1 in dbContext.servicecomponent on A.v_ServiceId equals A1.v_ServiceId into A1_join
+        //                    from A1 in A1_join.DefaultIfEmpty()
 
-							join B in dbContext.systemparameter on new { a = A.i_ServiceStatusId.Value, b = 125 } equals new { a = B.i_ParameterId, b = B.i_GroupId } into B_join
-							from B in B_join.DefaultIfEmpty()
+        //                    join B in dbContext.systemparameter on new { a = A.i_ServiceStatusId.Value, b = 125 } equals new { a = B.i_ParameterId, b = B.i_GroupId } into B_join
+        //                    from B in B_join.DefaultIfEmpty()
 
-							join C in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
-							from C in C_join.DefaultIfEmpty()
+        //                    join C in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+        //                    from C in C_join.DefaultIfEmpty()
 
-							join D in dbContext.calendar on A.v_ServiceId equals D.v_ServiceId into D_join
-							from D in D_join.DefaultIfEmpty()
+        //                    join D in dbContext.calendar on A.v_ServiceId equals D.v_ServiceId into D_join
+        //                    from D in D_join.DefaultIfEmpty()
 
-							join E in dbContext.protocol on A.v_ProtocolId equals E.v_ProtocolId
+        //                    join E in dbContext.protocol on A.v_ProtocolId equals E.v_ProtocolId
 
-							join F in dbContext.organization on E.v_EmployerOrganizationId equals F.v_OrganizationId
+        //                    join F in dbContext.organization on E.v_EmployerOrganizationId equals F.v_OrganizationId
 
-							join G in dbContext.location on E.v_EmployerLocationId equals G.v_LocationId
+        //                    join G in dbContext.location on E.v_EmployerLocationId equals G.v_LocationId
 
-							join H in dbContext.systemparameter on new { a = E.i_MasterServiceTypeId.Value, b = 119 } equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
-							from H in H_join.DefaultIfEmpty()
+        //                    join H in dbContext.systemparameter on new { a = E.i_MasterServiceTypeId.Value, b = 119 } equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
+        //                    from H in H_join.DefaultIfEmpty()
 
-							join I in dbContext.person on A.v_PersonId equals I.v_PersonId
+        //                    join I in dbContext.person on A.v_PersonId equals I.v_PersonId
 
-							join K in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = K.i_ParameterId, b = K.i_GroupId } into K_join
-							from K in K_join.DefaultIfEmpty()
+        //                    join K in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = K.i_ParameterId, b = K.i_GroupId } into K_join
+        //                    from K in K_join.DefaultIfEmpty()
 
-							join L in dbContext.datahierarchy on new { a = I.i_DocTypeId.Value, b = 106 } equals new { a = L.i_ItemId, b = L.i_GroupId } into L_join
-							from L in L_join.DefaultIfEmpty()
+        //                    join L in dbContext.datahierarchy on new { a = I.i_DocTypeId.Value, b = 106 } equals new { a = L.i_ItemId, b = L.i_GroupId } into L_join
+        //                    from L in L_join.DefaultIfEmpty()
 
-							join et in dbContext.systemparameter on new { a = E.i_EsoTypeId.Value, b = 118 }
-												equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
-							from et in et_join.DefaultIfEmpty()
+        //                    join et in dbContext.systemparameter on new { a = E.i_EsoTypeId.Value, b = 118 }
+        //                                        equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+        //                    from et in et_join.DefaultIfEmpty()
 
-							// Empresa / Sede Cliente ******************************************************
-							join oc in dbContext.organization on new { a = E.v_CustomerOrganizationId }
-									equals new { a = oc.v_OrganizationId } into oc_join
-							from oc in oc_join.DefaultIfEmpty()
+        //                    // Empresa / Sede Cliente ******************************************************
+        //                    join oc in dbContext.organization on new { a = E.v_CustomerOrganizationId }
+        //                            equals new { a = oc.v_OrganizationId } into oc_join
+        //                    from oc in oc_join.DefaultIfEmpty()
 
-							join lc in dbContext.location on new { a = E.v_CustomerOrganizationId, b = E.v_CustomerLocationId }
-								  equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
-							from lc in lc_join.DefaultIfEmpty()
+        //                    join lc in dbContext.location on new { a = E.v_CustomerOrganizationId, b = E.v_CustomerLocationId }
+        //                          equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
+        //                    from lc in lc_join.DefaultIfEmpty()
 
-							//**********************************************************************************
+        //                    //**********************************************************************************
 
-							join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
-															equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
-							from J1 in J1_join.DefaultIfEmpty()
+        //                    join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+        //                                                    equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+        //                    from J1 in J1_join.DefaultIfEmpty()
 
-							join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
-															equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
-							from J2 in J2_join.DefaultIfEmpty()
-							where A.i_IsDeleted == 0 && D.i_LineStatusId == (int)LineStatus.EnCircuito
-							select new ServiceList
-							{
-								b_FechaEntrega = false,
-								v_ServiceComponentId = A1.v_ServiceComponentId,
-								i_ServiceComponentStatusId = A1.i_ServiceComponentStatusId,
-								v_ServiceId = A.v_ServiceId,
-								v_CalendarId = D.v_CalendarId,
-								v_ProtocolId = A.v_ProtocolId,
-								v_PersonId = A.v_PersonId,
-								i_MasterServiceId = A.i_MasterServiceId.Value,
-								v_MasterServiceName = C.v_Value1,
-								i_ServiceStatusId = A.i_ServiceStatusId.Value,
-								v_ServiceStatusName = B.v_Value1,
-								i_AptitudeStatusId = A.i_AptitudeStatusId.Value,
-								d_ServiceDate = A.d_ServiceDate.Value,
-								d_GlobalExpirationDate = A.d_GlobalExpirationDate.Value,
-								d_ObsExpirationDate = A.d_ObsExpirationDate.Value,
-								i_FlagAgentId = A.i_FlagAgentId.Value,
-								d_DateTimeCalendar = D.d_DateTimeCalendar.Value,
+        //                    join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+        //                                                    equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+        //                    from J2 in J2_join.DefaultIfEmpty()
+        //                    where A.i_IsDeleted == 0 && D.i_LineStatusId == (int)LineStatus.EnCircuito
+        //                    select new ServiceList
+        //                    {
+        //                        b_FechaEntrega = false,
+        //                        v_ServiceComponentId = A1.v_ServiceComponentId,
+        //                        i_ServiceComponentStatusId = A1.i_ServiceComponentStatusId,
+        //                        v_ServiceId = A.v_ServiceId,
+        //                        v_CalendarId = D.v_CalendarId,
+        //                        v_ProtocolId = A.v_ProtocolId,
+        //                        v_PersonId = A.v_PersonId,
+        //                        i_MasterServiceId = A.i_MasterServiceId.Value,
+        //                        v_MasterServiceName = C.v_Value1,
+        //                        i_ServiceStatusId = A.i_ServiceStatusId.Value,
+        //                        v_ServiceStatusName = B.v_Value1,
+        //                        i_AptitudeStatusId = A.i_AptitudeStatusId.Value,
+        //                        d_ServiceDate = A.d_ServiceDate.Value,
+        //                        d_GlobalExpirationDate = A.d_GlobalExpirationDate.Value,
+        //                        d_ObsExpirationDate = A.d_ObsExpirationDate.Value,
+        //                        i_FlagAgentId = A.i_FlagAgentId.Value,
+        //                        d_DateTimeCalendar = D.d_DateTimeCalendar.Value,
 
-								v_OrganizationName = F.v_Name,
-								v_GenderName = G.v_Name,
-								v_ServiceTypeName = H.v_Value1,
-								i_ServiceTypeId = E.i_MasterServiceTypeId.Value,
-								i_EsoTypeId = E.i_EsoTypeId.Value,
-								v_LocationId = E.v_EmployerLocationId,
-								v_LocationName = G.v_Name,
-								v_Pacient = I.v_FirstLastName + " " + I.v_SecondLastName + " " + I.v_FirstName,
-								v_PacientDocument = I.v_FirstName + " " + I.v_FirstLastName + " " + I.v_SecondLastName + " " + I.v_DocNumber,
-								v_ProtocolName = E.v_Name,
-								v_CreationUser = J1.v_UserName,
-								v_UpdateUser = J2.v_UserName,
-								d_CreationDate = A.d_InsertDate,
-								d_UpdateDate = A.d_UpdateDate,
-								v_AptitudeStatusName = K.v_Value1,
-								v_DocTypeName = L.v_Value1,
-								v_DocNumber = I.v_DocNumber,
+        //                        v_OrganizationName = F.v_Name,
+        //                        v_GenderName = G.v_Name,
+        //                        v_ServiceTypeName = H.v_Value1,
+        //                        i_ServiceTypeId = E.i_MasterServiceTypeId.Value,
+        //                        i_EsoTypeId = E.i_EsoTypeId.Value,
+        //                        v_LocationId = E.v_EmployerLocationId,
+        //                        v_LocationName = G.v_Name,
+        //                        v_Pacient = I.v_FirstLastName + " " + I.v_SecondLastName + " " + I.v_FirstName,
+        //                        v_PacientDocument = I.v_FirstName + " " + I.v_FirstLastName + " " + I.v_SecondLastName + " " + I.v_DocNumber,
+        //                        v_ProtocolName = E.v_Name,
+        //                        v_CreationUser = J1.v_UserName,
+        //                        v_UpdateUser = J2.v_UserName,
+        //                        d_CreationDate = A.d_InsertDate,
+        //                        d_UpdateDate = A.d_UpdateDate,
+        //                        v_AptitudeStatusName = K.v_Value1,
+        //                        v_DocTypeName = L.v_Value1,
+        //                        v_DocNumber = I.v_DocNumber,
 
-								v_CustomerOrganizationId = E.v_CustomerOrganizationId,
-								v_CustomerLocationId = E.v_CustomerLocationId,
-								v_EsoTypeName = et.v_Value1,
-								i_StatusLiquidation = A.i_InsertUserOccupationalMedicalId,
-								v_ComponentId = A1.v_ComponentId,
-								i_IsFac = A.i_IsFac,
-								i_ServiceId = D.i_ServiceId.Value,
-								d_FechaEntrega = A.d_FechaEntrega
-							};
+        //                        v_CustomerOrganizationId = E.v_CustomerOrganizationId,
+        //                        v_CustomerLocationId = E.v_CustomerLocationId,
+        //                        v_EsoTypeName = et.v_Value1,
+        //                        i_StatusLiquidation = A.i_InsertUserOccupationalMedicalId,
+        //                        v_ComponentId = A1.v_ComponentId,
+        //                        i_IsFac = A.i_IsFac,
+        //                        i_ServiceId = D.i_ServiceId.Value,
+        //                        d_FechaEntrega = A.d_FechaEntrega
+        //                    };
 
-				if (!string.IsNullOrEmpty(pstrFilterExpression))
-				{
-					query = query.Where(pstrFilterExpression);
-				}
-				if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
-				{
-					query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
-				}
-				if (!string.IsNullOrEmpty(pstrSortExpression))
-				{
-					query = query.OrderBy(pstrSortExpression);
-				}
-				if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
-				{
-					int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
-					query = query.Skip(intStartRowIndex);
-				}
-				if (pintResultsPerPage.HasValue)
-				{
-					query = query.Take(pintResultsPerPage.Value);
-				}
-
-
-				var query1 = (from A in query.ToList()
-							  select new ServiceList
-							  {
-								  b_FechaEntrega = A.b_FechaEntrega,
-								  v_ServiceComponentId = A.v_ServiceComponentId,
-								  i_ServiceComponentStatusId = A.i_ServiceComponentStatusId,
-								  v_ServiceId = A.v_ServiceId,
-								  v_CalendarId = A.v_CalendarId,
-								  v_ProtocolId = A.v_ProtocolId,
-								  v_PersonId = A.v_PersonId,
-								  i_MasterServiceId = A.i_MasterServiceId,
-								  v_MasterServiceName = A.v_MasterServiceName,
-								  i_ServiceStatusId = A.i_ServiceStatusId.Value,
-								  v_ServiceStatusName = A.v_ServiceStatusName,
-								  i_AptitudeStatusId = A.i_AptitudeStatusId.Value,
-								  d_ServiceDate = A.d_ServiceDate,
-								  d_GlobalExpirationDate = A.d_GlobalExpirationDate,
-								  d_ObsExpirationDate = A.d_ObsExpirationDate,
-								  i_FlagAgentId = A.i_FlagAgentId,
-								  d_DateTimeCalendar = A.d_DateTimeCalendar,
-								  //hola
-
-								  v_OrganizationName = A.v_OrganizationName,
-								  v_GenderName = A.v_GenderName,
-								  v_ServiceTypeName = A.v_ServiceTypeName,
-								  i_ServiceTypeId = A.i_ServiceTypeId,
-								  i_EsoTypeId = A.i_EsoTypeId,
-								  v_LocationId = A.v_LocationId,
-								  v_LocationName = A.v_LocationName,
-								  v_Pacient = A.v_Pacient,
-								  v_PacientDocument = A.v_PacientDocument,
-								  v_ProtocolName = A.v_ProtocolName,
-								  v_CreationUser = A.v_CreationUser,
-								  v_UpdateUser = A.v_UpdateUser,
-								  d_CreationDate = A.d_CreationDate,
-								  d_UpdateDate = A.d_UpdateDate,
-								  v_AptitudeStatusName = A.v_AptitudeStatusName,
-								  v_DocTypeName = A.v_DocTypeName,
-								  v_DocNumber = A.v_DocNumber,
-
-								  v_CustomerOrganizationId = A.v_CustomerOrganizationId,
-								  v_CustomerLocationId = A.v_CustomerLocationId,
-								  v_EsoTypeName = A.v_EsoTypeName,
-								  i_StatusLiquidation = A.i_StatusLiquidation,
-								  v_ComponentId = A.v_ComponentId,
-								  i_IsFac = A.i_IsFac,
-								  i_ServiceId = A.i_ServiceId,
-								  Diagnosticos = GetDiagnosticByServiceIdforGrid(A.v_ServiceId),
-								  d_FechaEntrega = A.d_FechaEntrega
-							  }).ToList();
+        //        if (!string.IsNullOrEmpty(pstrFilterExpression))
+        //        {
+        //            query = query.Where(pstrFilterExpression);
+        //        }
+        //        if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
+        //        {
+        //            query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
+        //        }
+        //        if (!string.IsNullOrEmpty(pstrSortExpression))
+        //        {
+        //            query = query.OrderBy(pstrSortExpression);
+        //        }
+        //        if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+        //        {
+        //            int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+        //            query = query.Skip(intStartRowIndex);
+        //        }
+        //        if (pintResultsPerPage.HasValue)
+        //        {
+        //            query = query.Take(pintResultsPerPage.Value);
+        //        }
 
 
+        //        var query1 = (from A in query.ToList()
+        //                      select new ServiceList
+        //                      {
+        //                          b_FechaEntrega = A.b_FechaEntrega,
+        //                          v_ServiceComponentId = A.v_ServiceComponentId,
+        //                          i_ServiceComponentStatusId = A.i_ServiceComponentStatusId,
+        //                          v_ServiceId = A.v_ServiceId,
+        //                          v_CalendarId = A.v_CalendarId,
+        //                          v_ProtocolId = A.v_ProtocolId,
+        //                          v_PersonId = A.v_PersonId,
+        //                          i_MasterServiceId = A.i_MasterServiceId,
+        //                          v_MasterServiceName = A.v_MasterServiceName,
+        //                          i_ServiceStatusId = A.i_ServiceStatusId.Value,
+        //                          v_ServiceStatusName = A.v_ServiceStatusName,
+        //                          i_AptitudeStatusId = A.i_AptitudeStatusId.Value,
+        //                          d_ServiceDate = A.d_ServiceDate,
+        //                          d_GlobalExpirationDate = A.d_GlobalExpirationDate,
+        //                          d_ObsExpirationDate = A.d_ObsExpirationDate,
+        //                          i_FlagAgentId = A.i_FlagAgentId,
+        //                          d_DateTimeCalendar = A.d_DateTimeCalendar,
+        //                          //hola
 
-				List<ServiceList> objData = query1.ToList();
-				pobjOperationResult.Success = 1;
+        //                          v_OrganizationName = A.v_OrganizationName,
+        //                          v_GenderName = A.v_GenderName,
+        //                          v_ServiceTypeName = A.v_ServiceTypeName,
+        //                          i_ServiceTypeId = A.i_ServiceTypeId,
+        //                          i_EsoTypeId = A.i_EsoTypeId,
+        //                          v_LocationId = A.v_LocationId,
+        //                          v_LocationName = A.v_LocationName,
+        //                          v_Pacient = A.v_Pacient,
+        //                          v_PacientDocument = A.v_PacientDocument,
+        //                          v_ProtocolName = A.v_ProtocolName,
+        //                          v_CreationUser = A.v_CreationUser,
+        //                          v_UpdateUser = A.v_UpdateUser,
+        //                          d_CreationDate = A.d_CreationDate,
+        //                          d_UpdateDate = A.d_UpdateDate,
+        //                          v_AptitudeStatusName = A.v_AptitudeStatusName,
+        //                          v_DocTypeName = A.v_DocTypeName,
+        //                          v_DocNumber = A.v_DocNumber,
 
-				if (componentIds != null)
-				{
-					var xx = objData.FindAll(p => componentIds.Contains(p.v_ComponentId));
-
-					var y = xx.GroupBy(g => g.v_ServiceId)
-								  .Select(s => s.First());
-
-					return y.ToList();
-				}
-				else
-				{
-					var y = objData.GroupBy(g => g.v_ServiceId)
-							   .Select(s => s.First());
-
-					if (pFcf == DateTime.Parse("01/01/2050") && pFci == DateTime.Parse("01/01/2000"))
-					{
-						return y.ToList();
-					}
-					else
-					{
-						var prueba = y.Where(s => s.Diagnosticos.Any(p => p.d_ExpirationDateDiagnostic > pFci && p.d_ExpirationDateDiagnostic < pFcf)).ToList();
-						return prueba.ToList();
-					}
-
-				}
+        //                          v_CustomerOrganizationId = A.v_CustomerOrganizationId,
+        //                          v_CustomerLocationId = A.v_CustomerLocationId,
+        //                          v_EsoTypeName = A.v_EsoTypeName,
+        //                          i_StatusLiquidation = A.i_StatusLiquidation,
+        //                          v_ComponentId = A.v_ComponentId,
+        //                          i_IsFac = A.i_IsFac,
+        //                          i_ServiceId = A.i_ServiceId,
+        //                          Diagnosticos = GetDiagnosticByServiceIdforGrid(A.v_ServiceId),
+        //                          d_FechaEntrega = A.d_FechaEntrega
+        //                      }).ToList();
 
 
 
+        //        List<ServiceList> objData = query1.ToList();
+        //        pobjOperationResult.Success = 1;
 
-			}
-			catch (Exception ex)
-			{
-				pobjOperationResult.Success = 0;
-				pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
-				return null;
-			}
-		}
+        //        if (componentIds != null)
+        //        {
+        //            var xx = objData.FindAll(p => componentIds.Contains(p.v_ComponentId));
+
+        //            var y = xx.GroupBy(g => g.v_ServiceId)
+        //                          .Select(s => s.First());
+
+        //            return y.ToList();
+        //        }
+        //        else
+        //        {
+        //            var y = objData.GroupBy(g => g.v_ServiceId)
+        //                       .Select(s => s.First());
+
+        //            if (pFcf == DateTime.Parse("01/01/2050") && pFci == DateTime.Parse("01/01/2000"))
+        //            {
+        //                return y.ToList();
+        //            }
+        //            else
+        //            {
+        //                var prueba = y.Where(s => s.Diagnosticos.Any(p => p.d_ExpirationDateDiagnostic > pFci && p.d_ExpirationDateDiagnostic < pFcf)).ToList();
+        //                return prueba.ToList();
+        //            }
+
+        //        }
+
+
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        pobjOperationResult.Success = 0;
+        //        pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+        //        return null;
+        //    }
+        //}
 
 		public List<ControlVacunasList> GetControlVacunasPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
 		{
@@ -10590,314 +10591,314 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-		public List<ServiceGridJerarquizadaList> GetServicesPagedAndFiltered_(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf)
-		{
-			//mon.IsActive = true;
+        //public List<ServiceGridJerarquizadaList> GetServicesPagedAndFiltered_(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf)
+        //{
+        //    //mon.IsActive = true;
 
-			try
-			{
-				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-				var query = from A in dbContext.service
+        //    try
+        //    {
+        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //        var query = from A in dbContext.service
 
-							join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+        //                    join B in dbContext.person on A.v_PersonId equals B.v_PersonId
 
-							join C in dbContext.diagnosticrepository on A.v_ServiceId equals C.v_ServiceId into C_join
-							from C in C_join.DefaultIfEmpty()
+        //                    join C in dbContext.diagnosticrepository on A.v_ServiceId equals C.v_ServiceId into C_join
+        //                    from C in C_join.DefaultIfEmpty()
 
-							join D in dbContext.diseases on C.v_DiseasesId equals D.v_DiseasesId into D_join
-							from D in D_join.DefaultIfEmpty()
+        //                    join D in dbContext.diseases on C.v_DiseasesId equals D.v_DiseasesId into D_join
+        //                    from D in D_join.DefaultIfEmpty()
 
-							join E in dbContext.recommendation on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
-																	equals new { a = E.v_ServiceId, b = E.v_DiagnosticRepositoryId } into E_join
-							from E in E_join.DefaultIfEmpty()
+        //                    join E in dbContext.recommendation on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
+        //                                                            equals new { a = E.v_ServiceId, b = E.v_DiagnosticRepositoryId } into E_join
+        //                    from E in E_join.DefaultIfEmpty()
 
-							join E1 in dbContext.restriction on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
-																   equals new { a = E1.v_ServiceId, b = E1.v_DiagnosticRepositoryId } into E1_join
-							from E1 in E1_join.DefaultIfEmpty()
+        //                    join E1 in dbContext.restriction on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
+        //                                                           equals new { a = E1.v_ServiceId, b = E1.v_DiagnosticRepositoryId } into E1_join
+        //                    from E1 in E1_join.DefaultIfEmpty()
 
-							join F in dbContext.masterrecommendationrestricction on E.v_MasterRecommendationId equals F.v_MasterRecommendationRestricctionId into F_join
-							from F in F_join.DefaultIfEmpty()
+        //                    join F in dbContext.masterrecommendationrestricction on E.v_MasterRecommendationId equals F.v_MasterRecommendationRestricctionId into F_join
+        //                    from F in F_join.DefaultIfEmpty()
 
-							join F1 in dbContext.masterrecommendationrestricction on E1.v_MasterRestrictionId equals F1.v_MasterRecommendationRestricctionId into F1_join
-							from F1 in F1_join.DefaultIfEmpty()
+        //                    join F1 in dbContext.masterrecommendationrestricction on E1.v_MasterRestrictionId equals F1.v_MasterRecommendationRestricctionId into F1_join
+        //                    from F1 in F1_join.DefaultIfEmpty()
 
-							join G in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = G.i_ParameterId, b = G.i_GroupId } into G_join
-							from G in G_join.DefaultIfEmpty()
+        //                    join G in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = G.i_ParameterId, b = G.i_GroupId } into G_join
+        //                    from G in G_join.DefaultIfEmpty()
 
-							join H in dbContext.systemparameter on new { a = A.i_ServiceStatusId.Value, b = 125 } equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
-							from H in H_join.DefaultIfEmpty()
+        //                    join H in dbContext.systemparameter on new { a = A.i_ServiceStatusId.Value, b = 125 } equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
+        //                    from H in H_join.DefaultIfEmpty()
 
-							join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId into I_join
-							from I in I_join.DefaultIfEmpty()
+        //                    join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId into I_join
+        //                    from I in I_join.DefaultIfEmpty()
 
-							join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId into J_join
-							from J in J_join.DefaultIfEmpty()
+        //                    join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId into J_join
+        //                    from J in J_join.DefaultIfEmpty()
 
-							join K in dbContext.location on I.v_EmployerLocationId equals K.v_LocationId into K_join
-							from K in K_join.DefaultIfEmpty()
+        //                    join K in dbContext.location on I.v_EmployerLocationId equals K.v_LocationId into K_join
+        //                    from K in K_join.DefaultIfEmpty()
 
-							join L in dbContext.calendar on A.v_ServiceId equals L.v_ServiceId into L_join
-							from L in L_join.DefaultIfEmpty()
+        //                    join L in dbContext.calendar on A.v_ServiceId equals L.v_ServiceId into L_join
+        //                    from L in L_join.DefaultIfEmpty()
 
-							join M in dbContext.servicecomponent on A.v_ServiceId equals M.v_ServiceId into M_join
-							from M in M_join.DefaultIfEmpty()
+        //                    join M in dbContext.servicecomponent on A.v_ServiceId equals M.v_ServiceId into M_join
+        //                    from M in M_join.DefaultIfEmpty()
 
-							join N in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = N.i_ParameterId, b = N.i_GroupId } into N_join
-							from N in N_join.DefaultIfEmpty()
+        //                    join N in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = N.i_ParameterId, b = N.i_GroupId } into N_join
+        //                    from N in N_join.DefaultIfEmpty()
 
-							join O in dbContext.facturaciondetalle on A.v_ServiceId equals O.v_ServicioId into O_join
-							from O in O_join.DefaultIfEmpty()
+        //                    join O in dbContext.facturaciondetalle on A.v_ServiceId equals O.v_ServicioId into O_join
+        //                    from O in O_join.DefaultIfEmpty()
 
-							join P in dbContext.facturacion on O.v_FacturacionId equals P.v_FacturacionId into P_join
-							from P in P_join.DefaultIfEmpty()
+        //                    join P in dbContext.facturacion on O.v_FacturacionId equals P.v_FacturacionId into P_join
+        //                    from P in P_join.DefaultIfEmpty()
 
-							join et in dbContext.systemparameter on new { a = I.i_EsoTypeId.Value, b = 118 }
-											   equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
-							from et in et_join.DefaultIfEmpty()
+        //                    join et in dbContext.systemparameter on new { a = I.i_EsoTypeId.Value, b = 118 }
+        //                                       equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+        //                    from et in et_join.DefaultIfEmpty()
 
-							join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
-															equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
-							from J1 in J1_join.DefaultIfEmpty()
+        //                    join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+        //                                                    equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+        //                    from J1 in J1_join.DefaultIfEmpty()
 
-							join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
-															equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
-							from J2 in J2_join.DefaultIfEmpty()
+        //                    join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+        //                                                    equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+        //                    from J2 in J2_join.DefaultIfEmpty()
 
-							where A.i_IsDeleted == 0
-							&& L.i_LineStatusId == (int)LineStatus.EnCircuito
-							//&& C.i_IsDeleted == 0
-							//&& C.i_FinalQualificationId != (int)FinalQualification.Descartado
-							select new ServiceGridJerarquizadaList
-							{
-								b_FechaEntrega = false,
-								v_PersonId = B.v_PersonId,
-								d_FechaEntrega = A.d_FechaEntrega,
-								v_ServiceId = A.v_ServiceId,
-								v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-								v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + B.v_DocNumber,
-								d_ServiceDate = A.d_ServiceDate,
-								i_ServiceStatusId = A.i_ServiceStatusId,
-								v_ServiceStatusName = H.v_Value1,
-								v_AptitudeStatusName = G.v_Value1,
-								v_OrganizationName = J.v_Name,
-								v_LocationName = K.v_Name,
-								v_ProtocolId = A.v_ProtocolId,
-								v_ProtocolName = I.v_Name,
-								i_ServiceId = L.i_ServiceId,
+        //                    where A.i_IsDeleted == 0
+        //                    && L.i_LineStatusId == (int)LineStatus.EnCircuito
+        //                    //&& C.i_IsDeleted == 0
+        //                    //&& C.i_FinalQualificationId != (int)FinalQualification.Descartado
+        //                    select new ServiceGridJerarquizadaList
+        //                    {
+        //                        b_FechaEntrega = false,
+        //                        v_PersonId = B.v_PersonId,
+        //                        d_FechaEntrega = A.d_FechaEntrega,
+        //                        v_ServiceId = A.v_ServiceId,
+        //                        v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+        //                        v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + B.v_DocNumber,
+        //                        d_ServiceDate = A.d_ServiceDate,
+        //                        i_ServiceStatusId = A.i_ServiceStatusId,
+        //                        v_ServiceStatusName = H.v_Value1,
+        //                        v_AptitudeStatusName = G.v_Value1,
+        //                        v_OrganizationName = J.v_Name,
+        //                        v_LocationName = K.v_Name,
+        //                        v_ProtocolId = A.v_ProtocolId,
+        //                        v_ProtocolName = I.v_Name,
+        //                        i_ServiceId = L.i_ServiceId,
 
-								v_DiagnosticRepositoryId = C.v_DiagnosticRepositoryId,
-								v_DiseasesName = D.v_Name,
-								d_ExpirationDateDiagnostic = C.d_ExpirationDateDiagnostic,
-								v_Recommendation = F.v_Name,
-								v_Restriccion = F1.v_Name,
-								v_ComponentId = M.v_ComponentId,
-								i_ServiceTypeId = I.i_MasterServiceTypeId,
-								i_MasterServiceId = A.i_MasterServiceId,
-								i_EsoTypeId = I.i_EsoTypeId,
-								i_AptitudeStatusId = A.i_AptitudeStatusId,
-								v_CustomerOrganizationId = I.v_CustomerOrganizationId,
-								v_CustomerLocationId = I.v_CustomerLocationId,
-								v_CreationUser = J1.v_UserName,
-								v_UpdateUser = J2.v_UserName,
-								d_CreationDate = A.d_InsertDate,
-								d_UpdateDate = A.d_UpdateDate,
-								i_StatusLiquidation = A.i_StatusLiquidation,
+        //                        v_DiagnosticRepositoryId = C.v_DiagnosticRepositoryId,
+        //                        v_DiseasesName = D.v_Name,
+        //                        d_ExpirationDateDiagnostic = C.d_ExpirationDateDiagnostic,
+        //                        v_Recommendation = F.v_Name,
+        //                        v_Restriccion = F1.v_Name,
+        //                        v_ComponentId = M.v_ComponentId,
+        //                        i_ServiceTypeId = I.i_MasterServiceTypeId,
+        //                        i_MasterServiceId = A.i_MasterServiceId,
+        //                        i_EsoTypeId = I.i_EsoTypeId,
+        //                        i_AptitudeStatusId = A.i_AptitudeStatusId,
+        //                        v_CustomerOrganizationId = I.v_CustomerOrganizationId,
+        //                        v_CustomerLocationId = I.v_CustomerLocationId,
+        //                        v_CreationUser = J1.v_UserName,
+        //                        v_UpdateUser = J2.v_UserName,
+        //                        d_CreationDate = A.d_InsertDate,
+        //                        d_UpdateDate = A.d_UpdateDate,
+        //                        i_StatusLiquidation = A.i_StatusLiquidation,
 
-								v_MasterServiceName = N.v_Value1,
-								v_EsoTypeName = et.v_Value1,
-								CIE10 = D.v_CIE10Id,
-								d_FechaNacimiento = B.d_Birthdate,
-								NroPoliza = B.v_NroPoliza,
-								Moneda = "PEN",
-								NroFactura = P.v_NumeroFactura,
-								Valor = P.d_MontoTotal,
-								i_FinalQualificationId = C.i_FinalQualificationId,
-								d_Deducible = B.v_Deducible,
-								i_IsDeleted = F1.i_IsDeleted.Value,
-								i_IsDeletedDx = C.i_IsDeleted
+        //                        v_MasterServiceName = N.v_Value1,
+        //                        v_EsoTypeName = et.v_Value1,
+        //                        CIE10 = D.v_CIE10Id,
+        //                        d_FechaNacimiento = B.d_Birthdate,
+        //                        NroPoliza = B.v_NroPoliza,
+        //                        Moneda = "PEN",
+        //                        NroFactura = P.v_NumeroFactura,
+        //                        Valor = P.d_MontoTotal,
+        //                        i_FinalQualificationId = C.i_FinalQualificationId,
+        //                        d_Deducible = B.v_Deducible,
+        //                        i_IsDeleted = F1.i_IsDeleted.Value,
+        //                        i_IsDeletedDx = C.i_IsDeleted
 
-							};
+        //                    };
 
-				if (!string.IsNullOrEmpty(pstrFilterExpression))
-				{
-					query = query.Where(pstrFilterExpression);
-				}
-				if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
-				{
-					query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
-				}
-				if (!string.IsNullOrEmpty(pstrSortExpression))
-				{
-					query = query.OrderBy(pstrSortExpression);
-				}
-				if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
-				{
-					int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
-					query = query.Skip(intStartRowIndex);
-				}
-				if (pintResultsPerPage.HasValue)
-				{
-					query = query.Take(pintResultsPerPage.Value);
-				}
-
-
-				List<ServiceGridJerarquizadaList> FacturacionConSinDeducible = new List<ServiceGridJerarquizadaList>();
-
-				foreach (var item in query)
-				{
-					//if (item.i_IsDeletedDx == 0)
-					//{
-					if (item.d_Deducible != null && item.d_Deducible.ToString() != "0.00")
-					{
-						item.Valor = item.Valor - (item.d_Deducible * item.Valor / 100);
-					}
-					else
-					{
-						item.Valor = item.Valor;
-					}
-					item.b_FechaEntrega = item.b_FechaEntrega;
-					item.v_PersonId = item.v_PersonId;
-					item.d_FechaEntrega = item.d_FechaEntrega;
-					item.v_ServiceId = item.v_ServiceId;
-					item.v_Pacient = item.v_Pacient;
-					item.v_PacientDocument = item.v_PacientDocument;
-					item.d_ServiceDate = item.d_ServiceDate;
-					item.i_ServiceStatusId = item.i_ServiceStatusId;
-					item.v_ServiceStatusName = item.v_ServiceStatusName;
-					item.v_AptitudeStatusName = item.v_AptitudeStatusName;
-					item.v_OrganizationName = item.v_OrganizationName;
-					item.v_LocationName = item.v_LocationName;
-					item.v_ProtocolId = item.v_ProtocolId;
-					item.v_ProtocolName = item.v_ProtocolName;
-					item.i_ServiceId = item.i_ServiceId;
-
-					item.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
-					item.v_DiseasesName = item.v_DiseasesName;
-					item.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
-					item.v_Recommendation = item.v_Recommendation;
-					item.v_Restriccion = item.v_Restriccion;
-					item.v_ComponentId = item.v_ComponentId;
-					item.i_ServiceTypeId = item.i_ServiceTypeId;
-					item.i_MasterServiceId = item.i_MasterServiceId;
-					item.i_EsoTypeId = item.i_EsoTypeId;
-					item.i_AptitudeStatusId = item.i_AptitudeStatusId;
-					item.v_CustomerOrganizationId = item.v_CustomerOrganizationId;
-					item.v_CustomerLocationId = item.v_CustomerLocationId;
-					item.v_CreationUser = item.v_CreationUser;
-					item.v_UpdateUser = item.v_UpdateUser;
-					item.d_CreationDate = item.d_CreationDate;
-					item.d_UpdateDate = item.d_UpdateDate;
-					item.i_StatusLiquidation = item.i_StatusLiquidation;
-
-					item.v_MasterServiceName = item.v_MasterServiceName;
-					item.v_EsoTypeName = item.v_EsoTypeName;
-					item.CIE10 = item.CIE10;
-					item.d_FechaNacimiento = item.d_FechaNacimiento;
-					item.NroPoliza = item.NroPoliza;
-					item.Moneda = "PEN";
-					item.NroFactura = item.NroFactura;
-
-					item.i_FinalQualificationId = item.i_FinalQualificationId;
-					item.d_Deducible = item.d_Deducible;
-					item.i_IsDeleted = item.i_IsDeleted;
-
-					FacturacionConSinDeducible.Add(item);
-					//}
+        //        if (!string.IsNullOrEmpty(pstrFilterExpression))
+        //        {
+        //            query = query.Where(pstrFilterExpression);
+        //        }
+        //        if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
+        //        {
+        //            query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
+        //        }
+        //        if (!string.IsNullOrEmpty(pstrSortExpression))
+        //        {
+        //            query = query.OrderBy(pstrSortExpression);
+        //        }
+        //        if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+        //        {
+        //            int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+        //            query = query.Skip(intStartRowIndex);
+        //        }
+        //        if (pintResultsPerPage.HasValue)
+        //        {
+        //            query = query.Take(pintResultsPerPage.Value);
+        //        }
 
 
-				}
+        //        List<ServiceGridJerarquizadaList> FacturacionConSinDeducible = new List<ServiceGridJerarquizadaList>();
 
-				List<ServiceGridJerarquizadaList> objData = FacturacionConSinDeducible.ToList();
+        //        foreach (var item in query)
+        //        {
+        //            //if (item.i_IsDeletedDx == 0)
+        //            //{
+        //            if (item.d_Deducible != null && item.d_Deducible.ToString() != "0.00")
+        //            {
+        //                item.Valor = item.Valor - (item.d_Deducible * item.Valor / 100);
+        //            }
+        //            else
+        //            {
+        //                item.Valor = item.Valor;
+        //            }
+        //            item.b_FechaEntrega = item.b_FechaEntrega;
+        //            item.v_PersonId = item.v_PersonId;
+        //            item.d_FechaEntrega = item.d_FechaEntrega;
+        //            item.v_ServiceId = item.v_ServiceId;
+        //            item.v_Pacient = item.v_Pacient;
+        //            item.v_PacientDocument = item.v_PacientDocument;
+        //            item.d_ServiceDate = item.d_ServiceDate;
+        //            item.i_ServiceStatusId = item.i_ServiceStatusId;
+        //            item.v_ServiceStatusName = item.v_ServiceStatusName;
+        //            item.v_AptitudeStatusName = item.v_AptitudeStatusName;
+        //            item.v_OrganizationName = item.v_OrganizationName;
+        //            item.v_LocationName = item.v_LocationName;
+        //            item.v_ProtocolId = item.v_ProtocolId;
+        //            item.v_ProtocolName = item.v_ProtocolName;
+        //            item.i_ServiceId = item.i_ServiceId;
 
+        //            item.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
+        //            item.v_DiseasesName = item.v_DiseasesName;
+        //            item.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
+        //            item.v_Recommendation = item.v_Recommendation;
+        //            item.v_Restriccion = item.v_Restriccion;
+        //            item.v_ComponentId = item.v_ComponentId;
+        //            item.i_ServiceTypeId = item.i_ServiceTypeId;
+        //            item.i_MasterServiceId = item.i_MasterServiceId;
+        //            item.i_EsoTypeId = item.i_EsoTypeId;
+        //            item.i_AptitudeStatusId = item.i_AptitudeStatusId;
+        //            item.v_CustomerOrganizationId = item.v_CustomerOrganizationId;
+        //            item.v_CustomerLocationId = item.v_CustomerLocationId;
+        //            item.v_CreationUser = item.v_CreationUser;
+        //            item.v_UpdateUser = item.v_UpdateUser;
+        //            item.d_CreationDate = item.d_CreationDate;
+        //            item.d_UpdateDate = item.d_UpdateDate;
+        //            item.i_StatusLiquidation = item.i_StatusLiquidation;
 
-				//Agrupar Data para DXS
-				var ServiciosDxs1 = (objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId })
-							   .Select(s => s.First()).ToList()).FindAll(p => p.v_DiseasesName != null && p.i_FinalQualificationId != 4);
+        //            item.v_MasterServiceName = item.v_MasterServiceName;
+        //            item.v_EsoTypeName = item.v_EsoTypeName;
+        //            item.CIE10 = item.CIE10;
+        //            item.d_FechaNacimiento = item.d_FechaNacimiento;
+        //            item.NroPoliza = item.NroPoliza;
+        //            item.Moneda = "PEN";
+        //            item.NroFactura = item.NroFactura;
 
+        //            item.i_FinalQualificationId = item.i_FinalQualificationId;
+        //            item.d_Deducible = item.d_Deducible;
+        //            item.i_IsDeleted = item.i_IsDeleted;
 
-				var ServiciosRecomendaciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Recommendation })
-							 .Select(s => s.First()).ToList();
-
-				var ServiciosRestricciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Restriccion })
-						   .Select(s => s.First()).ToList();
-
-				var ServiciosDxs2 = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_ComponentId })
-							   .Select(s => s.First()).ToList();
-
-
-
-				//Cargar List<DiagnosticRepositoryJerarquizada> donde se encuentra los DX
-				List<DiagnosticRepositoryJerarquizada> ListDx = new List<DiagnosticRepositoryJerarquizada>();
-				DiagnosticRepositoryJerarquizada oDx;
-
-				var x = ServiciosDxs1.FindAll(p => p.i_IsDeletedDx == 0);
-				foreach (var item in x)
-				{
-					oDx = new DiagnosticRepositoryJerarquizada();
-
-					oDx.v_ServiceId = item.v_ServiceId;
-					oDx.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
-					oDx.v_DiseasesName = item.v_DiseasesName;
-					oDx.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
-					oDx.CIE10 = item.CIE10;
-					var ListaRecomendaciones = ServiciosRecomendaciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId);
-					oDx.v_RecomendationsName = string.Join(", ", ListaRecomendaciones.Select(p => p.v_Recommendation));
-
-					var ListaRestricciones = ServiciosRestricciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId && p.i_IsDeleted == 0);
-					oDx.v_RestricctionName = string.Join(", ", ListaRestricciones.Select(p => p.v_Restriccion));
-
-					ListDx.Add(oDx);
-
-				}
-
-				//JerarquizarData
-				ServiciosDxs2.ForEach(a =>
-				{
-					a.Diagnosticos = (ListDx.FindAll(p => p.v_ServiceId == a.v_ServiceId));
-				});
-
-
-				if (componentIds != null)
-				{
-					var xx = ServiciosDxs2.FindAll(p => componentIds.Contains(p.v_ComponentId));
-
-					var y = xx.GroupBy(g => g.v_ServiceId)
-								  .Select(s => s.First());
-					pobjOperationResult.Success = 1;
-
-					return y.ToList();
-				}
-				else
-				{
-					var y = ServiciosDxs2.GroupBy(g => g.v_ServiceId)
-							   .Select(s => s.First());
-
-					if (pFcf == DateTime.Parse("01/01/2050") && pFci == DateTime.Parse("01/01/2000"))
-					{
-						pobjOperationResult.Success = 1;
+        //            FacturacionConSinDeducible.Add(item);
+        //            //}
 
 
-						return y.ToList();
-					}
-					else
-					{
-						pobjOperationResult.Success = 1;
-						var prueba = y.Where(s => s.Diagnosticos.Any(p => p.d_ExpirationDateDiagnostic > pFci && p.d_ExpirationDateDiagnostic < pFcf)).ToList();
+        //        }
 
-						return prueba.ToList();
-					}
+        //        List<ServiceGridJerarquizadaList> objData = FacturacionConSinDeducible.ToList();
 
-				}
 
-			}
-			catch (Exception ex)
-			{
-				pobjOperationResult.Success = 0;
-				pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
-				return null;
-			}
-		}
-        public List<ReporteGerencia> ReporteGerencia(ref OperationResult pobjOperationResult, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate,string modo, string tipoEmpresa)
+        //        //Agrupar Data para DXS
+        //        var ServiciosDxs1 = (objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId })
+        //                       .Select(s => s.First()).ToList()).FindAll(p => p.v_DiseasesName != null && p.i_FinalQualificationId != 4);
+
+
+        //        var ServiciosRecomendaciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Recommendation })
+        //                     .Select(s => s.First()).ToList();
+
+        //        var ServiciosRestricciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Restriccion })
+        //                   .Select(s => s.First()).ToList();
+
+        //        var ServiciosDxs2 = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_ComponentId })
+        //                       .Select(s => s.First()).ToList();
+
+
+
+        //        //Cargar List<DiagnosticRepositoryJerarquizada> donde se encuentra los DX
+        //        List<DiagnosticRepositoryJerarquizada> ListDx = new List<DiagnosticRepositoryJerarquizada>();
+        //        DiagnosticRepositoryJerarquizada oDx;
+
+        //        var x = ServiciosDxs1.FindAll(p => p.i_IsDeletedDx == 0);
+        //        foreach (var item in x)
+        //        {
+        //            oDx = new DiagnosticRepositoryJerarquizada();
+
+        //            oDx.v_ServiceId = item.v_ServiceId;
+        //            oDx.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
+        //            oDx.v_DiseasesName = item.v_DiseasesName;
+        //            oDx.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
+        //            oDx.CIE10 = item.CIE10;
+        //            var ListaRecomendaciones = ServiciosRecomendaciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId);
+        //            oDx.v_RecomendationsName = string.Join(", ", ListaRecomendaciones.Select(p => p.v_Recommendation));
+
+        //            var ListaRestricciones = ServiciosRestricciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId && p.i_IsDeleted == 0);
+        //            oDx.v_RestricctionName = string.Join(", ", ListaRestricciones.Select(p => p.v_Restriccion));
+
+        //            ListDx.Add(oDx);
+
+        //        }
+
+        //        //JerarquizarData
+        //        ServiciosDxs2.ForEach(a =>
+        //        {
+        //            a.Diagnosticos = (ListDx.FindAll(p => p.v_ServiceId == a.v_ServiceId));
+        //        });
+
+
+        //        if (componentIds != null)
+        //        {
+        //            var xx = ServiciosDxs2.FindAll(p => componentIds.Contains(p.v_ComponentId));
+
+        //            var y = xx.GroupBy(g => g.v_ServiceId)
+        //                          .Select(s => s.First());
+        //            pobjOperationResult.Success = 1;
+
+        //            return y.ToList();
+        //        }
+        //        else
+        //        {
+        //            var y = ServiciosDxs2.GroupBy(g => g.v_ServiceId)
+        //                       .Select(s => s.First());
+
+        //            if (pFcf == DateTime.Parse("01/01/2050") && pFci == DateTime.Parse("01/01/2000"))
+        //            {
+        //                pobjOperationResult.Success = 1;
+
+
+        //                return y.ToList();
+        //            }
+        //            else
+        //            {
+        //                pobjOperationResult.Success = 1;
+        //                var prueba = y.Where(s => s.Diagnosticos.Any(p => p.d_ExpirationDateDiagnostic > pFci && p.d_ExpirationDateDiagnostic < pFcf)).ToList();
+
+        //                return prueba.ToList();
+        //            }
+
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        pobjOperationResult.Success = 0;
+        //        pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+        //        return null;
+        //    }
+        //}
+        public List<ReporteGerencia> ReporteGerencia(ref OperationResult pobjOperationResult, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, string modo, string tipoEmpresa)
         {
             try
             {
@@ -11056,333 +11057,333 @@ namespace Sigesoft.Node.WinClient.BLL
                 throw;
             }
         }
-		public List<ServiceGridJerarquizadaList> GetServicesPagedAndFiltered_F(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf, string pstrDxs)
-		{
-			//mon.IsActive = true;
+        //public List<ServiceGridJerarquizadaList> GetServicesPagedAndFiltered_F(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf, string pstrDxs)
+        //{
+        //    //mon.IsActive = true;
 
-			try
-			{
-				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //    try
+        //    {
+        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 
-				var query = from A in dbContext.service
+        //        var query = from A in dbContext.service
 
-							join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+        //                    join B in dbContext.person on A.v_PersonId equals B.v_PersonId
 
-							join C in dbContext.diagnosticrepository on A.v_ServiceId equals C.v_ServiceId into C_join
-							from C in C_join.DefaultIfEmpty()
+        //                    join C in dbContext.diagnosticrepository on A.v_ServiceId equals C.v_ServiceId into C_join
+        //                    from C in C_join.DefaultIfEmpty()
 
-							join D in dbContext.diseases on C.v_DiseasesId equals D.v_DiseasesId into D_join
-							from D in D_join.DefaultIfEmpty()
+        //                    join D in dbContext.diseases on C.v_DiseasesId equals D.v_DiseasesId into D_join
+        //                    from D in D_join.DefaultIfEmpty()
 
-							join E in dbContext.recommendation on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
-																	equals new { a = E.v_ServiceId, b = E.v_DiagnosticRepositoryId } into E_join
-							from E in E_join.DefaultIfEmpty()
+        //                    join E in dbContext.recommendation on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
+        //                                                            equals new { a = E.v_ServiceId, b = E.v_DiagnosticRepositoryId } into E_join
+        //                    from E in E_join.DefaultIfEmpty()
 
-							join E1 in dbContext.restriction on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
-																   equals new { a = E1.v_ServiceId, b = E1.v_DiagnosticRepositoryId } into E1_join
-							from E1 in E1_join.DefaultIfEmpty()
+        //                    join E1 in dbContext.restriction on new { a = A.v_ServiceId, b = C.v_DiagnosticRepositoryId }
+        //                                                           equals new { a = E1.v_ServiceId, b = E1.v_DiagnosticRepositoryId } into E1_join
+        //                    from E1 in E1_join.DefaultIfEmpty()
 
-							join F in dbContext.masterrecommendationrestricction on E.v_MasterRecommendationId equals F.v_MasterRecommendationRestricctionId into F_join
-							from F in F_join.DefaultIfEmpty()
+        //                    join F in dbContext.masterrecommendationrestricction on E.v_MasterRecommendationId equals F.v_MasterRecommendationRestricctionId into F_join
+        //                    from F in F_join.DefaultIfEmpty()
 
-							join F1 in dbContext.masterrecommendationrestricction on E1.v_MasterRestrictionId equals F1.v_MasterRecommendationRestricctionId into F1_join
-							from F1 in F1_join.DefaultIfEmpty()
+        //                    join F1 in dbContext.masterrecommendationrestricction on E1.v_MasterRestrictionId equals F1.v_MasterRecommendationRestricctionId into F1_join
+        //                    from F1 in F1_join.DefaultIfEmpty()
 
-							join G in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = G.i_ParameterId, b = G.i_GroupId } into G_join
-							from G in G_join.DefaultIfEmpty()
+        //                    join G in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = G.i_ParameterId, b = G.i_GroupId } into G_join
+        //                    from G in G_join.DefaultIfEmpty()
 
-							join H in dbContext.systemparameter on new { a = A.i_ServiceStatusId.Value, b = 125 } equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
-							from H in H_join.DefaultIfEmpty()
+        //                    join H in dbContext.systemparameter on new { a = A.i_ServiceStatusId.Value, b = 125 } equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
+        //                    from H in H_join.DefaultIfEmpty()
 
-							join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId into I_join
-							from I in I_join.DefaultIfEmpty()
+        //                    join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId into I_join
+        //                    from I in I_join.DefaultIfEmpty()
 
-							join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId into J_join
-							from J in J_join.DefaultIfEmpty()
+        //                    join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId into J_join
+        //                    from J in J_join.DefaultIfEmpty()
 
-                            join J11 in dbContext.organization on I.v_CustomerOrganizationId equals J11.v_OrganizationId into J11_join
-                            from J11 in J11_join.DefaultIfEmpty()
+        //                    join J11 in dbContext.organization on I.v_CustomerOrganizationId equals J11.v_OrganizationId into J11_join
+        //                    from J11 in J11_join.DefaultIfEmpty()
 
-                            join J22 in dbContext.organization on I.v_WorkingOrganizationId equals J22.v_OrganizationId into J22_join
-                            from J22 in J22_join.DefaultIfEmpty()
+        //                    join J22 in dbContext.organization on I.v_WorkingOrganizationId equals J22.v_OrganizationId into J22_join
+        //                    from J22 in J22_join.DefaultIfEmpty()
 
-							join K in dbContext.location on I.v_EmployerLocationId equals K.v_LocationId into K_join
-							from K in K_join.DefaultIfEmpty()
+        //                    join K in dbContext.location on I.v_EmployerLocationId equals K.v_LocationId into K_join
+        //                    from K in K_join.DefaultIfEmpty()
 
-							join L in dbContext.calendar on A.v_ServiceId equals L.v_ServiceId into L_join
-							from L in L_join.DefaultIfEmpty()
+        //                    join L in dbContext.calendar on A.v_ServiceId equals L.v_ServiceId into L_join
+        //                    from L in L_join.DefaultIfEmpty()
 
-							join M in dbContext.servicecomponent on A.v_ServiceId equals M.v_ServiceId into M_join
-							from M in M_join.DefaultIfEmpty()
+        //                    join M in dbContext.servicecomponent on A.v_ServiceId equals M.v_ServiceId into M_join
+        //                    from M in M_join.DefaultIfEmpty()
 
-							join N in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = N.i_ParameterId, b = N.i_GroupId } into N_join
-							from N in N_join.DefaultIfEmpty()
+        //                    join N in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = N.i_ParameterId, b = N.i_GroupId } into N_join
+        //                    from N in N_join.DefaultIfEmpty()
 
-							join O in dbContext.facturaciondetalle on A.v_ServiceId equals O.v_ServicioId into O_join
-							from O in O_join.DefaultIfEmpty()
+        //                    join O in dbContext.facturaciondetalle on A.v_ServiceId equals O.v_ServicioId into O_join
+        //                    from O in O_join.DefaultIfEmpty()
 
-							join P in dbContext.facturacion on O.v_FacturacionId equals P.v_FacturacionId into P_join
-							from P in P_join.DefaultIfEmpty()
+        //                    join P in dbContext.facturacion on O.v_FacturacionId equals P.v_FacturacionId into P_join
+        //                    from P in P_join.DefaultIfEmpty()
 
-							join et in dbContext.systemparameter on new { a = I.i_EsoTypeId.Value, b = 118 }
-											   equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
-							from et in et_join.DefaultIfEmpty()
+        //                    join et in dbContext.systemparameter on new { a = I.i_EsoTypeId.Value, b = 118 }
+        //                                       equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+        //                    from et in et_join.DefaultIfEmpty()
 
-							join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
-															equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
-							from J1 in J1_join.DefaultIfEmpty()
+        //                    join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+        //                                                    equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+        //                    from J1 in J1_join.DefaultIfEmpty()
 
-							join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
-															equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
-							from J2 in J2_join.DefaultIfEmpty()
+        //                    join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+        //                                                    equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+        //                    from J2 in J2_join.DefaultIfEmpty()
 
-							where A.i_IsDeleted == 0
-							&& L.i_LineStatusId == (int)LineStatus.EnCircuito && A.v_ProtocolId != null
-							&& A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate
-							select new ServiceGridJerarquizadaList
-							{
-								b_FechaEntrega = false,
-								v_PersonId = B.v_PersonId,
-								d_FechaEntrega = A.d_FechaEntrega,
-								v_ServiceId = A.v_ServiceId,
-								v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-								v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + "(HCL-"+B.v_DocNumber+")",
-								d_ServiceDate = A.d_ServiceDate,
-								i_ServiceStatusId = A.i_ServiceStatusId,
-								v_ServiceStatusName = H.v_Value1,
-								v_AptitudeStatusName = G.v_Value1,
-								v_OrganizationName = J.v_Name,
-								v_LocationName = K.v_Name,
-								v_ProtocolId = A.v_ProtocolId,
-								v_ProtocolName = I.v_Name,
-								i_ServiceId = L.i_ServiceId,
-                                d_BirthDate = B.d_Birthdate,
-								v_DiagnosticRepositoryId = C.v_DiagnosticRepositoryId,
-								v_DiseasesName = D.v_Name,
-								d_ExpirationDateDiagnostic = C.d_ExpirationDateDiagnostic,
-								v_Recommendation = F.v_Name,
-								v_Restriccion = F1.v_Name,
-								v_ComponentId = M.v_ComponentId,
-								i_ServiceTypeId = I.i_MasterServiceTypeId,
-								i_MasterServiceId = A.i_MasterServiceId,
-								i_EsoTypeId = I.i_EsoTypeId,
-								i_AptitudeStatusId = A.i_AptitudeStatusId,
-								v_CustomerOrganizationId = I.v_CustomerOrganizationId,
-								v_CustomerLocationId = I.v_CustomerLocationId,
-								v_CreationUser = J1.v_UserName,
-								v_UpdateUser = J2.v_UserName,
-								d_CreationDate = A.d_InsertDate,
-								d_UpdateDate = A.d_UpdateDate,
-								i_StatusLiquidation = A.i_StatusLiquidation,
+        //                    where A.i_IsDeleted == 0
+        //                    && L.i_LineStatusId == (int)LineStatus.EnCircuito && A.v_ProtocolId != null
+        //                    && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate
+        //                    select new ServiceGridJerarquizadaList
+        //                    {
+        //                        b_FechaEntrega = false,
+        //                        v_PersonId = B.v_PersonId,
+        //                        d_FechaEntrega = A.d_FechaEntrega,
+        //                        v_ServiceId = A.v_ServiceId,
+        //                        v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+        //                        v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + "(HCL-"+B.v_DocNumber+")",
+        //                        d_ServiceDate = A.d_ServiceDate,
+        //                        i_ServiceStatusId = A.i_ServiceStatusId,
+        //                        v_ServiceStatusName = H.v_Value1,
+        //                        v_AptitudeStatusName = G.v_Value1,
+        //                        v_OrganizationName = J.v_Name,
+        //                        v_LocationName = K.v_Name,
+        //                        v_ProtocolId = A.v_ProtocolId,
+        //                        v_ProtocolName = I.v_Name,
+        //                        i_ServiceId = L.i_ServiceId,
+        //                        d_BirthDate = B.d_Birthdate,
+        //                        v_DiagnosticRepositoryId = C.v_DiagnosticRepositoryId,
+        //                        v_DiseasesName = D.v_Name,
+        //                        d_ExpirationDateDiagnostic = C.d_ExpirationDateDiagnostic,
+        //                        v_Recommendation = F.v_Name,
+        //                        v_Restriccion = F1.v_Name,
+        //                        v_ComponentId = M.v_ComponentId,
+        //                        i_ServiceTypeId = I.i_MasterServiceTypeId,
+        //                        i_MasterServiceId = A.i_MasterServiceId,
+        //                        i_EsoTypeId = I.i_EsoTypeId,
+        //                        i_AptitudeStatusId = A.i_AptitudeStatusId,
+        //                        v_CustomerOrganizationId = I.v_CustomerOrganizationId,
+        //                        v_CustomerLocationId = I.v_CustomerLocationId,
+        //                        v_CreationUser = J1.v_UserName,
+        //                        v_UpdateUser = J2.v_UserName,
+        //                        d_CreationDate = A.d_InsertDate,
+        //                        d_UpdateDate = A.d_UpdateDate,
+        //                        i_StatusLiquidation = A.i_StatusLiquidation,
 
-								v_MasterServiceName = N.v_Value1,
-								v_EsoTypeName = et.v_Value1,
-								CIE10 = D.v_CIE10Id,
-								d_FechaNacimiento = B.d_Birthdate,
-								NroPoliza = B.v_NroPoliza,
-								Moneda = "PEN",
-								NroFactura = P.v_NumeroFactura,
-								Valor = P.d_MontoTotal,
-								i_FinalQualificationId = C.i_FinalQualificationId,
-								d_Deducible = B.v_Deducible,
-								i_IsDeleted = F1.i_IsDeleted.Value,
-								i_IsDeletedDx = C.i_IsDeleted,
-								i_IsDeletedRecomendaciones = E.i_IsDeleted,
-								i_IsDeletedRestricciones = E1.i_IsDeleted,
-                                CompMinera = J11.v_Name,
-                                Tercero = J22.v_Name,
-                                i_ApprovedUpdateUserId = M.i_ApprovedUpdateUserId.Value
-							};
+        //                        v_MasterServiceName = N.v_Value1,
+        //                        v_EsoTypeName = et.v_Value1,
+        //                        CIE10 = D.v_CIE10Id,
+        //                        d_FechaNacimiento = B.d_Birthdate,
+        //                        NroPoliza = B.v_NroPoliza,
+        //                        Moneda = "PEN",
+        //                        NroFactura = P.v_NumeroFactura,
+        //                        Valor = P.d_MontoTotal,
+        //                        i_FinalQualificationId = C.i_FinalQualificationId,
+        //                        d_Deducible = B.v_Deducible,
+        //                        i_IsDeleted = F1.i_IsDeleted.Value,
+        //                        i_IsDeletedDx = C.i_IsDeleted,
+        //                        i_IsDeletedRecomendaciones = E.i_IsDeleted,
+        //                        i_IsDeletedRestricciones = E1.i_IsDeleted,
+        //                        CompMinera = J11.v_Name,
+        //                        Tercero = J22.v_Name,
+        //                        i_ApprovedUpdateUserId = M.i_ApprovedUpdateUserId.Value
+        //                    };
 
-				if (!string.IsNullOrEmpty(pstrFilterExpression))
-				{
-					query = query.Where(pstrFilterExpression);
-				}
-				//if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
-				//{
-				//    query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
-				//}
-				if (!string.IsNullOrEmpty(pstrSortExpression))
-				{
-					query = query.OrderBy(pstrSortExpression);
-				}
-				if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
-				{
-					int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
-					query = query.Skip(intStartRowIndex);
-				}
-				if (pintResultsPerPage.HasValue)
-				{
-					query = query.Take(pintResultsPerPage.Value);
-				}
-
-
-				List<ServiceGridJerarquizadaList> FacturacionConSinDeducible = new List<ServiceGridJerarquizadaList>();
-
-				foreach (var item in query)
-				{
-					//if (item.i_IsDeletedDx == 0)
-					//{
-					if (item.d_Deducible != null && item.d_Deducible.ToString() != "0.00")
-					{
-						item.Valor = item.Valor - (item.d_Deducible * item.Valor / 100);
-					}
-					else
-					{
-						item.Valor = item.Valor;
-					}
-                    //var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(item.v_ServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
-
-                    //item.UsuarioMedicina = FirmaMedicoMedicina == null ? "" : FirmaMedicoMedicina.Value2;
-					item.b_FechaEntrega = item.b_FechaEntrega;
-					item.v_PersonId = item.v_PersonId;
-					item.d_FechaEntrega = item.d_FechaEntrega;
-					item.v_ServiceId = item.v_ServiceId;
-					item.v_Pacient = item.v_Pacient;
-					item.v_PacientDocument = item.v_PacientDocument;
-					item.d_ServiceDate = item.d_ServiceDate;
-					item.i_ServiceStatusId = item.i_ServiceStatusId;
-					item.v_ServiceStatusName = item.v_ServiceStatusName;
-					item.v_AptitudeStatusName = item.v_AptitudeStatusName;
-					item.v_OrganizationName = item.v_OrganizationName;
-					item.v_LocationName = item.v_LocationName;
-					item.v_ProtocolId = item.v_ProtocolId;
-					item.v_ProtocolName = item.v_ProtocolName;
-					item.i_ServiceId = item.i_ServiceId;
-				    item.d_BirthDate = item.d_BirthDate;
-				    item.i_age = GetAge(item.d_BirthDate.Value);
-					item.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
-					item.v_DiseasesName = item.v_DiseasesName;
-					item.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
-					item.v_Recommendation = item.v_Recommendation;
-					item.v_Restriccion = item.v_Restriccion;
-					item.v_ComponentId = item.v_ComponentId;
-					item.i_ServiceTypeId = item.i_ServiceTypeId;
-					item.i_MasterServiceId = item.i_MasterServiceId;
-					item.i_EsoTypeId = item.i_EsoTypeId;
-					item.i_AptitudeStatusId = item.i_AptitudeStatusId;
-					item.v_CustomerOrganizationId = item.v_CustomerOrganizationId;
-					item.v_CustomerLocationId = item.v_CustomerLocationId;
-					item.v_CreationUser = item.v_CreationUser;
-					item.v_UpdateUser = item.v_UpdateUser;
-					item.d_CreationDate = item.d_CreationDate;
-					item.d_UpdateDate = item.d_UpdateDate;
-					item.i_StatusLiquidation = item.i_StatusLiquidation;
-
-					item.v_MasterServiceName = item.v_MasterServiceName;
-					item.v_EsoTypeName = item.v_EsoTypeName;
-					item.CIE10 = item.CIE10;
-					item.d_FechaNacimiento = item.d_FechaNacimiento;
-					item.NroPoliza = item.NroPoliza;
-					item.Moneda = "PEN";
-					item.NroFactura = item.NroFactura;
-
-					item.i_FinalQualificationId = item.i_FinalQualificationId;
-					item.d_Deducible = item.d_Deducible;
-					item.i_IsDeleted = item.i_IsDeleted;
-                    item.CompMinera = item.CompMinera;
-                    item.Tercero = item.Tercero;
-                    item.i_ApprovedUpdateUserId = item.i_ApprovedUpdateUserId;
+        //        if (!string.IsNullOrEmpty(pstrFilterExpression))
+        //        {
+        //            query = query.Where(pstrFilterExpression);
+        //        }
+        //        //if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
+        //        //{
+        //        //    query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
+        //        //}
+        //        if (!string.IsNullOrEmpty(pstrSortExpression))
+        //        {
+        //            query = query.OrderBy(pstrSortExpression);
+        //        }
+        //        if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+        //        {
+        //            int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+        //            query = query.Skip(intStartRowIndex);
+        //        }
+        //        if (pintResultsPerPage.HasValue)
+        //        {
+        //            query = query.Take(pintResultsPerPage.Value);
+        //        }
 
 
-					FacturacionConSinDeducible.Add(item);
-					//}
-				}
+        //        List<ServiceGridJerarquizadaList> FacturacionConSinDeducible = new List<ServiceGridJerarquizadaList>();
 
-				List<ServiceGridJerarquizadaList> objData = FacturacionConSinDeducible.ToList();
+        //        foreach (var item in query)
+        //        {
+        //            //if (item.i_IsDeletedDx == 0)
+        //            //{
+        //            if (item.d_Deducible != null && item.d_Deducible.ToString() != "0.00")
+        //            {
+        //                item.Valor = item.Valor - (item.d_Deducible * item.Valor / 100);
+        //            }
+        //            else
+        //            {
+        //                item.Valor = item.Valor;
+        //            }
+        //            //var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(item.v_ServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
+        //            //item.UsuarioMedicina = FirmaMedicoMedicina == null ? "" : FirmaMedicoMedicina.Value2;
+        //            item.b_FechaEntrega = item.b_FechaEntrega;
+        //            item.v_PersonId = item.v_PersonId;
+        //            item.d_FechaEntrega = item.d_FechaEntrega;
+        //            item.v_ServiceId = item.v_ServiceId;
+        //            item.v_Pacient = item.v_Pacient;
+        //            item.v_PacientDocument = item.v_PacientDocument;
+        //            item.d_ServiceDate = item.d_ServiceDate;
+        //            item.i_ServiceStatusId = item.i_ServiceStatusId;
+        //            item.v_ServiceStatusName = item.v_ServiceStatusName;
+        //            item.v_AptitudeStatusName = item.v_AptitudeStatusName;
+        //            item.v_OrganizationName = item.v_OrganizationName;
+        //            item.v_LocationName = item.v_LocationName;
+        //            item.v_ProtocolId = item.v_ProtocolId;
+        //            item.v_ProtocolName = item.v_ProtocolName;
+        //            item.i_ServiceId = item.i_ServiceId;
+        //            item.d_BirthDate = item.d_BirthDate;
+        //            item.i_age = GetAge(item.d_BirthDate.Value);
+        //            item.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
+        //            item.v_DiseasesName = item.v_DiseasesName;
+        //            item.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
+        //            item.v_Recommendation = item.v_Recommendation;
+        //            item.v_Restriccion = item.v_Restriccion;
+        //            item.v_ComponentId = item.v_ComponentId;
+        //            item.i_ServiceTypeId = item.i_ServiceTypeId;
+        //            item.i_MasterServiceId = item.i_MasterServiceId;
+        //            item.i_EsoTypeId = item.i_EsoTypeId;
+        //            item.i_AptitudeStatusId = item.i_AptitudeStatusId;
+        //            item.v_CustomerOrganizationId = item.v_CustomerOrganizationId;
+        //            item.v_CustomerLocationId = item.v_CustomerLocationId;
+        //            item.v_CreationUser = item.v_CreationUser;
+        //            item.v_UpdateUser = item.v_UpdateUser;
+        //            item.d_CreationDate = item.d_CreationDate;
+        //            item.d_UpdateDate = item.d_UpdateDate;
+        //            item.i_StatusLiquidation = item.i_StatusLiquidation;
+
+        //            item.v_MasterServiceName = item.v_MasterServiceName;
+        //            item.v_EsoTypeName = item.v_EsoTypeName;
+        //            item.CIE10 = item.CIE10;
+        //            item.d_FechaNacimiento = item.d_FechaNacimiento;
+        //            item.NroPoliza = item.NroPoliza;
+        //            item.Moneda = "PEN";
+        //            item.NroFactura = item.NroFactura;
+
+        //            item.i_FinalQualificationId = item.i_FinalQualificationId;
+        //            item.d_Deducible = item.d_Deducible;
+        //            item.i_IsDeleted = item.i_IsDeleted;
+        //            item.CompMinera = item.CompMinera;
+        //            item.Tercero = item.Tercero;
+        //            item.i_ApprovedUpdateUserId = item.i_ApprovedUpdateUserId;
 
 
-				//Agrupar Data para DXS
-				var ServiciosDxs1 = (objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId })
-							   .Select(s => s.First()).ToList()).FindAll(p => p.v_DiseasesName != null && p.i_FinalQualificationId != 4);
+        //            FacturacionConSinDeducible.Add(item);
+        //            //}
+        //        }
+
+        //        List<ServiceGridJerarquizadaList> objData = FacturacionConSinDeducible.ToList();
 
 
-				var ServiciosRecomendaciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Recommendation })
-							 .Select(s => s.First()).ToList();
+        //        //Agrupar Data para DXS
+        //        var ServiciosDxs1 = (objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId })
+        //                       .Select(s => s.First()).ToList()).FindAll(p => p.v_DiseasesName != null && p.i_FinalQualificationId != 4);
 
-				var ServiciosRestricciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Restriccion })
-						   .Select(s => s.First()).ToList();
 
-				var ServiciosDxs2 = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_ComponentId })
-							   .Select(s => s.First()).ToList();
+        //        var ServiciosRecomendaciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Recommendation })
+        //                     .Select(s => s.First()).ToList();
+
+        //        var ServiciosRestricciones = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_Restriccion })
+        //                   .Select(s => s.First()).ToList();
+
+        //        var ServiciosDxs2 = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_ComponentId })
+        //                       .Select(s => s.First()).ToList();
 
 
             
 
 
-				//Cargar List<DiagnosticRepositoryJerarquizada> donde se encuentra los DX
-				List<DiagnosticRepositoryJerarquizada> ListDx = new List<DiagnosticRepositoryJerarquizada>();
-				DiagnosticRepositoryJerarquizada oDx;
+        //        //Cargar List<DiagnosticRepositoryJerarquizada> donde se encuentra los DX
+        //        List<DiagnosticRepositoryJerarquizada> ListDx = new List<DiagnosticRepositoryJerarquizada>();
+        //        DiagnosticRepositoryJerarquizada oDx;
 
-				var x = ServiciosDxs1.FindAll(p => p.i_IsDeletedDx == 0);
-				foreach (var item in x)
-				{
-					oDx = new DiagnosticRepositoryJerarquizada();
+        //        var x = ServiciosDxs1.FindAll(p => p.i_IsDeletedDx == 0);
+        //        foreach (var item in x)
+        //        {
+        //            oDx = new DiagnosticRepositoryJerarquizada();
 
-					oDx.v_ServiceId = item.v_ServiceId;
-					oDx.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
-					oDx.v_DiseasesName = item.v_DiseasesName;
-					oDx.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
-					oDx.CIE10 = item.CIE10;
-					var ListaRecomendaciones = ServiciosRecomendaciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId && p.i_IsDeletedRecomendaciones == 0);
-					oDx.v_RecomendationsName = string.Join(", ", ListaRecomendaciones.Select(p => p.v_Recommendation));
+        //            oDx.v_ServiceId = item.v_ServiceId;
+        //            oDx.v_DiagnosticRepositoryId = item.v_DiagnosticRepositoryId;
+        //            oDx.v_DiseasesName = item.v_DiseasesName;
+        //            oDx.d_ExpirationDateDiagnostic = item.d_ExpirationDateDiagnostic;
+        //            oDx.CIE10 = item.CIE10;
+        //            var ListaRecomendaciones = ServiciosRecomendaciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId && p.i_IsDeletedRecomendaciones == 0);
+        //            oDx.v_RecomendationsName = string.Join(", ", ListaRecomendaciones.Select(p => p.v_Recommendation));
 
-					var ListaRestricciones = ServiciosRestricciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId && p.i_IsDeletedRestricciones == 0);
-					oDx.v_RestricctionName = string.Join(", ", ListaRestricciones.Select(p => p.v_Restriccion));
+        //            var ListaRestricciones = ServiciosRestricciones.FindAll(p => p.v_ServiceId == item.v_ServiceId && p.v_DiagnosticRepositoryId == item.v_DiagnosticRepositoryId && p.i_IsDeletedRestricciones == 0);
+        //            oDx.v_RestricctionName = string.Join(", ", ListaRestricciones.Select(p => p.v_Restriccion));
 
-					ListDx.Add(oDx);
+        //            ListDx.Add(oDx);
 
-				}
+        //        }
 
-				//JerarquizarData
-				ServiciosDxs2.ForEach(a =>
-				{
-					a.Diagnosticos = (ListDx.FindAll(p => p.v_ServiceId == a.v_ServiceId));
-				});
+        //        //JerarquizarData
+        //        ServiciosDxs2.ForEach(a =>
+        //        {
+        //            a.Diagnosticos = (ListDx.FindAll(p => p.v_ServiceId == a.v_ServiceId));
+        //        });
 
-				if (componentIds != null)
-				{
-					var xx = ServiciosDxs2.FindAll(p => componentIds.Contains(p.v_ComponentId));
+        //        if (componentIds != null)
+        //        {
+        //            var xx = ServiciosDxs2.FindAll(p => componentIds.Contains(p.v_ComponentId));
 
-					var y = xx.GroupBy(g => g.v_ServiceId)
-								  .Select(s => s.First());
-					pobjOperationResult.Success = 1;
-					var y_Final = DevolverFiltroDx(y.ToList(), pstrDxs);
+        //            var y = xx.GroupBy(g => g.v_ServiceId)
+        //                          .Select(s => s.First());
+        //            pobjOperationResult.Success = 1;
+        //            var y_Final = DevolverFiltroDx(y.ToList(), pstrDxs);
 
-					return y_Final.ToList();
-				}
-				else
-				{
-					var y = ServiciosDxs2.GroupBy(g => g.v_ServiceId)
-							   .Select(s => s.First());
+        //            return y_Final.ToList();
+        //        }
+        //        else
+        //        {
+        //            var y = ServiciosDxs2.GroupBy(g => g.v_ServiceId)
+        //                       .Select(s => s.First());
 
-					if (pFcf == DateTime.Parse("01/01/2050") && pFci == DateTime.Parse("01/01/2000"))
-					{
-						pobjOperationResult.Success = 1;
+        //            if (pFcf == DateTime.Parse("01/01/2050") && pFci == DateTime.Parse("01/01/2000"))
+        //            {
+        //                pobjOperationResult.Success = 1;
 
-						var y_Final = DevolverFiltroDx(y.ToList(), pstrDxs);
-						return y_Final.ToList();
-					}
-					else
-					{
-						pobjOperationResult.Success = 1;
-						var prueba = y.Where(s => s.Diagnosticos.Any(p => p.d_ExpirationDateDiagnostic > pFci && p.d_ExpirationDateDiagnostic < pFcf)).ToList();
+        //                var y_Final = DevolverFiltroDx(y.ToList(), pstrDxs);
+        //                return y_Final.ToList();
+        //            }
+        //            else
+        //            {
+        //                pobjOperationResult.Success = 1;
+        //                var prueba = y.Where(s => s.Diagnosticos.Any(p => p.d_ExpirationDateDiagnostic > pFci && p.d_ExpirationDateDiagnostic < pFcf)).ToList();
 
-						var y_Final = DevolverFiltroDx(prueba.ToList(), pstrDxs);
-						return y_Final.ToList();
-						//return prueba.ToList();
-					}
+        //                var y_Final = DevolverFiltroDx(prueba.ToList(), pstrDxs);
+        //                return y_Final.ToList();
+        //                //return prueba.ToList();
+        //            }
 
-				}
+        //        }
 
-			}
-			catch (Exception ex)
-			{
-				pobjOperationResult.Success = 0;
-				pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
-				return null;
-			}
-		}
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        pobjOperationResult.Success = 0;
+        //        pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+        //        return null;
+        //    }
+        //}
 
 
 		public List<ServiceGridJerarquizadaList> DevolverFiltroDx(List<ServiceGridJerarquizadaList> l, string pstrdxs)
@@ -19073,7 +19074,7 @@ namespace Sigesoft.Node.WinClient.BLL
             return string.Join(", ", query.Select(p => p.v_Recommendation));
 		}
 
-		private string GetRecommendationByServiceIdAndDiagnostic(string pstrServiceId, string pstrDiagnosticRepositoryId)
+		public string GetRecommendationByServiceIdAndDiagnostic(string pstrServiceId, string pstrDiagnosticRepositoryId)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -33905,5 +33906,164 @@ namespace Sigesoft.Node.WinClient.BLL
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
             }
         }
-	}
+
+        //public string GetRecommendationByServiceIdAndDiagnostic(string pstrServiceId, string pstrDiagnosticRepositoryId)
+        //{
+        //    SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+        //    if (pstrDiagnosticRepositoryId == null)
+        //    {
+        //        return "";
+        //    }
+        //    var query = (from ccc in dbContext.recommendation
+        //        join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRecommendationId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
+        //        where ccc.v_ServiceId == pstrServiceId &&
+        //              ccc.i_IsDeleted == 0 && ccc.v_DiagnosticRepositoryId == pstrDiagnosticRepositoryId
+        //        select new
+        //        {
+        //            v_Recommendation = ddd.v_Name
+
+        //        }).ToList();
+
+
+        //    return string.Join(", ", query.Select(p => p.v_Recommendation));
+        //}
+
+        public string GetResstrictionByServiceIdAndDiagnostic(string pstrServiceId, string pstrDiagnosticRepositoryId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            if (pstrDiagnosticRepositoryId == null)
+            {
+                return "";
+            }
+            var query = (from ccc in dbContext.restriction
+                join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRestrictionId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
+                where ccc.v_ServiceId == pstrServiceId &&
+                      ccc.i_IsDeleted == 0 && ccc.v_DiagnosticRepositoryId == pstrDiagnosticRepositoryId
+                select new
+                {
+                    v_Restricction = ddd.v_Name
+
+                }).ToList();
+
+
+            return string.Join(", ", query.Select(p => p.v_Restricction));
+        }
+
+        public BindingList<ServiceGridJerarquizadaList> GetServicesPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf, string pstrDxs)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from A in dbContext.service
+                            join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                            join C in dbContext.calendar on A.v_ServiceId equals C.v_ServiceId
+                            join I in dbContext.protocol on A.v_ProtocolId equals I.v_ProtocolId into I_join
+                            from I in I_join.DefaultIfEmpty()
+                            join M in dbContext.servicecomponent on A.v_ServiceId equals M.v_ServiceId into M_join
+                            from M in M_join.DefaultIfEmpty()
+                            join L in dbContext.calendar on A.v_ServiceId equals L.v_ServiceId into L_join
+                            from L in L_join.DefaultIfEmpty()
+                            join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId into J_join
+                            from J in J_join.DefaultIfEmpty()
+                            join J11 in dbContext.organization on I.v_CustomerOrganizationId equals J11.v_OrganizationId into J11_join
+                            from J11 in J11_join.DefaultIfEmpty()
+                            join J22 in dbContext.organization on I.v_WorkingOrganizationId equals J22.v_OrganizationId into J22_join
+                            from J22 in J22_join.DefaultIfEmpty()
+
+                            where A.i_IsDeleted == 0
+                            && L.i_LineStatusId == (int)LineStatus.EnCircuito && A.v_ProtocolId != null
+                            && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate
+                            select new ServiceGridJerarquizadaList
+                            {
+                                b_FechaEntrega = false,
+                                v_PersonId = B.v_PersonId,
+                                v_ServiceId = A.v_ServiceId,
+                                v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + "(HCL-" + B.v_DocNumber + ")",
+                                d_ServiceDate = A.d_ServiceDate,
+                                i_ServiceStatusId = A.i_ServiceStatusId,
+                                i_StatusLiquidation = A.i_StatusLiquidation,
+                                v_CustomerOrganizationId = I.v_CustomerOrganizationId,
+                                v_CustomerLocationId = I.v_CustomerLocationId,
+                                i_MasterServiceId = A.i_MasterServiceId,
+                                i_ServiceTypeId = I.i_MasterServiceTypeId,
+                                i_EsoTypeId = I.i_EsoTypeId,
+                                v_ProtocolId = A.v_ProtocolId,
+                                v_ProtocolName = I.v_Name,
+                                i_AptitudeStatusId = A.i_AptitudeStatusId,
+                                i_ApprovedUpdateUserId = M.i_ApprovedUpdateUserId.Value,
+                                CompMinera = J11.v_Name,
+                                Tercero = J22.v_Name,
+                                v_OrganizationName = J.v_Name,
+                                i_ServiceId = C.i_ServiceId
+                            };
+
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+                var result = query.ToList().GroupBy(g => g.v_ServiceId).Select(s => s.First()).ToList();
+
+                var list = new BindingList<ServiceGridJerarquizadaList>();
+                foreach (var r in result)
+                {
+                    var oServiceGridJerarquizadaList = new ServiceGridJerarquizadaList();
+
+                    oServiceGridJerarquizadaList.b_FechaEntrega = r.b_FechaEntrega;
+                    oServiceGridJerarquizadaList.v_PersonId = r.v_PersonId;
+                    oServiceGridJerarquizadaList.v_ServiceId = r.v_ServiceId;
+                    oServiceGridJerarquizadaList.v_Pacient = r.v_Pacient;
+                    oServiceGridJerarquizadaList.v_PacientDocument = r.v_PacientDocument;
+                    oServiceGridJerarquizadaList.d_ServiceDate = r.d_ServiceDate;
+                    oServiceGridJerarquizadaList.i_ServiceStatusId = r.i_ServiceStatusId;
+                    oServiceGridJerarquizadaList.i_StatusLiquidation = r.i_StatusLiquidation;
+                    oServiceGridJerarquizadaList.v_CustomerOrganizationId = r.v_CustomerOrganizationId;
+                    oServiceGridJerarquizadaList.v_CustomerLocationId = r.v_CustomerLocationId;
+                    oServiceGridJerarquizadaList.i_MasterServiceId = r.i_MasterServiceId;
+                    oServiceGridJerarquizadaList.i_ServiceTypeId = r.i_ServiceTypeId;
+                    oServiceGridJerarquizadaList.i_EsoTypeId = r.i_EsoTypeId;
+                    oServiceGridJerarquizadaList.v_ProtocolId = r.v_ProtocolId;
+                    oServiceGridJerarquizadaList.v_ProtocolName = r.v_ProtocolName;
+                    oServiceGridJerarquizadaList.i_AptitudeStatusId = r.i_AptitudeStatusId;
+                    oServiceGridJerarquizadaList.i_ApprovedUpdateUserId = r.i_ApprovedUpdateUserId;
+                    oServiceGridJerarquizadaList.CompMinera = r.CompMinera;
+                    oServiceGridJerarquizadaList.Tercero = r.Tercero;
+                    oServiceGridJerarquizadaList.v_OrganizationName = r.v_OrganizationName;
+                    oServiceGridJerarquizadaList.i_ServiceId = r.i_ServiceId;
+                    oServiceGridJerarquizadaList.Diagnosticos = new BindingList<DiagnosticRepositoryJerarquizada>();
+                    list.Add(oServiceGridJerarquizadaList);
+                }
+                pobjOperationResult.Success = 1;
+                return list;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+
+    }
 }

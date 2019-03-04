@@ -86,6 +86,7 @@
     <Compile Include="GeneratedAssemblers\vigilanciaserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\vigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\tramasAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
     <Compile Include="GeneratedAssemblers\testcorrunceAssembler.cs" />

@@ -339,7 +339,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void administradorDeServiciosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmService frm = new frmService();
+            frmService_ frm = new frmService_();
             frm.ShowDialog();
         }
 

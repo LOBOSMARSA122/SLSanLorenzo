@@ -377,6 +377,7 @@
     <Compile Include="Generated\vigilanciaserviceDto.cs" />
     <Compile Include="Generated\vigilanciaDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
+    <Compile Include="Generated\tramasDto.cs" />
     <Compile Include="Generated\ticketdetalleDto.cs" />
     <Compile Include="Generated\ticketDto.cs" />
     <Compile Include="Generated\testcorrunceDto.cs" />
