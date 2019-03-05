@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TramaId");
@@ -213,117 +208,45 @@
             Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.tabAmbulatorio = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ugTramasAmbulatorio = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tabEmergencia = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ugTramasEmergencia = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tabHospi = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ugTramasHospi = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tabProcedimientos = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ugTramasCirugia = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tabPartos = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ugTramasPartos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.utcSusalud = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.ugTramasAmbulatorio = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.ugTramasEmergencia = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.ugTramasHospi = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.ugTramasCirugia = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.ugTramasPartos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnGenerar = new System.Windows.Forms.Button();
             this.tabAmbulatorio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasAmbulatorio)).BeginInit();
             this.tabEmergencia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasEmergencia)).BeginInit();
             this.tabHospi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasHospi)).BeginInit();
             this.tabProcedimientos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasCirugia)).BeginInit();
             this.tabPartos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasPartos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcSusalud)).BeginInit();
             this.utcSusalud.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasAmbulatorio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasEmergencia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasHospi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasCirugia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasPartos)).BeginInit();
             this.SuspendLayout();
             // 
             // tabAmbulatorio
             // 
             this.tabAmbulatorio.Controls.Add(this.ugTramasAmbulatorio);
-            this.tabAmbulatorio.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabAmbulatorio.Location = new System.Drawing.Point(1, 23);
             this.tabAmbulatorio.Name = "tabAmbulatorio";
             this.tabAmbulatorio.Size = new System.Drawing.Size(634, 296);
-            // 
-            // tabEmergencia
-            // 
-            this.tabEmergencia.Controls.Add(this.ugTramasEmergencia);
-            this.tabEmergencia.Location = new System.Drawing.Point(-10000, -10000);
-            this.tabEmergencia.Name = "tabEmergencia";
-            this.tabEmergencia.Size = new System.Drawing.Size(634, 296);
-            // 
-            // tabHospi
-            // 
-            this.tabHospi.Controls.Add(this.ugTramasHospi);
-            this.tabHospi.Location = new System.Drawing.Point(-10000, -10000);
-            this.tabHospi.Name = "tabHospi";
-            this.tabHospi.Size = new System.Drawing.Size(634, 296);
-            // 
-            // tabProcedimientos
-            // 
-            this.tabProcedimientos.Controls.Add(this.ugTramasCirugia);
-            this.tabProcedimientos.Location = new System.Drawing.Point(-10000, -10000);
-            this.tabProcedimientos.Name = "tabProcedimientos";
-            this.tabProcedimientos.Size = new System.Drawing.Size(634, 296);
-            // 
-            // tabPartos
-            // 
-            this.tabPartos.Controls.Add(this.ugTramasPartos);
-            this.tabPartos.Location = new System.Drawing.Point(1, 23);
-            this.tabPartos.Name = "tabPartos";
-            this.tabPartos.Size = new System.Drawing.Size(634, 296);
-            // 
-            // utcSusalud
-            // 
-            this.utcSusalud.Controls.Add(this.ultraTabSharedControlsPage1);
-            this.utcSusalud.Controls.Add(this.tabAmbulatorio);
-            this.utcSusalud.Controls.Add(this.tabEmergencia);
-            this.utcSusalud.Controls.Add(this.tabHospi);
-            this.utcSusalud.Controls.Add(this.tabProcedimientos);
-            this.utcSusalud.Controls.Add(this.tabPartos);
-            this.utcSusalud.Location = new System.Drawing.Point(12, 50);
-            this.utcSusalud.Name = "utcSusalud";
-            this.utcSusalud.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.utcSusalud.Size = new System.Drawing.Size(638, 322);
-            this.utcSusalud.TabIndex = 0;
-            ultraTab1.TabPage = this.tabAmbulatorio;
-            ultraTab1.Text = "Ambulatorio";
-            ultraTab2.TabPage = this.tabEmergencia;
-            ultraTab2.Text = "Emergencia";
-            ultraTab3.TabPage = this.tabHospi;
-            ultraTab3.Text = "Hospitalización";
-            ultraTab4.TabPage = this.tabProcedimientos;
-            ultraTab4.Text = "Procedimientos / Cirugía";
-            ultraTab5.TabPage = this.tabPartos;
-            ultraTab5.Text = "Partos";
-            this.utcSusalud.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
-            ultraTab1,
-            ultraTab2,
-            ultraTab3,
-            ultraTab4,
-            ultraTab5});
-            // 
-            // ultraTabSharedControlsPage1
-            // 
-            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
-            this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(634, 296);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnAgregar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
-            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(697, 73);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(85, 31);
-            this.btnAgregar.TabIndex = 1;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // ugTramasAmbulatorio
             // 
@@ -448,6 +371,13 @@
             this.ugTramasAmbulatorio.TabIndex = 0;
             this.ugTramasAmbulatorio.Text = "ultraGrid1";
             // 
+            // tabEmergencia
+            // 
+            this.tabEmergencia.Controls.Add(this.ugTramasEmergencia);
+            this.tabEmergencia.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabEmergencia.Name = "tabEmergencia";
+            this.tabEmergencia.Size = new System.Drawing.Size(634, 296);
+            // 
             // ugTramasEmergencia
             // 
             appearance13.BackColor = System.Drawing.SystemColors.Window;
@@ -570,6 +500,13 @@
             this.ugTramasEmergencia.TabIndex = 1;
             this.ugTramasEmergencia.Text = "ultraGrid1";
             // 
+            // tabHospi
+            // 
+            this.tabHospi.Controls.Add(this.ugTramasHospi);
+            this.tabHospi.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabHospi.Name = "tabHospi";
+            this.tabHospi.Size = new System.Drawing.Size(634, 296);
+            // 
             // ugTramasHospi
             // 
             appearance25.BackColor = System.Drawing.SystemColors.Window;
@@ -690,6 +627,13 @@
             this.ugTramasHospi.TabIndex = 1;
             this.ugTramasHospi.Text = "ultraGrid1";
             // 
+            // tabProcedimientos
+            // 
+            this.tabProcedimientos.Controls.Add(this.ugTramasCirugia);
+            this.tabProcedimientos.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabProcedimientos.Name = "tabProcedimientos";
+            this.tabProcedimientos.Size = new System.Drawing.Size(634, 296);
+            // 
             // ugTramasCirugia
             // 
             appearance37.BackColor = System.Drawing.SystemColors.Window;
@@ -807,6 +751,13 @@
             this.ugTramasCirugia.Size = new System.Drawing.Size(628, 290);
             this.ugTramasCirugia.TabIndex = 1;
             this.ugTramasCirugia.Text = "ultraGrid1";
+            // 
+            // tabPartos
+            // 
+            this.tabPartos.Controls.Add(this.ugTramasPartos);
+            this.tabPartos.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPartos.Name = "tabPartos";
+            this.tabPartos.Size = new System.Drawing.Size(634, 296);
             // 
             // ugTramasPartos
             // 
@@ -931,28 +882,93 @@
             this.ugTramasPartos.TabIndex = 1;
             this.ugTramasPartos.Text = "ultraGrid1";
             // 
+            // utcSusalud
+            // 
+            this.utcSusalud.Controls.Add(this.ultraTabSharedControlsPage1);
+            this.utcSusalud.Controls.Add(this.tabAmbulatorio);
+            this.utcSusalud.Controls.Add(this.tabEmergencia);
+            this.utcSusalud.Controls.Add(this.tabHospi);
+            this.utcSusalud.Controls.Add(this.tabProcedimientos);
+            this.utcSusalud.Controls.Add(this.tabPartos);
+            this.utcSusalud.Location = new System.Drawing.Point(12, 50);
+            this.utcSusalud.Name = "utcSusalud";
+            this.utcSusalud.SharedControlsPage = this.ultraTabSharedControlsPage1;
+            this.utcSusalud.Size = new System.Drawing.Size(638, 322);
+            this.utcSusalud.TabIndex = 0;
+            ultraTab1.TabPage = this.tabAmbulatorio;
+            ultraTab1.Text = "Ambulatorio";
+            ultraTab2.TabPage = this.tabEmergencia;
+            ultraTab2.Text = "Emergencia";
+            ultraTab3.TabPage = this.tabHospi;
+            ultraTab3.Text = "Hospitalización";
+            ultraTab4.TabPage = this.tabProcedimientos;
+            ultraTab4.Text = "Procedimientos / Cirugía";
+            ultraTab5.TabPage = this.tabPartos;
+            ultraTab5.Text = "Partos";
+            this.utcSusalud.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
+            ultraTab1,
+            ultraTab2,
+            ultraTab3,
+            ultraTab4,
+            ultraTab5});
+            // 
+            // ultraTabSharedControlsPage1
+            // 
+            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(634, 296);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnAgregar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregar.Location = new System.Drawing.Point(656, 76);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(85, 35);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnGenerar.Image = global::Sigesoft.Node.WinClient.UI.Resources.arrow_refresh;
+            this.btnGenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerar.Location = new System.Drawing.Point(656, 133);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(85, 35);
+            this.btnGenerar.TabIndex = 2;
+            this.btnGenerar.Text = "Generar Tramas";
+            this.btnGenerar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            // 
             // frmTramasSusalud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 414);
+            this.ClientSize = new System.Drawing.Size(746, 414);
+            this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.utcSusalud);
             this.Name = "frmTramasSusalud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tramas SUSALUD";
             this.tabAmbulatorio.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasAmbulatorio)).EndInit();
             this.tabEmergencia.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasEmergencia)).EndInit();
             this.tabHospi.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasHospi)).EndInit();
             this.tabProcedimientos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasCirugia)).EndInit();
             this.tabPartos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugTramasPartos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcSusalud)).EndInit();
             this.utcSusalud.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasAmbulatorio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasEmergencia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasHospi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasCirugia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ugTramasPartos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -972,6 +988,7 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid ugTramasHospi;
         private Infragistics.Win.UltraWinGrid.UltraGrid ugTramasCirugia;
         private Infragistics.Win.UltraWinGrid.UltraGrid ugTramasPartos;
+        private System.Windows.Forms.Button btnGenerar;
 
     }
 }

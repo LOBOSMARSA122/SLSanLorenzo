@@ -39,6 +39,12 @@ namespace Sigesoft.Node.WinClient.UI
            
         }
 
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            frmExportTramas frm = new frmExportTramas();
+            frm.Show();
+        }
+
        
        
         
