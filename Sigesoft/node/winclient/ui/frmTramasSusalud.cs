@@ -7,11 +7,26 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Sigesoft.Node.WinClient.BE.Custom;
+using Sigesoft.Node.WinClient.BLL;
+using Sigesoft.Common;
+using Sigesoft.Node.WinClient.BE;
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid.DocumentExport;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+
+using Sigesoft.Node.Contasol.Integration;
+using NetPdf;
 
 namespace Sigesoft.Node.WinClient.UI
 {
     public partial class frmTramasSusalud : Form
     {
+        string strFilterExpression;
+        List<TramasList> _objData = new List<TramasList>();
+        TramasBL _objTramasBL = new TramasBL();
         public frmTramasSusalud()
         {
             InitializeComponent();
@@ -39,8 +54,238 @@ namespace Sigesoft.Node.WinClient.UI
            
         }
 
-       
-       
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            List<string> Filters = new List<string>();
+            if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_DiseasesName.Contains(\"" + txtPacient.Text.Trim() + "\")");
+
+            //Filters.Add("i_IsDeleted == 0");
+            strFilterExpression = null;
+            if (Filters.Count > 0)
+            {
+                foreach (string item in Filters)
+                {
+                    strFilterExpression = strFilterExpression + item + " && ";
+                }
+                strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
+            }
+
+            this.BindGrid();
+        }
+
+        private void BindGrid()
+        {
+            string tabName = utcSusalud.SelectedTab.Text;
+
+            if (tabName == "Ambulatorio")
+            {
+                var objData = GetData(0, null, "d_FechaIngreso ASC", strFilterExpression);
+                grAmbulatorio.DataSource = objData;
+
+                lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                if (objData.Count() >= 1)
+                {
+                    btnExportAmbulatorio.Enabled = true;
+                }
+                else
+                {
+                    btnExportAmbulatorio.Enabled = false;
+                }
+
+                this.grAmbulatorio.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            }
+            else if (tabName == "Emergencia")
+            {
+                var objData = GetData(0, null, "d_FechaIngreso ASC", strFilterExpression);
+                grEmergencia.DataSource = objData;
+
+                lblRecordCount1.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                if (objData.Count() >= 1)
+                {
+                    btnExportEmergencia.Enabled = true;
+                }
+                else
+                {
+                    btnExportEmergencia.Enabled = false;
+                }
+
+                this.grEmergencia.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            }
+            else if (tabName == "Hospitalización")
+            {
+                var objData = GetData(0, null, "d_FechaIngreso ASC", strFilterExpression);
+                grHospitalizacion.DataSource = objData;
+
+                lblRecordCount2.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                if (objData.Count() >= 1)
+                {
+                    btnExportHospitalizacion.Enabled = true;
+                }
+                else
+                {
+                    btnExportHospitalizacion.Enabled = false;
+                }
+
+                this.grHospitalizacion.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            }
+            else if (tabName == "Procedimientos / Cirugía")
+            {
+                var objData = GetData(0, null, "d_FechaIngreso ASC", strFilterExpression);
+                grProcedimientosCirugia.DataSource = objData;
+
+                lblRecordCount3.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                if (objData.Count() >= 1)
+                {
+                    btnExportProcedimientosCirugias.Enabled = true;
+                }
+                else
+                {
+                    btnExportProcedimientosCirugias.Enabled = false;
+                }
+
+                this.grProcedimientosCirugia.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            }
+            else if (tabName == "Partos")
+            {
+                var objData = GetData(0, null, "d_FechaIngreso ASC", strFilterExpression);
+                grPartos.DataSource = objData;
+
+                lblRecordCount3.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                if (objData.Count() >= 1)
+                {
+                    btnExportartos.Enabled = true;
+                }
+                else
+                {
+                    btnExportartos.Enabled = false;
+                }
+
+                this.grPartos.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            }
+            
+        }
+
+        private List<TramasList> GetData(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
+            DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
+
+            string tabName = utcSusalud.SelectedTab.Text;
+
+            if (tabName == "Ambulatorio")
+            {
+                _objData = _objTramasBL.GettramasPageAndFilteredAmbulatorio(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Emergencia")
+            {
+                _objData = _objTramasBL.GettramasPageAndFilteredEmergencia(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Partos")
+            {
+                _objData = _objTramasBL.GettramasPageAndFilteredPartos(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Hospitalización")
+            {
+                _objData = _objTramasBL.GettramasPageAndFilteredHospitalizacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Procedimientos / Cirugía")
+            {
+                _objData = _objTramasBL.GettramasPageAndFilteredProcedimientosCirugia(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+
+            if (objOperationResult.Success != 1)
+            {
+                MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return _objData;
+        }
+
+        private void btnExportAmbulatorio_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            NombreArchivo = "Reporte Datos Ambulatorio del " + dtpDateTimeStar.Text + " al " + dptDateTimeEnd.Text + "-tramas";
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            saveFileDialog1.FileName = NombreArchivo;
+            saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.ultraGridExcelExporter1.Export(this.grAmbulatorio, saveFileDialog1.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void btnExportEmergencia_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            NombreArchivo = "Reporte Datos Emergencia del " + dtpDateTimeStar.Text + " al " + dptDateTimeEnd.Text + "-tramas";
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            saveFileDialog1.FileName = NombreArchivo;
+            saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.ultraGridExcelExporter1.Export(this.grEmergencia, saveFileDialog1.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void btnExportHospitalizacion_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            NombreArchivo = "Reporte Datos Hospitalización del " + dtpDateTimeStar.Text + " al " + dptDateTimeEnd.Text + "-tramas";
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            saveFileDialog1.FileName = NombreArchivo;
+            saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.ultraGridExcelExporter1.Export(this.grHospitalizacion, saveFileDialog1.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void btnExportProcedimientosCirugias_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            NombreArchivo = "Reporte Datos Procedimientos/Cirugía del " + dtpDateTimeStar.Text + " al " + dptDateTimeEnd.Text + "-tramas";
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            saveFileDialog1.FileName = NombreArchivo;
+            saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.ultraGridExcelExporter1.Export(this.grProcedimientosCirugia, saveFileDialog1.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void btnExportartos_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            NombreArchivo = "Reporte Datos Partos del " + dtpDateTimeStar.Text + " al " + dptDateTimeEnd.Text + "-tramas";
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            saveFileDialog1.FileName = NombreArchivo;
+            saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.ultraGridExcelExporter1.Export(this.grPartos, saveFileDialog1.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
         
     }
 }
