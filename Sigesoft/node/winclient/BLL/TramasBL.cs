@@ -537,5 +537,54 @@ namespace Sigesoft.Node.WinClient.BLL
             }
 
         }
+
+        public tramasDto GetTrama(ref OperationResult objOperationResult, string _tramaId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                tramasDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.tramas
+                                 where a.v_TramaId == _tramaId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = tramasAssembler.ToDTO(objEntity);
+
+                objOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public void DeleteTrama(string tramaId, List<string> ClientSession)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            try
+            {
+
+                var objEntitySource1 = (from a in dbContext.tramas
+                                        where a.v_TramaId == tramaId
+                    select a).FirstOrDefault();
+
+                objEntitySource1.d_UpdateDate = DateTime.Now;
+                objEntitySource1.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                objEntitySource1.i_IsDeleted = 1;
+                dbContext.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -61,6 +61,14 @@ namespace Sigesoft.Node.WinClient.UI
             if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_DiseasesName.Contains(\"" + txtPacient.Text.Trim() + "\")");
 
             //Filters.Add("i_IsDeleted == 0");
+=======
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            frmExportTramas frm = new frmExportTramas();
+            frm.Show();
+        }
+
+>>>>>>> ef59099555e0a70c6fc2c35b46ed60a785ffcf69
             strFilterExpression = null;
             if (Filters.Count > 0)
             {
@@ -287,16 +295,6 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
         }
-=======
-        private void btnGenerar_Click(object sender, EventArgs e)
-        {
-            frmExportTramas frm = new frmExportTramas();
-            frm.Show();
-        }
-
-       
-       
->>>>>>> 843a9bf9664117348be898aa0a8af1b6103d0743
         
     }
 }

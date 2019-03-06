@@ -36,28 +36,23 @@ namespace Sigesoft.Node.WinClient.UI
         {
             string tabName = utcSusalud.SelectedTab.Text;
             frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName);
-            frmRegistroEm.Text = "Registrar: "+tabName;
-            if (tabName == "Ambulatorio" || tabName == "Emergencia"  || tabName == "Partos" || tabName == "Cirugías")
+            frmRegistroEm.Text = "Registrar: " + tabName;
+            if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Partos" || tabName == "Cirugías")
             {
                 frmRegistroEm.Size = new Size(638, 196);
             }
-            else if (tabName == "Hospitalización" )
+            else if (tabName == "Hospitalización")
             {
                 frmRegistroEm.Size = new Size(638, 236);
             }
             else if (tabName == "Procedimientos / Cirugía")
             {
                 frmRegistroEm.Size = new Size(638, 300);
-            } 
+            }
             frmRegistroEm.Show();
 
-           
         }
-	private void btnGenerar_Click(object sender, EventArgs e)
-        {
-            frmExportTramas frm = new frmExportTramas();
-            frm.Show();
-        }
+
         private void btnFilter_Click(object sender, EventArgs e)
         {
             List<string> Filters = new List<string>();
@@ -289,6 +284,77 @@ namespace Sigesoft.Node.WinClient.UI
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private void btnGenerar_Click_1(object sender, EventArgs e)
+        {
+            frmExportTramas frm = new frmExportTramas();
+            frm.Show();
+        }
+
+        private void frmTramasSusalud_Load(object sender, EventArgs e)
+        {
+            btnAgregar.Enabled = true;
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnGenerar.Enabled = true;
+
+            btnExportAmbulatorio.Enabled = false;
+            btnExportEmergencia.Enabled = false;
+            btnExportHospitalizacion.Enabled = false;
+            btnExportProcedimientosCirugias.Enabled = false;
+            btnExportartos.Enabled = false;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OperationResult objOperationResult = new OperationResult();
+
+                string tramaId = null;
+
+                string tabName = utcSusalud.SelectedTab.Text;
+
+                if (tabName == "Ambulatorio")
+                {
+                    tramaId = grAmbulatorio.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Emergencia")
+                {
+                    tramaId = grEmergencia.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Hospitalización")
+                {
+                    tramaId = grHospitalizacion.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Procedimientos / Cirugía")
+                {
+                    tramaId = grProcedimientosCirugia.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Partos")
+                {
+                    tramaId = grPartos.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+
+                DialogResult Result = MessageBox.Show("¿Está seguro de eliminar TRAMA?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (Result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    _objTramasBL.DeleteTrama(tramaId, Globals.ClientSession.GetAsList());
+                }
+                btnFilter_Click(sender, e);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("SELECCIONE UNA TRAMA A ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
         
     }

@@ -102,6 +102,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.uegbProcedimiento = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel3 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
+            this.txtProcedId = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.cbEspecialidades = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.cbProcedimiento = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.dtpFechaProced = new System.Windows.Forms.DateTimePicker();
@@ -500,6 +502,8 @@
             // 
             // ultraExpandableGroupBoxPanel3
             // 
+            this.ultraExpandableGroupBoxPanel3.Controls.Add(this.txtProcedId);
+            this.ultraExpandableGroupBoxPanel3.Controls.Add(this.label16);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.cbEspecialidades);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.cbProcedimiento);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.dtpFechaProced);
@@ -513,6 +517,23 @@
             this.ultraExpandableGroupBoxPanel3.Name = "ultraExpandableGroupBoxPanel3";
             this.ultraExpandableGroupBoxPanel3.Size = new System.Drawing.Size(597, 95);
             this.ultraExpandableGroupBoxPanel3.TabIndex = 0;
+            // 
+            // txtProcedId
+            // 
+            this.txtProcedId.Enabled = false;
+            this.txtProcedId.Location = new System.Drawing.Point(468, 0);
+            this.txtProcedId.Name = "txtProcedId";
+            this.txtProcedId.Size = new System.Drawing.Size(121, 20);
+            this.txtProcedId.TabIndex = 125;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(407, 4);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 124;
+            this.label16.Text = "Proced_Id";
             // 
             // cbEspecialidades
             // 
@@ -626,7 +647,7 @@
             this.cbProcedimiento.Name = "cbProcedimiento";
             this.cbProcedimiento.Size = new System.Drawing.Size(591, 22);
             this.cbProcedimiento.TabIndex = 121;
-            this.cbProcedimiento.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbDx_RowSelected);
+            this.cbProcedimiento.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbProcedimiento_RowSelected);
             // 
             // dtpFechaProced
             // 
@@ -658,11 +679,11 @@
             // 
             // txtUpsId_2
             // 
+            this.txtUpsId_2.Enabled = false;
             this.txtUpsId_2.Location = new System.Drawing.Point(263, 0);
             this.txtUpsId_2.Name = "txtUpsId_2";
             this.txtUpsId_2.Size = new System.Drawing.Size(121, 20);
             this.txtUpsId_2.TabIndex = 3;
-            this.txtUpsId_2.Visible = false;
             // 
             // label10
             // 
@@ -681,7 +702,6 @@
             this.label23.Size = new System.Drawing.Size(44, 13);
             this.label23.TabIndex = 0;
             this.label23.Text = "UPS_Id";
-            this.label23.Visible = false;
             // 
             // uegbParto
             // 
@@ -989,5 +1009,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtUpsId_2;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtProcedId;
+        private System.Windows.Forms.Label label16;
     }
 }
