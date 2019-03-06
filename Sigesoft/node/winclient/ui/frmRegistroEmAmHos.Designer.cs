@@ -132,6 +132,8 @@
             this.cbTipoCirugia = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.cbProgramacion = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtProcedId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.uegbAmb)).BeginInit();
             this.uegbAmb.SuspendLayout();
             this.ultraExpandableGroupBoxPanel1.SuspendLayout();
@@ -473,11 +475,11 @@
             // 
             // txtUpsId_1
             // 
+            this.txtUpsId_1.Enabled = false;
             this.txtUpsId_1.Location = new System.Drawing.Point(269, 2);
             this.txtUpsId_1.Name = "txtUpsId_1";
             this.txtUpsId_1.Size = new System.Drawing.Size(121, 20);
             this.txtUpsId_1.TabIndex = 3;
-            this.txtUpsId_1.Visible = false;
             // 
             // label22
             // 
@@ -487,7 +489,6 @@
             this.label22.Size = new System.Drawing.Size(44, 13);
             this.label22.TabIndex = 0;
             this.label22.Text = "UPS_Id";
-            this.label22.Visible = false;
             // 
             // uegbProcedimiento
             // 
@@ -505,7 +506,9 @@
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.dtpFechaProced);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.label9);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.label11);
+            this.ultraExpandableGroupBoxPanel3.Controls.Add(this.txtProcedId);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.txtUpsId_2);
+            this.ultraExpandableGroupBoxPanel3.Controls.Add(this.label16);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.label10);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.label23);
             this.ultraExpandableGroupBoxPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -626,7 +629,7 @@
             this.cbProcedimiento.Name = "cbProcedimiento";
             this.cbProcedimiento.Size = new System.Drawing.Size(591, 22);
             this.cbProcedimiento.TabIndex = 121;
-            this.cbProcedimiento.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbDx_RowSelected);
+            this.cbProcedimiento.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbProcedimiento_RowSelected);
             // 
             // dtpFechaProced
             // 
@@ -658,11 +661,11 @@
             // 
             // txtUpsId_2
             // 
+            this.txtUpsId_2.Enabled = false;
             this.txtUpsId_2.Location = new System.Drawing.Point(263, 0);
             this.txtUpsId_2.Name = "txtUpsId_2";
             this.txtUpsId_2.Size = new System.Drawing.Size(121, 20);
             this.txtUpsId_2.TabIndex = 3;
-            this.txtUpsId_2.Visible = false;
             // 
             // label10
             // 
@@ -681,7 +684,6 @@
             this.label23.Size = new System.Drawing.Size(44, 13);
             this.label23.TabIndex = 0;
             this.label23.Text = "UPS_Id";
-            this.label23.Visible = false;
             // 
             // uegbParto
             // 
@@ -888,6 +890,23 @@
             this.cbProgramacion.Size = new System.Drawing.Size(121, 21);
             this.cbProgramacion.TabIndex = 2;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(401, 4);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Proced_Id";
+            // 
+            // txtProcedId
+            // 
+            this.txtProcedId.Enabled = false;
+            this.txtProcedId.Location = new System.Drawing.Point(467, 0);
+            this.txtProcedId.Name = "txtProcedId";
+            this.txtProcedId.Size = new System.Drawing.Size(121, 20);
+            this.txtProcedId.TabIndex = 3;
+            // 
             // frmRegistroEmAmHos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -989,5 +1008,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtUpsId_2;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtProcedId;
+        private System.Windows.Forms.Label label16;
     }
 }
