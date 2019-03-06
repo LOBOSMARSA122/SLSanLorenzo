@@ -117,6 +117,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 organizationId = lector.GetValue(0).ToString();
             }
             lector.Close();
+            conectasam.closesigesoft();
             var serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
             var serviceIdarray = new List<string>();
             serviceIdarray.Add(serviceId);

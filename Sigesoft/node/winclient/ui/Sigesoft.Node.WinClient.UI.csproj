@@ -461,6 +461,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportCarneVacuna.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ExcelDocument.cs" />
     <Compile Include="FormPrecioComponente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1181,6 +1182,12 @@
     </Compile>
     <Compile Include="frmExamenesRealizadosCompleto.Designer.cs">
       <DependentUpon>frmExamenesRealizadosCompleto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportTramas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportTramas.Designer.cs">
+      <DependentUpon>frmExportTramas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFecha.cs">
       <SubType>Form</SubType>
@@ -3738,6 +3745,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmExamenesRealizadosCompleto.resx">
       <DependentUpon>frmExamenesRealizadosCompleto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportTramas.resx">
+      <DependentUpon>frmExportTramas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFecha.resx">
       <DependentUpon>frmFecha.cs</DependentUpon>

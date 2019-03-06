@@ -2779,6 +2779,7 @@ namespace Sigesoft.Node.WinClient.BLL
            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
            SqlDataReader lector = comando.ExecuteReader();
            lector.Close();
+           conectasam.closesigesoft();
        }
    }
 }
