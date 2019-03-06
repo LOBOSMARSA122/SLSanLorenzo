@@ -6128,6 +6128,8 @@
     <None Include="Dataset\ReportCarneVacuna.xss">
       <DependentUpon>ReportCarneVacuna.xsd</DependentUpon>
     </None>
+    <None Include="frmTramasSusalud.cs.orig" />
+    <None Include="frmTramasSusalud.Designer.cs.orig" />
     <None Include="Gerencia\Crystals\DsGerenciaMes.xsc">
       <DependentUpon>DsGerenciaMes.xsd</DependentUpon>
     </None>
