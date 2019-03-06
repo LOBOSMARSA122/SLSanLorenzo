@@ -33038,7 +33038,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         }
                     }
                     lector.Close();
-                    conectasam.closesigesoft();
+
                     if (ocupacional == true)
                     {
                         monto += GetServiceComponentsLiquidacion(ref objOperationResult1, serviceId).Sum(s => s.r_Price).Value;

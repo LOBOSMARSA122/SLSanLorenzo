@@ -59,7 +59,6 @@ namespace Sigesoft.Node.WinClient.UI
                 confirm = lector.GetValue(0).ToString();
             }
             lector.Close();
-            conectasam.closesigesoft();
             return confirm;
         }
 

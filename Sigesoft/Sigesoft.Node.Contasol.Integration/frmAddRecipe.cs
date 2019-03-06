@@ -128,7 +128,6 @@ namespace Sigesoft.Node.Contasol.Integration
                             factor = lector.GetValue(0).ToString();
                         }
                         lector.Close();
-                        conectasam.closesigesoft();
                         decimal nuevoPrecio = decimal.Parse(factor) * decimal.Parse(txtPrecio.Text);
                         _recetaDto.d_SaldoPaciente = (resultplan[0].d_Importe / 100) * (nuevoPrecio * _recetaDto.d_Cantidad);
                         _recetaDto.d_SaldoAseguradora = (nuevoPrecio * _recetaDto.d_Cantidad) - _recetaDto.d_SaldoPaciente;

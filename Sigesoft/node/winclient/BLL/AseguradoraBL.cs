@@ -151,7 +151,6 @@ namespace Sigesoft.Node.WinClient.BLL
                             factor = lector.GetValue(0).ToString();
                         }
                         lector.Close();
-                        conectasam.closesigesoft();
                         oLiquiAseguradoraDetalle.PrecioUnitario = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].d_PrecioVenta.Value * decimal.Parse(factor);
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }

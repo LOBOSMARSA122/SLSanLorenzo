@@ -151,7 +151,7 @@ namespace NetPdf
                 MedicoTratante = lector.GetValue(5).ToString();
             }
             lector.Close();
-            conectasam.closesigesoft();
+
             var cellsTit2 = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
