@@ -53,11 +53,8 @@ namespace Sigesoft.Node.WinClient.UI
 
            
         }
-	private void btnGenerar_Click(object sender, EventArgs e)
-        {
-            frmExportTramas frm = new frmExportTramas();
-            frm.Show();
-        }
+
+<<<<<<< HEAD
         private void btnFilter_Click(object sender, EventArgs e)
         {
             List<string> Filters = new List<string>();
@@ -290,6 +287,16 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
         }
+=======
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            frmExportTramas frm = new frmExportTramas();
+            frm.Show();
+        }
+
+       
+       
+>>>>>>> 843a9bf9664117348be898aa0a8af1b6103d0743
         
     }
 }
