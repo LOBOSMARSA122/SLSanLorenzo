@@ -322,6 +322,7 @@
     <Compile Include="Custom\TicketList.cs" />
     <Compile Include="Custom\TiempoTrabajador.cs" />
     <Compile Include="Custom\TrabajadoresConcatenados.cs" />
+    <Compile Include="Custom\TramasList.cs" />
     <Compile Include="Custom\TypeOfEEPList.cs" />
     <Compile Include="Custom\Ubigeo.cs" />
     <Compile Include="Custom\UcAcumetria.cs" />
