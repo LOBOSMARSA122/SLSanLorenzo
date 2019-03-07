@@ -373,7 +373,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramasBL.AddTramas(ref objOperationResult, _tramaDto, Globals.ClientSession.GetAsList());
                 }
                 MessageBox.Show("Registro Exitoso", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                
             }
             else if (_mode == "Edit")
             {
@@ -432,7 +432,6 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramasBL.UpdateTrama(ref objOperationResult, _tramaDto, Globals.ClientSession.GetAsList());
                 }
                 MessageBox.Show("Actualización Exitosa", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
             }
         }
         private void cbDx_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)
