@@ -693,7 +693,34 @@ namespace Sigesoft.Node.WinClient.BLL
                return null;
            }
        }
-      
+
+       public List<ServiceComponentList> GetOrdenReportes_(ref OperationResult pobjOperationResult, string pstrEmpresaPlantillaId)
+       {
+           //mon.IsActive = true;
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+               var query = from A in dbContext.ordenreporte
+                   where A.v_OrganizationId == pstrEmpresaPlantillaId
+                        select new ServiceComponentList
+                   {
+                       v_ComponentId = A.v_ComponenteId,
+                       v_ComponentName = A.v_NombreReporte,
+                       i_Orden = A.i_Orden.Value,
+                   };
+
+               List<ServiceComponentList> objData = query.ToList();
+               pobjOperationResult.Success = 1;
+               return objData;
+
+           }
+           catch (Exception ex)
+           {
+               pobjOperationResult.Success = 0;
+               pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+               return null;
+           }
+       }
        public void AddOrdenReportes(ref OperationResult pobjOperationResult, List<ordenreporteDto> pobjDtoEntity, List<string> ClientSession)
        {
            //mon.IsActive = true;

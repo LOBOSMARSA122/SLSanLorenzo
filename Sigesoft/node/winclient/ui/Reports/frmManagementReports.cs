@@ -93,6 +93,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             }
             else
             {
+                //QUERY
                 serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
 
                 //serviceComponents.Add(new ServiceComponentList {  v_ComponentName = "CONSENTIMIENTO INFORMADO ", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO });
@@ -379,8 +380,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             ConsolidadoReportes.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "INFORME DE LABORATORIO", v_ComponentId = Constants.INFORME_LABORATORIO_CLINICO });
             ConsolidadoReportes.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "AUDIOMETRIA AUDIOMAX", v_ComponentId = Constants.AUDIOMETRIA_AUDIOMAX_ID });
             serviceComponents.Add(new ServiceComponentList { Orden = 50, v_ComponentName = "INFORME DE TRABAJADOR INTERNACIONAL", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_CI });
-            
 
+            //QUERY
             var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
             var ResultadoAnexo3121 = serviceComponents11.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
             if (ResultadoAnexo3121.Count() != 0)
@@ -445,8 +446,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var ListaOrdenReportes = oOrganizationBL.GetOrdenReportes(ref objOperationResult, _EmpresaClienteId);
 
             #region lógica de exoneración
-
-            //var serviceComponenteStatusRx = _serviceBL.ServiceComponentStatusByCategoria(6, _serviceId);
+            //QUERY
+            var serviceComponenteStatusRx = _serviceBL.ServiceComponentStatusByCategoria(6, _serviceId);
             //var serviceComponenteStatusLab = _serviceBL.ServiceComponentStatusByCategoria(1, _serviceId);
             //var serviceComponenteStatusEsp = _serviceBL.ServiceComponentStatusByCategoria(16, _serviceId);
             //var datosPac = _pacientBL.DevolverDatosPaciente(_serviceId);
@@ -704,7 +705,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             // Cargar ListBox de Fichas            
             List<ServiceComponentList> fichasMedicas = new List<ServiceComponentList>();
 
-
+            //QUERY
             var serviceComponents1 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
             string[] ExamenBioquimica = new string[] 
             { 

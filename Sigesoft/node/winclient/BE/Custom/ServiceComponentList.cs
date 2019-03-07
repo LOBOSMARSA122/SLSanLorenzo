@@ -103,5 +103,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public decimal? d_Importe { get; set; }
         public int? i_ConCargoA { get; set; }
+        public int? i_Orden { get; set; }
+        public int i_GenderId { get; set; }
     }
 }

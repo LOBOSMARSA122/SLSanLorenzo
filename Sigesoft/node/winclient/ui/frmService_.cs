@@ -2932,8 +2932,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnReportAsync_Click(object sender, EventArgs e)
         {
-            var frm = new Reports.frmManagementReportAsync(_EmpresaClienteId, _serviceId,_pacientId);
-            frm.ShowDialog();
+        
         }
 
         private void button2_Click_1(object sender, EventArgs e)

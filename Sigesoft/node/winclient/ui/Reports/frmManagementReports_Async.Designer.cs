@@ -1,6 +1,6 @@
 ﻿namespace Sigesoft.Node.WinClient.UI.Reports
 {
-    partial class frmManagementReportAsync
+    partial class frmManagementReports_Async
     {
         /// <summary>
         /// Required designer variable.
@@ -92,21 +92,20 @@
             this.btnConsolidadoReportes.UseVisualStyleBackColor = false;
             this.btnConsolidadoReportes.Click += new System.EventHandler(this.btnConsolidadoReportes_Click);
             // 
-            // frmManagementReportAsync
+            // frmManagementReports_Async
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 389);
             this.Controls.Add(this.groupBox4);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmManagementReportAsync";
+            this.Name = "frmManagementReports_Async";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administrador Reportes Asíncrono";
-            this.Load += new System.EventHandler(this.frmManagementReportAsync_Load);
+            this.Text = "Administrador de Reportes";
+            this.Load += new System.EventHandler(this.frmManagementReports_Async_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);

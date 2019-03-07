@@ -2197,8 +2197,6 @@ namespace Sigesoft.Node.WinClient.UI
             
         }
 
-      
-
         private void btnImprimirExamenes_Click(object sender, EventArgs e)
         {
 
@@ -2959,7 +2957,6 @@ namespace Sigesoft.Node.WinClient.UI
                   
         }
 
-
         private void btnHistoriaCl_Click(object sender, EventArgs e)
         {
             OperationResult _objOperationResult = new OperationResult();
@@ -2992,7 +2989,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnReportAsync_Click(object sender, EventArgs e)
         {
-            var frm = new Reports.frmManagementReportAsync(_EmpresaClienteId, _serviceId,_pacientId);
+            var frm = new Reports.frmManagementReports_Async( _serviceId,_EmpresaClienteId,_pacientId, _customerOrganizationName);
             frm.ShowDialog();
         }
 
