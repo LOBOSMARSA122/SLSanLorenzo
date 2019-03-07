@@ -247,6 +247,7 @@ namespace Sigesoft.Node.WinClient.UI
             grdDataService.DataSource = objData;
 
             grdDataService.DisplayLayout.Bands[0].Columns["v_PersonId"].Hidden = true;
+            grdDataService.DisplayLayout.Bands[0].Columns["b_FechaEntrega"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["v_ServiceStatusName"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["i_ServiceStatusId"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["v_LocationName"].Hidden = true;

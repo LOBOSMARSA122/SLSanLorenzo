@@ -393,6 +393,7 @@
             this.cbDx.Size = new System.Drawing.Size(314, 22);
             this.cbDx.TabIndex = 121;
             this.cbDx.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbDx_RowSelected);
+            this.cbDx.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbDx_MouseDown);
             // 
             // uegbHospi
             // 
