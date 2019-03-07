@@ -133,7 +133,7 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_TramaId");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_TramaId");
             this.tabAmbulatorio = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grAmbulatorio = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCount = new System.Windows.Forms.Label();
@@ -191,7 +191,7 @@
             this.tabAmbulatorio.Controls.Add(this.grAmbulatorio);
             this.tabAmbulatorio.Controls.Add(this.lblRecordCount);
             this.tabAmbulatorio.Controls.Add(this.btnExportAmbulatorio);
-            this.tabAmbulatorio.Location = new System.Drawing.Point(1, 23);
+            this.tabAmbulatorio.Location = new System.Drawing.Point(-10000, -10000);
             this.tabAmbulatorio.Name = "tabAmbulatorio";
             this.tabAmbulatorio.Size = new System.Drawing.Size(873, 435);
             // 
@@ -457,7 +457,7 @@
             this.tabHospi.Controls.Add(this.grHospitalizacion);
             this.tabHospi.Controls.Add(this.lblRecordCount2);
             this.tabHospi.Controls.Add(this.btnExportHospitalizacion);
-            this.tabHospi.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabHospi.Location = new System.Drawing.Point(1, 23);
             this.tabHospi.Name = "tabHospi";
             this.tabHospi.Size = new System.Drawing.Size(873, 435);
             // 
@@ -1041,11 +1041,11 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn4});
+            ultraDataColumn1});
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnGenerar.Image = global::Sigesoft.Node.WinClient.UI.Resources.arrow_refresh;
             this.btnGenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

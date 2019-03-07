@@ -35,9 +35,9 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string tabName = utcSusalud.SelectedTab.Text;
-            frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName);
+            frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName, string.Empty, "New");
             frmRegistroEm.Text = "Registrar: " + tabName;
-            if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Partos" || tabName == "Cirugías")
+            if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Partos")
             {
                 frmRegistroEm.Size = new Size(638, 196);
             }
@@ -50,7 +50,7 @@ namespace Sigesoft.Node.WinClient.UI
                 frmRegistroEm.Size = new Size(638, 300);
             }
             frmRegistroEm.Show();
-
+            btnFilter_Click(sender, e);
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -308,7 +308,60 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                OperationResult objOperationResult = new OperationResult();
 
+                string tramaId = null;
+
+                string tabName = utcSusalud.SelectedTab.Text;
+
+                if (tabName == "Ambulatorio")
+                {
+                    tramaId = grAmbulatorio.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Emergencia")
+                {
+                    tramaId = grEmergencia.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Hospitalización")
+                {
+                    tramaId = grHospitalizacion.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Procedimientos / Cirugía")
+                {
+                    tramaId = grProcedimientosCirugia.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+                else if (tabName == "Partos")
+                {
+                    tramaId = grPartos.Selected.Rows[0].Cells["v_TramaId"].Value.ToString();
+                }
+
+
+                //string tabName = utcSusalud.SelectedTab.Text;
+                frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName, tramaId, "Edit");
+                frmRegistroEm.Text = "Editar: " + tabName;
+                if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Partos")
+                {
+                    frmRegistroEm.Size = new Size(638, 196);
+                }
+                else if (tabName == "Hospitalización")
+                {
+                    frmRegistroEm.Size = new Size(638, 236);
+                }
+                else if (tabName == "Procedimientos / Cirugía")
+                {
+                    frmRegistroEm.Size = new Size(638, 300);
+                }
+                frmRegistroEm.Show();
+                btnFilter_Click(sender, e);
+           }
+            catch (Exception exception)
+            {
+                MessageBox.Show("SELECCIONE UNA TRAMA A EDITAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
+            }
+            btnFilter_Click(sender, e);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -353,8 +406,8 @@ namespace Sigesoft.Node.WinClient.UI
             catch (Exception exception)
             {
                 MessageBox.Show("SELECCIONE UNA TRAMA A ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
             }
-            
         }
         
     }
