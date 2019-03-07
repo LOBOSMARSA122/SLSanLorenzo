@@ -105,6 +105,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnCargoFactura = new System.Windows.Forms.Button();
             this.btnCargoHistorias = new System.Windows.Forms.Button();
+            this.btnGenerarIds = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnQuitarChek = new System.Windows.Forms.Button();
             this.btnActualizarCulminado = new System.Windows.Forms.Button();
@@ -134,7 +135,6 @@
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.btnBotonOculto = new System.Windows.Forms.Button();
             this.btnInforme312 = new System.Windows.Forms.Button();
-            this.btnGenerarIds = new System.Windows.Forms.Button();
             this.btnGenerarLiquidacion = new System.Windows.Forms.Button();
             this.btnInformeOftalmo = new System.Windows.Forms.Button();
             this.btnHis = new System.Windows.Forms.Button();
@@ -743,7 +743,7 @@
             ultraGridColumn50.Header.Caption = "Paciente";
             ultraGridColumn50.Header.VisiblePosition = 2;
             ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn1.Width = 61;
+            ultraGridColumn1.Width = 29;
             ultraGridColumn28.Header.VisiblePosition = 11;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn5,
@@ -761,7 +761,7 @@
             ultraGridBand1.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.Yes;
             ultraGridColumn51.ColSpan = ((short)(3));
             ultraGridColumn51.Header.VisiblePosition = 0;
-            ultraGridColumn51.Width = 258;
+            ultraGridColumn51.Width = 292;
             ultraGridColumn52.Header.VisiblePosition = 1;
             ultraGridColumn52.Hidden = true;
             ultraGridColumn53.ColSpan = ((short)(4));
@@ -991,6 +991,29 @@
             this.btnCargoHistorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCargoHistorias.UseVisualStyleBackColor = false;
             this.btnCargoHistorias.Click += new System.EventHandler(this.btnCargoHistorias_Click);
+            // 
+            // btnGenerarIds
+            // 
+            this.btnGenerarIds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerarIds.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGenerarIds.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGenerarIds.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGenerarIds.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGenerarIds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarIds.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarIds.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerarIds.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
+            this.btnGenerarIds.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarIds.Location = new System.Drawing.Point(1032, 491);
+            this.btnGenerarIds.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarIds.Name = "btnGenerarIds";
+            this.btnGenerarIds.Size = new System.Drawing.Size(85, 36);
+            this.btnGenerarIds.TabIndex = 141;
+            this.btnGenerarIds.Text = "Generar Ids";
+            this.btnGenerarIds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerarIds.UseVisualStyleBackColor = false;
+            this.btnGenerarIds.Visible = false;
+            this.btnGenerarIds.Click += new System.EventHandler(this.btnGenerarIds_Click);
             // 
             // btnExport
             // 
@@ -1522,29 +1545,6 @@
             this.btnInforme312.UseVisualStyleBackColor = false;
             this.btnInforme312.Visible = false;
             this.btnInforme312.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnGenerarIds
-            // 
-            this.btnGenerarIds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerarIds.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGenerarIds.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnGenerarIds.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnGenerarIds.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnGenerarIds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerarIds.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarIds.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerarIds.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
-            this.btnGenerarIds.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarIds.Location = new System.Drawing.Point(1032, 491);
-            this.btnGenerarIds.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGenerarIds.Name = "btnGenerarIds";
-            this.btnGenerarIds.Size = new System.Drawing.Size(85, 36);
-            this.btnGenerarIds.TabIndex = 141;
-            this.btnGenerarIds.Text = "Generar Ids";
-            this.btnGenerarIds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGenerarIds.UseVisualStyleBackColor = false;
-            this.btnGenerarIds.Visible = false;
-            this.btnGenerarIds.Click += new System.EventHandler(this.btnGenerarIds_Click);
             // 
             // btnGenerarLiquidacion
             // 
