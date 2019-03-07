@@ -80,7 +80,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         v_TramaId = a.v_TramaId,
                         v_TipoRegistro = a.v_TipoRegistro,
                         d_FechaIngreso = a.d_FechaIngreso,
-                        Genero = a.i_Genero == 0 ? "MASC" : "FEM",
+                        Genero = a.i_Genero == 1 ? "MASC" : "FEM",
                         GrupoEtario = a.GrupoEtario,
                         v_DiseasesName = a.v_DiseasesName,
                         v_CIE10Id = a.v_CIE10Id,
@@ -165,7 +165,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                          v_TramaId = a.v_TramaId,
                                          v_TipoRegistro = a.v_TipoRegistro,
                                          d_FechaIngreso = a.d_FechaIngreso,
-                                         Genero = a.i_Genero == 0 ? "MASC" : "FEM",
+                                         Genero = a.i_Genero == 1 ? "MASC" : "FEM",
                                          GrupoEtario = a.GrupoEtario,
                                          v_DiseasesName = a.v_DiseasesName,
                                          v_CIE10Id = a.v_CIE10Id,
@@ -232,7 +232,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 User_Act = E.i_SystemUserId == null ? "---" : F.v_FirstName + " " + F.v_FirstLastName + " " + F.v_SecondLastName,
                                 d_FechaAlta = A.d_FechaAlta.Value,
                                 i_UPS = A.i_UPS.Value,
-                                ups_Detail = G.v_Value1,
+                                i_Procedimiento = A.i_Procedimiento,
+                                ups_Detail = G.v_Value1
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -264,7 +265,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                          v_TramaId = a.v_TramaId,
                                          v_TipoRegistro = a.v_TipoRegistro,
                                          d_FechaIngreso = a.d_FechaIngreso,
-                                         Genero = a.i_Genero == 0 ? "MASC" : "FEM",
+                                         Genero = a.i_Genero == 1 ? "MASC" : "FEM",
                                          GrupoEtario = a.GrupoEtario,
                                          v_DiseasesName = a.v_DiseasesName,
                                          v_CIE10Id = a.v_CIE10Id,
@@ -538,6 +539,47 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public void UpdateTrama(ref OperationResult pobjOperationResult, tramasDto pobjDtoEntity, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.tramas
+                                       where a.v_TramaId == pobjDtoEntity.v_TramaId
+                                       select a).FirstOrDefault();
+
+                // Crear la entidad con los datos actualizados
+                pobjDtoEntity.i_IsDeleted = 0;
+                pobjDtoEntity.d_UpdateDate = DateTime.Now;
+                pobjDtoEntity.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                tramas objEntity = tramasAssembler.ToEntity(pobjDtoEntity);
+
+                // Copiar los valores desde la entidad actualizada a la Entidad Fuente
+                dbContext.tramas.ApplyCurrentValues(objEntity);
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TRAMA", "v_TramaId=" + objEntity.v_TramaId.ToString(), Success.Ok, null);
+
+                return;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TRAMA", "v_TramaId=" + pobjDtoEntity.v_TramaId.ToString(), Success.Failed, pobjOperationResult.ExceptionMessage);
+
+                return;
+            }
+        }
         public tramasDto GetTrama(ref OperationResult objOperationResult, string _tramaId)
         {
             try
