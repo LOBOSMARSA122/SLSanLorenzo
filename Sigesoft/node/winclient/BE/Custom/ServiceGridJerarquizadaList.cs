@@ -8,6 +8,10 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class ServiceGridJerarquizadaList
     {
+        public ServiceGridJerarquizadaList()
+        {
+            Diagnosticos = new BindingList<DiagnosticRepositoryJerarquizada>();
+        }
         public bool b_FechaEntrega { get; set; }
         public DateTime? d_FechaEntrega { get; set; }
         public string v_ServiceId { get; set; }
