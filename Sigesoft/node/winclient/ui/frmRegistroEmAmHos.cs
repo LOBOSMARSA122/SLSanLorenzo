@@ -515,5 +515,14 @@ namespace Sigesoft.Node.WinClient.UI
             lector.Close();
             conectasam.closesigesoft();
         }
+
+        private void cbDx_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (cbDx.Text != "")
+            {
+                cbDx.SelectionStart = 0;
+                cbDx.SelectionLength = cbDx.Text.Length;
+            }
+        }
     }
 }
