@@ -631,6 +631,7 @@
             // 
             // label15
             // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.SystemColors.HighlightText;
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -644,6 +645,7 @@
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -657,6 +659,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Gold;
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -680,6 +683,7 @@
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnCargoFactura);
             this.groupBox2.Controls.Add(this.btnCargoHistorias);
+            this.groupBox2.Controls.Add(this.btnGenerarIds);
             this.groupBox2.Controls.Add(this.btnExport);
             this.groupBox2.Controls.Add(this.btnQuitarChek);
             this.groupBox2.Controls.Add(this.btnActualizarCulminado);
@@ -821,10 +825,10 @@
             this.grdDataService.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.grdDataService.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdDataService.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.grdDataService.Location = new System.Drawing.Point(6, 69);
+            this.grdDataService.Location = new System.Drawing.Point(6, 29);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
-            this.grdDataService.Size = new System.Drawing.Size(1126, 392);
+            this.grdDataService.Size = new System.Drawing.Size(1126, 474);
             this.grdDataService.TabIndex = 158;
             this.grdDataService.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataService_InitializeLayout);
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
@@ -837,12 +841,14 @@
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(689, 480);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 155;
             this.button2.Text = "EGRESO";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // btnReportAsync
@@ -858,7 +864,7 @@
             this.btnReportAsync.ForeColor = System.Drawing.Color.Black;
             this.btnReportAsync.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
             this.btnReportAsync.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportAsync.Location = new System.Drawing.Point(1041, 486);
+            this.btnReportAsync.Location = new System.Drawing.Point(1138, 488);
             this.btnReportAsync.Margin = new System.Windows.Forms.Padding(2);
             this.btnReportAsync.Name = "btnReportAsync";
             this.btnReportAsync.Size = new System.Drawing.Size(85, 36);
@@ -953,7 +959,7 @@
             this.btnCargoFactura.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargoFactura.ForeColor = System.Drawing.Color.Black;
             this.btnCargoFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargoFactura.Location = new System.Drawing.Point(1136, 495);
+            this.btnCargoFactura.Location = new System.Drawing.Point(952, 465);
             this.btnCargoFactura.Margin = new System.Windows.Forms.Padding(2);
             this.btnCargoFactura.Name = "btnCargoFactura";
             this.btnCargoFactura.Size = new System.Drawing.Size(85, 36);
@@ -989,7 +995,6 @@
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.Enabled = false;
             this.btnExport.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1036,7 +1041,7 @@
             this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
             this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarCulminado.Location = new System.Drawing.Point(1136, 455);
+            this.btnActualizarCulminado.Location = new System.Drawing.Point(1138, 444);
             this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarCulminado.Name = "btnActualizarCulminado";
             this.btnActualizarCulminado.Size = new System.Drawing.Size(85, 36);
@@ -1094,7 +1099,7 @@
             this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
             this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarAptitud.Location = new System.Drawing.Point(1137, 415);
+            this.btnActualizarAptitud.Location = new System.Drawing.Point(1138, 404);
             this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarAptitud.Name = "btnActualizarAptitud";
             this.btnActualizarAptitud.Size = new System.Drawing.Size(85, 36);
@@ -1530,7 +1535,7 @@
             this.btnGenerarIds.ForeColor = System.Drawing.Color.Black;
             this.btnGenerarIds.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
             this.btnGenerarIds.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarIds.Location = new System.Drawing.Point(941, 624);
+            this.btnGenerarIds.Location = new System.Drawing.Point(1032, 491);
             this.btnGenerarIds.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerarIds.Name = "btnGenerarIds";
             this.btnGenerarIds.Size = new System.Drawing.Size(85, 36);
@@ -1939,7 +1944,6 @@
             this.Controls.Add(this.chkFC);
             this.Controls.Add(this.btnInforme312);
             this.Controls.Add(this.FechaControlFin);
-            this.Controls.Add(this.btnGenerarIds);
             this.Controls.Add(this.FechaControlIni);
             this.Controls.Add(this.btnGenerarLiquidacion);
             this.Controls.Add(this.label12);

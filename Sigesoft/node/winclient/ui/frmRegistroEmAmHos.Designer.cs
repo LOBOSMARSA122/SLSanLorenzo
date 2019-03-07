@@ -219,10 +219,13 @@
             // 
             // txtCie10
             // 
+            this.txtCie10.Enabled = false;
+            this.txtCie10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCie10.Location = new System.Drawing.Point(470, 34);
             this.txtCie10.Name = "txtCie10";
             this.txtCie10.Size = new System.Drawing.Size(121, 20);
             this.txtCie10.TabIndex = 3;
+            this.txtCie10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -475,10 +478,13 @@
             // 
             // txtUpsId_1
             // 
+            this.txtUpsId_1.Enabled = false;
+            this.txtUpsId_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUpsId_1.Location = new System.Drawing.Point(269, 2);
             this.txtUpsId_1.Name = "txtUpsId_1";
             this.txtUpsId_1.Size = new System.Drawing.Size(121, 20);
             this.txtUpsId_1.TabIndex = 3;
+            this.txtUpsId_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUpsId_1.Visible = false;
             // 
             // label22
@@ -521,10 +527,12 @@
             // txtProcedId
             // 
             this.txtProcedId.Enabled = false;
+            this.txtProcedId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProcedId.Location = new System.Drawing.Point(468, 0);
             this.txtProcedId.Name = "txtProcedId";
             this.txtProcedId.Size = new System.Drawing.Size(121, 20);
             this.txtProcedId.TabIndex = 125;
+            this.txtProcedId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label16
             // 
@@ -680,10 +688,12 @@
             // txtUpsId_2
             // 
             this.txtUpsId_2.Enabled = false;
+            this.txtUpsId_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUpsId_2.Location = new System.Drawing.Point(263, 0);
             this.txtUpsId_2.Name = "txtUpsId_2";
             this.txtUpsId_2.Size = new System.Drawing.Size(121, 20);
             this.txtUpsId_2.TabIndex = 3;
+            this.txtUpsId_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 

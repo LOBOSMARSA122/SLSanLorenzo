@@ -430,6 +430,8 @@ namespace Sigesoft.Node.WinClient.UI
             #endregion
 
             conectasam.closesigesoft();
+            this.Close();
+            MessageBox.Show("Generación Exitosa", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void GenerartxtH0()
@@ -864,7 +866,7 @@ namespace Sigesoft.Node.WinClient.UI
                 if (Directory.Exists(path))
                 {
                     MessageBox.Show("La Carpeta ya existe, verifique e intente nuevamente", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                    this.Close();
                 }
                 DirectoryInfo di = Directory.CreateDirectory(path);
             }

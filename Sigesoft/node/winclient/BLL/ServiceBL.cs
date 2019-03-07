@@ -16079,17 +16079,16 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 								 });
-
+                var Valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.FUNCIONES_VITALES_ID);
 				var sql = (from a in objEntity.ToList()
 						   select new ServiceList
 						   {
 
-							   FC = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID, "NOCOMBO", 0, "SI"),
-							   PA = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_PAS_ID, "NOCOMBO", 0, "SI"),
-							   FR = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID, "NOCOMBO", 0, "SI"),
-							   //IMC = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_im_ID, "NOCOMBO", 0, "SI"),
-							   Sat = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_SAT_O2_ID, "NOCOMBO", 0, "SI"),
-							   PAD = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_PAD_ID, "NOCOMBO", 0, "SI")
+                               FC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID, "NOCOMBO", 0, "SI"),
+                               PA = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_PAS_ID, "NOCOMBO", 0, "SI"),
+                               FR = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID, "NOCOMBO", 0, "SI"),
+                               Sat = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_SAT_O2_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_SAT_O2_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_SAT_O2_ID, "NOCOMBO", 0, "SI"),
+                               PAD = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAD_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.FUNCIONES_VITALES_PAD_ID, "NOCOMBO", 0, "SI")
 
 						   }).ToList();
 
@@ -16141,13 +16140,13 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 								 }).ToList();
-
+                var Valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.ANTROPOMETRIA_ID);
 				var sql = (from a in objEntity.ToList()
 						   select new ServiceList
 						   {
-							   IMC = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ANTROPOMETRIA_IMC_ID, "NOCOMBO", 0, "SI"),
-							   Peso = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ANTROPOMETRIA_PESO_ID, "NOCOMBO", 0, "SI"),
-							   talla = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ANTROPOMETRIA_TALLA_ID, "NOCOMBO", 0, "SI"),
+                               IMC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_IMC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_IMC_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ANTROPOMETRIA_IMC_ID, "NOCOMBO", 0, "SI"),
+                               Peso = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ANTROPOMETRIA_PESO_ID, "NOCOMBO", 0, "SI"),
+                               talla = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ANTROPOMETRIA_TALLA_ID, "NOCOMBO", 0, "SI"),
 						   }).ToList();
 
 				return sql;
@@ -18750,7 +18749,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
+                var Valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.RX_TORAX_ID);
 				var sql = (from a in objEntity.ToList()
 						   select new ReportRadiologico
 						   {
@@ -18764,18 +18763,18 @@ namespace Sigesoft.Node.WinClient.BLL
 							   d_BirthDate = a.d_BirthDate,
 							   Edad = GetAge(a.d_BirthDate.Value),
 
-							   Vertices = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_VERTICES_ID, "NOCOMBO", 0, "SI"),
-							   CamposPulmonares = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAMPOS_PULMONARES_ID, "NOCOMBO", 0, "SI"),
-							   SenosCosto = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COSTO_ODIAFRAGMATICO_ID, "NOCOMBO", 0, "SI"),
-							   SenosCardio = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SENOS_CARDIOFRENICOS_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
-							   Mediastinos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIASTINOS_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
-							   Silueta = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SILUETA_CARDIACA_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
-							   Indice = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INDICE_CARDIACO_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
-							   PartesBlandas = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PARTES_BLANDAS_OSEAS_ID, "NOCOMBO", 0, "SI"),
-							   Conclusiones = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
-							   Hilos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HILOS_ID, "NOCOMBO", 0, "SI"),
+                               Vertices = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_VERTICES_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_VERTICES_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_VERTICES_ID, "NOCOMBO", 0, "SI"), 
+							   CamposPulmonares = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAMPOS_PULMONARES_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAMPOS_PULMONARES_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAMPOS_PULMONARES_ID, "NOCOMBO", 0, "SI"),
+							   SenosCosto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COSTO_ODIAFRAGMATICO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COSTO_ODIAFRAGMATICO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COSTO_ODIAFRAGMATICO_ID, "NOCOMBO", 0, "SI"),
+							   SenosCardio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SENOS_CARDIOFRENICOS_DESCRIPCION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SENOS_CARDIOFRENICOS_DESCRIPCION_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SENOS_CARDIOFRENICOS_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+							   Mediastinos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIASTINOS_DESCRIPCION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIASTINOS_DESCRIPCION_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIASTINOS_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+							   Silueta = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SILUETA_CARDIACA_DESCRIPCION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SILUETA_CARDIACA_DESCRIPCION_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SILUETA_CARDIACA_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+							   Indice = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INDICE_CARDIACO_DESCRIPCION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INDICE_CARDIACO_DESCRIPCION_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INDICE_CARDIACO_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+							   PartesBlandas = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PARTES_BLANDAS_OSEAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PARTES_BLANDAS_OSEAS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PARTES_BLANDAS_OSEAS_ID, "NOCOMBO", 0, "SI"),
+							   Conclusiones = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+							   Hilos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HILOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HILOS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HILOS_ID, "NOCOMBO", 0, "SI"),
 							   Hallazgos = GetDiagnosticByServiceIdAndComponent(a.v_ServiceId, pstrComponentId),
-							   CodigoPlaca = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CODIGO_PLACA_ID, "NOCOMBO", 0, "SI"),
+							   CodigoPlaca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CODIGO_PLACA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CODIGO_PLACA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CODIGO_PLACA_ID, "NOCOMBO", 0, "SI"),
 
 							   b_Logo = MedicalCenter.b_Image,
 							   EmpresaPropietaria = MedicalCenter.v_Name,
@@ -19414,8 +19413,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
-				var sql = (from a in objEntity.ToList()
+                var Valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.PRUEBA_ESFUERZO_ID);
+				var sql = (from a in objEntity.ToList()                           
 						   select new ReportEsfuerzoFisico
 						   {
 							   Ficha = a.Ficha,
@@ -19431,218 +19430,124 @@ namespace Sigesoft.Node.WinClient.BLL
 							   NombreTecnico = a.NombreTecnico,
 
 
-							   FumadorSiNo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_FUMADOR_ID, "NOCOMBO", 0, "SI"),
-							   DiabeticoSiNo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DIABETICO_ID, "NOCOMBO", 0, "SI"),
-							   InfartoSiNo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_PRIOR_ID, "NOCOMBO", 0, "SI"),
-							   FamiliarSiNo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ANGINA_ID, "NOCOMBO", 0, "SI"),
-
-							   PriorSiNo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_INFARTO_ID, "NOCOMBO", 0, "SI"),
-							   AnginaSiNo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ANTECEDENTE_FAMILIAR_ID, "NOCOMBO", 0, "SI"),
-
-							   PReposoInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_INICIO_ID, "NOCOMBO", 0, "SI"),
-							   PReposoDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_DURACION_ID, "NOCOMBO", 0, "SI"),
-							   PReposoVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-							   PReposoInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-							   PReposoMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_MTS_ID, "NOCOMBO", 0, "SI"),
-							   PReposoFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_FC_ID, "NOCOMBO", 0, "SI"),
-							   PReposoPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_PAS_ID, "NOCOMBO", 0, "SI"),
-							   PReposoProducto = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-							   PReposoComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-							   PEsfuerzoInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoProducto = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-
-							   PEsfuerzoComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-							   SEsfuerzoInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoProducto = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-
-							   SEsfuerzoComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-							   TEsfuerzoInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoProducto = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-
-							   TEsfuerzoComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-							   CEsfuerzoInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoProducto = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-
-							   CEsfuerzoComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-							   PRecuperacionInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_DURACION_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_MTS_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_FC_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PAS_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionProtocolo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-
-							   PRecuperacionComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-							   SRecuperacionInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_DURACION_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_MTS_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_FC_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PAS_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionProducto = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-
-							   SRecuperacionComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-							   SReposoInicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_INICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoDuracion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_DURACION_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoVelocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoInclinacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoMTS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_MTS_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_FC_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoPAS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_PAS_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoProducto = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
-
-							   SReposoComentario = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
-
-
-
-
+                               FumadorSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_FUMADOR_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_FUMADOR_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_FUMADOR_ID, "NOCOMBO", 0, "SI"),
+                               DiabeticoSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DIABETICO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DIABETICO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DIABETICO_ID, "NOCOMBO", 0, "SI"),
+                               InfartoSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_PRIOR_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_PRIOR_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_PRIOR_ID, "NOCOMBO", 0, "SI"),
+                               FamiliarSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ANGINA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ANGINA_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ANGINA_ID, "NOCOMBO", 0, "SI"),
+
+                               PriorSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_INFARTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_INFARTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_INFARTO_ID, "NOCOMBO", 0, "SI"),
+                               AnginaSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ANTECEDENTE_FAMILIAR_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ANTECEDENTE_FAMILIAR_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ANTECEDENTE_FAMILIAR_ID, "NOCOMBO", 0, "SI"),
+
+                               PReposoInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               PReposoDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               PReposoVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               PReposoInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               PReposoMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_MTS_ID, "NOCOMBO", 0, "SI"),
+                               PReposoFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_FC_ID, "NOCOMBO", 0, "SI"),
+                               PReposoPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_PAS_ID, "NOCOMBO", 0, "SI"),
+                               PReposoProducto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               PReposoComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_REPOSO_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_REPOSO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
+
+
+                               PEsfuerzoInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoProducto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               PEsfuerzoComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_ESFUERZO_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
+
+                               SEsfuerzoInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoProducto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               SEsfuerzoComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_ESFUERZO_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
+
+                               TEsfuerzoInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoProducto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               TEsfuerzoComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_T_ESFUERZO_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_T_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
+
+                               CEsfuerzoInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_MTS_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_FC_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PAS_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoProducto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               CEsfuerzoComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_C_ESFUERZO_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_C_ESFUERZO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
+
+                               PRecuperacionInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_MTS_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_FC_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PAS_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionProtocolo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               PRecuperacionComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_RECUPERACION_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_RECUPERACION_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
+
+                               SRecuperacionInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_MTS_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_FC_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PAS_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionProducto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               SRecuperacionComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_RECUPERACION_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_RECUPERACION_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
+
+                               SReposoInicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_INICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_INICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_INICIO_ID, "NOCOMBO", 0, "SI"),
+                               SReposoDuracion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_DURACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_DURACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_DURACION_ID, "NOCOMBO", 0, "SI"),
+                               SReposoVelocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               SReposoInclinacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_INCLINACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_INCLINACION_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_INCLINACION_ID, "NOCOMBO", 0, "SI"),
+                               SReposoMTS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_MTS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_MTS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_MTS_ID, "NOCOMBO", 0, "SI"),
+                               SReposoFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_FC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_FC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_FC_ID, "NOCOMBO", 0, "SI"),
+                               SReposoPAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_PAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_PAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_PAS_ID, "NOCOMBO", 0, "SI"),
+                               SReposoProducto = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_PRODUCTO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_PRODUCTO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_PRODUCTO_ID, "NOCOMBO", 0, "SI"),
+                               SReposoComentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_COMENTARIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_S_REPOSO_COMENTARIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_S_REPOSO_COMENTARIO_ID, "NOCOMBO", 0, "SI"),
 
 							   //-----------------------------------------------------------------
 
-
-
-							   TiempoEjercicio = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_TIEMPO_EJERCICIO_ID, "NOCOMBO", 0, "SI"),
-
-							   CPV = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CPVS_ID, "NOCOMBO", 0, "SI"),
-
-							   Derv = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DERIV_100_UVST_ID, "NOCOMBO", 0, "SI"),
-
-							   Velocidad = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
-
-							   Pendiente = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_PENDIENTE_ID, "NOCOMBO", 0, "SI"),
-
-							   METS = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_METS_ID, "NOCOMBO", 0, "SI"),
-
-							   FCardiaca = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_F_CARDIACA_ID, "NOCOMBO", 0, "SI"),
-
-							   PSistolica = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_SISTOLICA_ID, "NOCOMBO", 0, "SI"),
-
-							   PDiastolica = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DIASTOLICA_ID, "NOCOMBO", 0, "SI"),
-
-							   FCxTA = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_FCXTA_ID, "NOCOMBO", 0, "SI"),
-
-							   IndiceSTFC = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_INDICE_STFC_ID, "NOCOMBO", 0, "SI"),
-
-							   Objetivo = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_OBJETIVO_ID, "NOCOMBO", 0, "SI"),
-
-							   ElevacionST = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ID, "NOCOMBO", 0, "SI"),
-
-							   ElevacionSTEn = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ELEVACION_ST_EN_ID, "NOCOMBO", 0, "SI"),
-
-							   ElevacionSTAlos = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
-
-							   DepresionST = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ID, "NOCOMBO", 0, "SI"),
-
-							   DepresionSTEn = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DEPRESION_ST_EN_ID, "NOCOMBO", 0, "SI"),
-
-							   DepresionSTAlos = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
-
-							   CambioElevacion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ID, "NOCOMBO", 0, "SI"),
-
-							   CambioElevacionEn = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_EN_ID, "NOCOMBO", 0, "SI"),
-
-							   CambioElevacionAlos = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
-
-							   CambioDepresion = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ID, "NOCOMBO", 0, "SI"),
-
-							   CambioDepresionEn = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_EN_ID, "NOCOMBO", 0, "SI"),
-
-							   CambioDepresionAlos = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
-
-							   Razones = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_RAZONES_FINALIZAR_ID, "NOCOMBO", 0, "SI"),
-
-							   Conclusiones = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CONCLUSIONES_ID, "NOCOMBO", 0, "SI"),
-
-							   Sintomas = GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_SINTOMAS_ID, "NOCOMBO", 0, "SI"),
+                               TiempoEjercicio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_TIEMPO_EJERCICIO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_TIEMPO_EJERCICIO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_TIEMPO_EJERCICIO_ID, "NOCOMBO", 0, "SI"),
+                               CPV = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CPVS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CPVS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CPVS_ID, "NOCOMBO", 0, "SI"),
+                               Derv = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DERIV_100_UVST_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DERIV_100_UVST_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DERIV_100_UVST_ID, "NOCOMBO", 0, "SI"),
+                               Velocidad = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_VELOCIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_VELOCIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_VELOCIDAD_ID, "NOCOMBO", 0, "SI"),
+                               Pendiente = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_PENDIENTE_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_PENDIENTE_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_PENDIENTE_ID, "NOCOMBO", 0, "SI"),
+                               METS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_METS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_METS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_METS_ID, "NOCOMBO", 0, "SI"),
+                               FCardiaca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_F_CARDIACA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_F_CARDIACA_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_F_CARDIACA_ID, "NOCOMBO", 0, "SI"),
+                               PSistolica = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_SISTOLICA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_P_SISTOLICA_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_P_SISTOLICA_ID, "NOCOMBO", 0, "SI"),
+                               PDiastolica = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DIASTOLICA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DIASTOLICA_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DIASTOLICA_ID, "NOCOMBO", 0, "SI"),
+                               FCxTA = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_FCXTA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_FCXTA_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_FCXTA_ID, "NOCOMBO", 0, "SI"),
+                               IndiceSTFC = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_INDICE_STFC_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_INDICE_STFC_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_INDICE_STFC_ID, "NOCOMBO", 0, "SI"),
+                               Objetivo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_OBJETIVO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_OBJETIVO_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_OBJETIVO_ID, "NOCOMBO", 0, "SI"),
+                               ElevacionST = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ID, "NOCOMBO", 0, "SI"),
+                               ElevacionSTEn = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ELEVACION_ST_EN_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ELEVACION_ST_EN_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ELEVACION_ST_EN_ID, "NOCOMBO", 0, "SI"),
+                               ElevacionSTAlos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ALOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ALOS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_ELEVACION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
+                               DepresionST = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ID, "NOCOMBO", 0, "SI"),
+                               DepresionSTEn = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DEPRESION_ST_EN_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DEPRESION_ST_EN_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DEPRESION_ST_EN_ID, "NOCOMBO", 0, "SI"),
+                               DepresionSTAlos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ALOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ALOS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_DEPRESION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
+                               CambioElevacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ID, "NOCOMBO", 0, "SI"),
+                               CambioElevacionEn = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_EN_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_EN_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_EN_ID, "NOCOMBO", 0, "SI"),
+                               CambioElevacionAlos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ALOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ALOS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_ELEVACION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
+                               CambioDepresion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ID, "NOCOMBO", 0, "SI"),
+                               CambioDepresionEn = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_EN_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_EN_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_EN_ID, "NOCOMBO", 0, "SI"),
+                               CambioDepresionAlos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ALOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ALOS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CAMBIO_DEPRESION_ST_ALOS_ID, "NOCOMBO", 0, "SI"),
+                               Razones = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_RAZONES_FINALIZAR_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_RAZONES_FINALIZAR_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_RAZONES_FINALIZAR_ID, "NOCOMBO", 0, "SI"),
+                               Conclusiones = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CONCLUSIONES_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_CONCLUSIONES_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_CONCLUSIONES_ID, "NOCOMBO", 0, "SI"),
+                               Sintomas = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_SINTOMAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.PRUEBA_ESFUERZO_SINTOMAS_ID).v_Value1,//GetServiceComponentFielValue(a.HistoriaClinica, Constants.PRUEBA_ESFUERZO_ID, Constants.PRUEBA_ESFUERZO_SINTOMAS_ID, "NOCOMBO", 0, "SI"),
 
 
 
@@ -20120,94 +20025,94 @@ namespace Sigesoft.Node.WinClient.BLL
 							   Lector = a.Lector,
 							   Edad = GetAge(a.FechaNacimiento.Value),
                                Placa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_NRO_PLACA_ID, "NOCOMBO", 0, "SI"),
-							   CalidaRadio = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CALIDAD_ID, "NOCOMBO", 0, "SI"),
-							   Causas = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAUSAS_ID, "NOCOMBO", 0, "SI"),
-							   Comentario = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIOS_ID, "NOCOMBO", 0, "SI"),
+                               CalidaRadio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID).v_Value1Name,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CALIDAD_ID, "NOCOMBO", 0, "SI"),
+                               Causas = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAUSAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAUSAS_ID).v_Value1Name,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAUSAS_ID, "NOCOMBO", 0, "SI"),
+                               Comentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIOS_ID, "NOCOMBO", 0, "SI"),
 							   Hcl = a.Hcl,
-							   FechaLectura = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_LECTURA_ID, "NOCOMBO", 0, "SI"),
-							   FechaRadiografia = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_TOMA_ID, "NOCOMBO", 0, "SI"),
+                               FechaLectura = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_LECTURA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_LECTURA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_LECTURA_ID, "NOCOMBO", 0, "SI"),
+                               FechaRadiografia = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_TOMA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_TOMA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_TOMA_ID, "NOCOMBO", 0, "SI"),
 
-							   SuperiorDerecho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
-							   SuperiorIzquierda = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
-							   MedioDerecho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_DERECHO_ID, "NOCOMBO", 0, "SI"),
-							   MedioIzquierda = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
-							   InferiorDerecho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
-							   InferiorIzquierdo = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
+                               SuperiorDerecho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_DERECHO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
+                               SuperiorIzquierda = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_IZQUIERDO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_IZQUIERDO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
+                               MedioDerecho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_DERECHO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_DERECHO_ID, "NOCOMBO", 0, "SI"),
+                               MedioIzquierda = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_IZQUIERDO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_IZQUIERDO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
+                               InferiorDerecho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_DERECHO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
+                               InferiorIzquierdo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_IZQUIERDO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_IZQUIERDO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
 
-							   SimboloSi = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_SI_ID, "NOCOMBO", 0, "SI"),
-							   SimboloNo = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_NO_ID, "NOCOMBO", 0, "SI"),
+                               SimboloSi = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_SI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_SI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_SI_ID, "NOCOMBO", 0, "SI"),
+                               SimboloNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_NO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_NO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_NO_ID, "NOCOMBO", 0, "SI"),
 
-							   CeroNada = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_NADA_ID, "NOCOMBO", 0, "SI"),
-							   CeroCero = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_0_ID, "NOCOMBO", 0, "SI"),
-							   CeroUno = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_1_ID, "NOCOMBO", 0, "SI"),
+                               CeroNada = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_NADA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_NADA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_NADA_ID, "NOCOMBO", 0, "SI"),
+                               CeroCero = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_0_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_0_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_0_ID, "NOCOMBO", 0, "SI"),
+                               CeroUno = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_1_ID, "NOCOMBO", 0, "SI"),
 
-							   UnoCero = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_0_ID, "NOCOMBO", 0, "SI"),
-							   UnoUno = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_1_ID, "NOCOMBO", 0, "SI"),
-							   UnoDos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_2_ID, "NOCOMBO", 0, "SI"),
+                               UnoCero = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_0_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_0_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_0_ID, "NOCOMBO", 0, "SI"),
+                               UnoUno = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_1_ID, "NOCOMBO", 0, "SI"),
+                               UnoDos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_2_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_2_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_2_ID, "NOCOMBO", 0, "SI"),
 
-							   DosUno = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_1_ID, "NOCOMBO", 0, "SI"),
-							   DosDos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_2_ID, "NOCOMBO", 0, "SI"),
-							   DosTres = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_3_ID, "NOCOMBO", 0, "SI"),
+                               DosUno = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_1_ID, "NOCOMBO", 0, "SI"),
+                               DosDos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_2_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_2_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_2_ID, "NOCOMBO", 0, "SI"),
+                               DosTres = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_3_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_3_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_3_ID, "NOCOMBO", 0, "SI"),
 
-							   TresDos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_2_ID, "NOCOMBO", 0, "SI"),
-							   TresTres = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_3_ID, "NOCOMBO", 0, "SI"),
-							   TresMas = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_MAS_ID, "NOCOMBO", 0, "SI"),
+                               TresDos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_2_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_2_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_2_ID, "NOCOMBO", 0, "SI"),
+                               TresTres = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_3_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_3_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_3_ID, "NOCOMBO", 0, "SI"),
+                               TresMas = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_MAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_MAS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_MAS_ID, "NOCOMBO", 0, "SI"),
 
-							   p = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P_ID, "NOCOMBO", 0, "SI"),
-							   q = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q_ID, "NOCOMBO", 0, "SI"),
-							   r = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R_ID, "NOCOMBO", 0, "SI"),
-							   s = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S_ID, "NOCOMBO", 0, "SI"),
-							   t = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T_ID, "NOCOMBO", 0, "SI"),
-							   u = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U_ID, "NOCOMBO", 0, "SI"),
-							   p1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P1_ID, "NOCOMBO", 0, "SI"),
-							   q1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q1_ID, "NOCOMBO", 0, "SI"),
-							   r1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R1_ID, "NOCOMBO", 0, "SI"),
-							   s1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S1_ID, "NOCOMBO", 0, "SI"),
-							   t1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T1_ID, "NOCOMBO", 0, "SI"),
-							   u1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U1_ID, "NOCOMBO", 0, "SI"),
-
-
-							   O = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_D_ID, "NOCOMBO", 0, "SI"),
-							   A = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_A_ID, "NOCOMBO", 0, "SI"),
-							   B = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_B_ID, "NOCOMBO", 0, "SI"),
-							   C = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_C_ID, "NOCOMBO", 0, "SI"),
-							   //SimboloSiNo= GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIM, "NOCOMBO", 0, "SI"), 
-							   aa = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AA_ID, "NOCOMBO", 0, "SI"),
-							   at = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AT_ID, "NOCOMBO", 0, "SI"),
-							   ax = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AX_ID, "NOCOMBO", 0, "SI"),
-							   bu = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_BU_ID, "NOCOMBO", 0, "SI"),
-							   ca = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CA_ID, "NOCOMBO", 0, "SI"),
-							   cg = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CG_ID, "NOCOMBO", 0, "SI"),
-							   cn = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CN_ID, "NOCOMBO", 0, "SI"),
-							   co = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CO_ID, "NOCOMBO", 0, "SI"),
-							   cp = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CP_ID, "NOCOMBO", 0, "SI"),
-							   cv = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CV_ID, "NOCOMBO", 0, "SI"),
+                               p = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P_ID, "NOCOMBO", 0, "SI"),
+                               q = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q_ID, "NOCOMBO", 0, "SI"),
+                               r = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R_ID, "NOCOMBO", 0, "SI"),
+                               s = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S_ID, "NOCOMBO", 0, "SI"),
+                               t = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T_ID, "NOCOMBO", 0, "SI"),
+                               u = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U_ID, "NOCOMBO", 0, "SI"),
+                               p1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P1_ID, "NOCOMBO", 0, "SI"),
+                               q1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q1_ID, "NOCOMBO", 0, "SI"),
+                               r1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R1_ID, "NOCOMBO", 0, "SI"),
+                               s1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S1_ID, "NOCOMBO", 0, "SI"),
+                               t1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T1_ID, "NOCOMBO", 0, "SI"),
+                               u1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U1_ID, "NOCOMBO", 0, "SI"),
 
 
-
-							   di = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_DI_ID, "NOCOMBO", 0, "SI"),
-							   ef = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EF_ID, "NOCOMBO", 0, "SI"),
-							   em = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EM_ID, "NOCOMBO", 0, "SI"),
-							   es = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ES_ID, "NOCOMBO", 0, "SI"),
-							   fr = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FR_ID, "NOCOMBO", 0, "SI"),
-							   hi = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HI_ID, "NOCOMBO", 0, "SI"),
-							   ho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HO_ID, "NOCOMBO", 0, "SI"),
-							   id = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ID_ID, "NOCOMBO", 0, "SI"),
-							   ih = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_IH_ID, "NOCOMBO", 0, "SI"),
-							   kl = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_KL_ID, "NOCOMBO", 0, "SI"),
-							   me = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ME_ID, "NOCOMBO", 0, "SI"),
-							   od = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_OD_ID, "NOCOMBO", 0, "SI"),
-							   pa = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PA_ID, "NOCOMBO", 0, "SI"),
-							   pb = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PB_ID, "NOCOMBO", 0, "SI"),
-							   pi = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PI_ID, "NOCOMBO", 0, "SI"),
-							   px = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PX_ID, "NOCOMBO", 0, "SI"),
-							   ra = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RA_ID, "NOCOMBO", 0, "SI"),
-							   rp = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RP_ID, "NOCOMBO", 0, "SI"),
-							   tb = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_TB_ID, "NOCOMBO", 0, "SI"),
-							   Comentario_Od = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIO_OD_ID, "NOCOMBO", 0, "SI"),
+                               O = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_D_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_D_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_D_ID, "NOCOMBO", 0, "SI"),
+                               A = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_A_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_A_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_A_ID, "NOCOMBO", 0, "SI"),
+                               B = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_B_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_B_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_B_ID, "NOCOMBO", 0, "SI"),
+                               C = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_C_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_C_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_C_ID, "NOCOMBO", 0, "SI"),
+							   //SimboloSiNo= Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID).v_Value1Name,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIM, "NOCOMBO", 0, "SI"), 
+                               aa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AA_ID, "NOCOMBO", 0, "SI"),
+                               at = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AT_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AT_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AT_ID, "NOCOMBO", 0, "SI"),
+                               ax = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AX_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AX_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AX_ID, "NOCOMBO", 0, "SI"),
+                               bu = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_BU_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_BU_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_BU_ID, "NOCOMBO", 0, "SI"),
+                               ca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CA_ID, "NOCOMBO", 0, "SI"),
+                               cg = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CG_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CG_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CG_ID, "NOCOMBO", 0, "SI"),
+                               cn = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CN_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CN_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CN_ID, "NOCOMBO", 0, "SI"),
+                               co = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CO_ID, "NOCOMBO", 0, "SI"),
+                               cp = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CP_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CP_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CP_ID, "NOCOMBO", 0, "SI"),
+                               cv = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CV_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CV_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CV_ID, "NOCOMBO", 0, "SI"),
 
 
-							   Conclusiones = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+
+                               di = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_DI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_DI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_DI_ID, "NOCOMBO", 0, "SI"),
+                               ef = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EF_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EF_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EF_ID, "NOCOMBO", 0, "SI"),
+                               em = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EM_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EM_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EM_ID, "NOCOMBO", 0, "SI"),
+                               es = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ES_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ES_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ES_ID, "NOCOMBO", 0, "SI"),
+                               fr = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FR_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FR_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FR_ID, "NOCOMBO", 0, "SI"),
+                               hi = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HI_ID, "NOCOMBO", 0, "SI"),
+                               ho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HO_ID, "NOCOMBO", 0, "SI"),
+                               id = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ID_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ID_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ID_ID, "NOCOMBO", 0, "SI"),
+                               ih = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_IH_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_IH_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_IH_ID, "NOCOMBO", 0, "SI"),
+                               kl = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_KL_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_KL_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_KL_ID, "NOCOMBO", 0, "SI"),
+                               me = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ME_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ME_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ME_ID, "NOCOMBO", 0, "SI"),
+                               od = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_OD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_OD_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_OD_ID, "NOCOMBO", 0, "SI"),
+                               pa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PA_ID, "NOCOMBO", 0, "SI"),
+                               pb = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PB_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PB_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PB_ID, "NOCOMBO", 0, "SI"),
+                               pi = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PI_ID, "NOCOMBO", 0, "SI"),
+                               px = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PX_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PX_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PX_ID, "NOCOMBO", 0, "SI"),
+                               ra = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RA_ID, "NOCOMBO", 0, "SI"),
+                               rp = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RP_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RP_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RP_ID, "NOCOMBO", 0, "SI"),
+                               tb = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_TB_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_TB_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_TB_ID, "NOCOMBO", 0, "SI"),
+                               Comentario_Od = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIO_OD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIO_OD_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIO_OD_ID, "NOCOMBO", 0, "SI"),
+
+
+                               Conclusiones = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
 							   Dx = GetDiagnosticByServiceIdAndComponent(a.v_ServiceId, pstrComponentId),
 
 							   b_Logo = MedicalCenter.b_Image,
@@ -20283,7 +20188,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
+                var Valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.TAMIZAJE_DERMATOLOGIO_ID);
 				var sql = (from a in objEntity.ToList()
 						   select new ReportTamizajeDermatologico
 						   {
@@ -20295,29 +20200,29 @@ namespace Sigesoft.Node.WinClient.BLL
 							   FirmaMedico = a.FirmaMedico,
 							   FirmaTrabajador = a.FirmaTrabajador,
 							   HuellaTrabajador = a.HuellaTrabajador,
-							   SufreEnfermedadPielSiNo = GetServiceComponentFielValue(pstrserviceId, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SUFRE_UD_ENFERMEDAD_PIEL_ID, "NOCOMBO", 0, "SI"),
-							   SiQueDxTiene = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_QUE_DX_TIENE_ID, "NOCOMBO", 0, "SI"),
-							   ActualmenteLesionSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ACTUALMENTE_LESION_ID, "NOCOMBO", 0, "SI"),
-							   DondeLocalizaLesion = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_DONDE_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
-							   CuantoTieneLesion = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_CUANTO_TIENE_LESION_ID, "NOCOMBO", 0, "SI"),
-							   PresentaColoracionPielSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_COLORACION_PIEL_ID, "NOCOMBO", 0, "SI"),
-							   LesionRepiteVariasAniosSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_LESIONES_REPITE_VARIAS_ANIOS_ID, "NOCOMBO", 0, "SI"),
-							   EnrrojecimientoParteCuerpoSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_PARTE_CUERPO_ID, "NOCOMBO", 0, "SI"),
-							   EnrrojecimientoLocaliza = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_SI_DONDE_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
-							   TieneComezonSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_TIENE_COMEZON_ID, "NOCOMBO", 0, "SI"),
-							   ComezonLocaliza = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_COMEZON_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
-							   HinchazonParteCuerpoSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_ID, "NOCOMBO", 0, "SI"),
-							   HinchazonParteCuerpoLocaliza = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_DONDE_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
-							   AlergiaAsmaSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ALERGIA_ASMA_ID, "NOCOMBO", 0, "SI"),
-							   EppSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_USA_EPP_ID, "NOCOMBO", 0, "SI"),
-							   TipoProteccionUsa = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_TIPO_PROTECCION_USA_ID, "NOCOMBO", 0, "SI"),
-							   CambioUnasSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_CAMBIO_UNAS_ID, "NOCOMBO", 0, "SI"),
-							   TomandoMedicacionSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_TOMANDO_ALGUNA_MEDICACION_ID, "NOCOMBO", 0, "SI"),
-							   ComoLlamaMedicacion = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_COMO_SE_LLAMA_ID, "NOCOMBO", 0, "SI"),
-							   DosisFrecuencia = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DOSIS_FRECUENCIA_ID, "NOCOMBO", 0, "SI"),
-							   Descripcion = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID, "NOCOMBO", 0, "SI"),
-							   DermatopiaSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
-							   NikolskySiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
+                               SufreEnfermedadPielSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SUFRE_UD_ENFERMEDAD_PIEL_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SUFRE_UD_ENFERMEDAD_PIEL_ID).v_Value1,//GetServiceComponentFielValue(pstrserviceId, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SUFRE_UD_ENFERMEDAD_PIEL_ID, "NOCOMBO", 0, "SI"),
+                               SiQueDxTiene = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_QUE_DX_TIENE_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_QUE_DX_TIENE_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_QUE_DX_TIENE_ID, "NOCOMBO", 0, "SI"),
+                               ActualmenteLesionSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ACTUALMENTE_LESION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ACTUALMENTE_LESION_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ACTUALMENTE_LESION_ID, "NOCOMBO", 0, "SI"),
+                               DondeLocalizaLesion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_DONDE_LOCALIZA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_DONDE_LOCALIZA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_DONDE_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
+                               CuantoTieneLesion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_CUANTO_TIENE_LESION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_CUANTO_TIENE_LESION_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_CUANTO_TIENE_LESION_ID, "NOCOMBO", 0, "SI"),
+                               PresentaColoracionPielSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_COLORACION_PIEL_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_COLORACION_PIEL_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_COLORACION_PIEL_ID, "NOCOMBO", 0, "SI"),
+                               LesionRepiteVariasAniosSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_LESIONES_REPITE_VARIAS_ANIOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_LESIONES_REPITE_VARIAS_ANIOS_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_LESIONES_REPITE_VARIAS_ANIOS_ID, "NOCOMBO", 0, "SI"),
+                               EnrrojecimientoParteCuerpoSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_PARTE_CUERPO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_PARTE_CUERPO_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_PARTE_CUERPO_ID, "NOCOMBO", 0, "SI"),
+                               EnrrojecimientoLocaliza = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_SI_DONDE_LOCALIZA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_SI_DONDE_LOCALIZA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ENRROJECIMIENTO_SI_DONDE_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
+                               TieneComezonSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_TIENE_COMEZON_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_TIENE_COMEZON_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_TIENE_COMEZON_ID, "NOCOMBO", 0, "SI"),
+                               ComezonLocaliza = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_COMEZON_LOCALIZA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_COMEZON_LOCALIZA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_COMEZON_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
+                               HinchazonParteCuerpoSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_ID, "NOCOMBO", 0, "SI"),
+                               HinchazonParteCuerpoLocaliza = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_DONDE_LOCALIZA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_DONDE_LOCALIZA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_HINCHAZON_PARTE_CUERPO_DONDE_LOCALIZA_ID, "NOCOMBO", 0, "SI"),
+                               AlergiaAsmaSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ALERGIA_ASMA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_ALERGIA_ASMA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_ALERGIA_ASMA_ID, "NOCOMBO", 0, "SI"),
+                               EppSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_USA_EPP_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_USA_EPP_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_USA_EPP_ID, "NOCOMBO", 0, "SI"),
+                               TipoProteccionUsa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_TIPO_PROTECCION_USA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_TIPO_PROTECCION_USA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_TIPO_PROTECCION_USA_ID, "NOCOMBO", 0, "SI"),
+                               CambioUnasSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_CAMBIO_UNAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_CAMBIO_UNAS_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_PRESENTA_CAMBIO_UNAS_ID, "NOCOMBO", 0, "SI"),
+                               TomandoMedicacionSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_TOMANDO_ALGUNA_MEDICACION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_TOMANDO_ALGUNA_MEDICACION_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_TOMANDO_ALGUNA_MEDICACION_ID, "NOCOMBO", 0, "SI"),
+                               ComoLlamaMedicacion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_COMO_SE_LLAMA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_SI_COMO_SE_LLAMA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_SI_COMO_SE_LLAMA_ID, "NOCOMBO", 0, "SI"),
+                               DosisFrecuencia = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DOSIS_FRECUENCIA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DOSIS_FRECUENCIA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DOSIS_FRECUENCIA_ID, "NOCOMBO", 0, "SI"),
+                               Descripcion = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID, "NOCOMBO", 0, "SI"),
+                               DermatopiaSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
+                               NikolskySiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID).v_Value1,//GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
 							   v_OwnerOrganizationName = (from n in dbContext.organization
 														  where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
 														  select n.v_Name).SingleOrDefault<string>(),
@@ -34048,5 +33953,10 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
 
+
+        public object GetInfoMedicalCenter_logo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
