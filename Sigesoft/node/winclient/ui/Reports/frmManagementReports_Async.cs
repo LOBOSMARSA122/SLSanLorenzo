@@ -12,7 +12,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using Infragistics.Win.UltraWinSchedule;
+using System.Threading.Tasks;
 
 namespace Sigesoft.Node.WinClient.UI.Reports
 {
@@ -118,7 +121,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     var Reportes = GetChekedItems(chklConsolidadoReportes);
                     using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                     {
-                        CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
+                        System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
+                            Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
+
+                        foreach (var t in tasks)
+                        {
+                            
+                        }
+                        //CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
                     };
 
                     var x = _filesNameToMerge.ToList();
@@ -194,6 +204,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             return componentId.Count == 0 ? null : componentId;
         }
 
+        private static List<Task<string>>tasks = new List<Task<string>>();
         public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
         {
             OperationResult objOperationResult = new OperationResult();
@@ -202,33 +213,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             rp = new Reports.crConsolidatedReports();
             _filesNameToMerge = new List<string>();
 
-
-            //reportesId.FindAll(p => p != Constants.HISTORIA_CLINICA_PSICOLOGICA_ID || p != Constants.PSICOLOGIA_ID || p != Constants.INFORME_LABORATORIO_ID);
-
             foreach (var com in reportesId)
             {
-                //string CompnenteId = "";
-                int IdCrystal = 0;
-                //Obtener el Id del componente 
-
-                var array = com.Split('|');
-
-                if (array.Count() == 1)
-                {
-                    IdCrystal = 0;
-                }
-                else if (array[1] == "")
-                {
-                    IdCrystal = 0;
-                }
-                else
-                {
-                    IdCrystal = int.Parse(array[1].ToString());
-                }
-
-                ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
-
-
+                int IdCrystal = GetIdCrystal(com);
+                tasks.Add(Task<string>.Factory.StartNew( () => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
+              
             }
 
             if (Publicar)
@@ -322,11 +311,30 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 #endregion
             }
-
-
         }
 
-        public void ChooseReport(string componentId, string serviceId, string pPacienteId, int pintIdCrystal)
+        private int GetIdCrystal(string com)
+        {
+            int IdCrystal = 0;
+            var array = com.Split('|');
+
+            if (array.Count() == 1)
+            {
+                IdCrystal = 0;
+            }
+            else if (array[1] == "")
+            {
+                IdCrystal = 0;
+            }
+            else
+            {
+                IdCrystal = int.Parse(array[1].ToString());
+            }
+
+            return IdCrystal;
+        }
+
+        public string ChooseReport(string componentId, string serviceId, string pPacienteId, int pintIdCrystal)
         {
             _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
             _tempSourcePath = Path.Combine(Application.StartupPath, "TempMerge");
@@ -3169,6 +3177,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 default:
                     break;
             }
+
+            return "OK";
         }
         
         #region Methods
