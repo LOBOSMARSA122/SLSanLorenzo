@@ -20115,7 +20115,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   v_ServiceComponentId = a.v_ServiceComponentId,
 							   Lector = a.Lector,
 							   Edad = GetAge(a.FechaNacimiento.Value),
-							   Placa = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_NRO_PLACA_ID, "NOCOMBO", 0, "SI"),
+                               Placa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_NRO_PLACA_ID, "NOCOMBO", 0, "SI"),
 							   CalidaRadio = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CALIDAD_ID, "NOCOMBO", 0, "SI"),
 							   Causas = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAUSAS_ID, "NOCOMBO", 0, "SI"),
 							   Comentario = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIOS_ID, "NOCOMBO", 0, "SI"),
