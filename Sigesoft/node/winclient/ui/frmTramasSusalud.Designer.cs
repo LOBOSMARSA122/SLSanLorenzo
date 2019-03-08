@@ -141,6 +141,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("genero");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("fechaservicio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("edad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("tipoServicio");
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
@@ -212,7 +213,7 @@
             this.tabAmbulatorio.Controls.Add(this.grAmbulatorio);
             this.tabAmbulatorio.Controls.Add(this.lblRecordCount);
             this.tabAmbulatorio.Controls.Add(this.btnExportAmbulatorio);
-            this.tabAmbulatorio.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabAmbulatorio.Location = new System.Drawing.Point(1, 23);
             this.tabAmbulatorio.Name = "tabAmbulatorio";
             this.tabAmbulatorio.Size = new System.Drawing.Size(880, 280);
             // 
@@ -785,7 +786,7 @@
             this.tabPartos.Controls.Add(this.grPartos);
             this.tabPartos.Controls.Add(this.lblRecordCount4);
             this.tabPartos.Controls.Add(this.btnExportartos);
-            this.tabPartos.Location = new System.Drawing.Point(1, 23);
+            this.tabPartos.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPartos.Name = "tabPartos";
             this.tabPartos.Size = new System.Drawing.Size(880, 280);
             // 
@@ -1173,12 +1174,14 @@
             ultraGridColumn14.Header.VisiblePosition = 2;
             ultraGridColumn15.Header.VisiblePosition = 3;
             ultraGridColumn16.Header.VisiblePosition = 4;
+            ultraGridColumn17.Header.VisiblePosition = 5;
             ultraGridBand6.Columns.AddRange(new object[] {
             ultraGridColumn12,
             ultraGridColumn13,
             ultraGridColumn14,
             ultraGridColumn15,
-            ultraGridColumn16});
+            ultraGridColumn16,
+            ultraGridColumn17});
             this.grService.DisplayLayout.BandsSerializer.Add(ultraGridBand6);
             this.grService.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.grService.DisplayLayout.InterBandSpacing = 10;

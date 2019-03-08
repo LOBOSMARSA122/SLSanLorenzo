@@ -476,6 +476,7 @@ namespace Sigesoft.Node.WinClient.BE
        public string genero { get; set; }
        public DateTime? fechaservicio { get; set; }
        public int? edad { get; set; }
+       public string tipoServicio { get; set; }
    }
 
 

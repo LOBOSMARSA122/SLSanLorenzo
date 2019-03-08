@@ -113,7 +113,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var objDataService = GetDataServices(0, null, "v_ServiceId ASC", strFilterExpression);
             grService.DataSource = objDataService;
-            //lblServices.Text = string.Format("Se encontraron {0} registros.", objDataService.Count());
+            lblServices.Text = string.Format("Se encontraron {0} registros.", objDataService.Count());
             this.grService.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
 
             //
