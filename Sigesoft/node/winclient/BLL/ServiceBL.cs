@@ -15537,6 +15537,8 @@ namespace Sigesoft.Node.WinClient.BLL
 			{
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 				var components = (from aaa in dbContext.servicecomponent
+                                    join ccc in dbContext.service on aaa.v_ServiceId equals ccc.v_ServiceId
+                                    join ddd in dbContext.person on ccc.v_PersonId equals ddd.v_PersonId
 								  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
 								  join J1 in dbContext.systemuser on new { i_InsertUserId = aaa.i_InsertUserId.Value }
 												  equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
@@ -15562,8 +15564,10 @@ namespace Sigesoft.Node.WinClient.BLL
 									  v_ComponentName = bbb.v_Name,
 									  v_ServiceComponentId = aaa.v_ServiceComponentId,
 									  i_CategoryId = bbb.i_CategoryId.Value,
-									  v_CategoryName = fff.v_Value1
-
+									  v_CategoryName = fff.v_Value1,
+                                      i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId,
+                                      v_ServiceId = aaa.v_ServiceId,
+                                      i_GenderId = ddd.i_SexTypeId.Value
 								  }).ToList();
 
 				return components;
@@ -33969,10 +33973,13 @@ namespace Sigesoft.Node.WinClient.BLL
                             from J11 in J11_join.DefaultIfEmpty()
                             join J22 in dbContext.organization on I.v_WorkingOrganizationId equals J22.v_OrganizationId into J22_join
                             from J22 in J22_join.DefaultIfEmpty()
+                            join K in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = K.i_ParameterId, b = K.i_GroupId } into K_join
+                                    from K in K_join.DefaultIfEmpty()
 
                             where A.i_IsDeleted == 0
                             && L.i_LineStatusId == (int)LineStatus.EnCircuito && A.v_ProtocolId != null
                             && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate
+                           
                             select new ServiceGridJerarquizadaList
                             {
                                 b_FechaEntrega = false,
@@ -33995,7 +34002,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 CompMinera = J11.v_Name,
                                 Tercero = J22.v_Name,
                                 v_OrganizationName = J.v_Name,
-                                i_ServiceId = C.i_ServiceId
+                                i_ServiceId = C.i_ServiceId,
+                                v_AptitudeStatusName = K.v_Value1
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -34016,39 +34024,14 @@ namespace Sigesoft.Node.WinClient.BLL
                     query = query.Take(pintResultsPerPage.Value);
                 }
 
-                var result = query.ToList().GroupBy(g => g.v_ServiceId).Select(s => s.First()).ToList();
+                List<ServiceGridJerarquizadaList> objData = query.ToList();
 
-                var list = new BindingList<ServiceGridJerarquizadaList>();
-                foreach (var r in result)
-                {
-                    var oServiceGridJerarquizadaList = new ServiceGridJerarquizadaList();
+                var result = objData.GroupBy(g => g.v_ServiceId).Select(s => s.First()).ToList();
 
-                    oServiceGridJerarquizadaList.b_FechaEntrega = r.b_FechaEntrega;
-                    oServiceGridJerarquizadaList.v_PersonId = r.v_PersonId;
-                    oServiceGridJerarquizadaList.v_ServiceId = r.v_ServiceId;
-                    oServiceGridJerarquizadaList.v_Pacient = r.v_Pacient;
-                    oServiceGridJerarquizadaList.v_PacientDocument = r.v_PacientDocument;
-                    oServiceGridJerarquizadaList.d_ServiceDate = r.d_ServiceDate;
-                    oServiceGridJerarquizadaList.i_ServiceStatusId = r.i_ServiceStatusId;
-                    oServiceGridJerarquizadaList.i_StatusLiquidation = r.i_StatusLiquidation;
-                    oServiceGridJerarquizadaList.v_CustomerOrganizationId = r.v_CustomerOrganizationId;
-                    oServiceGridJerarquizadaList.v_CustomerLocationId = r.v_CustomerLocationId;
-                    oServiceGridJerarquizadaList.i_MasterServiceId = r.i_MasterServiceId;
-                    oServiceGridJerarquizadaList.i_ServiceTypeId = r.i_ServiceTypeId;
-                    oServiceGridJerarquizadaList.i_EsoTypeId = r.i_EsoTypeId;
-                    oServiceGridJerarquizadaList.v_ProtocolId = r.v_ProtocolId;
-                    oServiceGridJerarquizadaList.v_ProtocolName = r.v_ProtocolName;
-                    oServiceGridJerarquizadaList.i_AptitudeStatusId = r.i_AptitudeStatusId;
-                    oServiceGridJerarquizadaList.i_ApprovedUpdateUserId = r.i_ApprovedUpdateUserId;
-                    oServiceGridJerarquizadaList.CompMinera = r.CompMinera;
-                    oServiceGridJerarquizadaList.Tercero = r.Tercero;
-                    oServiceGridJerarquizadaList.v_OrganizationName = r.v_OrganizationName;
-                    oServiceGridJerarquizadaList.i_ServiceId = r.i_ServiceId;
-                    oServiceGridJerarquizadaList.Diagnosticos = new BindingList<DiagnosticRepositoryJerarquizada>();
-                    list.Add(oServiceGridJerarquizadaList);
-                }
+                var bindingList = new BindingList<ServiceGridJerarquizadaList>(result);
+
                 pobjOperationResult.Success = 1;
-                return list;
+                return bindingList;
 
             }
             catch (Exception ex)

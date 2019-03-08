@@ -2244,17 +2244,17 @@
     <Compile Include="Reports\frmCargoHistoria.Designer.cs">
       <DependentUpon>frmCargoHistoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\frmManagementReportAsync.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\frmManagementReportAsync.Designer.cs">
-      <DependentUpon>frmManagementReportAsync.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\frmManagementReportsMedical.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\frmManagementReportsMedical.Designer.cs">
       <DependentUpon>frmManagementReportsMedical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmManagementReports_Async.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmManagementReports_Async.Designer.cs">
+      <DependentUpon>frmManagementReports_Async.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\frmMatrizDatosAbreviada.cs">
       <SubType>Form</SubType>
@@ -4366,11 +4366,11 @@
     <EmbeddedResource Include="Reports\frmCargoHistoria.resx">
       <DependentUpon>frmCargoHistoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\frmManagementReportAsync.resx">
-      <DependentUpon>frmManagementReportAsync.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmManagementReportsMedical.resx">
       <DependentUpon>frmManagementReportsMedical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmManagementReports_Async.resx">
+      <DependentUpon>frmManagementReports_Async.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmMatrizDatosAbreviada.resx">
       <DependentUpon>frmMatrizDatosAbreviada.cs</DependentUpon>

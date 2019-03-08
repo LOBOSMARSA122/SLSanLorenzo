@@ -27,17 +27,17 @@
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TramaId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn122 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TipoRegistro");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn124 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaIngreso");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn149 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Genero");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn150 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GrupoEtario");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn151 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn152 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CIE10Id");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn153 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("User_Crea");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn154 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_InsertDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn155 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("User_Act");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn156 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TramaId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TipoRegistro");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaIngreso");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Genero");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GrupoEtario");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CIE10Id");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("User_Crea");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_InsertDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("User_Act");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -134,6 +134,25 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_TramaId");
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand6 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TramaId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn122 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TipoRegistro");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn124 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaIngreso");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn149 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Genero");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn150 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GrupoEtario");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn151 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn152 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CIE10Id");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn153 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("User_Crea");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn154 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_InsertDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn155 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("User_Act");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn156 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
+            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             this.tabAmbulatorio = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grAmbulatorio = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCount = new System.Windows.Forms.Label();
@@ -170,6 +189,9 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ultraGrid1 = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tabAmbulatorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grAmbulatorio)).BeginInit();
             this.tabEmergencia.SuspendLayout();
@@ -184,6 +206,10 @@
             this.utcSusalud.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
+            this.ultraGroupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabAmbulatorio
@@ -191,9 +217,9 @@
             this.tabAmbulatorio.Controls.Add(this.grAmbulatorio);
             this.tabAmbulatorio.Controls.Add(this.lblRecordCount);
             this.tabAmbulatorio.Controls.Add(this.btnExportAmbulatorio);
-            this.tabAmbulatorio.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabAmbulatorio.Location = new System.Drawing.Point(1, 23);
             this.tabAmbulatorio.Name = "tabAmbulatorio";
-            this.tabAmbulatorio.Size = new System.Drawing.Size(873, 435);
+            this.tabAmbulatorio.Size = new System.Drawing.Size(880, 280);
             // 
             // grAmbulatorio
             // 
@@ -205,37 +231,37 @@
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grAmbulatorio.DisplayLayout.Appearance = appearance1;
-            ultraGridColumn39.Header.VisiblePosition = 0;
-            ultraGridColumn122.Header.Caption = "Tipo Registro";
-            ultraGridColumn122.Header.VisiblePosition = 1;
-            ultraGridColumn124.Header.Caption = "Fecha Ingreso";
-            ultraGridColumn124.Header.VisiblePosition = 4;
-            ultraGridColumn149.Header.VisiblePosition = 2;
-            ultraGridColumn150.Header.VisiblePosition = 3;
-            ultraGridColumn151.Header.Caption = "Diagnostico";
-            ultraGridColumn151.Header.VisiblePosition = 5;
-            ultraGridColumn152.Header.Caption = "CIE 10";
-            ultraGridColumn152.Header.VisiblePosition = 6;
-            ultraGridColumn153.Header.Caption = "Usuario Crea";
-            ultraGridColumn153.Header.VisiblePosition = 7;
-            ultraGridColumn154.Header.Caption = "F. Crea";
-            ultraGridColumn154.Header.VisiblePosition = 8;
-            ultraGridColumn155.Header.Caption = "Usuario Act.";
-            ultraGridColumn155.Header.VisiblePosition = 9;
-            ultraGridColumn156.Header.Caption = "F. Act.";
-            ultraGridColumn156.Header.VisiblePosition = 10;
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn2.Header.Caption = "Tipo Registro";
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn3.Header.Caption = "Fecha Ingreso";
+            ultraGridColumn3.Header.VisiblePosition = 4;
+            ultraGridColumn4.Header.VisiblePosition = 2;
+            ultraGridColumn5.Header.VisiblePosition = 3;
+            ultraGridColumn6.Header.Caption = "Diagnostico";
+            ultraGridColumn6.Header.VisiblePosition = 5;
+            ultraGridColumn7.Header.Caption = "CIE 10";
+            ultraGridColumn7.Header.VisiblePosition = 6;
+            ultraGridColumn8.Header.Caption = "Usuario Crea";
+            ultraGridColumn8.Header.VisiblePosition = 7;
+            ultraGridColumn9.Header.Caption = "F. Crea";
+            ultraGridColumn9.Header.VisiblePosition = 8;
+            ultraGridColumn10.Header.Caption = "Usuario Act.";
+            ultraGridColumn10.Header.VisiblePosition = 9;
+            ultraGridColumn11.Header.Caption = "F. Act.";
+            ultraGridColumn11.Header.VisiblePosition = 10;
             ultraGridBand1.Columns.AddRange(new object[] {
-            ultraGridColumn39,
-            ultraGridColumn122,
-            ultraGridColumn124,
-            ultraGridColumn149,
-            ultraGridColumn150,
-            ultraGridColumn151,
-            ultraGridColumn152,
-            ultraGridColumn153,
-            ultraGridColumn154,
-            ultraGridColumn155,
-            ultraGridColumn156});
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn3,
+            ultraGridColumn4,
+            ultraGridColumn5,
+            ultraGridColumn6,
+            ultraGridColumn7,
+            ultraGridColumn8,
+            ultraGridColumn9,
+            ultraGridColumn10,
+            ultraGridColumn11});
             this.grAmbulatorio.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grAmbulatorio.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.grAmbulatorio.DisplayLayout.InterBandSpacing = 10;
@@ -289,7 +315,7 @@
             this.grAmbulatorio.Location = new System.Drawing.Point(0, 27);
             this.grAmbulatorio.Margin = new System.Windows.Forms.Padding(2);
             this.grAmbulatorio.Name = "grAmbulatorio";
-            this.grAmbulatorio.Size = new System.Drawing.Size(874, 376);
+            this.grAmbulatorio.Size = new System.Drawing.Size(881, 221);
             this.grAmbulatorio.TabIndex = 54;
             // 
             // lblRecordCount
@@ -297,7 +323,7 @@
             this.lblRecordCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount.Location = new System.Drawing.Point(640, 6);
+            this.lblRecordCount.Location = new System.Drawing.Point(647, 6);
             this.lblRecordCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount.Name = "lblRecordCount";
             this.lblRecordCount.Size = new System.Drawing.Size(231, 19);
@@ -310,7 +336,7 @@
             this.btnExportAmbulatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportAmbulatorio.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportAmbulatorio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportAmbulatorio.Location = new System.Drawing.Point(3, 408);
+            this.btnExportAmbulatorio.Location = new System.Drawing.Point(3, 253);
             this.btnExportAmbulatorio.Name = "btnExportAmbulatorio";
             this.btnExportAmbulatorio.Size = new System.Drawing.Size(114, 24);
             this.btnExportAmbulatorio.TabIndex = 50;
@@ -326,7 +352,7 @@
             this.tabEmergencia.Controls.Add(this.btnExportEmergencia);
             this.tabEmergencia.Location = new System.Drawing.Point(-10000, -10000);
             this.tabEmergencia.Name = "tabEmergencia";
-            this.tabEmergencia.Size = new System.Drawing.Size(873, 435);
+            this.tabEmergencia.Size = new System.Drawing.Size(852, 280);
             // 
             // grEmergencia
             // 
@@ -422,7 +448,7 @@
             this.grEmergencia.Location = new System.Drawing.Point(-1, 27);
             this.grEmergencia.Margin = new System.Windows.Forms.Padding(2);
             this.grEmergencia.Name = "grEmergencia";
-            this.grEmergencia.Size = new System.Drawing.Size(874, 376);
+            this.grEmergencia.Size = new System.Drawing.Size(853, 221);
             this.grEmergencia.TabIndex = 55;
             // 
             // lblRecordCount1
@@ -430,7 +456,7 @@
             this.lblRecordCount1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount1.Location = new System.Drawing.Point(640, 6);
+            this.lblRecordCount1.Location = new System.Drawing.Point(619, 6);
             this.lblRecordCount1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount1.Name = "lblRecordCount1";
             this.lblRecordCount1.Size = new System.Drawing.Size(231, 19);
@@ -443,7 +469,7 @@
             this.btnExportEmergencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportEmergencia.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportEmergencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportEmergencia.Location = new System.Drawing.Point(3, 408);
+            this.btnExportEmergencia.Location = new System.Drawing.Point(3, 253);
             this.btnExportEmergencia.Name = "btnExportEmergencia";
             this.btnExportEmergencia.Size = new System.Drawing.Size(114, 24);
             this.btnExportEmergencia.TabIndex = 51;
@@ -457,9 +483,9 @@
             this.tabHospi.Controls.Add(this.grHospitalizacion);
             this.tabHospi.Controls.Add(this.lblRecordCount2);
             this.tabHospi.Controls.Add(this.btnExportHospitalizacion);
-            this.tabHospi.Location = new System.Drawing.Point(1, 23);
+            this.tabHospi.Location = new System.Drawing.Point(-10000, -10000);
             this.tabHospi.Name = "tabHospi";
-            this.tabHospi.Size = new System.Drawing.Size(873, 435);
+            this.tabHospi.Size = new System.Drawing.Size(852, 280);
             // 
             // grHospitalizacion
             // 
@@ -572,7 +598,7 @@
             this.grHospitalizacion.Location = new System.Drawing.Point(0, 29);
             this.grHospitalizacion.Margin = new System.Windows.Forms.Padding(2);
             this.grHospitalizacion.Name = "grHospitalizacion";
-            this.grHospitalizacion.Size = new System.Drawing.Size(874, 376);
+            this.grHospitalizacion.Size = new System.Drawing.Size(853, 221);
             this.grHospitalizacion.TabIndex = 56;
             // 
             // lblRecordCount2
@@ -580,7 +606,7 @@
             this.lblRecordCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount2.Location = new System.Drawing.Point(640, 6);
+            this.lblRecordCount2.Location = new System.Drawing.Point(619, 6);
             this.lblRecordCount2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount2.Name = "lblRecordCount2";
             this.lblRecordCount2.Size = new System.Drawing.Size(231, 19);
@@ -593,7 +619,7 @@
             this.btnExportHospitalizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportHospitalizacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportHospitalizacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportHospitalizacion.Location = new System.Drawing.Point(3, 408);
+            this.btnExportHospitalizacion.Location = new System.Drawing.Point(3, 253);
             this.btnExportHospitalizacion.Name = "btnExportHospitalizacion";
             this.btnExportHospitalizacion.Size = new System.Drawing.Size(114, 24);
             this.btnExportHospitalizacion.TabIndex = 51;
@@ -609,7 +635,7 @@
             this.tabProcedimientos.Controls.Add(this.btnExportProcedimientosCirugias);
             this.tabProcedimientos.Location = new System.Drawing.Point(-10000, -10000);
             this.tabProcedimientos.Name = "tabProcedimientos";
-            this.tabProcedimientos.Size = new System.Drawing.Size(873, 435);
+            this.tabProcedimientos.Size = new System.Drawing.Size(852, 280);
             // 
             // grProcedimientosCirugia
             // 
@@ -725,7 +751,7 @@
             this.grProcedimientosCirugia.Location = new System.Drawing.Point(-1, 29);
             this.grProcedimientosCirugia.Margin = new System.Windows.Forms.Padding(2);
             this.grProcedimientosCirugia.Name = "grProcedimientosCirugia";
-            this.grProcedimientosCirugia.Size = new System.Drawing.Size(874, 376);
+            this.grProcedimientosCirugia.Size = new System.Drawing.Size(853, 221);
             this.grProcedimientosCirugia.TabIndex = 57;
             // 
             // lblRecordCount3
@@ -733,7 +759,7 @@
             this.lblRecordCount3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount3.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount3.Location = new System.Drawing.Point(640, 6);
+            this.lblRecordCount3.Location = new System.Drawing.Point(619, 6);
             this.lblRecordCount3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount3.Name = "lblRecordCount3";
             this.lblRecordCount3.Size = new System.Drawing.Size(231, 19);
@@ -746,7 +772,7 @@
             this.btnExportProcedimientosCirugias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportProcedimientosCirugias.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportProcedimientosCirugias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportProcedimientosCirugias.Location = new System.Drawing.Point(3, 408);
+            this.btnExportProcedimientosCirugias.Location = new System.Drawing.Point(3, 253);
             this.btnExportProcedimientosCirugias.Name = "btnExportProcedimientosCirugias";
             this.btnExportProcedimientosCirugias.Size = new System.Drawing.Size(114, 24);
             this.btnExportProcedimientosCirugias.TabIndex = 51;
@@ -762,7 +788,7 @@
             this.tabPartos.Controls.Add(this.btnExportartos);
             this.tabPartos.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPartos.Name = "tabPartos";
-            this.tabPartos.Size = new System.Drawing.Size(873, 435);
+            this.tabPartos.Size = new System.Drawing.Size(852, 280);
             // 
             // grPartos
             // 
@@ -859,7 +885,7 @@
             this.grPartos.Location = new System.Drawing.Point(-1, 29);
             this.grPartos.Margin = new System.Windows.Forms.Padding(2);
             this.grPartos.Name = "grPartos";
-            this.grPartos.Size = new System.Drawing.Size(874, 376);
+            this.grPartos.Size = new System.Drawing.Size(853, 222);
             this.grPartos.TabIndex = 58;
             // 
             // lblRecordCount4
@@ -867,7 +893,7 @@
             this.lblRecordCount4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount4.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount4.Location = new System.Drawing.Point(640, 6);
+            this.lblRecordCount4.Location = new System.Drawing.Point(619, 6);
             this.lblRecordCount4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount4.Name = "lblRecordCount4";
             this.lblRecordCount4.Size = new System.Drawing.Size(231, 19);
@@ -880,7 +906,7 @@
             this.btnExportartos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExportartos.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportartos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportartos.Location = new System.Drawing.Point(3, 408);
+            this.btnExportartos.Location = new System.Drawing.Point(3, 253);
             this.btnExportartos.Name = "btnExportartos";
             this.btnExportartos.Size = new System.Drawing.Size(114, 24);
             this.btnExportartos.TabIndex = 51;
@@ -900,10 +926,10 @@
             this.utcSusalud.Controls.Add(this.tabHospi);
             this.utcSusalud.Controls.Add(this.tabProcedimientos);
             this.utcSusalud.Controls.Add(this.tabPartos);
-            this.utcSusalud.Location = new System.Drawing.Point(12, 94);
+            this.utcSusalud.Location = new System.Drawing.Point(6, 35);
             this.utcSusalud.Name = "utcSusalud";
             this.utcSusalud.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.utcSusalud.Size = new System.Drawing.Size(877, 461);
+            this.utcSusalud.Size = new System.Drawing.Size(884, 306);
             this.utcSusalud.TabIndex = 0;
             ultraTab1.TabPage = this.tabAmbulatorio;
             ultraTab1.Text = "Ambulatorio";
@@ -926,7 +952,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(873, 435);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(880, 280);
             // 
             // btnAgregar
             // 
@@ -934,7 +960,7 @@
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnAgregar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(895, 117);
+            this.btnAgregar.Location = new System.Drawing.Point(896, 58);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(85, 31);
             this.btnAgregar.TabIndex = 1;
@@ -959,7 +985,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(964, 54);
+            this.groupBox1.Size = new System.Drawing.Size(992, 54);
             this.groupBox1.TabIndex = 48;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
@@ -1049,7 +1075,7 @@
             this.btnGenerar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnGenerar.Image = global::Sigesoft.Node.WinClient.UI.Resources.arrow_refresh;
             this.btnGenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerar.Location = new System.Drawing.Point(895, 511);
+            this.btnGenerar.Location = new System.Drawing.Point(896, 301);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(85, 40);
             this.btnGenerar.TabIndex = 49;
@@ -1064,7 +1090,7 @@
             this.btnEditar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnEditar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.pencil;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(895, 154);
+            this.btnEditar.Location = new System.Drawing.Point(896, 95);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(85, 31);
             this.btnEditar.TabIndex = 50;
@@ -1079,7 +1105,7 @@
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnEliminar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.delete;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(895, 191);
+            this.btnEliminar.Location = new System.Drawing.Point(896, 132);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(85, 31);
             this.btnEliminar.TabIndex = 51;
@@ -1088,17 +1114,137 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // ultraGroupBox1
+            // 
+            this.ultraGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ultraGroupBox1.Controls.Add(this.utcSusalud);
+            this.ultraGroupBox1.Controls.Add(this.btnEliminar);
+            this.ultraGroupBox1.Controls.Add(this.btnAgregar);
+            this.ultraGroupBox1.Controls.Add(this.btnEditar);
+            this.ultraGroupBox1.Controls.Add(this.btnGenerar);
+            this.ultraGroupBox1.Location = new System.Drawing.Point(16, 337);
+            this.ultraGroupBox1.Name = "ultraGroupBox1";
+            this.ultraGroupBox1.Size = new System.Drawing.Size(992, 360);
+            this.ultraGroupBox1.TabIndex = 52;
+            this.ultraGroupBox1.Text = "Tramas";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.ultraGrid1);
+            this.groupBox2.Location = new System.Drawing.Point(16, 80);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(992, 251);
+            this.groupBox2.TabIndex = 53;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Servicios";
+            // 
+            // ultraGrid1
+            // 
+            this.ultraGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ultraGrid1.CausesValidation = false;
+            appearance36.BackColor = System.Drawing.Color.White;
+            appearance36.BackColor2 = System.Drawing.Color.Silver;
+            appearance36.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.ultraGrid1.DisplayLayout.Appearance = appearance36;
+            ultraGridColumn39.Header.VisiblePosition = 0;
+            ultraGridColumn122.Header.Caption = "Tipo Registro";
+            ultraGridColumn122.Header.VisiblePosition = 1;
+            ultraGridColumn124.Header.Caption = "Fecha Ingreso";
+            ultraGridColumn124.Header.VisiblePosition = 4;
+            ultraGridColumn149.Header.VisiblePosition = 2;
+            ultraGridColumn150.Header.VisiblePosition = 3;
+            ultraGridColumn151.Header.Caption = "Diagnostico";
+            ultraGridColumn151.Header.VisiblePosition = 5;
+            ultraGridColumn152.Header.Caption = "CIE 10";
+            ultraGridColumn152.Header.VisiblePosition = 6;
+            ultraGridColumn153.Header.Caption = "Usuario Crea";
+            ultraGridColumn153.Header.VisiblePosition = 7;
+            ultraGridColumn154.Header.Caption = "F. Crea";
+            ultraGridColumn154.Header.VisiblePosition = 8;
+            ultraGridColumn155.Header.Caption = "Usuario Act.";
+            ultraGridColumn155.Header.VisiblePosition = 9;
+            ultraGridColumn156.Header.Caption = "F. Act.";
+            ultraGridColumn156.Header.VisiblePosition = 10;
+            ultraGridBand6.Columns.AddRange(new object[] {
+            ultraGridColumn39,
+            ultraGridColumn122,
+            ultraGridColumn124,
+            ultraGridColumn149,
+            ultraGridColumn150,
+            ultraGridColumn151,
+            ultraGridColumn152,
+            ultraGridColumn153,
+            ultraGridColumn154,
+            ultraGridColumn155,
+            ultraGridColumn156});
+            this.ultraGrid1.DisplayLayout.BandsSerializer.Add(ultraGridBand6);
+            this.ultraGrid1.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraGrid1.DisplayLayout.InterBandSpacing = 10;
+            this.ultraGrid1.DisplayLayout.MaxColScrollRegions = 1;
+            this.ultraGrid1.DisplayLayout.MaxRowScrollRegions = 1;
+            this.ultraGrid1.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.ultraGrid1.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.ultraGrid1.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraGrid1.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGrid1.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.ultraGrid1.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraGrid1.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance37.BackColor = System.Drawing.Color.Transparent;
+            this.ultraGrid1.DisplayLayout.Override.CardAreaAppearance = appearance37;
+            appearance38.BackColor = System.Drawing.Color.White;
+            appearance38.BackColor2 = System.Drawing.Color.White;
+            appearance38.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.ultraGrid1.DisplayLayout.Override.CellAppearance = appearance38;
+            this.ultraGrid1.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance39.BackColor = System.Drawing.Color.White;
+            appearance39.BackColor2 = System.Drawing.Color.LightGray;
+            appearance39.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance39.BorderColor = System.Drawing.Color.DarkGray;
+            appearance39.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.ultraGrid1.DisplayLayout.Override.HeaderAppearance = appearance39;
+            this.ultraGrid1.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance40.AlphaLevel = ((short)(187));
+            appearance40.BackColor = System.Drawing.Color.Gainsboro;
+            appearance40.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance40.ForeColor = System.Drawing.Color.Black;
+            appearance40.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.ultraGrid1.DisplayLayout.Override.RowAlternateAppearance = appearance40;
+            appearance41.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ultraGrid1.DisplayLayout.Override.RowSelectorAppearance = appearance41;
+            this.ultraGrid1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance42.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance42.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance42.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance42.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance42.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance42.FontData.BoldAsString = "False";
+            appearance42.ForeColor = System.Drawing.Color.Black;
+            this.ultraGrid1.DisplayLayout.Override.SelectedRowAppearance = appearance42;
+            this.ultraGrid1.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.ExtendedAutoDrag;
+            this.ultraGrid1.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ultraGrid1.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.ultraGrid1.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.ultraGrid1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.ultraGrid1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraGrid1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ultraGrid1.Location = new System.Drawing.Point(10, 18);
+            this.ultraGrid1.Margin = new System.Windows.Forms.Padding(2);
+            this.ultraGrid1.Name = "ultraGrid1";
+            this.ultraGrid1.Size = new System.Drawing.Size(971, 221);
+            this.ultraGrid1.TabIndex = 55;
+            // 
             // frmTramasSusalud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 567);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnGenerar);
+            this.ClientSize = new System.Drawing.Size(1020, 709);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.ultraGroupBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.utcSusalud);
             this.Name = "frmTramasSusalud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tramas SUSALUD";
@@ -1118,6 +1264,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
+            this.ultraGroupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1160,6 +1310,9 @@
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
+        private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private Infragistics.Win.UltraWinGrid.UltraGrid ultraGrid1;
 
 
 

@@ -247,6 +247,7 @@ namespace Sigesoft.Node.WinClient.UI
             grdDataService.DataSource = objData;
 
             grdDataService.DisplayLayout.Bands[0].Columns["v_PersonId"].Hidden = true;
+            grdDataService.DisplayLayout.Bands[0].Columns["b_FechaEntrega"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["v_ServiceStatusName"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["i_ServiceStatusId"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["v_LocationName"].Hidden = true;
@@ -427,60 +428,69 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnEditarESO_Click(object sender, EventArgs e)
         {
-           Form frm;
-           int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
-           if (TserviceId == (int)MasterService.AtxMedicaParticular)
-           {
-               #region ESO V1
-                   frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
-                   frm.ShowDialog();
-               #endregion
-               #region ESO V2 (Asíncrono)
-               //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
-               //frm.ShowDialog();
-               #endregion   
-           }
-           else
-           {
-               //Obtener Estado del servicio
-               var estadoAptitud = int.Parse(grdDataService.Selected.Rows[0].Cells["i_AptitudeStatusId"].Value.ToString());
+            try
+            {
+                Form frm;
+                int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+                if (TserviceId == (int)MasterService.AtxMedicaParticular)
+                {
+                    #region ESO V1
+                    frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                    frm.ShowDialog();
+                    #endregion
+                    #region ESO V2 (Asíncrono)
+                    //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                    //frm.ShowDialog();
+                    #endregion
+                }
+                else
+                {
+                    //Obtener Estado del servicio
+                    var estadoAptitud = int.Parse(grdDataService.Selected.Rows[0].Cells["i_AptitudeStatusId"].Value.ToString());
 
-               if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud == (int)AptitudeStatus.AptoObs)
-               {
-                   //Obtener el usuario
-                   int UserId= Globals.ClientSession.i_SystemUserId ;
-                   if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
-	                {
+                    if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud == (int)AptitudeStatus.AptoObs)
+                    {
+                        //Obtener el usuario
+                        int UserId = Globals.ClientSession.i_SystemUserId;
+                        if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
+                            frm.ShowDialog();
+                            //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            //frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
+                            frm.ShowDialog();
+                            //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            //frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+
+                    }
+                    else
+                    {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
+                        frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
                         frm.ShowDialog();
-                        //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
-                        //frm.ShowDialog();
                         this.Enabled = true;
-	                }
-                   else
-                   {
-                        this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
-                        frm.ShowDialog();
-                        //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
-                        //frm.ShowDialog();
-                        this.Enabled = true;                   
-                   }
-                  
-               }
-               else 
-               {
-                   this.Enabled = false;
-                   frm = new Operations.frmEso(_serviceId, null, "Service",(int)MasterService.Eso);
-                   frm.ShowDialog();
-                   this.Enabled = true;
-               }
+                    }
 
-             
-           }
 
-           btnFilter_Click(sender, e);
+                }
+
+                btnFilter_Click(sender, e);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("SELECCIONE UNA SERVICIO A MODIFICAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
+            }
+           
                   
            
         }
@@ -863,44 +873,52 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnConsolidadoReportes_Click(object sender, EventArgs e)
         {
-
-            var StatusLiquidation = grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null ? 1 : int.Parse(grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value.ToString());
-
-            if (StatusLiquidation == 2)
+            try
             {
-                var DialogResult = MessageBox.Show("Este servicio ya tiene, reportes generados, ¿Desea volver a generar?", "INFORMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (DialogResult == DialogResult.No) 
-                   {
-                       string ruta = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
-                       System.Diagnostics.Process.Start(ruta);
-                       Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());
+                var StatusLiquidation = grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null ? 1 : int.Parse(grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value.ToString());
 
-                       //var companiaMinera = grdDataService.Selected.Rows[0].Cells["CompMinera"].Value.ToString();
-                       //var paciente = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
-                       //var fecha = DateTime.Parse(grdDataService.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString()).ToString("dd MMMM,  yyyy");
+                if (StatusLiquidation == 2)
+                {
+                    var DialogResult = MessageBox.Show("Este servicio ya tiene, reportes generados, ¿Desea volver a generar?", "INFORMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (DialogResult == DialogResult.No)
+                    {
+                        string ruta = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+                        System.Diagnostics.Process.Start(ruta);
+                        Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());
 
-                       //var namePdf = companiaMinera + " - " + paciente + " - " + fecha;
-                       //string pdfPath = Path.Combine(ruta, namePdf + ".pdf");
+                        //var companiaMinera = grdDataService.Selected.Rows[0].Cells["CompMinera"].Value.ToString();
+                        //var paciente = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+                        //var fecha = DateTime.Parse(grdDataService.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString()).ToString("dd MMMM,  yyyy");
 
-                       //Process.Start(pdfPath);
-                       return;
-                   }
- 
+                        //var namePdf = companiaMinera + " - " + paciente + " - " + fecha;
+                        //string pdfPath = Path.Combine(ruta, namePdf + ".pdf");
+
+                        //Process.Start(pdfPath);
+                        return;
+                    }
+
+                }
+
+                int flagPantalla = int.Parse(grdDataService.Selected.Rows[0].Cells["i_MasterServiceId"].Value.ToString()); // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+                int eso = 1;
+                if (flagPantalla == 2)
+                {
+                    var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, _EmpresaClienteId, eso);
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    var edad = int.Parse(grdDataService.Selected.Rows[0].Cells["i_age"].Value.ToString());
+                    var frm = new Reports.frmManagementReportsMedical(_serviceId, _pacientId, _customerOrganizationName, _personFullName, _EmpresaClienteId, edad);
+                    frm.ShowDialog();
+                }     
             }
-
-            int flagPantalla = int.Parse(grdDataService.Selected.Rows[0].Cells["i_MasterServiceId"].Value.ToString()); // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
-            int eso = 1;
-            if (flagPantalla == 2)
+            catch (Exception)
             {
-                var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, _EmpresaClienteId, eso);
-                frm.ShowDialog();
+                MessageBox.Show("SELECCIONE UNA SERVICIO A GENERAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
             }
-            else
-            {
-                var edad = int.Parse(grdDataService.Selected.Rows[0].Cells["i_age"].Value.ToString());
-                var frm = new Reports.frmManagementReportsMedical(_serviceId, _pacientId, _customerOrganizationName, _personFullName, _EmpresaClienteId, edad);
-                frm.ShowDialog();
-            }     
+            
 
         }
 
@@ -2197,8 +2215,6 @@ namespace Sigesoft.Node.WinClient.UI
             
         }
 
-      
-
         private void btnImprimirExamenes_Click(object sender, EventArgs e)
         {
 
@@ -2959,7 +2975,6 @@ namespace Sigesoft.Node.WinClient.UI
                   
         }
 
-
         private void btnHistoriaCl_Click(object sender, EventArgs e)
         {
             OperationResult _objOperationResult = new OperationResult();
@@ -2992,7 +3007,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnReportAsync_Click(object sender, EventArgs e)
         {
-            var frm = new Reports.frmManagementReportAsync(_EmpresaClienteId, _serviceId,_pacientId);
+            var frm = new Reports.frmManagementReports_Async( _serviceId,_EmpresaClienteId,_pacientId, _customerOrganizationName);
             frm.ShowDialog();
         }
 
