@@ -185,8 +185,8 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.grService = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblServices = new System.Windows.Forms.Label();
+            this.grService = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tabAmbulatorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grAmbulatorio)).BeginInit();
             this.tabEmergencia.SuspendLayout();
@@ -212,7 +212,7 @@
             this.tabAmbulatorio.Controls.Add(this.grAmbulatorio);
             this.tabAmbulatorio.Controls.Add(this.lblRecordCount);
             this.tabAmbulatorio.Controls.Add(this.btnExportAmbulatorio);
-            this.tabAmbulatorio.Location = new System.Drawing.Point(1, 23);
+            this.tabAmbulatorio.Location = new System.Drawing.Point(-10000, -10000);
             this.tabAmbulatorio.Name = "tabAmbulatorio";
             this.tabAmbulatorio.Size = new System.Drawing.Size(880, 280);
             // 
@@ -312,6 +312,7 @@
             this.grAmbulatorio.Name = "grAmbulatorio";
             this.grAmbulatorio.Size = new System.Drawing.Size(881, 221);
             this.grAmbulatorio.TabIndex = 54;
+            this.grAmbulatorio.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grAmbulatorio_ClickCell);
             // 
             // lblRecordCount
             // 
@@ -347,7 +348,7 @@
             this.tabEmergencia.Controls.Add(this.btnExportEmergencia);
             this.tabEmergencia.Location = new System.Drawing.Point(-10000, -10000);
             this.tabEmergencia.Name = "tabEmergencia";
-            this.tabEmergencia.Size = new System.Drawing.Size(852, 280);
+            this.tabEmergencia.Size = new System.Drawing.Size(880, 280);
             // 
             // grEmergencia
             // 
@@ -445,6 +446,7 @@
             this.grEmergencia.Name = "grEmergencia";
             this.grEmergencia.Size = new System.Drawing.Size(853, 221);
             this.grEmergencia.TabIndex = 55;
+            this.grEmergencia.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grEmergencia_ClickCell);
             // 
             // lblRecordCount1
             // 
@@ -480,7 +482,7 @@
             this.tabHospi.Controls.Add(this.btnExportHospitalizacion);
             this.tabHospi.Location = new System.Drawing.Point(-10000, -10000);
             this.tabHospi.Name = "tabHospi";
-            this.tabHospi.Size = new System.Drawing.Size(852, 280);
+            this.tabHospi.Size = new System.Drawing.Size(880, 280);
             // 
             // grHospitalizacion
             // 
@@ -595,6 +597,7 @@
             this.grHospitalizacion.Name = "grHospitalizacion";
             this.grHospitalizacion.Size = new System.Drawing.Size(853, 221);
             this.grHospitalizacion.TabIndex = 56;
+            this.grHospitalizacion.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grHospitalizacion_ClickCell);
             // 
             // lblRecordCount2
             // 
@@ -630,7 +633,7 @@
             this.tabProcedimientos.Controls.Add(this.btnExportProcedimientosCirugias);
             this.tabProcedimientos.Location = new System.Drawing.Point(-10000, -10000);
             this.tabProcedimientos.Name = "tabProcedimientos";
-            this.tabProcedimientos.Size = new System.Drawing.Size(852, 280);
+            this.tabProcedimientos.Size = new System.Drawing.Size(880, 280);
             // 
             // grProcedimientosCirugia
             // 
@@ -748,6 +751,7 @@
             this.grProcedimientosCirugia.Name = "grProcedimientosCirugia";
             this.grProcedimientosCirugia.Size = new System.Drawing.Size(853, 221);
             this.grProcedimientosCirugia.TabIndex = 57;
+            this.grProcedimientosCirugia.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grProcedimientosCirugia_ClickCell);
             // 
             // lblRecordCount3
             // 
@@ -781,9 +785,9 @@
             this.tabPartos.Controls.Add(this.grPartos);
             this.tabPartos.Controls.Add(this.lblRecordCount4);
             this.tabPartos.Controls.Add(this.btnExportartos);
-            this.tabPartos.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPartos.Location = new System.Drawing.Point(1, 23);
             this.tabPartos.Name = "tabPartos";
-            this.tabPartos.Size = new System.Drawing.Size(852, 280);
+            this.tabPartos.Size = new System.Drawing.Size(880, 280);
             // 
             // grPartos
             // 
@@ -882,6 +886,7 @@
             this.grPartos.Name = "grPartos";
             this.grPartos.Size = new System.Drawing.Size(853, 222);
             this.grPartos.TabIndex = 58;
+            this.grPartos.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grPartos_ClickCell);
             // 
             // lblRecordCount4
             // 
@@ -942,6 +947,7 @@
             ultraTab3,
             ultraTab4,
             ultraTab5});
+            this.utcSusalud.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.utcSusalud_SelectedTabChanged);
             // 
             // ultraTabSharedControlsPage1
             // 
@@ -952,6 +958,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.Enabled = false;
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnAgregar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1082,6 +1089,7 @@
             // btnEditar
             // 
             this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.Enabled = false;
             this.btnEditar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnEditar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.pencil;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1097,6 +1105,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.Enabled = false;
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnEliminar.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.delete;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1135,6 +1144,19 @@
             this.groupBox2.TabIndex = 53;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Servicios";
+            // 
+            // lblServices
+            // 
+            this.lblServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServices.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblServices.Location = new System.Drawing.Point(750, 16);
+            this.lblServices.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblServices.Name = "lblServices";
+            this.lblServices.Size = new System.Drawing.Size(231, 19);
+            this.lblServices.TabIndex = 56;
+            this.lblServices.Text = "No se ha realizado la búsqueda aún.";
+            this.lblServices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // grService
             // 
@@ -1212,19 +1234,7 @@
             this.grService.Name = "grService";
             this.grService.Size = new System.Drawing.Size(971, 211);
             this.grService.TabIndex = 55;
-            // 
-            // lblServices
-            // 
-            this.lblServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServices.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblServices.Location = new System.Drawing.Point(750, 16);
-            this.lblServices.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblServices.Name = "lblServices";
-            this.lblServices.Size = new System.Drawing.Size(231, 19);
-            this.lblServices.TabIndex = 56;
-            this.lblServices.Text = "No se ha realizado la búsqueda aún.";
-            this.lblServices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.grService.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grService_ClickCell);
             // 
             // frmTramasSusalud
             // 

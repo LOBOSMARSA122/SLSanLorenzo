@@ -25,6 +25,9 @@ namespace Sigesoft.Node.WinClient.UI
     public partial class frmTramasSusalud : Form
     {
         string strFilterExpression;
+        object lista;
+        object listaUps;
+        object listaproc;
         List<TramasList> _objData = new List<TramasList>();
 
         List<ServiceList> _objDataLista = new List<ServiceList>();
@@ -33,12 +36,32 @@ namespace Sigesoft.Node.WinClient.UI
         public frmTramasSusalud()
         {
             InitializeComponent();
+            OperationResult objOperationResult = new OperationResult();
+            PacientBL _PacientBL = new PacientBL();
+            using (new LoadingClass.PleaseWait(this.Location, "Data CIE10..."))
+            {
+                lista = _PacientBL.LlenarDxsTramas(ref objOperationResult);
+            };
+            using (new LoadingClass.PleaseWait(this.Location, "Data UPS..."))
+            {
+                listaUps = _PacientBL.LlenarListaUps(ref objOperationResult);
+            };
+            using (new LoadingClass.PleaseWait(this.Location, "Data Procedimientos..."))
+            {
+                listaproc = _PacientBL.LlenarListaProc(ref objOperationResult);
+            };
+            
+            
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            var fecha= grService.Selected.Rows[0].Cells["fechaservicio"].Value.ToString();
+            DateTime parsedDate = DateTime.Parse(fecha);
+            var genero= grService.Selected.Rows[0].Cells["genero"].Value.ToString();
+            var edad= grService.Selected.Rows[0].Cells["edad"].Value.ToString();
             string tabName = utcSusalud.SelectedTab.Text;
-            frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName, string.Empty, "New");
+            frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName, string.Empty, "New", parsedDate, genero, edad, lista, listaUps, listaproc);
             frmRegistroEm.Text = "Registrar: " + tabName;
             if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Partos")
             {
@@ -53,11 +76,19 @@ namespace Sigesoft.Node.WinClient.UI
                 frmRegistroEm.Size = new Size(638, 300);
             }
             frmRegistroEm.Show();
-            btnFilter_Click(sender, e);
+            btnAgregar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            OperationResult objOperationResult = new OperationResult();
+            if (dtpDateTimeStar.Value > dptDateTimeEnd.Value)
+            {
+                MessageBox.Show("La Fecha inicial no puede ser mayor a la final:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             List<string> Filters = new List<string>();
             if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_DiseasesName.Contains(\"" + txtPacient.Text.Trim() + "\")");
 
@@ -73,6 +104,9 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
             this.BindGrid();
+            btnAgregar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
 
         private void BindGrid()
@@ -313,9 +347,9 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmTramasSusalud_Load(object sender, EventArgs e)
         {
-            btnAgregar.Enabled = true;
-            btnEditar.Enabled = true;
-            btnEliminar.Enabled = true;
+            btnAgregar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
             btnGenerar.Enabled = true;
 
             btnExportAmbulatorio.Enabled = false;
@@ -358,7 +392,7 @@ namespace Sigesoft.Node.WinClient.UI
 
 
                 //string tabName = utcSusalud.SelectedTab.Text;
-                frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName, tramaId, "Edit");
+                frmRegistroEmAmHos frmRegistroEm = new frmRegistroEmAmHos(tabName, tramaId, "Edit", DateTime.Now, string.Empty, string.Empty, lista, listaUps, listaproc);
                 frmRegistroEm.Text = "Editar: " + tabName;
                 if (tabName == "Ambulatorio" || tabName == "Emergencia" || tabName == "Partos")
                 {
@@ -373,7 +407,9 @@ namespace Sigesoft.Node.WinClient.UI
                     frmRegistroEm.Size = new Size(638, 300);
                 }
                 frmRegistroEm.Show();
-                btnFilter_Click(sender, e);
+                btnAgregar.Enabled = false;
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
            }
             catch (Exception exception)
             {
@@ -420,13 +456,56 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     _objTramasBL.DeleteTrama(tramaId, Globals.ClientSession.GetAsList());
                 }
-                btnFilter_Click(sender, e);
+                btnAgregar.Enabled = false;
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
             }
             catch (Exception exception)
             {
                 MessageBox.Show("SELECCIONE UNA TRAMA A ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnFilter_Click(sender, e);
             }
+        }
+
+        private void grService_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
+        {
+            btnAgregar.Enabled = true;
+        }
+
+        private void utcSusalud_SelectedTabChanged(object sender, Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
+        {
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
+        }
+
+        private void grAmbulatorio_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
+        {
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+        }
+
+        private void grEmergencia_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
+        {
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+        }
+
+        private void grHospitalizacion_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
+        {
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+        }
+
+        private void grProcedimientosCirugia_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
+        {
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+        }
+
+        private void grPartos_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
+        {
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
         }
         
     }

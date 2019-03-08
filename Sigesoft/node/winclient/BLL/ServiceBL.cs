@@ -34066,7 +34066,7 @@ namespace Sigesoft.Node.WinClient.BLL
                              join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
                                                 equals new { a = J.i_ParameterId, b = J.i_GroupId }
 
-                             where sss.i_IsDeleted == 0
+                            where sss.i_IsDeleted == 0 && (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) && sss.i_MasterServiceId !=2
 
                              select new ServiceList
                              {
@@ -34082,7 +34082,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 }
                 if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
                 {
-                    query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
+                    //query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
                 }
                 if (!string.IsNullOrEmpty(pstrSortExpression))
                 {
