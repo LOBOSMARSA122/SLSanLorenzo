@@ -370,19 +370,35 @@ namespace Sigesoft.Node.WinClient.UI
             _tramaDto = new tramasDto();
             if (_mode == "New")
             {
+                bool result = true;
                 if (_tabName == "Ambulatorio" || _tabName == "Emergencia" || _tabName == "Hospitalización")
                 {
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaIngreso.Value;
+                    if (cbGenero.SelectedValue.ToString() == "-1" || cbRangoEdad.SelectedValue.ToString() == "-1" || cbDx.Text == "")
+                    {
+                        MessageBox.Show("Completar los campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Genero = int.Parse(cbGenero.SelectedValue.ToString());
                     _tramaDto.i_GrupoEtario = int.Parse(cbRangoEdad.SelectedValue.ToString());
                     _tramaDto.v_DiseasesName = cbDx.Text;
                     _tramaDto.v_CIE10Id = txtCie10.Text;
                     if (_tabName == "Hospitalización")
                     {
-                        _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
-                        _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
-                        _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        if (cbUPS.Text == "" || cbFallecido.SelectedValue.ToString() == "-1")
+                        {
+                            MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            result = false;
+                            return;
+                        }
+                        if (result == true)
+                        {
+                            _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
+                            _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
+                            _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        }
+                       
                     }
                     _tramasBL.AddTramas(ref objOperationResult, _tramaDto, Globals.ClientSession.GetAsList());
                 }
@@ -391,6 +407,11 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaProced.Value;
                     _tramaDto.i_UPS = int.Parse(txtUpsId_2.Text);
+                    if (cbProcedimiento.Text == "" || cbEspecialidades.Text == "")
+                    {
+                        MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Programacion = int.Parse(cbProgramacion.SelectedValue.ToString());
                     _tramaDto.i_TipoCirugia = int.Parse(cbTipoCirugia.SelectedValue.ToString());
                     if (txtHrsProg.Text != "")
@@ -407,6 +428,11 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaParto.Value;
+                    if (cbTipoParto.SelectedValue.ToString() == "-1" || cbTipoNacimiento.SelectedValue.ToString() == "-1" || cbTipoComplicacion.SelectedValue.ToString() == "-1")
+                    {
+                        MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_TipoParto = int.Parse(cbTipoParto.SelectedValue.ToString());
                     _tramaDto.i_TipoNacimiento = int.Parse(cbTipoNacimiento.SelectedValue.ToString());
                     _tramaDto.i_TipoComplicacion = int.Parse(cbTipoComplicacion.SelectedValue.ToString());
@@ -420,18 +446,33 @@ namespace Sigesoft.Node.WinClient.UI
                 var _getTrama = _tramasBL.GetTrama(ref objOperationResult, _tramaId);
                 if (_tabName == "Ambulatorio" || _tabName == "Emergencia" || _tabName == "Hospitalización")
                 {
+                    bool result = true;
                     _tramaDto.v_TramaId = _tramaId;
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaIngreso.Value;
+                    if (cbGenero.SelectedValue.ToString() == "-1" || cbRangoEdad.SelectedValue.ToString() == "-1" || cbDx.Text == "")
+                    {
+                        MessageBox.Show("Completar los campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Genero = int.Parse(cbGenero.SelectedValue.ToString());
                     _tramaDto.i_GrupoEtario = int.Parse(cbRangoEdad.SelectedValue.ToString());
                     _tramaDto.v_DiseasesName = cbDx.Text;
                     _tramaDto.v_CIE10Id = txtCie10.Text;
                     if (_tabName == "Hospitalización")
                     {
-                        _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
-                        _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
-                        _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        if (cbUPS.Text == "" || cbFallecido.SelectedValue.ToString() == "-1")
+                        {
+                            MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            result = false;
+                            return;
+                        }
+                        if (result == true)
+                        {
+                            _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
+                            _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
+                            _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        }
                     }
                     _tramaDto.d_InsertDate = _getTrama.d_InsertDate.Value;
                     _tramaDto.i_InsertUserId = _getTrama.i_InsertUserId;
@@ -443,6 +484,11 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaProced.Value;
                     _tramaDto.i_UPS = int.Parse(txtUpsId_2.Text);
+                    if (cbProcedimiento.Text == "" || cbEspecialidades.Text == "")
+                    {
+                        MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Programacion = int.Parse(cbProgramacion.SelectedValue.ToString());
                     _tramaDto.i_TipoCirugia = int.Parse(cbTipoCirugia.SelectedValue.ToString());
                     if (txtHrsProg.Text != "")
@@ -472,6 +518,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramasBL.UpdateTrama(ref objOperationResult, _tramaDto, Globals.ClientSession.GetAsList());
                 }
                 MessageBox.Show("Actualización Exitosa", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
         }
         private void cbDx_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)
