@@ -476,6 +476,7 @@
             this.cbUPS.Size = new System.Drawing.Size(529, 22);
             this.cbUPS.TabIndex = 122;
             this.cbUPS.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbUPS_RowSelected);
+            this.cbUPS.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbUPS_MouseDown);
             // 
             // txtUpsId_1
             // 
@@ -600,6 +601,7 @@
             this.cbEspecialidades.Size = new System.Drawing.Size(532, 22);
             this.cbEspecialidades.TabIndex = 123;
             this.cbEspecialidades.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbEspecialidades_RowSelected);
+            this.cbEspecialidades.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbEspecialidades_MouseDown);
             // 
             // cbProcedimiento
             // 
@@ -657,6 +659,7 @@
             this.cbProcedimiento.Size = new System.Drawing.Size(591, 22);
             this.cbProcedimiento.TabIndex = 121;
             this.cbProcedimiento.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbProcedimiento_RowSelected);
+            this.cbProcedimiento.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbProcedimiento_MouseDown);
             // 
             // dtpFechaProced
             // 

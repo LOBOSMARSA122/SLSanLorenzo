@@ -564,5 +564,32 @@ namespace Sigesoft.Node.WinClient.UI
                 cbDx.SelectionLength = cbDx.Text.Length;
             }
         }
+
+        private void cbUPS_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (cbUPS.Text != "")
+            {
+                cbUPS.SelectionStart = 0;
+                cbUPS.SelectionLength = cbUPS.Text.Length;
+            }
+        }
+
+        private void cbEspecialidades_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (cbEspecialidades.Text != "")
+            {
+                cbEspecialidades.SelectionStart = 0;
+                cbEspecialidades.SelectionLength = cbEspecialidades.Text.Length;
+            }
+        }
+
+        private void cbProcedimiento_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (cbProcedimiento.Text != "")
+            {
+                cbProcedimiento.SelectionStart = 0;
+                cbProcedimiento.SelectionLength = cbProcedimiento.Text.Length;
+            }
+        }
     }
 }
