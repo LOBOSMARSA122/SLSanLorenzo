@@ -1248,8 +1248,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateAnexo16Coimolache(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_16(_serviceId); //_serviceBL.GetServiceReport(_serviceId);//
+            var filiationData = _pacientBL.GetPacientReportEPS_PHOTO(_serviceId); //_pacientBL.GetPacientReportEPS(_serviceId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1274,8 +1274,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateAnexo16Pacasmayo(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_16(_serviceId);//_serviceBL.GetServiceReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS_PHOTO(_serviceId); //_pacientBL.GetPacientReportEPS(_serviceId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1299,8 +1299,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateAnexo16MinsurSanRafael(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_16(_serviceId);//_serviceBL.GetServiceReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS_PHOTO(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1324,8 +1324,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateAnexo16Yanacocha(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_16(_serviceId);//_serviceBL.GetServiceReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS_PHOTO(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1350,8 +1350,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateAnexo16Shahuindo(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_16(_serviceId);//_serviceBL.GetServiceReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS_PHOTO(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1376,8 +1376,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateAnexo16GoldField(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_16(_serviceId);//_serviceBL.GetServiceReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS_PHOTO(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1402,7 +1402,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateInformeExamenClinico(string pathFile)
         {
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS_ExaCli(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);
             var personMedicalHistory = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var noxiousHabit = _historyBL.GetNoxiousHabitsReport(_pacientId);
             var familyMedicalAntecedent = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
@@ -1430,8 +1430,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateLaboratorioReport(string pathFile)
         {
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS_Lab(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             // usar para el logo cliente filiationData.LogoCliente
             LaboratorioReport.CreateLaboratorioReport(filiationData, serviceComponents, MedicalCenter, pathFile);

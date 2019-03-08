@@ -1054,6 +1054,142 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public PacientList GetPacientReportEPS_Lab(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from ser in dbContext.service
+                                 join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
+
+                                 join sys in dbContext.systemparameter on new { a = per.i_SexTypeId.Value, b = 100 }  // Tipo de seguro
+                                     equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                                 from sys in sys_join.DefaultIfEmpty()
+                                 /////EMPRESA/////
+                                 join org in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
+                                     equals new { a = org.v_OrganizationId } into org_join
+                                 from org in org_join.DefaultIfEmpty()
+
+                                 join loc in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
+                                     equals new { a = loc.v_OrganizationId, b = loc.v_LocationId } into loc_join
+                                 from loc in loc_join.DefaultIfEmpty()
+                                 where ser.v_ServiceId == serviceId
+                                 /////////////////////
+                                 select new PacientList
+                                 {
+                                     v_FirstName = per.v_FirstName,
+                                     v_FirstLastName = per.v_FirstLastName,
+                                     v_SecondLastName = per.v_SecondLastName,
+                                     v_FullWorkingOrganizationName = org.v_Name + " / " + loc.v_Name,
+                                     v_CurrentOccupation = per.v_CurrentOccupation,
+                                     d_ServiceDate = ser.d_ServiceDate,
+                                     v_SexTypeName = sys.v_Value1,
+                                     d_Birthdate = per.d_Birthdate,
+                                     b_Photo = per.b_PersonImage,   
+                                 }).ToList();
+                objEntity[0].i_Age = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPS_ExaCli(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from ser in dbContext.service
+                                 join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
+
+                                 join sys in dbContext.systemparameter on new { a = per.i_SexTypeId.Value, b = 100 } 
+                                     equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                                 from sys in sys_join.DefaultIfEmpty()
+
+
+                                 join sys2 in dbContext.systemparameter on new { a = per.i_TypeOfInsuranceId.Value, b = 188 }  // Tipo de seguro
+                                     equals new { a = sys2.i_ParameterId, b = sys2.i_GroupId } into sys2_join
+                                 from sys2 in sys2_join.DefaultIfEmpty()
+
+                                 /////EMPRESA/////
+                                 join org in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
+                                     equals new { a = org.v_OrganizationId } into org_join
+                                 from org in org_join.DefaultIfEmpty()
+
+                                 join loc in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
+                                     equals new { a = loc.v_OrganizationId, b = loc.v_LocationId } into loc_join
+                                 from loc in loc_join.DefaultIfEmpty()
+                                 where ser.v_ServiceId == serviceId
+                                 /////////////////////
+                                 select new PacientList
+                                 {
+                                     v_FirstName = per.v_FirstName,
+                                     v_FirstLastName = per.v_FirstLastName,
+                                     v_SecondLastName = per.v_SecondLastName,
+                                     v_FullWorkingOrganizationName = org.v_Name + " / " + loc.v_Name,
+                                     v_CurrentOccupation = per.v_CurrentOccupation,
+                                     d_ServiceDate = ser.d_ServiceDate,
+                                     v_SexTypeName = sys.v_Value1,
+                                     d_Birthdate = per.d_Birthdate,
+                                     b_Photo = per.b_PersonImage,
+                                     FirmaTrabajador = per.b_RubricImage,
+                                     HuellaTrabajador = per.b_FingerPrintImage,
+                                     v_DocNumber = per.v_DocNumber,
+                                     v_TypeOfInsuranceName = sys2.v_Value1,
+
+                                 }).ToList();
+
+                objEntity[0].v_OwnerOrganizationName = (from n in dbContext.organization
+                                                        where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                                                        select n.v_Name).SingleOrDefault<string>();
+                objEntity[0].v_DoctorPhysicalExamName = (from sc in dbContext.servicecomponent
+                                                        join J1 in dbContext.systemuser on new {i_InsertUserId = sc.i_ApprovedUpdateUserId.Value}
+                                                                equals new {i_InsertUserId = J1.i_SystemUserId} into J1_join
+                                                        from J1 in J1_join.DefaultIfEmpty()
+                                                        join pe in dbContext.person on J1.v_PersonId equals pe.v_PersonId
+                                                        where (sc.v_ServiceId == serviceId) &&
+                                                              (sc.v_ComponentId == Constants.EXAMEN_FISICO_ID)
+                                                        select pe.v_FirstName + " " + pe.v_FirstLastName).SingleOrDefault<string>();
+                objEntity[0].i_Age = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPS_PHOTO(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from ser in dbContext.service
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
+                                 where ser.v_ServiceId == serviceId
+                                 /////////////////////
+                                 select new PacientList
+                                 {
+                                     b_Photo = per.b_PersonImage,
+                                 }).ToList();
+                return objEntity.FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         public PacientList GetPacientReportEPS(string serviceId)
         {
             //mon.IsActive = true;

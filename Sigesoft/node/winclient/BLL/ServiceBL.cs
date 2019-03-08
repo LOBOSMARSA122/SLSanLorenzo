@@ -767,6 +767,93 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+
+        public ServiceList GetServiceReport_16(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+                                 join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId into B_join
+                                 from pro in B_join.DefaultIfEmpty()
+
+                                 join org in dbContext.organization on pro.v_WorkingOrganizationId equals org.v_OrganizationId into org_join
+                                 from org in org_join.DefaultIfEmpty()
+
+                                 join org2 in dbContext.organization on pro.v_CustomerOrganizationId equals org2.v_OrganizationId into org2_join
+                                 from org2 in org2_join.DefaultIfEmpty()
+
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId into per_join
+                                 from per in per_join.DefaultIfEmpty()
+
+                                 join org3 in dbContext.organization on pro.v_EmployerOrganizationId equals org3.v_OrganizationId into org3_join
+                                 from org3 in org3_join.DefaultIfEmpty()
+
+                                 join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                                 from sys in sys_join.DefaultIfEmpty()
+
+                                 join prof in dbContext.professional on sys.v_PersonId equals prof.v_PersonId into prof_join
+                                 from prof in prof_join.DefaultIfEmpty()
+
+                                 join per2 in dbContext.person on new { a = prof.v_PersonId }
+                                         equals new { a = per2.v_PersonId } into P1_join
+                                 from per2 in P1_join.DefaultIfEmpty()
+
+                                 where ser.v_ServiceId == pstrServiceId
+                                 select new ServiceList
+                                 {
+                                     //-----------------CABECERA---------------------------------
+                                     v_PersonId = per.v_PersonId,
+                                     v_ServiceId = ser.v_ServiceId,
+                                     d_ServiceDate = ser.d_ServiceDate,
+                                     i_EsoTypeId = pro.i_EsoTypeId.Value, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                                     //---------------DATOS DE LA EMPRESA--------------------------------
+                                     EmpresaTrabajo = org.v_Name,
+                                     EmpresaEmpleadora = org3.v_Name,
+                                     v_CurrentOccupation = per.v_CurrentOccupation,
+                                     EmpresaClienteId = org.v_OrganizationId,
+                                     //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                                     b_Logo = org2.b_Image,
+                                     v_Pacient = per.v_FirstLastName + " " + per.v_SecondLastName + " " + per.v_FirstName,
+                                     d_BirthDate = per.d_Birthdate,
+                                     v_DocNumber = per.v_DocNumber,
+                                     v_AdressLocation = per.v_AdressLocation,
+                                     Telefono = per.v_TelephoneNumber,
+                                     HijosVivos = per.i_NumberLivingChildren,
+                                     HijosDependientes = per.i_NumberDependentChildren,
+                                     i_AptitudeStatusId = ser.i_AptitudeStatusId,
+                                     v_BirthPlace = per.v_BirthPlace,
+                                     i_PlaceWorkId = per.i_PlaceWorkId.Value,
+                                     v_ExploitedMineral = per.v_ExploitedMineral,
+                                     i_AltitudeWorkId = per.i_AltitudeWorkId.Value,
+                                     i_SexTypeId = per.i_SexTypeId,
+                                     i_MaritalStatusId = per.i_MaritalStatusId.Value,
+                                     i_LevelOfId = per.i_LevelOfId.Value,
+                                     FirmaTrabajador = per.b_RubricImage,
+                                     HuellaTrabajador = per.b_FingerPrintImage,
+                                     //Datos del Doctor
+                                     NombreDoctor = per2.v_FirstName + " " + per2.v_FirstLastName + " " + per2.v_SecondLastName,
+                                     CMP = prof.v_ProfessionalCode,
+                                     // Antecedentes ginecologicos
+                                     v_CustomerOrganizationName = org2.v_Name,
+
+                                 }).ToList();
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].CMP = DatosMedicina.Value3;
+                objEntity[0].NombreDoctor = DatosMedicina.Value2;
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
       
 		public ServiceList GetServiceReport(string pstrServiceId)
 		{
@@ -15137,6 +15224,9 @@ namespace Sigesoft.Node.WinClient.BLL
 				throw;
 			}
 		}
+
+
+
 
 		public List<ServiceComponentList> GetServiceComponentsReport(string pstrServiceId)
 		{
@@ -33971,9 +34061,22 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 
-        public object GetInfoMedicalCenter_logo()
+        public organizationDto GetInfoMedicalCenter_Logo()
         {
-            throw new NotImplementedException();
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+                organizationDto objDtoEntity = null;
+                var objEntity = (from o in dbContext.organization
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                    select new organizationDto
+                    {
+                        b_Image = o.b_Image
+                    }).FirstOrDefault();
+
+
+                return objEntity;
+            }
         }
+        
     }
 }
