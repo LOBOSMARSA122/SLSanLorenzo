@@ -1807,6 +1807,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
       }
 
+
       public List<FamilyMedicalAntecedentsList> GetFamilyMedicalAntecedentsReport(string pstrPersonId)
       {
           //mon.IsActive = true;
