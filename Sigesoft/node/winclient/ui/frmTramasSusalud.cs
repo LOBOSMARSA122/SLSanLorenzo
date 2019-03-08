@@ -26,6 +26,9 @@ namespace Sigesoft.Node.WinClient.UI
     {
         string strFilterExpression;
         List<TramasList> _objData = new List<TramasList>();
+
+        List<ServiceList> _objDataLista = new List<ServiceList>();
+
         TramasBL _objTramasBL = new TramasBL();
         public frmTramasSusalud()
         {
@@ -74,6 +77,12 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void BindGrid()
         {
+            var objDataService = GetDataServices(0, null, "v_ServiceId ASC", strFilterExpression);
+            grService.DataSource = objDataService;
+            //lblServices.Text = string.Format("Se encontraron {0} registros.", objDataService.Count());
+            this.grService.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
+
+            //
             string tabName = utcSusalud.SelectedTab.Text;
 
             if (tabName == "Ambulatorio")
@@ -201,6 +210,16 @@ namespace Sigesoft.Node.WinClient.UI
             return _objData;
         }
 
+        private List<ServiceList> GetDataServices(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
+            DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
+
+            _objDataLista = new ServiceBL().GetServiceForTramasPageAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+
+            return _objDataLista;
+        }
         private void btnExportAmbulatorio_Click(object sender, EventArgs e)
         {
             string NombreArchivo = "";

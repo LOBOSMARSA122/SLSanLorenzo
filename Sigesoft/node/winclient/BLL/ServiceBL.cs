@@ -13897,12 +13897,6 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-		public int GetAge(DateTime FechaNacimiento)
-		{
-			return int.Parse((DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1).ToString());
-
-		}
-
 		public float GetServicesPagedAndFilteredReport(string ProtocoloId)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -33957,6 +33951,76 @@ namespace Sigesoft.Node.WinClient.BLL
         public object GetInfoMedicalCenter_logo()
         {
             throw new NotImplementedException();
+        }
+
+        public List<ServiceList> GetServiceForTramasPageAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from sss in dbContext.service
+                             join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                             join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                                                equals new { a = J.i_ParameterId, b = J.i_GroupId }
+
+                             where sss.i_IsDeleted == 0
+
+                             select new ServiceList
+                             {
+                                 v_ServiceId = sss.v_ServiceId,
+                                 nombre = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                                 genero = J.v_Value1,
+                                 fechaservicio = sss.d_ServiceDate.Value,
+                                 d_BirthDate = A.d_Birthdate.Value
+                             };
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
+                {
+                    query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+                
+                List<ServiceList> objData = query.ToList();
+                var datos = (from a in objData
+                                     select new ServiceList
+                                     {
+                                         v_ServiceId = a.v_ServiceId,
+                                         nombre = a.nombre,
+                                         genero = a.genero,
+                                         fechaservicio = a.fechaservicio,
+                                         edad = GetAge(a.d_BirthDate.Value)
+                                     }).ToList();
+                pobjOperationResult.Success = 1;
+                return datos;
+
+            }
+            catch (Exception e)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(e);
+                return null;
+            }
+        }
+        public int GetAge(DateTime FechaNacimiento)
+        {
+            return int.Parse((DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1).ToString());
+
         }
     }
 }
