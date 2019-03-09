@@ -767,6 +767,286 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public ServiceList GetServiceReport_Ansiedad(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+                                 join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId into B_join
+                                 from pro in B_join.DefaultIfEmpty()
+
+                                 join org in dbContext.organization on pro.v_WorkingOrganizationId equals org.v_OrganizationId into org_join
+                                 from org in org_join.DefaultIfEmpty()
+
+                                 join org2 in dbContext.organization on pro.v_CustomerOrganizationId equals org2.v_OrganizationId into org2_join
+                                 from org2 in org2_join.DefaultIfEmpty()
+
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId into per_join
+                                 from per in per_join.DefaultIfEmpty()
+
+                                 join org3 in dbContext.organization on pro.v_EmployerOrganizationId equals org3.v_OrganizationId into org3_join
+                                 from org3 in org3_join.DefaultIfEmpty()
+
+                                 join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                                 from sys in sys_join.DefaultIfEmpty()
+
+                                 join prof in dbContext.professional on sys.v_PersonId equals prof.v_PersonId into prof_join
+                                 from prof in prof_join.DefaultIfEmpty()
+
+                                 join sys2 in dbContext.systemparameter on new { a = per.i_SexTypeId.Value, b = 100 }
+                                     equals new { a = sys2.i_ParameterId, b = sys2.i_GroupId } into sys2_join
+                                 from sys2 in sys2_join.DefaultIfEmpty()
+
+                                 join sys3 in dbContext.systemparameter on new { a = per.i_MaritalStatusId.Value, b = 101 }
+                                     equals new { a = sys3.i_ParameterId, b = sys3.i_GroupId } into sys3_join
+                                 from sys3 in sys3_join.DefaultIfEmpty()
+
+                                 join per2 in dbContext.person on new { a = prof.v_PersonId }
+                                         equals new { a = per2.v_PersonId } into P1_join
+                                 from per2 in P1_join.DefaultIfEmpty()
+
+                                 where ser.v_ServiceId == pstrServiceId
+                                 select new ServiceList
+                                 {
+                                     //-----------------CABECERA---------------------------------
+                                     v_PersonId = per.v_PersonId,
+                                     v_ServiceId = ser.v_ServiceId,
+                                     d_ServiceDate = ser.d_ServiceDate,
+                                     i_EsoTypeId = pro.i_EsoTypeId.Value, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                                     //---------------DATOS DE LA EMPRESA--------------------------------
+                                     EmpresaTrabajo = org.v_Name,
+                                     EmpresaEmpleadora = org3.v_Name,
+                                     v_CurrentOccupation = per.v_CurrentOccupation,
+                                     EmpresaClienteId = org.v_OrganizationId,
+                                     //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                                     b_Logo = org2.b_Image,
+                                     EstadoCivil = sys3.v_Value1,
+                                     v_GenderName = sys2.v_Value1,
+                                     v_Pacient = per.v_FirstLastName + " " + per.v_SecondLastName + " " + per.v_FirstName,
+                                     d_BirthDate = per.d_Birthdate,
+                                     v_DocNumber = per.v_DocNumber,
+                                     v_AdressLocation = per.v_AdressLocation,
+                                     Telefono = per.v_TelephoneNumber,
+                                     HijosVivos = per.i_NumberLivingChildren,
+                                     HijosDependientes = per.i_NumberDependentChildren,
+                                     i_AptitudeStatusId = ser.i_AptitudeStatusId,
+                                     v_BirthPlace = per.v_BirthPlace,
+                                     i_PlaceWorkId = per.i_PlaceWorkId.Value,
+                                     v_ExploitedMineral = per.v_ExploitedMineral,
+                                     i_AltitudeWorkId = per.i_AltitudeWorkId.Value,
+                                     i_SexTypeId = per.i_SexTypeId,
+                                     i_MaritalStatusId = per.i_MaritalStatusId.Value,
+                                     i_LevelOfId = per.i_LevelOfId.Value,
+                                     FirmaTrabajador = per.b_RubricImage,
+                                     HuellaTrabajador = per.b_FingerPrintImage,
+                                     //Datos del Doctor
+                                     NombreDoctor = per2.v_FirstName + " " + per2.v_FirstLastName + " " + per2.v_SecondLastName,
+                                     CMP = prof.v_ProfessionalCode,
+                                     // Antecedentes ginecologicos
+                                     v_CustomerOrganizationName = org2.v_Name,
+
+                                 }).ToList();
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].CMP = DatosMedicina.Value3;
+                objEntity[0].NombreDoctor = DatosMedicina.Value2;
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetServiceReport_Fatiga(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+                                 join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId into B_join
+                                 from pro in B_join.DefaultIfEmpty()
+
+                                 join org in dbContext.organization on pro.v_WorkingOrganizationId equals org.v_OrganizationId into org_join
+                                 from org in org_join.DefaultIfEmpty()
+
+                                 join org2 in dbContext.organization on pro.v_CustomerOrganizationId equals org2.v_OrganizationId into org2_join
+                                 from org2 in org2_join.DefaultIfEmpty()
+
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId into per_join
+                                 from per in per_join.DefaultIfEmpty()
+
+                                 join org3 in dbContext.organization on pro.v_EmployerOrganizationId equals org3.v_OrganizationId into org3_join
+                                 from org3 in org3_join.DefaultIfEmpty()
+
+                                 join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                                 from sys in sys_join.DefaultIfEmpty()
+
+                                 join prof in dbContext.professional on sys.v_PersonId equals prof.v_PersonId into prof_join
+                                 from prof in prof_join.DefaultIfEmpty()
+
+                                 join sys3 in dbContext.systemparameter on new { a = per.i_MaritalStatusId.Value, b = 101 }
+                                     equals new { a = sys3.i_ParameterId, b = sys3.i_GroupId } into sys3_join
+                                 from sys3 in sys3_join.DefaultIfEmpty()
+
+                                 join per2 in dbContext.person on new { a = prof.v_PersonId }
+                                         equals new { a = per2.v_PersonId } into P1_join
+                                 from per2 in P1_join.DefaultIfEmpty()
+
+                                 where ser.v_ServiceId == pstrServiceId
+                                 select new ServiceList
+                                 {
+                                     //-----------------CABECERA---------------------------------
+                                     v_PersonId = per.v_PersonId,
+                                     v_ServiceId = ser.v_ServiceId,
+                                     d_ServiceDate = ser.d_ServiceDate,
+                                     i_EsoTypeId = pro.i_EsoTypeId.Value, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                                     //---------------DATOS DE LA EMPRESA--------------------------------
+                                     EmpresaTrabajo = org.v_Name,
+                                     EmpresaEmpleadora = org3.v_Name,
+                                     v_CurrentOccupation = per.v_CurrentOccupation,
+                                     EmpresaClienteId = org.v_OrganizationId,
+                                     //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                                     b_Logo = org2.b_Image,
+                                     EstadoCivil = sys3.v_Value1,
+                                     v_Pacient = per.v_FirstLastName + " " + per.v_SecondLastName + " " + per.v_FirstName,
+                                     d_BirthDate = per.d_Birthdate,
+                                     v_DocNumber = per.v_DocNumber,
+                                     v_AdressLocation = per.v_AdressLocation,
+                                     Telefono = per.v_TelephoneNumber,
+                                     HijosVivos = per.i_NumberLivingChildren,
+                                     HijosDependientes = per.i_NumberDependentChildren,
+                                     i_AptitudeStatusId = ser.i_AptitudeStatusId,
+                                     v_BirthPlace = per.v_BirthPlace,
+                                     i_PlaceWorkId = per.i_PlaceWorkId.Value,
+                                     v_ExploitedMineral = per.v_ExploitedMineral,
+                                     i_AltitudeWorkId = per.i_AltitudeWorkId.Value,
+                                     i_SexTypeId = per.i_SexTypeId,
+                                     i_MaritalStatusId = per.i_MaritalStatusId.Value,
+                                     i_LevelOfId = per.i_LevelOfId.Value,
+                                     FirmaTrabajador = per.b_RubricImage,
+                                     HuellaTrabajador = per.b_FingerPrintImage,
+                                     //Datos del Doctor
+                                     NombreDoctor = per2.v_FirstName + " " + per2.v_FirstLastName + " " + per2.v_SecondLastName,
+                                     CMP = prof.v_ProfessionalCode,
+                                     // Antecedentes ginecologicos
+                                     v_CustomerOrganizationName = org2.v_Name,
+
+                                 }).ToList();
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].CMP = DatosMedicina.Value3;
+                objEntity[0].NombreDoctor = DatosMedicina.Value2;
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetServiceReport_Somno(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+                                 join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId into B_join
+                                 from pro in B_join.DefaultIfEmpty()
+
+                                 join org in dbContext.organization on pro.v_WorkingOrganizationId equals org.v_OrganizationId into org_join
+                                 from org in org_join.DefaultIfEmpty()
+
+                                 join org2 in dbContext.organization on pro.v_CustomerOrganizationId equals org2.v_OrganizationId into org2_join
+                                 from org2 in org2_join.DefaultIfEmpty()
+
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId into per_join
+                                 from per in per_join.DefaultIfEmpty()
+
+                                 join org3 in dbContext.organization on pro.v_EmployerOrganizationId equals org3.v_OrganizationId into org3_join
+                                 from org3 in org3_join.DefaultIfEmpty()
+
+                                 join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                                 from sys in sys_join.DefaultIfEmpty()
+
+                                 join prof in dbContext.professional on sys.v_PersonId equals prof.v_PersonId into prof_join
+                                 from prof in prof_join.DefaultIfEmpty()
+
+                                 join sys2 in dbContext.systemparameter on new { a = per.i_SexTypeId.Value, b = 100 }
+                                     equals new { a = sys2.i_ParameterId, b = sys2.i_GroupId } into sys2_join
+                                 from sys2 in sys2_join.DefaultIfEmpty()
+
+                                 join per2 in dbContext.person on new { a = prof.v_PersonId }
+                                         equals new { a = per2.v_PersonId } into P1_join
+                                 from per2 in P1_join.DefaultIfEmpty()
+
+                                 where ser.v_ServiceId == pstrServiceId
+                                 select new ServiceList
+                                 {
+                                     //-----------------CABECERA---------------------------------
+                                     v_PersonId = per.v_PersonId,
+                                     v_ServiceId = ser.v_ServiceId,
+                                     d_ServiceDate = ser.d_ServiceDate,
+                                     i_EsoTypeId = pro.i_EsoTypeId.Value, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                                     //---------------DATOS DE LA EMPRESA--------------------------------
+                                     EmpresaTrabajo = org.v_Name,
+                                     EmpresaEmpleadora = org3.v_Name,
+                                     v_CurrentOccupation = per.v_CurrentOccupation,
+                                     EmpresaClienteId = org.v_OrganizationId,
+                                     //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                                     b_Logo = org2.b_Image,
+
+                                     v_Pacient = per.v_FirstLastName + " " + per.v_SecondLastName + " " + per.v_FirstName,
+                                     d_BirthDate = per.d_Birthdate,
+                                     v_DocNumber = per.v_DocNumber,
+                                     v_AdressLocation = per.v_AdressLocation,
+                                     Telefono = per.v_TelephoneNumber,
+                                     HijosVivos = per.i_NumberLivingChildren,
+                                     HijosDependientes = per.i_NumberDependentChildren,
+                                     i_AptitudeStatusId = ser.i_AptitudeStatusId,
+                                     v_BirthPlace = per.v_BirthPlace,
+                                     i_PlaceWorkId = per.i_PlaceWorkId.Value,
+                                     v_ExploitedMineral = per.v_ExploitedMineral,
+                                     i_AltitudeWorkId = per.i_AltitudeWorkId.Value,
+                                     i_SexTypeId = per.i_SexTypeId,
+                                     i_MaritalStatusId = per.i_MaritalStatusId.Value,
+                                     i_LevelOfId = per.i_LevelOfId.Value,
+                                     FirmaTrabajador = per.b_RubricImage,
+                                     HuellaTrabajador = per.b_FingerPrintImage,
+                                     v_GenderName = sys2.v_Value1,
+                                     //Datos del Doctor
+                                     NombreDoctor = per2.v_FirstName + " " + per2.v_FirstLastName + " " + per2.v_SecondLastName,
+                                     CMP = prof.v_ProfessionalCode,
+                                     // Antecedentes ginecologicos
+                                     v_CustomerOrganizationName = org2.v_Name,
+
+                                 }).ToList();
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].CMP = DatosMedicina.Value3;
+                objEntity[0].NombreDoctor = DatosMedicina.Value2;
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+      
 
         public ServiceList GetServiceReport_16(string pstrServiceId)
         {
@@ -15225,8 +15505,344 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+        public List<ServiceComponentList> GetServiceComponentsReport_NewIMO(string pstrServiceId)
+        {
+            //mon.IsActive = true;        
+            int isDeleted = 0;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                #region serviceComponentFields
+
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
+
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
+
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
+
+                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
+
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  //i_GroupId = D.i_GroupId.Value,
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                  v_MeasurementUnitName = dh.v_Value1,
+
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                                  v_ComponentId = cm.v_ComponentId,
+                                              }).ToList();
+
+                int rpta = 0;
+
+                #endregion
+
+                var components = (from aaa in dbContext.servicecomponent
+                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+
+                                  //*********************************************************************
+
+                                  where (aaa.v_ServiceId == pstrServiceId) &&
+                                        (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                        (aaa.i_IsDeleted == 0) &&
+                                        (aaa.i_IsRequiredId == (int?)SiNo.SI)
+
+                                  select new
+                                  {
+                                      v_ComponentId = bbb.v_ComponentId,
+                                      v_ComponentName = bbb.v_Name,
+                                      DiagnosticRepository = (from dr in aaa.service.diagnosticrepository
+                                          where (dr.v_ServiceId == pstrServiceId) &&
+                                                (dr.v_ComponentId == aaa.v_ComponentId && dr.i_IsDeleted == 0)
+                                          select new DiagnosticRepositoryList
+                                          {
+                                              v_DiseasesId = dr.diseases.v_DiseasesId,
+                                              v_DiseasesName = dr.diseases.v_Name
+                                          }),
+                                  }).AsEnumerable().Select(p => new ServiceComponentList
+                                  {
+                                      v_ComponentId = p.v_ComponentId,
+                                      v_ComponentName = p.v_ComponentName,
+                                      DiagnosticRepository = p.DiagnosticRepository.ToList(),
+                                  }).ToList();
+
+                components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = serviceComponentFields.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+                return components;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
 
+        public List<ServiceComponentList> GetServiceComponentsReport_New312(string pstrServiceId)
+        {
+            //mon.IsActive = true;        
+            int isDeleted = 0;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                #region serviceComponentFields
+
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
+
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
+
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
+
+                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
+
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  //i_GroupId = D.i_GroupId.Value,
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                  v_MeasurementUnitName = dh.v_Value1,
+
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                                  v_ComponentId = cm.v_ComponentId,
+                                              }).ToList();
+
+                int rpta = 0;
+
+                #endregion
+
+                var components = (from aaa in dbContext.servicecomponent
+                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+
+                                  //*********************************************************************
+
+                                  where (aaa.v_ServiceId == pstrServiceId) &&
+                                        (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                        (aaa.i_IsDeleted == 0) &&
+                                        (aaa.i_IsRequiredId == (int?)SiNo.SI)
+
+                                  select new
+                                  {
+                                      i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId,
+                                      i_CategoryId = bbb.i_CategoryId.Value,
+                                      v_ComponentId = bbb.v_ComponentId,
+                                      v_ComponentName = bbb.v_Name,
+                                      DiagnosticRepository = (from dr in aaa.service.diagnosticrepository
+                                                              where (dr.v_ServiceId == pstrServiceId) &&
+                                                                    (dr.v_ComponentId == aaa.v_ComponentId && dr.i_IsDeleted == 0)
+                                                              select new DiagnosticRepositoryList
+                                                              {
+                                                                  v_DiseasesId = dr.diseases.v_DiseasesId,
+                                                                  v_DiseasesName = dr.diseases.v_Name
+                                                              }),
+                                  }).AsEnumerable().Select(p => new ServiceComponentList
+                                  {
+                                      i_ServiceComponentStatusId = p.i_ServiceComponentStatusId,
+                                      i_CategoryId = p.i_CategoryId,
+                                      v_ComponentId = p.v_ComponentId,
+                                      v_ComponentName = p.v_ComponentName,
+                                      DiagnosticRepository = p.DiagnosticRepository.ToList(),
+                                  }).ToList();
+
+                components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = serviceComponentFields.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+                return components;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public List<ServiceComponentList> GetServiceComponentsReport_New(string pstrServiceId)
+        {
+            //mon.IsActive = true;        
+            int isDeleted = 0;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                #region serviceComponentFields
+
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
+
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
+
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
+
+                                              where (A.v_ServiceId == pstrServiceId) &&      
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
+
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  //i_GroupId = D.i_GroupId.Value,
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                  v_MeasurementUnitName = dh.v_Value1,
+
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                                  v_ComponentId = cm.v_ComponentId,
+                                              }).ToList();
+
+                int rpta = 0;
+
+                #endregion
+
+                var components = (from aaa in dbContext.servicecomponent
+                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+
+                                  //*********************************************************************
+
+                                  where (aaa.v_ServiceId == pstrServiceId) &&
+                                        (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                        (aaa.i_IsDeleted == 0) &&
+                                        (aaa.i_IsRequiredId == (int?)SiNo.SI)
+
+                                  select new
+                                  {
+                                      i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId,
+                                      v_ComponentId = bbb.v_ComponentId,
+                                  }).AsEnumerable().Select(p => new ServiceComponentList
+                                  {
+                                      v_ComponentId = p.v_ComponentId,
+                                      i_ServiceComponentStatusId = p.i_ServiceComponentStatusId,
+                                  }).ToList();
+
+                components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = serviceComponentFields.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+                return components;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<ServiceComponentList> GetServiceComponentsReport_NewLab(string pstrServiceId)
+        {
+            //mon.IsActive = true;        
+            int isDeleted = 0;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                #region serviceComponentFields
+
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
+
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
+
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
+
+                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
+
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  //i_GroupId = D.i_GroupId.Value,
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                  v_MeasurementUnitName = dh.v_Value1,
+
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                                  v_ComponentId = cm.v_ComponentId,
+                                              }).ToList();
+
+                int rpta = 0;
+
+                #endregion
+
+                var components = (from aaa in dbContext.servicecomponent
+                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+                                  join me in dbContext.systemuser on aaa.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                  from me in me_join.DefaultIfEmpty()
+                                  //*********************************************************************
+                                  join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                  from pme in pme_join.DefaultIfEmpty()
+
+                                  where (aaa.v_ServiceId == pstrServiceId) &&
+                                        (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                        (aaa.i_IsDeleted == 0) &&
+                                        (aaa.i_IsRequiredId == (int?)SiNo.SI)
+
+                                  select new
+                                  {
+                                      v_ComponentName = bbb.v_Name,
+                                      v_ComponentId = bbb.v_ComponentId,
+                                      i_CategoryId = bbb.i_CategoryId.Value,
+                                      FirmaMedico = pme.b_SignatureImage
+                                  }).AsEnumerable().Select(p => new ServiceComponentList
+                                  {
+                                      v_ComponentName = p.v_ComponentName,
+                                      v_ComponentId = p.v_ComponentId,
+                                      i_CategoryId = p.i_CategoryId,
+                                      FirmaMedico = p.FirmaMedico
+                                  }).ToList();
+
+                components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = serviceComponentFields.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+                return components;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
 		public List<ServiceComponentList> GetServiceComponentsReport(string pstrServiceId)
 		{
@@ -15249,6 +15865,8 @@ namespace Sigesoft.Node.WinClient.BLL
 											  join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
 																 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
 											  from dh in dh_join.DefaultIfEmpty()
+
+
 
 											  where (A.v_ServiceId == pstrServiceId) &&
 												  //(cm.v_ComponentId == pstrComponentId) &&
