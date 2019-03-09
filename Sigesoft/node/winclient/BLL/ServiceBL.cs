@@ -14264,12 +14264,6 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-		public int GetAge(DateTime FechaNacimiento)
-		{
-			return int.Parse((DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1).ToString());
-
-		}
-
 		public float GetServicesPagedAndFilteredReport(string ProtocoloId)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -20733,7 +20727,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   Lector = a.Lector,
 							   Edad = GetAge(a.FechaNacimiento.Value),
                                Placa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_NRO_PLACA_ID, "NOCOMBO", 0, "SI"),
-                               CalidaRadio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID).v_Value1Name,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CALIDAD_ID, "NOCOMBO", 0, "SI"),
+                               CalidaRadio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CALIDAD_ID, "NOCOMBO", 0, "SI"),
                                Causas = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAUSAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAUSAS_ID).v_Value1Name,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAUSAS_ID, "NOCOMBO", 0, "SI"),
                                Comentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIOS_ID, "NOCOMBO", 0, "SI"),
 							   Hcl = a.Hcl,
@@ -34678,6 +34672,77 @@ namespace Sigesoft.Node.WinClient.BLL
                 return objEntity;
             }
         }
-        
+
+        public List<ServiceList> GetServiceForTramasPageAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from sss in dbContext.service
+                             join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                             join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                                                equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                             join P in dbContext.protocol on sss.v_ProtocolId equals  P.v_ProtocolId
+                             join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                                 equals new { a = S.i_ParameterId, b = S.i_GroupId }
+
+                            where sss.i_IsDeleted == 0 && (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) && sss.i_MasterServiceId !=2
+
+                             select new ServiceList
+                             {
+                                 v_ServiceId = sss.v_ServiceId,
+                                 nombre = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                                 genero = J.v_Value1,
+                                 fechaservicio = sss.d_ServiceDate.Value,
+                                 d_BirthDate = A.d_Birthdate.Value,
+                                 tipoServicio = S.v_Value1
+                             };
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+                
+                List<ServiceList> objData = query.ToList();
+                var datos = (from a in objData
+                                     select new ServiceList
+                                     {
+                                         v_ServiceId = a.v_ServiceId,
+                                         nombre = a.nombre,
+                                         genero = a.genero,
+                                         fechaservicio = a.fechaservicio,
+                                         edad = GetAge(a.d_BirthDate.Value),
+                                         tipoServicio = a.tipoServicio
+                                     }).ToList();
+                pobjOperationResult.Success = 1;
+                return datos;
+
+            }
+            catch (Exception e)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(e);
+                return null;
+            }
+        }
+        public int GetAge(DateTime FechaNacimiento)
+        {
+            return int.Parse((DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1).ToString());
+
+        }
+
     }
 }

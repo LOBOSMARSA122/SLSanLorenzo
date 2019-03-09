@@ -6299,6 +6299,8 @@
     <None Include="Resources\money.png" />
     <None Include="Resources\no liq.png" />
     <None Include="Resources\liberar_1.png" />
+    <Content Include="Resources\LameDifferentBalloonfish-small.gif" />
+    <Content Include="Resources\Loading02.gif" />
     <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

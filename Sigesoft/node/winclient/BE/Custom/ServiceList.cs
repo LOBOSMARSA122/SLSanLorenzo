@@ -469,6 +469,14 @@ namespace Sigesoft.Node.WinClient.BE
        public string v_CentroEducativo { get; set; }
        public string v_Mail { get; set; }
        public string v_TelephoneNumber { get; set; }
+
+
+       //datos Tramas
+       public string nombre { get; set; }
+       public string genero { get; set; }
+       public DateTime? fechaservicio { get; set; }
+       public int? edad { get; set; }
+       public string tipoServicio { get; set; }
    }
 
 

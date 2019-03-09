@@ -251,6 +251,8 @@
     <Content Include="libs\WebCam_Capture.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\LameDifferentBalloonfish-small.gif" />
+    <None Include="Resources\Loading02.gif" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
