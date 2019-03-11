@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sigesoft.Common.Properties {
+namespace Sigesoft.Node.Contasol.Integration.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Sigesoft.Common.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sigesoft.Common.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sigesoft.Node.Contasol.Integration.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,19 +63,9 @@ namespace Sigesoft.Common.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LameDifferentBalloonfish_small {
+        internal static System.Drawing.Bitmap find {
             get {
-                object obj = ResourceManager.GetObject("LameDifferentBalloonfish-small", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Loading02 {
-            get {
-                object obj = ResourceManager.GetObject("Loading02", resourceCulture);
+                object obj = ResourceManager.GetObject("find", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

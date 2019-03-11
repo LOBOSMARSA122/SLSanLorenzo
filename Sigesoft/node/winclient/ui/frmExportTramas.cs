@@ -236,6 +236,7 @@ namespace Sigesoft.Node.WinClient.UI
                     }
                 }
                 acumulador = acumulador + double.Parse(itemsplit[1]);
+                acumulador = Math.Round(acumulador, 0);
                 Estancia.Add(itemsplit[0] + "|" + acumulador.ToString());
             }
             Estancia = Estancia.Distinct().ToList();

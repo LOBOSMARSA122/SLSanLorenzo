@@ -133,7 +133,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                         return;
                     }
 
-                    if ((item.d_Importe ?? 0) <= 0)
+                    if ((item.d_Importe ?? 0) < 0)
                     {
                         MessageBox.Show("Por favor revise todos los importes de descuento.!");
                         return;

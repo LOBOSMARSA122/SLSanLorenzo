@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedicalExamEdicion));
             this.Nombre = new System.Windows.Forms.Label();
             this.txtInsertName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,6 +54,8 @@
             this.ddlUnidadProductiva = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnAgregarLinea = new System.Windows.Forms.Button();
+            this.btnAgregarLineaSAM = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uvMedicalExamEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unUIIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unValidInDays)).BeginInit();
@@ -283,7 +286,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 180);
+            this.label2.Location = new System.Drawing.Point(15, 179);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 13);
@@ -295,10 +298,10 @@
             this.ddlUnidadProductiva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlUnidadProductiva.DropDownWidth = 300;
             this.ddlUnidadProductiva.FormattingEnabled = true;
-            this.ddlUnidadProductiva.Location = new System.Drawing.Point(111, 174);
+            this.ddlUnidadProductiva.Location = new System.Drawing.Point(112, 175);
             this.ddlUnidadProductiva.Margin = new System.Windows.Forms.Padding(2);
             this.ddlUnidadProductiva.Name = "ddlUnidadProductiva";
-            this.ddlUnidadProductiva.Size = new System.Drawing.Size(217, 21);
+            this.ddlUnidadProductiva.Size = new System.Drawing.Size(205, 21);
             this.ddlUnidadProductiva.TabIndex = 24;
             // 
             // btnCancel
@@ -307,7 +310,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(253, 208);
+            this.btnCancel.Location = new System.Drawing.Point(258, 208);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
@@ -322,7 +325,7 @@
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOK.Location = new System.Drawing.Point(173, 208);
+            this.btnOK.Location = new System.Drawing.Point(178, 208);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 24);
@@ -332,13 +335,52 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // btnAgregarLinea
+            // 
+            this.btnAgregarLinea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarLinea.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarLinea.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarLinea.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarLinea.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarLinea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarLinea.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarLinea.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarLinea.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarLinea.Image")));
+            this.btnAgregarLinea.Location = new System.Drawing.Point(319, 175);
+            this.btnAgregarLinea.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarLinea.Name = "btnAgregarLinea";
+            this.btnAgregarLinea.Size = new System.Drawing.Size(27, 21);
+            this.btnAgregarLinea.TabIndex = 62;
+            this.btnAgregarLinea.UseVisualStyleBackColor = false;
+            this.btnAgregarLinea.Click += new System.EventHandler(this.btnAgregarLinea_Click);
+            // 
+            // btnAgregarLineaSAM
+            // 
+            this.btnAgregarLineaSAM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarLineaSAM.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarLineaSAM.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarLineaSAM.FlatAppearance.BorderSize = 0;
+            this.btnAgregarLineaSAM.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarLineaSAM.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarLineaSAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarLineaSAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarLineaSAM.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarLineaSAM.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarLineaSAM.Image")));
+            this.btnAgregarLineaSAM.Location = new System.Drawing.Point(320, 173);
+            this.btnAgregarLineaSAM.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarLineaSAM.Name = "btnAgregarLineaSAM";
+            this.btnAgregarLineaSAM.Size = new System.Drawing.Size(27, 21);
+            this.btnAgregarLineaSAM.TabIndex = 62;
+            this.btnAgregarLineaSAM.UseVisualStyleBackColor = false;
+            // 
             // frmMedicalExamEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(349, 249);
+            this.ClientSize = new System.Drawing.Size(354, 249);
             this.ControlBox = false;
+            this.Controls.Add(this.btnAgregarLinea);
             this.Controls.Add(this.unBasePrice);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.unValidInDays);
@@ -403,5 +445,7 @@
         private System.Windows.Forms.TextBox unBasePrice;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox ddlUnidadProductiva;
+        private System.Windows.Forms.Button btnAgregarLinea;
+        private System.Windows.Forms.Button btnAgregarLineaSAM;
     }
 }

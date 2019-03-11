@@ -476,6 +476,7 @@
             this.cbUPS.Size = new System.Drawing.Size(529, 22);
             this.cbUPS.TabIndex = 122;
             this.cbUPS.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbUPS_RowSelected);
+            this.cbUPS.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbUPS_MouseDown);
             // 
             // txtUpsId_1
             // 
@@ -486,7 +487,6 @@
             this.txtUpsId_1.Size = new System.Drawing.Size(121, 20);
             this.txtUpsId_1.TabIndex = 3;
             this.txtUpsId_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtUpsId_1.Visible = false;
             // 
             // label22
             // 
@@ -496,7 +496,6 @@
             this.label22.Size = new System.Drawing.Size(44, 13);
             this.label22.TabIndex = 0;
             this.label22.Text = "UPS_Id";
-            this.label22.Visible = false;
             // 
             // uegbProcedimiento
             // 
@@ -600,6 +599,7 @@
             this.cbEspecialidades.Size = new System.Drawing.Size(532, 22);
             this.cbEspecialidades.TabIndex = 123;
             this.cbEspecialidades.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbEspecialidades_RowSelected);
+            this.cbEspecialidades.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbEspecialidades_MouseDown);
             // 
             // cbProcedimiento
             // 
@@ -657,6 +657,7 @@
             this.cbProcedimiento.Size = new System.Drawing.Size(591, 22);
             this.cbProcedimiento.TabIndex = 121;
             this.cbProcedimiento.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbProcedimiento_RowSelected);
+            this.cbProcedimiento.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbProcedimiento_MouseDown);
             // 
             // dtpFechaProced
             // 

@@ -8295,23 +8295,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnVisorReporteExamen_Click(object sender, EventArgs e)
         {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando Reporte..."))
+            {
             OperationResult objOperationResult = new OperationResult();
-
-            ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, _serviceId);
-
-            ServiceList _DataService = _serviceBL.GetServiceReport(_serviceId);
-
-
-            PacientList filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-
-            idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
-            PacientId = idPerson.v_PersonId.ToString();
-           
+            PacientListNew filiationData = _pacientBL.GetPacientReportEPS_NewOrganizationId(_serviceId);
+            PacientId = filiationData.PersonId;
             frmManagementReports frmManagmentReport = new frmManagementReports();
             DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
-
-            List<ServiceComponentList> serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-
+            List<ServiceComponentListReportSolo> serviceComponents = _serviceBL.GetServiceComponentsReportForReportSolo(_serviceId);
             var arrComponentId = _componentId.Split('|');
             #region audiometria
             if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
@@ -8319,12 +8310,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList audiometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID);
-                ServiceComponentList cuestionarioEspCoimolache = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000337");
-                ServiceComponentList audioCoimolache = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIO_COIMOLACHE);
+                ServiceComponentListReportSolo audiometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID);
+                ServiceComponentListReportSolo cuestionarioEspCoimolache = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000337");
+                ServiceComponentListReportSolo audioCoimolache = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIO_COIMOLACHE);
 
                 if (audiometria != null){
-                //    componentIds.Add(Constants.AUDIOMETRIA_ID);
                     if (filiationData.EmpresaClienteId == "N009-OO000000587")
                     {
                         componentIds.Add(Constants.AUDIOMETRIA_ID + "|40");
@@ -8335,18 +8325,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 if (cuestionarioEspCoimolache != null)
                 {
-                    //if (filiationData.EmpresaClienteId == "N009-OO000000591")
-                    //{
                         componentIds.Add("N009-ME000000337");
-                    //}
                 }
                 if (audioCoimolache != null)
                 {
-                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                    //    || filiationData.EmpresaClienteId == "N009-OO000000590")
-                    //{
                         componentIds.Add(Constants.AUDIO_COIMOLACHE);
-                    //}
                 }
 
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
@@ -8359,17 +8342,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     || arrComponentId.Contains(Constants.PRUEBA_ESFUERZO_ID))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList apendice = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_ID);
-                ServiceComponentList electrocardiograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID);
-                ServiceComponentList electroGold = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTRO_GOLD);
-                ServiceComponentList pruebaEsfuerzo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID);
+                ServiceComponentListReportSolo apendice = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_ID);
+                ServiceComponentListReportSolo electrocardiograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID);
+                ServiceComponentListReportSolo electroGold = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTRO_GOLD);
+                ServiceComponentListReportSolo pruebaEsfuerzo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID);
 
                 if (apendice != null)
                 {
-                    //if (filiationData.EmpresaClienteId == "N009-OO000000587")
-                    //{
                         componentIds.Add(Constants.APENDICE_ID+"|43");
-                    //}
                 }
                 if (electrocardiograma != null)
                 {
@@ -8377,12 +8357,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 if (electroGold != null)
                 {
-                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                    //    || filiationData.EmpresaClienteId == "N009-OO000000590"
-                    //    || filiationData.EmpresaClienteId == "N009-OO000000591")
-                    //{
-                        componentIds.Add(Constants.ELECTRO_GOLD);
-                    //}
+                    componentIds.Add(Constants.ELECTRO_GOLD);
                 }
                 if (pruebaEsfuerzo != null)
                 {
@@ -8396,7 +8371,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else if (arrComponentId.Contains(Constants.ESPIROMETRIA_ID))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList espirometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
+                ServiceComponentListReportSolo espirometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
 
                 if (espirometria != null)
                 {
@@ -8427,8 +8402,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     || arrComponentId.Contains(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList informeLab = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_LABORATORIO_ID);
-                ServiceComponentList toxCocaMarihuana = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
+                ServiceComponentListReportSolo informeLab = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_LABORATORIO_ID);
+                ServiceComponentListReportSolo toxCocaMarihuana = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
 
                 if (informeLab != null)
                 {
@@ -8471,28 +8446,27 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     || arrComponentId.Contains(Constants.EVA_OSTEO_ID))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList anexo16 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
-                ServiceComponentList anexo312 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
-                ServiceComponentList atencionIntegral = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
-                ServiceComponentList cuestionarioNordico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.C_N_ID);
-                ServiceComponentList sas = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SAS_ID);
-                ServiceComponentList evaluacionErgonomica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_ERGONOMICA_ID);
-                ServiceComponentList evaluacionNeurologica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_NEUROLOGICA_ID);
-                ServiceComponentList alturageografica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_7D_ID);
-                ServiceComponentList alturaestructural = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_ID);
-                ServiceComponentList suficienciamedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_ID);
-                ServiceComponentList osteoMuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1);
-                ServiceComponentList fotoTipo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FOTO_TIPO_ID);
-                ServiceComponentList osteoCoimo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_COIMO);
-                ServiceComponentList sintomatico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SINTOMATICO_ID);
-                ServiceComponentList fichaSufcMedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SUFICIENCIA_MEDICA_ID);
-                ServiceComponentList TamizajeDermat = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_ID);
-                ServiceComponentList testVertigo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_VERTIGO_ID);
-                ServiceComponentList evaluacionOsteomuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_OSTEO_ID);
+                ServiceComponentListReportSolo anexo16 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+                ServiceComponentListReportSolo anexo312 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
+                ServiceComponentListReportSolo atencionIntegral = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
+                ServiceComponentListReportSolo cuestionarioNordico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.C_N_ID);
+                ServiceComponentListReportSolo sas = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SAS_ID);
+                ServiceComponentListReportSolo evaluacionErgonomica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_ERGONOMICA_ID);
+                ServiceComponentListReportSolo evaluacionNeurologica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_NEUROLOGICA_ID);
+                ServiceComponentListReportSolo alturageografica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_7D_ID);
+                ServiceComponentListReportSolo alturaestructural = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_ID);
+                ServiceComponentListReportSolo suficienciamedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_ID);
+                ServiceComponentListReportSolo osteoMuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1);
+                ServiceComponentListReportSolo fotoTipo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FOTO_TIPO_ID);
+                ServiceComponentListReportSolo osteoCoimo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_COIMO);
+                ServiceComponentListReportSolo sintomatico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SINTOMATICO_ID);
+                ServiceComponentListReportSolo fichaSufcMedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SUFICIENCIA_MEDICA_ID);
+                ServiceComponentListReportSolo TamizajeDermat = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_ID);
+                ServiceComponentListReportSolo testVertigo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_VERTIGO_ID);
+                ServiceComponentListReportSolo evaluacionOsteomuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_OSTEO_ID);
 
                 if (anexo16 != null)
                 {
-                    //componentIds.Add(Constants.EXAMEN_FISICO_7C_ID);
                     if (filiationData.EmpresaClienteId == "N009-OO000000587")
                     {
                         componentIds.Add(Constants.INFORME_ANEXO_16_YANACOCHA);
@@ -8589,7 +8563,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else if (arrComponentId.Contains(Constants.ODONTOGRAMA_ID))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList odontograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+                ServiceComponentListReportSolo odontograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
 
                 if (odontograma != null)
                 {
@@ -8609,14 +8583,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     || arrComponentId.Contains("N009-ME000000437"))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList agudezavisual = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-                ServiceComponentList oftsimple = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
-                ServiceComponentList oftcompleto = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
-                ServiceComponentList oftYanacocha = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
-                ServiceComponentList oftHudbay = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
-                ServiceComponentList petrinovic = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PETRINOVIC_ID);
-                ServiceComponentList certificadoPsico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
-                ServiceComponentList oftalmoPsico = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000437");
+                ServiceComponentListReportSolo agudezavisual = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                ServiceComponentListReportSolo oftsimple = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+                ServiceComponentListReportSolo oftcompleto = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
+                ServiceComponentListReportSolo oftYanacocha = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
+                ServiceComponentListReportSolo oftHudbay = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+                ServiceComponentListReportSolo petrinovic = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PETRINOVIC_ID);
+                ServiceComponentListReportSolo certificadoPsico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
+                ServiceComponentListReportSolo oftalmoPsico = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000437");
 
                 if (agudezavisual != null)
                 {
@@ -8663,11 +8637,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 List<string> componentIds = new List<string>();
 
-                ServiceComponentList psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
-                ServiceComponentList psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
-                ServiceComponentList psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
-                ServiceComponentList psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
-                ServiceComponentList somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
+                ServiceComponentListReportSolo psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+                ServiceComponentListReportSolo psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+                ServiceComponentListReportSolo psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+                ServiceComponentListReportSolo psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+                ServiceComponentListReportSolo somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
                 
 
                 if (psico != null)
@@ -8708,10 +8682,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     || arrComponentId.Contains(Constants.EXCEPCIONES_RX_AUTORIZACION_ID))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList oit = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OIT_ID);
-                ServiceComponentList torax = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.RX_TORAX_ID);
-                ServiceComponentList excepciones = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
-                ServiceComponentList autorizacion = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+                ServiceComponentListReportSolo oit = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OIT_ID);
+                ServiceComponentListReportSolo torax = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.RX_TORAX_ID);
+                ServiceComponentListReportSolo excepciones = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
+                ServiceComponentListReportSolo autorizacion = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
 
                 if (oit != null)
                 {
@@ -8728,15 +8702,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     componentIds.Add(Constants.RX_TORAX_ID);
                 }
-                //if (excepciones != null)
-                //{
-                //    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
-                //}
-                //if (autorizacion != null)
-                //{
-                //    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
-                //}
-
+                
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             }
             #endregion
@@ -8746,9 +8712,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     || arrComponentId.Contains("N009-ME000000302"))
             {
                 List<string> componentIds = new List<string>();
-                ServiceComponentList lumbosacra = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LUMBOSACRA_ID);
-                ServiceComponentList electroencefalograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROENCEFALOGRAMA_ID);
-                ServiceComponentList columnaCervicoDorso = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000302");
+                ServiceComponentListReportSolo lumbosacra = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LUMBOSACRA_ID);
+                ServiceComponentListReportSolo electroencefalograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROENCEFALOGRAMA_ID);
+                ServiceComponentListReportSolo columnaCervicoDorso = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000302");
 
                 if (lumbosacra != null)
                 {
@@ -8767,7 +8733,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             }
             #endregion
-
+            };
         }
 
         public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
@@ -8778,18 +8744,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
             rp = new Reports.crConsolidatedReports();
             _filesNameToMerge = new List<string>();
-
-
-            //reportesId.FindAll(p => p != Constants.HISTORIA_CLINICA_PSICOLOGICA_ID || p != Constants.PSICOLOGIA_ID || p != Constants.INFORME_LABORATORIO_ID);
-
             foreach (var com in reportesId)
             {
-                //string CompnenteId = "";
                 int IdCrystal = 0;
-                //Obtener el Id del componente 
-
                 var array = com.Split('|');
-
                 if (array.Count() == 1)
                 {
                     IdCrystal = 0;
@@ -8809,7 +8767,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         public void RunFile(string fileName)
         {
             Process proceso = Process.Start(fileName);
-            //proceso.WaitForExit();
             proceso.Close();
         }
 

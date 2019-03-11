@@ -20492,18 +20492,27 @@ namespace NetPdf
             {
                 var piezas_Faltan = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTO_SIMPLE_PIEZAS_FALTANTES);
                 var piezas_mal_estado = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_PIEZAS_MAL_ESTADO);
-
+                var p_faltan = piezas_Faltan == null ? " " : piezas_Faltan.v_Value1;
+                var p_malEstado = piezas_mal_estado == null ? " " : piezas_mal_estado.v_Value1;
                 cells = new List<PdfPCell>()
                  {
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
                        
+<<<<<<< HEAD
                        new PdfPCell(new Phrase(piezas_mal_estado == null ? "" : piezas_mal_estado.v_Value1, fontColumnValue)),
+=======
+                       new PdfPCell(new Phrase(p_malEstado, fontColumnValue)),
+>>>>>>> e3154e72495ee73f53e5c33084f5123b95676a99
 
                        //lINEa
                         new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
+<<<<<<< HEAD
                        new PdfPCell(new Phrase(piezas_Faltan == null ? "" : piezas_Faltan.v_Value1, fontColumnValue))
+=======
+                       new PdfPCell(new Phrase(p_faltan, fontColumnValue))
+>>>>>>> e3154e72495ee73f53e5c33084f5123b95676a99
 
                  };
                 columnWidths = new float[] { 65f, 25f, 10f };
@@ -22076,8 +22085,11 @@ namespace NetPdf
                 var Value_HEMATOCRITO_ID = oLABORATORIO_HEMATOCRITO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO_ID);
 
 
-
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
+                if (Value_HEMOGLOBINA_ID != null && Value_HEMATOCRITO_ID != null)
+                {
+                    ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
+                }
+                
 
             }
 

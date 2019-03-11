@@ -15,18 +15,55 @@ namespace Sigesoft.Node.WinClient.UI
 {
     public partial class frmRegistroEmAmHos : Form
     {
-
+        DateTime _fechaload;
+        string _genero;
+        string _edad;
         string _tabName;
         string _tramaId;
         string _mode;
+        object lista;
+        object listaUps;
+        object listaproc;
+        
         private tramasDto _tramaDto = null;
         private TramasBL _tramasBL = new TramasBL();
-        public frmRegistroEmAmHos(string tabName, string idTrama, string mode)
+        public frmRegistroEmAmHos(string tabName, string idTrama, string mode, DateTime fecha, string genero, string edad, object  _lista, object _listaUps, object _listaproc)
         {
             InitializeComponent();
+            _fechaload = fecha;
             _tabName = tabName;
             _tramaId = idTrama;
             _mode = mode;
+            if (genero != String.Empty)
+            {
+                _genero = genero;
+            }
+            if (edad != String.Empty)
+            {
+                int parse_edad = int.Parse(edad);
+                if (parse_edad < 1) { _edad = "Menores de 1 año"; }
+                else if (parse_edad >= 1 && parse_edad <= 4) { _edad = "De 1 a 4 años"; }
+                else if (parse_edad >= 5 && parse_edad <= 9) { _edad = "De 5 a 9 años"; }
+                else if (parse_edad >= 10 && parse_edad <= 14) { _edad = "De 10 a 14 años"; }
+                else if (parse_edad >= 15 && parse_edad <= 19) { _edad = "De 15 a 19 años"; }
+                else if (parse_edad >= 20 && parse_edad <= 24) { _edad = "De 20 a 24 años"; }
+                else if (parse_edad >= 25 && parse_edad <= 29) { _edad = "De 25 a 29 años"; }
+                else if (parse_edad >= 30 && parse_edad <= 34) { _edad = "De 30 a 34 años"; }
+                else if (parse_edad >= 35 && parse_edad <= 39) { _edad = "De 35 a 39 años"; }
+                else if (parse_edad >= 40 && parse_edad <= 44) { _edad = "De 40 a 44 años"; }
+                else if (parse_edad >= 45 && parse_edad <= 49) { _edad = "De 45 a 49 años"; }
+                else if (parse_edad >= 50 && parse_edad <= 54) { _edad = "De 50 a 54 años"; }
+                else if (parse_edad >= 55 && parse_edad <= 59) { _edad = "De 55 a 59 años"; }
+                else if (parse_edad >= 60 && parse_edad <= 64) { _edad = "De 60 a 64 años"; }
+                else if (parse_edad >= 65) { _edad = "De 65 años a más"; }
+            }
+            
+           
+           
+            lista = _lista;
+            listaUps = _listaUps;
+            listaproc = _listaproc;
+            
         }
 
         private void frmRegistroEmAmHos_Load(object sender, EventArgs e)
@@ -43,9 +80,9 @@ namespace Sigesoft.Node.WinClient.UI
                     uegbParto.Visible = false;
                     uegbCirugia.Visible = false;
                     #region Lista de Diagnosticos
-                    PacientBL _PacientBL = new PacientBL();
+                    
                     cbDx.Select();
-                    var lista = _PacientBL.LlenarDxsTramas(ref objOperationResult);
+                    
                     cbDx.DataSource = lista;
                     cbDx.DisplayMember = "v_Name";
                     cbDx.ValueMember = "v_CIE10Id";
@@ -57,7 +94,9 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     Utils.LoadDropDownList(cbGenero, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 100, null), DropDownListAction.Select);
                     Utils.LoadDropDownList(cbRangoEdad, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 347, null), DropDownListAction.Select);
-
+                    dtpFechaIngreso.Value = _fechaload;
+                    cbGenero.Text = _genero;
+                    cbRangoEdad.Text = _edad;
 
                 }
                 else if (_tabName == "Hospitalización")
@@ -68,9 +107,8 @@ namespace Sigesoft.Node.WinClient.UI
                     uegbParto.Visible = false;
                     uegbCirugia.Visible = false;
                     #region Lista de Diagnosticos
-                    PacientBL _PacientBL = new PacientBL();
-                    cbDx.Select();
-                    var lista = _PacientBL.LlenarDxsTramas(ref objOperationResult);
+                    
+                    cbDx.Select();                    
                     cbDx.DataSource = lista;
                     cbDx.DisplayMember = "v_Name";
                     cbDx.ValueMember = "v_CIE10Id";
@@ -85,7 +123,7 @@ namespace Sigesoft.Node.WinClient.UI
                     Utils.LoadDropDownList(cbFallecido, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
                     #region Lista de UPS - Especialidades
                     cbUPS.Select();
-                    var listaUps = _PacientBL.LlenarListaUps(ref objOperationResult);
+                    
                     cbUPS.DataSource = listaUps;
                     cbUPS.DisplayMember = "v_Value1";
                     cbUPS.ValueMember = "i_ParameterId";
@@ -96,6 +134,9 @@ namespace Sigesoft.Node.WinClient.UI
                     cbUPS.DisplayLayout.Bands[0].Columns[1].Width = 40;
 
                     #endregion
+                    dtpFechaIngreso.Value = _fechaload;
+                    cbGenero.Text = _genero;
+                    cbRangoEdad.Text = _edad;
                 }
                 else if (_tabName == "Procedimientos / Cirugía")
                 {
@@ -107,9 +148,9 @@ namespace Sigesoft.Node.WinClient.UI
                     uegbProcedimiento.Location = new Point(7, 4);
                     uegbCirugia.Location = new Point(9, 135);
                     #region Lista de Procedimientos
-                    PacientBL _PacientBL = new PacientBL();
+                   
                     cbProcedimiento.Select();
-                    var listaproc = _PacientBL.LlenarListaProc(ref objOperationResult);
+                    
                     cbProcedimiento.DataSource = listaproc;
                     cbProcedimiento.DisplayMember = "v_Value1";
                     cbProcedimiento.ValueMember = "i_ParameterId";
@@ -121,7 +162,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     //combo especialidades
                     cbEspecialidades.Select();
-                    var listaUps = _PacientBL.LlenarListaUps(ref objOperationResult);
+                    
                     cbEspecialidades.DataSource = listaUps;
                     cbEspecialidades.DisplayMember = "v_Value1";
                     cbEspecialidades.ValueMember = "i_ParameterId";
@@ -132,6 +173,9 @@ namespace Sigesoft.Node.WinClient.UI
                     cbEspecialidades.DisplayLayout.Bands[0].Columns[1].Width = 40;
                     Utils.LoadDropDownList(cbProgramacion, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 353, null), DropDownListAction.Select);
                     Utils.LoadDropDownList(cbTipoCirugia, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 354, null), DropDownListAction.Select);
+                    dtpFechaIngreso.Value = _fechaload;
+                    cbGenero.Text = _genero;
+                    cbRangoEdad.Text = _edad;
 
                 }
                 else if (_tabName == "Partos")
@@ -145,6 +189,9 @@ namespace Sigesoft.Node.WinClient.UI
                     Utils.LoadDropDownList(cbTipoParto, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 350, null), DropDownListAction.Select);
                     Utils.LoadDropDownList(cbTipoNacimiento, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 351, null), DropDownListAction.Select);
                     Utils.LoadDropDownList(cbTipoComplicacion, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 352, null), DropDownListAction.Select);
+                    dtpFechaIngreso.Value = _fechaload;
+                    cbGenero.Text = _genero;
+                    cbRangoEdad.Text = _edad;
 
                 }
 
@@ -171,9 +218,6 @@ namespace Sigesoft.Node.WinClient.UI
                     cbRangoEdad.SelectedValue = _tramaDto.i_GrupoEtario.ToString();
 
                     #region Lista de Diagnosticos
-                    PacientBL _PacientBL = new PacientBL();
-                    //cbDx.Select();
-                    var lista = _PacientBL.LlenarDxsTramas(ref objOperationResult);
                     cbDx.DataSource = lista;
                     cbDx.DisplayMember = "v_Name";
                     cbDx.ValueMember = "v_CIE10Id";
@@ -210,9 +254,7 @@ namespace Sigesoft.Node.WinClient.UI
                     dtpFechaAlta.Value = _tramaDto.d_FechaAlta.Value;
 
                     #region Lista de Diagnosticos
-                    PacientBL _PacientBL = new PacientBL();
-                    //cbDx.Select();
-                    var lista = _PacientBL.LlenarDxsTramas(ref objOperationResult);
+                    
                     cbDx.DataSource = lista;
                     cbDx.DisplayMember = "v_Name";
                     cbDx.ValueMember = "v_CIE10Id";
@@ -230,7 +272,7 @@ namespace Sigesoft.Node.WinClient.UI
                     
                     #region Lista de UPS - Especialidades
                     //cbUPS.Select();
-                    var listaUps = _PacientBL.LlenarListaUps(ref objOperationResult);
+                   
                     cbUPS.DataSource = listaUps;
                     cbUPS.DisplayMember = "v_Value1";
                     cbUPS.ValueMember = "i_ParameterId";
@@ -268,9 +310,7 @@ namespace Sigesoft.Node.WinClient.UI
                     txtHrsAct.Text = _tramaDto.i_HorasActo.ToString();
 
                     #region Lista de Procedimientos
-                    PacientBL _PacientBL = new PacientBL();
-                    //cbProcedimiento.Select();
-                    var listaproc = _PacientBL.LlenarListaProc(ref objOperationResult);
+                   
                     cbProcedimiento.DataSource = listaproc;
                     cbProcedimiento.DisplayMember = "v_Value1";
                     cbProcedimiento.ValueMember = "i_ParameterId";
@@ -286,7 +326,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
                     //combo especialidades
                     //cbEspecialidades.Select();
-                    var listaUps = _PacientBL.LlenarListaUps(ref objOperationResult);
+                    
                     cbEspecialidades.DataSource = listaUps;
                     cbEspecialidades.DisplayMember = "v_Value1";
                     cbEspecialidades.ValueMember = "i_ParameterId";
@@ -330,19 +370,35 @@ namespace Sigesoft.Node.WinClient.UI
             _tramaDto = new tramasDto();
             if (_mode == "New")
             {
+                bool result = true;
                 if (_tabName == "Ambulatorio" || _tabName == "Emergencia" || _tabName == "Hospitalización")
                 {
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaIngreso.Value;
+                    if (cbGenero.SelectedValue.ToString() == "-1" || cbRangoEdad.SelectedValue.ToString() == "-1" || cbDx.Text == "")
+                    {
+                        MessageBox.Show("Completar los campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Genero = int.Parse(cbGenero.SelectedValue.ToString());
                     _tramaDto.i_GrupoEtario = int.Parse(cbRangoEdad.SelectedValue.ToString());
                     _tramaDto.v_DiseasesName = cbDx.Text;
                     _tramaDto.v_CIE10Id = txtCie10.Text;
                     if (_tabName == "Hospitalización")
                     {
-                        _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
-                        _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
-                        _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        if (cbUPS.Text == "" || cbFallecido.SelectedValue.ToString() == "-1")
+                        {
+                            MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            result = false;
+                            return;
+                        }
+                        if (result == true)
+                        {
+                            _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
+                            _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
+                            _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        }
+                       
                     }
                     _tramasBL.AddTramas(ref objOperationResult, _tramaDto, Globals.ClientSession.GetAsList());
                 }
@@ -351,6 +407,11 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaProced.Value;
                     _tramaDto.i_UPS = int.Parse(txtUpsId_2.Text);
+                    if (cbProcedimiento.Text == "" || cbEspecialidades.Text == "")
+                    {
+                        MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Programacion = int.Parse(cbProgramacion.SelectedValue.ToString());
                     _tramaDto.i_TipoCirugia = int.Parse(cbTipoCirugia.SelectedValue.ToString());
                     if (txtHrsProg.Text != "")
@@ -367,6 +428,11 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaParto.Value;
+                    if (cbTipoParto.SelectedValue.ToString() == "-1" || cbTipoNacimiento.SelectedValue.ToString() == "-1" || cbTipoComplicacion.SelectedValue.ToString() == "-1")
+                    {
+                        MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_TipoParto = int.Parse(cbTipoParto.SelectedValue.ToString());
                     _tramaDto.i_TipoNacimiento = int.Parse(cbTipoNacimiento.SelectedValue.ToString());
                     _tramaDto.i_TipoComplicacion = int.Parse(cbTipoComplicacion.SelectedValue.ToString());
@@ -380,18 +446,33 @@ namespace Sigesoft.Node.WinClient.UI
                 var _getTrama = _tramasBL.GetTrama(ref objOperationResult, _tramaId);
                 if (_tabName == "Ambulatorio" || _tabName == "Emergencia" || _tabName == "Hospitalización")
                 {
+                    bool result = true;
                     _tramaDto.v_TramaId = _tramaId;
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaIngreso.Value;
+                    if (cbGenero.SelectedValue.ToString() == "-1" || cbRangoEdad.SelectedValue.ToString() == "-1" || cbDx.Text == "")
+                    {
+                        MessageBox.Show("Completar los campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Genero = int.Parse(cbGenero.SelectedValue.ToString());
                     _tramaDto.i_GrupoEtario = int.Parse(cbRangoEdad.SelectedValue.ToString());
                     _tramaDto.v_DiseasesName = cbDx.Text;
                     _tramaDto.v_CIE10Id = txtCie10.Text;
                     if (_tabName == "Hospitalización")
                     {
-                        _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
-                        _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
-                        _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        if (cbUPS.Text == "" || cbFallecido.SelectedValue.ToString() == "-1")
+                        {
+                            MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            result = false;
+                            return;
+                        }
+                        if (result == true)
+                        {
+                            _tramaDto.d_FechaAlta = dtpFechaAlta.Value;
+                            _tramaDto.i_UPS = int.Parse(txtUpsId_1.Text);
+                            _tramaDto.i_Procedimiento = int.Parse(cbFallecido.SelectedValue.ToString());//Cambiar procedimiento por fallecido 
+                        }
                     }
                     _tramaDto.d_InsertDate = _getTrama.d_InsertDate.Value;
                     _tramaDto.i_InsertUserId = _getTrama.i_InsertUserId;
@@ -403,6 +484,11 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaProced.Value;
                     _tramaDto.i_UPS = int.Parse(txtUpsId_2.Text);
+                    if (cbProcedimiento.Text == "" || cbEspecialidades.Text == "")
+                    {
+                        MessageBox.Show("No dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     _tramaDto.i_Programacion = int.Parse(cbProgramacion.SelectedValue.ToString());
                     _tramaDto.i_TipoCirugia = int.Parse(cbTipoCirugia.SelectedValue.ToString());
                     if (txtHrsProg.Text != "")
@@ -432,6 +518,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramasBL.UpdateTrama(ref objOperationResult, _tramaDto, Globals.ClientSession.GetAsList());
                 }
                 MessageBox.Show("Actualización Exitosa", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
         }
         private void cbDx_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)
@@ -522,6 +609,33 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 cbDx.SelectionStart = 0;
                 cbDx.SelectionLength = cbDx.Text.Length;
+            }
+        }
+
+        private void cbUPS_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (cbUPS.Text != "")
+            {
+                cbUPS.SelectionStart = 0;
+                cbUPS.SelectionLength = cbUPS.Text.Length;
+            }
+        }
+
+        private void cbEspecialidades_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (cbEspecialidades.Text != "")
+            {
+                cbEspecialidades.SelectionStart = 0;
+                cbEspecialidades.SelectionLength = cbEspecialidades.Text.Length;
+            }
+        }
+
+        private void cbProcedimiento_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (cbProcedimiento.Text != "")
+            {
+                cbProcedimiento.SelectionStart = 0;
+                cbProcedimiento.SelectionLength = cbProcedimiento.Text.Length;
             }
         }
     }

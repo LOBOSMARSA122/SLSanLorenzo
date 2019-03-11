@@ -843,7 +843,7 @@ namespace NetPdf
                     // Subtitulo  ******************
                     cell = new PdfPCell(new Phrase("", fontSubTitle)){Colspan = 1,HorizontalAlignment = Element.ALIGN_LEFT,FixedHeight= tamañocelda};
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase("ESOIROMETRÍA : ", fontSubTitle)){Colspan = 1,HorizontalAlignment = Element.ALIGN_LEFT,FixedHeight= tamañocelda};
+                    cell = new PdfPCell(new Phrase("ESPIROMETRÍA : ", fontSubTitle)){Colspan = 1,HorizontalAlignment = Element.ALIGN_LEFT,FixedHeight= tamañocelda};
                     cells.Add(cell);
                     cell = new PdfPCell(new Phrase("", fontSubTitle)){Colspan = 1,HorizontalAlignment = Element.ALIGN_LEFT,FixedHeight= tamañocelda};
                     cells.Add(cell);
