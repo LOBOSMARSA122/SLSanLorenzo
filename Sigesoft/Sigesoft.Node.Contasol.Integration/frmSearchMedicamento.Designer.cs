@@ -46,6 +46,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PrincipioActivo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Almacen");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Stock");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioMayorista");
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -136,9 +137,9 @@
             this.frmSearchMedicamento_Fill_Panel.ClientArea.Controls.Add(this.gbBuscarMedicamento);
             this.frmSearchMedicamento_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.frmSearchMedicamento_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmSearchMedicamento_Fill_Panel.Location = new System.Drawing.Point(4, 27);
+            this.frmSearchMedicamento_Fill_Panel.Location = new System.Drawing.Point(4, 28);
             this.frmSearchMedicamento_Fill_Panel.Name = "frmSearchMedicamento_Fill_Panel";
-            this.frmSearchMedicamento_Fill_Panel.Size = new System.Drawing.Size(1277, 326);
+            this.frmSearchMedicamento_Fill_Panel.Size = new System.Drawing.Size(1277, 325);
             this.frmSearchMedicamento_Fill_Panel.TabIndex = 0;
             // 
             // gbRegistrarMedicamento
@@ -562,6 +563,7 @@
             ultraGridColumn22.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             ultraGridColumn22.Header.VisiblePosition = 12;
             ultraGridColumn1.Header.VisiblePosition = 1;
+            ultraGridColumn11.Header.VisiblePosition = 13;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn2,
             ultraGridColumn3,
@@ -575,7 +577,8 @@
             ultraGridColumn10,
             ultraGridColumn21,
             ultraGridColumn22,
-            ultraGridColumn1});
+            ultraGridColumn1,
+            ultraGridColumn11});
             this.ultraGrid1.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.ultraGrid1.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraGrid1.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
@@ -650,9 +653,9 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Left";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 326);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 325);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Right
             // 
@@ -662,9 +665,9 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1281, 27);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1281, 28);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Right";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 326);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 325);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Top
             // 
@@ -675,7 +678,7 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Top";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1285, 27);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1285, 28);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom
             // 

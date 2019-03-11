@@ -25,6 +25,7 @@ namespace Sigesoft.Node.Contasol.Integration.Contasol.Models
         public decimal PrecioVenta { get; set; }
         public int IdUnidadMedida { get; set; }
         public string IdLinea { get; set; }
+        public decimal d_PrecioMayorista { get; set; }
 
         public string NombreCompleto {
             get
