@@ -38,5 +38,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_ServicioId { get; set; }
         public DateTime? d_ServiceDate{ get; set; }
 
+        public int? i_ServiceComponentStatusId { get; set; }
+        public int? i_GenderId { get; set; }
     }
 }

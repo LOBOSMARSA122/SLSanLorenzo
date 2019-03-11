@@ -14143,6 +14143,52 @@ namespace Sigesoft.Node.WinClient.BLL
 
 		}
 
+        public List<ServiceComponentFieldValuesList> ValoresComponente_ManagerReport(string pstrServiceId, List<string> pstrComponentIds)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            int rpta = 0;
+
+            try
+            {
+                var serviceComponentFieldValues = (from A in dbContext.service
+                                                   join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                                                   join B1 in dbContext.person on A.v_PersonId equals B1.v_PersonId
+                                                   join C in dbContext.servicecomponentfields on B.v_ServiceComponentId equals C.v_ServiceComponentId
+                                                   join D in dbContext.servicecomponentfieldvalues on C.v_ServiceComponentFieldsId equals D.v_ServiceComponentFieldsId
+                                                   join E in dbContext.component on B.v_ComponentId equals E.v_ComponentId
+                                                   join F in dbContext.componentfields on C.v_ComponentFieldId equals F.v_ComponentFieldId
+                                                   join G in dbContext.componentfield on C.v_ComponentFieldId equals G.v_ComponentFieldId
+                                                   join H in dbContext.component on F.v_ComponentId equals H.v_ComponentId
+
+                                                   where A.v_ServiceId == pstrServiceId
+                                                           //&& H.v_ComponentId == pstrComponentId
+                                                           && pstrComponentIds.Contains(H.v_ComponentId)
+                                                           && B.i_IsDeleted == 0
+                                                           && C.i_IsDeleted == 0
+
+                                                   select new ServiceComponentFieldValuesList
+                                                   {
+                                                       v_ComponentFieldId = G.v_ComponentFieldId,
+                                                       v_ComponentFielName = G.v_TextLabel,
+                                                       v_ServiceComponentFieldsId = C.v_ServiceComponentFieldsId,
+                                                       v_Value1 = D.v_Value1,
+                                                       i_GroupId = G.i_GroupId.Value,
+                                                       i_ServiceComponentStatusId = B.i_ServiceComponentStatusId.Value,
+                                                       i_GenderId = B1.i_SexTypeId.Value,
+                                                       i_CategoryId = E.i_CategoryId.Value
+                                                   }).ToList();
+
+
+
+                return serviceComponentFieldValues;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
 
         public List<ServiceComponentFieldValuesList> ValoresComponente_ObservadoAMC(string pstrServiceId, string pstrComponentId)
         {

@@ -3007,8 +3007,54 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnReportAsync_Click(object sender, EventArgs e)
         {
-            var frm = new Reports.frmManagementReports_Async( _serviceId,_EmpresaClienteId,_pacientId, _customerOrganizationName);
-            frm.ShowDialog();
+
+            try
+            {
+                var StatusLiquidation = grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null
+                    ? 1
+                    : int.Parse(grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value.ToString());
+
+                if (StatusLiquidation == 2)
+                {
+                    var DialogResult =
+                        MessageBox.Show("Este servicio ya tiene, reportes generados, ¿Desea volver a generar?",
+                            "INFORMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (DialogResult == DialogResult.No)
+                    {
+                        string ruta = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+                        System.Diagnostics.Process.Start(ruta);
+                        Clipboard.SetText(grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString());
+
+                        return;
+                    }
+
+                }
+
+                int flagPantalla =
+                    int.Parse(grdDataService.Selected.Rows[0].Cells["i_MasterServiceId"].Value
+                        .ToString()); // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+                int eso = 1;
+                if (flagPantalla == 2)
+                {
+                    var frm = new Reports.frmManagementReports_Async(_serviceId, _EmpresaClienteId, _pacientId,
+                        _customerOrganizationName);
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    var edad = int.Parse(grdDataService.Selected.Rows[0].Cells["i_age"].Value.ToString());
+                    var frm = new Reports.frmManagementReportsMedical(_serviceId, _pacientId, _customerOrganizationName,
+                        _personFullName, _EmpresaClienteId, edad);
+                    frm.ShowDialog();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("SELECCIONE UNA SERVICIO A GENERAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
+            }
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)

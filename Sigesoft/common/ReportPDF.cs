@@ -20498,12 +20498,12 @@ namespace NetPdf
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
                        
-                       new PdfPCell(new Phrase(piezas_mal_estado.v_Value1, fontColumnValue)),
+                       new PdfPCell(new Phrase(piezas_mal_estado == null ? "" : piezas_mal_estado.v_Value1, fontColumnValue)),
 
                        //lINEa
                         new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
-                       new PdfPCell(new Phrase(piezas_Faltan.v_Value1, fontColumnValue))
+                       new PdfPCell(new Phrase(piezas_Faltan == null ? "" : piezas_Faltan.v_Value1, fontColumnValue))
 
                  };
                 columnWidths = new float[] { 65f, 25f, 10f };
