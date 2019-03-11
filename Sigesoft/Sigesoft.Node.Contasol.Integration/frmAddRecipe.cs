@@ -20,8 +20,9 @@ namespace Sigesoft.Node.Contasol.Integration
         private readonly int _recipeId;
         private string idUnidadProductiva;
         private string _protocolId;
+        private string _serviceId;
 
-        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId)
+        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId, string serviceId)
         {
             InitializeComponent();
             _recipeId = recipeId;
@@ -31,6 +32,7 @@ namespace Sigesoft.Node.Contasol.Integration
             _actionForm = actionForm;
             _protocolId = protocolId;
             Text = actionForm == ActionForm.Add ? "Agregar Nueva Receta" : "Editar Receta";
+            _serviceId = serviceId;
         }
 
         public sealed override string Text
@@ -105,6 +107,7 @@ namespace Sigesoft.Node.Contasol.Integration
                 _recetaDto.t_FechaFin = dtpFechaFin.Value;
                 _recetaDto.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                 _recetaDto.v_IdUnidadProductiva = idUnidadProductiva;
+                _recetaDto.v_ServiceId = _serviceId;
 
                 var tienePlan = false;
                 var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
