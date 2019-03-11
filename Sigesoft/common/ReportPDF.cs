@@ -20499,20 +20499,14 @@ namespace NetPdf
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
                        
-<<<<<<< HEAD
-                       new PdfPCell(new Phrase(piezas_mal_estado == null ? "" : piezas_mal_estado.v_Value1, fontColumnValue)),
-=======
+
                        new PdfPCell(new Phrase(p_malEstado, fontColumnValue)),
->>>>>>> e3154e72495ee73f53e5c33084f5123b95676a99
 
                        //lINEa
                         new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
-<<<<<<< HEAD
-                       new PdfPCell(new Phrase(piezas_Faltan == null ? "" : piezas_Faltan.v_Value1, fontColumnValue))
-=======
+
                        new PdfPCell(new Phrase(p_faltan, fontColumnValue))
->>>>>>> e3154e72495ee73f53e5c33084f5123b95676a99
 
                  };
                 columnWidths = new float[] { 65f, 25f, 10f };
