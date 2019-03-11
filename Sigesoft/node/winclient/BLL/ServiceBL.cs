@@ -34744,5 +34744,36 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+
+        public List<ServiceComponentListReportSolo> GetServiceComponentsReportForReportSolo(string pstrServiceId)
+        {
+            int isDeleted = 0;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var components = (from aaa in dbContext.servicecomponent
+                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+                                  where (aaa.v_ServiceId == pstrServiceId) &&
+                                        (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                        (aaa.i_IsDeleted == 0) &&
+                                        (aaa.i_IsRequiredId == (int?)SiNo.SI)
+                                  select new
+                                  {
+                                      v_ComponentId = bbb.v_ComponentId,
+
+                                  }).AsEnumerable().Select(p => new ServiceComponentListReportSolo
+                                  {
+                                      v_ComponentId = p.v_ComponentId,
+                                  }).ToList();
+
+                
+                components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+                return components;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

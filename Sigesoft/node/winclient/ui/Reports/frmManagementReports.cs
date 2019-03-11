@@ -2666,42 +2666,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         public void reportSolo(List<string> componentIds, string idPacient, string serviceId)
         {
 
-            DialogResult Result = MessageBox.Show("¿Desea visualizar reporte?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             OperationResult objOperationResult = new OperationResult();
-
-            string ruta = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
             string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-            string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-            
-            if (Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-                {
-                    CrearReportesCrystal(serviceId, idPacient, componentIds, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes);
-                };
-                var x = _filesNameToMerge.ToList();
-                _mergeExPDF.FilesName = x;
-                _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
-                _mergeExPDF.DestinationFile = rutaBasura + _serviceId + ".pdf"; ;
-                _mergeExPDF.Execute();
-                _mergeExPDF.RunFile();
-
-                var oService = _serviceBL.GetServiceShort(_serviceId);
-                _mergeExPDF.FilesName = x;
-                _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-
-                _mergeExPDF.DestinationFile = rutaBasura + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-                _mergeExPDF.Execute();
-
-
-                //Cambiar de estado a generado de reportes
-                //_serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
-            }
-            else
-            {
-                //Result = System.Windows.Forms.DialogResult.Cancel;
-                this.Close();
-            }    
+            CrearReportesCrystal(serviceId, idPacient, componentIds, _listaDosaje, false);
+            var x = _filesNameToMerge.ToList();
+            _mergeExPDF.FilesName = x;
+            _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
+            _mergeExPDF.DestinationFile = rutaBasura + _serviceId + ".pdf"; ;
+            _mergeExPDF.Execute();
+            _mergeExPDF.RunFile();
         }
 
       private void chkTodos_CheckedChanged(object sender, EventArgs e)
@@ -2726,17 +2699,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void SelectChangeConsolidadoReportes()
         {
             var s = GetChekedItems(chklConsolidadoReportes);
-
-
-            //if (s != null)
-            //{
-            //    btnConsolidadoReportes.Enabled = true;
-            //}
-            //else
-            //{
-            //    btnConsolidadoReportes.Enabled = false;
-
-            //}
         }
 
         public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)

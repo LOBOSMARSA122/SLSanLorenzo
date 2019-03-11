@@ -81,6 +81,10 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Sigesoft.Node.Contasol.Integration\libs\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
       <Private>True</Private>
     </Reference>
@@ -473,6 +477,12 @@
     </Compile>
     <Compile Include="frmAddExam.Designer.cs">
       <DependentUpon>frmAddExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddLineSAM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddLineSAM.Designer.cs">
+      <DependentUpon>frmAddLineSAM.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAddPlain.cs">
       <SubType>Form</SubType>
@@ -1572,6 +1582,7 @@
     <Compile Include="Hospitalizacion\frmType.Designer.cs">
       <DependentUpon>frmType.cs</DependentUpon>
     </Compile>
+    <Compile Include="lineaDto.cs" />
     <Compile Include="Matriz\frmMatrizMultiple.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3600,6 +3611,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddExam.resx">
       <DependentUpon>frmAddExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddLineSAM.resx">
+      <DependentUpon>frmAddLineSAM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddPlain.resx">
       <DependentUpon>FrmAddPlain.cs</DependentUpon>

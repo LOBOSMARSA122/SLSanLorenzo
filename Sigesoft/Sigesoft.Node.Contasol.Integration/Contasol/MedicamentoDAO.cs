@@ -113,5 +113,23 @@ namespace Sigesoft.Node.Contasol.Integration.Contasol
                 throw e;
             }
         }
+
+        internal static object ObtenerLineasWhere(string p)
+        {
+            try
+            {
+                using (var cnx = ConnectionHelper.GetConnection)
+                {
+                    if (cnx.State != ConnectionState.Open) cnx.Open();
+                    string query = @"select v_IdLinea as 'IdLinea', v_nombre as 'Nombre' from linea where i_Eliminado = 0 and v_nombre like'%"+p+"%'";
+                    return cnx.Query<LineaDto>(query).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

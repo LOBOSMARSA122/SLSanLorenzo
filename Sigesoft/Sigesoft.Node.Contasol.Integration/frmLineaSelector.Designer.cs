@@ -41,6 +41,9 @@
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.ultraGrid1 = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.txtUnidadProductiva = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,22 +98,57 @@
             appearance11.BorderColor = System.Drawing.Color.Silver;
             this.ultraGrid1.DisplayLayout.Override.RowAppearance = appearance11;
             this.ultraGrid1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraGrid1.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFixed;
+            this.ultraGrid1.DisplayLayout.Override.RowSizingArea = Infragistics.Win.UltraWinGrid.RowSizingArea.RowBordersOnly;
             appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ultraGrid1.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
             this.ultraGrid1.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.ultraGrid1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ultraGrid1.Location = new System.Drawing.Point(12, 12);
+            this.ultraGrid1.Location = new System.Drawing.Point(12, 41);
             this.ultraGrid1.Name = "ultraGrid1";
-            this.ultraGrid1.Size = new System.Drawing.Size(260, 237);
+            this.ultraGrid1.Size = new System.Drawing.Size(393, 285);
             this.ultraGrid1.TabIndex = 0;
             this.ultraGrid1.Text = "ultraGrid1";
             this.ultraGrid1.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ultraGrid1_DoubleClickRow);
+            // 
+            // txtUnidadProductiva
+            // 
+            this.txtUnidadProductiva.Location = new System.Drawing.Point(112, 13);
+            this.txtUnidadProductiva.Name = "txtUnidadProductiva";
+            this.txtUnidadProductiva.Size = new System.Drawing.Size(213, 20);
+            this.txtUnidadProductiva.TabIndex = 1;
+            this.txtUnidadProductiva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidadProductiva_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Unidad Productiva";
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Image = global::Sigesoft.Node.Contasol.Integration.Properties.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(330, 12);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnFilter.TabIndex = 3;
+            this.btnFilter.Text = "Buscar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // frmLineaSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(422, 336);
+            this.Controls.Add(this.btnFilter);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtUnidadProductiva);
             this.Controls.Add(this.ultraGrid1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -123,11 +161,15 @@
             this.Load += new System.EventHandler(this.frmLineaSelector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Infragistics.Win.UltraWinGrid.UltraGrid ultraGrid1;
+        private System.Windows.Forms.TextBox txtUnidadProductiva;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnFilter;
     }
 }

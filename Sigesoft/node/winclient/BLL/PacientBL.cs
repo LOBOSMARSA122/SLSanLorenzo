@@ -1584,6 +1584,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FirmaDoctorAuditor = pr2.b_SignatureImage,
                                      GESO = F.v_Name,
                                      i_AptitudeStatusId = s.i_AptitudeStatusId,
+                                     EmpresaClienteId = ow.v_OrganizationId,
 
                                  }).ToList();
 
@@ -8391,8 +8392,6 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-
-
         public List<PersonList_2> LlenarPerson(ref OperationResult objOperationResult)
         {
             try
@@ -8424,9 +8423,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
-
-
-
+        
         public object LlenarDxsTramas(ref OperationResult objOperationResult)
         {
             try
@@ -8508,6 +8505,38 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 objOperationResult.Success = 0;
                 objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public PacientListNew GetPacientReportEPS_NewOrganizationId(string _serviceId)
+        {
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                                 // Empresa / Sede Trabajo  ********************************************************
+                                 join ow in dbContext.organization on new { a = pr.v_CustomerOrganizationId }
+                                         equals new { a = ow.v_OrganizationId } into ow_join
+                                 from ow in ow_join.DefaultIfEmpty()
+                                 where s.v_ServiceId == _serviceId
+                                 select new PacientListNew
+                                 {
+                                     EmpresaClienteId = ow.v_OrganizationId,
+                                     PersonId = s.v_PersonId,
+                                 }).ToList();
+
+                //objEntity[0].i_Age = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
                 return null;
             }
         }

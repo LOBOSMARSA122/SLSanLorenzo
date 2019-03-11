@@ -150,6 +150,11 @@
       <DependentUpon>frmSearchMedicamento.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanBl.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Sigesoft\CobranzaBl.cs" />
     <Compile Include="Sigesoft\MedicamentoBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,6 +184,10 @@
       <DependentUpon>frmSearchMedicamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common\Sigesoft.Common.csproj">
@@ -239,6 +248,7 @@
     <Content Include="libs\SAMBHS.CommonWIN.BL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\find.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
