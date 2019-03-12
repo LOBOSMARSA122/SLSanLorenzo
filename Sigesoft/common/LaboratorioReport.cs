@@ -566,14 +566,14 @@ namespace NetPdf
 
                 #region GRUPO SANGUINEO
 
-                string[] groupSanguineo = new string[]
-                 {
-                    Sigesoft.Common.Constants.TIPO_DE_SANGRIA_ID,
-                    Sigesoft .Common.Constants .TIEMPO_COAGULACION_ID,
-                    Sigesoft .Common.Constants .PROTOMBINA_ID,
-                    Sigesoft .Common.Constants .INR_ID,
-                    Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID, 
-                 };
+                //string[] groupSanguineo = new string[]
+                // {
+                //    Sigesoft.Common.Constants.TIPO_DE_SANGRIA_ID,
+                //    Sigesoft .Common.Constants .TIEMPO_COAGULACION_ID,
+                //    Sigesoft .Common.Constants .PROTOMBINA_ID,
+                //    Sigesoft .Common.Constants .INR_ID,
+                //    Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID, 
+                // };
                 cells = new List<PdfPCell>();
 
                 cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -581,7 +581,8 @@ namespace NetPdf
                 cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                 cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                var examenesSanguineo = examenesLab.FindAll(p => groupSanguineo.Contains(p.v_ComponentId));
+                //var examenesSanguineo = examenesLab.FindAll(p => groupSanguineo.Contains(p.v_ComponentId));
+                var xSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
                 var xTiempoSangria = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TIPO_DE_SANGRIA_ID);
                 var xTiempoCoagulacion = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TIEMPO_COAGULACION_ID);
                 var xTiempoProtombina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PROTOMBINA_ID);
@@ -607,7 +608,6 @@ namespace NetPdf
                     cells.Add(new PdfPCell(new Phrase(TiempoCoagulacion == null ? string.Empty : TiempoCoagulacion.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase(TiempoCoagulacionValord == null ? string.Empty : TiempoCoagulacionValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase(TiempoCoagulacion == null ? string.Empty : TiempoCoagulacion.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-
                 }
                 if (xTiempoProtombina != null)
                 {
@@ -632,9 +632,9 @@ namespace NetPdf
 
                 }
 
-                if (examenesSanguineo.Count > 0)
-                {
-                    var xSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
+                //if (examenesSanguineo.Count > 0)
+                //{
+                    
 
                     if (xSanguineo != null)
                     {
@@ -652,7 +652,7 @@ namespace NetPdf
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMATOLOGÍA", fontTitleTableNegro, null);
                     document.Add(table);
-                }
+                //}
 
 
 
@@ -660,13 +660,13 @@ namespace NetPdf
 
                 #region Hemograma
 
-                string[] groupHemograma = new string[]
-                 {
-                    Sigesoft.Common.Constants.HEMOGRAMA,
-                 };
+                //string[] groupHemograma = new string[]
+                // {
+                //    Sigesoft.Common.Constants.HEMOGRAMA,
+                // };
 
-                var examenesHemograma = examenesLab.FindAll(p => groupHemograma.Contains(p.v_ComponentId));
-                if (examenesHemograma.Count > 0)
+                var xHemograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
+                if (xHemograma != null)
                 {
                     cells = new List<PdfPCell>();
                     cells.Add(new PdfPCell(new Phrase("HEMATOLOGÍA AUTOMATIZADA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -677,9 +677,7 @@ namespace NetPdf
                     cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                    var xHemograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
-                    if (xHemograma != null)
-                    {
+                   
                         
                         cells.Add(new PdfPCell(new Phrase("HEMOGRAMA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
@@ -828,8 +826,6 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(hemograma_otros, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_caldas });
                       
 
-                    }
-
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
@@ -901,12 +897,12 @@ namespace NetPdf
 
 
                 #region VSG
-                string[] groupVSG = new string[]
-                 {
-                   Sigesoft.Common.Constants.VSG_ID,
-                 };
-                var examenesVSG = examenesLab.FindAll(p => groupVSG.Contains(p.v_ComponentId));
-                if (examenesVSG.Count > 0)
+                //string[] groupVSG = new string[]
+                // {
+                //   Sigesoft.Common.Constants.VSG_ID,
+                // };
+                var xVSG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VSG_ID);
+                if (xVSG != null)
                 {
                     cells = new List<PdfPCell>();
 
@@ -915,9 +911,7 @@ namespace NetPdf
                     cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                    var xVSG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VSG_ID);
-                    if (xVSG != null)
-                    {
+                    
                         var vsg = xVSG.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VSG_RESUL);
                         var vsgValord = xVSG.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VSG_DESEABLE);
 
@@ -926,7 +920,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(vsgValord == null ? string.Empty : vsgValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(vsg == null ? string.Empty : vsg.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                    }
+                    //}
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMOGRAMA", fontTitleTableNegro, null);

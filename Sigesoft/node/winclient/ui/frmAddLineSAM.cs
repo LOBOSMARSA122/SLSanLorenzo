@@ -129,6 +129,7 @@ namespace Sigesoft.Node.WinClient.UI
                         switch (userId)
                         {
                             case 11: userId = 1; break;
+
                         }
                         #endregion
                         
