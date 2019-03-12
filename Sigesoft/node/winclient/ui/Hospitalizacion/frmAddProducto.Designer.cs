@@ -31,7 +31,11 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtUnidadProductiva = new System.Windows.Forms.TextBox();
+            this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.txtPrecioVenta = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -45,17 +49,25 @@
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.lblIdDetalleProd = new System.Windows.Forms.Label();
-            this.txtUnidadProductiva = new System.Windows.Forms.TextBox();
-            this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtPrecio = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtPPS = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPPS)).BeginInit();
             this.SuspendLayout();
             // 
             // gbReceta
             // 
+            this.gbReceta.Controls.Add(this.txtPPS);
+            this.gbReceta.Controls.Add(this.ultraLabel8);
+            this.gbReceta.Controls.Add(this.txtPrecio);
+            this.gbReceta.Controls.Add(this.ultraLabel7);
             this.gbReceta.Controls.Add(this.txtUnidadProductiva);
             this.gbReceta.Controls.Add(this.ultraLabel5);
             this.gbReceta.Controls.Add(this.txtPrecioVenta);
@@ -75,6 +87,23 @@
             this.gbReceta.Size = new System.Drawing.Size(407, 173);
             this.gbReceta.TabIndex = 1;
             this.gbReceta.Text = "Buscar Medicina";
+            // 
+            // txtUnidadProductiva
+            // 
+            this.txtUnidadProductiva.Enabled = false;
+            this.txtUnidadProductiva.Location = new System.Drawing.Point(103, 73);
+            this.txtUnidadProductiva.Name = "txtUnidadProductiva";
+            this.txtUnidadProductiva.Size = new System.Drawing.Size(242, 20);
+            this.txtUnidadProductiva.TabIndex = 16;
+            // 
+            // ultraLabel5
+            // 
+            this.ultraLabel5.AutoSize = true;
+            this.ultraLabel5.Location = new System.Drawing.Point(22, 76);
+            this.ultraLabel5.Name = "ultraLabel5";
+            this.ultraLabel5.Size = new System.Drawing.Size(84, 14);
+            this.ultraLabel5.TabIndex = 15;
+            this.ultraLabel5.Text = "Uni. Productiva:";
             // 
             // txtPrecioVenta
             // 
@@ -127,7 +156,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(351, 45);
+            this.btnBuscar.Location = new System.Drawing.Point(351, 15);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(28, 23);
             this.btnBuscar.TabIndex = 8;
@@ -137,7 +166,7 @@
             // 
             // txtMedicamento
             // 
-            this.txtMedicamento.Location = new System.Drawing.Point(103, 47);
+            this.txtMedicamento.Location = new System.Drawing.Point(103, 17);
             this.txtMedicamento.Name = "txtMedicamento";
             this.txtMedicamento.Size = new System.Drawing.Size(242, 20);
             this.txtMedicamento.TabIndex = 7;
@@ -191,7 +220,7 @@
             // ultraLabel1
             // 
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(22, 50);
+            this.ultraLabel1.Location = new System.Drawing.Point(22, 20);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(48, 14);
             this.ultraLabel1.TabIndex = 0;
@@ -206,22 +235,43 @@
             this.lblIdDetalleProd.TabIndex = 9;
             this.lblIdDetalleProd.Text = ".";
             // 
-            // txtUnidadProductiva
+            // txtPrecio
             // 
-            this.txtUnidadProductiva.Enabled = false;
-            this.txtUnidadProductiva.Location = new System.Drawing.Point(103, 73);
-            this.txtUnidadProductiva.Name = "txtUnidadProductiva";
-            this.txtUnidadProductiva.Size = new System.Drawing.Size(242, 20);
-            this.txtUnidadProductiva.TabIndex = 16;
+            appearance4.TextHAlignAsString = "Right";
+            this.txtPrecio.Appearance = appearance4;
+            this.txtPrecio.Enabled = false;
+            this.txtPrecio.Location = new System.Drawing.Point(104, 43);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(110, 21);
+            this.txtPrecio.TabIndex = 17;
             // 
-            // ultraLabel5
+            // ultraLabel7
             // 
-            this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(22, 76);
-            this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(84, 14);
-            this.ultraLabel5.TabIndex = 15;
-            this.ultraLabel5.Text = "Uni. Productiva:";
+            this.ultraLabel7.AutoSize = true;
+            this.ultraLabel7.Location = new System.Drawing.Point(45, 47);
+            this.ultraLabel7.Name = "ultraLabel7";
+            this.ultraLabel7.Size = new System.Drawing.Size(36, 14);
+            this.ultraLabel7.TabIndex = 18;
+            this.ultraLabel7.Text = "Precio";
+            // 
+            // txtPPS
+            // 
+            appearance5.TextHAlignAsString = "Right";
+            this.txtPPS.Appearance = appearance5;
+            this.txtPPS.Enabled = false;
+            this.txtPPS.Location = new System.Drawing.Point(278, 43);
+            this.txtPPS.Name = "txtPPS";
+            this.txtPPS.Size = new System.Drawing.Size(110, 21);
+            this.txtPPS.TabIndex = 19;
+            // 
+            // ultraLabel8
+            // 
+            this.ultraLabel8.AutoSize = true;
+            this.ultraLabel8.Location = new System.Drawing.Point(219, 47);
+            this.ultraLabel8.Name = "ultraLabel8";
+            this.ultraLabel8.Size = new System.Drawing.Size(27, 14);
+            this.ultraLabel8.TabIndex = 20;
+            this.ultraLabel8.Text = "PPS";
             // 
             // frmAddProducto
             // 
@@ -244,6 +294,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPPS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +319,10 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel4;
         private System.Windows.Forms.TextBox txtUnidadProductiva;
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPrecio;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel7;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPPS;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel8;
 
     }
 }
