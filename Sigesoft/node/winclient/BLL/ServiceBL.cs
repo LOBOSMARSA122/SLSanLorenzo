@@ -15725,15 +15725,16 @@ namespace Sigesoft.Node.WinClient.BLL
 
         public List<ServiceComponentList> GetServiceComponentsReport_New(string pstrServiceId)
         {
-            //mon.IsActive = true;        
-            int isDeleted = 0;
+            //mon.IsActive = true;    (int.Parse(C.v_Value1)     
+            int isDeleted = 0; 
+            //int rpta = 0;
 
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 #region serviceComponentFields
-                int rpta = 0;
+                
                 var serviceComponentFields = (from A in dbContext.servicecomponent
                                               join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
                                               join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
@@ -15746,7 +15747,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                  equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
                                               from dh in dh_join.DefaultIfEmpty()
 
-                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b =  0 }
                                                   equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
                                               from sp in sp_join.DefaultIfEmpty()
 
@@ -15757,39 +15758,39 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                               select new ServiceComponentFieldsList
                                               {
-                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
-                                                  v_ComponentFielName = D.v_TextLabel,
-                                                  i_GroupId = D.i_GroupId.Value,
-                                                  v_ComponentId = cm.v_ComponentId,
-                                                  v_ServiceComponentId = A.v_ServiceComponentId,
+                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
+                                                  v_ComponentFielName = D.v_TextLabel,//
+                                                  i_GroupId = D.i_GroupId.Value,//
+                                                  v_ComponentId = cm.v_ComponentId, //
+                                                  v_ServiceComponentId = A.v_ServiceComponentId,//
 
                                                   v_ComponentFieldsId = B.v_ComponentFieldId,
-                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
-                                                  v_MeasurementUnitName = dh.v_Value1,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
+                                                  v_MeasurementUnitName = dh.v_Value1,//
 
-                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,//
                                               }).ToList();
                 int rpta = 0;
 
                 var _finalQuery = (from a in serviceComponentFields
-                    let value1 = int.TryParse(a.v_Value1, out rpta)
-                    join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-                        equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                    from sp in sp_join.DefaultIfEmpty()
+                                   let value1 = int.TryParse(a.v_Value1, out rpta)
+                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                       equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                   from sp in sp_join.DefaultIfEmpty()
 
-                    select new ServiceComponentFieldsList
-                    {
-                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                        v_ComponentFieldsId = a.v_ComponentFieldsId,
-                        v_ComponentFielName = a.v_ComponentFielName,
-                        i_GroupId = a.i_GroupId,
-                        v_Value1 = a.v_Value1,
-                        v_Value1Name = sp == null ? "" : sp.v_Value1,
-                        v_MeasurementUnitName = a.v_MeasurementUnitName,
-                        v_ComponentId = a.v_ComponentId,
-                        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                        v_ServiceComponentId = a.v_ServiceComponentId
-                    }).ToList();
+                                   select new ServiceComponentFieldsList
+                                   {
+                                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                                       v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                       v_ComponentFielName = a.v_ComponentFielName,
+                                       i_GroupId = a.i_GroupId,
+                                       v_Value1 = a.v_Value1,
+                                       v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                       v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                       v_ComponentId = a.v_ComponentId,
+                                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                                       v_ServiceComponentId = a.v_ServiceComponentId
+                                   }).ToList();
 
 
                 #endregion
@@ -15956,7 +15957,7 @@ namespace Sigesoft.Node.WinClient.BLL
 											  join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
 																 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
 											  from dh in dh_join.DefaultIfEmpty()
-
+                                              
 
 
 											  where (A.v_ServiceId == pstrServiceId) &&
@@ -34770,7 +34771,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<ServiceList> GetServiceForTramasPageAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        public List<ServiceList> GetServiceForTramasPageAndFilteredAmbulatorio(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
         {
             try
             {
@@ -34784,7 +34785,10 @@ namespace Sigesoft.Node.WinClient.BLL
                              join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
                                  equals new { a = S.i_ParameterId, b = S.i_GroupId }
 
-                            where sss.i_IsDeleted == 0 && (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) && sss.i_MasterServiceId !=2
+                            where sss.i_IsDeleted == 0 && 
+                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) && 
+                                  sss.i_MasterServiceId !=2 &&
+                                  (S.i_ParameterId == 10 || S.i_ParameterId == 27)
 
                              select new ServiceList
                              {
@@ -34835,6 +34839,347 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public List<ServiceList> GetServiceForTramasPageAndFilteredEmergencia(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from sss in dbContext.service
+                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
+                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+
+                            where sss.i_IsDeleted == 0 &&
+                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                                  sss.i_MasterServiceId != 2 &&
+                                  S.i_ParameterId == 31
+
+                            select new ServiceList
+                            {
+                                v_ServiceId = sss.v_ServiceId,
+                                nombre = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                                genero = J.v_Value1,
+                                fechaservicio = sss.d_ServiceDate.Value,
+                                d_BirthDate = A.d_Birthdate.Value,
+                                tipoServicio = S.v_Value1
+                            };
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+                List<ServiceList> objData = query.ToList();
+                var datos = (from a in objData
+                             select new ServiceList
+                             {
+                                 v_ServiceId = a.v_ServiceId,
+                                 nombre = a.nombre,
+                                 genero = a.genero,
+                                 fechaservicio = a.fechaservicio,
+                                 edad = GetAge(a.d_BirthDate.Value),
+                                 tipoServicio = a.tipoServicio
+                             }).ToList();
+                pobjOperationResult.Success = 1;
+                return datos;
+
+            }
+            catch (Exception e)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(e);
+                return null;
+            }
+        }
+        public List<ServiceList> GetServiceForTramasPageAndFilteredPartos(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from sss in dbContext.service
+                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
+                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+
+                            where sss.i_IsDeleted == 0 &&
+                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                                  sss.i_MasterServiceId != 2 &&
+                                  S.i_ParameterId == 29
+
+                            select new ServiceList
+                            {
+                                v_ServiceId = sss.v_ServiceId,
+                                nombre = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                                genero = J.v_Value1,
+                                fechaservicio = sss.d_ServiceDate.Value,
+                                d_BirthDate = A.d_Birthdate.Value,
+                                tipoServicio = S.v_Value1
+                            };
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+                List<ServiceList> objData = query.ToList();
+                var datos = (from a in objData
+                             select new ServiceList
+                             {
+                                 v_ServiceId = a.v_ServiceId,
+                                 nombre = a.nombre,
+                                 genero = a.genero,
+                                 fechaservicio = a.fechaservicio,
+                                 edad = GetAge(a.d_BirthDate.Value),
+                                 tipoServicio = a.tipoServicio
+                             }).ToList();
+                pobjOperationResult.Success = 1;
+                return datos;
+
+            }
+            catch (Exception e)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(e);
+                return null;
+            }
+        }
+
+        public List<ServiceList> GetServiceForTramasPageAndFilteredHospitalizacion(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from sss in dbContext.service
+                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
+                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+
+                            where sss.i_IsDeleted == 0 &&
+                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                                  sss.i_MasterServiceId != 2 &&
+                                  S.i_ParameterId == 19
+
+                            select new ServiceList
+                            {
+                                v_ServiceId = sss.v_ServiceId,
+                                nombre = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                                genero = J.v_Value1,
+                                fechaservicio = sss.d_ServiceDate.Value,
+                                d_BirthDate = A.d_Birthdate.Value,
+                                tipoServicio = S.v_Value1
+                            };
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+                List<ServiceList> objData = query.ToList();
+                var datos = (from a in objData
+                             select new ServiceList
+                             {
+                                 v_ServiceId = a.v_ServiceId,
+                                 nombre = a.nombre,
+                                 genero = a.genero,
+                                 fechaservicio = a.fechaservicio,
+                                 edad = GetAge(a.d_BirthDate.Value),
+                                 tipoServicio = a.tipoServicio
+                             }).ToList();
+                pobjOperationResult.Success = 1;
+                return datos;
+
+            }
+            catch (Exception e)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(e);
+                return null;
+            }
+        }
+
+        public List<ServiceList> GetServiceForTramasPageAndFilteredProcedimientosCirugias(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from sss in dbContext.service
+                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
+                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+
+                            where sss.i_IsDeleted == 0 &&
+                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                                  sss.i_MasterServiceId != 2 &&
+                                  (S.i_ParameterId == 23 || S.i_ParameterId == 30)
+
+                            select new ServiceList
+                            {
+                                v_ServiceId = sss.v_ServiceId,
+                                nombre = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                                genero = J.v_Value1,
+                                fechaservicio = sss.d_ServiceDate.Value,
+                                d_BirthDate = A.d_Birthdate.Value,
+                                tipoServicio = S.v_Value1
+                            };
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+                List<ServiceList> objData = query.ToList();
+                var datos = (from a in objData
+                             select new ServiceList
+                             {
+                                 v_ServiceId = a.v_ServiceId,
+                                 nombre = a.nombre,
+                                 genero = a.genero,
+                                 fechaservicio = a.fechaservicio,
+                                 edad = GetAge(a.d_BirthDate.Value),
+                                 tipoServicio = a.tipoServicio
+                             }).ToList();
+                pobjOperationResult.Success = 1;
+                return datos;
+
+            }
+            catch (Exception e)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(e);
+                return null;
+            }
+        }
+        public List<ServiceList> GetServiceForTramasPageAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from sss in dbContext.service
+                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
+                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+
+                            where sss.i_IsDeleted == 0 && (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) && sss.i_MasterServiceId != 2
+
+                            select new ServiceList
+                            {
+                                v_ServiceId = sss.v_ServiceId,
+                                nombre = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                                genero = J.v_Value1,
+                                fechaservicio = sss.d_ServiceDate.Value,
+                                d_BirthDate = A.d_Birthdate.Value,
+                                tipoServicio = S.v_Value1
+                            };
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+                List<ServiceList> objData = query.ToList();
+                var datos = (from a in objData
+                             select new ServiceList
+                             {
+                                 v_ServiceId = a.v_ServiceId,
+                                 nombre = a.nombre,
+                                 genero = a.genero,
+                                 fechaservicio = a.fechaservicio,
+                                 edad = GetAge(a.d_BirthDate.Value),
+                                 tipoServicio = a.tipoServicio
+                             }).ToList();
+                pobjOperationResult.Success = 1;
+                return datos;
+
+            }
+            catch (Exception e)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(e);
+                return null;
+            }
+        }
+
         public int GetAge(DateTime FechaNacimiento)
         {
             return int.Parse((DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1).ToString());
