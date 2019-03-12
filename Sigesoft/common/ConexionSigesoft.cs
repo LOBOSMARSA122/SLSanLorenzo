@@ -9,10 +9,11 @@ namespace Sigesoft.Common
 {
     public class ConexionSigesoft
     {
-        string cadena = @"Data Source = 192.168.1.179; Initial Catalog=SigesoftDesarrollo_2; User Id=sa; Password=123456";
+        string cadena;
         public SqlConnection conectarsigesoft = new SqlConnection();
         public ConexionSigesoft()
         {
+            cadena = Common.Utils.GetApplicationConfigValue("ConexionSigesoft");
             conectarsigesoft.ConnectionString = cadena;
         }
         public void opensigesoft()

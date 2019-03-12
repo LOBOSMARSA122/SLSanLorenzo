@@ -20,8 +20,9 @@ namespace Sigesoft.Node.Contasol.Integration
         private readonly int _recipeId;
         private string idUnidadProductiva;
         private string _protocolId;
+        private string _serviceId;
 
-        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId)
+        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId, string serviceId)
         {
             InitializeComponent();
             _recipeId = recipeId;
@@ -31,6 +32,7 @@ namespace Sigesoft.Node.Contasol.Integration
             _actionForm = actionForm;
             _protocolId = protocolId;
             Text = actionForm == ActionForm.Add ? "Agregar Nueva Receta" : "Editar Receta";
+            _serviceId = serviceId;
         }
 
         public sealed override string Text
@@ -105,6 +107,7 @@ namespace Sigesoft.Node.Contasol.Integration
                 _recetaDto.t_FechaFin = dtpFechaFin.Value;
                 _recetaDto.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                 _recetaDto.v_IdUnidadProductiva = idUnidadProductiva;
+                _recetaDto.v_ServiceId = _serviceId;
 
                 var tienePlan = false;
                 var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
@@ -122,19 +125,24 @@ namespace Sigesoft.Node.Contasol.Integration
                         var cadena1 = "select OO.r_FactorMed, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + _protocolId + "'";
                         SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                         SqlDataReader lector = comando.ExecuteReader();
-                        string factor = ""; 
+                        string eps = ""; 
                         while (lector.Read())
                         {
-                            factor = lector.GetValue(0).ToString();
+                            eps = lector.GetValue(0).ToString();
                         }
                         lector.Close();
-                        decimal nuevoPrecio = decimal.Parse(factor) * decimal.Parse(txtPrecio.Text);
+                        conectasam.closesigesoft();
+                        //calculo nuevo precio
+                        decimal nuevoPrecio = decimal.Parse(txtPPS.Text) - ((decimal.Parse(eps) * decimal.Parse(txtPPS.Text)) / 100);
                         _recetaDto.d_SaldoPaciente = (resultplan[0].d_Importe / 100) * (nuevoPrecio * _recetaDto.d_Cantidad);
                         _recetaDto.d_SaldoAseguradora = (nuevoPrecio * _recetaDto.d_Cantidad) - _recetaDto.d_SaldoPaciente;
                     }
                     
                 }
-
+                else
+                {
+                    _recetaDto.d_SaldoPaciente = decimal.Parse(txtPrecio.Text) * _recetaDto.d_Cantidad;
+                }
 
                 _objRecetaBl.AddUpdateRecipe(ref _pobjOperationResult, _recetaDto);
 
@@ -173,6 +181,7 @@ namespace Sigesoft.Node.Contasol.Integration
                 idUnidadProductiva = medicamento.IdLinea;
                 txtUnidadProductiva.Text = medicamento.IdLinea;
                 txtPrecio.Text = medicamento.PrecioVenta.ToString();
+                txtPPS.Text = medicamento.d_PrecioMayorista.ToString();
             }
         }
 
