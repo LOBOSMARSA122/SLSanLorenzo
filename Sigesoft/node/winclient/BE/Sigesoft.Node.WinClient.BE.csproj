@@ -465,6 +465,7 @@
     <Compile Include="Generated\resumentipoempresaResultDto.cs" />
     <Compile Include="Generated\reportegerencialResultDto.cs" />
     <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
+    <Compile Include="Generated\obtenervaloresResultDto.cs" />
     <Compile Include="Generated\obtenerproductoResultDto.cs" />
     <Compile Include="Generated\obtenerpreciotarifarioResultDto.cs" />
     <Compile Include="Generated\obtenernetoporcobrarResultDto.cs" />

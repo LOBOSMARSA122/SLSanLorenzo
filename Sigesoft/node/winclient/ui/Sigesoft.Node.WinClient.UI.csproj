@@ -508,6 +508,12 @@
     <Compile Include="FrmChangeGeso.Designer.cs">
       <DependentUpon>FrmChangeGeso.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConfigSeguros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfigSeguros.Designer.cs">
+      <DependentUpon>frmConfigSeguros.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConfiguracionPagoEspecialista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3626,6 +3632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChangeGeso.resx">
       <DependentUpon>FrmChangeGeso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigSeguros.resx">
+      <DependentUpon>frmConfigSeguros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfiguracionPagoEspecialista.resx">
       <DependentUpon>FrmConfiguracionPagoEspecialista.cs</DependentUpon>

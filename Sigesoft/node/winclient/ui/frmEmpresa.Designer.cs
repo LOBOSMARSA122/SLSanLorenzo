@@ -930,7 +930,7 @@
             this.lblFactorMed.Name = "lblFactorMed";
             this.lblFactorMed.Size = new System.Drawing.Size(98, 19);
             this.lblFactorMed.TabIndex = 100;
-            this.lblFactorMed.Text = "Factor Medicina";
+            this.lblFactorMed.Text = "EPS Descuento";
             this.lblFactorMed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblFactorMed.Visible = false;
             // 

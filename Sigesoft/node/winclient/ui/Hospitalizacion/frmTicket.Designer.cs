@@ -59,14 +59,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblRecordCount2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbConCargo = new System.Windows.Forms.GroupBox();
             this.rbPaciente = new System.Windows.Forms.RadioButton();
             this.rbMedicoTratante = new System.Windows.Forms.RadioButton();
             this.chkTicketInterno = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdTicketDetalle)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbConCargo.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -117,7 +117,7 @@
             this.btnCancelarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnCancelarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelarTicket.Location = new System.Drawing.Point(14, 412);
+            this.btnCancelarTicket.Location = new System.Drawing.Point(14, 429);
             this.btnCancelarTicket.Name = "btnCancelarTicket";
             this.btnCancelarTicket.Size = new System.Drawing.Size(77, 23);
             this.btnCancelarTicket.TabIndex = 7;
@@ -131,7 +131,7 @@
             this.btnGuardarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGuardarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarTicket.Location = new System.Drawing.Point(678, 412);
+            this.btnGuardarTicket.Location = new System.Drawing.Point(678, 429);
             this.btnGuardarTicket.Name = "btnGuardarTicket";
             this.btnGuardarTicket.Size = new System.Drawing.Size(77, 23);
             this.btnGuardarTicket.TabIndex = 8;
@@ -223,10 +223,10 @@
             this.grdTicketDetalle.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdTicketDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdTicketDetalle.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdTicketDetalle.Location = new System.Drawing.Point(14, 166);
+            this.grdTicketDetalle.Location = new System.Drawing.Point(14, 189);
             this.grdTicketDetalle.Margin = new System.Windows.Forms.Padding(2);
             this.grdTicketDetalle.Name = "grdTicketDetalle";
-            this.grdTicketDetalle.Size = new System.Drawing.Size(741, 231);
+            this.grdTicketDetalle.Size = new System.Drawing.Size(725, 225);
             this.grdTicketDetalle.TabIndex = 47;
             this.grdTicketDetalle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdproduc_AfterSelectChange);
             // 
@@ -243,7 +243,7 @@
             this.btnRemover.ForeColor = System.Drawing.Color.Black;
             this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemover.Location = new System.Drawing.Point(751, 117);
+            this.btnRemover.Location = new System.Drawing.Point(748, 117);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(69, 24);
@@ -265,7 +265,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(751, 79);
+            this.btnEditar.Location = new System.Drawing.Point(748, 79);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(69, 24);
@@ -286,7 +286,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(751, 39);
+            this.btnNuevo.Location = new System.Drawing.Point(748, 39);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(69, 24);
@@ -338,7 +338,7 @@
             this.lblRecordCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount2.Location = new System.Drawing.Point(488, 16);
+            this.lblRecordCount2.Location = new System.Drawing.Point(485, 16);
             this.lblRecordCount2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount2.Name = "lblRecordCount2";
             this.lblRecordCount2.Size = new System.Drawing.Size(259, 18);
@@ -348,27 +348,30 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.lblRecordCount2);
             this.groupBox2.Controls.Add(this.btnNuevo);
             this.groupBox2.Controls.Add(this.btnRemover);
             this.groupBox2.Controls.Add(this.btnEditar);
-            this.groupBox2.Location = new System.Drawing.Point(8, 127);
+            this.groupBox2.Location = new System.Drawing.Point(8, 150);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(820, 275);
+            this.groupBox2.Size = new System.Drawing.Size(817, 269);
             this.groupBox2.TabIndex = 100;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle de Productos";
             // 
-            // groupBox3
+            // gbConCargo
             // 
-            this.groupBox3.Controls.Add(this.rbPaciente);
-            this.groupBox3.Controls.Add(this.rbMedicoTratante);
-            this.groupBox3.Location = new System.Drawing.Point(8, 72);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(276, 49);
-            this.groupBox3.TabIndex = 101;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Con Cargo a:";
+            this.gbConCargo.Controls.Add(this.rbPaciente);
+            this.gbConCargo.Controls.Add(this.rbMedicoTratante);
+            this.gbConCargo.Location = new System.Drawing.Point(8, 72);
+            this.gbConCargo.Name = "gbConCargo";
+            this.gbConCargo.Size = new System.Drawing.Size(276, 49);
+            this.gbConCargo.TabIndex = 101;
+            this.gbConCargo.TabStop = false;
+            this.gbConCargo.Text = "Con Cargo a:";
             // 
             // rbPaciente
             // 
@@ -395,7 +398,7 @@
             // chkTicketInterno
             // 
             this.chkTicketInterno.AutoSize = true;
-            this.chkTicketInterno.Location = new System.Drawing.Point(576, 94);
+            this.chkTicketInterno.Location = new System.Drawing.Point(290, 95);
             this.chkTicketInterno.Name = "chkTicketInterno";
             this.chkTicketInterno.Size = new System.Drawing.Size(117, 17);
             this.chkTicketInterno.TabIndex = 102;
@@ -406,9 +409,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 443);
+            this.ClientSize = new System.Drawing.Size(837, 460);
             this.Controls.Add(this.chkTicketInterno);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.gbConCargo);
             this.Controls.Add(this.grdTicketDetalle);
             this.Controls.Add(this.btnGuardarTicket);
             this.Controls.Add(this.btnCancelarTicket);
@@ -426,8 +429,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbConCargo.ResumeLayout(false);
+            this.gbConCargo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,7 +454,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblRecordCount2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbConCargo;
         private System.Windows.Forms.RadioButton rbPaciente;
         private System.Windows.Forms.RadioButton rbMedicoTratante;
         private System.Windows.Forms.ComboBox cboTipoCuenta;

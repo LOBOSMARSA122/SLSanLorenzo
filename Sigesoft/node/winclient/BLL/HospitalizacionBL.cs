@@ -24,13 +24,20 @@ namespace Sigesoft.Node.WinClient.BLL
                             join C in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals C.v_HopitalizacionId
                             join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
                             join E in dbContext.servicecomponent on D.v_ServiceId equals E.v_ServiceId
-                            join F in dbContext.systemuser on E.i_MedicoTratanteId equals F.i_SystemUserId
-                            join G in dbContext.person on F.v_PersonId equals G.v_PersonId
-                            join H in dbContext.professional on G.v_PersonId equals H.v_PersonId
+
+                            join F in dbContext.systemuser on E.i_MedicoTratanteId equals F.i_SystemUserId  into F_join
+                                from F in F_join.DefaultIfEmpty()
+
+                            join G in dbContext.person on F.v_PersonId equals G.v_PersonId into G_join
+                            from G in G_join.DefaultIfEmpty()
+
+                            join H in dbContext.professional on G.v_PersonId equals H.v_PersonId into H_join
+                            from H in H_join.DefaultIfEmpty()
 
                             //join G in dbContext.product on F.v_IdProductoDetalle equals G.v_ProductId
 
                             where A.i_IsDeleted == 0
+                                  && (A.d_FechaIngreso >= pdatBeginDate.Value && A.d_FechaIngreso <= pdatEndDate.Value)
 
                             select new HospitalizacionList
                             {
@@ -55,10 +62,10 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     query = query.Where(pstrFilterExpression);
                 }
-                if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
-                {
-                    query = query.Where("d_FechaIngreso >= @0 && d_FechaIngreso <= @1", pdatBeginDate.Value, pdatEndDate.Value);
-                }
+                //if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
+                //{
+                //    query = query.Where("d_FechaIngreso >= @0 && d_FechaIngreso <= @1", pdatBeginDate.Value, pdatEndDate.Value);
+                //}
                 if (!string.IsNullOrEmpty(pstrSortExpression))
                 {
                     query = query.OrderBy(pstrSortExpression);
