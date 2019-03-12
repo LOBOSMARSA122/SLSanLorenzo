@@ -138,7 +138,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
                         TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
                         oLiquiAseguradoraDetalle.SubTotal = (oLiquiAseguradoraDetalle.SaldoPaciente.Value + oLiquiAseguradoraDetalle.SaldoAseguradora.Value);
-                        #region Conexion SAM
+                        #region Conexion SIGESOFT
                         ConexionSigesoft conectasam = new ConexionSigesoft();
                         conectasam.opensigesoft();
                         #endregion
@@ -151,7 +151,24 @@ namespace Sigesoft.Node.WinClient.BLL
                             factor = lector.GetValue(0).ToString();
                         }
                         lector.Close();
-                        oLiquiAseguradoraDetalle.PrecioUnitario = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].d_PrecioVenta.Value * decimal.Parse(factor);
+                        conectasam.closesigesoft();
+                        #region Conexion SAMBHS
+                        ConexionSambhs conectaConexionSambhs = new ConexionSambhs();
+                        conectaConexionSambhs.openSambhs();
+                        #endregion
+
+                        var cadenasam = "select PP.d_PrecioMayorista from producto PP inner join productodetalle PD on PD.v_IdProducto = PP.v_IdProducto where PD.v_IdProductoDetalle ='" + receta.v_IdProductoDetalle + "'";
+                        comando = new SqlCommand(cadenasam, connection: conectaConexionSambhs.conectarSambhs);
+                        lector = comando.ExecuteReader();
+                        string preciounitario = "";
+                        while (lector.Read())
+                        {
+                            preciounitario = lector.GetValue(0).ToString();
+                        }
+                        lector.Close();
+                        conectaConexionSambhs.closeSambhs();
+
+                        oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(preciounitario) - (decimal.Parse(preciounitario) * decimal.Parse(factor) / 100);
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
