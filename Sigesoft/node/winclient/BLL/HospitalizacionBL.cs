@@ -23,6 +23,10 @@ namespace Sigesoft.Node.WinClient.BLL
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                             join C in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals C.v_HopitalizacionId
                             join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
+                            join P in dbContext.protocol on D.v_ProtocolId equals P.v_ProtocolId
+                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+
                             join E in dbContext.servicecomponent on D.v_ServiceId equals E.v_ServiceId
 
                             join F in dbContext.systemuser on E.i_MedicoTratanteId equals F.i_SystemUserId  into F_join
@@ -55,7 +59,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 i_MedicoPago = A.i_MedicoPago,
                                 d_PagoPaciente = A.d_PagoPaciente,
                                 i_PacientePago = A.i_PacientePago,
-                                v_MedicoTratante = G.v_FirstLastName + " " + G.v_SecondLastName + ", " + G.v_FirstName
+                                v_MedicoTratante = G.v_FirstLastName + " " + G.v_SecondLastName + ", " + G.v_FirstName,
+                                v_Servicio = S.v_Value1
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -99,6 +104,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             d_PagoPaciente = a.d_PagoPaciente,
                             PacientePago = a.i_PacientePago == 1 ? "SI" : a.d_PagoPaciente == null ? "SIN LIQUIDAR" : a.d_PagoPaciente == 0 ? "---" : "NO",
                             v_MedicoTratante = a.v_MedicoTratante == "-1" ? " - - -": a.v_MedicoTratante == null ? " - - - " : a.v_MedicoTratante == "SAN LORENZO, CLINICA" ? "CLINICA SAN LORENZO": a.v_MedicoTratante,
+                            v_Servicio = a.v_Servicio
                          }).ToList();
 
                 var objtData = hospitalizaciones.AsEnumerable()
@@ -129,6 +135,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     hospit.d_PagoPaciente = item.d_PagoPaciente;
                     hospit.PacientePago =item.PacientePago;
                     hospit.v_MedicoTratante = item.v_MedicoTratante;
+                    hospit.v_Servicio = item.v_Servicio;
 
                     // estos son los hijos de 1 hopitalización
                     var servicios = BuscarServiciosHospitalizacion(item.v_HopitalizacionId).ToList();

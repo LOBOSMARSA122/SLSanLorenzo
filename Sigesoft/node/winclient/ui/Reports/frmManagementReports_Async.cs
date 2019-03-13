@@ -71,151 +71,153 @@ namespace Sigesoft.Node.WinClient.UI.Reports
            listCompExec.Add(Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_ID);
            listCompExec.Add(Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_ID);
 
-           var serviceComponenteEstado = _serviceBL.ValoresComponente_ManagerReport(_serviceId, listCompExec);
+           //var serviceComponenteEstado = _serviceBL.ValoresComponente_ManagerReport(_serviceId, listCompExec);
 
-           foreach (var item in ordenReportes)
-           {
-               var obj = new ServiceComponentList();
-               var exist = list.Find(p => p.v_ComponentId == item.v_ComponentId);
+           //var serviceComponenteEstado = _serviceBL.ValoresComponente_ManagerReport(string.Empty, listCompExec);
 
-               if (exist != null)
-               {
-                   obj.v_ComponentId = item.v_ComponentId;
-                   obj.v_ComponentName = item.v_ComponentName;
-                   obj.i_Orden = item.i_Orden;
+           //foreach (var item in ordenReportes)
+           //{
+           //    var obj = new ServiceComponentList();
+           //    var exist = list.Find(p => p.v_ComponentId == item.v_ComponentId);
+
+           //    if (exist != null)
+           //    {
+           //        obj.v_ComponentId = item.v_ComponentId;
+           //        obj.v_ComponentName = item.v_ComponentName;
+           //        obj.i_Orden = item.i_Orden;
                 
-                   ListOrdenada.Add(obj);
-               }
-           }
+           //        ListOrdenada.Add(obj);
+           //    }
+           //}
 
-           #region RX
-           var rx = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 6 && p.i_ServiceComponentStatusId == 7);
-           if (rx[0] != null)
-           {
-               if (rx[0].i_GenderId == (int)Sigesoft.Common.Gender.FEMENINO)
-               {
-                   var mujeresSi = serviceComponenteEstado.Find(p =>
-                        p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_SI);
+           //#region RX
+           //var rx = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 6 && p.i_ServiceComponentStatusId == 7);
+           //if (rx[0] != null)
+           //{
+           //    if (rx[0].i_GenderId == (int)Sigesoft.Common.Gender.FEMENINO)
+           //    {
+           //        var mujeresSi = serviceComponenteEstado.Find(p =>
+           //             p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_SI);
 
 
-                   var mujeresNo = serviceComponenteEstado.Find(p =>
-                       p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_NO);
+           //        var mujeresNo = serviceComponenteEstado.Find(p =>
+           //            p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_NO);
 
-                   var si = mujeresSi == null ? "" : mujeresSi.v_Value1;
-                   var no = mujeresNo == null ? "" : mujeresNo.v_Value1;
+           //        var si = mujeresSi == null ? "" : mujeresSi.v_Value1;
+           //        var no = mujeresNo == null ? "" : mujeresNo.v_Value1;
 
-                   if (si == "1")
-                   {
-                       ListOrdenada = ListOrdenada.FindAll(
-                           p =>
-                               p.v_ComponentId != "N009-ME000000302"
-                               && p.v_ComponentId != "N009-ME000000440");
-                   }
-                   else if (no == "1")
-                   {
-                       ListOrdenada = ListOrdenada.FindAll(
-                           p =>
-                               p.v_ComponentId != "N002-ME000000032" && p.v_ComponentId != "N009-ME000000062" &&
-                               p.v_ComponentId != "N009-ME000000130" && p.v_ComponentId != "N009-ME000000302");
-                   }
-               }
-               else
-               {
-                   var exoneracionsi = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI);
-                   var exoneracionno = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO);
+           //        if (si == "1")
+           //        {
+           //            ListOrdenada = ListOrdenada.FindAll(
+           //                p =>
+           //                    p.v_ComponentId != "N009-ME000000302"
+           //                    && p.v_ComponentId != "N009-ME000000440");
+           //        }
+           //        else if (no == "1")
+           //        {
+           //            ListOrdenada = ListOrdenada.FindAll(
+           //                p =>
+           //                    p.v_ComponentId != "N002-ME000000032" && p.v_ComponentId != "N009-ME000000062" &&
+           //                    p.v_ComponentId != "N009-ME000000130" && p.v_ComponentId != "N009-ME000000302");
+           //        }
+           //    }
+           //    else
+           //    {
+           //        var exoneracionsi = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI);
+           //        var exoneracionno = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO);
 
-                   var si = exoneracionsi == null ? "" : exoneracionsi.v_Value1; //exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI).v_Value1;
-                   var no = exoneracionno == null ? "" : exoneracionno.v_Value1; //exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO).v_Value1;
-                   if (si == "1")
-                   {
-                       ListOrdenada = ListOrdenada.FindAll(
-                    p =>
-                        p.v_ComponentId != "N002-ME000000032" && p.v_ComponentId != "N009-ME000000062" &&
-                        p.v_ComponentId != "N009-ME000000130" && p.v_ComponentId != "N009-ME000000302"
-                        && p.v_ComponentId != "N009-ME000000442");
-                   }
-                   else
-                   {
-                       ListOrdenada = ListOrdenada.FindAll(
-                           p =>
-                               p.v_ComponentId != "N009-ME000000440" && p.v_ComponentId != "N009-ME000000442");
-                   }
-               }
+           //        var si = exoneracionsi == null ? "" : exoneracionsi.v_Value1; //exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI).v_Value1;
+           //        var no = exoneracionno == null ? "" : exoneracionno.v_Value1; //exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO).v_Value1;
+           //        if (si == "1")
+           //        {
+           //            ListOrdenada = ListOrdenada.FindAll(
+           //         p =>
+           //             p.v_ComponentId != "N002-ME000000032" && p.v_ComponentId != "N009-ME000000062" &&
+           //             p.v_ComponentId != "N009-ME000000130" && p.v_ComponentId != "N009-ME000000302"
+           //             && p.v_ComponentId != "N009-ME000000442");
+           //        }
+           //        else
+           //        {
+           //            ListOrdenada = ListOrdenada.FindAll(
+           //                p =>
+           //                    p.v_ComponentId != "N009-ME000000440" && p.v_ComponentId != "N009-ME000000442");
+           //        }
+           //    }
 
-           }
-           else
-           {
-               ListOrdenada = ListOrdenada.FindAll(
-                  p =>
-                      p.v_ComponentId != "N009-ME000000440" && p.v_ComponentId != "N009-ME000000442");
-           }
+           //}
+           //else
+           //{
+           //    ListOrdenada = ListOrdenada.FindAll(
+           //       p =>
+           //           p.v_ComponentId != "N009-ME000000440" && p.v_ComponentId != "N009-ME000000442");
+           //}
 
            
 
-           #endregion
+           //#endregion
 
-           #region Lab
-           var lab = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 1 && p.i_ServiceComponentStatusId == 7);
-           if (lab.Count != 0)
-           {
+           //#region Lab
+           //var lab = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 1 && p.i_ServiceComponentStatusId == 7);
+           //if (lab.Count != 0)
+           //{
                
-               var si_lab = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI).v_Value1;
-               var no_lab = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO).v_Value1;
+           //    var si_lab = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI).v_Value1;
+           //    var no_lab = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO).v_Value1;
 
-               if (si_lab == "1")
-               {
-                   ListOrdenada = ListOrdenada.FindAll(
-                       p =>
-                           p.v_ComponentId != "N001-ME000000000" && p.v_ComponentId != "N009-ME000000461" && p.v_ComponentId != "N009-ME000000053");
-               }
-               else
-               {
-                   ListOrdenada = ListOrdenada.FindAll(
-                       p =>
-                           p.v_ComponentId != "N009-ME000000441");
-               }
-           }
-           else
-           {
-               ListOrdenada = ListOrdenada.FindAll(
-                   p =>
-                       p.v_ComponentId != "N009-ME000000441");
-           }
+           //    if (si_lab == "1")
+           //    {
+           //        ListOrdenada = ListOrdenada.FindAll(
+           //            p =>
+           //                p.v_ComponentId != "N001-ME000000000" && p.v_ComponentId != "N009-ME000000461" && p.v_ComponentId != "N009-ME000000053");
+           //    }
+           //    else
+           //    {
+           //        ListOrdenada = ListOrdenada.FindAll(
+           //            p =>
+           //                p.v_ComponentId != "N009-ME000000441");
+           //    }
+           //}
+           //else
+           //{
+           //    ListOrdenada = ListOrdenada.FindAll(
+           //        p =>
+           //            p.v_ComponentId != "N009-ME000000441");
+           //}
 
 
-           #endregion
+           //#endregion
 
-           #region Espiro
-           var espiro = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 16 && p.i_ServiceComponentStatusId == 7);
+           //#region Espiro
+           //var espiro = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 16 && p.i_ServiceComponentStatusId == 7);
 
-           if (espiro.Count != 0)
-           {
+           //if (espiro.Count != 0)
+           //{
 
-               var si_esp = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI).v_Value1;
-               var no_esp = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO).v_Value1;
+           //    var si_esp = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI).v_Value1;
+           //    var no_esp = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO).v_Value1;
 
-               if (si_esp == "1")
-               {
-                   ListOrdenada = ListOrdenada.FindAll(
-                       p =>
-                           p.v_ComponentId != "N002-ME000000031");
-               }
-               else
-               {
-                   ListOrdenada = ListOrdenada.FindAll(
-                       p =>
-                           p.v_ComponentId != "N009-ME000000513");
-               }
-           }
-           else
-           {
-               ListOrdenada = ListOrdenada.FindAll(
-                   p =>
-                       p.v_ComponentId != "N009-ME000000513");
-           }
+           //    if (si_esp == "1")
+           //    {
+           //        ListOrdenada = ListOrdenada.FindAll(
+           //            p =>
+           //                p.v_ComponentId != "N002-ME000000031");
+           //    }
+           //    else
+           //    {
+           //        ListOrdenada = ListOrdenada.FindAll(
+           //            p =>
+           //                p.v_ComponentId != "N009-ME000000513");
+           //    }
+           //}
+           //else
+           //{
+           //    ListOrdenada = ListOrdenada.FindAll(
+           //        p =>
+           //            p.v_ComponentId != "N009-ME000000513");
+           //}
            
 
-           #endregion
+           //#endregion
 
            chklConsolidadoReportes.DataSource = ListOrdenada;
            chklConsolidadoReportes.DisplayMember = "v_ComponentName";

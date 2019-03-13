@@ -246,11 +246,38 @@ namespace Sigesoft.Node.WinClient.UI
 
         private List<ServiceList> GetDataServices(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
         {
+
             OperationResult objOperationResult = new OperationResult();
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
+            //_objDataLista = new List<ServiceList>();
+            string tabName = utcSusalud.SelectedTab.Text;
 
-            _objDataLista = new ServiceBL().GetServiceForTramasPageAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            if (tabName == "Ambulatorio")
+            {
+                _objDataLista = new ServiceBL().GetServiceForTramasPageAndFilteredAmbulatorio(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Emergencia")
+            {
+                _objDataLista = new ServiceBL().GetServiceForTramasPageAndFilteredEmergencia(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Partos")
+            {
+                _objDataLista = new ServiceBL().GetServiceForTramasPageAndFilteredPartos(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Hospitalización")
+            {
+                _objDataLista = new ServiceBL().GetServiceForTramasPageAndFilteredHospitalizacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+            else if (tabName == "Procedimientos / Cirugía")
+            {
+                _objDataLista = new ServiceBL().GetServiceForTramasPageAndFilteredProcedimientosCirugias(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            }
+
+            if (objOperationResult.Success != 1)
+            {
+                MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             return _objDataLista;
         }
