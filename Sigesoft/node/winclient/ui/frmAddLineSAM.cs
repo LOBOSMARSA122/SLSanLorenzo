@@ -42,7 +42,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var objData = GetDataLinea(_strFilterExpression);
             grdDataLinea.DataSource = objData;
-            //lblContadorFilasLinea.Text = string.Format("Se encontraron {0} registros.", objData.Count);
+            lblContadorFilasLinea.Text = string.Format("Se encontraron {0} registros.", this.grdDataLinea.Rows.Count());
         }
 
         private object GetDataLinea(string pstrFilterExpression)
@@ -122,7 +122,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                         if (DateTime.Now.Day.ToString().Length == 1){dia = "0" + DateTime.Now.Day.ToString();}
                         else{dia = DateTime.Now.Day.ToString();}
-                        string fecha = DateTime.Now.Year.ToString() + "-" + mes + "-" + dia + " 00:00:00.000";
+                        string fecha = DateTime.Now.Year.ToString() + "-" + dia + "-" + mes + " 00:00:00.000";
 
                         int userId = int.Parse(_ClientSession[2]);
                         #region Usuarios

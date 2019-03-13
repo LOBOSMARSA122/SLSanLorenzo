@@ -45,6 +45,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PagoPaciente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PacientePago");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_MedicoTratante");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn37 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Servicio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Habitaciones");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
@@ -291,29 +292,30 @@
             ultraGridColumn16.Header.Caption = "Nro. Hospitalización";
             ultraGridColumn16.Header.VisiblePosition = 0;
             ultraGridColumn16.Width = 177;
-            ultraGridColumn4.Header.VisiblePosition = 1;
+            ultraGridColumn4.Header.VisiblePosition = 2;
             ultraGridColumn4.Hidden = true;
             ultraGridColumn17.Header.Caption = "Nombre de Paciente";
-            ultraGridColumn17.Header.VisiblePosition = 2;
+            ultraGridColumn17.Header.VisiblePosition = 3;
             ultraGridColumn17.Width = 117;
             ultraGridColumn2.Header.Caption = "N° Doc";
-            ultraGridColumn2.Header.VisiblePosition = 3;
+            ultraGridColumn2.Header.VisiblePosition = 4;
             ultraGridColumn3.Header.Caption = "Edad";
-            ultraGridColumn3.Header.VisiblePosition = 4;
+            ultraGridColumn3.Header.VisiblePosition = 5;
             ultraGridColumn18.Header.Caption = "Fecha Ingreso";
-            ultraGridColumn18.Header.VisiblePosition = 5;
+            ultraGridColumn18.Header.VisiblePosition = 6;
             ultraGridColumn19.Header.Caption = "Fecha Alta";
-            ultraGridColumn19.Header.VisiblePosition = 6;
+            ultraGridColumn19.Header.VisiblePosition = 7;
             ultraGridColumn20.Header.Caption = "Precio Total";
-            ultraGridColumn20.Header.VisiblePosition = 7;
-            ultraGridColumn1.Header.VisiblePosition = 9;
-            ultraGridColumn23.Header.VisiblePosition = 10;
-            ultraGridColumn25.Header.VisiblePosition = 11;
-            ultraGridColumn26.Header.VisiblePosition = 12;
-            ultraGridColumn27.Header.VisiblePosition = 13;
-            ultraGridColumn28.Header.VisiblePosition = 8;
-            ultraGridColumn21.Header.VisiblePosition = 14;
-            ultraGridColumn22.Header.VisiblePosition = 15;
+            ultraGridColumn20.Header.VisiblePosition = 8;
+            ultraGridColumn1.Header.VisiblePosition = 10;
+            ultraGridColumn23.Header.VisiblePosition = 11;
+            ultraGridColumn25.Header.VisiblePosition = 12;
+            ultraGridColumn26.Header.VisiblePosition = 13;
+            ultraGridColumn27.Header.VisiblePosition = 14;
+            ultraGridColumn28.Header.VisiblePosition = 9;
+            ultraGridColumn37.Header.VisiblePosition = 1;
+            ultraGridColumn21.Header.VisiblePosition = 15;
+            ultraGridColumn22.Header.VisiblePosition = 16;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn16,
             ultraGridColumn4,
@@ -329,6 +331,7 @@
             ultraGridColumn26,
             ultraGridColumn27,
             ultraGridColumn28,
+            ultraGridColumn37,
             ultraGridColumn21,
             ultraGridColumn22});
             ultraGridColumn5.Header.VisiblePosition = 0;

@@ -13,6 +13,7 @@ using System.Threading;
 using Sigesoft.Node.WinClient.BE.Custom;
 using System.Data.SqlClient;
 using System.ComponentModel;
+using NetPdf;
 
 
 namespace Sigesoft.Node.WinClient.BLL
@@ -34778,6 +34779,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = from sss in dbContext.service
+                             join A1 in dbContext.calendar on sss.v_ServiceId equals A1.v_ServiceId
                              join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
                              join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
                                                 equals new { a = J.i_ParameterId, b = J.i_GroupId }
@@ -34786,9 +34788,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                  equals new { a = S.i_ParameterId, b = S.i_GroupId }
 
                             where sss.i_IsDeleted == 0 && 
-                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) && 
-                                  sss.i_MasterServiceId !=2 &&
-                                  (S.i_ParameterId == 10 || S.i_ParameterId == 27)
+                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                                  sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 
+                                  &&(S.i_ParameterId == 10 || S.i_ParameterId == 27) 
 
                              select new ServiceList
                              {
@@ -34847,16 +34849,17 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = from sss in dbContext.service
-                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
-                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
-                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
-                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
-                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
-                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+                    join A1 in dbContext.calendar on sss.v_ServiceId equals A1.v_ServiceId
+                    join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                    join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                        equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                    join P in dbContext.protocol on sss.v_ProtocolId equals  P.v_ProtocolId
+                    join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                        equals new { a = S.i_ParameterId, b = S.i_GroupId }
 
-                            where sss.i_IsDeleted == 0 &&
-                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
-                                  sss.i_MasterServiceId != 2 &&
+                    where sss.i_IsDeleted == 0 && 
+                          (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                          sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
                                   S.i_ParameterId == 31
 
                             select new ServiceList
@@ -34915,16 +34918,17 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = from sss in dbContext.service
-                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
-                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
-                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
-                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
-                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
-                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+                    join A1 in dbContext.calendar on sss.v_ServiceId equals A1.v_ServiceId
+                    join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                    join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                        equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                    join P in dbContext.protocol on sss.v_ProtocolId equals  P.v_ProtocolId
+                    join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                        equals new { a = S.i_ParameterId, b = S.i_GroupId }
 
-                            where sss.i_IsDeleted == 0 &&
-                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
-                                  sss.i_MasterServiceId != 2 &&
+                    where sss.i_IsDeleted == 0 && 
+                          (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                          sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
                                   S.i_ParameterId == 29
 
                             select new ServiceList
@@ -34984,16 +34988,17 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = from sss in dbContext.service
-                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
-                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
-                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
-                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
-                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
-                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+                    join A1 in dbContext.calendar on sss.v_ServiceId equals A1.v_ServiceId
+                    join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                    join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                        equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                    join P in dbContext.protocol on sss.v_ProtocolId equals  P.v_ProtocolId
+                    join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                        equals new { a = S.i_ParameterId, b = S.i_GroupId }
 
-                            where sss.i_IsDeleted == 0 &&
-                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
-                                  sss.i_MasterServiceId != 2 &&
+                    where sss.i_IsDeleted == 0 && 
+                          (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                          sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
                                   S.i_ParameterId == 19
 
                             select new ServiceList
@@ -35053,16 +35058,17 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = from sss in dbContext.service
-                            join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
-                            join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
-                                               equals new { a = J.i_ParameterId, b = J.i_GroupId }
-                            join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
-                            join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
-                                equals new { a = S.i_ParameterId, b = S.i_GroupId }
+                    join A1 in dbContext.calendar on sss.v_ServiceId equals A1.v_ServiceId
+                    join A in dbContext.person on sss.v_PersonId equals A.v_PersonId
+                    join J in dbContext.systemparameter on new { a = A.i_SexTypeId.Value, b = 100 }
+                        equals new { a = J.i_ParameterId, b = J.i_GroupId }
+                    join P in dbContext.protocol on sss.v_ProtocolId equals P.v_ProtocolId
+                    join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
+                        equals new { a = S.i_ParameterId, b = S.i_GroupId }
 
-                            where sss.i_IsDeleted == 0 &&
-                                  (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
-                                  sss.i_MasterServiceId != 2 &&
+                    where sss.i_IsDeleted == 0 &&
+                          (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
+                          sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
                                   (S.i_ParameterId == 23 || S.i_ParameterId == 30)
 
                             select new ServiceList

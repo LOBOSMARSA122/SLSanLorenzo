@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Column 0");
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Column 0");
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CodLinea", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -47,9 +47,9 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.btnLineaAgregar = new Infragistics.Win.Misc.UltraButton();
             this.btnLineaBuscar = new Infragistics.Win.Misc.UltraButton();
@@ -74,19 +74,19 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1});
+            ultraDataColumn3});
             // 
             // btnLineaAgregar
             // 
             this.btnLineaAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance1.TextHAlignAsString = "Left";
-            appearance1.TextVAlignAsString = "Middle";
-            this.btnLineaAgregar.Appearance = appearance1;
+            appearance18.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
+            appearance18.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance18.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance18.TextHAlignAsString = "Left";
+            appearance18.TextVAlignAsString = "Middle";
+            this.btnLineaAgregar.Appearance = appearance18;
             this.btnLineaAgregar.BackColorInternal = System.Drawing.Color.Transparent;
-            this.btnLineaAgregar.Location = new System.Drawing.Point(309, 41);
+            this.btnLineaAgregar.Location = new System.Drawing.Point(443, 41);
             this.btnLineaAgregar.Name = "btnLineaAgregar";
             this.btnLineaAgregar.Size = new System.Drawing.Size(95, 29);
             this.btnLineaAgregar.TabIndex = 17;
@@ -96,15 +96,15 @@
             // btnLineaBuscar
             // 
             this.btnLineaBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance2.TextHAlignAsString = "Left";
-            appearance2.TextVAlignAsString = "Middle";
-            this.btnLineaBuscar.Appearance = appearance2;
+            appearance19.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            appearance19.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance19.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance19.TextHAlignAsString = "Left";
+            appearance19.TextVAlignAsString = "Middle";
+            this.btnLineaBuscar.Appearance = appearance19;
             this.btnLineaBuscar.BackColorInternal = System.Drawing.Color.Transparent;
             this.btnLineaBuscar.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
-            this.btnLineaBuscar.Location = new System.Drawing.Point(309, 6);
+            this.btnLineaBuscar.Location = new System.Drawing.Point(443, 6);
             this.btnLineaBuscar.Name = "btnLineaBuscar";
             this.btnLineaBuscar.Size = new System.Drawing.Size(95, 29);
             this.btnLineaBuscar.TabIndex = 16;
@@ -117,9 +117,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLineaNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLineaNombre.Location = new System.Drawing.Point(70, 39);
-            this.txtLineaNombre.MaxLength = 30;
+            this.txtLineaNombre.MaxLength = 500;
             this.txtLineaNombre.Name = "txtLineaNombre";
-            this.txtLineaNombre.Size = new System.Drawing.Size(194, 21);
+            this.txtLineaNombre.Size = new System.Drawing.Size(328, 21);
             this.txtLineaNombre.TabIndex = 15;
             // 
             // txtLineaCodigo
@@ -127,7 +127,7 @@
             this.txtLineaCodigo.Location = new System.Drawing.Point(70, 10);
             this.txtLineaCodigo.MaxLength = 10;
             this.txtLineaCodigo.Name = "txtLineaCodigo";
-            this.txtLineaCodigo.Size = new System.Drawing.Size(194, 21);
+            this.txtLineaCodigo.Size = new System.Drawing.Size(328, 21);
             this.txtLineaCodigo.TabIndex = 14;
             // 
             // label37
@@ -159,7 +159,7 @@
             this.groupBox5.Controls.Add(this.lblContadorFilasLinea);
             this.groupBox5.Location = new System.Drawing.Point(24, 83);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(389, 279);
+            this.groupBox5.Size = new System.Drawing.Size(523, 400);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.Text = "Resultado de Búsqueda";
             // 
@@ -242,21 +242,21 @@
             this.grdDataLinea.Location = new System.Drawing.Point(7, 32);
             this.grdDataLinea.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataLinea.Name = "grdDataLinea";
-            this.grdDataLinea.Size = new System.Drawing.Size(373, 211);
+            this.grdDataLinea.Size = new System.Drawing.Size(507, 332);
             this.grdDataLinea.TabIndex = 49;
             this.grdDataLinea.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdDataLinea_ClickCell);
             // 
             // btnLineaEliminar
             // 
             this.btnLineaEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance10.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.delete;
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Left;
-            appearance10.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance10.TextHAlignAsString = "Right";
-            appearance10.TextVAlignAsString = "Middle";
-            this.btnLineaEliminar.Appearance = appearance10;
+            appearance20.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.delete;
+            appearance20.ImageHAlign = Infragistics.Win.HAlign.Left;
+            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance20.TextHAlignAsString = "Right";
+            appearance20.TextVAlignAsString = "Middle";
+            this.btnLineaEliminar.Appearance = appearance20;
             this.btnLineaEliminar.Enabled = false;
-            this.btnLineaEliminar.Location = new System.Drawing.Point(173, 246);
+            this.btnLineaEliminar.Location = new System.Drawing.Point(307, 367);
             this.btnLineaEliminar.Name = "btnLineaEliminar";
             this.btnLineaEliminar.Size = new System.Drawing.Size(105, 31);
             this.btnLineaEliminar.TabIndex = 48;
@@ -266,14 +266,14 @@
             // btnLineaEditar
             // 
             this.btnLineaEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance11.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.pencil;
-            appearance11.ImageHAlign = Infragistics.Win.HAlign.Left;
-            appearance11.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance11.TextHAlignAsString = "Right";
-            appearance11.TextVAlignAsString = "Middle";
-            this.btnLineaEditar.Appearance = appearance11;
+            appearance21.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.pencil;
+            appearance21.ImageHAlign = Infragistics.Win.HAlign.Left;
+            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance21.TextHAlignAsString = "Right";
+            appearance21.TextVAlignAsString = "Middle";
+            this.btnLineaEditar.Appearance = appearance21;
             this.btnLineaEditar.Enabled = false;
-            this.btnLineaEditar.Location = new System.Drawing.Point(285, 246);
+            this.btnLineaEditar.Location = new System.Drawing.Point(419, 367);
             this.btnLineaEditar.Name = "btnLineaEditar";
             this.btnLineaEditar.Size = new System.Drawing.Size(95, 31);
             this.btnLineaEditar.TabIndex = 47;
@@ -283,12 +283,12 @@
             // lblContadorFilasLinea
             // 
             this.lblContadorFilasLinea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance12.FontData.SizeInPoints = 7F;
-            appearance12.TextHAlignAsString = "Right";
-            appearance12.TextVAlignAsString = "Middle";
-            this.lblContadorFilasLinea.Appearance = appearance12;
+            appearance22.FontData.SizeInPoints = 7F;
+            appearance22.TextHAlignAsString = "Right";
+            appearance22.TextVAlignAsString = "Middle";
+            this.lblContadorFilasLinea.Appearance = appearance22;
             this.lblContadorFilasLinea.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContadorFilasLinea.Location = new System.Drawing.Point(155, 16);
+            this.lblContadorFilasLinea.Location = new System.Drawing.Point(289, 16);
             this.lblContadorFilasLinea.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblContadorFilasLinea.Name = "lblContadorFilasLinea";
             this.lblContadorFilasLinea.Size = new System.Drawing.Size(231, 12);
@@ -299,7 +299,7 @@
             // 
             this.btnEditar_2.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.pencil;
             this.btnEditar_2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar_2.Location = new System.Drawing.Point(309, 41);
+            this.btnEditar_2.Location = new System.Drawing.Point(443, 42);
             this.btnEditar_2.Name = "btnEditar_2";
             this.btnEditar_2.Size = new System.Drawing.Size(95, 29);
             this.btnEditar_2.TabIndex = 21;
@@ -313,7 +313,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 374);
+            this.ClientSize = new System.Drawing.Size(559, 495);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label38);
