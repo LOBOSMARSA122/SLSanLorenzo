@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region
-        public static void CreateOsteoMuscularMibanco(ServiceList DataService, PacientList filiationData,
+        public static void CreateOsteoMuscularMibanco(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

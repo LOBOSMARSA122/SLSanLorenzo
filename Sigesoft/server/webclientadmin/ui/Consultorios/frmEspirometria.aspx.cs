@@ -240,6 +240,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     if (item.ComponentId == TabEspirometria.Attributes.GetValue("Tag").ToString())
                     {
                         LoadCombosEspirometria();
+                        ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                        ddlUsuarioGrabar.Enabled = false;
                         ObtenerDatosEspirometria(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabEspirometria.Hidden = false;
                     }
@@ -259,6 +261,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         if (Resultado != null)
                         {
                             LoadCombosEspirometria();
+                            ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                            ddlUsuarioGrabar.Enabled = false;
                             ObtenerDatosEspirometria(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabEspirometria.Hidden = false;
                         }

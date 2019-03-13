@@ -252,6 +252,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         LoadCombosPsico();
                         ObtenerDatosPsico(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                        ddlUsuarioGrabar.Enabled = false;
+                        ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                         TabPsicologia.Hidden = false;
                     }
                 }
@@ -271,6 +273,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         {
                             LoadCombosPsico();
                             ObtenerDatosPsico(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                            ddlUsuarioGrabar.Enabled = false;
+                            ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                             TabPsicologia.Hidden = false;
                         }
 
@@ -1119,7 +1123,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Componentes = (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"];
 
             var GrillaDx = (List<DiagnosticRepositoryList>)Session["GrillaDx"];
-
+            //se cae aquí
             if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000002141") != null)
             {
                 var DXAautomatico = SearchDxSugeridoOfSystem(chkEvaluacionNormal.Checked ? "1" : "0", "N009-MF000002141", "int");

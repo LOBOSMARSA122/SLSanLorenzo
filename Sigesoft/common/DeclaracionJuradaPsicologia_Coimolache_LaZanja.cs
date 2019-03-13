@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateDeclaracionJuradaCoimolacheLaZanja(PacientList filiationData, ServiceList DataService,
+        public static void CreateDeclaracionJuradaCoimolacheLaZanja(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
@@ -265,12 +265,11 @@ namespace NetPdf
             cellHuellaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
             cellHuellaTrabajador.FixedHeight = 50F;
             // Firma del doctor Auditor **************************************************
-            if (DataService != null)
+
+            if (psico.FirmaMedico != null)
             {
-                if (psico.FirmaMedico != null)
-                    cellFirma = new PdfPCell(HandlingItextSharp.GetImage(psico.FirmaMedico, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
-            }
-            else
+                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(psico.FirmaMedico, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
+            }else
                 cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;

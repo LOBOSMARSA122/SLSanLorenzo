@@ -20,7 +20,7 @@ namespace NetPdf
         }
         public static void CreateAltura_Fisica_Shahuindo(ServiceList DataService, string filePDF,
          PacientList datosPac,
-         organizationDto infoEmpresaPropietaria, PacientList filiationData,
+         organizationDto infoEmpresaPropietaria,
          List<ServiceComponentList> serviceComponent)
         {
             Document document = new Document(PageSize.A4, 40f, 40f, 41f, 40f);

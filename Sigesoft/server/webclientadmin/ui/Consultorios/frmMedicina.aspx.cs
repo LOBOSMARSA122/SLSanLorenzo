@@ -82,11 +82,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 btnNewDiagnosticos.OnClientClick = WindowAddDX.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDX.GetShowReference("../Auditar/FRM033C.aspx?Mode=New");
                 btnNewDiagnosticosFrecuente.OnClientClick = WindowAddDXFrecuente.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDXFrecuente.GetShowReference("../Auditar/FRM033G.aspx?Mode=New");
-
+                int RoleId = int.Parse(((ClientSession)Session["objClientSession"]).i_RoleId.Value.ToString());
                 btnDescargar.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("DescargarAdjunto.aspx?Consultorio=312");
                 btnCambiarFechaServicio.OnClientClick = WinFechaServicio.GetSaveStateReference(hfRefresh.ClientID) + WinFechaServicio.GetShowReference("../Consultorios/FRMCAMBIOFECHASERVICIO.aspx");
-               
-                int RoleId = int.Parse(((ClientSession)Session["objClientSession"]).i_RoleId.Value.ToString());
                 var ComponentesPermisoLectura = new ServiceBL().GetRoleNodeComponentProfileByRoleNodeId(9, RoleId).FindAll(p => p.i_Read == 1);
                 List<string> ListaComponentesPermisoLectura = new List<string>();
                 foreach (var item in ComponentesPermisoLectura)
@@ -1022,17 +1020,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
                 OperationResult objOperationResult = new OperationResult();
                 SystemParameterBL oSystemParameterBL = new SystemParameterBL();
+
                 Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
 
                 if (ProfesionId != (int)TipoProfesional.Auditor)
                 {
                     btnGrabarAptitud.Enabled = false;
-                    ddlUsuarioGrabar.Enabled = true;
+                    ddlUsuarioGrabar.Enabled = false;
                     ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                 }
                 else
                 {
-                    ddlUsuarioGrabar.Enabled = true;
+                    ddlUsuarioGrabar.Enabled = false;
                     ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString(); ;
                 }
 
@@ -1329,6 +1328,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         protected void grdData_RowClick(object sender, GridRowClickEventArgs e)
         {            
             OperationResult objOperationResult = new OperationResult();
+            SystemParameterBL oSystemParameterBL = new SystemParameterBL();
             int index = e.RowIndex;
             Session["index"] = index;
             var dataKeys = grdData.DataKeys[index];
@@ -1372,7 +1372,32 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             grdComponentes.DataBind();
 
             CargarRegistro();
+            Utils.LoadDropDownList(ddlGrabarUsuarioFototipo, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabaAltura, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGraba7D, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabaSintomatico, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabaDermatologico, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabaOsteo, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabaAnexo16, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
 
+            ddlGrabarUsuarioFototipo.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGrabaAltura.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGraba7D.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGrabaSintomatico.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGrabaDermatologico.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGrabaOsteo.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGrabaAnexo16.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+
+            ddlUsuarioGrabar.Enabled = false;
+            ddlGrabarUsuarioFototipo.Enabled = false;
+            ddlUsuarioGrabaAltura.Enabled = false;
+            ddlUsuarioGraba7D.Enabled = false;
+            ddlUsuarioGrabaSintomatico.Enabled = false;
+            ddlUsuarioGrabaDermatologico.Enabled = false;
+            ddlUsuarioGrabaOsteo.Enabled = false;
+            ddlUsuarioGrabaAnexo16.Enabled = false;
             if (grdData.Rows.Count > 0)
             {
                 Accordion1.Enabled = true;
@@ -1397,20 +1422,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtServiceComponentMultimediaId_Inter.Text = _ServiceComponentMultimediaFile.v_ServiceComponetMultimediaId.ToString();
             }
             
-            
-//=======
-
-//            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
-//            var dataMultimedia = _multimediaFileBL.GetMultimediaFileByServiceId(ref objOperationResult, Session["ServiceId"].ToString(), "N009-ME000000411");
-
-//            if (dataMultimedia != null)
-//            {
-//                //txtMultimediaFileId.Text = dataMultimedia.MultimediaFileId;
-//                //txtSetLinkImg.Text = encoding.GetString(dataMultimedia.ByteArrayFile);
-//                txtMultimediaId.Text = dataMultimedia.MultimediaFileId;
-//                txtSetLinkImg.Text = encoding.GetString(dataMultimedia.ByteArrayFile);
-//            }
-//>>>>>>> 7993ff78304401a3ce15e6e0bee45ae0251235c9
+           
         }
 
         private void LlenarLista()

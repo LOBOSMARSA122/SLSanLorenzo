@@ -19,7 +19,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateInforme_Oftalmologico_Hudbay(PacientList filiationData, ServiceList DataService,
+        public static void CreateInforme_Oftalmologico_Hudbay(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

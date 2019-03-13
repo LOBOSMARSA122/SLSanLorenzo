@@ -266,6 +266,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 foreach (var item in ListaComponenentesConPermiso)
                 {
+
                     if (item == TabElectrocardiograma.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.ELECTROCARDIOGRAMA_ID);
@@ -296,6 +297,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N009-ME000000412");
                         if (Resultado != null)
                         {
+                            
                             LoadCombosInformeElectroCardio();
                             ddlUsuarioGrabarInfElecCardio.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                             ddlUsuarioGrabarInfElecCardio.Enabled = false;

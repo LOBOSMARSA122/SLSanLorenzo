@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region
-        public static void CreateAccidentesTrabajoF1(ServiceList DataService, PacientList filiationData,
+        public static void CreateAccidentesTrabajoF1(
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

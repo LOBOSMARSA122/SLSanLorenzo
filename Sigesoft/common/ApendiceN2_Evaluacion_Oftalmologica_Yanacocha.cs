@@ -19,7 +19,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(PacientList filiationData, ServiceList DataService,
+        public static void CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

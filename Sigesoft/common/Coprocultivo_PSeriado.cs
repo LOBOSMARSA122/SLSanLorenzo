@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateExamen_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(PacientList filiationData, ServiceList DataService,
+        public static void CreateExamen_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(PacientList filiationData,
            List<ServiceComponentList> serviceComponent,
            organizationDto infoEmpresa,
            PacientList datosPac,
@@ -449,7 +449,7 @@ namespace NetPdf
 
 
 
-        public static void CreateExamen_AGLUTINACIONES_KOH_SECRECION(PacientList filiationData, ServiceList DataService,
+        public static void CreateExamen_AGLUTINACIONES_KOH_SECRECION(PacientList filiationData,
            List<ServiceComponentList> serviceComponent,
            organizationDto infoEmpresa,
            PacientList datosPac,

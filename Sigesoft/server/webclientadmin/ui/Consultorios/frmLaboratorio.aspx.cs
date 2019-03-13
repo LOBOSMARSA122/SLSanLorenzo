@@ -689,6 +689,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         
                         LoadCombosLaboratorio();
+                        ddlUsuarioGrabar.Enabled = false;
+                        ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                         ObtenerDatosLaboratorio(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabLaboratorio.Hidden = false;
                         
@@ -709,6 +711,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         if (Resultado != null)
                         {
                             LoadCombosLaboratorio();
+                            ddlUsuarioGrabar.Enabled = false;
+                            ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                             ObtenerDatosLaboratorio(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabLaboratorio.Hidden = false;
                         }

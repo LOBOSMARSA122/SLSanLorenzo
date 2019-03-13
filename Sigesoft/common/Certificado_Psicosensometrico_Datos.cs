@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region 
-        public static void CreateCertificadoPsicosensometricoDatos(ServiceList DataService, PacientList filiationData,
+        public static void CreateCertificadoPsicosensometricoDatos(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
@@ -97,7 +97,7 @@ namespace NetPdf
             #region DATOS Generales
             
             string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
-            string[] fechaInforme = datosPac.FechaActualizacion .ToString().Split(' ');
+            string[] fechaInforme = datosPac.FechaActualizacion.ToString().Split(' ');
             string[] fechanac= datosPac.d_Birthdate.ToString().Split(' ');
 
             ServiceComponentList psicosensometrico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);

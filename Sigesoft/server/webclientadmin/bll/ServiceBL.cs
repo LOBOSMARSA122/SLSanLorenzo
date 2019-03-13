@@ -11,6 +11,7 @@ using System.Web.Configuration;
 using System.Net;
 
 
+
 namespace Sigesoft.Server.WebClientAdmin.BLL
 {
    public class ServiceBL
@@ -1052,6 +1053,104 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                throw;
            }
 
+       }
+
+       public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport_Lab(string pstrServiceId)
+       {
+           //mon.IsActive = true;        
+           int isDeleted = 0;
+
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+               #region serviceComponentFields
+
+               var serviceComponentFields = (from A in dbContext.servicecomponent
+                                             join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                             join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                             join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                             join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                             join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
+
+                                             join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                             from dh in dh_join.DefaultIfEmpty()
+
+                                             where (A.v_ServiceId == pstrServiceId) &&
+                                                 //(cm.v_ComponentId == pstrComponentId) &&
+                                                   (A.i_IsDeleted == isDeleted) &&
+                                                   (B.i_IsDeleted == isDeleted) &&
+                                                   (C.i_IsDeleted == isDeleted)
+
+                                             select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
+                                             {
+                                                 v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                 v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                 v_MeasurementUnitName = dh.v_Value1,
+                                                 v_ComponentId = cm.v_ComponentId,
+                                             }).ToList();
+
+               int rpta = 0;
+
+               var _finalQuery = (from a in serviceComponentFields
+                                  join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                  from sp in sp_join.DefaultIfEmpty()
+
+                                  select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
+                                  {
+                                      v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                      v_Value1 = a.v_Value1,
+                                      v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                      v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                      v_ComponentId = a.v_ComponentId,
+                                  }).ToList();
+
+
+               #endregion
+
+               var components = (from aaa in dbContext.servicecomponent
+                                 join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on aaa.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+
+                                 //*********************************************************************
+
+                                 where (aaa.v_ServiceId == pstrServiceId) &&
+                                       (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                       (aaa.i_IsDeleted == 0) &&
+                                       (aaa.i_IsRequiredId == (int?)SiNo.SI)
+
+                                 //orderby bbb.i_CategoryId, bbb.v_Name
+
+                                 select new
+                                 {
+                                     v_ComponentId = bbb.v_ComponentId,
+                                     v_ComponentName = bbb.v_Name,
+                                     i_CategoryId = bbb.i_CategoryId.Value,
+                                     FirmaMedico = pme.b_SignatureImage
+                                 }).AsEnumerable().Select(p => new Sigesoft.Node.WinClient.BE.ServiceComponentList
+                                 {
+                                     v_ComponentId = p.v_ComponentId,
+                                     v_ComponentName = p.v_ComponentName,
+                                     i_CategoryId = p.i_CategoryId,
+                                     FirmaMedico = p.FirmaMedico
+                                 }).ToList();
+
+               components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+               components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+               return components;
+           }
+           catch (Exception)
+           {
+               throw;
+           }
        }
 
        public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport(string pstrServiceId)
@@ -20176,15 +20275,20 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
         public string ObtenerScId(string pstrServiceId, string pstrComponentId)
         {
-            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-            var query = (from a in dbContext.servicecomponent
-                         where a.v_ServiceId == pstrServiceId && a.v_ComponentId == pstrComponentId
+            try 
+	        {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from a in dbContext.servicecomponent
+                    where a.v_ServiceId == pstrServiceId && a.v_ComponentId == pstrComponentId
                                
-                         select a).FirstOrDefault();
-
-
-
-            return query.v_ServiceComponentId;
+                    select a).FirstOrDefault();
+                return query.v_ServiceComponentId;
+	        }
+	        catch (Exception ex)
+            {
+                return null;
+	        }
+            
         }
 
         public List<Sigesoft.Node.WinClient.BE.ReportEstudioElectrocardiografico> GetReportElectroGold(string pstrserviceId, string pstrComponentId)

@@ -3560,11 +3560,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateMiExamen(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
-            MiExamen.CreateMiExamen(filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
+            MiExamen.CreateMiExamen(serviceComponents, MedicalCenter, datosP, pathFile);
         }
 
         private void GenerateInformeSAS(string pathFile)
@@ -3598,11 +3598,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+           // var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Examen_Oftalmologico_Completo.CreateExamen_Oftalmologico_Completo(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
+            Examen_Oftalmologico_Completo.CreateExamen_Oftalmologico_Completo(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
         }
         
         private void GenerateEvaluavionOftalmologicaYanacocha(string pathFile)
@@ -3611,11 +3611,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
             var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, _ExamenesServicio, diagnosticRepository);
+            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, _ExamenesServicio, diagnosticRepository);
         }
 
         private void GenerateInformeOftalmologicoHudbay(string pathFile)
@@ -3624,11 +3624,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Informe_Oftalmologico_Hudbay.CreateInforme_Oftalmologico_Hudbay(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
+            Informe_Oftalmologico_Hudbay.CreateInforme_Oftalmologico_Hudbay(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
         }
 
         public void GenerateFichaPsicologicaGoldfies(string pathFile)
@@ -3637,9 +3637,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Psicologia, _serviceId);
-            FichaPsicologicaGoldfields.CreateFichaPsicologicaGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            FichaPsicologicaGoldfields.CreateFichaPsicologicaGoldfields(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         public void GenerateDeclaracionJuradaCoimolacheLaZanja(string pathFile)
@@ -3648,9 +3648,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
 
-            DeclaracionJuradaPsicologia_Coimolache_LaZanja.CreateDeclaracionJuradaCoimolacheLaZanja(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+            DeclaracionJuradaPsicologia_Coimolache_LaZanja.CreateDeclaracionJuradaCoimolacheLaZanja(filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
         }
         
         public void GenerateInformePsicologicoGoldfieds(string pathFile)
@@ -3659,17 +3659,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
 
             var _InformacionHistoriaPsico = _serviceBL.GetHistoriaClinicaPsicologica(_serviceId, Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Psicologia, _serviceId);
 
-            InformePsicologicoGoldfields.CreateInformePsicologicoGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            InformePsicologicoGoldfields.CreateInformePsicologicoGoldfields(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         private void GenerateCertificadoPsicosensometricoDatos(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
@@ -3677,7 +3677,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Psicosensometrico, _serviceId);
 
-            Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
         
         private void GenerateAltura_Fisica_F_Yanacocha(string pathFile)
@@ -3685,17 +3685,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            Altura_Fisica_F_Yanacocha.CreateAltura_Fisica_F_Yanacocha(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            Altura_Fisica_F_Yanacocha.CreateAltura_Fisica_F_Yanacocha(_DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
         
         private void GenerateOsteMuscular_Mibanco(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
@@ -3704,38 +3704,38 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Osteomuscular_MiBanco.CreateOsteoMuscularMibanco(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
+            Osteomuscular_MiBanco.CreateOsteoMuscularMibanco( filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
         }
         
         private void GenerateAccidentesTrabajoF1(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            AccidentesTrabajo_F1.CreateAccidentesTrabajoF1(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            AccidentesTrabajo_F1.CreateAccidentesTrabajoF1(serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         private void GenerateAccidentesTrabajoF2(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            //var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            AccidentesTrabajo_F2.CreateAccidentesTrabajoF2(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            AccidentesTrabajo_F2.CreateAccidentesTrabajoF2(serviceComponents, MedicalCenter, pathFile, datosGrabo);
         }
 
         private void GenerateExamenSuficienciaMedicaOperadores(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -3743,7 +3743,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
 
-            EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.CreateExamenSuficienciaMedicaOperadores(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.CreateExamenSuficienciaMedicaOperadores( filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         private void GenerateCertificadoSuficienciaMedicaTC(string pathFile)
@@ -3752,10 +3752,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            CERTIFICADO_SUFICIENCIA_MEDICA_TC.CreateCertificadoSuficienciaTC(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            CERTIFICADO_SUFICIENCIA_MEDICA_TC.CreateCertificadoSuficienciaTC(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
         
         private void GenerateExoneraxionLaboratorio(string pathFile)
@@ -3822,7 +3822,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            Registro_Entrega_Informe_Resultados_EMO_BUENAVENTURA.CreateRegistroInformeEMOBuenaventura(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, datosGrabo);
+            Registro_Entrega_Informe_Resultados_EMO_BUENAVENTURA.CreateRegistroInformeEMOBuenaventura( pathFile, datosP, MedicalCenter, filiationData, serviceComponents, datosGrabo);
         }
 
         private void GenerateDeclaracionJuradaRX(string pathFile)
@@ -3840,16 +3840,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         private void GenerateInformeResultadosAutorizacion(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
 
-            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            //var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            //var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
-            InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(filiationData, _DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+            InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(filiationData, pathFile, datosP, MedicalCenter);
         }
         
         private void Generate_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(string pathFile)
@@ -3858,11 +3858,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Coprocultivo_PSeriado.CreateExamen_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
+            Coprocultivo_PSeriado.CreateExamen_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
         }
         
         private void Generate_AGLUTINACIONES_KOH_SECRECION(string pathFile)
@@ -3871,11 +3871,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Coprocultivo_PSeriado.CreateExamen_AGLUTINACIONES_KOH_SECRECION(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
+            Coprocultivo_PSeriado.CreateExamen_AGLUTINACIONES_KOH_SECRECION(filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
         }
 
         private void GenerateAnexo3_Exoneracion_ResponsabilidadYanacocha(string pathFile)
@@ -3891,13 +3891,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         private void GenerateDeclaracionJurada(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
 
-            DeclaracionJurada.CreateDeclaracionJurada(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+            DeclaracionJurada.CreateDeclaracionJurada(pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
         }
         
         private void GenerateExamen_Medico_Visitantes_GoldFields(string pathFile)
@@ -3916,13 +3916,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var habitosPersonales = new PacientBL().DevolverHabitos_PersonalesSolo(datosP.v_PersonId);
 
             var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
 
-            Marcobre_Pase_Medico.CreateMarcobrePaseMedico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, habitosPersonales);
+            Marcobre_Pase_Medico.CreateMarcobrePaseMedico(_DataService, pathFile, datosP, MedicalCenter, serviceComponents, diagnosticRepository, habitosPersonales);
         }
         
         private void GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string pathFile)
@@ -3939,14 +3939,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateConsentimientoInformadoAccesoHistoriaClinica(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            //var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            //var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
-            ConsentimientoInformadoAccesoClinica.CreateConsentimientoInformadoAccesoHistoriClinica(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+            ConsentimientoInformadoAccesoClinica.CreateConsentimientoInformadoAccesoHistoriClinica(_DataService, pathFile, datosP, diagnosticRepository, serviceComponents);
         }
 
         private void GenerateInformeMedicoAptitudOcupacional(string pathFile)
@@ -4134,12 +4134,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateDeclaracionJuradaAntecedentesPersonales(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
 
-            DeclaracionJuradaAntecedentesPersonales.CreateDeclaracionJuradaAntecedentesPersonales(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+            DeclaracionJuradaAntecedentesPersonales.CreateDeclaracionJuradaAntecedentesPersonales(_DataService, serviceComponents, MedicalCenter, datosP, pathFile);
         }
         
         private void GenerateEntregaExamenMedicoOcupacional(string pathFile)
@@ -4155,7 +4155,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         private void GenerateInforme_Otorrinolaringologico(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -4163,7 +4163,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Audiometria, _serviceId);
 
-            Informe_Otorrinolaringologico.CreateInforme_Otorrinolaringologico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Informe_Otorrinolaringologico.CreateInforme_Otorrinolaringologico( pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
 
         private void GenerateDeclaracionJurada_Encuesta(string pathFile)
@@ -4172,8 +4172,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-            DeclaracionJurada_Encuesta.CreateDeclaracionJurada_Encuesta(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+            //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            DeclaracionJurada_Encuesta.CreateDeclaracionJurada_Encuesta(_DataService, pathFile, datosP, MedicalCenter, serviceComponents);
         }
         
         private void GenerateInforme_Resultados_San_Martinm(string pathFile)
@@ -4237,14 +4237,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            Anexo16A.CreateAnexo16A(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Anexo16A.CreateAnexo16A(_DataService, pathFile, datosP, MedicalCenter, serviceComponents, diagnosticRepository, datosGrabo);
         }
         
         private void GenerateAltura_Fisica_Shahuindo(string pathFile)
@@ -4254,7 +4254,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-            Altura_Fisica_Shahuindo.CreateAltura_Fisica_Shahuindo(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+            Altura_Fisica_Shahuindo.CreateAltura_Fisica_Shahuindo(_DataService, pathFile, datosP, MedicalCenter, serviceComponents);
         }
         
         private void GenerateDeclaracion_Jurada_EMPO_YANACOCHA(string pathFile)
@@ -4272,13 +4272,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         private void GenerateDeclaracion_Jurada_EMO_Secutiras(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
 
-            Declaracion_Jurada_EMO_Secutiras.CreateDeclaracion_Jurada_EMO_Secutiras(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+            Declaracion_Jurada_EMO_Secutiras.CreateDeclaracion_Jurada_EMO_Secutiras(pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
         }
         
         private void GenerateExamen_Dermatologico_Ocupacional(string pathFile)
@@ -4353,7 +4353,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         private void Generate_Informe_Ecografico_Obstetrico(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -4361,12 +4361,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Obstetrico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Obstetrico(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         
         private void Generate_Informe_Ecografico_Ginecologico(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -4374,7 +4374,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Ginecologico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Ginecologico(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
 
         private void Generate_Informe_Ecografico_Abdominal(string pathFile)
@@ -4387,7 +4387,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Abdominal(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Abdominal(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
 
         private void Generate_Informe_Ecografico_Renal(string pathFile)
@@ -4400,12 +4400,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Renal(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Renal(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         
         private void Generate_Informe_Ecografico_Mamas(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -4413,12 +4413,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Mamas(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Mamas(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         
         private void Generate_Informe_Ecografico_Prostata(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -4426,12 +4426,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Prostata(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Prostata(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         
         private void Generate_Informe_Ecografico_Partes_Blandas(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -4439,12 +4439,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Partes_Blandas(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Partes_Blandas(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         
         private void Generate_Informe_Ecografico_Obstetrico_Pelvico(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -4452,7 +4452,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
 
-            Ecografias_P_JP.Create_Informe_Ecografico_Obstetrico_Pelvico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Ecografias_P_JP.Create_Informe_Ecografico_Obstetrico_Pelvico(pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         
         private void GenerateExamenesEspecialesReport(string pathFile)

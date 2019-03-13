@@ -13,6 +13,7 @@ using System.Threading;
 using Sigesoft.Node.WinClient.BE.Custom;
 using System.Data.SqlClient;
 using System.ComponentModel;
+using System.Runtime.InteropServices.ComTypes;
 
 
 namespace Sigesoft.Node.WinClient.BLL
@@ -1046,7 +1047,26 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-      
+        public ServiceList GetServiceReport_InfSAS(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = new ServiceList();
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
+                objEntity.FirmaMedicoMedicina = DatosMedicina.Value5;
+
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         public ServiceList GetServiceReport_16(string pstrServiceId)
         {
@@ -1134,7 +1154,150 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-      
+        public ServiceList GetServiceReport_Cos(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+                                 join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId into pro_join
+                                 from pro in pro_join.DefaultIfEmpty()
+                    join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                    from sys in sys_join.DefaultIfEmpty()
+
+                    where ser.v_ServiceId == pstrServiceId
+                    select new ServiceList
+                    {
+                        //Datos del Doctor
+                        i_AptitudeStatusId = ser.i_AptitudeStatusId,
+                        i_EsoTypeId = pro.i_EsoTypeId.Value,
+                    }).ToList();
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetServiceReport_Anexo8(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+                    join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId into pro_join
+                    from pro in pro_join.DefaultIfEmpty()
+                    join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                    from sys in sys_join.DefaultIfEmpty()
+                    join C2 in dbContext.organization on pro.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                    from C2 in C2_join.DefaultIfEmpty()
+                    where ser.v_ServiceId == pstrServiceId
+                    select new ServiceList
+                    {
+                        //Datos del Doctor
+                        b_Logo = C2.b_Image,
+                        i_AptitudeStatusId = ser.i_AptitudeStatusId,
+                        i_EsoTypeId = pro.i_EsoTypeId.Value,
+                    }).ToList();
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetServiceReport_Cos2(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+                    join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId into pro_join
+                    from pro in pro_join.DefaultIfEmpty()
+                    join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                    from sys in sys_join.DefaultIfEmpty()
+
+                    join prof in dbContext.professional on sys.v_PersonId equals prof.v_PersonId into prof_join
+                    from prof in prof_join.DefaultIfEmpty()
+
+                    join per2 in dbContext.person on new { a = prof.v_PersonId }
+                        equals new { a = per2.v_PersonId } into P1_join
+                    from per2 in P1_join.DefaultIfEmpty()
+
+                    where ser.v_ServiceId == pstrServiceId
+                    select new ServiceList
+                    {
+                        //Datos del Doctor
+                        i_AptitudeStatusId = ser.i_AptitudeStatusId,
+                        i_EsoTypeId = pro.i_EsoTypeId.Value,
+                        NombreDoctor = per2.v_FirstName + " " + per2.v_FirstLastName + " " + per2.v_SecondLastName,
+                        CMP = prof.v_ProfessionalCode,
+
+                    }).ToList();
+
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetServiceReport_OftSimple(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from ser in dbContext.service
+
+                                 join sys in dbContext.systemuser on ser.i_UpdateUserMedicalAnalystId.Value equals sys.i_SystemUserId into sys_join
+                                 from sys in sys_join.DefaultIfEmpty()
+
+                                 join prof in dbContext.professional on sys.v_PersonId equals prof.v_PersonId into prof_join
+                                 from prof in prof_join.DefaultIfEmpty()
+
+                                 join per2 in dbContext.person on new { a = prof.v_PersonId }
+                                         equals new { a = per2.v_PersonId } into P1_join
+                                 from per2 in P1_join.DefaultIfEmpty()
+
+                                 where ser.v_ServiceId == pstrServiceId
+                                 select new ServiceList
+                                 {
+                                     //Datos del Doctor
+                                     NombreDoctor = per2.v_FirstName + " " + per2.v_FirstLastName + " " + per2.v_SecondLastName,
+                                     CMP = prof.v_ProfessionalCode,
+
+                                 }).ToList();
+
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+ 
 		public ServiceList GetServiceReport(string pstrServiceId)
 		{
 			//mon.IsActive = true;
@@ -1663,6 +1826,402 @@ namespace Sigesoft.Node.WinClient.BLL
                            }).FirstOrDefault();
 
                 return sql;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_HC(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new ServiceList
+                                 {
+                                     
+                                     FirmaTrabajador = H.b_RubricImage,
+                                     HuellaTrabajador = H.b_FingerPrintImage,
+                                     EmpresaEmpleadora = C1.v_Name,
+                                     EmpresaTrabajo = C.v_Name,
+                                     //Datos del Doctor
+                                     v_CustomerOrganizationName = C2.v_Name,
+
+                                 }).ToList();
+
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_3img(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new ServiceList
+                                 {
+
+                                     FirmaTrabajador = H.b_RubricImage,
+                                     HuellaTrabajador = H.b_FingerPrintImage,
+
+                                 }).ToList();
+
+                var DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID,
+                    Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
+                    Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID,
+                    Constants.CERT_SUF_MED_ALTURA_ID,
+                    Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID,
+                    Constants.EXCEPCIONES_LABORATORIO_ID,
+                    Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID, Constants.ANEXO_3_EXO_RESP_YANACOCHA);
+
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_FirmaMedicoMed(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = new ServiceList();
+
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
+                objEntity.FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_EmpoYana(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new ServiceList
+                                 {
+                                    
+                                     i_EsoTypeId = B.i_EsoTypeId.Value,
+                                     EmpresaEmpleadora = C1.v_Name,
+
+                                     //Datos del Doctor
+                                     v_CustomerOrganizationName = C2.v_Name,
+
+                                 }).ToList();
+
+                var DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID,
+                    Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
+                    Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID,
+                    Constants.CERT_SUF_MED_ALTURA_ID,
+                    Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID,
+                    Constants.EXCEPCIONES_LABORATORIO_ID,
+                    Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID, Constants.ANEXO_3_EXO_RESP_YANACOCHA);
+
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_FisShahui(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new ServiceList
+                                 {
+
+                                     FirmaTrabajador = H.b_RubricImage,
+                                     HuellaTrabajador = H.b_FingerPrintImage,
+                                     EmpresaEmpleadora = C1.v_Name,
+                                     EmpresaTrabajo = C.v_Name,
+                                     //Datos del Doctor
+                                     v_CustomerOrganizationName = C2.v_Name,
+
+                                 }).ToList();
+
+                var DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID,
+                    Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
+                    Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID,
+                    Constants.CERT_SUF_MED_ALTURA_ID,
+                    Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID,
+                    Constants.EXCEPCIONES_LABORATORIO_ID,
+                    Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID, Constants.ANEXO_3_EXO_RESP_YANACOCHA);
+
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_GoldField(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                    from B in B_join.DefaultIfEmpty()
+
+                    join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                    from C2 in C2_join.DefaultIfEmpty()
+
+                    join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                    from H in H_join.DefaultIfEmpty()
+
+                    where A.v_ServiceId == pstrServiceId
+
+
+                    select new ServiceList
+                    {
+
+                        FirmaTrabajador = H.b_RubricImage,
+                        HuellaTrabajador = H.b_FingerPrintImage,
+                        i_EsoTypeId = B.i_EsoTypeId.Value,
+                        v_CustomerOrganizationName = C2.v_Name,
+
+                    }).ToList();
+
+                var DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID,
+                    Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
+                    Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID,
+                    Constants.CERT_SUF_MED_ALTURA_ID,
+                    Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID,
+                    Constants.EXCEPCIONES_LABORATORIO_ID,
+                    Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID, Constants.ANEXO_3_EXO_RESP_YANACOCHA);
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_FirmaHuella(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                    join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                    from H in H_join.DefaultIfEmpty()
+
+                    where A.v_ServiceId == pstrServiceId
+
+
+                    select new ServiceList
+                    {
+                        FirmaTrabajador = H.b_RubricImage,
+                        HuellaTrabajador = H.b_FingerPrintImage,
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_PaseMedico(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new ServiceList
+                                 {
+
+                                     FirmaTrabajador = H.b_RubricImage,
+                                     HuellaTrabajador = H.b_FingerPrintImage,
+                                     i_EsoTypeId = B.i_EsoTypeId.Value,
+
+                                 }).ToList();
+
+                var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_ResYana(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+
+                                join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                from B in B_join.DefaultIfEmpty()
+
+                                join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                from C in C_join.DefaultIfEmpty()
+
+                                join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                from C1 in C1_join.DefaultIfEmpty()
+
+                                join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                from C2 in C2_join.DefaultIfEmpty()
+
+                                where A.v_ServiceId == pstrServiceId
+
+
+                                select new ServiceList
+                                {
+                                    EmpresaTrabajo = C.v_Name,
+                                    EmpresaEmpleadora = C1.v_Name,
+
+                                    //Datos del Doctor
+                                    v_CustomerOrganizationName = C2.v_Name,
+
+                                }).ToList();
+
+
+                return objEntity.FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -21426,21 +21985,6 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-        //public string GetActividadEconomicaEmpPropietaria()
-        //{
-        //    using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
-        //    {
-
-        //        var result = (from n in dbContext.organization
-        //                      join b in dbContext.ciiui on n.v_SectorCodigo equals b.
-        //                     where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
-        //                     select SP2.v_Value1).SingleOrDefault<string>();
-
-        //        return result;
-        //    }
-        //}
-
-		// Alejandro
 		public organizationDto GetInfoMedicalCenter()
 		{
 			using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
@@ -21462,6 +22006,120 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+        public organizationDto GetInfoMedicalCenter_Logo()
+        {
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+                organizationDto objDtoEntity = null;
+                var objEntity = (from o in dbContext.organization
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                    select new organizationDto
+                    {
+
+                        b_Image = o.b_Image
+                    }).FirstOrDefault();
+
+
+                return objEntity;
+            }
+        }
+
+        public organizationDto GetInfoMedicalCenter_LogoAddress()
+        {
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+                organizationDto objDtoEntity = null;
+                var objEntity = (from o in dbContext.organization
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                    select new organizationDto
+                    {
+                        v_Address = o.v_Address,
+                        b_Image = o.b_Image
+                    }).FirstOrDefault();
+
+
+                return objEntity;
+            }
+        }
+
+        public organizationDto GetInfoMedicalCenter_Name()
+        {
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+                organizationDto objDtoEntity = null;
+                var objEntity = (from o in dbContext.organization
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                    select new organizationDto
+                    {
+                        v_Name = o.v_Name
+                    }).FirstOrDefault();
+
+
+                return objEntity;
+            }
+        }
+
+        public organizationDto GetInfoMedicalCenter_Tra()
+        {
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+                organizationDto objDtoEntity = null;
+                var objEntity = (from o in dbContext.organization
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                    select new organizationDto
+                    {
+                        b_Image = o.b_Image,
+                        v_Name =  o.v_Name
+                    }).FirstOrDefault();
+
+
+                return objEntity;
+            }
+        }
+
+        public organizationDto GetInfoMedicalCenter_ExoLab()
+        {
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+                organizationDto objDtoEntity = null;
+                var objEntity = (from o in dbContext.organization
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                    select new organizationDto
+                    {
+                        b_Image = o.b_Image,
+                        v_Name = o.v_Name
+                        
+                    }).FirstOrDefault();
+                var other = (from o in dbContext.location
+                            where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                            select o).SingleOrDefault();
+                objEntity.v_SectorName = other == null ? "" : other.v_Name;
+
+                return objEntity;
+            }
+        }
+
+        public organizationDto GetInfoMedicalCenter_InfoResulAutori()
+        {
+            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+            {
+
+                var objEntity = (from o in dbContext.organization
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                    select new organizationDto
+                    {
+                        v_Name = o.v_Name,
+                        b_Image = o.b_Image,
+                    }).FirstOrDefault();
+
+                var other = (from o in dbContext.location
+                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                             select o.v_Name).FirstOrDefault();
+                objEntity.v_SectorName = other == null ? "" : other;
+
+                return objEntity;
+            }
+        }
 
 		public OrganizationList GetInfoMedicalCenterSede()
 		{
@@ -34656,22 +35314,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 
-        public organizationDto GetInfoMedicalCenter_Logo()
-        {
-            using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
-            {
-                organizationDto objDtoEntity = null;
-                var objEntity = (from o in dbContext.organization
-                    where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
-                    select new organizationDto
-                    {
-                        b_Image = o.b_Image
-                    }).FirstOrDefault();
-
-
-                return objEntity;
-            }
-        }
+       
 
         public List<ServiceList> GetServiceForTramasPageAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
         {

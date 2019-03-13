@@ -1190,7 +1190,78 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public PacientList GetPacientReportEPS_312(string serviceId)
+        //public PacientList GetPacientReportEPS_312(string serviceId)
+        //{
+        //    //mon.IsActive = true;
+
+        //    try
+        //    {
+        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //        //PacientList objDtoEntity = null;
+
+        //        var objEntity = (from s in dbContext.service
+        //                         join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+        //                         join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+        //                         join F in dbContext.groupoccupation on pr.v_GroupOccupationId equals F.v_GroupOccupationId
+
+        //                         // Empresa / Sede Trabajo  ********************************************************
+        //                         join ow in dbContext.organization on new { a = pr.v_CustomerOrganizationId }
+        //                                 equals new { a = ow.v_OrganizationId } into ow_join
+        //                         from ow in ow_join.DefaultIfEmpty()
+
+        //                         join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
+        //                             equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+        //                         from lw in lw_join.DefaultIfEmpty()
+
+        //                         join L in dbContext.systemparameter on new { a = pr.i_EsoTypeId.Value, b = 118 }
+        //                                          equals new { a = L.i_ParameterId, b = L.i_GroupId } into L_join
+        //                         from L in L_join.DefaultIfEmpty()
+        //                         //************************************************************************************
+
+        //                         join su1 in dbContext.systemuser on s.i_UpdateUserOccupationalMedicaltId.Value equals su1.i_SystemUserId into su1_join
+        //                         from su1 in su1_join.DefaultIfEmpty()
+
+        //                         join pr2 in dbContext.professional on su1.v_PersonId equals pr2.v_PersonId into pr2_join
+        //                         from pr2 in pr2_join.DefaultIfEmpty()
+
+        //                         where s.v_ServiceId == serviceId
+        //                         select new PacientList
+        //                         {
+        //                             i_NumberLivingChildren = pe.i_NumberLivingChildren,
+        //                             i_NumberDependentChildren = pe.i_NumberDependentChildren,
+        //                             FirmaTrabajador = pe.b_RubricImage,
+        //                             HuellaTrabajador = pe.b_FingerPrintImage,
+        //                             b_Photo = pe.b_PersonImage,
+        //                             v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+        //                             v_ObsStatusService = s.v_ObsStatusService,
+        //                             v_CurrentOccupation = pe.v_CurrentOccupation,
+        //                             v_FirstName = pe.v_FirstName,
+        //                             v_FirstLastName = pe.v_FirstLastName,
+        //                             v_SecondLastName = pe.v_SecondLastName,
+                                     
+        //                             v_OrganitationName = ow.v_Name,
+        //                             d_ServiceDate = s.d_ServiceDate,
+        //                             d_Birthdate = pe.d_Birthdate,
+        //                             v_TipoExamen = L.v_Value1,
+        //                             v_DocNumber = pe.v_DocNumber,
+        //                             v_IdService = s.v_ServiceId,
+        //                             FirmaDoctorAuditor = pr2.b_SignatureImage,
+        //                             GESO = F.v_Name,
+        //                             i_AptitudeStatusId = s.i_AptitudeStatusId,
+
+        //                         }).ToList();
+
+        //        objEntity[0].i_Age = GetAge(objEntity[0].d_Birthdate.Value);
+        //        return objEntity.FirstOrDefault();
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return null;
+        //    }
+        //}
+        public PacientList GetPacientReportEPS_FirmaHuella(string serviceId)
         {
             //mon.IsActive = true;
 
@@ -1200,58 +1271,14 @@ namespace Sigesoft.Node.WinClient.BLL
                 //PacientList objDtoEntity = null;
 
                 var objEntity = (from s in dbContext.service
-                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
-                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    where s.v_ServiceId == serviceId
+                    select new PacientList
+                    {
+                        FirmaTrabajador = pe.b_RubricImage,
+                        HuellaTrabajador = pe.b_FingerPrintImage,
+                    }).ToList();
 
-                                 join F in dbContext.groupoccupation on pr.v_GroupOccupationId equals F.v_GroupOccupationId
-
-                                 // Empresa / Sede Trabajo  ********************************************************
-                                 join ow in dbContext.organization on new { a = pr.v_CustomerOrganizationId }
-                                         equals new { a = ow.v_OrganizationId } into ow_join
-                                 from ow in ow_join.DefaultIfEmpty()
-
-                                 join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
-                                     equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
-                                 from lw in lw_join.DefaultIfEmpty()
-
-                                 join L in dbContext.systemparameter on new { a = pr.i_EsoTypeId.Value, b = 118 }
-                                                  equals new { a = L.i_ParameterId, b = L.i_GroupId } into L_join
-                                 from L in L_join.DefaultIfEmpty()
-                                 //************************************************************************************
-
-                                 join su1 in dbContext.systemuser on s.i_UpdateUserOccupationalMedicaltId.Value equals su1.i_SystemUserId into su1_join
-                                 from su1 in su1_join.DefaultIfEmpty()
-
-                                 join pr2 in dbContext.professional on su1.v_PersonId equals pr2.v_PersonId into pr2_join
-                                 from pr2 in pr2_join.DefaultIfEmpty()
-
-                                 where s.v_ServiceId == serviceId
-                                 select new PacientList
-                                 {
-                                     i_NumberLivingChildren = pe.i_NumberLivingChildren,
-                                     i_NumberDependentChildren = pe.i_NumberDependentChildren,
-                                     FirmaTrabajador = pe.b_RubricImage,
-                                     HuellaTrabajador = pe.b_FingerPrintImage,
-                                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
-                                     v_ObsStatusService = s.v_ObsStatusService,
-                                     v_CurrentOccupation = pe.v_CurrentOccupation,
-                                     v_FirstName = pe.v_FirstName,
-                                     v_FirstLastName = pe.v_FirstLastName,
-                                     v_SecondLastName = pe.v_SecondLastName,
-                                     b_Photo = pe.b_PersonImage,
-                                     v_OrganitationName = ow.v_Name,
-                                     d_ServiceDate = s.d_ServiceDate,
-                                     d_Birthdate = pe.d_Birthdate,
-                                     v_TipoExamen = L.v_Value1,
-                                     v_DocNumber = pe.v_DocNumber,
-                                     v_IdService = s.v_ServiceId,
-                                     FirmaDoctorAuditor = pr2.b_SignatureImage,
-                                     GESO = F.v_Name,
-                                     i_AptitudeStatusId = s.i_AptitudeStatusId,
-
-                                 }).ToList();
-
-                objEntity[0].i_Age = GetAge(objEntity[0].d_Birthdate.Value);
                 return objEntity.FirstOrDefault();
             }
             catch (Exception ex)
@@ -1261,6 +1288,169 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public PacientList GetPacientReportEPS_FirmaHuellaPhoto(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from s in dbContext.service
+                    join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    where s.v_ServiceId == serviceId
+                    select new PacientList
+                    {
+                        FirmaTrabajador = pe.b_RubricImage,
+                        HuellaTrabajador = pe.b_FingerPrintImage,
+                        b_Photo = pe.b_PersonImage,   
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPS_HudBay(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                    join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                    join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    where s.v_ServiceId == serviceId
+                    select new PacientList
+                    {
+                        i_EsoTypeId = pr.i_EsoTypeId,
+                        FirmaTrabajador = pe.b_RubricImage,
+                        HuellaTrabajador = pe.b_FingerPrintImage,
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPS_InfMO(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                    join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                    join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    // Empresa / Sede Trabajo  ********************************************************
+                    join ow in dbContext.organization on new { a = pr.v_WorkingOrganizationId }
+                        equals new { a = ow.v_OrganizationId } into ow_join
+                    from ow in ow_join.DefaultIfEmpty()
+
+                    join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
+                        equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                    from lw in lw_join.DefaultIfEmpty()
+                    where s.v_ServiceId == serviceId
+                    select new PacientList
+                    {
+                        i_EsoTypeId = pr.i_EsoTypeId,
+                        v_NombreProtocolo = pr.v_Name,
+                        FirmaTrabajador = pe.b_RubricImage,
+                        HuellaTrabajador = pe.b_FingerPrintImage,
+                        v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPS_312(string serviceId)
+        {
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from s in dbContext.service
+                                join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                                where s.v_ServiceId == serviceId
+                                select new PacientList
+                                {
+                                    i_NumberLivingChildren = pe.i_NumberLivingChildren,
+                                    i_NumberDependentChildren = pe.i_NumberDependentChildren,
+                                    FirmaTrabajador = pe.b_RubricImage,
+                                    HuellaTrabajador = pe.b_FingerPrintImage,
+                                    b_Photo = pe.b_PersonImage,
+
+                                }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPS_OftCompl(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                    join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId    
+                    join B in dbContext.protocol on s.v_ProtocolId equals B.v_ProtocolId into B_join
+                    from B in B_join.DefaultIfEmpty()
+                    join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                    from C1 in C1_join.DefaultIfEmpty()
+                    join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                    from C2 in C2_join.DefaultIfEmpty()
+                    join C3 in dbContext.organization on B.v_WorkingOrganizationId equals C3.v_OrganizationId into C3_join
+                    from C3 in C3_join.DefaultIfEmpty()
+
+                    where s.v_ServiceId == serviceId
+                    select new PacientList
+                    {
+                        v_NombreProtocolo = pr.v_Name,
+                        empresa_ = C2.v_Name,
+                        contrata = C1.v_Name,
+                        subcontrata = C3.v_Name,
+                        i_EsoTypeId = pr.i_EsoTypeId,
+                        FirmaTrabajador = pe.b_RubricImage,
+                        HuellaTrabajador = pe.b_FingerPrintImage,
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
 
         public PacientList GetPacientReportEPS_SanMar(string serviceId)
         {
@@ -1299,6 +1489,86 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public PacientList GetPacientReportEPS_SanMar_InfResulAutori(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                    join B in dbContext.protocol on s.v_ProtocolId equals B.v_ProtocolId into B_join
+                    from B in B_join.DefaultIfEmpty()
+                    join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                    from C1 in C1_join.DefaultIfEmpty()
+                    join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                    from C2 in C2_join.DefaultIfEmpty()
+                    join C3 in dbContext.organization on B.v_WorkingOrganizationId equals C3.v_OrganizationId into C3_join
+                    from C3 in C3_join.DefaultIfEmpty()
+
+                    where s.v_ServiceId == serviceId
+                    select new PacientList
+                    {
+                        empresa_ = C2.v_Name,
+                        contrata = C1.v_Name,
+                        subcontrata = C3.v_Name,
+
+                        FirmaTrabajador = pe.b_RubricImage,
+                        HuellaTrabajador = pe.b_FingerPrintImage,
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPS_InfSAS(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+
+                    join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                    join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId      
+                    // Empresa / Sede Trabajo  ********************************************************
+                    join ow in dbContext.organization on new { a = pr.v_CustomerOrganizationId }
+                        equals new { a = ow.v_OrganizationId } into ow_join
+                    from ow in ow_join.DefaultIfEmpty()
+
+                    join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
+                        equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                    from lw in lw_join.DefaultIfEmpty()
+
+                    where s.v_ServiceId == serviceId
+                    select new PacientList
+                    {
+
+                        v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                        FirmaTrabajador = pe.b_RubricImage,
+                        HuellaTrabajador = pe.b_FingerPrintImage,
+                        v_NombreProtocolo = pr.v_Name,
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
 
         public PacientList GetPacientReportEPS_OftSimple(string serviceId)
         {
@@ -1598,6 +1868,70 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public PacientList GetPacientReportEPS_MiExam(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+                                 join F in dbContext.groupoccupation on pr.v_GroupOccupationId equals F.v_GroupOccupationId
+
+                                 // Empresa / Sede Trabajo  ********************************************************
+                                 join ow in dbContext.organization on new { a = pr.v_CustomerOrganizationId }
+                                         equals new { a = ow.v_OrganizationId } into ow_join
+                                 from ow in ow_join.DefaultIfEmpty()
+
+                                 join L in dbContext.systemparameter on new { a = pr.i_EsoTypeId.Value, b = 118 }
+                                                  equals new { a = L.i_ParameterId, b = L.i_GroupId } into L_join
+                                 from L in L_join.DefaultIfEmpty()
+                                 //************************************************************************************
+
+                                 join su1 in dbContext.systemuser on s.i_UpdateUserOccupationalMedicaltId.Value equals su1.i_SystemUserId into su1_join
+                                 from su1 in su1_join.DefaultIfEmpty()
+
+                                 join pr2 in dbContext.professional on su1.v_PersonId equals pr2.v_PersonId into pr2_join
+                                 from pr2 in pr2_join.DefaultIfEmpty()
+
+                                 where s.v_ServiceId == serviceId
+                                 select new PacientList
+                                 {
+
+                                     v_ObsStatusService = s.v_ObsStatusService,
+                                     v_CurrentOccupation = pe.v_CurrentOccupation,
+                                     v_FirstName = pe.v_FirstName,
+                                     v_FirstLastName = pe.v_FirstLastName,
+                                     v_SecondLastName = pe.v_SecondLastName,
+                                     b_Photo = pe.b_PersonImage,
+                                     v_OrganitationName = ow.v_Name,
+                                     d_ServiceDate = s.d_ServiceDate,
+                                     d_Birthdate = pe.d_Birthdate,
+                                     v_TipoExamen = L.v_Value1,
+                                     v_DocNumber = pe.v_DocNumber,
+                                     v_IdService = s.v_ServiceId,
+                                     FirmaDoctorAuditor = pr2.b_SignatureImage,
+                                     GESO = F.v_Name,
+                                     i_AptitudeStatusId = s.i_AptitudeStatusId,
+
+                                 }).ToList();
+
+                objEntity[0].i_Age = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         public PacientList GetPacientReportEPS(string serviceId)
         {
             //mon.IsActive = true;
@@ -1822,6 +2156,50 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+
+        public PacientList GetPacientReportEPS_EspeReports(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+
+                                 // Empresa / Sede Trabajo  ********************************************************
+                                 join ow in dbContext.organization on new { a = pr.v_CustomerOrganizationId }
+                                         equals new { a = ow.v_OrganizationId } into ow_join
+                                 from ow in ow_join.DefaultIfEmpty()
+
+                                 join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
+                                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                                 from lw in lw_join.DefaultIfEmpty()
+
+                                 where s.v_ServiceId == serviceId
+                                 select new PacientList
+                                 {
+                                     v_CurrentOccupation = pe.v_CurrentOccupation,
+                                     v_FirstName = pe.v_FirstName,
+                                     v_FirstLastName = pe.v_FirstLastName,
+                                     v_SecondLastName = pe.v_SecondLastName,
+                                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                                     d_ServiceDate = s.d_ServiceDate,
+                                 }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         public DatosAtencion GetDatosPersonalesAtencion(string serviceId)
         {
             try
@@ -2026,6 +2404,71 @@ namespace Sigesoft.Node.WinClient.BLL
                            }).FirstOrDefault();
 
                 return sql;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public PacientList GetPacientReportEPSFirmaMedicoOcupacional_MedicoResumen(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+                                 // Empresa / Sede Trabajo  ********************************************************
+                                 join ow in dbContext.organization on new { a = pr.v_WorkingOrganizationId }
+                                         equals new { a = ow.v_OrganizationId } into ow_join
+                                 from ow in ow_join.DefaultIfEmpty()
+
+                                 join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
+                                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                                 from lw in lw_join.DefaultIfEmpty()
+
+                                 join D in dbContext.systemparameter on new { a = pe.i_SexTypeId.Value, b = 100 }  // Tipo de seguro
+                                                               equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 join L in dbContext.systemparameter on new { a = pr.i_EsoTypeId.Value, b = 118 }
+                                                  equals new { a = L.i_ParameterId, b = L.i_GroupId } into L_join
+                                 from L in L_join.DefaultIfEmpty()
+                                 //************************************************************************************
+
+
+                                 join su in dbContext.systemuser on s.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
+                                 from su in su_join.DefaultIfEmpty()
+
+                                 join pr1 in dbContext.professional on su.v_PersonId equals pr1.v_PersonId into pr1_join
+                                 from pr1 in pr1_join.DefaultIfEmpty()
+
+
+                                 where s.v_ServiceId == serviceId
+                                 select new PacientList
+                                 {
+                                     v_FirstName = pe.v_FirstName,
+                                     v_FirstLastName = pe.v_FirstLastName,
+                                     v_SecondLastName = pe.v_SecondLastName,
+                                     v_DocNumber = pe.v_DocNumber,
+                                     v_SexTypeName = D.v_Value1,
+                                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                                     v_TipoExamen = L.v_Value1,
+                                     v_CurrentOccupation = pe.v_CurrentOccupation,
+                                     d_ServiceDate = s.d_ServiceDate,
+                                     FirmaDoctor = pr1.b_SignatureImage,
+                                     b_Photo = pe.b_PersonImage,
+
+                                 }).ToList();
+
+                return objEntity.FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -7977,6 +8420,34 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public Sigesoft.Node.WinClient.BE.PacientList DevolverDatosPaciente_InfResulAutori(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new Sigesoft.Node.WinClient.BE.PacientList
+                                 {
+                                     v_FirstLastName = b.v_FirstLastName,
+                                     v_SecondLastName = b.v_SecondLastName,
+                                     v_FirstName = b.v_FirstName,
+                                     i_DocTypeId = b.i_DocTypeId,
+                                     v_DocNumber = b.v_DocNumber,
+                                     FechaServicio = a.d_ServiceDate.Value,
+                                 }
+                                ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public Sigesoft.Node.WinClient.BE.PacientList DevolverDatosPaciente(string pstrServiceId)
         {
             try
@@ -8206,6 +8677,1092 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
                 return result;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_EMOYanacocha(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                    join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                    where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                    select new PacientList
+                    {
+                        i_DocTypeId = b.i_DocTypeId,
+                        FechaServicio = a.d_ServiceDate.Value,
+                        v_FirstLastName = b.v_FirstLastName,
+                        v_SecondLastName = b.v_SecondLastName,
+                        v_FirstName = b.v_FirstName,
+                        v_IdService = a.v_ServiceId,
+                        v_ExploitedMineral = b.v_ExploitedMineral,                      
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_AFShahuindo(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                    join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                    where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                    select new PacientList
+                    {
+                        v_FirstLastName = b.v_FirstLastName,
+                        v_SecondLastName = b.v_SecondLastName,
+                        v_FirstName = b.v_FirstName,
+                        v_DocNumber = b.v_DocNumber,
+                        d_Birthdate = b.d_Birthdate,
+                        i_SexTypeId = b.i_SexTypeId,
+                        v_CurrentOccupation = b.v_CurrentOccupation,
+                    }).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_16A(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                    join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                    where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                    select new PacientList
+                    {
+                        i_DocTypeId = b.i_DocTypeId,
+                        v_FirstLastName = b.v_FirstLastName,
+                        v_SecondLastName = b.v_SecondLastName,
+                        v_FirstName = b.v_FirstName,
+                        v_DocNumber = b.v_DocNumber,
+                        d_Birthdate = b.d_Birthdate,
+                        FechaServicio = a.d_ServiceDate.Value,                                            
+                    }).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_SanMartin(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                    join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                    where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                    select new PacientList
+                    {
+                        v_FirstLastName = b.v_FirstLastName,
+                        v_SecondLastName = b.v_SecondLastName,
+                        v_FirstName = b.v_FirstName,
+                        v_CurrentOccupation = b.v_CurrentOccupation,
+                        FechaServicio = a.d_ServiceDate.Value,
+                        v_DocNumber = b.v_DocNumber,              
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_Otorr(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                    join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                    where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                    select new PacientList
+                    {
+                        i_DocTypeId = b.i_DocTypeId,
+                        v_FirstLastName = b.v_FirstLastName,
+                        v_SecondLastName = b.v_SecondLastName,
+                        v_FirstName = b.v_FirstName,
+                        d_Birthdate = b.d_Birthdate.Value,
+                        FechaServicio = a.d_ServiceDate.Value,
+                    }).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_EEMO(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                    join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                    where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                    select new PacientList
+                    {
+                        v_FirstLastName = b.v_FirstLastName,
+                        v_SecondLastName = b.v_SecondLastName,
+                        v_FirstName = b.v_FirstName,
+                        v_DocNumber = b.v_DocNumber,
+                        v_CurrentOccupation = b.v_CurrentOccupation,
+                        FechaServicio = a.d_ServiceDate.Value,                      
+                    }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_DJAP(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new PacientList
+                                 {
+                                     v_FirstLastName = b.v_FirstLastName,
+                                     v_SecondLastName = b.v_SecondLastName,
+                                     v_FirstName = b.v_FirstName,
+                                     d_Birthdate = b.d_Birthdate,
+                                     v_DocNumber = b.v_DocNumber,
+                                     v_AdressLocation = b.v_AdressLocation,
+                                     FechaServicio = a.d_ServiceDate.Value,
+
+                                 }).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_Anexo8IMO(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                                 join P in dbContext.systemparameter on new { a = b.i_BloodGroupId.Value, b = 154 }
+                                     equals new { a = P.i_ParameterId, b = P.i_GroupId } into P_join
+                                 from P in P_join.DefaultIfEmpty()
+
+                                 join Q in dbContext.systemparameter on new { a = b.i_BloodFactorId.Value, b = 155 }
+                                     equals new { a = Q.i_ParameterId, b = Q.i_GroupId } into Q_join
+                                 from Q in Q_join.DefaultIfEmpty()
+
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new PacientList
+                                 {
+                                     v_DocNumber = b.v_DocNumber,
+                                     v_FirstLastName = b.v_FirstLastName,
+                                     v_SecondLastName = b.v_SecondLastName,
+                                     v_FirstName = b.v_FirstName,
+                                     v_CurrentOccupation = b.v_CurrentOccupation,
+                                     v_BloodGroupName = P.v_Value1,
+                                     v_BloodFactorName = Q.v_Value1,
+                                     FechaServicio = a.d_ServiceDate.Value,
+                                     FechaCaducidad = a.d_GlobalExpirationDate,
+                                 }
+                    ).ToList();
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_ExMedAnual(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                                 join c in dbContext.systemparameter on new { a = b.i_SexTypeId.Value, b = 100 }
+                                     equals new { a = c.i_ParameterId, b = c.i_GroupId }  // GENERO
+
+                                 join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 join I in dbContext.datahierarchy on new { a = H.i_DepartmentId.Value, b = 113 }
+                                     equals new { a = I.i_ItemId, b = I.i_GroupId } into I_join
+                                 from I in I_join.DefaultIfEmpty()
+
+                                 join J in dbContext.datahierarchy on new { a = H.i_ProvinceId.Value, b = 113 }
+                                     equals new { a = J.i_ItemId, b = J.i_GroupId } into J_join
+                                 from J in J_join.DefaultIfEmpty()
+
+                                 join K in dbContext.datahierarchy on new { a = H.i_DistrictId.Value, b = 113 }
+                                     equals new { a = K.i_ItemId, b = K.i_GroupId } into K_join
+                                 from K in K_join.DefaultIfEmpty()
+
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new PacientList
+                                 {
+                                     FechaServicio = a.d_ServiceDate.Value,
+                                     FechaCaducidad = a.d_GlobalExpirationDate,
+                                     v_FirstLastName = b.v_FirstLastName,
+                                     v_SecondLastName = b.v_SecondLastName,
+                                     v_FirstName = b.v_FirstName,                                  
+                                     d_Birthdate = b.d_Birthdate.Value,
+                                     Genero = c.v_Value1,
+                                     v_CurrentOccupation = b.v_CurrentOccupation,
+                                     v_BirthPlace = b.v_BirthPlace,
+                                     v_DepartamentName = I.v_Value1,
+                                     v_ProvinceName = J.v_Value1,
+                                     v_DistrictName = K.v_Value1,
+                                     i_MaritalStatusId = b.i_MaritalStatusId,
+                                     
+                                 }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_Cosapi2(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                                 join P in dbContext.systemparameter on new { a = b.i_BloodGroupId.Value, b = 154 }
+                                     equals new { a = P.i_ParameterId, b = P.i_GroupId } into P_join
+                                 from P in P_join.DefaultIfEmpty()
+
+                                 join Q in dbContext.systemparameter on new { a = b.i_BloodFactorId.Value, b = 155 }
+                                     equals new { a = Q.i_ParameterId, b = Q.i_GroupId } into Q_join
+                                 from Q in Q_join.DefaultIfEmpty()
+
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new PacientList
+                                 {
+                                     i_SexTypeId = b.i_SexTypeId,
+                                     v_IdService = a.v_ServiceId,
+                                     v_BloodGroupName = P.v_Value1,
+                                     v_BloodFactorName = Q.v_Value1,
+                                     v_FirstLastName = b.v_FirstLastName,
+                                     v_SecondLastName = b.v_SecondLastName,
+                                     v_FirstName = b.v_FirstName,
+                                     v_DocNumber = b.v_DocNumber,
+                                     d_Birthdate = b.d_Birthdate.Value,
+                                     v_CurrentOccupation = b.v_CurrentOccupation,
+                                     FechaServicio = a.d_ServiceDate.Value,
+                                     FechaCaducidad = a.d_GlobalExpirationDate,                 
+                                 }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_Cosapi(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join P in dbContext.systemparameter on new { a = b.i_BloodGroupId.Value, b = 154 }
+                            equals new { a = P.i_ParameterId, b = P.i_GroupId } into P_join
+                        from P in P_join.DefaultIfEmpty()
+
+                        join Q in dbContext.systemparameter on new { a = b.i_BloodFactorId.Value, b = 155 }
+                            equals new { a = Q.i_ParameterId, b = Q.i_GroupId } into Q_join
+                        from Q in Q_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_PersonId = a.v_PersonId,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_DocNumber = b.v_DocNumber,
+                            d_Birthdate = b.d_Birthdate.Value,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            v_BloodGroupName = P.v_Value1,
+                            v_BloodFactorName = Q.v_Value1,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            FechaCaducidad = a.d_GlobalExpirationDate,
+                        }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_MAO(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_DocNumber = b.v_DocNumber,
+                            i_DocTypeId = b.i_DocTypeId,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                        }
+                    ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_HistCli(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_DocNumber = b.v_DocNumber,
+                            i_DocTypeId = b.i_DocTypeId,
+                        }
+                    ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_Toxi(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            d_Birthdate = b.d_Birthdate.Value,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            v_TelephoneNumber = b.v_TelephoneNumber,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_DocNumber = b.v_DocNumber,
+                        }
+                    ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_PaseMedico(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join P in dbContext.systemparameter on new { a = b.i_BloodGroupId.Value, b = 154 }
+                            equals new { a = P.i_ParameterId, b = P.i_GroupId } into P_join
+                        from P in P_join.DefaultIfEmpty()
+
+                        join Q in dbContext.systemparameter on new { a = b.i_BloodFactorId.Value, b = 155 }
+                            equals new { a = Q.i_ParameterId, b = Q.i_GroupId } into Q_join
+                        from Q in Q_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            i_DocTypeId = b.i_DocTypeId,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_IdService = a.v_ServiceId,
+                            v_DocNumber = b.v_DocNumber,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            d_Birthdate = b.d_Birthdate.Value,
+                            v_BloodGroupName = P.v_Value1,
+                            v_BloodFactorName = Q.v_Value1,
+                            v_PersonId = b.v_PersonId,
+                            v_ContactName = b.v_ContactName,
+                            i_Relationship = b.i_Relationship,
+                            v_EmergencyPhone = b.v_EmergencyPhone,
+                        }
+                    ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_VisiGoldfields(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join c in dbContext.systemparameter on new { a = b.i_SexTypeId.Value, b = 100 }
+                            equals new { a = c.i_ParameterId, b = c.i_GroupId }  // GENERO
+
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join I in dbContext.datahierarchy on new { a = H.i_DepartmentId.Value, b = 113 }
+                            equals new { a = I.i_ItemId, b = I.i_GroupId } into I_join
+                        from I in I_join.DefaultIfEmpty()
+
+                        join J in dbContext.datahierarchy on new { a = H.i_ProvinceId.Value, b = 113 }
+                            equals new { a = J.i_ItemId, b = J.i_GroupId } into J_join
+                        from J in J_join.DefaultIfEmpty()
+
+                        join K in dbContext.datahierarchy on new { a = H.i_DistrictId.Value, b = 113 }
+                            equals new { a = K.i_ItemId, b = K.i_GroupId } into K_join
+                        from K in K_join.DefaultIfEmpty()
+
+                        join P in dbContext.systemparameter on new { a = b.i_BloodGroupId.Value, b = 154 }
+                            equals new { a = P.i_ParameterId, b = P.i_GroupId } into P_join
+                        from P in P_join.DefaultIfEmpty()
+
+                        join Q in dbContext.systemparameter on new { a = b.i_BloodFactorId.Value, b = 155 }
+                            equals new { a = Q.i_ParameterId, b = Q.i_GroupId } into Q_join
+                        from Q in Q_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            d_Birthdate = b.d_Birthdate.Value,
+                            v_BirthPlace = b.v_BirthPlace,
+                            v_DepartamentName = I.v_Value1,
+                            v_ProvinceName = J.v_Value1,
+                            v_DistrictName = K.v_Value1,
+                            v_DocNumber = b.v_DocNumber,
+                            v_BloodGroupName = P.v_Value1,
+                            v_BloodFactorName = Q.v_Value1,
+                            v_TelephoneNumber = b.v_TelephoneNumber,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            FechaServicio = a.d_ServiceDate.Value,  
+                           
+                        }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_CieloAzul(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join c in dbContext.systemparameter on new { a = b.i_SexTypeId.Value, b = 100 }
+                            equals new { a = c.i_ParameterId, b = c.i_GroupId }  // GENERO
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            Genero = c.v_Value1,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_TelephoneNumber = b.v_TelephoneNumber,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_EMOBu(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_DocNumber = b.v_DocNumber,
+                            i_DocTypeId = b.i_DocTypeId,
+                            v_Mail = b.v_Mail,
+                        }
+                    ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_ExoLab(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_DocNumber = b.v_DocNumber,
+                            i_DocTypeId = b.i_DocTypeId,
+                        }
+                    ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_SMO(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_FirstLastName = b.v_FirstLastName,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_DocNumber = b.v_DocNumber,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_FYanacocha(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new PacientList
+                                 {
+                                     FechaActualizacion = a.d_UpdateDate,
+                                     FechaServicio = a.d_ServiceDate.Value,
+                                     d_Birthdate = b.d_Birthdate.Value,
+                                     v_FirstLastName = b.v_FirstLastName,
+                                     v_SecondLastName = b.v_SecondLastName,
+                                     v_FirstName = b.v_FirstName,
+                                     v_CurrentOccupation = b.v_CurrentOccupation,
+                                 }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_MiBanco(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                        }
+                    ).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_PsicosenDatos(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join c in dbContext.systemparameter on new { a = b.i_SexTypeId.Value, b = 100 }
+                            equals new { a = c.i_ParameterId, b = c.i_GroupId }  // GENERO
+
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join r in dbContext.servicecomponent on a.v_ServiceId equals r.v_ServiceId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            FechaActualizacion = a.d_UpdateDate,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            d_Birthdate = b.d_Birthdate.Value,
+                            Genero = c.v_Value1,
+                            v_TelephoneNumber = b.v_TelephoneNumber,
+                            v_DocNumber = b.v_DocNumber,
+                            N_Informe = r.v_ServiceComponentId,  
+                        
+                        }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_IE(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+                                 
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new PacientList
+                                 {
+                                     
+                                     v_FirstLastName = b.v_FirstLastName,
+                                     v_SecondLastName = b.v_SecondLastName,
+                                     v_FirstName = b.v_FirstName,
+                                     FechaServicio = a.d_ServiceDate.Value,
+                                     d_Birthdate = b.d_Birthdate.Value,
+                                 }
+                                ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_InfoGoldfields(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join M in dbContext.systemparameter on new { a = H.i_MaritalStatusId.Value, b = 101 }
+                            equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
+                        from M in M_join.DefaultIfEmpty()
+
+                        join N in dbContext.datahierarchy on new { a = H.i_LevelOfId.Value, b = 108 }
+                            equals new { a = N.i_ItemId, b = N.i_GroupId } into N_join
+                        from N in N_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_MaritalStatus = M.v_Value1,
+                            v_DocNumber = b.v_DocNumber,
+                            d_Birthdate = b.d_Birthdate.Value,
+                            v_TelephoneNumber = b.v_TelephoneNumber,
+                            v_AdressLocation = b.v_AdressLocation,
+                            GradoInstruccion = N.v_Value1,                           
+                        }
+                    ).ToList();
+
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_PsicoGoldfields(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join M in dbContext.systemparameter on new { a = H.i_MaritalStatusId.Value, b = 101 }
+                            equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
+                        from M in M_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_MaritalStatus = M.v_Value1,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            v_DocNumber = b.v_DocNumber,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+                
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_OftSimple(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_IdService = a.v_ServiceId,
+                            FechaServicio = a.d_ServiceDate.Value,                           
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            v_TelephoneNumber = b.v_TelephoneNumber,
+                            v_AdressLocation = b.v_AdressLocation,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_SAS(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join N in dbContext.datahierarchy on new { a = H.i_LevelOfId.Value, b = 108 }
+                            equals new { a = N.i_ItemId, b = N.i_GroupId } into N_join
+                        from N in N_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_DocNumber = b.v_DocNumber,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_SMB(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join N in dbContext.datahierarchy on new { a = H.i_LevelOfId.Value, b = 108 }
+                            equals new { a = N.i_ItemId, b = N.i_GroupId } into N_join
+                        from N in N_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            GradoInstruccion = N.v_Value1,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        
+        public PacientList DevolverDatosPaciente_DO(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join N in dbContext.datahierarchy on new { a = H.i_LevelOfId.Value, b = 108 }
+                            equals new { a = N.i_ItemId, b = N.i_GroupId } into N_join
+                        from N in N_join.DefaultIfEmpty()
+
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            i_SexTypeId = b.i_SexTypeId,
+                            v_CurrentOccupation = b.v_CurrentOccupation,
+                            GradoInstruccion = N.v_Value1,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public PacientList DevolverDatosPaciente_SECURITAS(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                        join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+                        join pr in dbContext.protocol on a.v_ProtocolId equals pr.v_ProtocolId
+                        join H in dbContext.person on a.v_PersonId equals H.v_PersonId into H_join
+                        from H in H_join.DefaultIfEmpty()
+
+                        join N in dbContext.datahierarchy on new { a = H.i_LevelOfId.Value, b = 108 }
+                            equals new { a = N.i_ItemId, b = N.i_GroupId } into N_join
+                        from N in N_join.DefaultIfEmpty()
+                        join L in dbContext.systemparameter on new { a = pr.i_EsoTypeId.Value, b = 118 }
+                            equals new { a = L.i_ParameterId, b = L.i_GroupId } into L_join
+                        from L in L_join.DefaultIfEmpty()
+                        where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                        select new PacientList
+                        {
+                            v_TipoExamen = L.v_Value1,
+                            v_FirstLastName = b.v_FirstLastName,
+                            v_SecondLastName = b.v_SecondLastName,
+                            v_FirstName = b.v_FirstName,
+                            FechaServicio = a.d_ServiceDate.Value,
+                            v_DocNumber = b.v_DocNumber,
+                            i_DocTypeId = b.i_DocTypeId,
+                            v_AdressLocation = b.v_AdressLocation,
+                            d_Birthdate = b.d_Birthdate.Value,
+                        }
+                    ).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
             }
             catch (Exception)
             {
