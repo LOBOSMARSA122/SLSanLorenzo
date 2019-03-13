@@ -42,6 +42,7 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddExamDiagnosticComponent));
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
@@ -85,6 +86,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ddlComponentId = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnEditarRecomenMatriz = new System.Windows.Forms.Button();
             this.btnEditarRecomendaciones = new System.Windows.Forms.Button();
             this.btnRemoverRecomendacion = new System.Windows.Forms.Button();
             this.grdRecomendaciones = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -106,7 +108,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.uvAddExamDiagnostic = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.ultraValidator2 = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.btnEditarRecomenMatriz = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -228,6 +229,7 @@
             this.txtDiseasesFilter.Name = "txtDiseasesFilter";
             this.txtDiseasesFilter.Size = new System.Drawing.Size(415, 20);
             this.txtDiseasesFilter.TabIndex = 69;
+            this.txtDiseasesFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiseasesFilter_KeyPress);
             // 
             // grdData
             // 
@@ -372,10 +374,26 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Recomendaciones";
             // 
+            // btnEditarRecomenMatriz
+            // 
+            this.btnEditarRecomenMatriz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditarRecomenMatriz.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditarRecomenMatriz.BackgroundImage")));
+            this.btnEditarRecomenMatriz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEditarRecomenMatriz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarRecomenMatriz.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarRecomenMatriz.Location = new System.Drawing.Point(247, 132);
+            this.btnEditarRecomenMatriz.Name = "btnEditarRecomenMatriz";
+            this.btnEditarRecomenMatriz.Size = new System.Drawing.Size(94, 27);
+            this.btnEditarRecomenMatriz.TabIndex = 71;
+            this.btnEditarRecomenMatriz.Text = "&Editar matriz";
+            this.btnEditarRecomenMatriz.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditarRecomenMatriz.UseVisualStyleBackColor = true;
+            this.btnEditarRecomenMatriz.Click += new System.EventHandler(this.btnEditarRecomenMatriz_Click);
+            // 
             // btnEditarRecomendaciones
             // 
             this.btnEditarRecomendaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEditarRecomendaciones.BackgroundImage = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarRecomendaciones.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditarRecomendaciones.BackgroundImage")));
             this.btnEditarRecomendaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEditarRecomendaciones.Enabled = false;
             this.btnEditarRecomendaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -392,7 +410,7 @@
             // btnRemoverRecomendacion
             // 
             this.btnRemoverRecomendacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverRecomendacion.BackgroundImage = global::Sigesoft.Node.WinClient.UI.Resources.delete;
+            this.btnRemoverRecomendacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendacion.BackgroundImage")));
             this.btnRemoverRecomendacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRemoverRecomendacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoverRecomendacion.ForeColor = System.Drawing.Color.Black;
@@ -503,7 +521,7 @@
             this.btnRecomendaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRecomendaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecomendaciones.ForeColor = System.Drawing.Color.Black;
-            this.btnRecomendaciones.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnRecomendaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnRecomendaciones.Image")));
             this.btnRecomendaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecomendaciones.Location = new System.Drawing.Point(5, 132);
             this.btnRecomendaciones.Margin = new System.Windows.Forms.Padding(2);
@@ -533,7 +551,7 @@
             // btnEditarRestricciones
             // 
             this.btnEditarRestricciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEditarRestricciones.BackgroundImage = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarRestricciones.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditarRestricciones.BackgroundImage")));
             this.btnEditarRestricciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEditarRestricciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarRestricciones.ForeColor = System.Drawing.Color.Black;
@@ -549,7 +567,7 @@
             // btnRemoverRestriccion
             // 
             this.btnRemoverRestriccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverRestriccion.BackgroundImage = global::Sigesoft.Node.WinClient.UI.Resources.delete;
+            this.btnRemoverRestriccion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestriccion.BackgroundImage")));
             this.btnRemoverRestriccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRemoverRestriccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoverRestriccion.ForeColor = System.Drawing.Color.Black;
@@ -663,7 +681,7 @@
             this.btnAgregarRestriccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAgregarRestriccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarRestriccion.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarRestriccion.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnAgregarRestriccion.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion.Image")));
             this.btnAgregarRestriccion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregarRestriccion.Location = new System.Drawing.Point(5, 132);
             this.btnAgregarRestriccion.Margin = new System.Windows.Forms.Padding(2);
@@ -769,22 +787,6 @@
             this.btnCancel.Text = "Salir";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnEditarRecomenMatriz
-            // 
-            this.btnEditarRecomenMatriz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEditarRecomenMatriz.BackgroundImage = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
-            this.btnEditarRecomenMatriz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEditarRecomenMatriz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarRecomenMatriz.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarRecomenMatriz.Location = new System.Drawing.Point(247, 132);
-            this.btnEditarRecomenMatriz.Name = "btnEditarRecomenMatriz";
-            this.btnEditarRecomenMatriz.Size = new System.Drawing.Size(94, 27);
-            this.btnEditarRecomenMatriz.TabIndex = 71;
-            this.btnEditarRecomenMatriz.Text = "&Editar matriz";
-            this.btnEditarRecomenMatriz.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditarRecomenMatriz.UseVisualStyleBackColor = true;
-            this.btnEditarRecomenMatriz.Click += new System.EventHandler(this.btnEditarRecomenMatriz_Click);
             // 
             // frmAddExamDiagnosticComponent
             // 

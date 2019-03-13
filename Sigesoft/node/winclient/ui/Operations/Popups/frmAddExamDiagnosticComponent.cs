@@ -632,37 +632,40 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            if (ultraValidator2.Validate(true, false).IsValid)
+            using (new LoadingClass.PleaseWait(this.Location, "Data CIE10..."))
             {
-                // Get the filters from the UI
-                List<string> Filters = new List<string>();
-
-                if (rbCode.Checked == true)
+                if (ultraValidator2.Validate(true, false).IsValid)
                 {
-                    if (!string.IsNullOrEmpty(txtDiseasesFilter.Text)) Filters.Add("v_CIE10Id.Contains(\"" + txtDiseasesFilter.Text.Trim() + "\")");
+                    // Get the filters from the UI
+                    List<string> Filters = new List<string>();
+
+                    if (rbCode.Checked == true)
+                    {
+                        if (!string.IsNullOrEmpty(txtDiseasesFilter.Text)) Filters.Add("v_CIE10Id.Contains(\"" + txtDiseasesFilter.Text.Trim() + "\")");
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(txtDiseasesFilter.Text)) Filters.Add("v_DiseasesName.Contains(\"" + txtDiseasesFilter.Text.Trim() + "\")");
+                       
+                    }
+
+                    // Create the Filter Expression
+                    strFilterExpression = null;
+                    if (Filters.Count > 0)
+                    {
+                        foreach (string item in Filters)
+                        {
+                            strFilterExpression = strFilterExpression + item + " || ";
+                        }
+                        strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
+                    }
+                    this.BindGrid();
                 }
                 else
                 {
-                    if (!string.IsNullOrEmpty(txtDiseasesFilter.Text)) Filters.Add("v_DiseasesName.Contains(\"" + txtDiseasesFilter.Text.Trim() + "\")");
-                   
+                    MessageBox.Show("Por favor corrija la información ingresada. Vea los indicadores de error.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                // Create the Filter Expression
-                strFilterExpression = null;
-                if (Filters.Count > 0)
-                {
-                    foreach (string item in Filters)
-                    {
-                        strFilterExpression = strFilterExpression + item + " || ";
-                    }
-                    strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
-                }
-                this.BindGrid();
-            }
-            else
-            {
-                MessageBox.Show("Por favor corrija la información ingresada. Vea los indicadores de error.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            };
         }
 
         private void BindGrid()
@@ -1118,6 +1121,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
          
              
              MessageBox.Show("Se grabó", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void txtDiseasesFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                using (new LoadingClass.PleaseWait(this.Location, "Data CIE10..."))
+                {
+                    btnFilter_Click(sender, e);
+                };
+            }
         }
 
        
