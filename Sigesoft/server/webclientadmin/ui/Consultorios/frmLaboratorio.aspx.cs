@@ -1768,11 +1768,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             SearchControlAndSetValues(TabLaboratorio, Session["ServicioComponentIdLab"].ToString());
 
-            //var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
-            //                                           (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
-            //                                          ((ClientSession)Session["objClientSession"]).GetAsList(),
-            //                                           Session["PersonId"].ToString(),
-            //                                          Session["ServicioComponentIdLab"].ToString());
+            var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
+                                                       (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
+                                                      ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                       Session["PersonId"].ToString(),
+                                                      Session["ServicioComponentIdLab"].ToString());
 
 
             //#region Dx Automaticos Laboratorio Internacional
