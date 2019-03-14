@@ -193,23 +193,22 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             OperationResult objOperationResult = new OperationResult();
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
-            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-            ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
-            //var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             #region Conexion SAM
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
             #endregion
-            var cadena1 = "select PL.i_PlanId from [dbo].[plan] PL where PL.v_ProtocoloId ='" + protocolId + "'";
+            var cadena1 = "select PL.i_PlanId from service SR inner join protocol PR on SR.v_ProtocolId = PR.v_ProtocolId inner join [dbo].[plan] PL on PR.v_ProtocolId = PL.v_ProtocoloId where SR.v_ServiceId ='" + ServiceId + "'";
             SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             SqlDataReader lector = comando.ExecuteReader();
             string plan = "";
+            string protocolId = "";
             while (lector.Read())
             {
                 plan = lector.GetValue(0).ToString();
             }
             lector.Close();
             conectasam.closesigesoft();
+            ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
             string modoMasterService;
             if (plan != "")
             {
