@@ -15,6 +15,26 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+        #region
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_ID = "N009-ME000000533";
+
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_1_ESTADO = "N009-MF000004925";
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_1_PUNTAJE = "N009-MF000004926";
+
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_2_ESTADO = "N009-MF000004927";
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_2_PUNTAJE = "N009-MF000004928";
+
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_3_ESTADO = "N009-MF000004929";
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_3_PUNTAJE = "N009-MF000004930";
+
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_4_ESTADO = "N009-MF000004931";
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_4_PUNTAJE = "N009-MF000004932";
+
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_T_ESTADO = "N009-MF000004933";
+        public const string FACTORES_PSICOSOCIALES_MI_BANCO_T_PUNTAJE = "N009-MF000004934";
+
+        #endregion
+
         #region EXOGRAFIAS - JUAN PABLO
         /// <summary>
         /// IE OBSTETRICO

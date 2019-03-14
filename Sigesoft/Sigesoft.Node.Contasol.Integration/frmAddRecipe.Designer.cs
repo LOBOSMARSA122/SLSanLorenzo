@@ -31,11 +31,14 @@
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinEditors.EditorButton editorButton1 = new Infragistics.Win.UltraWinEditors.EditorButton();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinEditors.EditorButton editorButton1 = new Infragistics.Win.UltraWinEditors.EditorButton();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.ultraFormManager1 = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.frmAddRecipe_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtPPS = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
             this.txtPrecio = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
             this.txtUnidadProductiva = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -62,6 +65,7 @@
             this.frmAddRecipe_Fill_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUnidadProductiva)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedicamento)).BeginInit();
@@ -90,6 +94,8 @@
             // 
             // gbReceta
             // 
+            this.gbReceta.Controls.Add(this.txtPPS);
+            this.gbReceta.Controls.Add(this.ultraLabel8);
             this.gbReceta.Controls.Add(this.txtPrecio);
             this.gbReceta.Controls.Add(this.ultraLabel7);
             this.gbReceta.Controls.Add(this.txtUnidadProductiva);
@@ -112,41 +118,61 @@
             this.gbReceta.TabIndex = 0;
             this.gbReceta.Text = "Receta";
             // 
-            // txtPrecio
+            // txtPPS
             // 
             appearance1.TextHAlignAsString = "Right";
-            this.txtPrecio.Appearance = appearance1;
+            this.txtPPS.Appearance = appearance1;
+            this.txtPPS.Enabled = false;
+            this.txtPPS.Location = new System.Drawing.Point(274, 79);
+            this.txtPPS.Name = "txtPPS";
+            this.txtPPS.Size = new System.Drawing.Size(110, 21);
+            this.txtPPS.TabIndex = 10;
+            this.txtPPS.ValueChanged += new System.EventHandler(this.txtPrecio_ValueChanged);
+            // 
+            // ultraLabel8
+            // 
+            this.ultraLabel8.AutoSize = true;
+            this.ultraLabel8.Location = new System.Drawing.Point(215, 83);
+            this.ultraLabel8.Name = "ultraLabel8";
+            this.ultraLabel8.Size = new System.Drawing.Size(27, 14);
+            this.ultraLabel8.TabIndex = 11;
+            this.ultraLabel8.Text = "PPS";
+            this.ultraLabel8.Click += new System.EventHandler(this.ultraLabel7_Click);
+            // 
+            // txtPrecio
+            // 
+            appearance2.TextHAlignAsString = "Right";
+            this.txtPrecio.Appearance = appearance2;
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(278, 78);
+            this.txtPrecio.Location = new System.Drawing.Point(274, 52);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(110, 21);
             this.txtPrecio.TabIndex = 10;
             this.uvDatos.GetValidationSettings(this.txtPrecio).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
             this.uvDatos.GetValidationSettings(this.txtPrecio).IsRequired = true;
-            this.txtPrecio.Visible = false;
             this.txtPrecio.ValueChanged += new System.EventHandler(this.txtPrecio_ValueChanged);
             // 
             // ultraLabel7
             // 
             this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(219, 82);
+            this.ultraLabel7.Location = new System.Drawing.Point(215, 56);
             this.ultraLabel7.Name = "ultraLabel7";
             this.ultraLabel7.Size = new System.Drawing.Size(36, 14);
             this.ultraLabel7.TabIndex = 11;
             this.ultraLabel7.Text = "Precio";
-            this.ultraLabel7.Visible = false;
             this.ultraLabel7.Click += new System.EventHandler(this.ultraLabel7_Click);
             // 
             // txtUnidadProductiva
             // 
-            appearance2.TextHAlignAsString = "Right";
-            this.txtUnidadProductiva.Appearance = appearance2;
+            appearance3.TextHAlignAsString = "Right";
+            this.txtUnidadProductiva.Appearance = appearance3;
             this.txtUnidadProductiva.Location = new System.Drawing.Point(103, 51);
             this.txtUnidadProductiva.Name = "txtUnidadProductiva";
             this.txtUnidadProductiva.Size = new System.Drawing.Size(110, 21);
             this.txtUnidadProductiva.TabIndex = 9;
             this.uvDatos.GetValidationSettings(this.txtUnidadProductiva).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
             this.uvDatos.GetValidationSettings(this.txtUnidadProductiva).IsRequired = true;
+            this.txtUnidadProductiva.Visible = false;
             // 
             // ultraLabel6
             // 
@@ -156,6 +182,7 @@
             this.ultraLabel6.Size = new System.Drawing.Size(81, 14);
             this.ultraLabel6.TabIndex = 8;
             this.ultraLabel6.Text = "Uni. Procudtiva";
+            this.ultraLabel6.Visible = false;
             // 
             // txtMedicamento
             // 
@@ -228,8 +255,8 @@
             // 
             // txtCantidad
             // 
-            appearance3.TextHAlignAsString = "Right";
-            this.txtCantidad.Appearance = appearance3;
+            appearance4.TextHAlignAsString = "Right";
+            this.txtCantidad.Appearance = appearance4;
             this.txtCantidad.Location = new System.Drawing.Point(103, 78);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(110, 21);
@@ -357,6 +384,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).EndInit();
             this.gbReceta.ResumeLayout(false);
             this.gbReceta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPPS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUnidadProductiva)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedicamento)).EndInit();
@@ -394,5 +422,7 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel6;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPrecio;
         private Infragistics.Win.Misc.UltraLabel ultraLabel7;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPPS;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel8;
     }
 }

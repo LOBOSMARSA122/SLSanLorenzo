@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -187,7 +188,7 @@ namespace Sigesoft.Node.WinClient.UI
             var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult);
             grdDataServiceComponent.DataSource = ListServiceComponent;
             ultraGrid1.DataSource = ListServiceComponent;
-            if (_modo == "HOSPI")
+            if (_modo == "HOSPI" || _modo == "ASEGU")
             {
                 cboMedico.Enabled = true;
                 Utils.LoadDropDownList(cboMedico, "Value1", "Id", BLL.Utils.GetProfessionalName(ref objOperationResult), DropDownListAction.Select);
@@ -262,67 +263,125 @@ namespace Sigesoft.Node.WinClient.UI
 
                     float pb = objComponentDto.r_BasePrice.Value;
                     var precio_base = pb + (pb * p1 / 100) + (pb * p2 / 100);
-                    FormPrecioComponente frm = new FormPrecioComponente(NombreComponente[0].ToString(),precio_base.ToString(),"");        
-                   
-                    frm.ShowDialog();
-                 
+                    //FormPrecioComponente frm = new FormPrecioComponente("", "", "");
+                    //frmConfigSeguros frm1 = new frmConfigSeguros(0, 0, 0, "", "");
                     ServiceComponentList auxiliaryExam = new ServiceComponentList();
-                    //auxiliaryExam.v_ServiceComponentId = scid;
-                    //_auxiliaryExams.Add(auxiliaryExam);
-
                     servicecomponentDto objServiceComponentDto = new servicecomponentDto();
                     ServiceBL _ObjServiceBL = new ServiceBL();
                     TicketBL oTicketBL = new TicketBL();
-
-                    objServiceComponentDto.i_ConCargoA = conCargoA;
-                    objServiceComponentDto.v_ServiceId = _serviceId;
-                    objServiceComponentDto.i_ExternalInternalId = (int)Common.ComponenteProcedencia.Interno;
-                    objServiceComponentDto.i_ServiceComponentTypeId = 1;
-                    objServiceComponentDto.i_IsVisibleId = 1;
-                    objServiceComponentDto.i_IsInheritedId = (int)Common.SiNo.NO;
-                    objServiceComponentDto.d_StartDate = null;
-                    objServiceComponentDto.d_EndDate = null;
-                    objServiceComponentDto.i_index = 1;
-                    objServiceComponentDto.r_Price = frm.Precio;
-                    objServiceComponentDto.v_ComponentId = scid;
-                    objServiceComponentDto.i_IsInvoicedId = (int)Common.SiNo.NO;
-                    objServiceComponentDto.i_ServiceComponentStatusId = (int)Common.ServiceStatus.PorIniciar;
-                    objServiceComponentDto.i_QueueStatusId = (int)Common.QueueStatusId.LIBRE;
-                    //objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
-                    objServiceComponentDto.i_Iscalling = (int)Common.Flag_Call.NoseLlamo;
-                    objServiceComponentDto.i_Iscalling_1 = (int)Common.Flag_Call.NoseLlamo;
-                    objServiceComponentDto.i_IsManuallyAddedId = (int)Common.SiNo.NO;
-                    objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
-                    objServiceComponentDto.v_IdUnidadProductiva = objComponentDto.v_IdUnidadProductiva;
-                    objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
-
-
-                    var tienePlan = false;
-                    var resultplan = oTicketBL.TienePlan(_protocolId, objComponentDto.v_IdUnidadProductiva);
-                    if (resultplan.Count > 0) tienePlan = true;
-                    else tienePlan = false;
-
-                    if (tienePlan)
+                    if (_modo == "ASEGU")
                     {
-                        if (resultplan[0].i_EsCoaseguro == 1)
+                        #region Conexion SAM
+                        ConexionSigesoft conectasam = new ConexionSigesoft();
+                        conectasam.opensigesoft();
+                        #endregion
+                        #region Query
+                        var componente = NombreComponente[0].ToString();
+                        var cadena1 = "select v_ComponentId from component where v_Name='" + componente + "'";
+                        SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                        SqlDataReader lector = comando.ExecuteReader();
+                        while (lector.Read())
                         {
-                            objServiceComponentDto.d_SaldoPaciente = resultplan[0].d_Importe;
-                            objServiceComponentDto.d_SaldoAseguradora = decimal.Parse(objServiceComponentDto.r_Price.ToString()) - resultplan[0].d_Importe;
+                            componente = lector.GetValue(0).ToString();
                         }
-                        if (resultplan[0].i_EsDeducible == 1)
+                        lector.Close();
+                        var protocol = _protocolId;
+                        var cadena = "select PL.i_EsDeducible as Deducible, PL.i_EsCoaseguro as Coaseguro, PL.d_Importe as Importe from [dbo].[plan] PL inner join component CP ON CP.v_IdUnidadProductiva =  PL.v_IdUnidadProductiva inner join protocol PT ON PT.v_ProtocolId = PL.v_ProtocoloId where PL.v_ProtocoloId='" + protocol + "' and CP.v_ComponentId='" + componente + "'";
+                        comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
+                        lector = comando.ExecuteReader();
+                        int deducible = 0;
+                        int coaseguro = 0;
+                        decimal importe = 0;
+                        while (lector.Read())
                         {
-                            objServiceComponentDto.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(objServiceComponentDto.r_Price.ToString()) / 100;
-                            objServiceComponentDto.d_SaldoAseguradora = decimal.Parse(objServiceComponentDto.r_Price.ToString()) - objServiceComponentDto.d_SaldoPaciente;
+                            deducible = int.Parse(lector.GetValue(0).ToString()); coaseguro = int.Parse(lector.GetValue(1).ToString()); importe = decimal.Parse(lector.GetValue(2).ToString());
+                        }
+                        lector.Close();
+                        string factores = ""; string aseguradoraName = ""; string organizationId = "";
+                        var factorGlobal = "";
+                        var cadena2 = "select OO.r_Factor, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + protocol + "'";
+                        comando = new SqlCommand(cadena2, connection: conectasam.conectarsigesoft);
+                        lector = comando.ExecuteReader();
+                        while (lector.Read())
+                        {
+                            factores = lector.GetValue(0).ToString();
+                            var factorArray = factores.Split('|');// factores[0].ToString().Split('|');
+                            factorGlobal = factorArray[0];
+                            aseguradoraName = lector.GetValue(1).ToString();
+                            organizationId = lector.GetValue(2).ToString();
+                        }
+                        lector.Close();
+                        string empresa = "";
+                        var cadena3 = "select v_Name from Organization OO  where OO.v_OrganizationId ='" + organizationId + "'";
+                        comando = new SqlCommand(cadena3, connection: conectasam.conectarsigesoft);
+                        lector = comando.ExecuteReader();
+                        while (lector.Read())
+                        {
+                            empresa = lector.GetValue(0).ToString();
+                        }
+                        lector.Close();
+                        #endregion
+                        frmConfigSeguros frm1 = new frmConfigSeguros(deducible, coaseguro, importe, precio_base.ToString(), factorGlobal);
+                        frm1.Text = aseguradoraName + " / " + empresa;
+                        frm1.ShowDialog();
+                        if (frm1.result == false)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            objServiceComponentDto.v_ServiceId = _serviceId;
+                            objServiceComponentDto.i_ExternalInternalId = (int)Common.ComponenteProcedencia.Interno;
+                            objServiceComponentDto.i_ServiceComponentTypeId = 1;
+                            objServiceComponentDto.i_IsVisibleId = 1;
+                            objServiceComponentDto.i_IsInheritedId = (int)Common.SiNo.NO;
+                            objServiceComponentDto.d_StartDate = null;
+                            objServiceComponentDto.d_EndDate = null;
+                            objServiceComponentDto.i_index = 1;
+                            objServiceComponentDto.r_Price = frm1.precio;
+                            objServiceComponentDto.v_ComponentId = scid;
+                            objServiceComponentDto.i_IsInvoicedId = (int)Common.SiNo.NO;
+                            objServiceComponentDto.i_ServiceComponentStatusId = (int)Common.ServiceStatus.PorIniciar;
+                            objServiceComponentDto.i_QueueStatusId = (int)Common.QueueStatusId.LIBRE;
+                            objServiceComponentDto.i_Iscalling = (int)Common.Flag_Call.NoseLlamo;
+                            objServiceComponentDto.i_Iscalling_1 = (int)Common.Flag_Call.NoseLlamo;
+                            objServiceComponentDto.i_IsManuallyAddedId = (int)Common.SiNo.NO;
+                            objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
+                            objServiceComponentDto.v_IdUnidadProductiva = objComponentDto.v_IdUnidadProductiva;
+                            objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
+                            objServiceComponentDto.d_SaldoPaciente = frm1.paciente;
+                            objServiceComponentDto.d_SaldoAseguradora = frm1.aseguradora;
+                            _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());
                         }
                     }
-                    else
+                    else 
                     {
+                        FormPrecioComponente frm = new FormPrecioComponente(NombreComponente[0].ToString(), precio_base.ToString(), "");
+                        objServiceComponentDto.i_ConCargoA = conCargoA;
+                        objServiceComponentDto.v_ServiceId = _serviceId;
+                        objServiceComponentDto.i_ExternalInternalId = (int)Common.ComponenteProcedencia.Interno;
+                        objServiceComponentDto.i_ServiceComponentTypeId = 1;
+                        objServiceComponentDto.i_IsVisibleId = 1;
+                        objServiceComponentDto.i_IsInheritedId = (int)Common.SiNo.NO;
+                        objServiceComponentDto.d_StartDate = null;
+                        objServiceComponentDto.d_EndDate = null;
+                        objServiceComponentDto.i_index = 1;
+                        objServiceComponentDto.r_Price = frm.Precio;
+                        objServiceComponentDto.v_ComponentId = scid;
+                        objServiceComponentDto.i_IsInvoicedId = (int)Common.SiNo.NO;
+                        objServiceComponentDto.i_ServiceComponentStatusId = (int)Common.ServiceStatus.PorIniciar;
+                        objServiceComponentDto.i_QueueStatusId = (int)Common.QueueStatusId.LIBRE;
+                        //objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
+                        objServiceComponentDto.i_Iscalling = (int)Common.Flag_Call.NoseLlamo;
+                        objServiceComponentDto.i_Iscalling_1 = (int)Common.Flag_Call.NoseLlamo;
+                        objServiceComponentDto.i_IsManuallyAddedId = (int)Common.SiNo.NO;
+                        objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
+                        objServiceComponentDto.v_IdUnidadProductiva = objComponentDto.v_IdUnidadProductiva;
+                        objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
                         objServiceComponentDto.d_SaldoPaciente = 0;
                         objServiceComponentDto.d_SaldoAseguradora = 0;
+                        _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());
                     }
-
-                    //_calendarBL.UpdateAdditionalExam(_auxiliaryExams, _serviceId, (int?)SiNo.SI, Globals.ClientSession.GetAsList());
-                    _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());
                 }             
             }
           

@@ -39,7 +39,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private readonly List<TicketList> _listTicketList;
         private readonly List<TicketDetalleList> _listTicketDetalleList;
 
-        public frmTicket(List<TicketList> Lista, string IdControl, string id, string mode, string protocolId)
+        private string _modo;
+
+        public frmTicket(List<TicketList> Lista, string IdControl, string id, string mode, string protocolId, string modo)
         {
             _tickId = id;
             _mode = mode;
@@ -52,6 +54,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             _objTicketBl = new TicketBL();
             _listTicketList = Lista;
             _listTicketDetalleList = new List<TicketDetalleList>();
+            _modo = modo;
         }
 
         private void btnCancelarTicket_Click(object sender, EventArgs e)
@@ -214,6 +217,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 grdTicketDetalle.Rows[0].Selected = true;
             if (grdTicketDetalle.Rows.Count != 0)
                 grdTicketDetalle.Rows[0].Selected = true;
+            if (_modo == "ASEGU")
+            {
+                gbConCargo.Visible = false;
+                chkTicketInterno.Visible = false;
+            }
         }
 
         private void LoadData()
@@ -268,7 +276,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            var nuevo = new frmAddProducto(string.Empty, "New", _serviceId,_protocolId);
+            var nuevo = new frmAddProducto(string.Empty, "New", _serviceId,_protocolId, _modo);
             if (_tmpTicketDetalleList != null)
             {
                 nuevo._TempTicketDetalleList = _tmpTicketDetalleList;
@@ -289,7 +297,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            var editar = new frmAddProducto(_ticketdetalletId, "Edit",_serviceId,_protocolId);
+            var editar = new frmAddProducto(_ticketdetalletId, "Edit", _serviceId, _protocolId, _modo);
             if (_tmpTicketDetalleList != null)
             {
                 editar._TempTicketDetalleList = _tmpTicketDetalleList;

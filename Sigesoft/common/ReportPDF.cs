@@ -20499,11 +20499,13 @@ namespace NetPdf
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
                        
+
                        new PdfPCell(new Phrase(p_malEstado, fontColumnValue)),
 
                        //lINEa
                         new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
+
                        new PdfPCell(new Phrase(p_faltan, fontColumnValue))
 
                  };

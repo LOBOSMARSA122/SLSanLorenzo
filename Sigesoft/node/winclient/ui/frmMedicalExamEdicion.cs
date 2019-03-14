@@ -242,5 +242,11 @@ namespace Sigesoft.Node.WinClient.UI
                 e.Handled = true;
         }
 
+        private void btnAgregarLinea_Click(object sender, EventArgs e)
+        {
+            frmAddLineSAM frm = new frmAddLineSAM();
+            frm.Show();
+        }
+
         }
 }

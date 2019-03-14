@@ -701,12 +701,18 @@ namespace Sigesoft.Node.WinClient.BLL
            {
                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                var query = from A in dbContext.ordenreporte
+                           //join B in dbContext.component on A.v_ComponenteId equals B.v_ComponentId into B_join
+                           //from B in B_join.DefaultIfEmpty()
                    where A.v_OrganizationId == pstrEmpresaPlantillaId
                         select new ServiceComponentList
                    {
                        v_ComponentId = A.v_ComponenteId,
                        v_ComponentName = A.v_NombreReporte,
                        i_Orden = A.i_Orden.Value,
+                       //v_NombreReporte = A.v_NombreReporte,
+                       //v_NombreCrystal = A.v_NombreCrystal,
+                       //i_NombreCrystalId = A.i_NombreCrystalId.Value,
+                       //i_CategoryId = B.i_CategoryId
                    };
 
                List<ServiceComponentList> objData = query.ToList();

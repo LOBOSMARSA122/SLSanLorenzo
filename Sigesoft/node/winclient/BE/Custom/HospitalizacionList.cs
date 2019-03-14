@@ -29,6 +29,8 @@ namespace Sigesoft.Node.WinClient.BE
 
         public string v_MedicoTratante { get; set; }
 
+        public string v_Servicio { get; set; }
+
 
         public List<HospitalizacionServiceList> Servicios{ get; set; }
         public List<HospitalizacionHabitacionList> Habitaciones { get; set; }

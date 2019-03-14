@@ -23,14 +23,16 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         string _ProductoId = null;
         string _serviceId;
         private string _protocolId;
+        private string _modoMasterService;
 
-        public frmAddProducto(string id, string mode, string serviceId, string protocolId)
+        public frmAddProducto(string id, string mode, string serviceId, string protocolId, string modoMasterService)
         {
             InitializeComponent();
             _id = id;
             _mode = mode;
             _serviceId = serviceId;
             _protocolId = protocolId;
+            _modoMasterService = modoMasterService;
         }
         
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -46,6 +48,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtMedicamento.Tag = medicamento.IdProductoDetalle;
                 txtPrecioVenta.Text = medicamento.PrecioVenta.ToString();
                 txtUnidadProductiva.Text = medicamento.IdLinea;
+                txtPrecio.Text = medicamento.PrecioVenta.ToString();
+                txtPPS.Text = medicamento.d_PrecioMayorista.ToString();
             }
         }
 

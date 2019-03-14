@@ -94,6 +94,7 @@
     <Compile Include="OperationsNatclarBl.cs" />
     <Compile Include="OrganizationBL.cs" />
     <Compile Include="PacientBL.cs" />
+    <Compile Include="PacientListNew.cs" />
     <Compile Include="PagoEspecialistaOcupacionalBl.cs" />
     <Compile Include="PersonList_2.cs" />
     <Compile Include="PlanAtencionIntegralBL.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="RolCuotaDetalleBL.cs" />
     <Compile Include="SecurityBL.cs" />
     <Compile Include="ServiceBL.cs" />
+    <Compile Include="ServiceComponentListReportSolo.cs" />
     <Compile Include="ServiceOrderBL.cs" />
     <Compile Include="SpecialistConfigurationBl.cs" />
     <Compile Include="SupplierBL.cs" />
