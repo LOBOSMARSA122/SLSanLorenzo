@@ -18,7 +18,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateRegistroInformeEMOBuenaventura(ServiceList DataService, string filePDF,
+        public static void CreateRegistroInformeEMOBuenaventura(string filePDF,
             PacientList datosPac,
             organizationDto infoEmpresaPropietaria, PacientList filiationData,
             List<ServiceComponentList> serviceComponent, UsuarioGrabo usuarioGraba)

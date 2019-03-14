@@ -18,7 +18,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateDeclaracionJurada(ServiceList DataService, string filePDF,
+        public static void CreateDeclaracionJurada(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent)

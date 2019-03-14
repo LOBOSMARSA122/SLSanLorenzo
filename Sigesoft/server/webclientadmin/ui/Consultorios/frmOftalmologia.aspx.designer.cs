@@ -3244,6 +3244,33 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Button btnGrabarYanacocha;
         
         /// <summary>
+        /// Label1000 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label Label1000;
+        
+        /// <summary>
+        /// Label1001 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label Label1001;
+        
+        /// <summary>
+        /// ddlOftalmoYanacocha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.DropDownList ddlOftalmoYanacocha;
+        
+        /// <summary>
         /// btnReporteOftalmo control.
         /// </summary>
         /// <remarks>

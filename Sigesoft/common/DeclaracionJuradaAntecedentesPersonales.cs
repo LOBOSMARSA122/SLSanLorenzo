@@ -19,7 +19,7 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateDeclaracionJuradaAntecedentesPersonales(PacientList filiationData, ServiceList DataService,
+        public static void CreateDeclaracionJuradaAntecedentesPersonales(ServiceList DataService,
            List<ServiceComponentList> serviceComponent,
            organizationDto infoEmpresa,
            PacientList datosPac,

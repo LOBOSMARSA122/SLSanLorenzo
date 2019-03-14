@@ -19,7 +19,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region Reporte ficha
-        public static void CreateFichaPsicologicaGoldfields(PacientList filiationData, ServiceList DataService,
+        public static void CreateFichaPsicologicaGoldfields(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

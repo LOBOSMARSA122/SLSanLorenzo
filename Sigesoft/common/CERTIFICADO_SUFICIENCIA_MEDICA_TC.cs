@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region Reporte SAS
-        public static void CreateCertificadoSuficienciaTC(PacientList filiationData, ServiceList DataService,
+        public static void CreateCertificadoSuficienciaTC(PacientList filiationData, 
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

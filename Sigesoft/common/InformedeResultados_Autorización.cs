@@ -19,12 +19,9 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateInformeResultadosAutorizacion(PacientList filiationData, ServiceList DataService, string filePDF,
+        public static void CreateInformeResultadosAutorizacion(PacientList filiationData, string filePDF,
             PacientList datosPac,
-            organizationDto infoEmpresaPropietaria,
-            List<ServiceComponentList> exams,
-            List<DiagnosticRepositoryList> Diagnosticos,
-            List<ServiceComponentList> serviceComponent)
+            organizationDto infoEmpresaPropietaria)
         {
             Document document = new Document(PageSize.A4, 40f, 40f, 80f, 50f);
 

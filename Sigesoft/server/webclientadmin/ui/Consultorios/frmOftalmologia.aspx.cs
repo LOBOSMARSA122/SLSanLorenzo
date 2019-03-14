@@ -61,7 +61,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
                 Session["ComponentesPermisoLectura"] = ListaComponentesPermisoLectura;
                 TabOftalmo.Hidden = true;
-                TabOftalmoYanacocha.Hidden = true;
+                //TabOftalmoYanacocha.Hidden = true;
                 TabOftalmologia_Internacional.Hidden = true;
 
                 TabOftalmo.Attributes.Add("Tag", "N002-ME000000028");
@@ -76,24 +76,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkuso_de_correctores_si.Attributes.Add("Tag", "N002-MF000000224");
                 chkuso_de_correctores_no.Attributes.Add("Tag", "N009-MF000000719");
                 txtultima_refraccion.Attributes.Add("Tag", "N002-MF000000225");
-                //chkdiabetes.Attributes.Add("Tag","N009-MF000000176");
-                //chkhipertension.Attributes.Add("Tag","N009-MF000000175");
-                //chksust_quimicas.Attributes.Add("Tag","N009-MF000000180");
-                //chkexp_a_radiacion.Attributes.Add("Tag","N009-MF000000182");
-                //chkmiopia.Attributes.Add("Tag","N009-MF000000709");
-                //chkcirugia_ocular.Attributes.Add("Tag","N009-MF000000181");
-                //chktrauma_ocular.Attributes.Add("Tag","N009-MF000000178");
-                //chkglaucoma.Attributes.Add("Tag","N009-MF000000177");
-                //chkastigmatismo.Attributes.Add("Tag","N009-MF000000179");
                 txtotros_especificar.Attributes.Add("Tag", "N009-MF000000710");
-                //chksin_patologias.Attributes.Add("Tag","N009-MF000002092");
-                //chkptosis_palpebral.Attributes.Add("Tag","N009-MF000002084");
-                //chkconjuntivitis.Attributes.Add("Tag","N009-MF000002085");
-                //chkpterigium.Attributes.Add("Tag","N009-MF000002086");
-                //chkestrabismo.Attributes.Add("Tag","N009-MF000002087");
-                //chktrans_de_cornea.Attributes.Add("Tag","N009-MF000002088");
-                //chkcataratas.Attributes.Add("Tag","N009-MF000002089");
-                //chkchalazion.Attributes.Add("Tag","N009-MF000002090");
                 txtotras_patologia.Attributes.Add("Tag", "N009-MF000002091");
 
 
@@ -102,41 +85,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtsc_cerca_ojo_izquierdo.Attributes.Add("Tag", "N002-MF000000227");
                 txtcc_cerca_ojo_derecho.Attributes.Add("Tag", "N002-MF000000235");
                 txtcc_cerca_ojo_izquierdo.Attributes.Add("Tag", "N009-MF000000646");
-                //txtae_cerca_ojo_derecho.Attributes.Add("Tag", "N009-MF000000641");
-                //txtae_cerca_izquierdo.Attributes.Add("Tag", "N002-MF000000237");
 
                 txtsc_lejos_ojo_derecho.Attributes.Add("Tag", "N002-MF000000234");
                 txtsc_lejos_ojo_izquierdo.Attributes.Add("Tag", "N002-MF000000230");
                 txtcc_lejos_ojo_derecho.Attributes.Add("Tag", "N002-MF000000231");
                 txtcc_lejos_ojo_izquierdo.Attributes.Add("Tag", "N002-MF000000236");
-                //txtae_lejos_ojo_derecho.Attributes.Add("Tag", "N009-MF000002080");
-                //txtae_lejos_ojo_izquierdo.Attributes.Add("Tag", "N009-MF000002081");
 
-
-
-
-                //chkemetrope.Attributes.Add("Tag","N009-MF000002071");
-
-                //ddlmaculopatia_ojo_derecho.Attributes.Add("Tag", "N002-MF000000251");
                 ddlReflejospupilares.Attributes.Add("Tag", "N002-MF000000261");
-                //chkmaculopatia_ojo_izquierdo.Attributes.Add("Tag","N002-MF000000252");
-
-                //ddlneuritis_ojo_derecho.Attributes.Add("Tag", "N002-MF000000254");
-                //chkneuritis_ojo_izquierdo.Attributes.Add("Tag","N002-MF000000255");
-
-                //ddlretinopatia_ojo_derecho.Attributes.Add("Tag", "N009-MF000000524");
-                //chkretinopatia_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000525");
-
-                //ddledema_papilar_ojo_derecho.Attributes.Add("Tag", "N009-MF000000527");
-                //chkedema_papilar_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000528");
-
-                //ddlangiopatia_ojo_derecho.Attributes.Add("Tag", "N009-MF000000530");
-                //chkangiopatia_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000531");
-
-                //ddlatrofia_de_no_ojo_derecho.Attributes.Add("Tag", "N009-MF000000533");
-                //chkatrofia_de_no_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000534");
-
-                //txtcampimetria_od.Attributes.Add("Tag","N009-MF000002094");
                 txtcampimetria_oi.Attributes.Add("Tag", "N009-MF000002095");
                 txttonometria_od.Attributes.Add("Tag", "N009-MF000002096");
                 txttonometria_oi.Attributes.Add("Tag", "N009-MF000002097");
@@ -145,9 +100,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddldescripcion_ishihara.Attributes.Add("Tag", "N009-MF000002094");
                 txtrecuperacion_estereopsis.Attributes.Add("Tag", "N009-MF000002093");
                 txtencandilamiento_estereopsis.Attributes.Add("Tag", "N002-MF000000226");
-                //txttiempo_estereopsis.Attributes.Add("Tag","N002-MF000000258");
-                //chkanormal_estereopsis.Attributes.Add("Tag","N002-MF000000342");
-                //chknormal_estereopsis.Attributes.Add("Tag","N002-MF000000343");
+
                 #endregion
                 #region Oftalmologia Internacional
 
@@ -190,6 +143,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkMovOcularIzquierdo_Internacional.Attributes.Add("Tag", "N005-MF000000534");
                 #endregion
                 #region OftalmoYanacocha
+
                 ddlSCVCOD_Yana.Attributes.Add("Tag", "N009-MF000003614");
                 ddlSCVCOI_Yana.Attributes.Add("Tag", "N009-MF000003615");
                 ddlCCVCOD_Yana.Attributes.Add("Tag", "N009-MF000003616");
@@ -287,6 +241,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         protected void grdData_RowClick(object sender, GridRowClickEventArgs e)
         {
             OperationResult objOperationResult = new OperationResult();
+            SystemParameterBL oSystemParameterBL = new SystemParameterBL();
             TabOftalmo.Hidden = true;
             TabOftalmologia_Internacional.Hidden = true;
             TabOftalmoYanacocha.Hidden = true;
@@ -316,6 +271,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             ddlAptitud.SelectedValue = dataKeys[3] == null ? "-1" : dataKeys[3].ToString();
             txtComentarioAptitud.Text = dataKeys[14] == null ? "" : dataKeys[14].ToString();
             //Mostrar
+            Utils.LoadDropDownList(ddlOftalmoYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            ddlOftalmoYanacocha.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlOftalmoYanacocha.Enabled = false;
             grdComponentes.DataSource = _serviceBL.GetServiceComponentByCategoryId(ref objOperationResult, int.Parse(ddlConsultorio.SelectedValue.ToString()), Session["ServiceId"].ToString());
             grdComponentes.DataBind();
             //Pintar los examenes correpondientes por servicio

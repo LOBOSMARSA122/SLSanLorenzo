@@ -20,10 +20,9 @@ namespace NetPdf
             proceso.Close();
         }
         #region
-        public static void CreateAccidentesTrabajoF2(ServiceList DataService, PacientList filiationData,
+        public static void CreateAccidentesTrabajoF2(
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
-            PacientList datosPac,
             string filePDF, UsuarioGrabo usuariograbo)
         {
             Document document = new Document(PageSize.A4, 50f, 30f, 45f, 41f);

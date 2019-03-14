@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region Reporte informe
-        public static void CreateInformePsicologicoGoldfields(PacientList filiationData, ServiceList DataService,
+        public static void CreateInformePsicologicoGoldfields(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

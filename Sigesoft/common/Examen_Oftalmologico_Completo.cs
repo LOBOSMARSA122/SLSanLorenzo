@@ -19,7 +19,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateExamen_Oftalmologico_Completo(PacientList filiationData, ServiceList DataService,
+        public static void CreateExamen_Oftalmologico_Completo(PacientList filiationData, 
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
