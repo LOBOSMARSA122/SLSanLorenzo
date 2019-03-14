@@ -13,7 +13,7 @@ namespace Sigesoft.Common
         public SqlConnection conectarsigesoft = new SqlConnection();
         public ConexionSigesoft()
         {
-            adena = Common.Utils.GetApplicationConfigValue("ConexionSigesoft");
+            cadena = Common.Utils.GetApplicationConfigValue("ConexionSigesoft");
             conectarsigesoft.ConnectionString = cadena;
         }
         public void opensigesoft()
