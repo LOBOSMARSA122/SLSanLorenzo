@@ -537,6 +537,50 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
         #region UserExternal
 
+        public Sigesoft.Node.WinClient.BE.PacientList GetPacientReportEPS_Oftalmo(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+                                 //************************************************************************************
+                                 join B in dbContext.protocol on s.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+                                 join C3 in dbContext.organization on B.v_WorkingOrganizationId equals C3.v_OrganizationId into C3_join
+                                 from C3 in C3_join.DefaultIfEmpty()
+
+                                 where s.v_ServiceId == serviceId
+                                 select new Sigesoft.Node.WinClient.BE.PacientList
+                                 {
+
+                                     i_EsoTypeId = pr.i_EsoTypeId,
+                                     empresa_ = C2.v_Name,
+                                     contrata = C1.v_Name,
+                                     subcontrata = C3.v_Name,
+                                     FirmaTrabajador = pe.b_RubricImage,
+                                     HuellaTrabajador = pe.b_FingerPrintImage,
+                                 }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         public Sigesoft.Node.WinClient.BE.PacientList GetPacientReportEPS(string serviceId)
         {
             //mon.IsActive = true;
@@ -2837,6 +2881,31 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
             }
         }
 
+        public Sigesoft.Node.WinClient.BE.PacientList DevolverDatosPaciente_Oftalmo(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+                                 where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
+                                 select new Sigesoft.Node.WinClient.BE.PacientList
+                                 {
+                                     Trabajador = b.v_FirstLastName + " " + b.v_SecondLastName + " " + b.v_FirstName,
+                                     d_Birthdate = b.d_Birthdate.Value,
+                                     FechaServicio = a.d_ServiceDate.Value,
+                                 }
+                                ).ToList();
+                objEntity[0].Edad = GetAge(objEntity[0].d_Birthdate.Value);
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public Sigesoft.Node.WinClient.BE.PacientList DevolverDatosPaciente(string pstrServiceId)
         {
             try
@@ -2903,9 +2972,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 var result = (from a in objEntity
                               select new Sigesoft.Node.WinClient.BE.PacientList
                               {
-                                  Trabajador = a.Trabajador,
-                                  d_Birthdate = a.d_Birthdate,
-                                  Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,
                                   i_SexTypeId = a.i_SexTypeId,
                                   v_DocNumber = a.v_DocNumber,
@@ -2913,7 +2979,12 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                   Empresa = a.Empresa,
                                   Sede = a.Sede,
                                   v_CurrentOccupation = a.v_CurrentOccupation,
+
+                                  Trabajador = a.Trabajador,
+                                  d_Birthdate = a.d_Birthdate,
+                                  Edad = GetAge(a.d_Birthdate.Value),
                                   FechaServicio = a.FechaServicio,
+                                  
                                   MedicoGrabaMedicina = DatosMedicoMedicinaEvaluador == null ? "" : DatosMedicoMedicinaEvaluador.ApellidosDoctor + " " + DatosMedicoMedicinaEvaluador.NombreDoctor,
                                   // Antecedentes ginecologicos
                                   d_PAP = a.d_PAP,
@@ -2940,6 +3011,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 return null;
             }
         }
+
         private Sigesoft.Node.WinClient.BE.DatosDoctorMedicina ObtenerDatosMedicoMedicina(string pstrServiceId, string p1, string p2)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();

@@ -84,6 +84,8 @@ namespace NetPdf
                     document.Add(imagenEmpresa);
                 }
 
+
+
                 //if (filiationData.logoCliente != null)
                 //{
                 //    iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image));
@@ -1337,10 +1339,10 @@ namespace NetPdf
                 {
                     #region Examen de Orina
                     var xExamenCompletoDeOrina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_ID);
-
+                    cells = new List<PdfPCell>();
                     if (xExamenCompletoDeOrina != null)
                     {
-                        cells = new List<PdfPCell>();
+                        
                         cells.Add(new PdfPCell(new Phrase("MICROBIOLOGIA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("EXAMEN COMPLETO DE ORINA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 

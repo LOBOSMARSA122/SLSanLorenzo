@@ -413,6 +413,8 @@ namespace NetPdf
         public static Image GetImage(string imgFileName, float? scalePercent, int? alignment, int? width, int? height)
         {
             //Insertar Imagen
+            //if (imgFileName == null)
+            //    return null;
             Image gif = Image.GetInstance(imgFileName);
 
             if (alignment != null)

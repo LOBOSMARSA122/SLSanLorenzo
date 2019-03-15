@@ -18999,6 +18999,7 @@ namespace NetPdf
 
 
             document.Close();
+           
         }
 
         #endregion
