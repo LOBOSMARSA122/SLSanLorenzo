@@ -16127,10 +16127,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                  equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
                                               from dh in dh_join.DefaultIfEmpty()
 
-                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
-                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                                              from sp in sp_join.DefaultIfEmpty()
-
                                               where (A.v_ServiceId == pstrServiceId) &&
                                                     (A.i_IsDeleted == isDeleted) &&
                                                     (B.i_IsDeleted == isDeleted) &&
@@ -16138,16 +16134,29 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                               select new ServiceComponentFieldsList
                                               {
-                                                  //i_GroupId = D.i_GroupId.Value,
                                                   v_ComponentFieldsId = B.v_ComponentFieldId,
                                                   v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
                                                   v_MeasurementUnitName = dh.v_Value1,
-
-                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                                  i_GroupId = D.i_GroupId.Value,
                                                   v_ComponentId = cm.v_ComponentId,
                                               }).ToList();
 
-                int rpta = 0;
+                var rpta = 0;
+
+                var _finalQuery = (from a in serviceComponentFields
+                    let value1 = int.TryParse(a.v_Value1, out rpta)
+                    join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                        equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                    from sp in sp_join.DefaultIfEmpty()
+
+                    select new ServiceComponentFieldsList
+                    {
+                        v_ComponentFieldsId = a.v_ComponentFieldsId,
+                        v_Value1 = a.v_Value1,
+                        v_Value1Name = sp == null ? "" : sp.v_Value1,
+                        v_MeasurementUnitName = a.v_MeasurementUnitName,
+                        v_ComponentId = a.v_ComponentId,
+                    }).ToList();
 
                 #endregion
 
@@ -16181,7 +16190,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   }).ToList();
 
                 components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-                components.ForEach(a => a.ServiceComponentFields = serviceComponentFields.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
                 return components;
             }
@@ -16225,16 +16234,29 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                               select new ServiceComponentFieldsList
                                               {
-                                                  //i_GroupId = D.i_GroupId.Value,
+                                                  i_GroupId = D.i_GroupId.Value,
                                                   v_ComponentFieldsId = B.v_ComponentFieldId,
                                                   v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
                                                   v_MeasurementUnitName = dh.v_Value1,
-
-                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
                                                   v_ComponentId = cm.v_ComponentId,
                                               }).ToList();
 
-                int rpta = 0;
+                var rpta = 0;
+
+                var _finalQuery = (from a in serviceComponentFields
+                    let value1 = int.TryParse(a.v_Value1, out rpta)
+                    join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                        equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                    from sp in sp_join.DefaultIfEmpty()
+
+                    select new ServiceComponentFieldsList
+                    {
+                        v_ComponentFieldsId = a.v_ComponentFieldsId,
+                        v_Value1 = a.v_Value1,
+                        v_Value1Name = sp == null ? "" : sp.v_Value1,
+                        v_MeasurementUnitName = a.v_MeasurementUnitName,
+                        v_ComponentId = a.v_ComponentId,
+                    }).ToList();
 
                 #endregion
 
@@ -16272,7 +16294,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   }).ToList();
 
                 components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-                components.ForEach(a => a.ServiceComponentFields = serviceComponentFields.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
                 return components;
             }
@@ -16307,10 +16329,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                  equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
                                               from dh in dh_join.DefaultIfEmpty()
 
-                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b =  0 }
-                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                                              from sp in sp_join.DefaultIfEmpty()
-
                                               where (A.v_ServiceId == pstrServiceId) &&      
                                                     (A.i_IsDeleted == isDeleted) &&
                                                     (B.i_IsDeleted == isDeleted) &&
@@ -16318,17 +16336,15 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                               select new ServiceComponentFieldsList
                                               {
-                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
-                                                  v_ComponentFielName = D.v_TextLabel,//
-                                                  i_GroupId = D.i_GroupId.Value,//
-                                                  v_ComponentId = cm.v_ComponentId, //
-                                                  v_ServiceComponentId = A.v_ServiceComponentId,//
-
+                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
+                                                  v_ComponentFielName = D.v_TextLabel,
+                                                  i_GroupId = D.i_GroupId.Value,
+                                                  v_ComponentId = cm.v_ComponentId, 
+                                                  v_ServiceComponentId = A.v_ServiceComponentId,
                                                   v_ComponentFieldsId = B.v_ComponentFieldId,
-                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
-                                                  v_MeasurementUnitName = dh.v_Value1,//
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                  v_MeasurementUnitName = dh.v_Value1,
 
-                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,//
                                               }).ToList();
                 int rpta = 0;
 
@@ -16408,10 +16424,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                  equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
                                               from dh in dh_join.DefaultIfEmpty()
 
-                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
-                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                                              from sp in sp_join.DefaultIfEmpty()
-
+  
                                               where (A.v_ServiceId == pstrServiceId) &&
                                                     (A.i_IsDeleted == isDeleted) &&
                                                     (B.i_IsDeleted == isDeleted) &&
@@ -16419,17 +16432,13 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                               select new ServiceComponentFieldsList
                                               {
-                                                  //i_GroupId = D.i_GroupId.Value,
                                                   v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
                                                   v_ComponentFielName = D.v_TextLabel,
                                                   i_GroupId = D.i_GroupId.Value,
                                                   v_ServiceComponentId = A.v_ServiceComponentId,
-
                                                   v_ComponentFieldsId = B.v_ComponentFieldId,
                                                   v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
                                                   v_MeasurementUnitName = dh.v_Value1,
-
-                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
                                                   v_ComponentId = cm.v_ComponentId
                                               }).ToList();
                 int rpta = 0;

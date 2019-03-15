@@ -473,7 +473,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             dtAudiometriaUserControl_CI.TableName = "dtAudiometriaUserControl";
             dsAudiometria.Tables.Add(dtCabecera_CI);
             dsAudiometria.Tables.Add(dtAudiometriaUserControl_CI);
-            //rp = new AdministradorServicios.crFichaAudiometria();
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crFichaAudiometria();
             rp.SetDataSource(dsAudiometria);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -494,16 +494,16 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private void GenerateOftalmologia(string _path, string _serviceId)
         {
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();//
+            var filiationData = _pacientBL.GetPacientReportEPS_Oftalmo(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
+            var serviceComponents = _serviceBL.GetServiceComponentsReport_Oftalmo(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
+            var datosP = _pacientBL.DevolverDatosPaciente_Oftalmo(_serviceId);//_pacientBL.DevolverDatosPaciente(_serviceId);//
             //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
-            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var _ExamenesServicio = serviceComponents;//_serviceBL.GetServiceComponentsReport(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, serviceComponents, MedicalCenter, datosP, _path, datosGrabo, _ExamenesServicio, diagnosticRepository);
-            Session["NombreTrabajador"] = filiationData.Trabajador.Replace(" ", "_");
+            Session["NombreTrabajador"] = datosP.Trabajador.Replace(" ", "_");
             System.IO.File.Copy(_path,Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología" + ".pdf"),true);
         }
 

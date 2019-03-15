@@ -775,6 +775,23 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
            }
        }
 
+       public Sigesoft.Node.WinClient.BE.organizationDto GetInfoMedicalCenter_Logo()
+       {
+           using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+           {
+
+               var sql = (from o in dbContext.organization
+                   where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                   select new Sigesoft.Node.WinClient.BE.organizationDto
+                   {
+                       b_Image = o.b_Image,
+                   }).SingleOrDefault();
+
+
+               return sql;
+           }
+       }
+
        private string ConcatenateRestriction(string pstrDiagnosticRepositoryId)
        {
            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -1089,13 +1106,14 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
                                                  v_MeasurementUnitName = dh.v_Value1,
                                                  v_ComponentId = cm.v_ComponentId,
+                                                 i_GroupId = D.i_GroupId.Value,
                                              }).ToList();
 
-               int rpta = 0;
-
+               var rpta = 0;
                var _finalQuery = (from a in serviceComponentFields
+                                  let value1 = int.TryParse(a.v_Value1, out rpta)
                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                      equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
                                   from sp in sp_join.DefaultIfEmpty()
 
                                   select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
@@ -1106,7 +1124,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                       v_MeasurementUnitName = a.v_MeasurementUnitName,
                                       v_ComponentId = a.v_ComponentId,
                                   }).ToList();
-
 
                #endregion
 
@@ -1152,6 +1169,96 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                throw;
            }
        }
+
+       public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport_Oftalmo(string pstrServiceId)
+       {
+           //mon.IsActive = true;        
+           int isDeleted = 0;
+
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+               #region serviceComponentFields
+
+               var serviceComponentFields = (from A in dbContext.servicecomponent
+                                             join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                             join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                             join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                             join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                             join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
+
+                                             join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                             from dh in dh_join.DefaultIfEmpty()
+
+                                             where (A.v_ServiceId == pstrServiceId) &&
+                                                 //(cm.v_ComponentId == pstrComponentId) &&
+                                                   (A.i_IsDeleted == isDeleted) &&
+                                                   (B.i_IsDeleted == isDeleted) &&
+                                                   (C.i_IsDeleted == isDeleted)
+
+                                             select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
+                                             {
+
+                                                 v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                 v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                 v_MeasurementUnitName = dh.v_Value1,
+                                                 v_ComponentId = cm.v_ComponentId,
+                                                 i_GroupId = D.i_GroupId.Value,
+                                             }).ToList();
+
+
+               #endregion
+
+               var rpta = 0;
+               var _finalQuery = (from a in serviceComponentFields
+                                  let value1 = int.TryParse(a.v_Value1, out rpta)
+                                  join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                      equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                  from sp in sp_join.DefaultIfEmpty()
+
+                                  select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
+                                  {
+                                      v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                      v_Value1 = a.v_Value1,
+                                      v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                      v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                      v_ComponentId = a.v_ComponentId,
+                                  }).ToList();
+
+
+               var components = (from aaa in dbContext.servicecomponent
+                                 join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+
+                                 //*********************************************************************
+
+                                 where (aaa.v_ServiceId == pstrServiceId) &&
+                                       (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                       (aaa.i_IsDeleted == 0) &&
+                                       (aaa.i_IsRequiredId == (int?)SiNo.SI)
+
+                                 select new
+                                 {
+                                     v_ComponentId = bbb.v_ComponentId,
+
+                                 }).AsEnumerable().Select(p => new Sigesoft.Node.WinClient.BE.ServiceComponentList
+                                 {
+                                     v_ComponentId = p.v_ComponentId,
+                                 }).ToList();
+
+
+               components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+               components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+               return components;
+           }
+           catch (Exception)
+           {
+               throw;
+           }
+       }
+
 
        public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport(string pstrServiceId)
        {
@@ -1788,6 +1895,183 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
            }
        }
 
+       public Sigesoft.Node.WinClient.BE.ServiceList GetServiceReport_Anexo16GoldField(string pstrServiceId)
+       {
+           //mon.IsActive = true;
+
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+               var objEntity = (from A in dbContext.service
+                                join cal in dbContext.calendar on A.v_ServiceId equals  cal.v_ServiceId into cal_join
+                                from cal in cal_join.DefaultIfEmpty()
+
+                                join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                from B in B_join.DefaultIfEmpty()
+
+                                join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                from C in C_join.DefaultIfEmpty()
+
+                                join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                from C2 in C2_join.DefaultIfEmpty()
+
+                                join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                from H in H_join.DefaultIfEmpty()
+
+                                join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                from C1 in C1_join.DefaultIfEmpty()
+
+                                join su in dbContext.systemuser on A.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
+                                from su in su_join.DefaultIfEmpty()
+
+                                join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
+                                from pr in pr_join.DefaultIfEmpty()
+
+                                join P1 in dbContext.person on new { a = pr.v_PersonId }
+                                        equals new { a = P1.v_PersonId } into P1_join
+                                from P1 in P1_join.DefaultIfEmpty()
+
+                                where A.v_ServiceId == pstrServiceId
+
+
+                                select new Sigesoft.Node.WinClient.BE.ServiceList
+                                {
+                                    //-----------------CABECERA---------------------------------
+                                    i_EsoTypeId = B.i_EsoTypeId.Value, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                                    i_ServiceTypeId = cal.i_ServiceTypeId.Value,
+                                    v_ServiceId = A.v_ServiceId,
+                                    d_ServiceDate = A.d_ServiceDate,
+
+                                    //---------------DATOS DE LA EMPRESA--------------------------------
+                                    EmpresaClienteId = C.v_OrganizationId,
+                                    EmpresaEmpleadora = C1.v_Name,
+                                    EmpresaTrabajo = C.v_Name,
+                                    v_CurrentOccupation = H.v_CurrentOccupation,
+
+                                    //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                                    FirmaTrabajador = H.b_RubricImage,
+                                    HuellaTrabajador = H.b_FingerPrintImage,
+                                    v_DocNumber = H.v_DocNumber,
+                                    v_Pacient = H.v_FirstLastName + " " + H.v_SecondLastName + " " + H.v_FirstName,
+                                    i_PlaceWorkId = H.i_PlaceWorkId.Value,
+                                    i_AltitudeWorkId = H.i_AltitudeWorkId.Value,
+                                    v_ExploitedMineral = H.v_ExploitedMineral,
+                                    v_BirthPlace = H.v_BirthPlace,
+                                    d_BirthDate = H.d_Birthdate,
+                                    v_AdressLocation = H.v_AdressLocation,
+                                    i_SexTypeId = H.i_SexTypeId,
+                                    i_MaritalStatusId = H.i_MaritalStatusId.Value,
+                                    i_LevelOfId = H.i_LevelOfId.Value,
+                                    Telefono = H.v_TelephoneNumber,
+                                    HijosVivos = H.i_NumberLivingChildren,
+                                    HijosDependientes = H.i_NumberDependentChildren,                                    
+
+                                    //Datos del Doctor
+                                    NombreDoctor = P1.v_FirstName + " " + P1.v_FirstLastName + " " + P1.v_SecondLastName,
+                                    CMP = pr.v_ProfessionalCode,
+
+                                    // Antecedentes ginecologicos
+                                    v_CustomerOrganizationName = C2.v_Name,
+
+                                });
+
+
+               var sql = (from a in objEntity.ToList()
+                          let DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID)
+
+                          select new Sigesoft.Node.WinClient.BE.ServiceList
+                          {
+                              //-----------------CABECERA---------------------------------
+                              v_ServiceId = a.v_ServiceId,
+                              d_ServiceDate = a.d_ServiceDate,
+                              i_DiaV = a.d_ServiceDate.Value.Day,
+                              i_MesV = a.d_ServiceDate.Value.Month,
+                              i_AnioV = a.d_ServiceDate.Value.Year,
+                              i_EsoTypeId = a.i_EsoTypeId, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                              RUC = a.RUC,
+                              //---------------DATOS DE LA EMPRESA--------------------------------
+
+
+                              EmpresaTrabajo = a.EmpresaTrabajo,
+                              EmpresaEmpleadora = a.EmpresaEmpleadora,
+                              RubroEmpresaTrabajo = a.RubroEmpresaTrabajo,
+                              DireccionEmpresaTrabajo = a.DireccionEmpresaTrabajo,
+                              DepartamentoEmpresaTrabajo = a.DepartamentoEmpresaTrabajo,
+                              ProvinciaEmpresaTrabajo = a.ProvinciaEmpresaTrabajo,
+                              DistritoEmpresaTrabajo = a.DistritoEmpresaTrabajo,
+                              v_CurrentOccupation = a.v_CurrentOccupation,
+                              //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                              i_DocTypeId = a.i_DocTypeId,
+                              v_Pacient = a.v_Pacient,
+                              d_BirthDate = a.d_BirthDate,
+                              i_DiaN = a.i_DiaN,
+                              i_MesN = a.i_MesN,
+                              i_AnioN = a.i_AnioN,
+                              i_Edad = GetAge(a.d_BirthDate.Value),
+                              //i_Edad =30,
+                              v_DocNumber = a.v_DocNumber,
+                              v_AdressLocation = a.v_AdressLocation,
+                              DepartamentoPaciente = a.DepartamentoPaciente,
+                              ProvinciaPaciente = a.ProvinciaPaciente,
+                              DistritoPaciente = a.DistritoPaciente,
+                              i_ResidenceInWorkplaceId = a.i_ResidenceInWorkplaceId,
+                              v_ResidenceTimeInWorkplace = a.v_ResidenceTimeInWorkplace,
+                              i_TypeOfInsuranceId = a.i_TypeOfInsuranceId,
+                              Email = a.Email,
+                              Telefono = a.Telefono,
+                              EstadoCivil = a.EstadoCivil,
+                              GradoInstruccion = a.GradoInstruccion,
+                              v_Story = a.v_Story,
+                              i_AptitudeStatusId = a.i_AptitudeStatusId,
+                              v_OwnerOrganizationName = (from n in dbContext.organization
+                                                         where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                                                         select n.v_Name + " " + n.v_Address).SingleOrDefault<string>(),
+
+                              HijosVivos = a.HijosVivos,
+                              HijosMuertos = a.HijosMuertos,
+                              HijosDependientes = a.HijosDependientes,
+                              v_BirthPlace = a.v_BirthPlace,
+                              i_PlaceWorkId = a.i_PlaceWorkId,
+                              v_ExploitedMineral = a.v_ExploitedMineral,
+                              i_AltitudeWorkId = a.i_AltitudeWorkId,
+                              v_EmergencyPhone = a.v_EmergencyPhone,
+                              i_SexTypeId = a.i_SexTypeId,
+                              i_MaritalStatusId = a.i_MaritalStatusId,
+                              i_LevelOfId = a.i_LevelOfId,
+
+                              FirmaTrabajador = a.FirmaTrabajador,
+                              HuellaTrabajador = a.HuellaTrabajador,
+
+                              //Datos del Doctor
+                              FirmaDoctor = a.FirmaDoctor,
+                              NombreDoctor = DatosMedicina.Value2,
+                              CMP = DatosMedicina.Value3,
+
+                              d_Fur = a.d_Fur,
+                              v_CatemenialRegime = a.v_CatemenialRegime,
+                              i_MacId = a.i_MacId,
+                              v_Mac = a.v_Mac,
+
+                              //// Antecedentes ginecologicos
+                              d_PAP = a.d_PAP,
+                              d_Mamografia = a.d_Mamografia,
+                              v_CiruGine = a.v_CiruGine,
+                              v_Gestapara = a.v_Gestapara,
+                              v_Menarquia = a.v_Menarquia,
+                              v_Findings = a.v_Findings,
+                              FirmaMedicoMedicina = DatosMedicina.Value5,
+                              v_CustomerOrganizationName = a.v_CustomerOrganizationName,
+                              i_NroHermanos = a.i_NroHermanos
+                          }).FirstOrDefault();
+
+               return sql;
+           }
+           catch (Exception ex)
+           {
+               return null;
+           }
+       }
 
        private KeyValueDTO ObtenerFirmaMedicoExamen(string pstrServiceId, string p1, string p2)
        {
@@ -18559,7 +18843,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                     join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
                                     join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
                                     join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
-                                    join dise in dbContext.diseases on cfsv.v_Diseases equals dise.v_DiseasesId
+                                    join dise in dbContext.diseases on cfsv.v_DiseasesId equals dise.v_DiseasesId
                                     where (cfsv.i_IsDeleted == isDeleted) &&
                                           (s.v_ServiceId == pstrServiceId) &&
                                           (sc.i_IsDeleted == isDeleted) &&
