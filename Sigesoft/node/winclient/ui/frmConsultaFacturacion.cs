@@ -735,7 +735,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                         var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
                         var ValoresDxLab = _serviceBL.ValoresComponenteAMC_(_serviceId, 1);
-                        var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+                        var serviceComponents = _serviceBL.GetServiceComponentsReport_New(_serviceId);
 
                         FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                                   filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,

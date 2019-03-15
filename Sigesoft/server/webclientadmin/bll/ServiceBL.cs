@@ -7981,7 +7981,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                         objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
                         objEntity.i_IsDeleted = 0;
 
-                        // Autogeneramos el Pk de la tabla               
+                        // Autogeneramos el Pk de la tabla      
+                        Ini_Secuential_serviceComponentfields = Utils.GetNextSecuentialIdMejorado(intNodeId, 35, pobjServicecomponentfields.Count);
                         NewId = Common.Utils.GetNewId(intNodeId, Ini_Secuential_serviceComponentfields++, "CF");
                         objEntity.v_ServiceComponentFieldsId = NewId;
 
@@ -8016,7 +8017,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                             objEntity1.i_InsertUserId = Int32.Parse(ClientSession[2]);
                             objEntity1.i_IsDeleted = 0;
 
-                            // Autogeneramos el Pk de la tabla               
+                            // Autogeneramos el Pk de la tabla    
+                            Ini_Secuential_servicecomponentfieldvalues = Utils.GetNextSecuentialIdMejorado(intNodeId, 36, pobjServicecomponentfields.Count);
                             var NewId1 = Common.Utils.GetNewId(intNodeId, Ini_Secuential_servicecomponentfieldvalues++, "CV");
                             objEntity1.v_ServiceComponentFieldValuesId = NewId1;
                             objEntity1.v_ServiceComponentFieldsId = NewId;
@@ -8036,7 +8038,10 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                         //q.v_ServiceComponentId = cf.v_ServiceComponentId;
                         q.d_UpdateDate = DateTime.Now;
                         q.i_UpdateUserId = Int32.Parse(ClientSession[2]);
-
+                        if (q.v_ServiceComponentFieldsId == "N009-CF000000000")
+                        {
+                            var entro = true;
+                        }
                         // Guardar los cambios
                         //dbContext.SaveChanges();
 
@@ -8065,7 +8070,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                             //          select a).FirstOrDefault();
 
                             var q1 = ListaServiceComponentfieldsValues.Find(p => p.v_ServiceComponentFieldsId == q.v_ServiceComponentFieldsId);
-
+                            
                             // problema k pasaba con examen fisico se grababa el campo pero no el valor si el valor no esta grabado
                             // se graba a la prepo
                             if (q1 == null)
@@ -18571,7 +18576,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                         i_IsAnormal = cfsv.i_IsAnormal,
                                         i_ValidationMonths = cfsv.i_ValidationMonths,
                                         v_DiseasesName = cfsv.diseases.v_Name,
-                                        v_DiseasesId = cfsv.v_Diseases,
+                                        v_DiseasesId = cfsv.v_DiseasesId,
                                         v_ComponentId = sc.v_ComponentId,
                                         i_GenderId = cfsv.i_GenderId,
                                         v_CIE10 = dise.v_CIE10Id
