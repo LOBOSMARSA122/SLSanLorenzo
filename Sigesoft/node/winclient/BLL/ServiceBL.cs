@@ -34389,7 +34389,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         }
                     }
                     lector.Close();
-                    cadena1 = "select RC.d_SaldoAseguradora from receta RC inner join diagnosticrepository DR on RC.v_DiagnosticRepositoryId = DR.v_DiagnosticRepositoryId inner join service SC on SC.v_ServiceId = DR.v_ServiceId where SC.v_ServiceId='"+serviceId+"'";
+                    cadena1 = "select RC.d_SaldoAseguradora from receta RC inner join service SC on SC.v_ServiceId = RC.v_ServiceId where SC.v_ServiceId='" + serviceId + "'";
                     comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                     lector = comando.ExecuteReader();
 
