@@ -1138,7 +1138,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var noxiousHabit = _historyBL.GetNoxiousHabitsReport(_pacientId);
             var familyMedicalAntecedent = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var anamnesis = _serviceBL.GetAnamnesisReport(_serviceId);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport_NewLab(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();//
@@ -5458,7 +5458,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 case Constants.INFORME_FICHA_MEDICA_TRABAJADOR:
                     var DatosServicio = _serviceBL.GetServiceShort(_serviceId);
                     var ruta1 = Common.Utils.GetApplicationConfigValue("InformeTrab1").ToString();
-                    GenerateInformeMedicoTrabajador(string.Format("{0}.pdf", Path.Combine(ruta1, DatosServicio.Empresa + "-" + DatosServicio.Paciente + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR + "-" + DatosServicio.FechaServicio.Value.ToString("dd MMMM,  yyyy"))));
+                    //GenerateInformeMedicoTrabajador(string.Format("{0}.pdf", Path.Combine(ruta1, DatosServicio.Empresa + "-" + DatosServicio.Paciente + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR + "-" + DatosServicio.FechaServicio.Value.ToString("dd MMMM,  yyyy"))));
                     //_filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta1, DatosServicio.Empresa + "-" + DatosServicio.Paciente + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR + "-" + DatosServicio.FechaServicio.Value.ToString("dd MMMM,  yyyy"))));
 
                     GenerateInformeMedicoTrabajador(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR)));
@@ -5467,7 +5467,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 case Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2:
                     var DatosServicio1 = _serviceBL.GetServiceShort(_serviceId);
                     var ruta2 = Common.Utils.GetApplicationConfigValue("InformeTrab2").ToString();
-                    CreateFichaMedicaTrabajador2(string.Format("{0}.pdf", Path.Combine(ruta2, DatosServicio1.Empresa + "-" + DatosServicio1.Paciente + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2 + "-" + DatosServicio1.FechaServicio.Value.ToString("dd MMMM,  yyyy"))));
+                    //CreateFichaMedicaTrabajador2(string.Format("{0}.pdf", Path.Combine(ruta2, DatosServicio1.Empresa + "-" + DatosServicio1.Paciente + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2 + "-" + DatosServicio1.FechaServicio.Value.ToString("dd MMMM,  yyyy"))));
                     //_filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta2, DatosServicio1.Empresa + "-" + DatosServicio1.Paciente + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR + "-" + DatosServicio1.FechaServicio.Value.ToString("dd MMMM,  yyyy"))));
 
                     CreateFichaMedicaTrabajador2(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2)));
@@ -5737,14 +5737,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateCertificado_Suficiencia_Medica_Trabajo_Altura_V4(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERT_SUF_MED_ALTURA_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-                //case Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID:
-                //    GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)));
-                //    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
-                //    break;
-                //case Constants.INFORME_PSICOLOGICO_RESUMEN_ID:
-                //    GenerateInforme_Psicologico_Resumen(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_PSICOLOGICO_RESUMEN_ID)));
-                //    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
-                //    break;
+                case Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID:
+                    GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.INFORME_PSICOLOGICO_RESUMEN_ID:
+                    GenerateInforme_Psicologico_Resumen(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_PSICOLOGICO_RESUMEN_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
                 case Constants.SUF_MED_BRIGADISTAS_ID:
                     GenerateCertificado_Suficiencia_Medica_Brigadistas(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.SUF_MED_BRIGADISTAS_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));

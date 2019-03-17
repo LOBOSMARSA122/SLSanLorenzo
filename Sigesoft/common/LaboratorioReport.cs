@@ -106,7 +106,7 @@ namespace NetPdf
                 table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
                 document.Add(table);
                 #endregion
-                float tamaño_caldas = 13f;
+                float tamaño_caldas = 15f;
                 #region Datos personales del trabajador
 
                 cells = new List<PdfPCell>()
