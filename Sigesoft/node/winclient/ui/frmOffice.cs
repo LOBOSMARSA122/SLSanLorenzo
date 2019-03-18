@@ -344,7 +344,8 @@ namespace Sigesoft.Node.WinClient.UI
                 if (_TserviceId == (int)MasterService.AtxMedicaParticular || _TserviceId == (int)MasterService.AtxMedicaSeguros)
                 {
                     #region ESO V1
-                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    frm = new Operations.frmEso(_serviceId, null, null, _TserviceId);
+                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
                     frm.ShowDialog();
                     #endregion
                     #region ESO V2 (Asíncrono)

@@ -32964,8 +32964,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 2
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
-                                    //&& A.i_ServiceStatusId == 3
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
@@ -33111,8 +33111,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 1
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
-                                    //&& A.i_ServiceStatusId == 3
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                     select new Liquidacion
                                     {
                                         v_ServiceId = A.v_ServiceId,
@@ -33256,8 +33256,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != ""
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
-                                    //&& A.i_ServiceStatusId == 3
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                     select new Liquidacion
                                     {
                                         v_ServiceId = A.v_ServiceId,
@@ -33405,8 +33405,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 //&& A1.i_CalendarStatusId != 4
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "") && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
-                                //&& A.i_ServiceStatusId == 3  
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "") && A.i_MasterServiceId != 12
+                                //&& A.i_ServiceStatusId == 3  && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
@@ -33548,7 +33548,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 from H in J5_join.DefaultIfEmpty()
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 10
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && A.i_MasterServiceId != 12
+                                // && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
                                     v_ServiceId = A.v_ServiceId,
