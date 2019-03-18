@@ -122,7 +122,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var TestIhihara = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ISHIHARA_ID);
             var TestEstereopsis = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ESTEREOPSIS_ID);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport_New312(ServicioId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(ServicioId);
 
 
             FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,

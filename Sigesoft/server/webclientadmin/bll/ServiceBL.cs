@@ -1126,12 +1126,12 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                //                   }).ToList();
 
                var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                   select new ServiceComponentFieldsList
+                   select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
                    {
                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
                        v_ComponentFieldsId = a.v_ComponentFieldsId,
                        v_ComponentFielName = a.v_ComponentFielName,
-                       i_GroupIdd = a.i_GroupIdd,
+                       i_GroupIdd = a.i_GroupId,
                        v_Value1 = a.v_Value1,
                        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
                        v_MeasurementUnitName = a.v_MeasurementUnitName,
@@ -1242,12 +1242,12 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                //                   }).ToList();
 
                var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                   select new ServiceComponentFieldsList
+                   select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
                    {
                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
                        v_ComponentFieldsId = a.v_ComponentFieldsId,
                        v_ComponentFielName = a.v_ComponentFielName,
-                       i_GroupIdd = a.i_GroupIdd,
+                       i_GroupIdd = a.i_GroupId,
                        v_Value1 = a.v_Value1,
                        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
                        v_MeasurementUnitName = a.v_MeasurementUnitName,
@@ -1287,7 +1287,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
            }
        }
 
-       public List<ServiceComponentList> GetServiceComponentsReport_New312(string pstrServiceId)
+       public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport(string pstrServiceId)
        {
            //mon.IsActive = true;        
            int isDeleted = 0;
@@ -1296,7 +1296,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
            {
                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-               #region serviceComponentFields
+               //#region serviceComponentFields
 
                var serviceComponentFields = (from A in dbContext.servicecomponent
                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
@@ -1309,27 +1309,22 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
                                              from dh in dh_join.DefaultIfEmpty()
 
-                                             join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
-                                                 equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                                             from sp in sp_join.DefaultIfEmpty()
-
                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                 //(cm.v_ComponentId == pstrComponentId) &&
                                                    (A.i_IsDeleted == isDeleted) &&
                                                    (B.i_IsDeleted == isDeleted) &&
                                                    (C.i_IsDeleted == isDeleted)
 
-                                             select new ServiceComponentFieldsList
+                                             select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
                                              {
-                                                 v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
-                                                 v_ComponentFielName = D.v_TextLabel,//
-                                                 i_GroupId = D.i_GroupId.Value,//
-                                                 v_ComponentId = cm.v_ComponentId, //
-                                                 v_ServiceComponentId = A.v_ServiceComponentId,//
-
+                                                 v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
-                                                 v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
-                                                 v_MeasurementUnitName = dh.v_Value1,//
-                                                 v_Value1Name = sp == null ? "" : sp.v_Value1,//
+                                                 v_ComponentFielName = D.v_TextLabel,
+                                                 v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                 i_GroupId = D.i_GroupId.Value,
+                                                 v_MeasurementUnitName = dh.v_Value1,
+                                                 v_ComponentId = cm.v_ComponentId,
+                                                 v_ServiceComponentId = A.v_ServiceComponentId
                                              }).ToList();
 
                int rpta = 0;
@@ -1337,10 +1332,10 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                var _finalQuery = (from a in serviceComponentFields
                                   let value1 = int.TryParse(a.v_Value1, out rpta)
                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-                                      equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
                                   from sp in sp_join.DefaultIfEmpty()
 
-                                  select new ServiceComponentFieldsList
+                                  select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
                                   {
                                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
                                       v_ComponentFieldsId = a.v_ComponentFieldsId,
@@ -1353,13 +1348,16 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
                                       v_ServiceComponentId = a.v_ServiceComponentId
                                   }).ToList();
+
+
+               //#endregion
                //var query = (from a in dbContext.obtenervalores(pstrServiceId)
-               //             select new ServiceComponentFieldsList
+               //             select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
                //             {
                //                 v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
                //                 v_ComponentFieldsId = a.v_ComponentFieldsId,
                //                 v_ComponentFielName = a.v_ComponentFielName,
-               //                 i_GroupId = a.i_GroupId,
+               //                 i_GroupIdd = a.i_GroupId,
                //                 v_Value1 = a.v_Value1,
                //                 v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
                //                 v_MeasurementUnitName = a.v_MeasurementUnitName,
@@ -1367,129 +1365,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                //                 v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
                //                 v_ServiceComponentId = a.v_ServiceComponentId
                //             }).ToList();
-               #endregion
-
-               var components = (from aaa in dbContext.servicecomponent
-                                 join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
-
-                                 //*********************************************************************
-
-                                 where (aaa.v_ServiceId == pstrServiceId) &&
-                                       (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
-                                       (aaa.i_IsDeleted == 0) &&
-                                       (aaa.i_IsRequiredId == (int?)SiNo.SI)
-
-                                 select new
-                                 {
-                                     i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId,
-                                     i_CategoryId = bbb.i_CategoryId.Value,
-                                     v_ComponentId = bbb.v_ComponentId,
-                                     v_ComponentName = bbb.v_Name,
-                                     DiagnosticRepository = (from dr in aaa.service.diagnosticrepository
-                                                             where (dr.v_ServiceId == pstrServiceId) &&
-                                                                   (dr.v_ComponentId == aaa.v_ComponentId && dr.i_IsDeleted == 0)
-                                                             select new DiagnosticRepositoryList
-                                                             {
-                                                                 v_DiseasesId = dr.diseases.v_DiseasesId,
-                                                                 v_DiseasesName = dr.diseases.v_Name
-                                                             }),
-                                 }).AsEnumerable().Select(p => new ServiceComponentList
-                                 {
-                                     i_ServiceComponentStatusId = p.i_ServiceComponentStatusId,
-                                     i_CategoryId = p.i_CategoryId,
-                                     v_ComponentId = p.v_ComponentId,
-                                     v_ComponentName = p.v_ComponentName,
-                                     DiagnosticRepository = p.DiagnosticRepository.ToList(),
-                                 }).ToList();
-
-               components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-               components.ForEach(a => a.ServiceComponentFields = query.FindAll(p => p.v_ComponentId == a.v_ComponentId));
-
-               return components;
-           }
-           catch (Exception)
-           {
-               throw;
-           }
-       }
-       public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport(string pstrServiceId)
-       {
-           //mon.IsActive = true;        
-           int isDeleted = 0;
-
-           try
-           {
-               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-
-               //#region serviceComponentFields
-
-               //var serviceComponentFields = (from A in dbContext.servicecomponent
-               //                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
-               //                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
-               //                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
-               //                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
-               //                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
-
-               //                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
-               //                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
-               //                              from dh in dh_join.DefaultIfEmpty()
-
-               //                              where (A.v_ServiceId == pstrServiceId) &&
-               //                                  //(cm.v_ComponentId == pstrComponentId) &&
-               //                                    (A.i_IsDeleted == isDeleted) &&
-               //                                    (B.i_IsDeleted == isDeleted) &&
-               //                                    (C.i_IsDeleted == isDeleted)
-
-               //                              select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
-               //                              {
-               //                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
-               //                                  v_ComponentFieldsId = B.v_ComponentFieldId,
-               //                                  v_ComponentFielName = D.v_TextLabel,
-               //                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
-               //                                  i_GroupId = D.i_GroupId.Value,
-               //                                  v_MeasurementUnitName = dh.v_Value1,
-               //                                  v_ComponentId = cm.v_ComponentId,
-               //                                  v_ServiceComponentId = A.v_ServiceComponentId
-               //                              }).ToList();
-
-               //int rpta = 0;
-
-               //var _finalQuery = (from a in serviceComponentFields
-               //                   let value1 = int.TryParse(a.v_Value1, out rpta)
-               //                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-               //                                   equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-               //                   from sp in sp_join.DefaultIfEmpty()
-
-               //                   select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
-               //                   {
-               //                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-               //                       v_ComponentFieldsId = a.v_ComponentFieldsId,
-               //                       v_ComponentFielName = a.v_ComponentFielName,
-               //                       i_GroupId = a.i_GroupId,
-               //                       v_Value1 = a.v_Value1,
-               //                       v_Value1Name = sp == null ? "" : sp.v_Value1,
-               //                       v_MeasurementUnitName = a.v_MeasurementUnitName,
-               //                       v_ComponentId = a.v_ComponentId,
-               //                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-               //                       v_ServiceComponentId = a.v_ServiceComponentId
-               //                   }).ToList();
-
-
-               //#endregion
-               var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                   select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
-                   {
-                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                       v_ComponentFieldsId = a.v_ComponentFieldsId,
-                       v_ComponentFielName = a.v_ComponentFielName,
-                       i_GroupId = a.i_GroupId,
-                       v_Value1 = a.v_Value1,
-                       v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
-                       v_MeasurementUnitName = a.v_MeasurementUnitName,
-                       v_ComponentId = a.v_ComponentId,
-                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                       v_ServiceComponentId = a.v_ServiceComponentId
-                   }).ToList();
                var components = (from aaa in dbContext.servicecomponent
                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
                                  join J1 in dbContext.systemuser on new { i_InsertUserId = aaa.i_InsertUserId.Value }
@@ -1520,7 +1395,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                  //orderby bbb.i_CategoryId, bbb.v_Name
 
-                                 select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
+                                 select new
                                  {
                                      v_ComponentId = bbb.v_ComponentId,
                                      v_ComponentName = bbb.v_Name,
@@ -1562,7 +1437,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                //var _ff_ = _finalQuery.FindAll(p => p.v_ComponentId == Constants.COLESTEROL_ID);
 
                components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-               components.ForEach(a => a.ServiceComponentFields = query.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+               components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
                return components;
            }
