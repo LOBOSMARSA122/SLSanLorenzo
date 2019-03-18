@@ -16380,12 +16380,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                                                  equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
                                               from dh in dh_join.DefaultIfEmpty()
 
-                //                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
+
+                                              where (A.v_ServiceId == pstrServiceId) &&
                                                     (A.i_IsDeleted == isDeleted) &&
                                                     (B.i_IsDeleted == isDeleted) &&
-
-                                                    (C.i_IsDeleted == isDeleted)
-                //                              where (A.v_ServiceId == pstrServiceId) &&      
+                                                    (C.i_IsDeleted == isDeleted) 
                                               select new ServiceComponentFieldsList
                                               {
                                                   v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
