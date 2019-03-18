@@ -1701,8 +1701,16 @@ namespace NetPdf
                     if (serviceComponent.ServiceComponentFields.Count > 0)
                     {
                         //var concat = string.Join(", ", query.Select(p => p.v_DiseasesName));
-                        var conclusion = string.Join(", ", serviceComponent.DiagnosticRepository.Select(p => p.v_DiseasesName));
-                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion) ? "NO SE HAN REGISTRADO DATOS." : conclusion, fontColumnValue)));
+                        //var conclusion = string.Join(", ", serviceComponent.DiagnosticRepository.Select(p => p.v_DiseasesName));
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion) ? "NO SE HAN REGISTRADO DATOS." : conclusion, fontColumnValue)));
+
+                        var audio = serviceComponent.DiagnosticRepository;  //     .Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTOGRAMA_CONCLUSIONES_DESCRIPCION_ID);
+
+                        var join = string.Join(", ", audio.Select(p => p.v_DiseasesName));
+
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "NO SE HAN REGISTRADO DATOS." : join, fontColumnValue)));
+
+
                     }
                     else
                     {
