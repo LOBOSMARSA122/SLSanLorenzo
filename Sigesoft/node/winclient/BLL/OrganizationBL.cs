@@ -336,10 +336,10 @@ namespace Sigesoft.Node.WinClient.BLL
                }
 
                var objEntitySource = (from a in dbContext.nodeorganizationlocationprofile
-                                      join c in dbContext.nodeorganizationlocationprofile on a.i_NodeId equals c.i_NodeId
+                                      join c in dbContext.nodeorganizationlocationwarehouseprofile on a.i_NodeId equals c.i_NodeId
                                       where a.i_NodeId == pobjNodeOrgLocationWarehouse.i_NodeId &&
-                                      a.v_OrganizationId == pobjNodeOrgLocationWarehouse.v_OrganizationId &&
-                                      c.v_LocationId == pobjNodeOrgLocationWarehouse.v_LocationId
+                                            a.v_OrganizationId == pobjNodeOrgLocationWarehouse.v_OrganizationId &&
+                                            c.v_LocationId == pobjNodeOrgLocationWarehouse.v_LocationId
                                       select a).FirstOrDefault();
 
                if (objEntitySource != null)
@@ -556,7 +556,7 @@ namespace Sigesoft.Node.WinClient.BLL
            }
        }
 
-       private void AddWarehouse(ref OperationResult pobjOperationResult, List<nodeorganizationlocationwarehouseprofileDto> pobjWarehouseList, List<string> ClientSession)
+       public void AddWarehouse(ref OperationResult pobjOperationResult, List<nodeorganizationlocationwarehouseprofileDto> pobjWarehouseList, List<string> ClientSession)
        {
            try
            {
@@ -610,7 +610,7 @@ namespace Sigesoft.Node.WinClient.BLL
                return;
            }
        }
-       
+
        public List<OrdenReportes> GetAllOrdenReporteNuevo(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression)
        {
            try
