@@ -1259,6 +1259,92 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
            }
        }
 
+       public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport_Anexo16GoldField(string pstrServiceId)
+       {
+           //mon.IsActive = true;        
+           int isDeleted = 0;
+
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+               #region serviceComponentFields
+
+               var serviceComponentFields = (from A in dbContext.servicecomponent
+                                             join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                             join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                             join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                             join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                             join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
+
+                                             join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                             from dh in dh_join.DefaultIfEmpty()
+
+                                             where (A.v_ServiceId == pstrServiceId) &&
+                                                 //(cm.v_ComponentId == pstrComponentId) &&
+                                                   (A.i_IsDeleted == isDeleted) &&
+                                                   (B.i_IsDeleted == isDeleted) &&
+                                                   (C.i_IsDeleted == isDeleted)
+
+                                             select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
+                                             {
+                                                 v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                 v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
+                                                 i_GroupId = D.i_GroupId.Value,
+                                                 v_MeasurementUnitName = dh.v_Value1,
+                                                 v_ComponentId = cm.v_ComponentId,
+                                             }).ToList();
+
+               int rpta = 0;
+
+               var _finalQuery = (from a in serviceComponentFields
+                                  let value1 = int.TryParse(a.v_Value1, out rpta)
+                                  join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                  from sp in sp_join.DefaultIfEmpty()
+
+                                  select new Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList
+                                  {
+                                      v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                      v_Value1 = a.v_Value1,
+                                      v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                      v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                      v_ComponentId = a.v_ComponentId,
+                                  }).ToList();
+
+
+               #endregion
+
+               var components = (from aaa in dbContext.servicecomponent
+                                 join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+                                 
+                                 //*********************************************************************
+
+                                 where (aaa.v_ServiceId == pstrServiceId) &&
+                                       (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                       (aaa.i_IsDeleted == 0) &&
+                                       (aaa.i_IsRequiredId == (int?)SiNo.SI)
+
+                                 select new
+                                 {
+                                     v_ComponentId = bbb.v_ComponentId,
+                                 }).AsEnumerable().Select(p => new Sigesoft.Node.WinClient.BE.ServiceComponentList
+                                 {
+                                     v_ComponentId = p.v_ComponentId,
+                                 }).ToList();
+
+               components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+               components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+               return components;
+           }
+           catch (Exception)
+           {
+               throw;
+           }
+       }
+
 
        public List<Sigesoft.Node.WinClient.BE.ServiceComponentList> GetServiceComponentsReport(string pstrServiceId)
        {
@@ -1974,98 +2060,16 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                     // Antecedentes ginecologicos
                                     v_CustomerOrganizationName = C2.v_Name,
 
-                                });
+                                }).ToList();
 
+               var DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID,
+                   Constants.EXAMEN_FISICO_7C_ID);
+               objEntity[0].i_Edad = GetAge(objEntity[0].d_BirthDate.Value);
+               objEntity[0].FirmaMedicoMedicina = DatosMedicina.Value5;
+               objEntity[0].NombreDoctor = DatosMedicina.Value2;
+               objEntity[0].CMP = DatosMedicina.Value3;
 
-               var sql = (from a in objEntity.ToList()
-                          let DatosMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID)
-
-                          select new Sigesoft.Node.WinClient.BE.ServiceList
-                          {
-                              //-----------------CABECERA---------------------------------
-                              v_ServiceId = a.v_ServiceId,
-                              d_ServiceDate = a.d_ServiceDate,
-                              i_DiaV = a.d_ServiceDate.Value.Day,
-                              i_MesV = a.d_ServiceDate.Value.Month,
-                              i_AnioV = a.d_ServiceDate.Value.Year,
-                              i_EsoTypeId = a.i_EsoTypeId, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
-                              RUC = a.RUC,
-                              //---------------DATOS DE LA EMPRESA--------------------------------
-
-
-                              EmpresaTrabajo = a.EmpresaTrabajo,
-                              EmpresaEmpleadora = a.EmpresaEmpleadora,
-                              RubroEmpresaTrabajo = a.RubroEmpresaTrabajo,
-                              DireccionEmpresaTrabajo = a.DireccionEmpresaTrabajo,
-                              DepartamentoEmpresaTrabajo = a.DepartamentoEmpresaTrabajo,
-                              ProvinciaEmpresaTrabajo = a.ProvinciaEmpresaTrabajo,
-                              DistritoEmpresaTrabajo = a.DistritoEmpresaTrabajo,
-                              v_CurrentOccupation = a.v_CurrentOccupation,
-                              //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
-                              i_DocTypeId = a.i_DocTypeId,
-                              v_Pacient = a.v_Pacient,
-                              d_BirthDate = a.d_BirthDate,
-                              i_DiaN = a.i_DiaN,
-                              i_MesN = a.i_MesN,
-                              i_AnioN = a.i_AnioN,
-                              i_Edad = GetAge(a.d_BirthDate.Value),
-                              //i_Edad =30,
-                              v_DocNumber = a.v_DocNumber,
-                              v_AdressLocation = a.v_AdressLocation,
-                              DepartamentoPaciente = a.DepartamentoPaciente,
-                              ProvinciaPaciente = a.ProvinciaPaciente,
-                              DistritoPaciente = a.DistritoPaciente,
-                              i_ResidenceInWorkplaceId = a.i_ResidenceInWorkplaceId,
-                              v_ResidenceTimeInWorkplace = a.v_ResidenceTimeInWorkplace,
-                              i_TypeOfInsuranceId = a.i_TypeOfInsuranceId,
-                              Email = a.Email,
-                              Telefono = a.Telefono,
-                              EstadoCivil = a.EstadoCivil,
-                              GradoInstruccion = a.GradoInstruccion,
-                              v_Story = a.v_Story,
-                              i_AptitudeStatusId = a.i_AptitudeStatusId,
-                              v_OwnerOrganizationName = (from n in dbContext.organization
-                                                         where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
-                                                         select n.v_Name + " " + n.v_Address).SingleOrDefault<string>(),
-
-                              HijosVivos = a.HijosVivos,
-                              HijosMuertos = a.HijosMuertos,
-                              HijosDependientes = a.HijosDependientes,
-                              v_BirthPlace = a.v_BirthPlace,
-                              i_PlaceWorkId = a.i_PlaceWorkId,
-                              v_ExploitedMineral = a.v_ExploitedMineral,
-                              i_AltitudeWorkId = a.i_AltitudeWorkId,
-                              v_EmergencyPhone = a.v_EmergencyPhone,
-                              i_SexTypeId = a.i_SexTypeId,
-                              i_MaritalStatusId = a.i_MaritalStatusId,
-                              i_LevelOfId = a.i_LevelOfId,
-
-                              FirmaTrabajador = a.FirmaTrabajador,
-                              HuellaTrabajador = a.HuellaTrabajador,
-
-                              //Datos del Doctor
-                              FirmaDoctor = a.FirmaDoctor,
-                              NombreDoctor = DatosMedicina.Value2,
-                              CMP = DatosMedicina.Value3,
-
-                              d_Fur = a.d_Fur,
-                              v_CatemenialRegime = a.v_CatemenialRegime,
-                              i_MacId = a.i_MacId,
-                              v_Mac = a.v_Mac,
-
-                              //// Antecedentes ginecologicos
-                              d_PAP = a.d_PAP,
-                              d_Mamografia = a.d_Mamografia,
-                              v_CiruGine = a.v_CiruGine,
-                              v_Gestapara = a.v_Gestapara,
-                              v_Menarquia = a.v_Menarquia,
-                              v_Findings = a.v_Findings,
-                              FirmaMedicoMedicina = DatosMedicina.Value5,
-                              v_CustomerOrganizationName = a.v_CustomerOrganizationName,
-                              i_NroHermanos = a.i_NroHermanos
-                          }).FirstOrDefault();
-
-               return sql;
+               return objEntity.FirstOrDefault();
            }
            catch (Exception ex)
            {
@@ -8303,6 +8307,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                             // Autogeneramos el Pk de la tabla    
                             Ini_Secuential_servicecomponentfieldvalues = Utils.GetNextSecuentialIdMejorado(intNodeId, 36, pobjServicecomponentfields.Count);
+                            
                             var NewId1 = Common.Utils.GetNewId(intNodeId, Ini_Secuential_servicecomponentfieldvalues++, "CV");
                             objEntity1.v_ServiceComponentFieldValuesId = NewId1;
                             objEntity1.v_ServiceComponentFieldsId = NewId;
@@ -8322,10 +8327,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                         //q.v_ServiceComponentId = cf.v_ServiceComponentId;
                         q.d_UpdateDate = DateTime.Now;
                         q.i_UpdateUserId = Int32.Parse(ClientSession[2]);
-                        if (q.v_ServiceComponentFieldsId == "N009-CF000000000")
-                        {
-                            var entro = true;
-                        }
                         // Guardar los cambios
                         //dbContext.SaveChanges();
 
@@ -14381,95 +14382,96 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                v_ServiceComponentId = a.v_ServiceComponentId,
                                Lector = a.Lector,
                                Edad = GetAge(a.FechaNacimiento.Value),
-                               Placa = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_NRO_PLACA_ID, "NOCOMBO", 0, "SI"),
-                               CalidaRadio = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CALIDAD_ID, "NOCOMBO", 0, "SI"),
-                               Causas = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAUSAS_ID, "NOCOMBO", 0, "SI"),
-                               Comentario = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIOS_ID, "NOCOMBO", 0, "SI"),
+                               Placa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_NRO_PLACA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_NRO_PLACA_ID, "NOCOMBO", 0, "SI"),
+                               CalidaRadio = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CALIDAD_ID).v_Value1Name,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CALIDAD_ID, "NOCOMBO", 0, "SI"),
+                               Causas = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAUSAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CAUSAS_ID).v_Value1Name,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CAUSAS_ID, "NOCOMBO", 0, "SI"),
+                               Comentario = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIOS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIOS_ID, "NOCOMBO", 0, "SI"),
                                Hcl = a.Hcl,
-                               FechaLectura = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_LECTURA_ID, "NOCOMBO", 0, "SI"),
-                               FechaRadiografia = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_TOMA_ID, "NOCOMBO", 0, "SI"),
+                               FechaLectura = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_LECTURA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_LECTURA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_LECTURA_ID, "NOCOMBO", 0, "SI"),
+                               FechaRadiografia = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_TOMA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FECHA_TOMA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FECHA_TOMA_ID, "NOCOMBO", 0, "SI"),
 
-                               SuperiorDerecho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
-                               SuperiorIzquierda = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
-                               MedioDerecho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_DERECHO_ID, "NOCOMBO", 0, "SI"),
-                               MedioIzquierda = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
-                               InferiorDerecho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
-                               InferiorIzquierdo = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
+                               SuperiorDerecho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_DERECHO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
+                               SuperiorIzquierda = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_IZQUIERDO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SUPERIOR_IZQUIERDO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SUPERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
+                               MedioDerecho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_DERECHO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_DERECHO_ID, "NOCOMBO", 0, "SI"),
+                               MedioIzquierda = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_IZQUIERDO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_MEDIO_IZQUIERDO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_MEDIO_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
+                               InferiorDerecho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_DERECHO_ID).v_Value1,//Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.LOCALIZACION_PERFIL).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_DERECHO_ID, "NOCOMBO", 0, "SI"),
+                               InferiorIzquierdo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_IZQUIERDO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_IZQUIERDO_ID).v_Value1,//Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_INFERIOR_DERECHO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.LOCALIZACION_PERFIL).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_INFERIOR_IZQUIERDO_ID, "NOCOMBO", 0, "SI"),
 
-                               SimboloSi = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_SI_ID, "NOCOMBO", 0, "SI"),
-                               SimboloNo = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_NO_ID, "NOCOMBO", 0, "SI"),
+                               SimboloSi = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_SI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_SI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_SI_ID, "NOCOMBO", 0, "SI"),
+                               SimboloNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_NO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIMBOLO_NO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIMBOLO_NO_ID, "NOCOMBO", 0, "SI"),
 
-                               CeroNada = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_NADA_ID, "NOCOMBO", 0, "SI"),
-                               CeroCero = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_0_ID, "NOCOMBO", 0, "SI"),
-                               CeroUno = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_1_ID, "NOCOMBO", 0, "SI"),
+                               CeroNada = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_NADA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_NADA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_NADA_ID, "NOCOMBO", 0, "SI"),
+                               CeroCero = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_0_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_0_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_0_ID, "NOCOMBO", 0, "SI"),
+                               CeroUno = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_0_1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_0_1_ID, "NOCOMBO", 0, "SI"),
 
-                               UnoCero = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_0_ID, "NOCOMBO", 0, "SI"),
-                               UnoUno = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_1_ID, "NOCOMBO", 0, "SI"),
-                               UnoDos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_2_ID, "NOCOMBO", 0, "SI"),
+                               UnoCero = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_0_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_0_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_0_ID, "NOCOMBO", 0, "SI"),
+                               UnoUno = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_1_ID, "NOCOMBO", 0, "SI"),
+                               UnoDos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_2_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_1_2_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_1_2_ID, "NOCOMBO", 0, "SI"),
 
-                               DosUno = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_1_ID, "NOCOMBO", 0, "SI"),
-                               DosDos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_2_ID, "NOCOMBO", 0, "SI"),
-                               DosTres = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_3_ID, "NOCOMBO", 0, "SI"),
+                               DosUno = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_1_ID, "NOCOMBO", 0, "SI"),
+                               DosDos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_2_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_2_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_2_ID, "NOCOMBO", 0, "SI"),
+                               DosTres = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_3_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_2_3_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_2_3_ID, "NOCOMBO", 0, "SI"),
 
-                               TresDos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_2_ID, "NOCOMBO", 0, "SI"),
-                               TresTres = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_3_ID, "NOCOMBO", 0, "SI"),
-                               TresMas = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_MAS_ID, "NOCOMBO", 0, "SI"),
+                               TresDos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_2_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_2_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_2_ID, "NOCOMBO", 0, "SI"),
+                               TresTres = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_3_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_3_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_3_ID, "NOCOMBO", 0, "SI"),
+                               TresMas = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_MAS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_3_MAS_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_3_MAS_ID, "NOCOMBO", 0, "SI"),
 
-                               p = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P_ID, "NOCOMBO", 0, "SI"),
-                               q = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q_ID, "NOCOMBO", 0, "SI"),
-                               r = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R_ID, "NOCOMBO", 0, "SI"),
-                               s = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S_ID, "NOCOMBO", 0, "SI"),
-                               t = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T_ID, "NOCOMBO", 0, "SI"),
-                               u = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U_ID, "NOCOMBO", 0, "SI"),
-                               p1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P1_ID, "NOCOMBO", 0, "SI"),
-                               q1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q1_ID, "NOCOMBO", 0, "SI"),
-                               r1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R1_ID, "NOCOMBO", 0, "SI"),
-                               s1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S1_ID, "NOCOMBO", 0, "SI"),
-                               t1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T1_ID, "NOCOMBO", 0, "SI"),
-                               u1 = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U1_ID, "NOCOMBO", 0, "SI"),
-
-
-                               O = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_D_ID, "NOCOMBO", 0, "SI"),
-                               A = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_A_ID, "NOCOMBO", 0, "SI"),
-                               B = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_B_ID, "NOCOMBO", 0, "SI"),
-                               C = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_C_ID, "NOCOMBO", 0, "SI"),
-                               //SimboloSiNo= GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIM, "NOCOMBO", 0, "SI"), 
-                               aa = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AA_ID, "NOCOMBO", 0, "SI"),
-                               at = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AT_ID, "NOCOMBO", 0, "SI"),
-                               ax = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AX_ID, "NOCOMBO", 0, "SI"),
-                               bu = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_BU_ID, "NOCOMBO", 0, "SI"),
-                               ca = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CA_ID, "NOCOMBO", 0, "SI"),
-                               cg = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CG_ID, "NOCOMBO", 0, "SI"),
-                               cn = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CN_ID, "NOCOMBO", 0, "SI"),
-                               co = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CO_ID, "NOCOMBO", 0, "SI"),
-                               cp = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CP_ID, "NOCOMBO", 0, "SI"),
-                               cv = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CV_ID, "NOCOMBO", 0, "SI"),
+                               p = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P_ID, "NOCOMBO", 0, "SI"),
+                               q = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q_ID, "NOCOMBO", 0, "SI"),
+                               r = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R_ID, "NOCOMBO", 0, "SI"),
+                               s = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S_ID, "NOCOMBO", 0, "SI"),
+                               t = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T_ID, "NOCOMBO", 0, "SI"),
+                               u = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U_ID, "NOCOMBO", 0, "SI"),
+                               p1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_P1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_P1_ID, "NOCOMBO", 0, "SI"),
+                               q1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_Q1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_Q1_ID, "NOCOMBO", 0, "SI"),
+                               r1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_R1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_R1_ID, "NOCOMBO", 0, "SI"),
+                               s1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_S1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_S1_ID, "NOCOMBO", 0, "SI"),
+                               t1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_T1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_T1_ID, "NOCOMBO", 0, "SI"),
+                               u1 = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U1_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_U1_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_U1_ID, "NOCOMBO", 0, "SI"),
 
 
-
-                               di = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_DI_ID, "NOCOMBO", 0, "SI"),
-                               ef = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EF_ID, "NOCOMBO", 0, "SI"),
-                               em = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EM_ID, "NOCOMBO", 0, "SI"),
-                               es = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ES_ID, "NOCOMBO", 0, "SI"),
-                               fr = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FR_ID, "NOCOMBO", 0, "SI"),
-                               hi = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HI_ID, "NOCOMBO", 0, "SI"),
-                               ho = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HO_ID, "NOCOMBO", 0, "SI"),
-                               id = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ID_ID, "NOCOMBO", 0, "SI"),
-                               ih = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_IH_ID, "NOCOMBO", 0, "SI"),
-                               kl = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_KL_ID, "NOCOMBO", 0, "SI"),
-                               me = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ME_ID, "NOCOMBO", 0, "SI"),
-                               od = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_OD_ID, "NOCOMBO", 0, "SI"),
-                               pa = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PA_ID, "NOCOMBO", 0, "SI"),
-                               pb = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PB_ID, "NOCOMBO", 0, "SI"),
-                               pi = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PI_ID, "NOCOMBO", 0, "SI"),
-                               px = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PX_ID, "NOCOMBO", 0, "SI"),
-                               ra = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RA_ID, "NOCOMBO", 0, "SI"),
-                               rp = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RP_ID, "NOCOMBO", 0, "SI"),
-                               tb = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_TB_ID, "NOCOMBO", 0, "SI"),
-                               Comentario_Od = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIO_OD_ID, "NOCOMBO", 0, "SI"),
+                               O = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_D_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_D_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_D_ID, "NOCOMBO", 0, "SI"),
+                               A = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_A_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_A_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_A_ID, "NOCOMBO", 0, "SI"),
+                               B = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_B_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_B_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_B_ID, "NOCOMBO", 0, "SI"),
+                               C = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_C_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_C_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_C_ID, "NOCOMBO", 0, "SI"),
+                               //SimboloSiNo= Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.LOCALIZACION_PERFIL) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_SIM).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_SIM, "NOCOMBO", 0, "SI"), 
+                               aa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AA_ID, "NOCOMBO", 0, "SI"),
+                               at = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AT_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AT_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AT_ID, "NOCOMBO", 0, "SI"),
+                               ax = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AX_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_AX_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_AX_ID, "NOCOMBO", 0, "SI"),
+                               bu = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_BU_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_BU_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_BU_ID, "NOCOMBO", 0, "SI"),
+                               ca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CA_ID, "NOCOMBO", 0, "SI"),
+                               cg = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CG_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CG_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CG_ID, "NOCOMBO", 0, "SI"),
+                               cn = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CN_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CN_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CN_ID, "NOCOMBO", 0, "SI"),
+                               co = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CO_ID, "NOCOMBO", 0, "SI"),
+                               cp = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CP_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CP_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CP_ID, "NOCOMBO", 0, "SI"),
+                               cv = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CV_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CV_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CV_ID, "NOCOMBO", 0, "SI"),
 
 
-                               Conclusiones = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+
+                               di = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_DI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_DI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_DI_ID, "NOCOMBO", 0, "SI"),
+                               ef = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EF_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EF_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EF_ID, "NOCOMBO", 0, "SI"),
+                               em = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EM_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_EM_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_EM_ID, "NOCOMBO", 0, "SI"),
+                               es = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ES_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ES_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ES_ID, "NOCOMBO", 0, "SI"),
+                               fr = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FR_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_FR_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_FR_ID, "NOCOMBO", 0, "SI"),
+                               hi = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HI_ID, "NOCOMBO", 0, "SI"),
+                               ho = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_HO_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_HO_ID, "NOCOMBO", 0, "SI"),
+                               id = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ID_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ID_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ID_ID, "NOCOMBO", 0, "SI"),
+                               ih = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_IH_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_IH_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_IH_ID, "NOCOMBO", 0, "SI"),
+                               kl = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_KL_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_KL_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_KL_ID, "NOCOMBO", 0, "SI"),
+                               me = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ME_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_ME_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_ME_ID, "NOCOMBO", 0, "SI"),
+                               od = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_OD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_OD_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_OD_ID, "NOCOMBO", 0, "SI"),
+                               pa = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PA_ID, "NOCOMBO", 0, "SI"),
+                               pb = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PB_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PB_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PB_ID, "NOCOMBO", 0, "SI"),
+                               pi = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PI_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PI_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PI_ID, "NOCOMBO", 0, "SI"),
+                               px = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PX_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_PX_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_PX_ID, "NOCOMBO", 0, "SI"),
+                               ra = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RA_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RA_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RA_ID, "NOCOMBO", 0, "SI"),
+                               rp = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RP_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_RP_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_RP_ID, "NOCOMBO", 0, "SI"),
+                               tb = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_TB_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_TB_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_TB_ID, "NOCOMBO", 0, "SI"),
+                               Comentario_Od = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIO_OD_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_COMENTARIO_OD_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_COMENTARIO_OD_ID, "NOCOMBO", 0, "SI"),
+
+
+                               Conclusiones = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID).v_Value1,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+                               
                                Dx = GetDiagnosticByServiceIdAndComponent(a.v_ServiceId, pstrComponentId),
 
                                b_Logo = MedicalCenter.b_Image,

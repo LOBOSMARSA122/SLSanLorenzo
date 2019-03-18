@@ -610,8 +610,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         private void GenerateLaboratorio(string pathFile, string _serviceId)
         {          
             PacientBL _pacientBL = new PacientBL();
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();//
+            var filiationData = _pacientBL.GetPacientReportEPS_Lab(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
             var serviceComponents = _serviceBL.GetServiceComponentsReport_Lab(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
             Session["NombreTrabajador"] = filiationData.Trabajador.Replace(" ", "_");
             LaboratorioReport.CreateLaboratorioReport(filiationData, serviceComponents, MedicalCenter, pathFile);
@@ -960,11 +960,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private void GenerateAnexo16GoldField(string pathFile, string _serviceId, string _pacienteId)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_Anexo16GoldField(_serviceId);//_serviceBL.GetServiceReport(_serviceId);//
+            var filiationData = _pacientBL.GetPacientReportEPS_Photo(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacienteId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacienteId);
-            var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var _Valores = _serviceBL.GetServiceComponentsReport_Anexo16GoldField(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
             var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacienteId);
             var _PiezasCaries = _serviceBL.GetCantidadCaries(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID);
             var _PiezasAusentes = _serviceBL.GetCantidadAusentes(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID);
@@ -973,7 +973,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Pulmones = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.MisPulmones);
             var Audiometria = _serviceBL.ValoresComponenteOdontogramaValue1(_serviceId, Constants.AUDIOMETRIA_ID);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();//
             ReportPDF.CreateAnexo16GoldField(_DataService, filiationData, _Valores, _listMedicoPersonales,
                                     _listaPatologicosFamiliares, _listaHabitoNocivos,
                                     CuadroVacio, CuadroCheck, Pulmones, _PiezasCaries,
