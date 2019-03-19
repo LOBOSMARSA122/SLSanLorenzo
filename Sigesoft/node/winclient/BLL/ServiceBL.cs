@@ -16130,61 +16130,76 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 #region serviceComponentFields
 
-                //var serviceComponentFields = (from A in dbContext.servicecomponent
-                //                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
-                //                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
-                //                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
-                //                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
-                //                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
-                //                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
-                //                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
-                //                              from dh in dh_join.DefaultIfEmpty()
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
-                //                              where (A.v_ServiceId == pstrServiceId) &&
-                //                                    (A.i_IsDeleted == isDeleted) &&
-                //                                    (B.i_IsDeleted == isDeleted) &&
-                //                                    (C.i_IsDeleted == isDeleted)
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
 
-                //                              select new ServiceComponentFieldsList
-                //                              {
-                //                                  v_ComponentFieldsId = B.v_ComponentFieldId,
-                //                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
-                //                                  v_MeasurementUnitName = dh.v_Value1,
-                //                                  i_GroupId = D.i_GroupId.Value,
-                //                                  v_ComponentId = cm.v_ComponentId,
-                //                              }).ToList();
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
 
-                //var rpta = 0;
+                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
 
-                //var _finalQuery = (from a in serviceComponentFields
-                //    let value1 = int.TryParse(a.v_Value1, out rpta)
-                //    join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-                //        equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                //    from sp in sp_join.DefaultIfEmpty()
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
+                                                  v_ComponentFielName = D.v_TextLabel,//
+                                                  i_GroupId = D.i_GroupId.Value,//
+                                                  v_ComponentId = cm.v_ComponentId, //
+                                                  v_ServiceComponentId = A.v_ServiceComponentId,//
 
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
+                                                  v_MeasurementUnitName = dh.v_Value1,//
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,//
+                                              }).ToList();
+
+                int rpta = 0;
+
+                var _finalQuery = (from a in serviceComponentFields
+                                   let value1 = int.TryParse(a.v_Value1, out rpta)
+                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                       equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                   from sp in sp_join.DefaultIfEmpty()
+
+                                   select new ServiceComponentFieldsList
+                                   {
+                                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                                       v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                       v_ComponentFielName = a.v_ComponentFielName,
+                                       i_GroupId = a.i_GroupId,
+                                       v_Value1 = a.v_Value1,
+                                       v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                       v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                       v_ComponentId = a.v_ComponentId,
+                                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                                       v_ServiceComponentId = a.v_ServiceComponentId
+                                   }).ToList();
+                //var query = (from a in dbContext.obtenervalores(pstrServiceId)
                 //    select new ServiceComponentFieldsList
                 //    {
+                //        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
                 //        v_ComponentFieldsId = a.v_ComponentFieldsId,
+                //        v_ComponentFielName = a.v_ComponentFielName,
+                //        i_GroupIdd = a.i_GroupId,
                 //        v_Value1 = a.v_Value1,
-                //        v_Value1Name = sp == null ? "" : sp.v_Value1,
+                //        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
                 //        v_MeasurementUnitName = a.v_MeasurementUnitName,
                 //        v_ComponentId = a.v_ComponentId,
+                //        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                //        v_ServiceComponentId = a.v_ServiceComponentId
                 //    }).ToList();
-                var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                    select new ServiceComponentFieldsList
-                    {
-                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                        v_ComponentFieldsId = a.v_ComponentFieldsId,
-                        v_ComponentFielName = a.v_ComponentFielName,
-                        i_GroupIdd = a.i_GroupId,
-                        v_Value1 = a.v_Value1,
-                        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
-                        v_MeasurementUnitName = a.v_MeasurementUnitName,
-                        v_ComponentId = a.v_ComponentId,
-                        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                        v_ServiceComponentId = a.v_ServiceComponentId
-                    }).ToList();
                 #endregion
 
                 var components = (from aaa in dbContext.servicecomponent
@@ -16217,7 +16232,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   }).ToList();
 
                 components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-                components.ForEach(a => a.ServiceComponentFields = query.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
                 return components;
             }
@@ -16368,10 +16383,10 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 #region serviceComponentFields
 
+
                 var serviceComponentFields = (from A in dbContext.servicecomponent
                                               join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
                                               join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
-
                                               join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
                                               join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
                                               join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
@@ -16387,7 +16402,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                               where (A.v_ServiceId == pstrServiceId) &&
                                                     (A.i_IsDeleted == isDeleted) &&
                                                     (B.i_IsDeleted == isDeleted) &&
-                                                    (C.i_IsDeleted == isDeleted) 
+                                                    (C.i_IsDeleted == isDeleted)
+
                                               select new ServiceComponentFieldsList
                                               {
                                                   v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
@@ -16396,9 +16412,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                                   v_ComponentId = cm.v_ComponentId, //
                                                   v_ServiceComponentId = A.v_ServiceComponentId,//
 
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
                                                   v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
                                                   v_MeasurementUnitName = dh.v_Value1,//
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,//
                                               }).ToList();
+
                 int rpta = 0;
 
                 var _finalQuery = (from a in serviceComponentFields
@@ -16421,21 +16440,20 @@ namespace Sigesoft.Node.WinClient.BLL
                                        v_ServiceComponentId = a.v_ServiceComponentId
                                    }).ToList();
 
-                
-                var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                    select new ServiceComponentFieldsList
-                    {
-                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                        v_ComponentFieldsId = a.v_ComponentFieldsId,
-                        v_ComponentFielName = a.v_ComponentFielName,
-                        i_GroupIdd = a.i_GroupId,
-                        v_Value1 = a.v_Value1,
-                        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
-                        v_MeasurementUnitName = a.v_MeasurementUnitName,
-                        v_ComponentId = a.v_ComponentId,
-                        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                        v_ServiceComponentId = a.v_ServiceComponentId
-                    }).ToList();
+                //var query = (from a in dbContext.obtenervalores(pstrServiceId)
+                //    select new ServiceComponentFieldsList
+                //    {
+                //        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                //        v_ComponentFieldsId = a.v_ComponentFieldsId,
+                //        v_ComponentFielName = a.v_ComponentFielName,
+                //        i_GroupIdd = a.i_GroupId,
+                //        v_Value1 = a.v_Value1,
+                //        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
+                //        v_MeasurementUnitName = a.v_MeasurementUnitName,
+                //        v_ComponentId = a.v_ComponentId,
+                //        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                //        v_ServiceComponentId = a.v_ServiceComponentId
+                //    }).ToList();
 
                 #endregion
 
@@ -16460,7 +16478,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   }).ToList();
 
                 components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-                components.ForEach(a => a.ServiceComponentFields = query.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
                 return components;
             }
@@ -16481,77 +16499,77 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 #region serviceComponentFields
 
-                //var serviceComponentFields = (from A in dbContext.servicecomponent
-                //                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
-                //                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
-                //                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
-                //                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
-                //                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
-                //                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
-                //                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
-                //                              from dh in dh_join.DefaultIfEmpty()
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
-                //                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
-                //                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                //                              from sp in sp_join.DefaultIfEmpty()
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
 
-                //                              where (A.v_ServiceId == pstrServiceId) &&
-                //                                    (A.i_IsDeleted == isDeleted) &&
-                //                                    (B.i_IsDeleted == isDeleted) &&
-                //                                    (C.i_IsDeleted == isDeleted)
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
 
-                //                              select new ServiceComponentFieldsList
-                //                              {
-                //                                  //i_GroupId = D.i_GroupId.Value,
-                //                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
-                //                                  v_ComponentFielName = D.v_TextLabel,
-                //                                  i_GroupId = D.i_GroupId.Value,
-                //                                  v_ServiceComponentId = A.v_ServiceComponentId,
+                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
 
-                //                                  v_ComponentFieldsId = B.v_ComponentFieldId,
-                //                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
-                //                                  v_MeasurementUnitName = dh.v_Value1,
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
+                                                  v_ComponentFielName = D.v_TextLabel,//
+                                                  i_GroupId = D.i_GroupId.Value,//
+                                                  v_ComponentId = cm.v_ComponentId, //
+                                                  v_ServiceComponentId = A.v_ServiceComponentId,//
 
-                //                                  v_Value1Name = sp == null ? "" : sp.v_Value1,
-                //                                  v_ComponentId = cm.v_ComponentId
-                //                              }).ToList();
-                //int rpta = 0;
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
+                                                  v_MeasurementUnitName = dh.v_Value1,//
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,//
+                                              }).ToList();
 
-                //var _finalQuery = (from a in serviceComponentFields
-                //    let value1 = int.TryParse(a.v_Value1, out rpta)
-                //    join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-                //        equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                //    from sp in sp_join.DefaultIfEmpty()
+                int rpta = 0;
 
+                var _finalQuery = (from a in serviceComponentFields
+                                   let value1 = int.TryParse(a.v_Value1, out rpta)
+                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                       equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                   from sp in sp_join.DefaultIfEmpty()
+
+                                   select new ServiceComponentFieldsList
+                                   {
+                                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                                       v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                       v_ComponentFielName = a.v_ComponentFielName,
+                                       i_GroupId = a.i_GroupId,
+                                       v_Value1 = a.v_Value1,
+                                       v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                       v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                       v_ComponentId = a.v_ComponentId,
+                                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                                       v_ServiceComponentId = a.v_ServiceComponentId
+                                   }).ToList();
+
+                //var query = (from a in dbContext.obtenervalores(pstrServiceId)
                 //    select new ServiceComponentFieldsList
                 //    {
                 //        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
                 //        v_ComponentFieldsId = a.v_ComponentFieldsId,
                 //        v_ComponentFielName = a.v_ComponentFielName,
-                //        i_GroupId = a.i_GroupId,
+                //        i_GroupIdd = a.i_GroupId,
                 //        v_Value1 = a.v_Value1,
-                //        v_Value1Name = sp == null ? "" : sp.v_Value1,
+                //        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
                 //        v_MeasurementUnitName = a.v_MeasurementUnitName,
                 //        v_ComponentId = a.v_ComponentId,
                 //        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
                 //        v_ServiceComponentId = a.v_ServiceComponentId
                 //    }).ToList();
-
-                var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                    select new ServiceComponentFieldsList
-                    {
-                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                        v_ComponentFieldsId = a.v_ComponentFieldsId,
-                        v_ComponentFielName = a.v_ComponentFielName,
-                        i_GroupIdd = a.i_GroupId,
-                        v_Value1 = a.v_Value1,
-                        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
-                        v_MeasurementUnitName = a.v_MeasurementUnitName,
-                        v_ComponentId = a.v_ComponentId,
-                        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                        v_ServiceComponentId = a.v_ServiceComponentId
-                    }).ToList();
 
                 #endregion
 
@@ -16583,7 +16601,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   }).ToList();
 
                 components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-                components.ForEach(a => a.ServiceComponentFields = query.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+                components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
                 return components;
             }
@@ -16604,72 +16622,77 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 //#region serviceComponentFields
 
-                //var serviceComponentFields = (from A in dbContext.servicecomponent
-                //                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
-                //                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
-                //                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
-                //                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
-                //                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
-                //                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
-                //                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
-                //                              from dh in dh_join.DefaultIfEmpty()
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
 
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
 
-                //                              where (A.v_ServiceId == pstrServiceId) &&
-                //                                  //(cm.v_ComponentId == pstrComponentId) &&
-                //                                    (A.i_IsDeleted == isDeleted) &&
-                //                                    (B.i_IsDeleted == isDeleted) &&
-                //                                    (C.i_IsDeleted == isDeleted)
+                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
 
-                //                              select new ServiceComponentFieldsList
-                //                              {
-                //                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
-                //                                  v_ComponentFieldsId = B.v_ComponentFieldId,
-                //                                  v_ComponentFielName = D.v_TextLabel,
-                //                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
-                //                                  i_GroupId = D.i_GroupId.Value,
-                //                                  v_MeasurementUnitName = dh.v_Value1,
-                //                                  v_ComponentId = cm.v_ComponentId,
-                //                                  v_ServiceComponentId = A.v_ServiceComponentId
-                //                              }).ToList();
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
+                                                  v_ComponentFielName = D.v_TextLabel,//
+                                                  i_GroupId = D.i_GroupId.Value,//
+                                                  v_ComponentId = cm.v_ComponentId, //
+                                                  v_ServiceComponentId = A.v_ServiceComponentId,//
 
-                //int rpta = 0;
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
+                                                  v_MeasurementUnitName = dh.v_Value1,//
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,//
+                                              }).ToList();
 
-                //var _finalQuery = (from a in serviceComponentFields
-                //                   let value1 = int.TryParse(a.v_Value1, out rpta)
-                //                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-                //                                   equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                //                   from sp in sp_join.DefaultIfEmpty()
+                int rpta = 0;
 
-                //                   select new ServiceComponentFieldsList
-                //                   {
-                //                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                //                       v_ComponentFieldsId = a.v_ComponentFieldsId,
-                //                       v_ComponentFielName = a.v_ComponentFielName,
-                //                       i_GroupId = a.i_GroupId,
-                //                       v_Value1 = a.v_Value1,
-                //                       v_Value1Name = sp == null ? "" : sp.v_Value1,
-                //                       v_MeasurementUnitName = a.v_MeasurementUnitName,
-                //                       v_ComponentId = a.v_ComponentId,
-                //                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                //                       v_ServiceComponentId = a.v_ServiceComponentId
-                //                   }).ToList();
-                var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                    select new ServiceComponentFieldsList
-                    {
-                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                        v_ComponentFieldsId = a.v_ComponentFieldsId,
-                        v_ComponentFielName = a.v_ComponentFielName,
-                        i_GroupIdd = a.i_GroupId,
-                        v_Value1 = a.v_Value1,
-                        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
-                        v_MeasurementUnitName = a.v_MeasurementUnitName,
-                        v_ComponentId = a.v_ComponentId,
-                        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                        v_ServiceComponentId = a.v_ServiceComponentId
-                    }).ToList();
+                var _finalQuery = (from a in serviceComponentFields
+                                   let value1 = int.TryParse(a.v_Value1, out rpta)
+                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                       equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                   from sp in sp_join.DefaultIfEmpty()
+
+                                   select new ServiceComponentFieldsList
+                                   {
+                                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                                       v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                       v_ComponentFielName = a.v_ComponentFielName,
+                                       i_GroupId = a.i_GroupId,
+                                       v_Value1 = a.v_Value1,
+                                       v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                       v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                       v_ComponentId = a.v_ComponentId,
+                                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                                       v_ServiceComponentId = a.v_ServiceComponentId
+                                   }).ToList();
+
+                //var query = (from a in dbContext.obtenervalores(pstrServiceId)
+                //    select new ServiceComponentFieldsList
+                //    {
+                //        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                //        v_ComponentFieldsId = a.v_ComponentFieldsId,
+                //        v_ComponentFielName = a.v_ComponentFielName,
+                //        i_GroupIdd = a.i_GroupId,
+                //        v_Value1 = a.v_Value1,
+                //        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
+                //        v_MeasurementUnitName = a.v_MeasurementUnitName,
+                //        v_ComponentId = a.v_ComponentId,
+                //        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                //        v_ServiceComponentId = a.v_ServiceComponentId
+                //    }).ToList();
 
 				#endregion
 
@@ -16747,7 +16770,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				//var _ff_ = _finalQuery.FindAll(p => p.v_ComponentId == Constants.COLESTEROL_ID);
 
 				components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-				components.ForEach(a => a.ServiceComponentFields = query.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+				components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
 				return components;
 			}
@@ -16768,71 +16791,77 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 //#region serviceComponentFields
 
-                //var serviceComponentFields = (from A in dbContext.servicecomponent
-                //                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
-                //                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
-                //                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
-                //                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
-                //                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
-                //                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
-                //                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
-                //                              from dh in dh_join.DefaultIfEmpty()
+                var serviceComponentFields = (from A in dbContext.servicecomponent
+                                              join B in dbContext.servicecomponentfields on A.v_ServiceComponentId equals B.v_ServiceComponentId
+                                              join C in dbContext.servicecomponentfieldvalues on B.v_ServiceComponentFieldsId equals C.v_ServiceComponentFieldsId
+                                              join cfs in dbContext.componentfields on B.v_ComponentFieldId equals cfs.v_ComponentFieldId
+                                              join D in dbContext.componentfield on B.v_ComponentFieldId equals D.v_ComponentFieldId
+                                              join cm in dbContext.component on cfs.v_ComponentId equals cm.v_ComponentId
 
-                //                              where (A.v_ServiceId == pstrServiceId) &&
-                //                                  //(cm.v_ComponentId == pstrComponentId) &&
-                //                                    (A.i_IsDeleted == isDeleted) &&
-                //                                    (B.i_IsDeleted == isDeleted) &&
-                //                                    (C.i_IsDeleted == isDeleted)
+                                              join dh in dbContext.datahierarchy on new { a = 105, b = D.i_MeasurementUnitId.Value }
+                                                                 equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                              from dh in dh_join.DefaultIfEmpty()
 
-                //                              select new ServiceComponentFieldsList
-                //                              {
-                //                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,
-                //                                  v_ComponentFieldsId = B.v_ComponentFieldId,
-                //                                  v_ComponentFielName = D.v_TextLabel,
-                //                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,
-                //                                  i_GroupId = D.i_GroupId.Value,
-                //                                  v_MeasurementUnitName = dh.v_Value1,
-                //                                  v_ComponentId = cm.v_ComponentId,
-                //                                  v_ServiceComponentId = A.v_ServiceComponentId
-                //                              }).ToList();
+                                              join sp in dbContext.systemparameter on new { a = D.i_GroupId.Value, b = 0 }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                              from sp in sp_join.DefaultIfEmpty()
 
-                //int rpta = 0;
+                                              where (A.v_ServiceId == pstrServiceId) &&
+                                                    (A.i_IsDeleted == isDeleted) &&
+                                                    (B.i_IsDeleted == isDeleted) &&
+                                                    (C.i_IsDeleted == isDeleted)
 
-                //var _finalQuery = (from a in serviceComponentFields
-                //                   let value1 = int.TryParse(a.v_Value1, out rpta)
-                //                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
-                //                                   equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
-                //                   from sp in sp_join.DefaultIfEmpty()
+                                              select new ServiceComponentFieldsList
+                                              {
+                                                  v_ServiceComponentFieldsId = B.v_ServiceComponentFieldsId,//
+                                                  v_ComponentFielName = D.v_TextLabel,//
+                                                  i_GroupId = D.i_GroupId.Value,//
+                                                  v_ComponentId = cm.v_ComponentId, //
+                                                  v_ServiceComponentId = A.v_ServiceComponentId,//
 
-                //                   select new ServiceComponentFieldsList
-                //                   {
-                //                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                //                       v_ComponentFieldsId = a.v_ComponentFieldsId,
-                //                       v_ComponentFielName = a.v_ComponentFielName,
-                //                       i_GroupId = a.i_GroupId,
-                //                       v_Value1 = a.v_Value1,
-                //                       v_Value1Name = sp == null ? "" : sp.v_Value1,
-                //                       v_MeasurementUnitName = a.v_MeasurementUnitName,
-                //                       v_ComponentId = a.v_ComponentId,
-                //                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                //                       v_ServiceComponentId = a.v_ServiceComponentId
-                //                   }).ToList();
+                                                  v_ComponentFieldsId = B.v_ComponentFieldId,
+                                                  v_Value1 = C.v_Value1 == "" ? null : C.v_Value1,//
+                                                  v_MeasurementUnitName = dh.v_Value1,//
+                                                  v_Value1Name = sp == null ? "" : sp.v_Value1,//
+                                              }).ToList();
 
-                var query = (from a in dbContext.obtenervalores(pstrServiceId)
-                    select new ServiceComponentFieldsList
-                    {
-                        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
-                        v_ComponentFieldsId = a.v_ComponentFieldsId,
-                        v_ComponentFielName = a.v_ComponentFielName,
-                        i_GroupIdd = a.i_GroupId,
-                        v_Value1 = a.v_Value1,
-                        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
-                        v_MeasurementUnitName = a.v_MeasurementUnitName,
-                        v_ComponentId = a.v_ComponentId,
-                        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
-                        v_ServiceComponentId = a.v_ServiceComponentId
-                    }).ToList();
+                int rpta = 0;
+
+                var _finalQuery = (from a in serviceComponentFields
+                                   let value1 = int.TryParse(a.v_Value1, out rpta)
+                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                       equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                   from sp in sp_join.DefaultIfEmpty()
+
+                                   select new ServiceComponentFieldsList
+                                   {
+                                       v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                                       v_ComponentFieldsId = a.v_ComponentFieldsId,
+                                       v_ComponentFielName = a.v_ComponentFielName,
+                                       i_GroupId = a.i_GroupId,
+                                       v_Value1 = a.v_Value1,
+                                       v_Value1Name = sp == null ? "" : sp.v_Value1,
+                                       v_MeasurementUnitName = a.v_MeasurementUnitName,
+                                       v_ComponentId = a.v_ComponentId,
+                                       v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                                       v_ServiceComponentId = a.v_ServiceComponentId
+                                   }).ToList();
+
+                //var query = (from a in dbContext.obtenervalores(pstrServiceId)
+                //    select new ServiceComponentFieldsList
+                //    {
+                //        v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                //        v_ComponentFieldsId = a.v_ComponentFieldsId,
+                //        v_ComponentFielName = a.v_ComponentFielName,
+                //        i_GroupIdd = a.i_GroupId,
+                //        v_Value1 = a.v_Value1,
+                //        v_Value1Name = a.v_Value1Name == null ? "" : a.v_Value1Name,
+                //        v_MeasurementUnitName = a.v_MeasurementUnitName,
+                //        v_ComponentId = a.v_ComponentId,
+                //        v_ConclusionAndDiagnostic = a.v_Value1 + " / " + GetServiceComponentDiagnosticsReport(pstrServiceId, a.v_ComponentId),
+                //        v_ServiceComponentId = a.v_ServiceComponentId
+                //    }).ToList();
 				//#endregion
 
 				var components = (from aaa in dbContext.servicecomponent
@@ -16911,7 +16940,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				//var _ff_ = _finalQuery.FindAll(p => p.v_ComponentId == Constants.COLESTEROL_ID);
 
 				components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
-				components.ForEach(a => a.ServiceComponentFields = query.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+				components.ForEach(a => a.ServiceComponentFields = _finalQuery.FindAll(p => p.v_ComponentId == a.v_ComponentId));
 
 				return components;
 			}
