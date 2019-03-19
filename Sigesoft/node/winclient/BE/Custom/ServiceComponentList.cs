@@ -107,8 +107,8 @@ namespace Sigesoft.Node.WinClient.BE
         public int i_GenderId { get; set; }
 
         //v_NombreReporte = A.v_NombreReporte,
-        //v_NombreCrystal = A.v_NombreCrystal,
-        //i_NombreCrystalId = A.i_NombreCrystalId,
+        //public string v_NombreCrystal { get; set; }
+        //public int? i_NombreCrystalId { get; set; }
 
         public string v_NombreReporte { get; set; }
         public string v_NombreCrystal { get; set; }
