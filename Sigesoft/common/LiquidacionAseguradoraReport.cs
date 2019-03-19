@@ -218,8 +218,8 @@ namespace NetPdf
             cells = new List<PdfPCell>();
             foreach (var item in Detalle_report)
             {
-                decimal preciounitario = Decimal.Round((item.PrecioUnitario / (decimal)1.18),2);
-                decimal subtotal = Decimal.Round((item.SubTotal / (decimal)1.18), 2);
+                decimal preciounitario = Decimal.Round((item.PrecioUnitario),2);
+                decimal subtotal = Decimal.Round((item.SubTotal), 2);
                 decimal cantidad = Decimal.Round(item.Cantidad, 1);
                 if (item.Tipo == "DEDUCIBLE")
                 {
@@ -322,8 +322,8 @@ namespace NetPdf
             cells = new List<PdfPCell>();
             foreach (var item in Detalle_report)
             {
-                decimal preciounitario = Decimal.Round((item.PrecioUnitario / (decimal)1.18), 2);
-                decimal subtotal = Decimal.Round((item.SubTotal / (decimal)1.18), 2);
+                decimal preciounitario = Decimal.Round((item.PrecioUnitario), 2);
+                decimal subtotal = Decimal.Round((item.SubTotal), 2);
                 decimal cantidad = Decimal.Round(item.Cantidad, 1);
                 if (item.Tipo == "COASEGURO")
                 {

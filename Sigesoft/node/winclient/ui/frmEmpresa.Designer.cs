@@ -988,7 +988,6 @@
             // 
             // txtSector
             // 
-            this.txtSector.Enabled = false;
             this.txtSector.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSector.Location = new System.Drawing.Point(377, 45);
             this.txtSector.Margin = new System.Windows.Forms.Padding(2);
