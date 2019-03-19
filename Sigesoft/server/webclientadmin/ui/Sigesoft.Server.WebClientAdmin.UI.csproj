@@ -4399,12 +4399,6 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ExternalUser\crFichaAudiometria.cs">
-      <DependentUpon>crFichaAudiometria.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="ExternalUser\crFichaOtoscopia.cs">
       <DependentUpon>crFichaOtoscopia.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -5492,10 +5486,6 @@
     <EmbeddedResource Include="ExternalUser\crFichaAcumetria.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crFichaAcumetria.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExternalUser\crFichaAudiometria.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crFichaAudiometria.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ExternalUser\crFichaOtoscopia.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -22,8 +22,6 @@ namespace NetPdf
         }
         public static void CreateConsentimientoInformadoAccesoHistoriClinica(ServiceList DataService, string filePDF,
             PacientList datosPac,
-            organizationDto infoEmpresaPropietaria,
-            List<ServiceComponentList> exams,
             List<DiagnosticRepositoryList> Diagnosticos,
             List<ServiceComponentList> serviceComponent)
         {

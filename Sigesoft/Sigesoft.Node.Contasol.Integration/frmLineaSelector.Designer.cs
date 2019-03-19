@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IdLinea");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -44,6 +47,7 @@
             this.txtUnidadProductiva = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.lblConteoLineas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +56,13 @@
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.ultraGrid1.DisplayLayout.Appearance = appearance1;
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn2.Width = 362;
+            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn1,
+            ultraGridColumn2});
+            this.ultraGrid1.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.ultraGrid1.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraGrid1.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -104,9 +115,9 @@
             this.ultraGrid1.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
             this.ultraGrid1.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.ultraGrid1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ultraGrid1.Location = new System.Drawing.Point(12, 41);
+            this.ultraGrid1.Location = new System.Drawing.Point(12, 68);
             this.ultraGrid1.Name = "ultraGrid1";
-            this.ultraGrid1.Size = new System.Drawing.Size(393, 285);
+            this.ultraGrid1.Size = new System.Drawing.Size(467, 387);
             this.ultraGrid1.TabIndex = 0;
             this.ultraGrid1.Text = "ultraGrid1";
             this.ultraGrid1.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ultraGrid1_DoubleClickRow);
@@ -141,11 +152,25 @@
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
+            // lblConteoLineas
+            // 
+            this.lblConteoLineas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblConteoLineas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConteoLineas.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblConteoLineas.Location = new System.Drawing.Point(248, 46);
+            this.lblConteoLineas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblConteoLineas.Name = "lblConteoLineas";
+            this.lblConteoLineas.Size = new System.Drawing.Size(231, 19);
+            this.lblConteoLineas.TabIndex = 57;
+            this.lblConteoLineas.Text = "No se ha realizado la búsqueda aún.";
+            this.lblConteoLineas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmLineaSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 336);
+            this.ClientSize = new System.Drawing.Size(491, 467);
+            this.Controls.Add(this.lblConteoLineas);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUnidadProductiva);
@@ -171,5 +196,6 @@
         private System.Windows.Forms.TextBox txtUnidadProductiva;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Label lblConteoLineas;
     }
 }

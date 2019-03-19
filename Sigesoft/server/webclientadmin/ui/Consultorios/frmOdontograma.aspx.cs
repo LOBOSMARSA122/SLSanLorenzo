@@ -190,6 +190,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         LoadcombosOdonto();
                         ObtenerDatosOdonto(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                        ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                        ddlUsuarioGrabar.Enabled = false;
                         TabOdontograma.Hidden = false;
                     }
                   
@@ -210,6 +212,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         {
                             LoadcombosOdonto();
                             ObtenerDatosOdonto(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                            ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                            ddlUsuarioGrabar.Enabled = false;
                             TabOdontograma.Hidden = false;
                         }
                     }                   

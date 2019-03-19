@@ -20,7 +20,7 @@ namespace NetPdf
         }
         public static void CreateMarcobrePaseMedico(ServiceList DataService, string filePDF,
          PacientList datosPac,
-         organizationDto infoEmpresaPropietaria, PacientList filiationData,
+         organizationDto infoEmpresaPropietaria,
          List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, List<Antecedentes> habitos)
         {
             Document document = new Document(PageSize.A4, 40f, 40f, 41f, 0f);

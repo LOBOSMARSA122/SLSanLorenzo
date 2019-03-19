@@ -248,6 +248,8 @@
     <Content Include="libs\SAMBHS.CommonWIN.BL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\system_close.gif" />
+    <None Include="Resources\system_save.gif" />
     <None Include="Resources\find.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

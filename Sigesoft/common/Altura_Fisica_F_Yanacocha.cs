@@ -18,7 +18,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateAltura_Fisica_F_Yanacocha(ServiceList DataService, PacientList filiationData, 
+        public static void CreateAltura_Fisica_F_Yanacocha(ServiceList DataService, 
          List<ServiceComponentList> serviceComponent, organizationDto infoEmpresaPropietaria, PacientList datosPac,
          string filePDF, UsuarioGrabo usuariograbo
          )

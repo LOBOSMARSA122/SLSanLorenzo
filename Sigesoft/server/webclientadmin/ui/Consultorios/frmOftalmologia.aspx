@@ -1149,7 +1149,10 @@
                              <Toolbars>
                                 <x:Toolbar ID="Toolbar1" runat="server">
                                     <Items>
-                                        <x:Button ID="btnGrabarYanacocha" Text="Grabar Oftalmología" Icon="SystemSave" runat="server" OnClick="btnGrabarYanacocha_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                        <x:Button ID="btnGrabarYanacocha" Text="Grabar Oftalmología" Icon="SystemSave" runat="server" OnClick="btnGrabarYanacocha_Click" AjaxLoadingType="Mask"></x:Button> 
+                                        <x:Label ID="Label1000" runat="server" Text="....." ShowLabel="false"></x:Label>
+                                        <x:Label ID="Label1001" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
+                                        <x:DropDownList ID="ddlOftalmoYanacocha" runat="server" Enabled="True"></x:DropDownList>
                                       <x:Button ID="btnReporteOftalmo" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>

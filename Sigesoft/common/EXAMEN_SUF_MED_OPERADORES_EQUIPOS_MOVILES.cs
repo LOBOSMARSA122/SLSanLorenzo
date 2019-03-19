@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region Report
-        public static void CreateExamenSuficienciaMedicaOperadores(ServiceList DataService, PacientList filiationData,
+        public static void CreateExamenSuficienciaMedicaOperadores(PacientList filiationData,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,

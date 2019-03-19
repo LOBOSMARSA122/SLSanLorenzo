@@ -8969,7 +8969,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
                 var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
                 var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
-                var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+                var serviceComponents = _serviceBL.GetServiceComponentsReport_New312(_serviceId);
 
                 FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                             filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,

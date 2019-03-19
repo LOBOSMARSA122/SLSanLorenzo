@@ -18,7 +18,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void Create_Informe_Ecografico_Obstetrico(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Obstetrico(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)
@@ -677,7 +677,7 @@ namespace NetPdf
             writer.Dispose();
         }
 
-        public static void Create_Informe_Ecografico_Ginecologico(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Ginecologico(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)
@@ -1320,7 +1320,7 @@ namespace NetPdf
             writer.Dispose();
         }
 
-        public static void Create_Informe_Ecografico_Abdominal(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Abdominal( string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)
@@ -2177,7 +2177,7 @@ namespace NetPdf
             writer.Dispose();
         }
 
-        public static void Create_Informe_Ecografico_Renal(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Renal(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)
@@ -3071,7 +3071,7 @@ namespace NetPdf
             writer.Dispose();
         }
 
-        public static void Create_Informe_Ecografico_Mamas(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Mamas(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)
@@ -3677,7 +3677,7 @@ namespace NetPdf
             writer.Dispose();
         }
 
-        public static void Create_Informe_Ecografico_Prostata(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Prostata(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)
@@ -4222,7 +4222,7 @@ namespace NetPdf
             writer.Dispose();
         }
 
-        public static void Create_Informe_Ecografico_Partes_Blandas(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Partes_Blandas(string filePDF,
          PacientList datosPac,
          organizationDto infoEmpresaPropietaria, PacientList filiationData,
          List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)
@@ -4426,7 +4426,7 @@ namespace NetPdf
             writer.Dispose();
         }
 
-        public static void Create_Informe_Ecografico_Obstetrico_Pelvico(ServiceList DataService, string filePDF,
+        public static void Create_Informe_Ecografico_Obstetrico_Pelvico(string filePDF,
          PacientList datosPac,
          organizationDto infoEmpresaPropietaria, PacientList filiationData,
          List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)

@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
         #region Report MiExamen
-            public static void  CreateMiExamen(PacientList filiationData ,
+            public static void  CreateMiExamen(
                 List<ServiceComponentList> serviceComponent,
                 organizationDto  infoEmpresa,
                 PacientList datosPac,
@@ -107,7 +107,7 @@ namespace NetPdf
 
                 #region Datos del Servicio
 
-                string[] servicio = filiationData.FechaServicio.ToString().Split(' ');
+                //string[] servicio = filiationData.FechaServicio.ToString().Split(' ');
                 //cellsTit = new List<PdfPCell>()
                 //{ 
                 //    new PdfPCell(new Phrase("CONSULTA MÉDICA", fontTitle2)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, Colspan = 3, BackgroundColor=BaseColor.ORANGE, MinimumHeight=15f},  

@@ -239,7 +239,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlCUANDO_ULTIMA_VEZ.Attributes.Add("Tag", "N009-MF000001403");
                 txtHORA_LECTURA.Attributes.Add("Tag", "N009-MF000002814");
                 ddlCOCAINA.Attributes.Add("Tag", "N009-MF000000705");
-                ddlMARIHUANA.Attributes.Add("Tag", "N009-MF0000001294");
+                ddlMARIHUANA.Attributes.Add("Tag", "N009-MF000001294");
 
                 PerfilHepatico.Hidden = true;
                 PerfilHepatico.Attributes.Add("Tag", "N009-ME000000096");
@@ -421,22 +421,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelGlucosaGeneral.Hidden = true;
                 PanelGlucosaGeneral.Attributes.Add("Tag", "N009-ME000000008");
-                txtGLUCOSA_GENERAL.Attributes.Add("Tag", "N009-MF0000000261");
+                txtGLUCOSA_GENERAL.Attributes.Add("Tag", "N009-MF000000261");
                 txtGLUCOSA_GENERAL_DESEABLE.Attributes.Add("Tag", "N009-MF000000418");
 
                 PanelProtombina.Hidden = true;
                 PanelProtombina.Attributes.Add("Tag", "N009-ME000000147");
-                txtTIPO_PROTOMBINA.Attributes.Add("Tag", "N009-MF0000002182");
+                txtTIPO_PROTOMBINA.Attributes.Add("Tag", "N009-MF000002182");
                 txtTIPO_PROTOMBINA_DESEABLE.Attributes.Add("Tag", "N009-MF000002183");
 
                 PanelINR.Hidden = true;
                 PanelINR.Attributes.Add("Tag", "N009-ME000000431");
-                txtINR.Attributes.Add("Tag", "N009-MF0000003238");
+                txtINR.Attributes.Add("Tag", "N009-MF000003238");
                 txtINR_DESEABLE.Attributes.Add("Tag", "N009-MF000003239");
 
                 PanelLabExcepciones.Hidden = true;
                 PanelLabExcepciones.Attributes.Add("Tag", "N009-ME000000441");
-                rbEXONERACION_SI.Attributes.Add("Tag", "N009-MF0000003435");
+                rbEXONERACION_SI.Attributes.Add("Tag", "N009-MF000003435");
                 rbEXONERACION_NO.Attributes.Add("Tag", "N009-MF000003436");
 
                 PanelVSG.Hidden = true;
@@ -689,6 +689,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         
                         LoadCombosLaboratorio();
+                        ddlUsuarioGrabar.Enabled = false;
+                        ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                         ObtenerDatosLaboratorio(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabLaboratorio.Hidden = false;
                         
@@ -709,6 +711,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         if (Resultado != null)
                         {
                             LoadCombosLaboratorio();
+                            ddlUsuarioGrabar.Enabled = false;
+                            ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                             ObtenerDatosLaboratorio(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabLaboratorio.Hidden = false;
                         }
@@ -1764,11 +1768,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             SearchControlAndSetValues(TabLaboratorio, Session["ServicioComponentIdLab"].ToString());
 
-            //var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
-            //                                           (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
-            //                                          ((ClientSession)Session["objClientSession"]).GetAsList(),
-            //                                           Session["PersonId"].ToString(),
-            //                                          Session["ServicioComponentIdLab"].ToString());
+            var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
+                                                       (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
+                                                      ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                       Session["PersonId"].ToString(),
+                                                      Session["ServicioComponentIdLab"].ToString());
 
 
             //#region Dx Automaticos Laboratorio Internacional

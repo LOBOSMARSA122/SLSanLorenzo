@@ -18,7 +18,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateDeclaracion_Jurada_EMO_Secutiras(ServiceList DataService, string filePDF,
+        public static void CreateDeclaracion_Jurada_EMO_Secutiras(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresa, PacientList filiationData,
           List<ServiceComponentList> serviceComponent)

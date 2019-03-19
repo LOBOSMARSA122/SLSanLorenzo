@@ -16,6 +16,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using Sigesoft.Node.Contasol.Integration;
 using NetPdf;
+using System.Data.SqlClient;
 
 namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 {
@@ -134,7 +135,30 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             //MessageBox.Show("Service: " + TserviceId);
-            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New", protocolId);
+            #region Conexion SAM
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            #endregion
+            var cadena1 = "select PL.i_PlanId from [dbo].[plan] PL where PL.v_ProtocoloId ='" + protocolId + "'";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            string plan = "";
+            while (lector.Read())
+            {
+                plan = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            string modoMasterService;
+            if (plan != "")
+            {
+                modoMasterService = "ASEGU";
+            }
+            else
+            {
+                modoMasterService = "HOSPI";
+            }
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New", protocolId, modoMasterService);
             ticket.ShowDialog();
             btnFilter_Click(sender, e);
             btnTicket.Enabled = false;
@@ -169,11 +193,33 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             OperationResult objOperationResult = new OperationResult();
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
-
+            #region Conexion SAM
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            #endregion
+            var cadena1 = "select PL.i_PlanId from service SR inner join protocol PR on SR.v_ProtocolId = PR.v_ProtocolId inner join [dbo].[plan] PL on PR.v_ProtocolId = PL.v_ProtocoloId where SR.v_ServiceId ='" + ServiceId + "'";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            string plan = "";
+            string protocolId = "";
+            while (lector.Read())
+            {
+                plan = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
             ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
-            //var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+            string modoMasterService;
+            if (plan != "")
+            {
+                modoMasterService = "ASEGU";
+            }
+            else
+            {
+                modoMasterService = "HOSPI";
+            }
             _ticketId = ticketId;
-            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit", personData.v_ProtocolId);
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit", personData.v_ProtocolId, modoMasterService);
             ticket.ShowDialog();
 
             btnFilter_Click(sender, e);
@@ -413,11 +459,35 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             var NroHospitalizacion = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
             var dni = grdData.Selected.Rows[0].Cells["v_DocNumber"].Value.ToString();
-            var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni, serviceId) { _serviceId = serviceId };
-            frm.ShowDialog();
-
-            if (frm.DialogResult == DialogResult.OK)
-                btnFilter_Click(sender,e);
+            #region Conexion SAM
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            #endregion
+            var cadena1 = "select PL.i_PlanId from [dbo].[plan] PL where PL.v_ProtocoloId ='" + protocolId + "'";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            string plan = "";
+            while (lector.Read())
+            {
+                plan = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            if (plan != "")
+            {
+                var frm = new frmAddExam(ListaComponentes, "ASEGU", protocolId, "Asegu", NroHospitalizacion, dni, serviceId) { _serviceId = serviceId };
+                frm.ShowDialog();
+                if (frm.DialogResult == DialogResult.OK)
+                    btnFilter_Click(sender, e);
+            }
+            else
+            {
+                var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni, serviceId) { _serviceId = serviceId };
+                frm.ShowDialog();
+                if (frm.DialogResult == DialogResult.OK)
+                    btnFilter_Click(sender, e);
+            }
+            
                 
         }
 

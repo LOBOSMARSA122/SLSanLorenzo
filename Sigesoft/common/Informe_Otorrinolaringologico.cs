@@ -18,7 +18,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateInforme_Otorrinolaringologico(ServiceList DataService, string filePDF,
+        public static void CreateInforme_Otorrinolaringologico(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresaPropietaria, PacientList filiationData,
           List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo DatosGrabo)

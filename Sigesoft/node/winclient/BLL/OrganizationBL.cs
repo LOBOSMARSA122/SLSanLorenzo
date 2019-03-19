@@ -556,7 +556,7 @@ namespace Sigesoft.Node.WinClient.BLL
            }
        }
 
-       private void AddWarehouse(ref OperationResult pobjOperationResult, List<nodeorganizationlocationwarehouseprofileDto> pobjWarehouseList, List<string> ClientSession)
+       public void AddWarehouse(ref OperationResult pobjOperationResult, List<nodeorganizationlocationwarehouseprofileDto> pobjWarehouseList, List<string> ClientSession)
        {
            try
            {
@@ -610,7 +610,7 @@ namespace Sigesoft.Node.WinClient.BLL
                return;
            }
        }
-       
+
        public List<OrdenReportes> GetAllOrdenReporteNuevo(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression)
        {
            try

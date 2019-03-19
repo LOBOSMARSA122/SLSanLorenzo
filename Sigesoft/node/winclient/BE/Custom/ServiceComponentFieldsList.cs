@@ -29,8 +29,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_ConclusionAndDiagnostic { get; set; }
 
         public string v_Value1Name { get; set; }
+        public int? i_GroupIdd { get; set; }
         public int i_GroupId { get; set; }
-
         public string v_MeasurementUnitName { get; set; }
 
         public string v_ComponentId { get; set; }

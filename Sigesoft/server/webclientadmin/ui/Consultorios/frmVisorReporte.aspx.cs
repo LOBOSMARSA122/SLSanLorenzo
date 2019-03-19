@@ -473,7 +473,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             dtAudiometriaUserControl_CI.TableName = "dtAudiometriaUserControl";
             dsAudiometria.Tables.Add(dtCabecera_CI);
             dsAudiometria.Tables.Add(dtAudiometriaUserControl_CI);
-            //rp = new AdministradorServicios.crFichaAudiometria();
+            rp = new Sigesoft.Node.WinClient.UI.Reports.crFichaAudiometria();
             rp.SetDataSource(dsAudiometria);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -494,16 +494,16 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private void GenerateOftalmologia(string _path, string _serviceId)
         {
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();//
+            var filiationData = _pacientBL.GetPacientReportEPS_Oftalmo(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
+            var serviceComponents = _serviceBL.GetServiceComponentsReport_Oftalmo(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
+            var datosP = _pacientBL.DevolverDatosPaciente_Oftalmo(_serviceId);//_pacientBL.DevolverDatosPaciente(_serviceId);//
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
-            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var _ExamenesServicio = serviceComponents;//_serviceBL.GetServiceComponentsReport(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, _path, datosGrabo, _ExamenesServicio, diagnosticRepository);
-            Session["NombreTrabajador"] = filiationData.Trabajador.Replace(" ", "_");
+            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, serviceComponents, MedicalCenter, datosP, _path, datosGrabo, _ExamenesServicio, diagnosticRepository);
+            Session["NombreTrabajador"] = datosP.Trabajador.Replace(" ", "_");
             System.IO.File.Copy(_path,Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología" + ".pdf"),true);
         }
 
@@ -610,9 +610,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         private void GenerateLaboratorio(string pathFile, string _serviceId)
         {          
             PacientBL _pacientBL = new PacientBL();
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();//
+            var filiationData = _pacientBL.GetPacientReportEPS_Lab(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
+            var serviceComponents = _serviceBL.GetServiceComponentsReport_Lab(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
             Session["NombreTrabajador"] = filiationData.Trabajador.Replace(" ", "_");
             LaboratorioReport.CreateLaboratorioReport(filiationData, serviceComponents, MedicalCenter, pathFile);
             System.IO.File.Copy(pathFile, Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "INFORME_LABORATORIO_CLINICO" + ".pdf"), true);
@@ -770,12 +770,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
           {             
             var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);             
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();              
-            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);              
+            //var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);              
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);             
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);              
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);            
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
-            Anexo16A.CreateAnexo16A(_DataService, _ruta, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Anexo16A.CreateAnexo16A(_DataService, _ruta, datosP, MedicalCenter, serviceComponents, diagnosticRepository, datosGrabo);
             Session["NombreTrabajador"] = datosP.Trabajador.Replace(" ","_");
             System.IO.File.Copy(_ruta , Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "7D" + ".pdf"), true);       
           }
@@ -960,11 +960,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private void GenerateAnexo16GoldField(string pathFile, string _serviceId, string _pacienteId)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport_Anexo16GoldField(_serviceId);//_serviceBL.GetServiceReport(_serviceId);//
+            var filiationData = _pacientBL.GetPacientReportEPS_Photo(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacienteId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacienteId);
-            var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var _Valores = _serviceBL.GetServiceComponentsReport_Anexo16GoldField(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
             var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacienteId);
             var _PiezasCaries = _serviceBL.GetCantidadCaries(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID);
             var _PiezasAusentes = _serviceBL.GetCantidadAusentes(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID);
@@ -973,7 +973,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Pulmones = Sigesoft.Common.Utils.BitmapToByteArray(ResourcesWeb.MisPulmones);
             var Audiometria = _serviceBL.ValoresComponenteOdontogramaValue1(_serviceId, Constants.AUDIOMETRIA_ID);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_Logo();//_serviceBL.GetInfoMedicalCenter();//
             ReportPDF.CreateAnexo16GoldField(_DataService, filiationData, _Valores, _listMedicoPersonales,
                                     _listaPatologicosFamiliares, _listaHabitoNocivos,
                                     CuadroVacio, CuadroCheck, Pulmones, _PiezasCaries,

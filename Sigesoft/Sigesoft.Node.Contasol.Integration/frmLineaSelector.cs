@@ -33,6 +33,7 @@ namespace Sigesoft.Node.Contasol.Integration
         private void frmLineaSelector_Load(object sender, EventArgs e)
         {
             ultraGrid1.DataSource = MedicamentoDao.ObtenerLineas();
+            lblConteoLineas.Text = string.Format("Se encontraron {0} registros.", this.ultraGrid1.Rows.Count());
         }
 
         private void ultraGrid1_DoubleClickRow(object sender, Infragistics.Win.UltraWinGrid.DoubleClickRowEventArgs e)
@@ -44,11 +45,17 @@ namespace Sigesoft.Node.Contasol.Integration
         {
             if (txtUnidadProductiva.Text != "")
             {
-                ultraGrid1.DataSource = MedicamentoDao.ObtenerLineasWhere(txtUnidadProductiva.Text);
+                var objDataService = MedicamentoDao.ObtenerLineasWhere(txtUnidadProductiva.Text);
+                ultraGrid1.DataSource = objDataService;
+                lblConteoLineas.Text = string.Format("Se encontraron {0} registros.", this.ultraGrid1.Rows.Count());
+                //this.ultraGrid1.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
             }
             else
             {
-                ultraGrid1.DataSource = MedicamentoDao.ObtenerLineas();
+                var objDataService = MedicamentoDao.ObtenerLineas();
+                ultraGrid1.DataSource = objDataService;
+                lblConteoLineas.Text = string.Format("Se encontraron {0} registros.", this.ultraGrid1.Rows.Count());
+                //this.ultraGrid1.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
             }
             
         }

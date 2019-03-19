@@ -21,7 +21,7 @@ namespace NetPdf
         }
         public static void CreateAnexo16A(ServiceList DataService, string filePDF,
           PacientList datosPac,
-          organizationDto infoEmpresa, PacientList filiationData,
+          organizationDto infoEmpresa,
           List<ServiceComponentList> serviceComponent,
         List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo usuarioGraba)
         {
