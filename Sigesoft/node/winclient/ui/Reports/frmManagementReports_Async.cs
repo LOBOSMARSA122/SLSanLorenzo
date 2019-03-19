@@ -38,6 +38,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         DataSet dsGetRepo = null;
         PacientBL _pacientBL = new PacientBL();
         HistoryBL _historyBL = new HistoryBL();
+        string ruta;
         private List<string>_ComponentsIdsOrdenados = new List<string>();
 
         public frmManagementReports_Async(string serviceId, string EmpresaClienteId, string pacientId, string customerOrganizationName)
@@ -295,22 +296,28 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
                     var filesNameToMergeOrder = new List<string>();
                     var Reportes = GetChekedItems(chklConsolidadoReportes);
+                    //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                    //{
+                    //    System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
+                    //        Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
+
+                    //    foreach (var item in _ComponentsIdsOrdenados)
+                    //    {
+                    //        var path = _ruta + _serviceId + "-" + item + ".pdf";
+                    //        if (_filesNameToMerge.Find(p => p == path) != null)
+                    //        {
+                    //            filesNameToMergeOrder.Add(path);
+                    //        }
+                    //    }
+                    //};
+
                     using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                     {
-                        System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
-                            Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
-
-                        foreach (var item in _ComponentsIdsOrdenados)
-                        {
-                            var path = _ruta + _serviceId + "-" + item + ".pdf";
-                            if (_filesNameToMerge.Find(p => p == path) != null)
-                            {
-                                filesNameToMergeOrder.Add(path);
-                            }
-                        }
+                        CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
                     };
 
-                    var x = filesNameToMergeOrder.ToList();
+                    //var x = filesNameToMergeOrder.ToList();
+                    var x = _filesNameToMerge.ToList();
                     _mergeExPDF.FilesName = x;
                     _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
                     _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
@@ -392,11 +399,33 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             rp = new Reports.crConsolidatedReports();
             _filesNameToMerge = new List<string>();
 
+            //foreach (var com in reportesId)
+            //{
+            //    int IdCrystal = GetIdCrystal(com);
+            //    tasks.Add(Task<string>.Factory.StartNew( () => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
+              
+            //}
+
             foreach (var com in reportesId)
             {
-                int IdCrystal = GetIdCrystal(com);
-                tasks.Add(Task<string>.Factory.StartNew( () => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
-              
+                int IdCrystal = 0;
+
+                var array = com.Split('|');
+
+                if (array.Count() == 1)
+                {
+                    IdCrystal = 0;
+                }
+                else if (array[1] == "")
+                {
+                    IdCrystal = 0;
+                }
+                else
+                {
+                    IdCrystal = int.Parse(array[1].ToString());
+                }
+
+                ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
             }
 
             if (Publicar)
