@@ -537,6 +537,83 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
         #region UserExternal
 
+        public Sigesoft.Node.WinClient.BE.PacientList GetPacientReportEPS_Lab(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pr in dbContext.protocol on s.v_ProtocolId equals pr.v_ProtocolId
+                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+                                 //************************************************************************************
+
+                                 join ow in dbContext.organization on new { a = pr.v_WorkingOrganizationId }
+                                     equals new { a = ow.v_OrganizationId } into ow_join
+                                 from ow in ow_join.DefaultIfEmpty()
+
+                                 join lw in dbContext.location on new { a = pr.v_WorkingOrganizationId, b = pr.v_WorkingLocationId }
+                                     equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                                 from lw in lw_join.DefaultIfEmpty()
+
+                                 join D in dbContext.systemparameter on new { a = pe.i_SexTypeId.Value, b = 100 }
+                                     equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 where s.v_ServiceId == serviceId
+                                 select new Sigesoft.Node.WinClient.BE.PacientList
+                                 {
+                                     v_FirstName = pe.v_FirstName,
+                                     v_FirstLastName = pe.v_FirstLastName,
+                                     v_SecondLastName = pe.v_SecondLastName,
+                                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                                     v_CurrentOccupation = pe.v_CurrentOccupation,
+                                     v_SexTypeName = D.v_Value1,
+                                     d_ServiceDate = s.d_ServiceDate,
+                                     d_Birthdate = pe.d_Birthdate,
+                                     Trabajador = pe.v_FirstLastName + "_" + pe.v_SecondLastName + "_" + pe.v_FirstName
+                                 }).ToList();
+                objEntity[0].i_Age = GetAge(objEntity[0].d_Birthdate.Value);
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+        public Sigesoft.Node.WinClient.BE.PacientList GetPacientReportEPS_Photo(string serviceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //PacientList objDtoEntity = null;
+
+                var objEntity = (from s in dbContext.service
+                                 join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+
+                                 where s.v_ServiceId == serviceId
+                                 select new Sigesoft.Node.WinClient.BE.PacientList
+                                 {
+                                     b_Photo = pe.b_PersonImage,
+                                 }).ToList();
+
+                return objEntity.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
         public Sigesoft.Node.WinClient.BE.PacientList GetPacientReportEPS_Oftalmo(string serviceId)
         {
             //mon.IsActive = true;
@@ -621,7 +698,12 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                       equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
                                  from lw in lw_join.DefaultIfEmpty()
 
+
                                  //************************************************************************************
+                                 join D in dbContext.systemparameter on new { a = pe.i_SexTypeId.Value, b = 100 }  
+                                     equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
 
                                  where s.v_ServiceId == serviceId
                                  select new Sigesoft.Node.WinClient.BE.PacientList

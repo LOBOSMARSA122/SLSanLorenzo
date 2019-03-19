@@ -64,9 +64,16 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var dia = string.Format("{0}", fechaServicio.Day.ToString("00"));
             var mes = string.Format("{0}", fechaServicio.Month.ToString("00"));
             var anio = string.Format("{0}", fechaServicio.Year.ToString("00"));
+            var dni = Session["DniTrabajador"].ToString();
+            var largeAdditional = 0;           
+            if (dni.Length > 8)
+            {
+                largeAdditional = dni.Length - 8;
+            }
+            var largeSubstring = 17 + largeAdditional;
             foreach (var item in files)
             {
-                if (item.ToString().Substring(0, 17) == Session["DniTrabajador"].ToString() + "-" + dia + mes + anio)
+                if (item.ToString().Substring(0, largeSubstring) == Session["DniTrabajador"].ToString() + "-" + dia + mes + anio)
                 {
                     LinkButton objLinkButton = new LinkButton();
 
