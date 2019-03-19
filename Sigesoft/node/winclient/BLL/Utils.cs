@@ -1366,8 +1366,8 @@ namespace Sigesoft.Node.WinClient.BLL
                              join c in dbContext.location on a.v_LocationId equals c.v_LocationId
                              where n.i_NodeId == pintNodeId &&
                                    n.i_IsDeleted == 0 &&
-                                   a.i_IsDeleted == 0 &&
-                                   J2.i_IsDeleted == 0
+                                   a.i_IsDeleted == 0 //&&
+                                   //J2.i_IsDeleted == 0
                              select new RestrictedWarehouseProfileList
                              {
                                  v_OrganizationName = b.v_Name,
