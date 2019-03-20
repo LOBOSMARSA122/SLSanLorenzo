@@ -83,7 +83,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                if (exist != null)
                {
-                   obj.v_ComponentId = item.v_ComponentId;
+                   obj.v_ComponentId = item.v_ComponentId + "|" + item.i_NombreCrystalId;
                    obj.v_ComponentName = item.v_ComponentName;
                    obj.i_Orden = item.i_Orden;
 

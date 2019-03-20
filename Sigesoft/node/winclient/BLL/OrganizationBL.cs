@@ -710,8 +710,8 @@ namespace Sigesoft.Node.WinClient.BLL
                        v_ComponentName = A.v_NombreReporte,
                        i_Orden = A.i_Orden.Value,
                        //v_NombreReporte = A.v_NombreReporte,
-                       //v_NombreCrystal = A.v_NombreCrystal,
-                       //i_NombreCrystalId = A.i_NombreCrystalId.Value,
+                       v_NombreCrystal = A.v_NombreCrystal,
+                       i_NombreCrystalId = A.i_NombreCrystalId.Value,
                        //i_CategoryId = B.i_CategoryId
                    };
 
