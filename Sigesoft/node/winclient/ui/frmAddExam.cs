@@ -357,6 +357,7 @@ namespace Sigesoft.Node.WinClient.UI
                     else 
                     {
                         FormPrecioComponente frm = new FormPrecioComponente(NombreComponente[0].ToString(), precio_base.ToString(), "");
+                        frm.ShowDialog();
                         objServiceComponentDto.i_ConCargoA = conCargoA;
                         objServiceComponentDto.v_ServiceId = _serviceId;
                         objServiceComponentDto.i_ExternalInternalId = (int)Common.ComponenteProcedencia.Interno;

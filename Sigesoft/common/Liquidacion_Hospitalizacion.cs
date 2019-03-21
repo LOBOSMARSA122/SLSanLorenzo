@@ -118,14 +118,14 @@ namespace NetPdf
             else if (hospitHabit.i_HabitacionId == 6) n_habitac = "206";
             else if (hospitHabit.i_HabitacionId == 7) n_habitac = "207";
             else if (hospitHabit.i_HabitacionId == 8) n_habitac = "208";
-            else if (hospitHabit.i_HabitacionId == 2) n_habitac = "301";
-            else if (hospitHabit.i_HabitacionId == 2) n_habitac = "302";
-            else if (hospitHabit.i_HabitacionId == 3) n_habitac = "303";
-            else if (hospitHabit.i_HabitacionId == 4) n_habitac = "304";
-            else if (hospitHabit.i_HabitacionId == 5) n_habitac = "305";
-            else if (hospitHabit.i_HabitacionId == 6) n_habitac = "306";
-            else if (hospitHabit.i_HabitacionId == 7) n_habitac = "307";
-            else if (hospitHabit.i_HabitacionId == 8) n_habitac = "308";
+            else if (hospitHabit.i_HabitacionId == 9) n_habitac = "301";
+            else if (hospitHabit.i_HabitacionId == 10) n_habitac = "302";
+            else if (hospitHabit.i_HabitacionId == 11) n_habitac = "303";
+            else if (hospitHabit.i_HabitacionId == 12) n_habitac = "304";
+            else if (hospitHabit.i_HabitacionId == 13) n_habitac = "305";
+            else if (hospitHabit.i_HabitacionId == 14) n_habitac = "306";
+            else if (hospitHabit.i_HabitacionId == 15) n_habitac = "307";
+            else if (hospitHabit.i_HabitacionId == 16) n_habitac = "308";
             string med = "";
 
             if (medico != null)
