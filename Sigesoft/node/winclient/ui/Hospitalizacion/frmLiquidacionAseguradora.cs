@@ -34,7 +34,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                 Filters.Add("EmpresaId==" + "\"" + cboEmpresa.SelectedValue + "\"");
             }
-          
             strFilterExpression = null;
             if (Filters.Count > 0)
             {
@@ -44,7 +43,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 }
                 strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
             }
-
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
                 this.BindGrid();

@@ -22,7 +22,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
                             join E in dbContext.plan on C.v_ProtocolId equals E.v_ProtocoloId
                             join D in dbContext.organization on E.v_OrganizationSeguroId equals D.v_OrganizationId
-                    where A.i_IsDeleted == 0 
+                            where A.i_IsDeleted == 0 && A.d_ServiceDate >= pdatBeginDate.Value && A.d_ServiceDate <= pdatEndDate.Value
                     select new LiquidacionAseguradora
                     {
                         ServicioId = A.v_ServiceId,
@@ -38,20 +38,17 @@ namespace Sigesoft.Node.WinClient.BLL
                     {
                         query = query.Where(pstrFilterExpression);
                     }
-                    if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
-                    {
-                        query = query.Where("FechaServicio >= @0 && FechaServicio <= @1", pdatBeginDate.Value, pdatEndDate.Value);
-                    }
+                    
 
                 
                  List<LiquidacionAseguradora> data = query.ToList();
-                 
-                 data = data.GroupBy(p => p.Protocolo).Select(s => s.First()).ToList();
+
+                 data = data.GroupBy(p => p.ServicioId).Select(s => s.First()).ToList();
                
 
                 var ListaLiquidacion = new List<LiquidacionAseguradora>();
                 LiquidacionAseguradora oLiquidacionAseguradora;
-                var detalle = new List<LiquiAseguradoraDetalle>();
+                
                 LiquiAseguradoraDetalle oLiquiAseguradoraDetalle;
                 decimal? TotalAseguradora = 0;
                 foreach (var servicio in data)
@@ -64,8 +61,10 @@ namespace Sigesoft.Node.WinClient.BLL
                     oLiquidacionAseguradora.Aseguradora = servicio.Aseguradora;
                     oLiquidacionAseguradora.Protocolo = servicio.Protocolo;
                     var serviceComponents = obtenerServiceComponentsByServiceId(servicio.ServicioId);
+                    var detalle = new List<LiquiAseguradoraDetalle>();
                     foreach (var componente in serviceComponents)
                     {
+
                         oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
                         oLiquiAseguradoraDetalle.Descripcion = componente.v_ComponentName;
                         
@@ -196,12 +195,12 @@ namespace Sigesoft.Node.WinClient.BLL
                  var dbContext = new SigesoftEntitiesModel();
                  var query = (from A in dbContext.receta
                               join B in dbContext.diagnosticrepository on A.v_DiagnosticRepositoryId equals B.v_DiagnosticRepositoryId
-                              join C in dbContext.service on B.v_ServiceId equals C.v_ServiceId
+                              join C in dbContext.service on A.v_ServiceId equals C.v_ServiceId
                               join I in dbContext.protocol on C.v_ProtocolId equals I.v_ProtocolId
                               join G in dbContext.plan on new { a = I.v_ProtocolId, b = A.v_IdUnidadProductiva }
                                   equals new { a = G.v_ProtocoloId, b = G.v_IdUnidadProductiva } into G_join
                               from G in G_join.DefaultIfEmpty()
-                              where C.v_ServiceId == serviceId && C.i_IsDeleted == 0 && (A.d_SaldoPaciente.Value > 0 || A.d_SaldoAseguradora.Value > 0)
+                              where A.v_ServiceId == serviceId && C.i_IsDeleted == 0 && (A.d_SaldoPaciente.Value > 0 || A.d_SaldoAseguradora.Value > 0)
                               select new recetaList
                               {
                                   v_IdProductoDetalle = A.v_IdProductoDetalle,
