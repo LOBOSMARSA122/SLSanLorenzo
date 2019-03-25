@@ -125,23 +125,23 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                        {
                            ListOrdenada = ListOrdenada.FindAll(
                                p =>
-                                   p.v_ComponentId != "N002-ME000000032" &&
-                                   p.v_ComponentId != "N009-ME000000302" &&
-                                   p.v_ComponentId != "N009-ME000000062" &&
-                                   p.v_ComponentId != "N009-ME000000130");
+                                   p.v_ComponentId.Split('|')[0] != "N002-ME000000032" &&
+                                   p.v_ComponentId.Split('|')[0] != "N009-ME000000302" &&
+                                   p.v_ComponentId.Split('|')[0] != "N009-ME000000062" &&
+                                   p.v_ComponentId.Split('|')[0] != "N009-ME000000130");
                        }
                        else
                        {
                            ListOrdenada = ListOrdenada.FindAll(
                                p =>
-                                   p.v_ComponentId != "N009-ME000000442" && p.v_ComponentId != "N009-ME000000440");
+                                   p.v_ComponentId.Split('|')[0] != "N009-ME000000442" && p.v_ComponentId.Split('|')[0] != "N009-ME000000440");
                        }
                    }
                    else if (si_AUTORIZACION == "1")
                    {
                        ListOrdenada = ListOrdenada.FindAll(
                            p =>
-                               p.v_ComponentId != "N009-ME000000442" && p.v_ComponentId != "N009-ME000000440");
+                               p.v_ComponentId.Split('|')[0] != "N009-ME000000442" && p.v_ComponentId.Split('|')[0] != "N009-ME000000440");
                    }
                }
                else
@@ -155,15 +155,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                    {
                        ListOrdenada = ListOrdenada.FindAll(
                     p =>
-                        p.v_ComponentId != "N002-ME000000032" && p.v_ComponentId != "N009-ME000000062" &&
-                        p.v_ComponentId != "N009-ME000000130" && p.v_ComponentId != "N009-ME000000302"
+                        p.v_ComponentId.Split('|')[0] != "N002-ME000000032" && p.v_ComponentId.Split('|')[0] != "N009-ME000000062" &&
+                        p.v_ComponentId.Split('|')[0] != "N009-ME000000130" && p.v_ComponentId.Split('|')[0] != "N009-ME000000302"
                         && p.v_ComponentId != "N009-ME000000442");
                    }
                    else
                    {
                        ListOrdenada = ListOrdenada.FindAll(
                            p =>
-                               p.v_ComponentId != "N009-ME000000440" && p.v_ComponentId != "N009-ME000000442");
+                               p.v_ComponentId.Split('|')[0] != "N009-ME000000440" && p.v_ComponentId.Split('|')[0] != "N009-ME000000442");
                    }
                }
 
@@ -172,7 +172,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
            {
                ListOrdenada = ListOrdenada.FindAll(
                   p =>
-                      p.v_ComponentId != "N009-ME000000440" && p.v_ComponentId != "N009-ME000000442");
+                      p.v_ComponentId.Split('|')[0] != "N009-ME000000440" && p.v_ComponentId.Split('|')[0] != "N009-ME000000442");
            }
 
 
@@ -201,21 +201,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                {
                    ListOrdenada = ListOrdenada.FindAll(
                        p =>
-                           p.v_ComponentId != "N001-ME000000000" && p.v_ComponentId != "N009-ME000000461" &&
-                           p.v_ComponentId != "N009-ME000000053" && p.v_ComponentId != "ILAB_CLINICO");
+                           p.v_ComponentId.Split('|')[0] != "N001-ME000000000" && p.v_ComponentId.Split('|')[0] != "N009-ME000000461" &&
+                           p.v_ComponentId.Split('|')[0] != "N009-ME000000053" && p.v_ComponentId.Split('|')[0] != "ILAB_CLINICO");
                }
                else
                {
                    ListOrdenada = ListOrdenada.FindAll(
                        p =>
-                           p.v_ComponentId != "N009-ME000000441");
+                           p.v_ComponentId.Split('|')[0] != "N009-ME000000441");
                }
            }
            else
            {
                ListOrdenada = ListOrdenada.FindAll(
                    p =>
-                       p.v_ComponentId != "N009-ME000000441");
+                       p.v_ComponentId.Split('|')[0] != "N009-ME000000441");
            }
 
 
@@ -234,20 +234,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                {
                    ListOrdenada = ListOrdenada.FindAll(
                        p =>
-                           p.v_ComponentId != "N002-ME000000031" && p.v_ComponentId != "INFORME_ESPIRO" && p.v_ComponentId != "N009-ME000000516");
+                           p.v_ComponentId.Split('|')[0] != "N002-ME000000031" && p.v_ComponentId.Split('|')[0] != "INFORME_ESPIRO" && p.v_ComponentId.Split('|')[0] != "N009-ME000000516");
                }
                else
                {
                    ListOrdenada = ListOrdenada.FindAll(
                        p =>
-                           p.v_ComponentId != "N009-ME000000513");
+                           p.v_ComponentId.Split('|')[0] != "N009-ME000000513");
                }
            }
            else
            {
                ListOrdenada = ListOrdenada.FindAll(
                    p =>
-                       p.v_ComponentId != "N009-ME000000513");
+                       p.v_ComponentId.Split('|')[0] != "N009-ME000000513");
            }
 
 

@@ -50,8 +50,9 @@ namespace Sigesoft.Node.WinClient.UI
             else if (coaseguro == true)
             {
 
-                txtPagoAseguradora.Text = (double.Parse(importe) * double.Parse(txtnuevoPrecio.Text) / 100).ToString();
-                txtPagoPaciente.Text = (double.Parse(txtnuevoPrecio.Text) - double.Parse(txtPagoAseguradora.Text)).ToString();
+               
+                txtPagoPaciente.Text = (double.Parse(importe) * double.Parse(txtnuevoPrecio.Text) / 100).ToString();
+                txtPagoAseguradora.Text = (double.Parse(txtnuevoPrecio.Text) - double.Parse(txtPagoPaciente.Text)).ToString();
 
             }
         }
