@@ -9,6 +9,7 @@ using Sigesoft.Node.WinClient.BLL;
 using Sigesoft.Node.WinClient.UI.Reports;
 using Sigesoft.Node.Contasol.Integration;
 using Sigesoft.Node.WinClient.UI.Operations.Popups;
+using System.Data.SqlClient;
 namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 {
     public partial class frmAddProducto : Form
@@ -39,6 +40,20 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var f = new frmSearchMedicamento();
             var result = f.ShowDialog();
+            #region Conexion SIGESOFT Obtener Porcentaje de descuento EPS
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadena = "select OO.r_FactorMed from protocol PR inner join organization OO on PR.v_CustomerOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId='" + _protocolId + "'";
+            SqlCommand comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            string EPS = "";
+            while (lector.Read())
+            {
+                EPS = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            #endregion
             if (result == DialogResult.OK)
             {
                 var medicamento = f.MedicamentoSeleccionado;
@@ -46,10 +61,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtMedicamento.Text = medicamento.NombreCompleto;
                 txtCodigo.Text = medicamento.CodInterno;
                 txtMedicamento.Tag = medicamento.IdProductoDetalle;
-                txtPrecioVenta.Text = medicamento.PrecioVenta.ToString();
+                //Nuevo Precio con descuento EPS
+                txtPrecioVenta.Text = (medicamento.d_PrecioMayorista - (medicamento.d_PrecioMayorista * decimal.Parse(EPS) / 100)).ToString();
                 txtUnidadProductiva.Text = medicamento.IdLinea;
                 txtPrecio.Text = medicamento.PrecioVenta.ToString();
                 txtPPS.Text = medicamento.d_PrecioMayorista.ToString();
+                txtDesctoEPS.Text = EPS;
             }
         }
 
@@ -95,7 +112,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
                         _objTicketDetalleList.v_IdUnidadProductiva = txtUnidadProductiva.Text;
                         var precioTarifa = oTicketBL.ObtenerPrecioTarifario(_serviceId, _objTicketDetalleList.v_IdProductoDetalle);
-                        _objTicketDetalleList.d_PrecioVenta = precioTarifa;// decimal.Parse(txtPrecioVenta.Text);
+                        
 
                         decimal d;
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
@@ -109,18 +126,20 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         {
                             if (resultplan[0].i_EsCoaseguro == 1)
                             {
-                                _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe;
-                                _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - resultplan[0].d_Importe;
+                                _objTicketDetalleList.d_SaldoPaciente = decimal.Parse(txtPrecioVenta.Text) * decimal.Parse(txtCantidad.Text) * resultplan[0].d_Importe / 100;
+                                _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(txtPrecioVenta.Text) * decimal.Parse(txtCantidad.Text)) - _objTicketDetalleList.d_SaldoPaciente;
+                                _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                             }
-                            if (resultplan[0].i_EsDeducible == 1)
+                            else if (resultplan[0].i_EsDeducible == 1)
                             {
-                                _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad / 100;
-                                _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - _objTicketDetalleList.d_SaldoPaciente;
+
                             }
                         }
+                        else
+                        {
+                            _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecio.Text);// decimal.Parse(txtPrecioVenta.Text);
+                        }
 
-              
-                        //objTicketDetalleList.i_EsDespachado = int.Parse()
                         _objTicketDetalleList.i_RecordStatus = (int)RecordStatus.Agregado;
                         _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
                      

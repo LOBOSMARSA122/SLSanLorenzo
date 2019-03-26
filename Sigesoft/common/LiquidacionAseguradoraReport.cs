@@ -224,85 +224,17 @@ namespace NetPdf
                 if (item.Tipo == "DEDUCIBLE")
                 {
                     
-                    cell = new PdfPCell(new Phrase(fecha, fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(fecha, fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase("", fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase("", fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(item.Descripcion, fontColumnValue))
-                    {
-                        Colspan = 3,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(item.Descripcion, fontColumnValue)){Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                   
-                    cell = new PdfPCell(new Phrase(preciounitario.ToString(), fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(preciounitario.ToString(), fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    
-                    cell = new PdfPCell(new Phrase(subtotal.ToString(), fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(subtotal.ToString(), fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
                 }
             }
@@ -327,85 +259,17 @@ namespace NetPdf
                 decimal cantidad = Decimal.Round(item.Cantidad, 1);
                 if (item.Tipo == "COASEGURO")
                 {
-                    cell = new PdfPCell(new Phrase(fecha, fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(fecha, fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase("", fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase("", fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(item.Descripcion, fontColumnValue))
-                    {
-                        Colspan = 3,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(item.Descripcion, fontColumnValue)){Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                    
-                    cell = new PdfPCell(new Phrase(preciounitario.ToString(), fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(preciounitario.ToString(), fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
-                   
-                    cell = new PdfPCell(new Phrase(subtotal.ToString(), fontColumnValue))
-                    {
-                        Colspan = 1,
-                        HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT,
-                        VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,
-                        FixedHeight = 15f,
-                        UseVariableBorders = true,
-                        BorderColorLeft = BaseColor.WHITE,
-                        BorderColorRight = BaseColor.WHITE,
-                        BorderColorBottom = BaseColor.WHITE,
-                        BorderColorTop = BaseColor.WHITE
-                    };
+                    cell = new PdfPCell(new Phrase(subtotal.ToString(), fontColumnValue)){Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15f,UseVariableBorders = true,BorderColorLeft = BaseColor.WHITE,BorderColorRight = BaseColor.WHITE,BorderColorBottom = BaseColor.WHITE,BorderColorTop = BaseColor.WHITE};
                     cells.Add(cell);
                 }
             }

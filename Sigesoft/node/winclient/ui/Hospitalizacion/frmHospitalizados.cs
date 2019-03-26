@@ -132,32 +132,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnTicket_Click(object sender, EventArgs e)
         {
+            // obtener serviceId y protocolId
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-            //MessageBox.Show("Service: " + TserviceId);
-            #region Conexion SAM
+
+            #region Conexion SAM Obtener Plan
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
-            #endregion
             var cadena1 = "select PL.i_PlanId from [dbo].[plan] PL where PL.v_ProtocoloId ='" + protocolId + "'";
             SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             SqlDataReader lector = comando.ExecuteReader();
             string plan = "";
-            while (lector.Read())
-            {
-                plan = lector.GetValue(0).ToString();
-            }
+            while (lector.Read()){plan = lector.GetValue(0).ToString();}
             lector.Close();
             conectasam.closesigesoft();
             string modoMasterService;
-            if (plan != "")
-            {
-                modoMasterService = "ASEGU";
-            }
-            else
-            {
-                modoMasterService = "HOSPI";
-            }
+            if (plan != ""){modoMasterService = "ASEGU";}
+            else{modoMasterService = "HOSPI";}
+            #endregion
+            // construir formulario ticket
             frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New", protocolId, modoMasterService);
             ticket.ShowDialog();
             btnFilter_Click(sender, e);
