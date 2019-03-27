@@ -363,6 +363,7 @@
     <Compile Include="Generated\componentfieldvaluesDto.cs" />
     <Compile Include="Generated\componentfieldvaluesrecommendationDto.cs" />
     <Compile Include="Generated\componentfieldvaluesrestrictionDto.cs" />
+    <Compile Include="Generated\configdxDto.cs" />
     <Compile Include="Generated\cuidadopreventivoDto.cs" />
     <Compile Include="Generated\cuidadopreventivocomentarioDto.cs" />
     <Compile Include="Generated\datahierarchyDto.cs" />

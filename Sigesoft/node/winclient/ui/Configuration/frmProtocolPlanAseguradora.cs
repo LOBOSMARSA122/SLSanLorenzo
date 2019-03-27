@@ -60,7 +60,9 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         {
             try
             {
-                _gridDataSouce.AddNew();
+                frmAddPlan frm = new frmAddPlan();
+                frm.Show();
+                //_gridDataSouce.AddNew();
             }
             catch (Exception ex)
             {
