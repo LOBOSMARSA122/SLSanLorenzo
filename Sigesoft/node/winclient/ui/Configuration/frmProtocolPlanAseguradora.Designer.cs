@@ -137,12 +137,12 @@
             ultraGridColumn5.Header.VisiblePosition = 1;
             ultraGridColumn5.Width = 85;
             ultraGridColumn6.Header.Caption = "Coaseguro";
-            ultraGridColumn6.Header.VisiblePosition = 2;
+            ultraGridColumn6.Header.VisiblePosition = 3;
             ultraGridColumn6.Width = 78;
             appearance3.TextHAlignAsString = "Right";
             ultraGridColumn4.CellAppearance = appearance3;
             ultraGridColumn4.Header.Caption = "Valor";
-            ultraGridColumn4.Header.VisiblePosition = 3;
+            ultraGridColumn4.Header.VisiblePosition = 2;
             ultraGridColumn4.MaskClipMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals;
             ultraGridColumn4.MaskDataMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals;
             ultraGridColumn4.MaskDisplayMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals;
@@ -312,7 +312,7 @@
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor cboEmpresa;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grd;
+        public Infragistics.Win.UltraWinGrid.UltraGrid grd;
         private Infragistics.Win.Misc.UltraPanel ultraPanel1;
         private Infragistics.Win.Misc.UltraButton btnSalir;
         private Infragistics.Win.Misc.UltraButton btnGuardar;

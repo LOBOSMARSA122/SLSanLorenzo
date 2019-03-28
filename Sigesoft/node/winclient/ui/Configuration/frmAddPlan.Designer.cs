@@ -50,6 +50,7 @@
             this.txtCoaseguro = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.txtUnidadProdId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cbLine)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,6 +109,7 @@
             this.cbLine.Name = "cbLine";
             this.cbLine.Size = new System.Drawing.Size(346, 22);
             this.cbLine.TabIndex = 122;
+            this.cbLine.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbLine_RowSelected);
             // 
             // label4
             // 
@@ -202,6 +204,14 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // txtUnidadProdId
+            // 
+            this.txtUnidadProdId.Location = new System.Drawing.Point(354, 107);
+            this.txtUnidadProdId.Name = "txtUnidadProdId";
+            this.txtUnidadProdId.Size = new System.Drawing.Size(100, 20);
+            this.txtUnidadProdId.TabIndex = 125;
+            this.txtUnidadProdId.Visible = false;
+            // 
             // frmAddPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +219,7 @@
             this.ClientSize = new System.Drawing.Size(467, 177);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.txtUnidadProdId);
             this.Controls.Add(this.txtCoaseguro);
             this.Controls.Add(this.txtDeducible);
             this.Controls.Add(this.chkCoaseguro);
@@ -220,6 +231,7 @@
             this.Name = "frmAddPlan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Listado de Beneficios";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddPlan_FormClosed);
             this.Load += new System.EventHandler(this.frmAddPlan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbLine)).EndInit();
             this.ResumeLayout(false);
@@ -239,5 +251,6 @@
         private System.Windows.Forms.TextBox txtCoaseguro;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TextBox txtUnidadProdId;
     }
 }

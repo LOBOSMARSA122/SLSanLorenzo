@@ -173,6 +173,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -1595,6 +1596,7 @@
     <Compile Include="Hospitalizacion\frmType.Designer.cs">
       <DependentUpon>frmType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\ListaExamen.cs" />
     <Compile Include="lineaDto.cs" />
     <Compile Include="Matriz\frmMatrizMultiple.cs">
       <SubType>Form</SubType>
@@ -6219,6 +6221,10 @@
     <ProjectReference Include="..\BLL\Sigesoft.Node.WinClient.BLL.csproj">
       <Project>{f4650c86-db62-4fa8-8475-0887031a0c05}</Project>
       <Name>Sigesoft.Node.WinClient.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\MSSQL\Sigesoft.Node.WinClient.DAL.MSSQL.csproj">
+      <Project>{0b732067-fec9-4da2-afd9-6da773094e3e}</Project>
+      <Name>Sigesoft.Node.WinClient.DAL.MSSQL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -372,7 +372,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                     v_IdUnidadProductiva = a.v_IdUnidadProductiva,
                                     i_EsDeducible = a.i_EsDeducible.Value,
                                     i_EsCoaseguro = a.i_EsCoaseguro.Value,
-                                    d_Importe = a.d_Importe.Value
+                                    d_Importe = a.d_Importe.Value,
+                                    d_ImporteCo = a.d_ImporteCo.Value
                                  } ).ToList();
 
 

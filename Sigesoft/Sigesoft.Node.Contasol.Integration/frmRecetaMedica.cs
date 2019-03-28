@@ -80,12 +80,13 @@ namespace Sigesoft.Node.Contasol.Integration
             {
                 if (e.Cell == null || e.Cell.Row.Cells["v_DiagnosticRepositoryId"].Value == null) return;
                 var diagnosticRepositoryId = e.Cell.Row.Cells["v_DiagnosticRepositoryId"].Value.ToString();
+                var componentId = e.Cell.Row.Cells["v_ComponentName"].Value.ToString();
 
                 switch (e.Cell.Column.Key)
                 {
                     case "_AddRecipe":
                     {
-                        var f = new frmAddRecipe(ActionForm.Add, diagnosticRepositoryId, 0, _protocolId, _serviceId) { StartPosition = FormStartPosition.CenterScreen };
+                        var f = new frmAddRecipe(ActionForm.Add, diagnosticRepositoryId, 0, _protocolId, _serviceId, componentId) { StartPosition = FormStartPosition.CenterScreen };
                         f.ShowDialog();
                         GetData(_listDiagnosticRepositoryLists);
                     }
@@ -94,7 +95,7 @@ namespace Sigesoft.Node.Contasol.Integration
                     case "_EditRecipe":
                     {
                         var recipeId = int.Parse(e.Cell.Row.Cells["i_IdReceta"].Value.ToString());
-                        var f = new frmAddRecipe(ActionForm.Edit, diagnosticRepositoryId, recipeId, _protocolId, _serviceId) { StartPosition = FormStartPosition.CenterScreen };
+                        var f = new frmAddRecipe(ActionForm.Edit, diagnosticRepositoryId, recipeId, _protocolId, _serviceId, componentId) { StartPosition = FormStartPosition.CenterScreen };
                         f.ShowDialog();
                         GetData(_listDiagnosticRepositoryLists);
                     }

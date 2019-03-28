@@ -93,9 +93,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (_mode == "New")
                 {
-                    if (txtMedicamento.Tag == null)
+                    if (txtMedicamento.Tag == null || cbExamen.Text == "")
                     {
-                        MessageBox.Show(@"Por favor seleccione un medicamento", @"Error de validación", MessageBoxButtons.OK);
+                        string mensage = "";
+                        if (txtMedicamento.Tag == null){mensage = @"Por favor seleccione un medicamento";}
+                        else if (cbExamen.Text == ""){mensage = @"Por favor seleccione un examen";}
+                        MessageBox.Show(mensage, @"Error de validación", MessageBoxButtons.OK);
                         txtMedicamento.Focus();
                         return;
                     }
@@ -126,7 +129,36 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         {
                             if (resultplan[0].i_EsCoaseguro == 1)
                             {
-                                _objTicketDetalleList.d_SaldoPaciente = decimal.Parse(txtPrecioVenta.Text) * decimal.Parse(txtCantidad.Text) * resultplan[0].d_Importe / 100;
+                                #region Conexion SIGESOFT verificar la unidad productiva del componente
+                                ConexionSigesoft conectasam = new ConexionSigesoft();
+                                conectasam.opensigesoft();
+                                var cadena1 = "select PL.d_ImporteCo, CP.v_ComponentId " +
+                                              "from service SR " +
+                                              "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
+                                              "inner join component CP on SC.v_ComponentId=CP.v_ComponentId " +
+                                              "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
+                                              "inner join [dbo].[plan] PL on CP.v_IdUnidadProductiva= PL.v_IdUnidadProductiva " +
+                                              "where  CP.v_ComponentId='" + txtComponentId.Text+ "' and SR.v_ServiceId='" + _serviceId + "' and PL.d_ImporteCo>0 " +
+                                              "group by PL.d_ImporteCo, CP.v_ComponentId";
+                                SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                                SqlDataReader lector = comando.ExecuteReader();
+                                string ImporteCo = "";
+                                bool lectorleido = false;
+                                while (lector.Read())
+                                {
+                                    ImporteCo = lector.GetValue(0).ToString();
+                                    lectorleido = true;
+                                }
+
+                                if (lectorleido == false)
+                                {
+                                    MessageBox.Show(@"Elija un Examen que tenga Plan de Seguros", @"Error de validación", MessageBoxButtons.OK);
+                                    return;
+                                }
+                                lector.Close();
+                                conectasam.closesigesoft();
+                                #endregion
+                                _objTicketDetalleList.d_SaldoPaciente = decimal.Parse(txtPrecioVenta.Text) * decimal.Parse(txtCantidad.Text) * decimal.Parse(ImporteCo) / 100;
                                 _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(txtPrecioVenta.Text) * decimal.Parse(txtCantidad.Text)) - _objTicketDetalleList.d_SaldoPaciente;
                                 _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                             }
@@ -253,6 +285,45 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtCantidad.Value = findResult.d_Cantidad;
                 txtPrecioVenta.Value = findResult.d_PrecioVenta;
             }
+            cbExamen.Select();
+            object listaExamen = LlenarExamen();
+            cbExamen.DataSource = listaExamen;
+            cbExamen.DisplayMember = "v_Nombre";
+            cbExamen.ValueMember = "v_IdComp";
+            cbExamen.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+            cbExamen.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cbExamen.DropDownWidth = 590;
+            cbExamen.DisplayLayout.Bands[0].Columns[0].Width = 20;
+            cbExamen.DisplayLayout.Bands[0].Columns[1].Width = 550;
+
+            txtMedicamento.Focus();
+        }
+
+        private object LlenarExamen()
+        {
+            #region Conexion SIGESOFT Llenar componentes
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadena = "select CP.v_Name, SC.v_ComponentId " +
+                         "from service SR " +
+                         "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
+                         "inner join component CP on SC.v_ComponentId=CP.v_ComponentId " +
+                         "where SR.v_ServiceId='"+_serviceId+"' and SC.r_Price>0";
+            SqlCommand comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            List<ListaExamen> objListaExamen = new List<ListaExamen>();
+            while (lector.Read())
+            {
+                ListaExamen Lista = new ListaExamen();
+                Lista.v_Nombre = lector.GetValue(0).ToString();
+                Lista.v_IdComp = lector.GetValue(1).ToString();
+                objListaExamen.Add(Lista);
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            #endregion
+
+            return objListaExamen;
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
@@ -261,6 +332,23 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                 btnGuardar_Click(null, null);
             }
+        }
+
+        private void cbExamen_RowSelected(object sender, RowSelectedEventArgs e)
+        {
+            #region Conexion SIGESOFT obtener idcomponent
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadena = "select CP.v_componentId from component CP where CP.v_Name='"+cbExamen.Text+"'";
+            SqlCommand comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            while (lector.Read())
+            {
+                txtComponentId.Text = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            #endregion
         }
     }
 }

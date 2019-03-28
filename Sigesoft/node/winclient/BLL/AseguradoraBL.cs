@@ -89,87 +89,87 @@ namespace Sigesoft.Node.WinClient.BLL
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
-                    var tickets = obtenerTicketsByServiceId(servicio.ServicioId);
-                    foreach (var ticket in tickets)
-                    {
-                        oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
-                        oLiquiAseguradoraDetalle.Descripcion = ticket.v_NombreProducto;
+                    //var tickets = obtenerTicketsByServiceId(servicio.ServicioId);
+                    //foreach (var ticket in tickets)
+                    //{
+                    //    oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
+                    //    oLiquiAseguradoraDetalle.Descripcion = ticket.v_NombreProducto;
                        
-                        oLiquiAseguradoraDetalle.Tipo = ticket.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
-                        string simbolo = "";
-                        if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
-                        {
-                            simbolo = " S/.";
-                        }
-                        else
-                        {
-                            simbolo = " %";
-                        }    
-                        oLiquiAseguradoraDetalle.Valor = ticket.d_Importe.ToString() + simbolo;
-                        oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente.Value;
-                        oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora.Value;
-                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora.Value;
-                        oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente.Value + ticket.d_SaldoAseguradora.Value;
-                        oLiquiAseguradoraDetalle.Cantidad = ticket.d_Cantidad;
-                        oLiquiAseguradoraDetalle.PrecioUnitario = ticket.d_PrecioVenta;
-                        detalle.Add(oLiquiAseguradoraDetalle);
-                    }
+                    //    oLiquiAseguradoraDetalle.Tipo = ticket.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
+                    //    string simbolo = "";
+                    //    if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
+                    //    {
+                    //        simbolo = " S/.";
+                    //    }
+                    //    else
+                    //    {
+                    //        simbolo = " %";
+                    //    }    
+                    //    oLiquiAseguradoraDetalle.Valor = ticket.d_Importe.ToString() + simbolo;
+                    //    oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente.Value;
+                    //    oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora.Value;
+                    //    TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora.Value;
+                    //    oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente.Value + ticket.d_SaldoAseguradora.Value;
+                    //    oLiquiAseguradoraDetalle.Cantidad = ticket.d_Cantidad;
+                    //    oLiquiAseguradoraDetalle.PrecioUnitario = ticket.d_PrecioVenta;
+                    //    detalle.Add(oLiquiAseguradoraDetalle);
+                    //}
 
-                    var recetas = obtenerRecetasByServiceId(servicio.ServicioId);
-                    foreach (var receta in recetas)
-                    {
-                        oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
-                        oLiquiAseguradoraDetalle.Descripcion = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].v_Descripcion;// receta.v_IdProductoDetalle;
+                    //var recetas = obtenerRecetasByServiceId(servicio.ServicioId);
+                    //foreach (var receta in recetas)
+                    //{
+                    //    oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
+                    //    oLiquiAseguradoraDetalle.Descripcion = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].v_Descripcion;// receta.v_IdProductoDetalle;
                        
-                        oLiquiAseguradoraDetalle.Tipo = receta.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
-                        string simbolo = "";
-                        if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
-                        {
-                            simbolo = " S/.";
-                        }
-                        else
-                        {
-                            simbolo = " %";
-                        }    
-                        oLiquiAseguradoraDetalle.Valor = receta.d_Importe.ToString() + simbolo;
-                        oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad.Value;
-                        oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
-                        oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
-                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
-                        oLiquiAseguradoraDetalle.SubTotal = (oLiquiAseguradoraDetalle.SaldoPaciente.Value + oLiquiAseguradoraDetalle.SaldoAseguradora.Value);
-                        #region Conexion SIGESOFT
-                        ConexionSigesoft conectasam = new ConexionSigesoft();
-                        conectasam.opensigesoft();
-                        #endregion
-                        var cadena1 = "select OO.r_FactorMed, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + oLiquidacionAseguradora.Protocolo + "'";
-                        SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
-                        SqlDataReader lector = comando.ExecuteReader();
-                        string factor = "";
-                        while (lector.Read())
-                        {
-                            factor = lector.GetValue(0).ToString();
-                        }
-                        lector.Close();
-                        conectasam.closesigesoft();
-                        #region Conexion SAMBHS
-                        ConexionSambhs conectaConexionSambhs = new ConexionSambhs();
-                        conectaConexionSambhs.openSambhs();
-                        #endregion
+                    //    oLiquiAseguradoraDetalle.Tipo = receta.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
+                    //    string simbolo = "";
+                    //    if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
+                    //    {
+                    //        simbolo = " S/.";
+                    //    }
+                    //    else
+                    //    {
+                    //        simbolo = " %";
+                    //    }    
+                    //    oLiquiAseguradoraDetalle.Valor = receta.d_Importe.ToString() + simbolo;
+                    //    oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad.Value;
+                    //    oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
+                    //    oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
+                    //    TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
+                    //    oLiquiAseguradoraDetalle.SubTotal = (oLiquiAseguradoraDetalle.SaldoPaciente.Value + oLiquiAseguradoraDetalle.SaldoAseguradora.Value);
+                    //    #region Conexion SIGESOFT
+                    //    ConexionSigesoft conectasam = new ConexionSigesoft();
+                    //    conectasam.opensigesoft();
+                    //    #endregion
+                    //    var cadena1 = "select OO.r_FactorMed, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + oLiquidacionAseguradora.Protocolo + "'";
+                    //    SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                    //    SqlDataReader lector = comando.ExecuteReader();
+                    //    string factor = "";
+                    //    while (lector.Read())
+                    //    {
+                    //        factor = lector.GetValue(0).ToString();
+                    //    }
+                    //    lector.Close();
+                    //    conectasam.closesigesoft();
+                    //    #region Conexion SAMBHS
+                    //    ConexionSambhs conectaConexionSambhs = new ConexionSambhs();
+                    //    conectaConexionSambhs.openSambhs();
+                    //    #endregion
 
-                        var cadenasam = "select PP.d_PrecioMayorista from producto PP inner join productodetalle PD on PD.v_IdProducto = PP.v_IdProducto where PD.v_IdProductoDetalle ='" + receta.v_IdProductoDetalle + "'";
-                        comando = new SqlCommand(cadenasam, connection: conectaConexionSambhs.conectarSambhs);
-                        lector = comando.ExecuteReader();
-                        string preciounitario = "";
-                        while (lector.Read())
-                        {
-                            preciounitario = lector.GetValue(0).ToString();
-                        }
-                        lector.Close();
-                        conectaConexionSambhs.closeSambhs();
+                    //    var cadenasam = "select PP.d_PrecioMayorista from producto PP inner join productodetalle PD on PD.v_IdProducto = PP.v_IdProducto where PD.v_IdProductoDetalle ='" + receta.v_IdProductoDetalle + "'";
+                    //    comando = new SqlCommand(cadenasam, connection: conectaConexionSambhs.conectarSambhs);
+                    //    lector = comando.ExecuteReader();
+                    //    string preciounitario = "";
+                    //    while (lector.Read())
+                    //    {
+                    //        preciounitario = lector.GetValue(0).ToString();
+                    //    }
+                    //    lector.Close();
+                    //    conectaConexionSambhs.closeSambhs();
 
-                        oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(preciounitario) - (decimal.Parse(preciounitario) * decimal.Parse(factor) / 100);
-                        detalle.Add(oLiquiAseguradoraDetalle);
-                    }
+                    //    oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(preciounitario) - (decimal.Parse(preciounitario) * decimal.Parse(factor) / 100);
+                    //    detalle.Add(oLiquiAseguradoraDetalle);
+                    //}
 
                     oLiquidacionAseguradora.TotalAseguradora = TotalAseguradora;
                     oLiquidacionAseguradora.Detalle = detalle;

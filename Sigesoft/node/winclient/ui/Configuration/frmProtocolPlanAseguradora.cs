@@ -33,7 +33,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             _aseguradoraId = pstrAseguradoraId;
         }
 
-        private void frmProtocolPlanAseguradora_Load(object sender, EventArgs e)
+        public void frmProtocolPlanAseguradora_Load(object sender, EventArgs e)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         {
             try
             {
-                frmAddPlan frm = new frmAddPlan();
+                frmAddPlan frm = new frmAddPlan(_protocolId, _aseguradoraId, _aseguradoraId);
                 frm.Show();
                 //_gridDataSouce.AddNew();
             }

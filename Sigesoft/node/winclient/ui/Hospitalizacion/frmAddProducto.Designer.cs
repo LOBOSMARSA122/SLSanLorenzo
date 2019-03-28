@@ -28,12 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
             this.txtPPS = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
@@ -51,11 +63,14 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtMedicamento = new System.Windows.Forms.TextBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtCantidad = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.lblIdDetalleProd = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.cbExamen = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.txtComponentId = new System.Windows.Forms.TextBox();
+            this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPPS)).BeginInit();
@@ -64,14 +79,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbExamen)).BeginInit();
             this.SuspendLayout();
             // 
             // gbReceta
             // 
+            this.gbReceta.Controls.Add(this.cbExamen);
             this.gbReceta.Controls.Add(this.txtPPS);
             this.gbReceta.Controls.Add(this.ultraLabel8);
             this.gbReceta.Controls.Add(this.txtPrecio);
             this.gbReceta.Controls.Add(this.ultraLabel7);
+            this.gbReceta.Controls.Add(this.txtComponentId);
             this.gbReceta.Controls.Add(this.txtUnidadProductiva);
             this.gbReceta.Controls.Add(this.ultraLabel5);
             this.gbReceta.Controls.Add(this.txtDesctoEPS);
@@ -87,6 +105,7 @@
             this.gbReceta.Controls.Add(this.btnGuardar);
             this.gbReceta.Controls.Add(this.txtCantidad);
             this.gbReceta.Controls.Add(this.ultraLabel2);
+            this.gbReceta.Controls.Add(this.ultraLabel9);
             this.gbReceta.Controls.Add(this.ultraLabel1);
             this.gbReceta.Location = new System.Drawing.Point(-6, 12);
             this.gbReceta.Name = "gbReceta";
@@ -96,10 +115,10 @@
             // 
             // txtPPS
             // 
-            appearance1.TextHAlignAsString = "Right";
-            this.txtPPS.Appearance = appearance1;
+            appearance13.TextHAlignAsString = "Right";
+            this.txtPPS.Appearance = appearance13;
             this.txtPPS.Enabled = false;
-            this.txtPPS.Location = new System.Drawing.Point(104, 99);
+            this.txtPPS.Location = new System.Drawing.Point(277, 96);
             this.txtPPS.Name = "txtPPS";
             this.txtPPS.Size = new System.Drawing.Size(68, 21);
             this.txtPPS.TabIndex = 19;
@@ -107,7 +126,7 @@
             // ultraLabel8
             // 
             this.ultraLabel8.AutoSize = true;
-            this.ultraLabel8.Location = new System.Drawing.Point(11, 103);
+            this.ultraLabel8.Location = new System.Drawing.Point(184, 100);
             this.ultraLabel8.Name = "ultraLabel8";
             this.ultraLabel8.Size = new System.Drawing.Size(89, 14);
             this.ultraLabel8.TabIndex = 20;
@@ -115,10 +134,10 @@
             // 
             // txtPrecio
             // 
-            appearance2.TextHAlignAsString = "Right";
-            this.txtPrecio.Appearance = appearance2;
+            appearance14.TextHAlignAsString = "Right";
+            this.txtPrecio.Appearance = appearance14;
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(104, 71);
+            this.txtPrecio.Location = new System.Drawing.Point(104, 100);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(68, 21);
             this.txtPrecio.TabIndex = 17;
@@ -126,7 +145,7 @@
             // ultraLabel7
             // 
             this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(64, 75);
+            this.ultraLabel7.Location = new System.Drawing.Point(64, 104);
             this.ultraLabel7.Name = "ultraLabel7";
             this.ultraLabel7.Size = new System.Drawing.Size(36, 14);
             this.ultraLabel7.TabIndex = 18;
@@ -135,26 +154,28 @@
             // txtUnidadProductiva
             // 
             this.txtUnidadProductiva.Enabled = false;
-            this.txtUnidadProductiva.Location = new System.Drawing.Point(277, 71);
+            this.txtUnidadProductiva.Location = new System.Drawing.Point(103, 154);
             this.txtUnidadProductiva.Name = "txtUnidadProductiva";
             this.txtUnidadProductiva.Size = new System.Drawing.Size(111, 20);
             this.txtUnidadProductiva.TabIndex = 16;
+            this.txtUnidadProductiva.Visible = false;
             // 
             // ultraLabel5
             // 
             this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(196, 74);
+            this.ultraLabel5.Location = new System.Drawing.Point(22, 157);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(84, 14);
             this.ultraLabel5.TabIndex = 15;
             this.ultraLabel5.Text = "Uni. Productiva:";
+            this.ultraLabel5.Visible = false;
             // 
             // txtDesctoEPS
             // 
-            appearance3.TextHAlignAsString = "Right";
-            this.txtDesctoEPS.Appearance = appearance3;
+            appearance15.TextHAlignAsString = "Right";
+            this.txtDesctoEPS.Appearance = appearance15;
             this.txtDesctoEPS.Enabled = false;
-            this.txtDesctoEPS.Location = new System.Drawing.Point(277, 99);
+            this.txtDesctoEPS.Location = new System.Drawing.Point(104, 127);
             this.txtDesctoEPS.Name = "txtDesctoEPS";
             this.txtDesctoEPS.Size = new System.Drawing.Size(68, 21);
             this.txtDesctoEPS.TabIndex = 13;
@@ -162,7 +183,7 @@
             // ultraLabel6
             // 
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(187, 103);
+            this.ultraLabel6.Location = new System.Drawing.Point(14, 131);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(84, 14);
             this.ultraLabel6.TabIndex = 14;
@@ -170,10 +191,10 @@
             // 
             // txtPrecioVenta
             // 
-            appearance4.TextHAlignAsString = "Right";
-            this.txtPrecioVenta.Appearance = appearance4;
+            appearance16.TextHAlignAsString = "Right";
+            this.txtPrecioVenta.Appearance = appearance16;
             this.txtPrecioVenta.Enabled = false;
-            this.txtPrecioVenta.Location = new System.Drawing.Point(277, 126);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(282, 127);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(68, 21);
             this.txtPrecioVenta.TabIndex = 13;
@@ -181,7 +202,7 @@
             // ultraLabel4
             // 
             this.ultraLabel4.AutoSize = true;
-            this.ultraLabel4.Location = new System.Drawing.Point(196, 130);
+            this.ultraLabel4.Location = new System.Drawing.Point(201, 131);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(72, 14);
             this.ultraLabel4.TabIndex = 14;
@@ -189,10 +210,10 @@
             // 
             // txtCodigo
             // 
-            appearance5.TextHAlignAsString = "Right";
-            this.txtCodigo.Appearance = appearance5;
+            appearance17.TextHAlignAsString = "Right";
+            this.txtCodigo.Appearance = appearance17;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(277, 40);
+            this.txtCodigo.Location = new System.Drawing.Point(277, 69);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(68, 21);
             this.txtCodigo.TabIndex = 11;
@@ -200,7 +221,7 @@
             // ultraLabel3
             // 
             this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(230, 44);
+            this.ultraLabel3.Location = new System.Drawing.Point(230, 73);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(43, 14);
             this.ultraLabel3.TabIndex = 12;
@@ -249,11 +270,25 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(323, 152);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 28);
+            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // txtCantidad
             // 
-            appearance6.TextHAlignAsString = "Right";
-            this.txtCantidad.Appearance = appearance6;
-            this.txtCantidad.Location = new System.Drawing.Point(103, 43);
+            appearance18.TextHAlignAsString = "Right";
+            this.txtCantidad.Appearance = appearance18;
+            this.txtCantidad.Location = new System.Drawing.Point(103, 72);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(68, 21);
             this.txtCantidad.TabIndex = 1;
@@ -262,7 +297,7 @@
             // ultraLabel2
             // 
             this.ultraLabel2.AutoSize = true;
-            this.ultraLabel2.Location = new System.Drawing.Point(46, 47);
+            this.ultraLabel2.Location = new System.Drawing.Point(46, 76);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(53, 14);
             this.ultraLabel2.TabIndex = 2;
@@ -286,25 +321,85 @@
             this.lblIdDetalleProd.TabIndex = 9;
             this.lblIdDetalleProd.Text = ".";
             // 
-            // btnGuardar
+            // cbExamen
             // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(323, 152);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 28);
-            this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            appearance1.BackColor = System.Drawing.SystemColors.Window;
+            appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cbExamen.DisplayLayout.Appearance = appearance1;
+            this.cbExamen.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.cbExamen.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance2.BorderColor = System.Drawing.SystemColors.Window;
+            this.cbExamen.DisplayLayout.GroupByBox.Appearance = appearance2;
+            appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.cbExamen.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
+            this.cbExamen.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance4.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.cbExamen.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
+            appearance5.BackColor = System.Drawing.SystemColors.Window;
+            appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cbExamen.DisplayLayout.Override.ActiveCellAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.cbExamen.DisplayLayout.Override.ActiveRowAppearance = appearance6;
+            this.cbExamen.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.cbExamen.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.cbExamen.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance7.BackColor = System.Drawing.SystemColors.Window;
+            this.cbExamen.DisplayLayout.Override.CardAreaAppearance = appearance7;
+            appearance8.BorderColor = System.Drawing.Color.Silver;
+            appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.cbExamen.DisplayLayout.Override.CellAppearance = appearance8;
+            this.cbExamen.DisplayLayout.Override.CellPadding = 0;
+            this.cbExamen.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            appearance9.BackColor = System.Drawing.SystemColors.Control;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.cbExamen.DisplayLayout.Override.GroupByRowAppearance = appearance9;
+            appearance10.TextHAlignAsString = "Left";
+            this.cbExamen.DisplayLayout.Override.HeaderAppearance = appearance10;
+            this.cbExamen.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance11.BackColor = System.Drawing.SystemColors.Window;
+            appearance11.BorderColor = System.Drawing.Color.Silver;
+            this.cbExamen.DisplayLayout.Override.RowAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbExamen.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            this.cbExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbExamen.Location = new System.Drawing.Point(103, 43);
+            this.cbExamen.Name = "cbExamen";
+            this.cbExamen.Size = new System.Drawing.Size(160, 22);
+            this.cbExamen.TabIndex = 123;
+            this.cbExamen.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbExamen_RowSelected);
+            // 
+            // txtComponentId
+            // 
+            this.txtComponentId.Enabled = false;
+            this.txtComponentId.Location = new System.Drawing.Point(268, 44);
+            this.txtComponentId.Name = "txtComponentId";
+            this.txtComponentId.Size = new System.Drawing.Size(111, 20);
+            this.txtComponentId.TabIndex = 16;
+            // 
+            // ultraLabel9
+            // 
+            this.ultraLabel9.AutoSize = true;
+            this.ultraLabel9.Location = new System.Drawing.Point(52, 46);
+            this.ultraLabel9.Name = "ultraLabel9";
+            this.ultraLabel9.Size = new System.Drawing.Size(49, 14);
+            this.ultraLabel9.TabIndex = 0;
+            this.ultraLabel9.Text = "Examen:";
             // 
             // frmAddProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 208);
+            this.ClientSize = new System.Drawing.Size(404, 203);
             this.Controls.Add(this.lblIdDetalleProd);
             this.Controls.Add(this.gbReceta);
             this.MaximizeBox = false;
@@ -324,6 +419,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbExamen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,6 +449,9 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel8;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtDesctoEPS;
         private Infragistics.Win.Misc.UltraLabel ultraLabel6;
+        private Infragistics.Win.UltraWinGrid.UltraCombo cbExamen;
+        private System.Windows.Forms.TextBox txtComponentId;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel9;
 
     }
 }
