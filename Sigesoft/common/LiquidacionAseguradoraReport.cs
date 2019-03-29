@@ -335,7 +335,7 @@ namespace NetPdf
                 "RC.d_SaldoPaciente + RC.d_SaldoAseguradora as totalRC " +
                 "from service SR " +
                 "inner join receta RC on SR.v_ServiceId=RC.v_ServiceId " +
-                "where SR.v_ServiceId='"+historia+"' ";
+                "where SR.v_ServiceId='" + historia + "' and RC.i_Lleva=1";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             lector = comando.ExecuteReader();
             string d_SaldoPacienteRC = ""; string d_SaldoAseguradoraRC = ""; string productoRC = ""; string fechaRC = ""; string cantidadRC = "";
