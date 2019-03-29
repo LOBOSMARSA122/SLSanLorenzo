@@ -15,6 +15,23 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+
+        #region IDS LUMINA FICHA MEDICA - AUTORIZACION DE REALIZACION DE EXAMEN MEDICO Y LIBERACION DE INFORMACION MEDICA - LUMINA COPPER RESUMEN
+
+        public const string FICHA_MEDICA_OCUPACIONAL = "FICH_MED_OCP";
+        public const string AUTORIZACION_REALIZACION_EX_LIB_INF_MED = "AUT_REAL_EXM_LIB_INF_MED";
+        public const string LUMINA_RESUMEN = "LUMINA_RESUMEN";
+        #endregion
+        #region INFORME RADIOLOGICO LUMINA
+        public const string INFORME_RADIOLOGICO_ID = "N009-ME000000538";
+
+        public const string INFORME_RADIOLOGICO_N_PLACA = "N009-MF000004938";
+        public const string INFORME_RADIOLOGICO_DESCRIPCION = "N009-MF000004936";
+        public const string INFORME_RADIOLOGICO_CONCLUSIONES = "N009-MF000004937";
+
+
+        #endregion
+
         #region
         public const string FACTORES_PSICOSOCIALES_MI_BANCO_ID = "N009-ME000000533";
 
