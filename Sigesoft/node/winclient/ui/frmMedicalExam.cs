@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
 using Sigesoft.Node.WinClient.BE;
+using Sigesoft.Node.WinClient.UI.Configuration;
+using System.Data.SqlClient;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -63,32 +65,69 @@ namespace Sigesoft.Node.WinClient.UI
             // Establecer el filtro inicial para los datos
             strFilterExpression = null;
             //Llenado de combos
-            Utils.LoadComboTreeBoxList(ddlCategoryId, BLL.Utils.GetSystemParameterForComboTreeBox(ref objOperationResult, 116, null), DropDownListAction.All);         
+            Utils.LoadComboTreeBoxList(ddlCategoryId, BLL.Utils.GetSystemParameterForComboTreeBox(ref objOperationResult, 116, null), DropDownListAction.All);
+            cbLine.Select();
+            object listaLine = LlenarLines();
+            cbLine.DataSource = listaLine;
+            cbLine.DisplayMember = "v_Nombre";
+            cbLine.ValueMember = "v_IdLinea";
+            cbLine.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+            cbLine.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cbLine.DropDownWidth = 590;
+            cbLine.DisplayLayout.Bands[0].Columns[0].Width = 20;
+            cbLine.DisplayLayout.Bands[0].Columns[1].Width = 550;
 
             btnFilter_Click(sender, e);
            
         }
 
+        private object LlenarLines()
+        {
+            #region Conexion SAMBHS
+            ConexionSambhs conectaConexionSambhs = new ConexionSambhs(); conectaConexionSambhs.openSambhs();
+            var cadenasam = "select v_Nombre, v_IdLinea  from linea where i_Eliminado=0";
+            var comando = new SqlCommand(cadenasam, connection: conectaConexionSambhs.conectarSambhs);
+            var lector = comando.ExecuteReader();
+            string preciounitario = "";
+            List<ListaLineas> objListaLineas = new List<ListaLineas>();
+
+            while (lector.Read())
+            {
+                ListaLineas Lista = new ListaLineas();
+                Lista.v_Nombre = lector.GetValue(0).ToString();
+                Lista.v_IdLinea = lector.GetValue(1).ToString();
+                objListaLineas.Add(Lista);
+            }
+            lector.Close();
+            conectaConexionSambhs.closeSambhs();
+            #endregion
+
+            return objListaLineas;
+        }
+
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            
-             //Get the filters from the UI
-            List<string> Filters = new List<string>();
-            if (ddlCategoryId.SelectedNode.Tag.ToString() != "-1") Filters.Add("i_CategoryId==" + ddlCategoryId.SelectedNode.Tag);
-            if (!string.IsNullOrEmpty(txtName.Text)) Filters.Add("v_Name.Contains(\"" + txtName.Text.Trim() + "\")");
-            Filters.Add("i_IsDeleted==0");
-            // Create the Filter Expression
-            strFilterExpression = null;
-            if (Filters.Count > 0)
+            using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
             {
-                foreach (string item in Filters)
+                 //Get the filters from the UI
+                List<string> Filters = new List<string>();
+                if (ddlCategoryId.SelectedNode.Tag.ToString() != "-1") Filters.Add("i_CategoryId==" + ddlCategoryId.SelectedNode.Tag);
+                if (!string.IsNullOrEmpty(txtName.Text)) Filters.Add("v_Name.Contains(\"" + txtName.Text.Trim() + "\")");
+                if (!string.IsNullOrEmpty(cbLine.Text)) Filters.Add("v_IdUnidadProductiva.Contains(\"" + txtUnidadProdId.Text.Trim() + "\")");
+                Filters.Add("i_IsDeleted==0");
+                // Create the Filter Expression
+                strFilterExpression = null;
+                if (Filters.Count > 0)
                 {
-                    strFilterExpression = strFilterExpression + item + " && ";
+                    foreach (string item in Filters)
+                    {
+                        strFilterExpression = strFilterExpression + item + " && ";
+                    }
+                    strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
                 }
-                strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
-            }
 
-            this.BindGridMedicalExam();
+                this.BindGridMedicalExam();
+            };
         }
 
         private void BindGridMedicalExam()
@@ -558,6 +597,27 @@ namespace Sigesoft.Node.WinClient.UI
         private void ddlCategoryId_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbLine_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)
+        {
+            #region Conexion SAMBHS
+            ConexionSambhs conectaConexionSambhs = new ConexionSambhs(); conectaConexionSambhs.openSambhs();
+            var cadenasam = "select v_IdLinea  from linea where i_Eliminado=0 and v_Nombre ='" + cbLine.Text + "'";
+            var comando = new SqlCommand(cadenasam, connection: conectaConexionSambhs.conectarSambhs);
+            var lector = comando.ExecuteReader();
+            string LineId = "";
+            List<ListaLineas> objListaLineas = new List<ListaLineas>();
+
+            while (lector.Read())
+            {
+                LineId = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectaConexionSambhs.closeSambhs();
+            #endregion
+
+            txtUnidadProdId.Text = LineId;
         }
 
     }

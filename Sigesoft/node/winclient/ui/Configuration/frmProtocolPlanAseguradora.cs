@@ -58,10 +58,14 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            objOperationResult1 = new OperationResult();
             try
             {
                 frmAddPlan frm = new frmAddPlan(_protocolId, _aseguradoraId, _aseguradoraId);
-                frm.Show();
+                frm.ShowDialog();
+
+                _gridDataSouce = _objPlanBl.ObtenerPlanesPorProtocolo(ref objOperationResult1, _protocolId);
+                grd.DataSource = _gridDataSouce;
                 //_gridDataSouce.AddNew();
             }
             catch (Exception ex)

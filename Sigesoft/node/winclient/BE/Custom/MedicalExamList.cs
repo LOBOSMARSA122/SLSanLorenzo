@@ -17,6 +17,7 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_ComponentTypeId { get; set; }
         public string v_ComponentTypeName { get; set; }
         public float? r_BasePrice { get; set; }
+        public string v_IdUnidadProductiva { get; set; }
 
         public int i_IsDeleted { get; set; }
         public string v_CreationUser { get; set; }
