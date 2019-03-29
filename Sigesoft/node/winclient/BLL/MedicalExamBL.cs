@@ -51,7 +51,9 @@ namespace Sigesoft.Node.WinClient.BLL
                               i_IsDeleted = A.i_IsDeleted.Value,
                               r_BasePrice = A.r_BasePrice,
                               i_ComponentTypeId = A.i_ComponentTypeId,
-                              i_UIIndex = A.i_UIIndex.Value
+                              i_UIIndex = A.i_UIIndex.Value,
+                              v_IdUnidadProductiva = A.v_IdUnidadProductiva
+
                               
                           };
 

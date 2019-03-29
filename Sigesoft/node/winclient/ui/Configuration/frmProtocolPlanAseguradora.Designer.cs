@@ -86,7 +86,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(568, 357);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(646, 446);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ultraGroupBox1
@@ -96,7 +96,7 @@
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBox1.Location = new System.Drawing.Point(3, 3);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(562, 65);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(640, 65);
             this.ultraGroupBox1.TabIndex = 0;
             this.ultraGroupBox1.Text = "Empresa Aseguradora:";
             // 
@@ -213,7 +213,7 @@
             this.grd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grd.Location = new System.Drawing.Point(3, 74);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(562, 235);
+            this.grd.Size = new System.Drawing.Size(640, 324);
             this.grd.TabIndex = 1;
             this.grd.Text = "ultraGrid1";
             this.grd.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grd_CellChange);
@@ -229,9 +229,9 @@
             this.ultraPanel1.ClientArea.Controls.Add(this.btnSalir);
             this.ultraPanel1.ClientArea.Controls.Add(this.btnGuardar);
             this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraPanel1.Location = new System.Drawing.Point(3, 315);
+            this.ultraPanel1.Location = new System.Drawing.Point(3, 404);
             this.ultraPanel1.Name = "ultraPanel1";
-            this.ultraPanel1.Size = new System.Drawing.Size(562, 39);
+            this.ultraPanel1.Size = new System.Drawing.Size(640, 39);
             this.ultraPanel1.TabIndex = 2;
             // 
             // btnEliminar
@@ -269,13 +269,14 @@
             // 
             // btnGuardar
             // 
-            appearance18.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
             this.btnGuardar.Appearance = appearance18;
             this.btnGuardar.Location = new System.Drawing.Point(92, 4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 28);
             this.btnGuardar.TabIndex = 0;
             this.btnGuardar.Text = "&Guardar";
+            this.btnGuardar.Visible = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmProtocolPlanAseguradora
@@ -284,7 +285,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
-            this.ClientSize = new System.Drawing.Size(568, 357);
+            this.ClientSize = new System.Drawing.Size(646, 446);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

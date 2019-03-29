@@ -77,20 +77,61 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            #region VALIDACION DE DUPLICADOS
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadena = "select count (*) as result from [dbo].[plan] " +
+                         "where v_OrganizationSeguroId='"+_aseguradoraId+"' and v_ProtocoloId='"+_protocolId+"' and v_IdUnidadProductiva='"+txtUnidadProdId.Text+"'";
+            SqlCommand comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
+            var lector = comando.ExecuteReader();
+            string result = "";
+            while (lector.Read())
+            {
+                result = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            if (result !="0")
+            {
+                MessageBox.Show("Ya se agrego esta unidad al plan", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
+            #endregion
             planDto ObjPlan = new planDto();
             ObjPlan.v_OrganizationSeguroId = _aseguradoraId;
             ObjPlan.v_ProtocoloId = _protocolId;
             ObjPlan.v_IdUnidadProductiva = txtUnidadProdId.Text;
-            ObjPlan.d_Importe = decimal.Parse(txtDeducible.Text);
+            ObjPlan.d_Importe = txtDeducible.Text == "" ? (decimal?)null : decimal.Parse(txtDeducible.Text);
             ObjPlan.i_EsCoaseguro = chkCoaseguro.Checked == true ? 1 : 0;
             ObjPlan.i_EsDeducible = chkDeducible.Checked == true ? 1 : 0;
-            ObjPlan.d_ImporteCo = decimal.Parse(txtCoaseguro.Text);
+            ObjPlan.d_ImporteCo = txtCoaseguro.Text == "" ? (decimal?)null : decimal.Parse(txtCoaseguro.Text);
             #region Conexion SIGESOFT Insert
-            ConexionSigesoft conectasam = new ConexionSigesoft();
+            
             conectasam.opensigesoft();
-            var cadena1 ="INSERT INTO [dbo].[plan] (v_OrganizationSeguroId, v_ProtocoloId, v_IdUnidadProductiva, i_EsDeducible, i_EsCoaseguro, d_Importe, d_ImporteCo) " +
-                            "VALUES ('"+ObjPlan.v_OrganizationSeguroId+"', '"+ ObjPlan.v_ProtocoloId+"', '"+ObjPlan.v_IdUnidadProductiva+"', "+ObjPlan.i_EsDeducible+", "+ObjPlan.i_EsCoaseguro+", "+ ObjPlan.d_Importe+", "+ObjPlan.d_ImporteCo+")";
-            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            string cadenanull = "";
+            if (ObjPlan.d_Importe == null && ObjPlan.d_ImporteCo != null)
+            {
+                cadenanull = "INSERT INTO [dbo].[plan] (v_OrganizationSeguroId, v_ProtocoloId, v_IdUnidadProductiva, i_EsDeducible, i_EsCoaseguro, d_Importe, d_ImporteCo) " +
+                             "VALUES ('" + ObjPlan.v_OrganizationSeguroId + "', '" + ObjPlan.v_ProtocoloId + "', '" + ObjPlan.v_IdUnidadProductiva + "', " + ObjPlan.i_EsDeducible + ", " + ObjPlan.i_EsCoaseguro + ", " + "NULL" + ", " + ObjPlan.d_ImporteCo + ")";
+            }
+            else if (ObjPlan.d_ImporteCo == null && ObjPlan.d_Importe != null)
+            {
+                cadenanull = "INSERT INTO [dbo].[plan] (v_OrganizationSeguroId, v_ProtocoloId, v_IdUnidadProductiva, i_EsDeducible, i_EsCoaseguro, d_Importe, d_ImporteCo) " +
+                    "VALUES ('" + ObjPlan.v_OrganizationSeguroId + "', '" + ObjPlan.v_ProtocoloId + "', '" + ObjPlan.v_IdUnidadProductiva + "', " + ObjPlan.i_EsDeducible + ", " + ObjPlan.i_EsCoaseguro + ", " + ObjPlan.d_Importe + ", " + "NULL" + ")";
+            }
+            else if (ObjPlan.d_ImporteCo != null && ObjPlan.d_Importe != null)
+            {
+                cadenanull = "INSERT INTO [dbo].[plan] (v_OrganizationSeguroId, v_ProtocoloId, v_IdUnidadProductiva, i_EsDeducible, i_EsCoaseguro, d_Importe, d_ImporteCo) " +
+                              "VALUES ('" + ObjPlan.v_OrganizationSeguroId + "', '" + ObjPlan.v_ProtocoloId + "', '" + ObjPlan.v_IdUnidadProductiva + "', " + ObjPlan.i_EsDeducible + ", " + ObjPlan.i_EsCoaseguro + ", " + ObjPlan.d_Importe + ", " + ObjPlan.d_ImporteCo + ")";
+            }
+            else
+            {
+                MessageBox.Show("Verifique la información ingresada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var cadena1 = cadenanull;
+            comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             comando.ExecuteReader();
             conectasam.closesigesoft();
             #endregion
