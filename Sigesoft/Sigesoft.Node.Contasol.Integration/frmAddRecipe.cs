@@ -128,7 +128,9 @@ namespace Sigesoft.Node.Contasol.Integration
                         var cadena1 = "select PL.d_ImporteCo " +
                                       "from [dbo].[plan] PL " +
                                       "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
-                                      "where PR.v_ProtocolId='"+_protocolId+"' and PL.v_IdUnidadProductiva='"+_LineId+"' ";
+                                      "inner join servicecomponent SC on PL.v_IdUnidadProductiva=SC.v_IdUnidadProductiva " +
+                                      "inner join diagnosticrepository DR on DR.v_ComponentId=SC.v_ComponentId " +
+                                      "where PR.v_ProtocolId='"+_protocolId+"' and DR.v_DiagnosticRepositoryId='"+_idDiagnosticRepository+"' ";
                         SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                         SqlDataReader lector = comando.ExecuteReader();
                         string ImporteCo = "";
