@@ -21,9 +21,10 @@ namespace Sigesoft.Node.Contasol.Integration
         private string idUnidadProductiva;
         private string _protocolId;
         private string _serviceId;
-        private string _componentId;
+        private string _categoryName;
+        private string _LineId;
 
-        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId, string serviceId, string componentId)
+        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId, string serviceId, string categoryName, string LineId)
         {
             InitializeComponent();
             _recipeId = recipeId;
@@ -34,7 +35,8 @@ namespace Sigesoft.Node.Contasol.Integration
             _protocolId = protocolId;
             Text = actionForm == ActionForm.Add ? "Agregar Nueva Receta" : "Editar Receta";
             _serviceId = serviceId;
-            _componentId = componentId;
+            _categoryName = categoryName;
+            _LineId = LineId;
         }
 
         public sealed override string Text
@@ -123,15 +125,10 @@ namespace Sigesoft.Node.Contasol.Integration
                         #region Conexion SIGESOFT verificar la unidad productiva del componente
                         ConexionSigesoft conectasam = new ConexionSigesoft();
                         conectasam.opensigesoft();
-                        var cadena1 = "select PL.d_ImporteCo, CP.v_ComponentId " +
-                                      "from service SR " +
-                                      "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
-                                      "inner join component CP on SC.v_ComponentId=CP.v_ComponentId " +
-                                      "inner join diagnosticrepository DR on CP.v_ComponentId=DR.v_ComponentId "+
-                                      "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
-                                      "inner join [dbo].[plan] PL on  CP.v_IdUnidadProductiva= PL.v_IdUnidadProductiva " +
-                                      "where  DR.v_DiagnosticRepositoryId='" + _idDiagnosticRepository + "' and SR.v_ServiceId='" + _serviceId + "' and PL.d_ImporteCo>0 " +
-                                      "group by PL.d_ImporteCo, CP.v_ComponentId";
+                        var cadena1 = "select PL.d_ImporteCo " +
+                                      "from [dbo].[plan] PL " +
+                                      "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
+                                      "where PR.v_ProtocolId='"+_protocolId+"' and PL.v_IdUnidadProductiva='"+_LineId+"' ";
                         SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                         SqlDataReader lector = comando.ExecuteReader();
                         string ImporteCo = "";

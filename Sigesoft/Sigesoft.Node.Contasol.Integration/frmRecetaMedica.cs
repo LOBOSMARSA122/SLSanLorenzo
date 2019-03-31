@@ -7,6 +7,7 @@ using Infragistics.Win.UltraWinGrid;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
 using Sigesoft.Node.WinClient.UI.Reports;
+using System.Data.SqlClient;
 
 
 namespace Sigesoft.Node.Contasol.Integration
@@ -80,13 +81,29 @@ namespace Sigesoft.Node.Contasol.Integration
             {
                 if (e.Cell == null || e.Cell.Row.Cells["v_DiagnosticRepositoryId"].Value == null) return;
                 var diagnosticRepositoryId = e.Cell.Row.Cells["v_DiagnosticRepositoryId"].Value.ToString();
-                var componentId = e.Cell.Row.Cells["v_ComponentName"].Value.ToString();
-
+                var categoryName = e.Cell.Row.Cells["v_ComponentName"].Value.ToString();
+                #region Conexion SIGESOFT verificar la unidad productiva del componente
+                ConexionSigesoft conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                var cadena1 = "select CP.v_IdUnidadProductiva " +
+                              "from diagnosticrepository DR " +
+                              "inner join component CP on DR.v_ComponentId=CP.v_ComponentId "+
+                              "where DR.v_DiagnosticRepositoryId='"+diagnosticRepositoryId+"' ";
+                SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                SqlDataReader lector = comando.ExecuteReader();
+                string LineId = "";
+                while (lector.Read())
+                {
+                    LineId = lector.GetValue(0).ToString();
+                }
+                lector.Close();
+                conectasam.closesigesoft();
+                #endregion
                 switch (e.Cell.Column.Key)
                 {
                     case "_AddRecipe":
                     {
-                        var f = new frmAddRecipe(ActionForm.Add, diagnosticRepositoryId, 0, _protocolId, _serviceId, componentId) { StartPosition = FormStartPosition.CenterScreen };
+                        var f = new frmAddRecipe(ActionForm.Add, diagnosticRepositoryId, 0, _protocolId, _serviceId, categoryName, LineId) { StartPosition = FormStartPosition.CenterScreen };
                         f.ShowDialog();
                         GetData(_listDiagnosticRepositoryLists);
                     }
@@ -95,7 +112,7 @@ namespace Sigesoft.Node.Contasol.Integration
                     case "_EditRecipe":
                     {
                         var recipeId = int.Parse(e.Cell.Row.Cells["i_IdReceta"].Value.ToString());
-                        var f = new frmAddRecipe(ActionForm.Edit, diagnosticRepositoryId, recipeId, _protocolId, _serviceId, componentId) { StartPosition = FormStartPosition.CenterScreen };
+                        var f = new frmAddRecipe(ActionForm.Edit, diagnosticRepositoryId, recipeId, _protocolId, _serviceId, categoryName, LineId) { StartPosition = FormStartPosition.CenterScreen };
                         f.ShowDialog();
                         GetData(_listDiagnosticRepositoryLists);
                     }
