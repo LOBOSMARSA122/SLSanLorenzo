@@ -248,8 +248,8 @@ namespace NetPdf
                 "select SC.d_SaldoPaciente as d_SaldoPaciente, SC.d_SaldoAseguradora as d_SaldoAseguradora,SC.r_Price-(SC.r_Price*0.18) as subtotal, SC.r_Price*0.18 as igv,SC.r_Price as total, " +
                 "SC.d_InsertDate as fecha, CP.v_Name as Descripcion, " +
                 "CP.v_IdUnidadProductiva as v_IdUnidadProductiva, SR.v_ServiceId as v_ServiceId, " +
-                "case when PL.i_EsDeducible = 0 then 'NO' else 'SI' end as i_EsDeducible, " +
-                "case when PL.i_EsCoaseguro = 0 then 'NO' else 'SI' end as i_EsCoaseguro " +
+                "case when SC.i_TipoDesc = 1 then 'SI' else 'NO' end as i_EsDeducible, " +
+                "case when SC.i_TipoDesc = 2 then 'SI' else 'NO' end as i_EsCoaseguro " +
                 "from service SR " +
                 "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
                 "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
