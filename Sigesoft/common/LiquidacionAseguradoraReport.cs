@@ -248,13 +248,13 @@ namespace NetPdf
                 "select SC.d_SaldoPaciente as d_SaldoPaciente, SC.d_SaldoAseguradora as d_SaldoAseguradora,SC.r_Price-(SC.r_Price*0.18) as subtotal, SC.r_Price*0.18 as igv,SC.r_Price as total, " +
                 "SC.d_InsertDate as fecha, CP.v_Name as Descripcion, " +
                 "CP.v_IdUnidadProductiva as v_IdUnidadProductiva, SR.v_ServiceId as v_ServiceId, " +
-                "case when PL.i_EsDeducible = 0 then 'NO' else 'SI' end as i_EsDeducible, " +
-                "case when PL.i_EsCoaseguro = 0 then 'NO' else 'SI' end as i_EsCoaseguro " +
+                "case when SC.i_TipoDesc = 1 then 'SI' else 'NO' end as i_EsDeducible, " +
+                "case when SC.i_TipoDesc = 2 then 'SI' else 'NO' end as i_EsCoaseguro " +
                 "from service SR " +
                 "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
                 "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
                 "inner join component CP on SC.v_ComponentId=CP.v_ComponentId " +
-                "inner join [dbo].[plan] PL on CP.v_IdUnidadProductiva=PL.v_IdUnidadProductiva " +
+                "inner join [dbo].[plan] PL on PR.v_ProtocolId=PL.v_ProtocoloId " +
                 "where SR.v_ServiceId='"+historia+"' and SC.r_Price<>0 " +
                 "group by SC.d_SaldoPaciente,SC.d_SaldoAseguradora,SC.r_Price-(SC.r_Price*0.18),SC.r_Price*0.18, SC.r_Price,SC.d_InsertDate,CP.v_Name,CP.v_IdUnidadProductiva,PL.i_EsDeducible,PL.i_EsCoaseguro,SR.v_ServiceId";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);

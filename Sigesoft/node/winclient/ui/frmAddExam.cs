@@ -434,6 +434,15 @@ namespace Sigesoft.Node.WinClient.UI
                             objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
                             objServiceComponentDto.d_SaldoPaciente = frm1.paciente;
                             objServiceComponentDto.d_SaldoAseguradora = frm1.aseguradora;
+                            if (rbNuevaConsulta.Checked)
+                            {
+                                objServiceComponentDto.i_TipoDesc = 1;
+                            }
+                            else if (rbAdicional.Checked)
+                            {
+                                objServiceComponentDto.i_TipoDesc = 2;
+                            }
+                                                        
                             _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());
                         }
                     }
