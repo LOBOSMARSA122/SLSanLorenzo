@@ -168,9 +168,33 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             txtUnidadProdId.Text = LineId;
         }
 
-        private void frmAddPlan_FormClosed(object sender, FormClosedEventArgs e)
+        public void frmAddPlan_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            //ConexionSigesoft conectasam = new ConexionSigesoft();
+            //conectasam.opensigesoft();
+            //var cadena = "update protocol set " +
+            //             "v_AseguradoraOrganizationId='"+_aseguradoraId+"' " +
+            //             "where v_ProtocolId='"+_protocolId+"'";
+            //SqlCommand comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
+            //var lector = comando.ExecuteReader();
+            //lector.Close();
+            //conectasam.closesigesoft();
+            //this.Close();
+            btnCancelar_Click(sender, e);
+        }
+
+        public void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadena = "update protocol set " +
+                         "v_AseguradoraOrganizationId='" + _aseguradoraId + "' " +
+                         "where v_ProtocolId='" + _protocolId + "'";
+            SqlCommand comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
+            var lector = comando.ExecuteReader();
+            lector.Close();
+            conectasam.closesigesoft();
+            this.Close();
         }
     }
 }

@@ -49,6 +49,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         string _personFullName;
         string ruta;
         int _edad;
+        private string v_ProtocoloId;
 
         public frmHospitalizados()
         {
@@ -396,7 +397,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                               "where v_HopitalizacionId='"+v_HopitalizacionId+"'";
                 SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                 SqlDataReader lector = comando.ExecuteReader();
-                string v_ProtocoloId = "";
+                v_ProtocoloId = "";
                 while (lector.Read()) { v_ProtocoloId = lector.GetValue(0).ToString(); }
                 lector.Close();
                 conectasam.closesigesoft();
@@ -417,7 +418,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 if (plan != "") { modoMasterService = "ASEGU"; }
                 else { modoMasterService = "HOSPI"; }
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New"+modoMasterService, "");
+                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnAsignarHabitacion.Enabled = false;
@@ -437,10 +438,26 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             try
             {
+                #region Conexion SIGESOFT Obtener Protocolo
+                var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                ConexionSigesoft conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                var cadena1 = "select PR.v_ProtocolId " +
+                              "from hospitalizacionservice HS " +
+                              "inner join service SR on SR.v_ServiceId= HS.v_ServiceId " +
+                              "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
+                              "where v_HopitalizacionId='"+v_HopitalizacionId+"'";
+                SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                SqlDataReader lector = comando.ExecuteReader();
+                v_ProtocoloId = "";
+                while (lector.Read()) { v_ProtocoloId = lector.GetValue(0).ToString(); }
+                lector.Close();
+                conectasam.closesigesoft();
+                #endregion
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
                 var hospitalizacionHabitacionId =
                     grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
-                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId);
+                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId, v_ProtocoloId);
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnEditarHabitacion.Enabled = false;

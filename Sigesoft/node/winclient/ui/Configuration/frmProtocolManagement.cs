@@ -42,9 +42,11 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                  btnClon.Enabled = false;
                  btnGenerarOS.Enabled = false;
                  lblCostoTotal.Visible = false;
+                 cbServiceType.Enabled = true;
+                 cbService.Enabled = true;
 
-                //cbMasterService.SelectedValue = pintServiceId.ToString();
-                ////cbMasterService.Enabled = false;
+                 //cbMasterService.SelectedValue = pintServiceId.ToString();
+                 ////cbMasterService.Enabled = false;
             }
         }
 

@@ -226,6 +226,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 _protocolDTO.i_IsActive = Convert.ToInt32(chkIsActive.Checked);
                 _protocolDTO.v_NombreVendedor = cboVendedor.Text;
 
+
                 // Grabar componentes del protocolo
                 if (_mode == "New" || _mode == "Clon")
                 {

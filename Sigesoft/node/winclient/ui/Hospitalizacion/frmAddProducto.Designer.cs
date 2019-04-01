@@ -34,6 +34,19 @@
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProducto));
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -47,10 +60,12 @@
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.cbExamen = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.txtPPS = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
             this.txtPrecio = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtComponentId = new System.Windows.Forms.TextBox();
             this.txtUnidadProductiva = new System.Windows.Forms.TextBox();
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.txtDesctoEPS = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -66,31 +81,36 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtCantidad = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.lblIdDetalleProd = new System.Windows.Forms.Label();
-            this.cbExamen = new Infragistics.Win.UltraWinGrid.UltraCombo();
-            this.txtComponentId = new System.Windows.Forms.TextBox();
-            this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
+            this.cbLine = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtUnPdId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesctoEPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbExamen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLine)).BeginInit();
             this.SuspendLayout();
             // 
             // gbReceta
             // 
+            this.gbReceta.Controls.Add(this.cbLine);
             this.gbReceta.Controls.Add(this.cbExamen);
             this.gbReceta.Controls.Add(this.txtPPS);
             this.gbReceta.Controls.Add(this.ultraLabel8);
             this.gbReceta.Controls.Add(this.txtPrecio);
             this.gbReceta.Controls.Add(this.ultraLabel7);
             this.gbReceta.Controls.Add(this.txtComponentId);
+            this.gbReceta.Controls.Add(this.txtUnPdId);
             this.gbReceta.Controls.Add(this.txtUnidadProductiva);
+            this.gbReceta.Controls.Add(this.ultraLabel10);
             this.gbReceta.Controls.Add(this.ultraLabel5);
             this.gbReceta.Controls.Add(this.txtDesctoEPS);
             this.gbReceta.Controls.Add(this.ultraLabel6);
@@ -109,14 +129,71 @@
             this.gbReceta.Controls.Add(this.ultraLabel1);
             this.gbReceta.Location = new System.Drawing.Point(-6, 12);
             this.gbReceta.Name = "gbReceta";
-            this.gbReceta.Size = new System.Drawing.Size(407, 186);
+            this.gbReceta.Size = new System.Drawing.Size(407, 244);
             this.gbReceta.TabIndex = 1;
             this.gbReceta.Text = "Buscar Medicina";
             // 
+            // cbExamen
+            // 
+            appearance13.BackColor = System.Drawing.SystemColors.Window;
+            appearance13.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cbExamen.DisplayLayout.Appearance = appearance13;
+            this.cbExamen.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.cbExamen.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance14.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance14.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance14.BorderColor = System.Drawing.SystemColors.Window;
+            this.cbExamen.DisplayLayout.GroupByBox.Appearance = appearance14;
+            appearance15.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.cbExamen.DisplayLayout.GroupByBox.BandLabelAppearance = appearance15;
+            this.cbExamen.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance16.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance16.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance16.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.cbExamen.DisplayLayout.GroupByBox.PromptAppearance = appearance16;
+            appearance17.BackColor = System.Drawing.SystemColors.Window;
+            appearance17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cbExamen.DisplayLayout.Override.ActiveCellAppearance = appearance17;
+            appearance18.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance18.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.cbExamen.DisplayLayout.Override.ActiveRowAppearance = appearance18;
+            this.cbExamen.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.cbExamen.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.cbExamen.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance19.BackColor = System.Drawing.SystemColors.Window;
+            this.cbExamen.DisplayLayout.Override.CardAreaAppearance = appearance19;
+            appearance20.BorderColor = System.Drawing.Color.Silver;
+            appearance20.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.cbExamen.DisplayLayout.Override.CellAppearance = appearance20;
+            this.cbExamen.DisplayLayout.Override.CellPadding = 0;
+            this.cbExamen.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            appearance21.BackColor = System.Drawing.SystemColors.Control;
+            appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance21.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance21.BorderColor = System.Drawing.SystemColors.Window;
+            this.cbExamen.DisplayLayout.Override.GroupByRowAppearance = appearance21;
+            appearance22.TextHAlignAsString = "Left";
+            this.cbExamen.DisplayLayout.Override.HeaderAppearance = appearance22;
+            this.cbExamen.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance23.BackColor = System.Drawing.SystemColors.Window;
+            appearance23.BorderColor = System.Drawing.Color.Silver;
+            this.cbExamen.DisplayLayout.Override.RowAppearance = appearance23;
+            appearance24.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbExamen.DisplayLayout.Override.TemplateAddRowAppearance = appearance24;
+            this.cbExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbExamen.Location = new System.Drawing.Point(103, 43);
+            this.cbExamen.Name = "cbExamen";
+            this.cbExamen.Size = new System.Drawing.Size(160, 22);
+            this.cbExamen.TabIndex = 123;
+            this.cbExamen.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbExamen_RowSelected);
+            // 
             // txtPPS
             // 
-            appearance13.TextHAlignAsString = "Right";
-            this.txtPPS.Appearance = appearance13;
+            appearance25.TextHAlignAsString = "Right";
+            this.txtPPS.Appearance = appearance25;
             this.txtPPS.Enabled = false;
             this.txtPPS.Location = new System.Drawing.Point(277, 96);
             this.txtPPS.Name = "txtPPS";
@@ -134,8 +211,8 @@
             // 
             // txtPrecio
             // 
-            appearance14.TextHAlignAsString = "Right";
-            this.txtPrecio.Appearance = appearance14;
+            appearance26.TextHAlignAsString = "Right";
+            this.txtPrecio.Appearance = appearance26;
             this.txtPrecio.Enabled = false;
             this.txtPrecio.Location = new System.Drawing.Point(104, 100);
             this.txtPrecio.Name = "txtPrecio";
@@ -150,6 +227,14 @@
             this.ultraLabel7.Size = new System.Drawing.Size(36, 14);
             this.ultraLabel7.TabIndex = 18;
             this.ultraLabel7.Text = "Precio";
+            // 
+            // txtComponentId
+            // 
+            this.txtComponentId.Enabled = false;
+            this.txtComponentId.Location = new System.Drawing.Point(268, 44);
+            this.txtComponentId.Name = "txtComponentId";
+            this.txtComponentId.Size = new System.Drawing.Size(111, 20);
+            this.txtComponentId.TabIndex = 16;
             // 
             // txtUnidadProductiva
             // 
@@ -172,8 +257,8 @@
             // 
             // txtDesctoEPS
             // 
-            appearance15.TextHAlignAsString = "Right";
-            this.txtDesctoEPS.Appearance = appearance15;
+            appearance27.TextHAlignAsString = "Right";
+            this.txtDesctoEPS.Appearance = appearance27;
             this.txtDesctoEPS.Enabled = false;
             this.txtDesctoEPS.Location = new System.Drawing.Point(104, 127);
             this.txtDesctoEPS.Name = "txtDesctoEPS";
@@ -191,8 +276,8 @@
             // 
             // txtPrecioVenta
             // 
-            appearance16.TextHAlignAsString = "Right";
-            this.txtPrecioVenta.Appearance = appearance16;
+            appearance28.TextHAlignAsString = "Right";
+            this.txtPrecioVenta.Appearance = appearance28;
             this.txtPrecioVenta.Enabled = false;
             this.txtPrecioVenta.Location = new System.Drawing.Point(282, 127);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
@@ -210,8 +295,8 @@
             // 
             // txtCodigo
             // 
-            appearance17.TextHAlignAsString = "Right";
-            this.txtCodigo.Appearance = appearance17;
+            appearance29.TextHAlignAsString = "Right";
+            this.txtCodigo.Appearance = appearance29;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(277, 69);
             this.txtCodigo.Name = "txtCodigo";
@@ -259,9 +344,9 @@
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(242, 152);
+            this.btnSalir.Location = new System.Drawing.Point(242, 210);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 28);
             this.btnSalir.TabIndex = 6;
@@ -273,9 +358,9 @@
             // btnGuardar
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(323, 152);
+            this.btnGuardar.Location = new System.Drawing.Point(323, 210);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 28);
             this.btnGuardar.TabIndex = 5;
@@ -286,8 +371,8 @@
             // 
             // txtCantidad
             // 
-            appearance18.TextHAlignAsString = "Right";
-            this.txtCantidad.Appearance = appearance18;
+            appearance30.TextHAlignAsString = "Right";
+            this.txtCantidad.Appearance = appearance30;
             this.txtCantidad.Location = new System.Drawing.Point(103, 72);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(68, 21);
@@ -302,6 +387,15 @@
             this.ultraLabel2.Size = new System.Drawing.Size(53, 14);
             this.ultraLabel2.TabIndex = 2;
             this.ultraLabel2.Text = "Cantidad:";
+            // 
+            // ultraLabel9
+            // 
+            this.ultraLabel9.AutoSize = true;
+            this.ultraLabel9.Location = new System.Drawing.Point(52, 46);
+            this.ultraLabel9.Name = "ultraLabel9";
+            this.ultraLabel9.Size = new System.Drawing.Size(49, 14);
+            this.ultraLabel9.TabIndex = 0;
+            this.ultraLabel9.Text = "Examen:";
             // 
             // ultraLabel1
             // 
@@ -321,85 +415,86 @@
             this.lblIdDetalleProd.TabIndex = 9;
             this.lblIdDetalleProd.Text = ".";
             // 
-            // cbExamen
+            // cbLine
             // 
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cbExamen.DisplayLayout.Appearance = appearance1;
-            this.cbExamen.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.cbExamen.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.cbLine.DisplayLayout.Appearance = appearance1;
+            this.cbLine.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.cbLine.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
             appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             appearance2.BorderColor = System.Drawing.SystemColors.Window;
-            this.cbExamen.DisplayLayout.GroupByBox.Appearance = appearance2;
+            this.cbLine.DisplayLayout.GroupByBox.Appearance = appearance2;
             appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.cbExamen.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
-            this.cbExamen.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.cbLine.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
+            this.cbLine.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             appearance4.BackColor2 = System.Drawing.SystemColors.Control;
             appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
             appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.cbExamen.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
+            this.cbLine.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
             appearance5.BackColor = System.Drawing.SystemColors.Window;
             appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cbExamen.DisplayLayout.Override.ActiveCellAppearance = appearance5;
+            this.cbLine.DisplayLayout.Override.ActiveCellAppearance = appearance5;
             appearance6.BackColor = System.Drawing.SystemColors.Highlight;
             appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.cbExamen.DisplayLayout.Override.ActiveRowAppearance = appearance6;
-            this.cbExamen.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
-            this.cbExamen.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
-            this.cbExamen.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.cbLine.DisplayLayout.Override.ActiveRowAppearance = appearance6;
+            this.cbLine.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.cbLine.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.cbLine.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
             appearance7.BackColor = System.Drawing.SystemColors.Window;
-            this.cbExamen.DisplayLayout.Override.CardAreaAppearance = appearance7;
+            this.cbLine.DisplayLayout.Override.CardAreaAppearance = appearance7;
             appearance8.BorderColor = System.Drawing.Color.Silver;
             appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.cbExamen.DisplayLayout.Override.CellAppearance = appearance8;
-            this.cbExamen.DisplayLayout.Override.CellPadding = 0;
-            this.cbExamen.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            this.cbLine.DisplayLayout.Override.CellAppearance = appearance8;
+            this.cbLine.DisplayLayout.Override.CellPadding = 0;
+            this.cbLine.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
             appearance9.BackColor = System.Drawing.SystemColors.Control;
             appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
             appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
             appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
             appearance9.BorderColor = System.Drawing.SystemColors.Window;
-            this.cbExamen.DisplayLayout.Override.GroupByRowAppearance = appearance9;
+            this.cbLine.DisplayLayout.Override.GroupByRowAppearance = appearance9;
             appearance10.TextHAlignAsString = "Left";
-            this.cbExamen.DisplayLayout.Override.HeaderAppearance = appearance10;
-            this.cbExamen.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            this.cbLine.DisplayLayout.Override.HeaderAppearance = appearance10;
+            this.cbLine.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
             appearance11.BackColor = System.Drawing.SystemColors.Window;
             appearance11.BorderColor = System.Drawing.Color.Silver;
-            this.cbExamen.DisplayLayout.Override.RowAppearance = appearance11;
+            this.cbLine.DisplayLayout.Override.RowAppearance = appearance11;
             appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cbExamen.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
-            this.cbExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbExamen.Location = new System.Drawing.Point(103, 43);
-            this.cbExamen.Name = "cbExamen";
-            this.cbExamen.Size = new System.Drawing.Size(160, 22);
-            this.cbExamen.TabIndex = 123;
-            this.cbExamen.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbExamen_RowSelected);
+            this.cbLine.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            this.cbLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLine.Location = new System.Drawing.Point(103, 180);
+            this.cbLine.Name = "cbLine";
+            this.cbLine.Size = new System.Drawing.Size(276, 22);
+            this.cbLine.TabIndex = 125;
+            this.cbLine.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbLine_RowSelected);
             // 
-            // txtComponentId
+            // ultraLabel10
             // 
-            this.txtComponentId.Enabled = false;
-            this.txtComponentId.Location = new System.Drawing.Point(268, 44);
-            this.txtComponentId.Name = "txtComponentId";
-            this.txtComponentId.Size = new System.Drawing.Size(111, 20);
-            this.txtComponentId.TabIndex = 16;
+            this.ultraLabel10.AutoSize = true;
+            this.ultraLabel10.Location = new System.Drawing.Point(36, 184);
+            this.ultraLabel10.Name = "ultraLabel10";
+            this.ultraLabel10.Size = new System.Drawing.Size(62, 14);
+            this.ultraLabel10.TabIndex = 15;
+            this.ultraLabel10.Text = "Elegir Plan:";
             // 
-            // ultraLabel9
+            // txtUnPdId
             // 
-            this.ultraLabel9.AutoSize = true;
-            this.ultraLabel9.Location = new System.Drawing.Point(52, 46);
-            this.ultraLabel9.Name = "ultraLabel9";
-            this.ultraLabel9.Size = new System.Drawing.Size(49, 14);
-            this.ultraLabel9.TabIndex = 0;
-            this.ultraLabel9.Text = "Examen:";
+            this.txtUnPdId.Enabled = false;
+            this.txtUnPdId.Location = new System.Drawing.Point(268, 154);
+            this.txtUnPdId.Name = "txtUnPdId";
+            this.txtUnPdId.Size = new System.Drawing.Size(111, 20);
+            this.txtUnPdId.TabIndex = 16;
+            this.txtUnPdId.Visible = false;
             // 
             // frmAddProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 203);
+            this.ClientSize = new System.Drawing.Size(404, 260);
             this.Controls.Add(this.lblIdDetalleProd);
             this.Controls.Add(this.gbReceta);
             this.MaximizeBox = false;
@@ -413,13 +508,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).EndInit();
             this.gbReceta.ResumeLayout(false);
             this.gbReceta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbExamen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPPS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesctoEPS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbExamen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,6 +548,9 @@
         private Infragistics.Win.UltraWinGrid.UltraCombo cbExamen;
         private System.Windows.Forms.TextBox txtComponentId;
         private Infragistics.Win.Misc.UltraLabel ultraLabel9;
+        private Infragistics.Win.UltraWinGrid.UltraCombo cbLine;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel10;
+        private System.Windows.Forms.TextBox txtUnPdId;
 
     }
 }

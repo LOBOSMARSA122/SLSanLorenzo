@@ -276,7 +276,6 @@
             this.btnGuardar.Size = new System.Drawing.Size(75, 28);
             this.btnGuardar.TabIndex = 0;
             this.btnGuardar.Text = "&Guardar";
-            this.btnGuardar.Visible = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmProtocolPlanAseguradora

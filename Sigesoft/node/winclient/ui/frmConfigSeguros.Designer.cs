@@ -31,10 +31,6 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbCoaseguro = new System.Windows.Forms.RadioButton();
-            this.rbDeducible = new System.Windows.Forms.RadioButton();
-            this.txtImporte = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtnuevoPrecio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPagoAseguradora = new System.Windows.Forms.TextBox();
@@ -45,6 +41,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtPrecioBase = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.rbCoaseguro = new System.Windows.Forms.CheckBox();
+            this.rbDeducible = new System.Windows.Forms.CheckBox();
+            this.txtCoaseguro = new System.Windows.Forms.TextBox();
+            this.lblMontoCoaseguro = new System.Windows.Forms.Label();
+            this.txtImporte = new System.Windows.Forms.TextBox();
+            this.lblmontoDeducible = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,53 +74,16 @@
             // 
             this.groupBox1.Controls.Add(this.rbCoaseguro);
             this.groupBox1.Controls.Add(this.rbDeducible);
+            this.groupBox1.Controls.Add(this.txtCoaseguro);
+            this.groupBox1.Controls.Add(this.lblMontoCoaseguro);
             this.groupBox1.Controls.Add(this.txtImporte);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblmontoDeducible);
             this.groupBox1.Location = new System.Drawing.Point(10, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(445, 48);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de pago";
-            // 
-            // rbCoaseguro
-            // 
-            this.rbCoaseguro.AutoSize = true;
-            this.rbCoaseguro.Location = new System.Drawing.Point(191, 20);
-            this.rbCoaseguro.Name = "rbCoaseguro";
-            this.rbCoaseguro.Size = new System.Drawing.Size(76, 17);
-            this.rbCoaseguro.TabIndex = 0;
-            this.rbCoaseguro.Text = "Coaseguro";
-            this.rbCoaseguro.UseVisualStyleBackColor = true;
-            // 
-            // rbDeducible
-            // 
-            this.rbDeducible.AutoSize = true;
-            this.rbDeducible.Checked = true;
-            this.rbDeducible.Location = new System.Drawing.Point(56, 20);
-            this.rbDeducible.Name = "rbDeducible";
-            this.rbDeducible.Size = new System.Drawing.Size(73, 17);
-            this.rbDeducible.TabIndex = 0;
-            this.rbDeducible.TabStop = true;
-            this.rbDeducible.Text = "Deducible";
-            this.rbDeducible.UseVisualStyleBackColor = true;
-            // 
-            // txtImporte
-            // 
-            this.txtImporte.Location = new System.Drawing.Point(369, 19);
-            this.txtImporte.Name = "txtImporte";
-            this.txtImporte.Size = new System.Drawing.Size(70, 20);
-            this.txtImporte.TabIndex = 1;
-            this.txtImporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporte_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(305, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Monto";
             // 
             // txtnuevoPrecio
             // 
@@ -205,6 +170,58 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Precio base";
             // 
+            // rbCoaseguro
+            // 
+            this.rbCoaseguro.AutoSize = true;
+            this.rbCoaseguro.Location = new System.Drawing.Point(248, 21);
+            this.rbCoaseguro.Name = "rbCoaseguro";
+            this.rbCoaseguro.Size = new System.Drawing.Size(77, 17);
+            this.rbCoaseguro.TabIndex = 7;
+            this.rbCoaseguro.Text = "Coaseguro";
+            this.rbCoaseguro.UseVisualStyleBackColor = true;
+            // 
+            // rbDeducible
+            // 
+            this.rbDeducible.AutoSize = true;
+            this.rbDeducible.Location = new System.Drawing.Point(2, 21);
+            this.rbDeducible.Name = "rbDeducible";
+            this.rbDeducible.Size = new System.Drawing.Size(74, 17);
+            this.rbDeducible.TabIndex = 8;
+            this.rbDeducible.Text = "Deducible";
+            this.rbDeducible.UseVisualStyleBackColor = true;
+            // 
+            // txtCoaseguro
+            // 
+            this.txtCoaseguro.Location = new System.Drawing.Point(371, 19);
+            this.txtCoaseguro.Name = "txtCoaseguro";
+            this.txtCoaseguro.Size = new System.Drawing.Size(70, 20);
+            this.txtCoaseguro.TabIndex = 5;
+            // 
+            // lblMontoCoaseguro
+            // 
+            this.lblMontoCoaseguro.AutoSize = true;
+            this.lblMontoCoaseguro.Location = new System.Drawing.Point(328, 23);
+            this.lblMontoCoaseguro.Name = "lblMontoCoaseguro";
+            this.lblMontoCoaseguro.Size = new System.Drawing.Size(37, 13);
+            this.lblMontoCoaseguro.TabIndex = 3;
+            this.lblMontoCoaseguro.Text = "Monto";
+            // 
+            // txtImporte
+            // 
+            this.txtImporte.Location = new System.Drawing.Point(120, 19);
+            this.txtImporte.Name = "txtImporte";
+            this.txtImporte.Size = new System.Drawing.Size(70, 20);
+            this.txtImporte.TabIndex = 6;
+            // 
+            // lblmontoDeducible
+            // 
+            this.lblmontoDeducible.AutoSize = true;
+            this.lblmontoDeducible.Location = new System.Drawing.Point(77, 23);
+            this.lblmontoDeducible.Name = "lblmontoDeducible";
+            this.lblmontoDeducible.Size = new System.Drawing.Size(37, 13);
+            this.lblmontoDeducible.TabIndex = 4;
+            this.lblmontoDeducible.Text = "Monto";
+            // 
             // frmConfigSeguros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,10 +255,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbCoaseguro;
-        private System.Windows.Forms.RadioButton rbDeducible;
-        private System.Windows.Forms.TextBox txtImporte;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtnuevoPrecio;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPagoAseguradora;
@@ -252,5 +265,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPrecioBase;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox rbCoaseguro;
+        private System.Windows.Forms.CheckBox rbDeducible;
+        private System.Windows.Forms.TextBox txtCoaseguro;
+        private System.Windows.Forms.Label lblMontoCoaseguro;
+        private System.Windows.Forms.TextBox txtImporte;
+        private System.Windows.Forms.Label lblmontoDeducible;
     }
 }

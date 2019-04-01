@@ -10,6 +10,7 @@ using Sigesoft.Node.WinClient.UI.Reports;
 using Sigesoft.Node.Contasol.Integration;
 using Sigesoft.Node.WinClient.UI.Operations.Popups;
 using System.Data.SqlClient;
+using Sigesoft.Node.WinClient.UI.Configuration;
 namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 {
     public partial class frmAddProducto : Form
@@ -132,14 +133,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 #region Conexion SIGESOFT verificar la unidad productiva del componente
                                 ConexionSigesoft conectasam = new ConexionSigesoft();
                                 conectasam.opensigesoft();
-                                var cadena1 = "select PL.d_ImporteCo, CP.v_ComponentId " +
-                                              "from service SR " +
-                                              "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
-                                              "inner join component CP on SC.v_ComponentId=CP.v_ComponentId " +
-                                              "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
-                                              "inner join [dbo].[plan] PL on CP.v_IdUnidadProductiva= PL.v_IdUnidadProductiva " +
-                                              "where  CP.v_ComponentId='" + txtComponentId.Text+ "' and SR.v_ServiceId='" + _serviceId + "' and PL.d_ImporteCo>0 " +
-                                              "group by PL.d_ImporteCo, CP.v_ComponentId";
+                                var cadena1 = "select PL.d_ImporteCo " +
+                                              "from [dbo].[plan] PL " +
+                                              "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
+                                              "where PR.v_ProtocolId='"+_protocolId+"' and PL.v_IdUnidadProductiva='"+txtUnPdId.Text+"'";
                                 SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                                 SqlDataReader lector = comando.ExecuteReader();
                                 string ImporteCo = "";
@@ -296,7 +293,46 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             cbExamen.DisplayLayout.Bands[0].Columns[0].Width = 20;
             cbExamen.DisplayLayout.Bands[0].Columns[1].Width = 550;
 
+            cbLine.Select();
+            object listaLine = LlenarLines();
+            cbLine.DataSource = listaLine;
+            cbLine.DisplayMember = "v_Nombre";
+            cbLine.ValueMember = "v_IdLinea";
+            cbLine.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+            cbLine.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cbLine.DropDownWidth = 590;
+            cbLine.DisplayLayout.Bands[0].Columns[0].Width = 20;
+            cbLine.DisplayLayout.Bands[0].Columns[1].Width = 550;
             txtMedicamento.Focus();
+        }
+
+        private object LlenarLines()
+        {
+            #region Conexion SAMBHS
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadenasam = "select LN.v_Nombre as v_Nombre ,PL.v_IdUnidadProductiva as  v_IdLinea " +
+                            "from [dbo].[plan] PL " +
+                            "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
+                            "inner join [20505310072].[dbo].[linea] LN on PL.v_IdUnidadProductiva=LN.v_IdLinea " +
+                            "where PR.v_ProtocolId='" + _protocolId + "'";
+            var comando = new SqlCommand(cadenasam, connection: conectasam.conectarsigesoft);
+            var lector = comando.ExecuteReader();
+            string preciounitario = "";
+            List<ListaLineas> objListaLineas = new List<ListaLineas>();
+
+            while (lector.Read())
+            {
+                ListaLineas Lista = new ListaLineas();
+                Lista.v_Nombre = lector.GetValue(0).ToString();
+                Lista.v_IdLinea = lector.GetValue(1).ToString();
+                objListaLineas.Add(Lista);
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            #endregion
+
+            return objListaLineas;
         }
 
         private object LlenarExamen()
@@ -349,6 +385,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             lector.Close();
             conectasam.closesigesoft();
             #endregion
+        }
+
+        private void cbLine_RowSelected(object sender, RowSelectedEventArgs e)
+        {
+            #region Conexion SAM obtener id de linea
+            ConexionSambhs conectasam = new ConexionSambhs();
+            conectasam.openSambhs();
+            var cadena = "select v_IdLinea from [dbo].[linea] where v_Nombre='" + cbLine.Text + "' and i_Eliminado=0";
+            SqlCommand comandou = new SqlCommand(cadena, connection: conectasam.conectarSambhs);
+            SqlDataReader lectoru = comandou.ExecuteReader();
+            string lineId = "";
+            while (lectoru.Read())
+            {
+                lineId = lectoru.GetValue(0).ToString();
+            }
+            lectoru.Close();
+            conectasam.closeSambhs();
+            #endregion
+            txtUnPdId.Text = lineId;
         }
     }
 }
