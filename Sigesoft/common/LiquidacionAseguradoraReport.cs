@@ -170,11 +170,11 @@ namespace NetPdf
                 NroHab = lector.GetValue(1).ToString();
             }
             lector.Close();
-            cadena1 = "select PP.v_FirstName+', '+PP.v_FirstLastName+' '+PP.v_SecondLastName as MedicoTratante " +
-                      "from service SR " +
-                      "inner join systemuser SU on SU.i_SystemUserId=SR.i_MedicoTratanteId " +
+            cadena1 = "select PP.v_FirstName+', '+PP.v_FirstLastName+' '+PP.v_SecondLastName as MedicoTratante  " +
+                      "from servicecomponent SC " +
+                      "inner join systemuser SU on SU.i_SystemUserId=SC.i_ApprovedInsertUserId " +
                       "inner join person PP on SU.v_PersonId=PP.v_PersonId " +
-                      "where v_ServiceId='"+historia+"'";
+                      "where v_ServiceId='"+historia+"' and v_ComponentId='N009-ME000000405'";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             lector = comando.ExecuteReader();
             string MedicoTratante = "N/A";

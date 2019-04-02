@@ -430,7 +430,7 @@ namespace Sigesoft.Node.WinClient.UI
                             objServiceComponentDto.i_Iscalling_1 = (int)Common.Flag_Call.NoseLlamo;
                             objServiceComponentDto.i_IsManuallyAddedId = (int)Common.SiNo.NO;
                             objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
-                            objServiceComponentDto.v_IdUnidadProductiva = objComponentDto.v_IdUnidadProductiva;
+                            objServiceComponentDto.v_IdUnidadProductiva = txtUnidProdId.Text;
                             objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
                             objServiceComponentDto.d_SaldoPaciente = frm1.paciente;
                             objServiceComponentDto.d_SaldoAseguradora = frm1.aseguradora;

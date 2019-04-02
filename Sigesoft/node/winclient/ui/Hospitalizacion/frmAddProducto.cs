@@ -94,11 +94,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (_mode == "New")
                 {
-                    if (txtMedicamento.Tag == null || cbExamen.Text == "")
+                    // || cbExamen.Text == ""
+                    if (txtMedicamento.Tag == null)
                     {
                         string mensage = "";
                         if (txtMedicamento.Tag == null){mensage = @"Por favor seleccione un medicamento";}
-                        else if (cbExamen.Text == ""){mensage = @"Por favor seleccione un examen";}
+                        //else if (cbExamen.Text == ""){mensage = @"Por favor seleccione un examen";}
                         MessageBox.Show(mensage, @"Error de validación", MessageBoxButtons.OK);
                         txtMedicamento.Focus();
                         return;
@@ -272,6 +273,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void frmAddProducto_Load(object sender, EventArgs e)
         {
+            cbExamen.Visible = false;
+            txtComponentId.Visible = false;
+            ultraLabel9.Visible = false;
+
             if (_mode == "Edit")
             {
                 btnBuscar.Visible = false;
