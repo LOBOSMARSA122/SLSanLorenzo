@@ -102,6 +102,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnLiquidacion_Click(object sender, EventArgs e)
         {
+            var serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
             string organizationId = grdData.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
             #region Conexion SAM
             ConexionSigesoft conectasam = new ConexionSigesoft();
@@ -115,7 +116,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 organizationId = lector.GetValue(0).ToString();
             }
             lector.Close();
-            var serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+            
             var serviceIdarray = new List<string>();
             serviceIdarray.Add(serviceId);
             OperationResult objOperationResult = new OperationResult();
