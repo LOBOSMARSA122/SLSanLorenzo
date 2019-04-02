@@ -102,20 +102,52 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnLiquidacion_Click(object sender, EventArgs e)
         {
-            string organizationId = grdData.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
-            #region Conexion SAM
+            var serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+            #region VALIDACIONES
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
-            #endregion
-            var cadena1 = "select v_OrganizationId from organization where v_Name='"+organizationId+"'";
+            var cadena1 =
+                "select SR.v_NroCartaSolicitud, PP.v_OwnerName " +
+                "from service SR  " +
+                "inner join person PP on SR.v_PersonId = PP.v_PersonId  " +
+                "where SR.v_ServiceId='" + serviceId + "' " +
+                "group by SR.v_NroCartaSolicitud, PP.v_OwnerName";
             SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             SqlDataReader lector = comando.ExecuteReader();
+            string Nrocarta = ""; string NombreTitular = "";
+            while (lector.Read())
+            {
+                Nrocarta = lector.GetValue(0).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(0).ToString();
+                NombreTitular = lector.GetValue(1).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(1).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            if (Nrocarta == "NO REGISTRADO")
+            {
+                MessageBox.Show("Tiene que registrar el Nro de carta o solicitud.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (NombreTitular == "NO REGISTRADO")
+            {
+                MessageBox.Show("Tiene que registrar un parentesco y el titular.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            #endregion
+            string organizationId = grdData.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
+            #region Conexion SAM
+            
+            conectasam.opensigesoft();
+            #endregion
+            cadena1 = "select v_OrganizationId from organization where v_Name='"+organizationId+"'";
+            comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            lector = comando.ExecuteReader();
             while (lector.Read())
             {
                 organizationId = lector.GetValue(0).ToString();
             }
             lector.Close();
-            var serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+            conectasam.closesigesoft();
             var serviceIdarray = new List<string>();
             serviceIdarray.Add(serviceId);
             OperationResult objOperationResult = new OperationResult();
