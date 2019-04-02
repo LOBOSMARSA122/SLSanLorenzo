@@ -9,29 +9,33 @@ using iTextSharp.text.pdf.draw;
 using Sigesoft.Node.WinClient.BE;
 
 namespace NetPdf
-{
+  {
     public class Declaracion_Jurada_EMO_Secutiras
     {
         private static void RunFile(string filePDF)
         {
+
             Process proceso = Process.Start(filePDF);
             proceso.WaitForExit();
             proceso.Close();
+
+
         }
         public static void CreateDeclaracion_Jurada_EMO_Secutiras(string filePDF,
           PacientList datosPac,
           organizationDto infoEmpresa, PacientList filiationData,
           List<ServiceComponentList> serviceComponent)
         {
-            Document document = new Document(PageSize.A4, 40f, 40f, 40f, 50f);
+
+         Document document = new Document(PageSize.A4, 40f, 40f, 40f, 50f);
 
 
-            document.SetPageSize(iTextSharp.text.PageSize.A4);
+         document.SetPageSize(iTextSharp.text.PageSize.A4);
 
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
-            pdfPage page = new pdfPage();
-            writer.PageEvent = page;
-            document.Open();
+           PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
+           pdfPage page = new pdfPage();
+           writer.PageEvent = page;
+           document.Open();
 
             #region Declaration Tables
             var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.Gray);
