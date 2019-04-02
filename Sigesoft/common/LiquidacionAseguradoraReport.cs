@@ -91,7 +91,7 @@ namespace NetPdf
             {
                 aseguradora = item.Aseguradora;paciente = item.Paciente;empresa = item.EmpresaId;fecha = item.FechaServicio.ToShortDateString();historia = item.ServicioId; 
             }
-            string [] valor = null; string valortipo = "";
+           
             decimal total = 0; decimal? saldocoaseguropaciente = 0; decimal? saldoaseguradora = 0; decimal? saldodeduciblepaciente = 0;
             #region OLD
             //foreach (var item in Detalle_report)
@@ -131,42 +131,76 @@ namespace NetPdf
             lector.Close();
 
             cadena1 =
-                "select SR.v_NroCartaSolicitud, PP.v_OwnerName, OO.v_Name, PR.v_ProtocolId, PR.v_Name, HP.d_FechaAlta, SP.v_Value1 " +
+                "select SR.v_NroCartaSolicitud, PP.v_OwnerName, OO.v_Name, PR.v_ProtocolId, PR.v_Name " +
                 "from service SR  " +
                 "inner join person PP on SR.v_PersonId = PP.v_PersonId  " +
                 "inner join protocol PR on SR.v_ProtocolId = PR.v_ProtocolId " +
                 "inner join organization OO on PR.v_CustomerOrganizationId = OO.v_OrganizationId " +
                 "inner join servicecomponent SC on SR.v_ServiceId = SC.v_ServiceId " +
                 "inner join component CP on CP.v_ComponentId = SC.v_ComponentId " +
-                "inner join hospitalizacion HP on HP.v_PersonId=PP.v_PersonId " +
-                "inner join hospitalizacionservice HS on HS.v_ServiceId=SR.v_ServiceId " +
-                "inner join hospitalizacionhabitacion HH on HH.v_HopitalizacionId=HP.v_HopitalizacionId " +
-                "inner join systemparameter SP on SP.i_ParameterId=HH.i_HabitacionId and SP.i_GroupId=309 " +
-                "where SR.v_ServiceId='" + historia + "' " +
-                "group by SR.v_NroCartaSolicitud, PP.v_OwnerName, OO.v_Name, PR.v_ProtocolId, PR.v_Name, HP.d_FechaAlta, SP.v_Value1";
+                "where SR.v_ServiceId='"+historia+"' " +
+                "group by SR.v_NroCartaSolicitud, PP.v_OwnerName, OO.v_Name, PR.v_ProtocolId, PR.v_Name ";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             lector = comando.ExecuteReader();
-            string Nrocarta = ""; string NombreTitular = ""; string NombreEmpresa = ""; string PlanSalud = ""; string Cobertura = "";
-            string[] fechaAlta = null;  string NroHab = ""; string MedicoTratante = "";
+            string Nrocarta = "NO REGISTRADO"; string NombreTitular = "NO REGISTRADO"; string NombreEmpresa = "NO REGISTRADO"; string PlanSalud = "NO REGISTRADO"; string Cobertura = "NO REGISTRADO";
             while (lector.Read())
             {
-                Nrocarta = lector.GetValue(0).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(0).ToString();
-                NombreTitular = lector.GetValue(1).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(1).ToString();
-                NombreEmpresa = lector.GetValue(2).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(2).ToString();
-                PlanSalud = lector.GetValue(3).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(3).ToString();
-                Cobertura = lector.GetValue(4).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(4).ToString();
-                if (lector.GetValue(5).ToString() != "")
-                {
-                    fechaAlta = lector.GetValue(5).ToString().Split(' ');
-                }
-                else
-                {
-                    fechaAlta[0] = "NO REGISTRADO";
-                }
-                NroHab = lector.GetValue(6).ToString() == "" ? "NO REGISTRADO" : lector.GetValue(6).ToString();
+                Nrocarta = lector.GetValue(0).ToString();
+                NombreTitular =  lector.GetValue(1).ToString();
+                NombreEmpresa = lector.GetValue(2).ToString();
+                PlanSalud = lector.GetValue(3).ToString();
+                Cobertura =  lector.GetValue(4).ToString();
             }
             lector.Close();
-
+            cadena1 = "select HP.d_FechaAlta, SP.v_Value1 " +
+                      "from service SR " +
+                      "inner join person PP on SR.v_PersonId = PP.v_PersonId  " +
+                      "inner join hospitalizacion HP on HP.v_PersonId=PP.v_PersonId " +
+                      "inner join hospitalizacionservice HS on HS.v_ServiceId=SR.v_ServiceId " +
+                      "inner join hospitalizacionhabitacion HH on HH.v_HopitalizacionId=HP.v_HopitalizacionId " +
+                      "inner join systemparameter SP on SP.i_ParameterId=HH.i_HabitacionId and SP.i_GroupId=309 " +
+                      "where SR.v_ServiceId='"+historia+"' " +
+                      "group by HP.d_FechaAlta, SP.v_Value1";
+            comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            lector = comando.ExecuteReader();
+            string fechaAlta = "N/A"; string NroHab = "N/A";
+            while (lector.Read())
+            {
+                fechaAlta = lector.GetValue(0).ToString();
+                NroHab = lector.GetValue(1).ToString();
+            }
+            lector.Close();
+            cadena1 = "select PP.v_FirstName+', '+PP.v_FirstLastName+' '+PP.v_SecondLastName as MedicoTratante " +
+                      "from servicecomponent SC " +
+                      "inner join systemuser SU on SU.i_SystemUserId=SC.i_ApprovedUpdateUserId " +
+                      "inner join person PP on SU.v_PersonId=PP.v_PersonId " +
+                      "where v_ServiceId='"+historia+"' and v_ComponentId='N009-ME000000405'";
+            comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            lector = comando.ExecuteReader();
+            string MedicoTratante = "N/A";
+            while (lector.Read())
+            {
+                MedicoTratante = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            cadena1 =
+                "select PL.d_Importe as deducible, PL.d_ImporteCo as coaseguro, SC.v_IdUnidadProductiva as UndPrdo " +
+                "from service SR " +
+                "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
+                "inner join protocol PR on PR.v_ProtocolId=SR.v_ProtocolId " +
+                "inner join [dbo].[plan] PL on PL.v_ProtocoloId=PR.v_ProtocolId and SC.v_IdUnidadProductiva=PL.v_IdUnidadProductiva " +
+                "where SR.v_ServiceId='"+historia+"'  and SC.v_IdUnidadProductiva<>'N001-LN000000005' " +
+                "group by PL.d_Importe, PL.d_ImporteCo, SC.v_IdUnidadProductiva";
+            comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            lector = comando.ExecuteReader();
+            string deducible = "- - -";
+            string copago = "- - -";
+            while (lector.Read())
+            {
+                deducible = lector.GetValue(0).ToString();
+                copago = lector.GetValue(1).ToString();
+            }
+            lector.Close();
             var cellsTit2 = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
@@ -186,16 +220,16 @@ namespace NetPdf
                     new PdfPCell(new Phrase("TITULAR:", fontColumnValueBold)){ Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase(NombreTitular, fontColumnValue)){ Colspan =3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase("DEDUCIBLE:", fontColumnValueBold)){ Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                    new PdfPCell(new Phrase(valortipo, fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase(deducible, fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase("COPAGO:", fontColumnValueBold)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                    new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase(copago+" %", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
 
                     new PdfPCell(new Phrase("EMPRESA:", fontColumnValueBold)){ Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase(NombreEmpresa, fontColumnValue)){ Colspan =3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase("F. INGRESO:", fontColumnValueBold)){ Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase(fecha, fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase("F: ALTA:", fontColumnValueBold)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                    new PdfPCell(new Phrase(fechaAlta[0], fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase(fechaAlta, fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
 
                     new PdfPCell(new Phrase("PLAN DE SALUD:", fontColumnValueBold)){ Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                     new PdfPCell(new Phrase(PlanSalud, fontColumnValue)){ Colspan =3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
