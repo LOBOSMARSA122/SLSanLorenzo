@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using HtmlAgilityPack;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
@@ -36,7 +35,7 @@ namespace NetPdf
 
 
 
-     //    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
+     //       PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
      //           pdfPage page = new pdfPage();
      //           writer.PageEvent = page;
      //           document.Open();
@@ -61,8 +60,7 @@ namespace NetPdf
      //           PdfPTable table = null;
      //           document.Add(new Paragraph("\r\n"));
      //           #endregion
-             
-       
+
      //           #region Fonts
      //           Font fontTitle1 = FontFactory.GetFont("Calibri", 10, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
      //           Font fontTitle2 = FontFactory.GetFont("Calibri", 8, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
@@ -85,18 +83,25 @@ namespace NetPdf
 
      //          cells = new List<PdfPCell>();
 
-     //        if (intoEmpesa.b_imagen !=null)
+     //        if (infoEmpresa.b_Image != null)
      //        {
+
      //          iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresa.b_Image));
      //          imagenEmpresa.ScalePercent(25);
      //          imagenEmpresa.SetAbsolutePosition(40, 790);
      //          document.Add(imagenEmpresa);
      //        }
+
+
+
+
      //       var cellsTit = new List<PdfPCell>()
 
      //      {
 
      //        new PdfPCell(new Phrase("DECLARACIÓN JURADA DE CONSENTIMIENTO INFORMADO PARA LA PRÁCTICA DEL EXAMEN \nMÉDICO OCUPACIONAL Y PARA LA ENTREGA DE INFORMACIÓN MÉDICA E HISTORIA CLÍNICA", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+
+
      //        };
      //       columnWidths = new float[] {100f };
      //       table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
@@ -113,7 +118,7 @@ namespace NetPdf
      //       cells = new List<PdfPCell>()
      //       {          
 
-     //      new PdfPCell(new Phrase("\n \n", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+     //           new PdfPCell(new Phrase("\n \n", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
      //           new PdfPCell(new Phrase("\n \nYO, ", fontColumnValue)){ Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
      //           new PdfPCell(new Phrase("\n \n" + datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName , fontColumnValue)){ Colspan = 9, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
      //           new PdfPCell(new Phrase("\n \n identificado con " + tipodoc, fontColumnValue)){ Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
@@ -211,58 +216,58 @@ namespace NetPdf
 
      //       };
 
-     //       columnWidths = new COLUMWIDTHS[] {5f, 4f, 5f, 5f,4f, 5f, 5f, 4f, 5f,5f,4f 5f, 5f, 10f,5f};
-     //       table =  HandlingItextSharp.GenerateTableFromCells_(cells, columnWidths,null, fontTItleTable );
+     //       columnWidths = new float [] { 5f, 4f, 5f, 5f, 5f, 4f, 5f, 4f, 5f, 5f, 4f, 5f, 5f, 4f, 5f, 5f, 5f, 5f, 10f, 5f };
+     //       table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
      //       document.Add(table);
-     //       #endrecion
+     //       #endregion
 
-
-     //    string []fechaServicios = datosPac.FechaServicios.ToString ().split('/,');
+     //    string [] fechaServicio = dastosPac.FechaServicio.ToString ().Split('/',' ');
+     //    // fecha --> 01/02/2019
      //    string  mes ="";
-     //    if (fechaServicios [1] == "01") mes  ="Enero";
-     //    else if (fechaServicios[1]== "02") mes ="Febrero";
-     //    else if (fechaServicios[1]== "03") mes ="Marzo";
-     //    else if (fechaServicios[1]== "04") mes ="Abril";
-     //    else if (fechaServicios[1]== "05") mes ="Mayo";
-     //    else if (fechaServicios[1]== "06") mes ="Junio";
-     //    else if (fechaServicios[1]== "07") mes ="Julio";
-     //    else if (fechaServicios[1]== "08") mes ="Agosto";
-     //    else if (fechaServicios[1]== "09") mes ="Sectiembre";
-     //    else if (fechaServicios[1]== "10") mes ="Octubre";
-     //    else if (fechaServicios[1]== "11") mes ="Nobiembre";
-     //    else if (fechaServicios[1]== "12") mes ="Diciembre";
+     //    if (fechaServicio[1] == "01") mes = "Enero";
+     //    else if (fechaServicio[1]== "02") mes ="Febrero";
+     //    else if (fechaServicio[1]== "03") mes ="Marzo";
+     //    else if (fechaServicio[1]== "04") mes ="Abril";
+     //    else if (fechaServicio[1]== "05") mes ="Mayo";
+     //    else if (fechaServicio[1]== "06") mes ="Junio";
+     //    else if (fechaServicio[1]== "07") mes ="Julio";
+     //    else if (fechaServicio[1]== "08") mes ="Agosto";
+     //    else if (fechaServicio[1]== "09") mes ="Sectiembre";
+     //    else if (fechaServicio[1]== "10") mes ="Octubre";
+     //    else if (fechaServicio[1]== "11") mes ="Nobiembre";
+     //    else if (fechaServicio[1]== "12") mes ="Diciembre";
 
      //    PdfPCell cellFirmaTrabajador = null;
 
-     //    PdfPCell cellHuellaTrabakjador = null;
+     //    PdfPCell cellHuellaTrabajador = null;
 
 
-     //    if (filiationData.FirmaTrabajador != null) ;
+     //    if (filiationData.FirmaTrabajador != null) 
      //        cellFirmaTrabajador = new PdfPCell (HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null , null, 100,35));
      //    else 
-     //        cellFirmaTrabajador  = new PdfPCell (new Phrase("";fontColumnaValue));
+     //        cellFirmaTrabajador  = new PdfPCell (new Phrase(" ", fontColumnValue));
 
      //    cellFirmaTrabajador.HorizontalAlignment= PdfPCell .ALIGN_CENTER;
-     //    cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+     //    cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
          
      //    if (filiationData.HuellaTrabajador !=null)
      //        cellFirmaTrabajador = new PdfPCell (HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 30,55));
      //    else 
-     //        cellHuellaTrabakjador = new PdfPCell(new Phrase(""; fontColumnValue));
+     //        cellHuellaTrabajador = new PdfPCell(new Phrase("",  fontColumnValue));
 
 
      //    cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-     //    cellHuellaTrabajador. VerticalAligment= PdfPCell.ALIGN_CENTER;
+     //    cellHuellaTrabajador.VerticalAlignment= PdfPCell.ALIGN_CENTER;
 
 
-     //#region Fecha / Firma 
+     //#region Fecha / Firma
      //    cells = new  List<PdfPCell>()
      //    {
      //       new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
      //       new PdfPCell(new Phrase("\n \nCiudad de "+infoEmpresa.v_SectorName+", "+ fechaServicio[0] + " días del mes de " + mes + " del " + fechaServicio[2], fontColumnValue))
      //       { Colspan = 18, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BorderColor=BaseColor.WHITE },    
-     //       new PdfPCell(new Phrase(""; fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE}, 
+     //       new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE}, 
              
      //       new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
      //       new PdfPCell(cellFirmaTrabajador ) {Colspan=5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_BOTTOM, FixedHeight=80, BorderColor=BaseColor.WHITE},
@@ -294,13 +299,13 @@ namespace NetPdf
      //      };
 
      //    columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
-     //    table = HandlingItextSharp.GenerateTableFromCells(cell, columnanWidths; null, fontTitlesTable);
-     //    ducument.Add(table);
+     //    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+     //    document.Add(table);
      //    #endregion
 
      //   document.Close();
-     //   writer.close();
-     //   writer.Despose();
+     //   writer.Close();
+     //   writer.Dispose();
      //   }
         
     }
