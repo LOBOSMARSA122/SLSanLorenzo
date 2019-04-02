@@ -256,7 +256,7 @@ namespace NetPdf
                 "inner join component CP on SC.v_ComponentId=CP.v_ComponentId " +
                 "inner join [dbo].[plan] PL on PR.v_ProtocolId=PL.v_ProtocoloId " +
                 "where SR.v_ServiceId='"+historia+"' and SC.r_Price<>0 " +
-                "group by SC.d_SaldoPaciente,SC.d_SaldoAseguradora,SC.r_Price-(SC.r_Price*0.18),SC.r_Price*0.18, SC.r_Price,SC.d_InsertDate,CP.v_Name,CP.v_IdUnidadProductiva,PL.i_EsDeducible,PL.i_EsCoaseguro,SR.v_ServiceId";
+                "group by SC.d_SaldoPaciente,SC.d_SaldoAseguradora,SC.r_Price-(SC.r_Price*0.18),SC.r_Price*0.18, SC.r_Price,SC.d_InsertDate,CP.v_Name,CP.v_IdUnidadProductiva,SC.i_TipoDesc,SR.v_ServiceId";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             lector = comando.ExecuteReader();
             string d_SaldoPacienteCP = ""; string d_SaldoAseguradoraCP = ""; string subtotalCP = ""; string igvCP = ""; string totalCP = "";

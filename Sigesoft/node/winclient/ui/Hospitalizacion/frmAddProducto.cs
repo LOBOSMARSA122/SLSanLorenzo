@@ -122,7 +122,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
 
                         var tienePlan = false;
-                        var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
+                        var resultplan = oTicketBL.TienePlan(_protocolId, txtUnPdId.Text);
                         if (resultplan.Count > 0) tienePlan = true;
                         else tienePlan = false;
 
