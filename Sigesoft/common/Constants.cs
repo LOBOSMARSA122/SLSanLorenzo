@@ -15,6 +15,9 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+        #region consentimiento coimolache
+        public const string CONSENTIMIENTO_INFORMADO_EXAMEN_MEDICO_COIMOLACHE = "C_I_EX_NED_COIMO";
+        #endregion
 
         #region IDS LUMINA FICHA MEDICA - AUTORIZACION DE REALIZACION DE EXAMEN MEDICO Y LIBERACION DE INFORMACION MEDICA - LUMINA COPPER RESUMEN
 
