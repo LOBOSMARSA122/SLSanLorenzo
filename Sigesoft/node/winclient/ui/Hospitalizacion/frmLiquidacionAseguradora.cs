@@ -102,18 +102,33 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnLiquidacion_Click(object sender, EventArgs e)
         {
-            var serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
-            #region VALIDACIONES
+            string serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+            string organizationName = grdData.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
+            #region Conexion SIGESOFT Obtener OrganizationId
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
-            var cadena1 =
+            var cadena1 = "select v_OrganizationId from organization where v_Name='" + organizationName + "'";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            string organizationId = "";
+            while (lector.Read())
+            {
+                organizationId = lector.GetValue(0).ToString();
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            #endregion
+
+            #region VALIDACIONES Nro de carta y Parentesco
+            conectasam.opensigesoft();
+            cadena1 =
                 "select SR.v_NroCartaSolicitud, PP.v_OwnerName " +
                 "from service SR  " +
                 "inner join person PP on SR.v_PersonId = PP.v_PersonId  " +
                 "where SR.v_ServiceId='" + serviceId + "' " +
                 "group by SR.v_NroCartaSolicitud, PP.v_OwnerName";
-            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
-            SqlDataReader lector = comando.ExecuteReader();
+            comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            lector = comando.ExecuteReader();
             string Nrocarta = ""; string NombreTitular = "";
             while (lector.Read())
             {
@@ -134,33 +149,95 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 return;
             }
             #endregion
-            string organizationId = grdData.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
-            #region Conexion SAM
-            
+
+            #region Conexion SIGESOFT Verificar si ya existe la Liquidacion
             conectasam.opensigesoft();
-            #endregion
-            cadena1 = "select v_OrganizationId from organization where v_Name='"+organizationId+"'";
+            cadena1 = "select v_LiquidacionId from liquidacion where v_ServiceId='"+serviceId+"'";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             lector = comando.ExecuteReader();
+            string LiqId = "";
             while (lector.Read())
             {
-                organizationId = lector.GetValue(0).ToString();
+                LiqId = lector.GetValue(0).ToString();
             }
             lector.Close();
             conectasam.closesigesoft();
+            #endregion
+
             var serviceIdarray = new List<string>();
-            serviceIdarray.Add(serviceId);
             OperationResult objOperationResult = new OperationResult();
             ServiceBL _serviceBL = new ServiceBL();
-            _serviceBL.GenerarLiquidacion(ref objOperationResult, serviceIdarray.ToArray(),Globals.ClientSession.GetAsList(), organizationId );
-
             var data = _dataReport;
             var x = grdData.Selected.Rows[0].Cells["ServicioId"].Value;
             var result = data.FindAll(p => p.ServicioId == x).ToList();
-            string ruta = Common.Utils.GetApplicationConfigValue("rutaPagoMedicos").ToString();
+            string ruta = Common.Utils.GetApplicationConfigValue("LiquidacionAseguradora").ToString();
             var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
-            string nombre = " Liquidacion - CSL";
-            LiquidacionAseguradoraReport.CreateLiquidacionAseguradora(ruta + nombre + ".pdf", result, MedicalCenter);
+            string nombre = "";
+            #region Si no exiate Liquidacion se crea y se genera
+
+            if (LiqId == "")
+            {
+                #region CREAR LIQUIDACION
+                serviceIdarray.Add(serviceId);
+                _serviceBL.GenerarLiquidacion(ref objOperationResult, serviceIdarray.ToArray(), Globals.ClientSession.GetAsList(), organizationId, serviceId);
+                #endregion
+                #region OBTENER NRO LIQ
+                conectasam.opensigesoft();
+                cadena1 = "select SR.v_NroLiquidacion, LQ.v_LiquidacionId from service SR inner join liquidacion LQ on SR.v_NroLiquidacion = LQ.v_NroLiquidacion where SR.v_ServiceId='" + serviceId + "'";
+                comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                lector = comando.ExecuteReader();
+                string nroliq = "";
+                string codigointerno = "";
+                while (lector.Read())
+                {
+                    nroliq = lector.GetValue(0).ToString();
+                    codigointerno = lector.GetValue(1).ToString();
+                }
+                lector.Close();
+                conectasam.closesigesoft();
+
+                #endregion
+                #region GENERAR LIQUIDACION
+                nombre = nroliq;
+                LiquidacionAseguradoraReport.CreateLiquidacionAseguradora(ruta + nombre + ".pdf", result, MedicalCenter);
+                #endregion
+            }
+            #endregion
+            #region Si ya existe se pregunta si desea imprimir o volver a generar
+            else
+            {
+                
+                #region OBTENER NRO LIQ
+                conectasam.opensigesoft();
+                cadena1 = "select SR.v_NroLiquidacion, LQ.v_LiquidacionId from service SR inner join liquidacion LQ on SR.v_NroLiquidacion = LQ.v_NroLiquidacion where SR.v_ServiceId='" + serviceId + "'";
+                comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                lector = comando.ExecuteReader();
+                string nroliq = "";
+                string codigointerno = "";
+                while (lector.Read())
+                {
+                    nroliq = lector.GetValue(0).ToString();
+                    codigointerno = lector.GetValue(1).ToString();
+                }
+                lector.Close();
+                conectasam.closesigesoft();
+		 
+	            #endregion
+                frmGenerarImprimirLiquidacion frm = new frmGenerarImprimirLiquidacion(nroliq);
+                frm.Text = "Nro de Liq: " + nroliq;
+                frm.ShowDialog();
+                if (frm.result == false)
+                {
+                    #region GENERAR LIQUIDACION
+                    nombre = nroliq;
+                    LiquidacionAseguradoraReport.CreateLiquidacionAseguradora(ruta + nombre + ".pdf", result, MedicalCenter);
+                    #endregion
+                }
+                
+            }
+            #endregion
+            
+            
         }
 
     }

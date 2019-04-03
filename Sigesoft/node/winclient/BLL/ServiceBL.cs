@@ -34506,7 +34506,7 @@ namespace Sigesoft.Node.WinClient.BLL
             return string.Format("N{0}-{1}", nodeId.ToString("000"), nro.ToString("000000000"));
         }
 
-        public void GenerarLiquidacion(ref OperationResult objOperationResult, string[] serviceIds,List<string> ClientSession, string organizationId)
+        public void GenerarLiquidacion(ref OperationResult objOperationResult, string[] serviceIds,List<string> ClientSession, string organizationId, string _serviceId)
 	    {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
             OperationResult objOperationResult1 = new OperationResult();
@@ -34574,6 +34574,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oliquidacionDto.d_Monto = decimal.Parse(monto.ToString());
                     oliquidacionDto.d_FechaVencimiento = null;
                     oliquidacionDto.v_NroFactura =  "";
+                    oliquidacionDto.v_ServiceId = _serviceId;
                     var NewId = oLiquidacionBL.AddLiquidacion(ref objOperationResult1, oliquidacionDto, ClientSession);
 
                     foreach (var serviceId in serviceIds)
@@ -34583,6 +34584,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                            select a).FirstOrDefault();
 
                     objEntitySource.v_NroLiquidacion = nroLiquidacion;
+
 
                     // Guardar los cambios
                     dbContext.SaveChanges();

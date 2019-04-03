@@ -1548,6 +1548,12 @@
     <Compile Include="Hospitalizacion\frmEditarProfesional.Designer.cs">
       <DependentUpon>frmEditarProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\frmGenerarImprimirLiquidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmGenerarImprimirLiquidacion.Designer.cs">
+      <DependentUpon>frmGenerarImprimirLiquidacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hospitalizacion\frmHabitacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3949,6 +3955,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmEditarProfesional.resx">
       <DependentUpon>frmEditarProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmGenerarImprimirLiquidacion.resx">
+      <DependentUpon>frmGenerarImprimirLiquidacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmHabitacion.resx">
       <DependentUpon>frmHabitacion.cs</DependentUpon>

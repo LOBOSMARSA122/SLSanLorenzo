@@ -118,7 +118,7 @@ namespace NetPdf
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
             #endregion
-            var cadena1 = "select SR.v_NroLiquidacion, LQ.v_LiquidacionId from service SR inner join liquidacion LQ on SR.v_NroLiquidacion = LQ.v_NroLiquidacion where v_ServiceId='"+historia+"'";
+            var cadena1 = "select SR.v_NroLiquidacion, LQ.v_LiquidacionId from service SR inner join liquidacion LQ on SR.v_NroLiquidacion = LQ.v_NroLiquidacion where SR.v_ServiceId='"+historia+"'";
             SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             SqlDataReader lector = comando.ExecuteReader();
             string nroliq = "";
