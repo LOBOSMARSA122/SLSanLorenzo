@@ -118,7 +118,7 @@ namespace NetPdf
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
             #endregion
-            var cadena1 = "select SR.v_NroLiquidacion, LQ.v_LiquidacionId from service SR inner join liquidacion LQ on SR.v_NroLiquidacion = LQ.v_NroLiquidacion where v_ServiceId='"+historia+"'";
+            var cadena1 = "select SR.v_NroLiquidacion, LQ.v_LiquidacionId from service SR inner join liquidacion LQ on SR.v_NroLiquidacion = LQ.v_NroLiquidacion where SR.v_ServiceId='"+historia+"'";
             SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             SqlDataReader lector = comando.ExecuteReader();
             string nroliq = "";
@@ -172,7 +172,7 @@ namespace NetPdf
             lector.Close();
             cadena1 = "select PP.v_FirstName+', '+PP.v_FirstLastName+' '+PP.v_SecondLastName as MedicoTratante  " +
                       "from servicecomponent SC " +
-                      "inner join systemuser SU on SU.i_SystemUserId=SC.i_ApprovedInsertUserId " +
+                      "inner join systemuser SU on SU.i_SystemUserId=SC.i_MedicoTratanteId " +
                       "inner join person PP on SU.v_PersonId=PP.v_PersonId " +
                       "where v_ServiceId='"+historia+"' and v_ComponentId='N009-ME000000405'";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);

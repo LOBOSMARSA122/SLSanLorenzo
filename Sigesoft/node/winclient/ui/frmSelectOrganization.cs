@@ -46,7 +46,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             organizationId = ddlCustomerOrganization.SelectedValue.ToString();
 
-            _serviceBL.GenerarLiquidacion(ref objOperationResult, _serviceIds, Globals.ClientSession.GetAsList(), organizationId);
+            _serviceBL.GenerarLiquidacion(ref objOperationResult, _serviceIds, Globals.ClientSession.GetAsList(), organizationId, "LIQ-OCU");
 
             if (objOperationResult.Success == 1)
             {
