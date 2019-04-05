@@ -55,6 +55,46 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="XmlDatosAlergias" nillable="true" type="tns:XmlDatosAlergias" />
+  <xs:complexType name="EstructuraDatosAnalitica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Analitica" nillable="true" type="tns:XmlAnalitica" />
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosAnalitica" nillable="true" type="tns:EstructuraDatosAnalitica" />
+  <xs:complexType name="XmlAnalitica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ListaPerfil" nillable="true" type="tns:ArrayOfXmlAnaliticaPerfil" />
+      <xs:element minOccurs="0" name="ListaPruebas" nillable="true" type="tns:ArrayOfXmlAnaliticaPruebas" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlAnalitica" nillable="true" type="tns:XmlAnalitica" />
+  <xs:complexType name="ArrayOfXmlAnaliticaPerfil">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlAnaliticaPerfil" nillable="true" type="tns:XmlAnaliticaPerfil" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfXmlAnaliticaPerfil" nillable="true" type="tns:ArrayOfXmlAnaliticaPerfil" />
+  <xs:complexType name="XmlAnaliticaPerfil">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ListaPruebas" nillable="true" type="tns:ArrayOfXmlAnaliticaPruebas" />
+      <xs:element minOccurs="0" name="Perfil" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlAnaliticaPerfil" nillable="true" type="tns:XmlAnaliticaPerfil" />
+  <xs:complexType name="ArrayOfXmlAnaliticaPruebas">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlAnaliticaPruebas" nillable="true" type="tns:XmlAnaliticaPruebas" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfXmlAnaliticaPruebas" nillable="true" type="tns:ArrayOfXmlAnaliticaPruebas" />
+  <xs:complexType name="XmlAnaliticaPruebas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Pruebas" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlAnaliticaPruebas" nillable="true" type="tns:XmlAnaliticaPruebas" />
   <xs:complexType name="EstructuraDatosAPMedicos">
     <xs:sequence>
       <xs:element minOccurs="0" name="APMEDICOS" nillable="true" type="tns:XmlAntecedentesPatologicosMedicos" />
@@ -91,4 +131,381 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="XmlAntecedentesPatologicosQuirurgicos" nillable="true" type="tns:XmlAntecedentesPatologicosQuirurgicos" />
+  <xs:complexType name="EstructuraDatosAudiometria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Audiometria" nillable="true" type="tns:XmlAudiometria" />
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosAudiometria" nillable="true" type="tns:EstructuraDatosAudiometria" />
+  <xs:complexType name="XmlAudiometria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ATAED1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAED8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAEI8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATAND8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATANI8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOED8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOEI8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATOND8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI1000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI125" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI1500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI2000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI250" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI3000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI4000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI500" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI6000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI750" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ATONI8000" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DESCATOTO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DESCATOTOI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OBSATOTOD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OBSATOTOI" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlAudiometria" nillable="true" type="tns:XmlAudiometria" />
+  <xs:complexType name="EstructuraDatosConstantes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Constantes" nillable="true" type="tns:XmlConstantes" />
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosConstantes" nillable="true" type="tns:EstructuraDatosConstantes" />
+  <xs:complexType name="XmlConstantes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cadera" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cintura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaUltimaRegla" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ICC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IMC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Peso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PresionDiastolica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PresionSistolica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pulso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Respiracion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaturacionOxigeno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Talla" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Temperatura" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlConstantes" nillable="true" type="tns:XmlConstantes" />
+  <xs:complexType name="EstructuraDatosEpisodio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="Episodio" nillable="true" type="tns:XmlEpisodio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosEpisodio" nillable="true" type="tns:EstructuraDatosEpisodio" />
+  <xs:complexType name="XmlEpisodio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaTrabajo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Caducidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContratanteCodigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contratista" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmpTitularRUC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmpresaTitular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaExamen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GradoInstruccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ocupacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDeExamen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoTarea" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnidadCodigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vigencia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZonaTrabajo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlEpisodio" nillable="true" type="tns:XmlEpisodio" />
+  <xs:complexType name="EstructuraDatosExamenFisico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="ExamenFisico" nillable="true" type="tns:XmlExamenFisico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosExamenFisico" nillable="true" type="tns:EstructuraDatosExamenFisico" />
+  <xs:complexType name="XmlExamenFisico">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="XmlExamenFisico" nillable="true" type="tns:XmlExamenFisico" />
+  <xs:complexType name="EstructuraDatosExamenOcularVB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="ExamenOcularVB" nillable="true" type="tns:XmlExamenOcularVB" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosExamenOcularVB" nillable="true" type="tns:EstructuraDatosExamenOcularVB" />
+  <xs:complexType name="XmlExamenOcularVB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RestriccionActual" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TestColores" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoRestriccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionCercaODCVB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionCercaODSCVB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionCercaOICVB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionCercaOISCVB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionLejosODCVB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionLejosODSCVB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionLejosOICVB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisionLejosOISCVB" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlExamenOcularVB" nillable="true" type="tns:XmlExamenOcularVB" />
+  <xs:complexType name="EstructuraDatosHabitosToxicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="HabitosToxicos" nillable="true" type="tns:XmlHabitosToxicos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosHabitosToxicos" nillable="true" type="tns:EstructuraDatosHabitosToxicos" />
+  <xs:complexType name="XmlHabitosToxicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fechainicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoHabito" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vigencia" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlHabitosToxicos" nillable="true" type="tns:XmlHabitosToxicos" />
+  <xs:complexType name="EstructuraDatosHistoriaFamiliar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="HistoriaFamiliar" nillable="true" type="tns:XmlHistoriaFamiliar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosHistoriaFamiliar" nillable="true" type="tns:EstructuraDatosHistoriaFamiliar" />
+  <xs:complexType name="XmlHistoriaFamiliar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoCIE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fechainicio" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlHistoriaFamiliar" nillable="true" type="tns:XmlHistoriaFamiliar" />
+  <xs:complexType name="EstructuraDatosHistorialFisiologico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="HistorialFisiologico" nillable="true" type="tns:XmlHistorialFisiologico" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosHistorialFisiologico" nillable="true" type="tns:EstructuraDatosHistorialFisiologico" />
+  <xs:complexType name="XmlHistorialFisiologico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripción" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fechainicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vigencia" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlHistorialFisiologico" nillable="true" type="tns:XmlHistorialFisiologico" />
+  <xs:complexType name="EstructuraDatosHistoriaLaboral">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="HistoriaLaboral" nillable="true" type="tns:XmlHistoriaLaboral" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosHistoriaLaboral" nillable="true" type="tns:EstructuraDatosHistoriaLaboral" />
+  <xs:complexType name="XmlHistoriaLaboral">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActividadCNAE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AlturaLaboral" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AreaTrabajo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescripcionTareas" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DuracionPuestoA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DuracionPuestoM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DuracionTrabajosAlturaA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DuracionTrabajosAlturaM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmpresaLaboral" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFinPuesto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaInicioPuesto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostulaPuesto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PuestoActual" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PuestosHistorial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RUCEmpresa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValoracionRiesgo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZonaLaboral" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlHistoriaLaboral" nillable="true" type="tns:XmlHistoriaLaboral" />
+  <xs:complexType name="EstructuraDatosHistoriaLaboralRI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="HistoriaLaboralRI" nillable="true" type="tns:XmlHistoriaLaboralRI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosHistoriaLaboralRI" nillable="true" type="tns:EstructuraDatosHistoriaLaboralRI" />
+  <xs:complexType name="XmlHistoriaLaboralRI">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="XmlHistoriaLaboralRI" nillable="true" type="tns:XmlHistoriaLaboralRI" />
+  <xs:complexType name="EstructuraDatosMedicaciones">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="Medicaciones" nillable="true" type="tns:XmlMedicaciones" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosMedicaciones" nillable="true" type="tns:EstructuraDatosMedicaciones" />
+  <xs:complexType name="XmlMedicaciones">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripción" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fechainicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDeMedicamento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vigencia" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlMedicaciones" nillable="true" type="tns:XmlMedicaciones" />
+  <xs:complexType name="EstructuraDatosVacunas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="Vacunas" nillable="true" type="tns:XmlVacunas" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosVacunas" nillable="true" type="tns:EstructuraDatosVacunas" />
+  <xs:complexType name="XmlVacunas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Código" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripción" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Dosis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlVacunas" nillable="true" type="tns:XmlVacunas" />
+  <xs:complexType name="EstructuraDatosVigilanciaSalud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="VigilanciaSalud" nillable="true" type="tns:XmlVigilanciaSalud" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosVigilanciaSalud" nillable="true" type="tns:EstructuraDatosVigilanciaSalud" />
+  <xs:complexType name="XmlVigilanciaSalud">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="XmlVigilanciaSalud" nillable="true" type="tns:XmlVigilanciaSalud" />
+  <xs:complexType name="EstructuraDatosLecturaOIT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="LecturaOIT" nillable="true" type="tns:XmlLecturaOIT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosLecturaOIT" nillable="true" type="tns:EstructuraDatosLecturaOIT" />
+  <xs:complexType name="XmlLecturaOIT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnormalidadParenquitamosa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnormalidadPleural" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Calidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescripcionAnormalidadPleural" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescripcionOtrasAnomalias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ObservacionCalidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpacidadesAbundancia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpacidadesPequeñas" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OtrasAnomalias" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlLecturaOIT" nillable="true" type="tns:XmlLecturaOIT" />
+  <xs:complexType name="EstructuraDatosPsicologia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="Psicologia" nillable="true" type="tns:XmlPsicologia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosPsicologia" nillable="true" type="tns:EstructuraDatosPsicologia" />
+  <xs:complexType name="XmlPsicologia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Aptitud" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Informes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlPsicologia" nillable="true" type="tns:XmlPsicologia" />
 </xs:schema>
