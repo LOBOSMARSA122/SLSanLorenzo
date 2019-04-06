@@ -17,29 +17,38 @@ namespace Sigesoft.Node.WinClient.UI
         public float? precio;
         public bool result;
 
-        public frmConfigSeguros(int deducible, int coaseguro, decimal importe, string precio, string factor)
+        public frmConfigSeguros(int deducible, int coaseguro, decimal? importe, string precio, string factor, decimal? importeCo)
         {
             InitializeComponent();
-            if (deducible == 1)
+            if (deducible == 1 || deducible == 0)
             {
-                rbDeducible.Checked = true;
-                rbCoaseguro.Checked = false;
+                if (deducible == 1) { rbDeducible.Checked = true; }
+                else
+                {
+                    rbDeducible.Checked = false;
+                    rbDeducible.Visible = false;
+                    txtImporte.Visible = false;
+                    lblmontoDeducible.Visible = false;
+                }
             }
-            else if (coaseguro == 1)
+            if (coaseguro == 1 || coaseguro == 0)
             {
-                rbDeducible.Checked = false;
-                rbCoaseguro.Checked = true;
-
+                if (coaseguro == 1) { rbCoaseguro.Checked = true; }
+                else
+                {
+                    rbCoaseguro.Checked = false;
+                    rbCoaseguro.Visible = false;
+                    txtCoaseguro.Visible = false;
+                    lblMontoCoaseguro.Visible = false;
+                }
             }
-
-
-
+            txtCoaseguro.Text = importeCo.ToString();
             txtFactor.Text = factor;
             txtPrecioBase.Text = precio;
             txtImporte.Text = importe.ToString();
-            Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text);
+            Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text, txtCoaseguro.Text);
         }
-        private void Calculator(bool coaseguro, bool deducible, string importe)
+        private void Calculator(bool coaseguro, bool deducible, string importe, string importeCo)
         {
             txtnuevoPrecio.Text = (double.Parse(txtPrecioBase.Text) * double.Parse(txtFactor.Text)).ToString();
             if (deducible == true)
@@ -50,8 +59,9 @@ namespace Sigesoft.Node.WinClient.UI
             else if (coaseguro == true)
             {
 
-                txtPagoAseguradora.Text = (double.Parse(importe) * double.Parse(txtnuevoPrecio.Text) / 100).ToString();
-                txtPagoPaciente.Text = (double.Parse(txtnuevoPrecio.Text) - double.Parse(txtPagoAseguradora.Text)).ToString();
+
+                txtPagoPaciente.Text = (double.Parse(importeCo) * double.Parse(txtnuevoPrecio.Text) / 100).ToString();
+                txtPagoAseguradora.Text = (double.Parse(txtnuevoPrecio.Text) - double.Parse(txtPagoPaciente.Text)).ToString();
 
             }
         }
@@ -65,7 +75,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             if ((int)e.KeyChar == (int)Keys.Enter)
             {
-                Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text);
+                Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text, txtCoaseguro.Text);
             }
         }
 
@@ -98,7 +108,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             if ((int)e.KeyChar == (int)Keys.Enter)
             {
-                Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text);
+                Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text, txtCoaseguro.Text);
             }
         }
 
@@ -106,7 +116,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             if ((int)e.KeyChar == (int)Keys.Enter)
             {
-                Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text);
+                Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text, txtCoaseguro.Text);
             }
         }
     }

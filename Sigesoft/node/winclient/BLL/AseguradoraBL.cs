@@ -22,7 +22,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
                             join E in dbContext.plan on C.v_ProtocolId equals E.v_ProtocoloId
                             join D in dbContext.organization on E.v_OrganizationSeguroId equals D.v_OrganizationId
-                    where A.i_IsDeleted == 0 
+                            where A.i_IsDeleted == 0 && A.d_ServiceDate >= pdatBeginDate.Value && A.d_ServiceDate <= pdatEndDate.Value
                     select new LiquidacionAseguradora
                     {
                         ServicioId = A.v_ServiceId,
@@ -38,20 +38,17 @@ namespace Sigesoft.Node.WinClient.BLL
                     {
                         query = query.Where(pstrFilterExpression);
                     }
-                    if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
-                    {
-                        query = query.Where("FechaServicio >= @0 && FechaServicio <= @1", pdatBeginDate.Value, pdatEndDate.Value);
-                    }
+                    
 
                 
                  List<LiquidacionAseguradora> data = query.ToList();
-                 
-                 data = data.GroupBy(p => p.Protocolo).Select(s => s.First()).ToList();
+
+                 data = data.GroupBy(p => p.ServicioId).Select(s => s.First()).ToList();
                
 
                 var ListaLiquidacion = new List<LiquidacionAseguradora>();
                 LiquidacionAseguradora oLiquidacionAseguradora;
-                var detalle = new List<LiquiAseguradoraDetalle>();
+                
                 LiquiAseguradoraDetalle oLiquiAseguradoraDetalle;
                 decimal? TotalAseguradora = 0;
                 foreach (var servicio in data)
@@ -64,8 +61,10 @@ namespace Sigesoft.Node.WinClient.BLL
                     oLiquidacionAseguradora.Aseguradora = servicio.Aseguradora;
                     oLiquidacionAseguradora.Protocolo = servicio.Protocolo;
                     var serviceComponents = obtenerServiceComponentsByServiceId(servicio.ServicioId);
+                    var detalle = new List<LiquiAseguradoraDetalle>();
                     foreach (var componente in serviceComponents)
                     {
+
                         oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
                         oLiquiAseguradoraDetalle.Descripcion = componente.v_ComponentName;
                         
@@ -90,87 +89,87 @@ namespace Sigesoft.Node.WinClient.BLL
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
-                    var tickets = obtenerTicketsByServiceId(servicio.ServicioId);
-                    foreach (var ticket in tickets)
-                    {
-                        oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
-                        oLiquiAseguradoraDetalle.Descripcion = ticket.v_NombreProducto;
+                    //var tickets = obtenerTicketsByServiceId(servicio.ServicioId);
+                    //foreach (var ticket in tickets)
+                    //{
+                    //    oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
+                    //    oLiquiAseguradoraDetalle.Descripcion = ticket.v_NombreProducto;
                        
-                        oLiquiAseguradoraDetalle.Tipo = ticket.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
-                        string simbolo = "";
-                        if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
-                        {
-                            simbolo = " S/.";
-                        }
-                        else
-                        {
-                            simbolo = " %";
-                        }    
-                        oLiquiAseguradoraDetalle.Valor = ticket.d_Importe.ToString() + simbolo;
-                        oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente.Value;
-                        oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora.Value;
-                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora.Value;
-                        oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente.Value + ticket.d_SaldoAseguradora.Value;
-                        oLiquiAseguradoraDetalle.Cantidad = ticket.d_Cantidad;
-                        oLiquiAseguradoraDetalle.PrecioUnitario = ticket.d_PrecioVenta;
-                        detalle.Add(oLiquiAseguradoraDetalle);
-                    }
+                    //    oLiquiAseguradoraDetalle.Tipo = ticket.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
+                    //    string simbolo = "";
+                    //    if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
+                    //    {
+                    //        simbolo = " S/.";
+                    //    }
+                    //    else
+                    //    {
+                    //        simbolo = " %";
+                    //    }    
+                    //    oLiquiAseguradoraDetalle.Valor = ticket.d_Importe.ToString() + simbolo;
+                    //    oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente.Value;
+                    //    oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora.Value;
+                    //    TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora.Value;
+                    //    oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente.Value + ticket.d_SaldoAseguradora.Value;
+                    //    oLiquiAseguradoraDetalle.Cantidad = ticket.d_Cantidad;
+                    //    oLiquiAseguradoraDetalle.PrecioUnitario = ticket.d_PrecioVenta;
+                    //    detalle.Add(oLiquiAseguradoraDetalle);
+                    //}
 
-                    var recetas = obtenerRecetasByServiceId(servicio.ServicioId);
-                    foreach (var receta in recetas)
-                    {
-                        oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
-                        oLiquiAseguradoraDetalle.Descripcion = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].v_Descripcion;// receta.v_IdProductoDetalle;
+                    //var recetas = obtenerRecetasByServiceId(servicio.ServicioId);
+                    //foreach (var receta in recetas)
+                    //{
+                    //    oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
+                    //    oLiquiAseguradoraDetalle.Descripcion = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].v_Descripcion;// receta.v_IdProductoDetalle;
                        
-                        oLiquiAseguradoraDetalle.Tipo = receta.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
-                        string simbolo = "";
-                        if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
-                        {
-                            simbolo = " S/.";
-                        }
-                        else
-                        {
-                            simbolo = " %";
-                        }    
-                        oLiquiAseguradoraDetalle.Valor = receta.d_Importe.ToString() + simbolo;
-                        oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad.Value;
-                        oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
-                        oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
-                        TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
-                        oLiquiAseguradoraDetalle.SubTotal = (oLiquiAseguradoraDetalle.SaldoPaciente.Value + oLiquiAseguradoraDetalle.SaldoAseguradora.Value);
-                        #region Conexion SIGESOFT
-                        ConexionSigesoft conectasam = new ConexionSigesoft();
-                        conectasam.opensigesoft();
-                        #endregion
-                        var cadena1 = "select OO.r_FactorMed, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + oLiquidacionAseguradora.Protocolo + "'";
-                        SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
-                        SqlDataReader lector = comando.ExecuteReader();
-                        string factor = "";
-                        while (lector.Read())
-                        {
-                            factor = lector.GetValue(0).ToString();
-                        }
-                        lector.Close();
-                        conectasam.closesigesoft();
-                        #region Conexion SAMBHS
-                        ConexionSambhs conectaConexionSambhs = new ConexionSambhs();
-                        conectaConexionSambhs.openSambhs();
-                        #endregion
+                    //    oLiquiAseguradoraDetalle.Tipo = receta.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
+                    //    string simbolo = "";
+                    //    if (oLiquiAseguradoraDetalle.Tipo == "DEDUCIBLE")
+                    //    {
+                    //        simbolo = " S/.";
+                    //    }
+                    //    else
+                    //    {
+                    //        simbolo = " %";
+                    //    }    
+                    //    oLiquiAseguradoraDetalle.Valor = receta.d_Importe.ToString() + simbolo;
+                    //    oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad.Value;
+                    //    oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
+                    //    oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
+                    //    TotalAseguradora += oLiquiAseguradoraDetalle.SaldoAseguradora;
+                    //    oLiquiAseguradoraDetalle.SubTotal = (oLiquiAseguradoraDetalle.SaldoPaciente.Value + oLiquiAseguradoraDetalle.SaldoAseguradora.Value);
+                    //    #region Conexion SIGESOFT
+                    //    ConexionSigesoft conectasam = new ConexionSigesoft();
+                    //    conectasam.opensigesoft();
+                    //    #endregion
+                    //    var cadena1 = "select OO.r_FactorMed, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + oLiquidacionAseguradora.Protocolo + "'";
+                    //    SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                    //    SqlDataReader lector = comando.ExecuteReader();
+                    //    string factor = "";
+                    //    while (lector.Read())
+                    //    {
+                    //        factor = lector.GetValue(0).ToString();
+                    //    }
+                    //    lector.Close();
+                    //    conectasam.closesigesoft();
+                    //    #region Conexion SAMBHS
+                    //    ConexionSambhs conectaConexionSambhs = new ConexionSambhs();
+                    //    conectaConexionSambhs.openSambhs();
+                    //    #endregion
 
-                        var cadenasam = "select PP.d_PrecioMayorista from producto PP inner join productodetalle PD on PD.v_IdProducto = PP.v_IdProducto where PD.v_IdProductoDetalle ='" + receta.v_IdProductoDetalle + "'";
-                        comando = new SqlCommand(cadenasam, connection: conectaConexionSambhs.conectarSambhs);
-                        lector = comando.ExecuteReader();
-                        string preciounitario = "";
-                        while (lector.Read())
-                        {
-                            preciounitario = lector.GetValue(0).ToString();
-                        }
-                        lector.Close();
-                        conectaConexionSambhs.closeSambhs();
+                    //    var cadenasam = "select PP.d_PrecioMayorista from producto PP inner join productodetalle PD on PD.v_IdProducto = PP.v_IdProducto where PD.v_IdProductoDetalle ='" + receta.v_IdProductoDetalle + "'";
+                    //    comando = new SqlCommand(cadenasam, connection: conectaConexionSambhs.conectarSambhs);
+                    //    lector = comando.ExecuteReader();
+                    //    string preciounitario = "";
+                    //    while (lector.Read())
+                    //    {
+                    //        preciounitario = lector.GetValue(0).ToString();
+                    //    }
+                    //    lector.Close();
+                    //    conectaConexionSambhs.closeSambhs();
 
-                        oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(preciounitario) - (decimal.Parse(preciounitario) * decimal.Parse(factor) / 100);
-                        detalle.Add(oLiquiAseguradoraDetalle);
-                    }
+                    //    oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(preciounitario) - (decimal.Parse(preciounitario) * decimal.Parse(factor) / 100);
+                    //    detalle.Add(oLiquiAseguradoraDetalle);
+                    //}
 
                     oLiquidacionAseguradora.TotalAseguradora = TotalAseguradora;
                     oLiquidacionAseguradora.Detalle = detalle;
@@ -196,12 +195,12 @@ namespace Sigesoft.Node.WinClient.BLL
                  var dbContext = new SigesoftEntitiesModel();
                  var query = (from A in dbContext.receta
                               join B in dbContext.diagnosticrepository on A.v_DiagnosticRepositoryId equals B.v_DiagnosticRepositoryId
-                              join C in dbContext.service on B.v_ServiceId equals C.v_ServiceId
+                              join C in dbContext.service on A.v_ServiceId equals C.v_ServiceId
                               join I in dbContext.protocol on C.v_ProtocolId equals I.v_ProtocolId
                               join G in dbContext.plan on new { a = I.v_ProtocolId, b = A.v_IdUnidadProductiva }
                                   equals new { a = G.v_ProtocoloId, b = G.v_IdUnidadProductiva } into G_join
                               from G in G_join.DefaultIfEmpty()
-                              where C.v_ServiceId == serviceId && C.i_IsDeleted == 0 && (A.d_SaldoPaciente.Value > 0 || A.d_SaldoAseguradora.Value > 0)
+                              where A.v_ServiceId == serviceId && C.i_IsDeleted == 0 && (A.d_SaldoPaciente.Value > 0 || A.d_SaldoAseguradora.Value > 0)
                               select new recetaList
                               {
                                   v_IdProductoDetalle = A.v_IdProductoDetalle,

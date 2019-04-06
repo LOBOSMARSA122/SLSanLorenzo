@@ -90,6 +90,7 @@
     <Compile Include="AtencionIntegralAdolescente.cs" />
     <Compile Include="AtencionIntegralAdulto.cs" />
     <Compile Include="AtencionIntegralAdultoMayor.cs" />
+    <Compile Include="Autorizacion_Realizacion_Ex_Lumina.cs" />
     <Compile Include="CertificadoAptitudCompleto.cs" />
     <Compile Include="CertificadoAptitudMedico_Cosapi.cs" />
     <Compile Include="Certificado_Psicosensometrico_Datos.cs" />
@@ -97,10 +98,12 @@
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
     <Compile Include="Certificado_Suficiencia_Medica_Trabajo_Altura_V4.cs" />
     <Compile Include="ConexionSigesoft.cs" />
+    <Compile Include="Consentimiento_Informado_Ex_Med.cs" />
     <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="Coprocultivo_PSeriado.cs" />
     <Compile Include="ConexionSambhs.cs" />
+    <Compile Include="Informe_Radiologico_Lumina.cs" />
     <Compile Include="LiquidacionAseguradoraReport.cs" />
     <Compile Include="Osteomuscular_MiBanco.cs" />
     <Compile Include="Pago_Especialsta_Report.cs" />

@@ -33,7 +33,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             _aseguradoraId = pstrAseguradoraId;
         }
 
-        private void frmProtocolPlanAseguradora_Load(object sender, EventArgs e)
+        public void frmProtocolPlanAseguradora_Load(object sender, EventArgs e)
         {
             try
             {
@@ -58,9 +58,15 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            objOperationResult1 = new OperationResult();
             try
             {
-                _gridDataSouce.AddNew();
+                frmAddPlan frm = new frmAddPlan(_protocolId, _aseguradoraId, _aseguradoraId);
+                frm.ShowDialog();
+
+                _gridDataSouce = _objPlanBl.ObtenerPlanesPorProtocolo(ref objOperationResult1, _protocolId);
+                grd.DataSource = _gridDataSouce;
+                //_gridDataSouce.AddNew();
             }
             catch (Exception ex)
             {

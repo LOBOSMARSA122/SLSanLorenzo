@@ -15,6 +15,26 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+        #region consentimiento coimolache
+        public const string CONSENTIMIENTO_INFORMADO_EXAMEN_MEDICO_COIMOLACHE = "C_I_EX_NED_COIMO";
+        #endregion
+
+        #region IDS LUMINA FICHA MEDICA - AUTORIZACION DE REALIZACION DE EXAMEN MEDICO Y LIBERACION DE INFORMACION MEDICA - LUMINA COPPER RESUMEN
+
+        public const string FICHA_MEDICA_OCUPACIONAL = "FICH_MED_OCP";
+        public const string AUTORIZACION_REALIZACION_EX_LIB_INF_MED = "AUT_REAL_EXM_LIB_INF_MED";
+        public const string LUMINA_RESUMEN = "LUMINA_RESUMEN";
+        #endregion
+        #region INFORME RADIOLOGICO LUMINA
+        public const string INFORME_RADIOLOGICO_ID = "N009-ME000000538";
+
+        public const string INFORME_RADIOLOGICO_N_PLACA = "N009-MF000004938";
+        public const string INFORME_RADIOLOGICO_DESCRIPCION = "N009-MF000004936";
+        public const string INFORME_RADIOLOGICO_CONCLUSIONES = "N009-MF000004937";
+
+
+        #endregion
+
         #region
         public const string FACTORES_PSICOSOCIALES_MI_BANCO_ID = "N009-ME000000533";
 
@@ -3703,6 +3723,8 @@ namespace Sigesoft.Common
         public const string ATENCION_INTEGRAL_EST_ANIMO = "N009-MF000002943";
         public const string ATENCION_INTEGRAL_ORINA = "N009-MF000002944";
         public const string ATENCION_INTEGRAL_DEPOSICIONES = "N009-MF000002945";
+
+        public const string ATENCION_INTEGRAL_ANTECEDENTES = "N009-MF000004935";
 
         public const string ATENCION_INTEGRAL_PIEL_FANERAS_TEJIDO_SUBCUTANEO = "N009-MF000002946";
         public const string ATENCION_INTEGRAL_APARATO_RESPIRATORIO = "N009-MF000003423";

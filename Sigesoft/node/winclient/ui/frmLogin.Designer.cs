@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtAppVersion = new System.Windows.Forms.TextBox();
             this.txtNode = new System.Windows.Forms.TextBox();
@@ -135,6 +136,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(125, 20);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Text = "Alph@2536";
             // 
             // txtUserName
             // 
@@ -143,6 +145,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(125, 20);
             this.txtUserName.TabIndex = 0;
+            this.txtUserName.Text = "sa";
             // 
             // label2
             // 
@@ -199,7 +202,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.Location = new System.Drawing.Point(389, 201);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);

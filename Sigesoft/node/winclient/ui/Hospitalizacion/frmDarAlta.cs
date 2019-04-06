@@ -68,7 +68,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 _hospitalizacionBL.UpdateHospitalizacion(ref objOperationResult, _hospitalizacionDto, Globals.ClientSession.GetAsList());
                    
             }
-
+            // hacer update al service culminado
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }

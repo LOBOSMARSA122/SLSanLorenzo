@@ -49,6 +49,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         string _personFullName;
         string ruta;
         int _edad;
+        private string v_ProtocoloId;
 
         public frmHospitalizados()
         {
@@ -132,32 +133,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnTicket_Click(object sender, EventArgs e)
         {
+            // obtener serviceId y protocolId
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-            //MessageBox.Show("Service: " + TserviceId);
-            #region Conexion SAM
+
+            #region Conexion SAM Obtener Plan
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
-            #endregion
             var cadena1 = "select PL.i_PlanId from [dbo].[plan] PL where PL.v_ProtocoloId ='" + protocolId + "'";
             SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             SqlDataReader lector = comando.ExecuteReader();
             string plan = "";
-            while (lector.Read())
-            {
-                plan = lector.GetValue(0).ToString();
-            }
+            while (lector.Read()){plan = lector.GetValue(0).ToString();}
             lector.Close();
             conectasam.closesigesoft();
             string modoMasterService;
-            if (plan != "")
-            {
-                modoMasterService = "ASEGU";
-            }
-            else
-            {
-                modoMasterService = "HOSPI";
-            }
+            if (plan != ""){modoMasterService = "ASEGU";}
+            else{modoMasterService = "HOSPI";}
+            #endregion
+            // construir formulario ticket
             frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New", protocolId, modoMasterService);
             ticket.ShowDialog();
             btnFilter_Click(sender, e);
@@ -391,8 +385,40 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             try
             {
+                var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+
+                #region Conexion SIGESOFT Obtener Protocolo
+                ConexionSigesoft conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                var cadena1 = "select PR.v_ProtocolId " +
+                              "from hospitalizacionservice HS " +
+                              "inner join service SR on SR.v_ServiceId= HS.v_ServiceId " +
+                              "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
+                              "where v_HopitalizacionId='"+v_HopitalizacionId+"'";
+                SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                SqlDataReader lector = comando.ExecuteReader();
+                v_ProtocoloId = "";
+                while (lector.Read()) { v_ProtocoloId = lector.GetValue(0).ToString(); }
+                lector.Close();
+                conectasam.closesigesoft();
+                #endregion
+
+                #region Conexion SIGESOFT Obtener Plan
+                conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                cadena1 = "select PL.i_PlanId from [dbo].[plan] PL where PL.v_ProtocoloId ='" + v_ProtocoloId + "'";
+                comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                lector = comando.ExecuteReader();
+                string plan = "";
+                while (lector.Read()) { plan = lector.GetValue(0).ToString(); }
+                lector.Close();
+                conectasam.closesigesoft();
+                #endregion
+                string modoMasterService;
+                if (plan != "") { modoMasterService = "ASEGU"; }
+                else { modoMasterService = "HOSPI"; }
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New", "");
+                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnAsignarHabitacion.Enabled = false;
@@ -412,10 +438,26 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             try
             {
+                #region Conexion SIGESOFT Obtener Protocolo
+                var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                ConexionSigesoft conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                var cadena1 = "select PR.v_ProtocolId " +
+                              "from hospitalizacionservice HS " +
+                              "inner join service SR on SR.v_ServiceId= HS.v_ServiceId " +
+                              "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
+                              "where v_HopitalizacionId='"+v_HopitalizacionId+"'";
+                SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                SqlDataReader lector = comando.ExecuteReader();
+                v_ProtocoloId = "";
+                while (lector.Read()) { v_ProtocoloId = lector.GetValue(0).ToString(); }
+                lector.Close();
+                conectasam.closesigesoft();
+                #endregion
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
                 var hospitalizacionHabitacionId =
                     grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
-                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId);
+                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId, v_ProtocoloId);
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnEditarHabitacion.Enabled = false;

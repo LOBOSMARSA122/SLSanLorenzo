@@ -173,6 +173,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -200,6 +201,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\frmAddPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration\frmAddPlan.Designer.cs">
+      <DependentUpon>frmAddPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\frmExternalUserEditSinProtocol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +249,7 @@
     <Compile Include="Configuration\frmProtocolPlanAseguradora.Designer.cs">
       <DependentUpon>frmProtocolPlanAseguradora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\ListaLineas.cs" />
     <Compile Include="Dataset\Anexo7D.cs">
       <DependentUpon>Anexo7D.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -1540,6 +1548,12 @@
     <Compile Include="Hospitalizacion\frmEditarProfesional.Designer.cs">
       <DependentUpon>frmEditarProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\frmGenerarImprimirLiquidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmGenerarImprimirLiquidacion.Designer.cs">
+      <DependentUpon>frmGenerarImprimirLiquidacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hospitalizacion\frmHabitacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1588,6 +1602,7 @@
     <Compile Include="Hospitalizacion\frmType.Designer.cs">
       <DependentUpon>frmType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\ListaExamen.cs" />
     <Compile Include="lineaDto.cs" />
     <Compile Include="Matriz\frmMatrizMultiple.cs">
       <SubType>Form</SubType>
@@ -3588,6 +3603,9 @@
     </Compile>
     <Compile Include="Utils\GridKeyValueDTO.cs" />
     <Compile Include="Utils\Utils.cs" />
+    <EmbeddedResource Include="Configuration\frmAddPlan.resx">
+      <DependentUpon>frmAddPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuration\frmExternalUserEditSinProtocol.resx">
       <DependentUpon>frmExternalUserEditSinProtocol.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -3937,6 +3955,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmEditarProfesional.resx">
       <DependentUpon>frmEditarProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmGenerarImprimirLiquidacion.resx">
+      <DependentUpon>frmGenerarImprimirLiquidacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmHabitacion.resx">
       <DependentUpon>frmHabitacion.cs</DependentUpon>
@@ -6209,6 +6230,10 @@
     <ProjectReference Include="..\BLL\Sigesoft.Node.WinClient.BLL.csproj">
       <Project>{f4650c86-db62-4fa8-8475-0887031a0c05}</Project>
       <Name>Sigesoft.Node.WinClient.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\MSSQL\Sigesoft.Node.WinClient.DAL.MSSQL.csproj">
+      <Project>{0b732067-fec9-4da2-afd9-6da773094e3e}</Project>
+      <Name>Sigesoft.Node.WinClient.DAL.MSSQL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

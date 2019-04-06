@@ -344,7 +344,8 @@ namespace Sigesoft.Node.WinClient.UI
                 if (_TserviceId == (int)MasterService.AtxMedicaParticular || _TserviceId == (int)MasterService.AtxMedicaSeguros)
                 {
                     #region ESO V1
-                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    frm = new Operations.frmEso(_serviceId, null, null, _TserviceId);
+                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
                     frm.ShowDialog();
                     #endregion
                     #region ESO V2 (Asíncrono)
@@ -774,16 +775,14 @@ namespace Sigesoft.Node.WinClient.UI
                 List<CalendarList> objCalendarList = new List<CalendarList>();
                 List<ServiceComponentList> ListServiceComponent = new List<ServiceComponentList>();
 
-                if (cbServiceType.SelectedValue.ToString() == "1")
+                if (cbServiceType.SelectedValue.ToString() == "1" || _componentName =="TRIAJE")
                 {
                     objCalendarList = objCalendarBL.GetPacientInLineByComponentId1(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(), int.Parse(cbService.SelectedValue.ToString()));
-              
                 }
                 else
                 {
                   var client = Globals.ClientSession.GetAsList();
                   objCalendarList = objCalendarBL.GetPacientInLineByComponentId1_ATX(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(), int.Parse(cbService.SelectedValue.ToString()), Int32.Parse(client[2]));
-              
                 }
 
                  grdListaLlamando.DataSource = objCalendarList;

@@ -13,6 +13,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_IdUnidadProductiva { get; set; }
         public int i_EsDeducible { get; set; }
         public int i_EsCoaseguro { get; set; }
-        public decimal d_Importe { get; set; }    
+        public decimal d_Importe { get; set; }
+        public decimal? d_ImporteCo { get; set; }  
     }
 }

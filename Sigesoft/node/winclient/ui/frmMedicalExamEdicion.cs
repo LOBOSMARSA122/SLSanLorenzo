@@ -103,6 +103,8 @@ namespace Sigesoft.Node.WinClient.UI
                     unValidInDays.Value = objmedicalexamDto.i_ValidInDays.ToString();
                     if (objmedicalexamDto.v_IdUnidadProductiva != null) ddlUnidadProductiva.SelectedValue = objmedicalexamDto.v_IdUnidadProductiva;
                     else ddlUnidadProductiva.SelectedIndex = 0;
+                    txtTarifaSegus.Text = objmedicalexamDto.r_PriceSegus.ToString();
+                    txtCodigoSegus.Text = objmedicalexamDto.v_CodigoSegus;
                 }
             }
             catch (Exception ex)
@@ -146,6 +148,8 @@ namespace Sigesoft.Node.WinClient.UI
                         objmedicalexamDto.i_IsApprovedId = Convert.ToInt32(ddlIsApprovedId.SelectedValue);
                         objmedicalexamDto.i_ValidInDays = Convert.ToInt32(unValidInDays.Value);
                         objmedicalexamDto.v_IdUnidadProductiva = ddlUnidadProductiva.SelectedValue.ToString();
+                        objmedicalexamDto.r_PriceSegus = float.Parse(txtTarifaSegus.Text);
+                        objmedicalexamDto.v_CodigoSegus = txtCodigoSegus.Text;
                         // Save the data
                         _objMedicalExamBL.AddMedicalExam(ref objOperationResult, objmedicalexamDto, Globals.ClientSession.GetAsList());
 
@@ -173,6 +177,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objmedicalexamDto.i_IsApprovedId = Convert.ToInt32(ddlIsApprovedId.SelectedValue);
                     objmedicalexamDto.i_ValidInDays = Convert.ToInt32(unValidInDays.Value);
                     objmedicalexamDto.v_IdUnidadProductiva = ddlUnidadProductiva.SelectedValue.ToString();
+                    objmedicalexamDto.r_PriceSegus = float.Parse(txtTarifaSegus.Text);
+                    objmedicalexamDto.v_CodigoSegus = txtCodigoSegus.Text;
                     // Save the data
                     _objMedicalExamBL.UpdateMedicalExam(ref objOperationResult,pbIsChangeName, objmedicalexamDto, Globals.ClientSession.GetAsList());
 

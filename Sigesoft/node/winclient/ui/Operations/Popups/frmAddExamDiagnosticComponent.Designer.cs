@@ -321,7 +321,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOK.Location = new System.Drawing.Point(862, 249);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
@@ -725,7 +725,7 @@
             this.cbPreCalificacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPreCalificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPreCalificacion.FormattingEnabled = true;
-            this.cbPreCalificacion.Location = new System.Drawing.Point(637, 49);
+            this.cbPreCalificacion.Location = new System.Drawing.Point(803, 47);
             this.cbPreCalificacion.Name = "cbPreCalificacion";
             this.cbPreCalificacion.Size = new System.Drawing.Size(144, 21);
             this.cbPreCalificacion.TabIndex = 28;
@@ -735,7 +735,7 @@
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.Black;
-            this.label30.Location = new System.Drawing.Point(551, 55);
+            this.label30.Location = new System.Drawing.Point(717, 53);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(80, 13);
             this.label30.TabIndex = 24;
@@ -777,7 +777,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.Location = new System.Drawing.Point(889, 585);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);

@@ -71,6 +71,7 @@
     <Compile Include="GeneratedAssemblers\componentfieldvaluesAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrecommendationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrestrictionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\configdxAssembler.cs" />
     <Compile Include="GeneratedAssemblers\cuidadopreventivoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\cuidadopreventivocomentarioAssembler.cs" />
     <Compile Include="GeneratedAssemblers\datahierarchyAssembler.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="GeneratedAssemblers\familymedicalantecedentsAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturaciondetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturacionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\envionatclarAssembler.cs" />
     <Compile Include="GeneratedAssemblers\resumentipopagoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\resumentipoempresaResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reportegerencialResultAssembler.cs" />

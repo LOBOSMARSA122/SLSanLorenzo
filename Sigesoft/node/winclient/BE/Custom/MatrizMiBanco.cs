@@ -161,5 +161,13 @@ namespace Sigesoft.Node.WinClient.BE
         public string FechaRecepcion { get; set; }
         public string ObservacionesCredicorp { get; set; }
 
+        public string EscenciaTarea { get; set; }
+        public string SistemaTrabajo { get; set; }
+        public string InteraccionSocial { get; set; }
+        public string Organizacionales { get; set; }
+        public string Resultado { get; set; }
+
+
+
     }
 }

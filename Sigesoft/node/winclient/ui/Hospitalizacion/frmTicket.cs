@@ -70,8 +70,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                  objticketDto = new ticketDto();
             }
-           
-            
             //objticketDto.v_TicketId 
             txtNServicio.Text = _serviceId;
             objticketDto.v_ServiceId = txtNServicio.Text;

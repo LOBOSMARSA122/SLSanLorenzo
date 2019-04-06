@@ -35,8 +35,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolPlanAseguradora));
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EsDeducible");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EsCoaseguro");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Importe");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Importe", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ImporteCo");
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -85,7 +86,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(568, 357);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(646, 446);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ultraGroupBox1
@@ -95,7 +96,7 @@
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBox1.Location = new System.Drawing.Point(3, 3);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(562, 65);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(640, 65);
             this.ultraGroupBox1.TabIndex = 0;
             this.ultraGroupBox1.Text = "Empresa Aseguradora:";
             // 
@@ -121,7 +122,6 @@
             // 
             // grd
             // 
-            this.grd.DataMember = null;
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.grd.DisplayLayout.Appearance = appearance1;
@@ -137,22 +137,24 @@
             ultraGridColumn5.Header.VisiblePosition = 1;
             ultraGridColumn5.Width = 85;
             ultraGridColumn6.Header.Caption = "Coaseguro";
-            ultraGridColumn6.Header.VisiblePosition = 2;
+            ultraGridColumn6.Header.VisiblePosition = 3;
             ultraGridColumn6.Width = 78;
             appearance3.TextHAlignAsString = "Right";
             ultraGridColumn4.CellAppearance = appearance3;
             ultraGridColumn4.Header.Caption = "Valor";
-            ultraGridColumn4.Header.VisiblePosition = 3;
+            ultraGridColumn4.Header.VisiblePosition = 2;
             ultraGridColumn4.MaskClipMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals;
             ultraGridColumn4.MaskDataMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals;
             ultraGridColumn4.MaskDisplayMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeLiterals;
             ultraGridColumn4.MaskInput = "{double:9.2}";
             ultraGridColumn4.Width = 121;
+            ultraGridColumn2.Header.VisiblePosition = 4;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn5,
             ultraGridColumn6,
-            ultraGridColumn4});
+            ultraGridColumn4,
+            ultraGridColumn2});
             this.grd.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grd.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.grd.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
@@ -211,7 +213,7 @@
             this.grd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grd.Location = new System.Drawing.Point(3, 74);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(562, 235);
+            this.grd.Size = new System.Drawing.Size(640, 324);
             this.grd.TabIndex = 1;
             this.grd.Text = "ultraGrid1";
             this.grd.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grd_CellChange);
@@ -227,9 +229,9 @@
             this.ultraPanel1.ClientArea.Controls.Add(this.btnSalir);
             this.ultraPanel1.ClientArea.Controls.Add(this.btnGuardar);
             this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraPanel1.Location = new System.Drawing.Point(3, 315);
+            this.ultraPanel1.Location = new System.Drawing.Point(3, 404);
             this.ultraPanel1.Name = "ultraPanel1";
-            this.ultraPanel1.Size = new System.Drawing.Size(562, 39);
+            this.ultraPanel1.Size = new System.Drawing.Size(640, 39);
             this.ultraPanel1.TabIndex = 2;
             // 
             // btnEliminar
@@ -267,7 +269,7 @@
             // 
             // btnGuardar
             // 
-            appearance18.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
             this.btnGuardar.Appearance = appearance18;
             this.btnGuardar.Location = new System.Drawing.Point(92, 4);
             this.btnGuardar.Name = "btnGuardar";
@@ -282,7 +284,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
-            this.ClientSize = new System.Drawing.Size(568, 357);
+            this.ClientSize = new System.Drawing.Size(646, 446);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -310,7 +312,7 @@
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor cboEmpresa;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grd;
+        public Infragistics.Win.UltraWinGrid.UltraGrid grd;
         private Infragistics.Win.Misc.UltraPanel ultraPanel1;
         private Infragistics.Win.Misc.UltraButton btnSalir;
         private Infragistics.Win.Misc.UltraButton btnGuardar;

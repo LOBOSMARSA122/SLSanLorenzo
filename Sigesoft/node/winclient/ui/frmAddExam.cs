@@ -1,6 +1,7 @@
 ﻿using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
+using Sigesoft.Node.WinClient.UI.Configuration;
 using Sigesoft.Node.WinClient.UI.Hospitalizacion;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Sigesoft.Node.WinClient.UI
         private string _nroHospitalizacion;
         private string _dni;
         List<string> _ListaComponentes = null;
+        private string lineId;
         #endregion
 
         #region Properties
@@ -193,6 +195,51 @@ namespace Sigesoft.Node.WinClient.UI
                 cboMedico.Enabled = true;
                 Utils.LoadDropDownList(cboMedico, "Value1", "Id", BLL.Utils.GetProfessionalName(ref objOperationResult), DropDownListAction.Select);
                 cboMedico.SelectedValue = "11";
+                    if (_modo == "ASEGU")
+                    {
+                        #region Conexion SIGESOFT Obtener nombre del protocolo
+                        ConexionSigesoft conectasam = new ConexionSigesoft();
+                        conectasam.opensigesoft();
+                        var cadena1 = "select PR.v_Name, OO.v_Name " +
+                                  "from protocol PR " +
+                                  "inner join [dbo].[plan] PL on PR.v_ProtocolId=PL.v_ProtocoloId " +
+                                  "inner join organization OO on PL.v_OrganizationSeguroId=OO.v_OrganizationId " +
+                                  "where v_ProtocolId='" + _protocolId + "' " +
+                                  "group by PR.v_Name, OO.v_Name ";
+                        SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                        SqlDataReader lector = comando.ExecuteReader();
+                        string protocolName = "";
+                        string aseguradoraName = "";
+                        while (lector.Read())
+                        {
+                        protocolName = lector.GetValue(0).ToString();
+                        aseguradoraName = lector.GetValue(1).ToString();
+                        }
+                        lector.Close();
+                        conectasam.closesigesoft();
+                        lblPlan.Text = "Añadir plan de: " + aseguradoraName + "\n" + "Protocolo de Atención: " + protocolName;
+                        if (lblPlan.Text.Length > 50) { lblPlan.Font = new Font("Microsoft Sans Serif", 6.25f); }
+                        #endregion
+
+                        cbLine.Select();
+                        object listaLine = LlenarLines();
+                        cbLine.DataSource = listaLine;
+                        cbLine.DisplayMember = "v_Nombre";
+                        cbLine.ValueMember = "v_IdLinea";
+                        cbLine.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+                        cbLine.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+                        this.cbLine.DropDownWidth = 590;
+                        cbLine.DisplayLayout.Bands[0].Columns[0].Width = 20;
+                        cbLine.DisplayLayout.Bands[0].Columns[1].Width = 335;
+                    }
+                    else
+                    {
+                        gbExamenesSeleccionados.Size = new Size(337, 430);
+                        gbExamenesSeleccionados.Location = new Point(626, 12);
+                        gbTipoAtencion.Visible = false;
+                        lblPlan.Visible = false;
+                        cbLine.Visible = false;
+                    }
             }
             else
             {
@@ -200,6 +247,35 @@ namespace Sigesoft.Node.WinClient.UI
                 cboMedico.SelectedValue = "11";
                 cboMedico.Enabled = false;
             }
+        }
+
+        private object LlenarLines()
+        {
+            #region Conexion SAMBHS
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadenasam = "select LN.v_Nombre as v_Nombre ,PL.v_IdUnidadProductiva as  v_IdLinea " +
+                            "from [dbo].[plan] PL " +
+                            "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
+                            "inner join [20505310072].[dbo].[linea] LN on PL.v_IdUnidadProductiva=LN.v_IdLinea " +
+                            "where PR.v_ProtocolId='" + _protocolId + "'";
+            var comando = new SqlCommand(cadenasam, connection: conectasam.conectarsigesoft);
+            var lector = comando.ExecuteReader();
+            string preciounitario = "";
+            List<ListaLineas> objListaLineas = new List<ListaLineas>();
+
+            while (lector.Read())
+            {
+                ListaLineas Lista = new ListaLineas();
+                Lista.v_Nombre = lector.GetValue(0).ToString();
+                Lista.v_IdLinea = lector.GetValue(1).ToString();
+                objListaLineas.Add(Lista);
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            #endregion
+
+            return objListaLineas;
         }
 
         private void lvExamenesSeleccionados_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -277,29 +353,21 @@ namespace Sigesoft.Node.WinClient.UI
                         #endregion
                         #region Query
                         var componente = NombreComponente[0].ToString();
-                        var cadena1 = "select v_ComponentId from component where v_Name='" + componente + "'";
+                        var cadena1 = "select PL.i_EsDeducible, PL.i_EsCoaseguro, PL.d_Importe, PL.d_ImporteCo from [dbo].[plan] PL where PL.v_IdUnidadProductiva='" + lineId + "' and PL.v_ProtocoloId='" + _protocolId + "' ";
                         SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                         SqlDataReader lector = comando.ExecuteReader();
-                        while (lector.Read())
-                        {
-                            componente = lector.GetValue(0).ToString();
-                        }
-                        lector.Close();
-                        var protocol = _protocolId;
-                        var cadena = "select PL.i_EsDeducible as Deducible, PL.i_EsCoaseguro as Coaseguro, PL.d_Importe as Importe from [dbo].[plan] PL inner join component CP ON CP.v_IdUnidadProductiva =  PL.v_IdUnidadProductiva inner join protocol PT ON PT.v_ProtocolId = PL.v_ProtocoloId where PL.v_ProtocoloId='" + protocol + "' and CP.v_ComponentId='" + componente + "'";
-                        comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
-                        lector = comando.ExecuteReader();
                         int deducible = 0;
                         int coaseguro = 0;
-                        decimal importe = 0;
+                        decimal? importe = 0;
+                        decimal? importeCo = 0;
                         while (lector.Read())
                         {
-                            deducible = int.Parse(lector.GetValue(0).ToString()); coaseguro = int.Parse(lector.GetValue(1).ToString()); importe = decimal.Parse(lector.GetValue(2).ToString());
+                            deducible = int.Parse(lector.GetValue(0).ToString()); coaseguro = int.Parse(lector.GetValue(1).ToString()); importe = decimal.Parse(lector.GetValue(2).ToString()); importeCo = decimal.Parse(lector.GetValue(3).ToString());
                         }
                         lector.Close();
                         string factores = ""; string aseguradoraName = ""; string organizationId = "";
                         var factorGlobal = "";
-                        var cadena2 = "select OO.r_Factor, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + protocol + "'";
+                        var cadena2 = "select OO.r_Factor, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + _protocolId + "'";
                         comando = new SqlCommand(cadena2, connection: conectasam.conectarsigesoft);
                         lector = comando.ExecuteReader();
                         while (lector.Read())
@@ -321,7 +389,22 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         lector.Close();
                         #endregion
-                        frmConfigSeguros frm1 = new frmConfigSeguros(deducible, coaseguro, importe, precio_base.ToString(), factorGlobal);
+                        #region Lógica PARA SABER SI ES DEDUCIBLE O COASEGURO
+                        if (rbNuevaConsulta.Checked)// QUIERE DECIR QUE ES UNA NUEVA ATENCION Y DEBE SER CONSIDERADO COMO DEDUCIBLE SIN FACTOR
+                        {
+                            factorGlobal = "1";
+                            coaseguro = 0;
+                            importeCo = null;
+                        }
+                        else if (rbAdicional.Checked) // QUIERE DECIR QUE ES UN COMPONENTE ADICIONAL Y DEBE SER CONSIDERADO COMO COASEGURO CON FACTOR
+                        {
+                            deducible = 0;
+                            importe = null;
+                        }
+                        #endregion
+
+                        precio_base = (float)objComponentDto.r_PriceSegus;// se cambia el precio inicial por el SEGUS
+                        frmConfigSeguros frm1 = new frmConfigSeguros(deducible, coaseguro, importe, precio_base.ToString(), factorGlobal, importeCo);
                         frm1.Text = aseguradoraName + " / " + empresa;
                         frm1.ShowDialog();
                         if (frm1.result == false)
@@ -347,16 +430,26 @@ namespace Sigesoft.Node.WinClient.UI
                             objServiceComponentDto.i_Iscalling_1 = (int)Common.Flag_Call.NoseLlamo;
                             objServiceComponentDto.i_IsManuallyAddedId = (int)Common.SiNo.NO;
                             objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
-                            objServiceComponentDto.v_IdUnidadProductiva = objComponentDto.v_IdUnidadProductiva;
+                            objServiceComponentDto.v_IdUnidadProductiva = txtUnidProdId.Text;
                             objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
                             objServiceComponentDto.d_SaldoPaciente = frm1.paciente;
                             objServiceComponentDto.d_SaldoAseguradora = frm1.aseguradora;
+                            if (rbNuevaConsulta.Checked)
+                            {
+                                objServiceComponentDto.i_TipoDesc = 1;
+                            }
+                            else if (rbAdicional.Checked)
+                            {
+                                objServiceComponentDto.i_TipoDesc = 2;
+                            }
+                                                        
                             _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());
                         }
                     }
                     else 
                     {
                         FormPrecioComponente frm = new FormPrecioComponente(NombreComponente[0].ToString(), precio_base.ToString(), "");
+                        frm.ShowDialog();
                         objServiceComponentDto.i_ConCargoA = conCargoA;
                         objServiceComponentDto.v_ServiceId = _serviceId;
                         objServiceComponentDto.i_ExternalInternalId = (int)Common.ComponenteProcedencia.Interno;
@@ -420,6 +513,26 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 MedicalExamName = string.Empty;
             }
+        }
+
+        private void cbLine_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)
+        {
+            #region Conexion SAM obtener id de linea
+            ConexionSambhs conectasam = new ConexionSambhs();
+            conectasam.openSambhs();
+            var cadena = "select v_IdLinea from [dbo].[linea] where v_Nombre='" + cbLine.Text + "' and i_Eliminado=0";
+            SqlCommand comandou = new SqlCommand(cadena, connection: conectasam.conectarSambhs);
+            SqlDataReader lectoru = comandou.ExecuteReader();
+            lineId = "";
+            while (lectoru.Read())
+            {
+                lineId = lectoru.GetValue(0).ToString();
+            }
+            lectoru.Close();
+            conectasam.closeSambhs();
+            #endregion
+
+            txtUnidProdId.Text = lineId;
         }
         
     }

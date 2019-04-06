@@ -21,8 +21,10 @@ namespace Sigesoft.Node.Contasol.Integration
         private string idUnidadProductiva;
         private string _protocolId;
         private string _serviceId;
+        private string _categoryName;
+        private string _LineId;
 
-        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId, string serviceId)
+        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId, string serviceId, string categoryName, string LineId)
         {
             InitializeComponent();
             _recipeId = recipeId;
@@ -33,6 +35,8 @@ namespace Sigesoft.Node.Contasol.Integration
             _protocolId = protocolId;
             Text = actionForm == ActionForm.Add ? "Agregar Nueva Receta" : "Editar Receta";
             _serviceId = serviceId;
+            _categoryName = categoryName;
+            _LineId = LineId;
         }
 
         public sealed override string Text
@@ -118,7 +122,33 @@ namespace Sigesoft.Node.Contasol.Integration
                 {
                     if (resultplan[0].i_EsCoaseguro == 1)
                     {
-                        _recetaDto.d_SaldoPaciente = (resultplan[0].d_Importe / 100) * (decimal.Parse(txtNuevoPrecio.Text) * _recetaDto.d_Cantidad);
+                        #region Conexion SIGESOFT verificar la unidad productiva del componente
+                        ConexionSigesoft conectasam = new ConexionSigesoft();
+                        conectasam.opensigesoft();
+                        var cadena1 = "select PL.d_ImporteCo " +
+                                      "from [dbo].[plan] PL " +
+                                      "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
+                                      "inner join servicecomponent SC on PL.v_IdUnidadProductiva=SC.v_IdUnidadProductiva " +
+                                      "inner join diagnosticrepository DR on DR.v_ComponentId=SC.v_ComponentId " +
+                                      "where PR.v_ProtocolId='"+_protocolId+"' and DR.v_DiagnosticRepositoryId='"+_idDiagnosticRepository+"' ";
+                        SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                        SqlDataReader lector = comando.ExecuteReader();
+                        string ImporteCo = "";
+                        bool lectorleido = false;
+                        while (lector.Read())
+                        {
+                            ImporteCo = lector.GetValue(0).ToString();
+                            lectorleido = true;
+                        }
+                        if (lectorleido == false)
+                        {
+                            MessageBox.Show(@"El consultorio no tiene Plan de Seguros", @"Error de validación", MessageBoxButtons.OK);
+                            return;
+                        }
+                        lector.Close();
+                        conectasam.closesigesoft();
+                        #endregion
+                        _recetaDto.d_SaldoPaciente = (decimal.Parse(ImporteCo) / 100) * (decimal.Parse(txtNuevoPrecio.Text) * _recetaDto.d_Cantidad);
                         _recetaDto.d_SaldoAseguradora = (decimal.Parse(txtNuevoPrecio.Text) * _recetaDto.d_Cantidad) - _recetaDto.d_SaldoPaciente;
                     }
                     

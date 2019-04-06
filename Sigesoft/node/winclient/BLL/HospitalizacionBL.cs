@@ -23,6 +23,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                             join C in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals C.v_HopitalizacionId
                             join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
+                            join A1 in dbContext.calendar on D.v_ServiceId equals A1.v_ServiceId
                             join P in dbContext.protocol on D.v_ProtocolId equals P.v_ProtocolId
                             join S in dbContext.systemparameter on new { a = P.i_MasterServiceId.Value, b = 119 }
                                 equals new { a = S.i_ParameterId, b = S.i_GroupId }
@@ -42,6 +43,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                             where A.i_IsDeleted == 0
                                   && (A.d_FechaIngreso >= pdatBeginDate.Value && A.d_FechaIngreso <= pdatEndDate.Value)
+                                  && A1.i_CalendarStatusId != 4
 
                             select new HospitalizacionList
                             {
