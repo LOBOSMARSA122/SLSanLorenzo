@@ -970,11 +970,23 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         else if (e.Row.Cells["i_ServiceStatusId"].Value.ToString() == ((int)ServiceStatus.Culminado).ToString())
                         {
-                            e.Row.Appearance.BackColor = Color.GreenYellow;
-                            e.Row.Appearance.BackColor2 = Color.White;
-                            //Y doy el efecto degradado vertical
-                            e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                            if (e.Row.Cells["v_AptitudeStatusName"].Value.ToString() == "OBSERVADO")
+                            {
+                                e.Row.Appearance.BackColor = Color.OrangeRed;
+                                e.Row.Appearance.BackColor2 = Color.White;
+                                //Y doy el efecto degradado vertical
+                                e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                            }
+                            else
+                            {
+                                e.Row.Appearance.BackColor = Color.GreenYellow;
+                                e.Row.Appearance.BackColor2 = Color.White;
+                                //Y doy el efecto degradado vertical
+                                e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                            }
+                            
                         }
+                        
                     }
 
                     if (e.Row.Cells["i_StatusLiquidation"].Value == null)
