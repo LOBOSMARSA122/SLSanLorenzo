@@ -3224,6 +3224,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateInformeResultadosAutorizacion(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.INFORME_RESULTADOS_EVALUACION_MEDICA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
                     break;
+                case Constants.CONSENTIMIENTO_INFORMADO_EXAMEN_MEDICO_COIMOLACHE:
+                    GenerateInformeResultadosAutorizacionCoimolache(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO_EXAMEN_MEDICO_COIMOLACHE)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
+                    break;
 
                 case Constants.FICHA_SUFICIENCIA_MEDICA_ID:
                     GenerateCertificadoSuficienciaMedicaTC(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.FICHA_SUFICIENCIA_MEDICA_ID)));
@@ -4064,6 +4068,19 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             //var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
             InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(filiationData, pathFile, datosP, MedicalCenter);
+        }
+        private void GenerateInformeResultadosAutorizacionCoimolache(string pathFile)
+        {
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+
+            //var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            //var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+
+            Consentimiento_Informado_Ex_Med.CreateInformeResultadosAutorizacionCoimolache(filiationData, pathFile, datosP, MedicalCenter);
         }
         
         private void Generate_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(string pathFile)

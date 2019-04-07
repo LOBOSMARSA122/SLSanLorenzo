@@ -43,31 +43,255 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EnviarDatosAnalitica">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q7:EstructuraDatosAnalitica" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosAnaliticaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosAnaliticaResult" nillable="true" type="q8:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="EnviarDatosAPMedicos">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q7:EstructuraDatosAPMedicos" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q9:EstructuraDatosAPMedicos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="EnviarDatosAPMedicosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosAPMedicosResult" nillable="true" type="q8:Resultado" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosAPMedicosResult" nillable="true" type="q10:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="EnviarDatosAPQuirurgicos">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q9:EstructuraDatosAPQuirurgicos" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q11:EstructuraDatosAPQuirurgicos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="EnviarDatosAPQuirurgicosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosAPQuirurgicosResult" nillable="true" type="q10:Resultado" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosAPQuirurgicosResult" nillable="true" type="q12:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosAudiometria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q13:EstructuraDatosAudiometria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosAudiometriaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosAudiometriaResult" nillable="true" type="q14:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosConstantes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q15:EstructuraDatosConstantes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosConstantesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosConstantesResult" nillable="true" type="q16:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosEpisodio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q17:EstructuraDatosEpisodio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosEpisodioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosEpisodioResult" nillable="true" type="q18:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosExamenFisico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q19:EstructuraDatosExamenFisico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosExamenFisicoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosExamenFisicoResult" nillable="true" type="q20:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosExamenOcularVB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q21:EstructuraDatosExamenOcularVB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosExamenOcularVBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosExamenOcularVBResult" nillable="true" type="q22:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHabitosToxicos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q23:EstructuraDatosHabitosToxicos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHabitosToxicosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosHabitosToxicosResult" nillable="true" type="q24:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistoriaFamiliar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q25:EstructuraDatosHistoriaFamiliar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistoriaFamiliarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosHistoriaFamiliarResult" nillable="true" type="q26:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistorialFisiologico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q27:EstructuraDatosHistorialFisiologico" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistorialFisiologicoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosHistorialFisiologicoResult" nillable="true" type="q28:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistoriaLaboral">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q29:EstructuraDatosHistoriaLaboral" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistoriaLaboralResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosHistoriaLaboralResult" nillable="true" type="q30:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistoriaLaboralRI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q31:EstructuraDatosHistoriaLaboralRI" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosHistoriaLaboralRIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosHistoriaLaboralRIResult" nillable="true" type="q32:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosMedicaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q33:EstructuraDatosMedicaciones" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosMedicacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosMedicacionesResult" nillable="true" type="q34:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosVacunas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q35:EstructuraDatosVacunas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosVacunasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosVacunasResult" nillable="true" type="q36:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosVigilanciaSalud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q37:EstructuraDatosVigilanciaSalud" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosVigilanciaSaludResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosVigilanciaSaludResult" nillable="true" type="q38:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosLecturaOIT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q39:EstructuraDatosLecturaOIT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosLecturaOITResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosLecturaOITResult" nillable="true" type="q40:Resultado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosLecturaPsicologia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="XML" nillable="true" type="q41:EstructuraDatosPsicologia" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarDatosLecturaPsicologiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" minOccurs="0" name="EnviarDatosLecturaPsicologiaResult" nillable="true" type="q42:Resultado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

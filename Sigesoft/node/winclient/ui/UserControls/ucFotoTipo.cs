@@ -12,6 +12,9 @@ using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Web.UI;
+using UserControl = System.Windows.Forms.UserControl;
+
 namespace Sigesoft.Node.WinClient.UI.UserControls
 {
     public partial class ucFotoTipo : UserControl
@@ -48,10 +51,10 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             get
             {
                 SaveImagenFotoTipo();
-                SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_LUNARES, txtNroLunares.Text);
-                SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_MANCHAS, txtNroManchas.Text);
-                SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_PECAS, txtNroPecas.Text);
-                SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_CICATRICES, txtNroCicatrices.Text);
+                //SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_LUNARES, txtNroLunares.Text);
+                //SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_MANCHAS, txtNroManchas.Text);
+                //SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_PECAS, txtNroPecas.Text);
+                //SaveValueControlForInterfacingEso(Constants.FOTO_TIPO_CICATRICES, txtNroCicatrices.Text);
 
                 return _listOfAtencionAdulto1.FindAll(p => p.v_ComponentFieldId != null);
             }
@@ -79,7 +82,6 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             InitializeComponent();
             txtMultimediaFileId.Name = Constants.txt_MULTIMEDIA_FILE_FOTO_TIPO;
             txtServiceComponentMultimediaId.Name = Constants.txt_SERVICE_COMPONENT_MULTIMEDIA_FOTO_TIPO;
-            g = panel1.CreateGraphics();
         }
 
         private void SaveValueControlForInterfacingEso(string name, string value)
@@ -107,11 +109,6 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             // Ordenar Lista Datasource
             var dataSourceOrdenado = dataSource.FindAll(x => x.v_ComponentFieldId != null).OrderBy(p => p.v_ComponentFieldId).ToList();
 
-            _imgArray = dataSource.Find(p => p.v_ComponentFieldId == null).fotoTipo;
-
-            Stream stream = new MemoryStream(_imgArray);
-            panel1.BackgroundImage = Image.FromStream(stream); //.FromFile(@"C:\Users\dev1\Documents\42708422-06032018-FOTO TIPO.IPO.jpg");
-            image = new Bitmap(panel1.ClientSize.Width, panel1.ClientSize.Height, PixelFormat.Format32bppArgb);
             
             // recorrer la lista que viene de la BD
             foreach (var item in dataSourceOrdenado)
@@ -136,8 +133,8 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
         private void SaveImagenFotoTipo()
         {
             MemoryStream ms = new MemoryStream();
-            Bitmap bmp = new Bitmap(panel1.Width, panel1.Height);
-            panel1.DrawToBitmap(bmp, new System.Drawing.Rectangle(0, 0, panel1.Width, panel1.Height));
+            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.DrawToBitmap(bmp, new System.Drawing.Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
             bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //you could ave in BPM, PNG  etc format.
             byte[] picArr = new byte[ms.Length];
             ms.Position = 0;
@@ -208,66 +205,63 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             return IDs;
 
         }
-
-
+        
         void MainFormLoad(object sender, EventArgs e)
         {
-            txtNroLunares.Name = "N009-FOT00000001";
-            txtNroManchas.Name = "N009-FOT00000002";
-            txtNroPecas.Name = "N009-FOT00000003";
-            txtNroCicatrices.Name = "N009-FOT00000004";
+            //txtNroLunares.Name = "N009-FOT00000001";
+            //txtNroManchas.Name = "N009-FOT00000002";
+            //txtNroPecas.Name = "N009-FOT00000003";
+            //txtNroCicatrices.Name = "N009-FOT00000004";
         }
 
-        private void btnDibujar_Click(object sender, EventArgs e)
+        private void btnPintar_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://localhost:32874/frmCanvasFotipo.aspx");  
+            DrawMethod(Brushes.Blue);
+            pictureBox1.Image = _btm;
         }
 
-        private Bitmap _canvas;
-        private void ResizeCanvas()
+
+        int k = 0;
+        Point sp = new Point(0, 0);
+        Point ep = new Point(0, 0);
+        private int cX, cY, x, y, dX, dY;
+        int figura;
+        Color color;
+
+        private Pen _p;
+        private Rectangle _r;
+        private Bitmap _btm;
+        private Graphics _g;
+        public void DrawMethod(Brush brush)
         {
-            Bitmap tmp = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppRgb);
-            using (Graphics g = Graphics.FromImage(tmp))
-            {
-                g.Clear(Color.White);
-                if (_canvas != null)
-                {
-                    g.DrawImage(_canvas, 0, 0);
-                    _canvas.Dispose();
-                }
-            }
-            _canvas = tmp;
+            _p = new Pen(brush);
+            _r = new Rectangle(0,0,100,100);
+            _btm = new Bitmap(_r.Width + 1, _r.Height + 1);
+            _g = Graphics.FromImage(_btm);
+            _g.DrawRectangle(_p,_r);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            //base.OnPaint(e);
-            //e.Graphics.DrawString("sss", Font, new SolidBrush(ForeColor), ClientRectangle); 
+            
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            base.OnPaint(e);
-            foreach (Point point in _points)
-            {
-                using (Pen Haitham = new Pen(Color.Silver, 2))
-                {
-                    g.FillRectangle(Haitham.Brush, new Rectangle(point.X, point.Y, 50, 50));
-                }
-            }
+                
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            _points = new List<Point>();
-            Pen Haitham = new Pen(Color.AliceBlue, 2);
-            g.FillRectangle(Haitham.Brush, new Rectangle(0, 0, 260, 209));
+
         }
 
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            _points.Add(new Point(e.X, e.Y));
-            Invalidate(); 
+           
         }
+
+
+
     }
 }

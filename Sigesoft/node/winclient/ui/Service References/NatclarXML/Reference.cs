@@ -640,6 +640,250 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosAnalitica", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosAnalitica : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnalitica AnaliticaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnalitica Analitica {
+            get {
+                return this.AnaliticaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnaliticaField, value) != true)) {
+                    this.AnaliticaField = value;
+                    this.RaisePropertyChanged("Analitica");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlAnalitica", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlAnalitica : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnaliticaPerfil[] ListaPerfilField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnaliticaPruebas[] ListaPruebasField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnaliticaPerfil[] ListaPerfil {
+            get {
+                return this.ListaPerfilField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListaPerfilField, value) != true)) {
+                    this.ListaPerfilField = value;
+                    this.RaisePropertyChanged("ListaPerfil");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnaliticaPruebas[] ListaPruebas {
+            get {
+                return this.ListaPruebasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListaPruebasField, value) != true)) {
+                    this.ListaPruebasField = value;
+                    this.RaisePropertyChanged("ListaPruebas");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlAnaliticaPerfil", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlAnaliticaPerfil : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnaliticaPruebas[] ListaPruebasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PerfilField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlAnaliticaPruebas[] ListaPruebas {
+            get {
+                return this.ListaPruebasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListaPruebasField, value) != true)) {
+                    this.ListaPruebasField = value;
+                    this.RaisePropertyChanged("ListaPruebas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Perfil {
+            get {
+                return this.PerfilField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PerfilField, value) != true)) {
+                    this.PerfilField = value;
+                    this.RaisePropertyChanged("Perfil");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlAnaliticaPruebas", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlAnaliticaPruebas : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PruebasField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Pruebas {
+            get {
+                return this.PruebasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PruebasField, value) != true)) {
+                    this.PruebasField = value;
+                    this.RaisePropertyChanged("Pruebas");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosAPMedicos", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
     [System.SerializableAttribute()]
     public partial class EstructuraDatosAPMedicos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1010,6 +1254,4556 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosAudiometria", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosAudiometria : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlAudiometria AudiometriaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlAudiometria Audiometria {
+            get {
+                return this.AudiometriaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AudiometriaField, value) != true)) {
+                    this.AudiometriaField = value;
+                    this.RaisePropertyChanged("Audiometria");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlAudiometria", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlAudiometria : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAED8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAEI8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATAND8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATANI8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOED8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOEI8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATOND8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI1000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI125Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI1500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI2000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI250Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI3000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI4000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI500Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI6000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI750Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ATONI8000Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DESCATOTOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DESCATOTOIField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OBSATOTODField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OBSATOTOIField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED1000 {
+            get {
+                return this.ATAED1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED1000Field, value) != true)) {
+                    this.ATAED1000Field = value;
+                    this.RaisePropertyChanged("ATAED1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED125 {
+            get {
+                return this.ATAED125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED125Field, value) != true)) {
+                    this.ATAED125Field = value;
+                    this.RaisePropertyChanged("ATAED125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED1500 {
+            get {
+                return this.ATAED1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED1500Field, value) != true)) {
+                    this.ATAED1500Field = value;
+                    this.RaisePropertyChanged("ATAED1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED2000 {
+            get {
+                return this.ATAED2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED2000Field, value) != true)) {
+                    this.ATAED2000Field = value;
+                    this.RaisePropertyChanged("ATAED2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED250 {
+            get {
+                return this.ATAED250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED250Field, value) != true)) {
+                    this.ATAED250Field = value;
+                    this.RaisePropertyChanged("ATAED250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED3000 {
+            get {
+                return this.ATAED3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED3000Field, value) != true)) {
+                    this.ATAED3000Field = value;
+                    this.RaisePropertyChanged("ATAED3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED4000 {
+            get {
+                return this.ATAED4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED4000Field, value) != true)) {
+                    this.ATAED4000Field = value;
+                    this.RaisePropertyChanged("ATAED4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED500 {
+            get {
+                return this.ATAED500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED500Field, value) != true)) {
+                    this.ATAED500Field = value;
+                    this.RaisePropertyChanged("ATAED500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED6000 {
+            get {
+                return this.ATAED6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED6000Field, value) != true)) {
+                    this.ATAED6000Field = value;
+                    this.RaisePropertyChanged("ATAED6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED750 {
+            get {
+                return this.ATAED750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED750Field, value) != true)) {
+                    this.ATAED750Field = value;
+                    this.RaisePropertyChanged("ATAED750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAED8000 {
+            get {
+                return this.ATAED8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAED8000Field, value) != true)) {
+                    this.ATAED8000Field = value;
+                    this.RaisePropertyChanged("ATAED8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI1000 {
+            get {
+                return this.ATAEI1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI1000Field, value) != true)) {
+                    this.ATAEI1000Field = value;
+                    this.RaisePropertyChanged("ATAEI1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI125 {
+            get {
+                return this.ATAEI125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI125Field, value) != true)) {
+                    this.ATAEI125Field = value;
+                    this.RaisePropertyChanged("ATAEI125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI1500 {
+            get {
+                return this.ATAEI1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI1500Field, value) != true)) {
+                    this.ATAEI1500Field = value;
+                    this.RaisePropertyChanged("ATAEI1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI2000 {
+            get {
+                return this.ATAEI2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI2000Field, value) != true)) {
+                    this.ATAEI2000Field = value;
+                    this.RaisePropertyChanged("ATAEI2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI250 {
+            get {
+                return this.ATAEI250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI250Field, value) != true)) {
+                    this.ATAEI250Field = value;
+                    this.RaisePropertyChanged("ATAEI250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI3000 {
+            get {
+                return this.ATAEI3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI3000Field, value) != true)) {
+                    this.ATAEI3000Field = value;
+                    this.RaisePropertyChanged("ATAEI3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI4000 {
+            get {
+                return this.ATAEI4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI4000Field, value) != true)) {
+                    this.ATAEI4000Field = value;
+                    this.RaisePropertyChanged("ATAEI4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI500 {
+            get {
+                return this.ATAEI500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI500Field, value) != true)) {
+                    this.ATAEI500Field = value;
+                    this.RaisePropertyChanged("ATAEI500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI6000 {
+            get {
+                return this.ATAEI6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI6000Field, value) != true)) {
+                    this.ATAEI6000Field = value;
+                    this.RaisePropertyChanged("ATAEI6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI750 {
+            get {
+                return this.ATAEI750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI750Field, value) != true)) {
+                    this.ATAEI750Field = value;
+                    this.RaisePropertyChanged("ATAEI750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAEI8000 {
+            get {
+                return this.ATAEI8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAEI8000Field, value) != true)) {
+                    this.ATAEI8000Field = value;
+                    this.RaisePropertyChanged("ATAEI8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND1000 {
+            get {
+                return this.ATAND1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND1000Field, value) != true)) {
+                    this.ATAND1000Field = value;
+                    this.RaisePropertyChanged("ATAND1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND125 {
+            get {
+                return this.ATAND125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND125Field, value) != true)) {
+                    this.ATAND125Field = value;
+                    this.RaisePropertyChanged("ATAND125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND1500 {
+            get {
+                return this.ATAND1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND1500Field, value) != true)) {
+                    this.ATAND1500Field = value;
+                    this.RaisePropertyChanged("ATAND1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND2000 {
+            get {
+                return this.ATAND2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND2000Field, value) != true)) {
+                    this.ATAND2000Field = value;
+                    this.RaisePropertyChanged("ATAND2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND250 {
+            get {
+                return this.ATAND250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND250Field, value) != true)) {
+                    this.ATAND250Field = value;
+                    this.RaisePropertyChanged("ATAND250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND3000 {
+            get {
+                return this.ATAND3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND3000Field, value) != true)) {
+                    this.ATAND3000Field = value;
+                    this.RaisePropertyChanged("ATAND3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND4000 {
+            get {
+                return this.ATAND4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND4000Field, value) != true)) {
+                    this.ATAND4000Field = value;
+                    this.RaisePropertyChanged("ATAND4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND500 {
+            get {
+                return this.ATAND500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND500Field, value) != true)) {
+                    this.ATAND500Field = value;
+                    this.RaisePropertyChanged("ATAND500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND6000 {
+            get {
+                return this.ATAND6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND6000Field, value) != true)) {
+                    this.ATAND6000Field = value;
+                    this.RaisePropertyChanged("ATAND6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND750 {
+            get {
+                return this.ATAND750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND750Field, value) != true)) {
+                    this.ATAND750Field = value;
+                    this.RaisePropertyChanged("ATAND750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATAND8000 {
+            get {
+                return this.ATAND8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATAND8000Field, value) != true)) {
+                    this.ATAND8000Field = value;
+                    this.RaisePropertyChanged("ATAND8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI1000 {
+            get {
+                return this.ATANI1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI1000Field, value) != true)) {
+                    this.ATANI1000Field = value;
+                    this.RaisePropertyChanged("ATANI1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI125 {
+            get {
+                return this.ATANI125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI125Field, value) != true)) {
+                    this.ATANI125Field = value;
+                    this.RaisePropertyChanged("ATANI125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI1500 {
+            get {
+                return this.ATANI1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI1500Field, value) != true)) {
+                    this.ATANI1500Field = value;
+                    this.RaisePropertyChanged("ATANI1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI2000 {
+            get {
+                return this.ATANI2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI2000Field, value) != true)) {
+                    this.ATANI2000Field = value;
+                    this.RaisePropertyChanged("ATANI2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI250 {
+            get {
+                return this.ATANI250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI250Field, value) != true)) {
+                    this.ATANI250Field = value;
+                    this.RaisePropertyChanged("ATANI250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI3000 {
+            get {
+                return this.ATANI3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI3000Field, value) != true)) {
+                    this.ATANI3000Field = value;
+                    this.RaisePropertyChanged("ATANI3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI4000 {
+            get {
+                return this.ATANI4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI4000Field, value) != true)) {
+                    this.ATANI4000Field = value;
+                    this.RaisePropertyChanged("ATANI4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI500 {
+            get {
+                return this.ATANI500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI500Field, value) != true)) {
+                    this.ATANI500Field = value;
+                    this.RaisePropertyChanged("ATANI500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI6000 {
+            get {
+                return this.ATANI6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI6000Field, value) != true)) {
+                    this.ATANI6000Field = value;
+                    this.RaisePropertyChanged("ATANI6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI750 {
+            get {
+                return this.ATANI750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI750Field, value) != true)) {
+                    this.ATANI750Field = value;
+                    this.RaisePropertyChanged("ATANI750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATANI8000 {
+            get {
+                return this.ATANI8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATANI8000Field, value) != true)) {
+                    this.ATANI8000Field = value;
+                    this.RaisePropertyChanged("ATANI8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED1000 {
+            get {
+                return this.ATOED1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED1000Field, value) != true)) {
+                    this.ATOED1000Field = value;
+                    this.RaisePropertyChanged("ATOED1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED125 {
+            get {
+                return this.ATOED125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED125Field, value) != true)) {
+                    this.ATOED125Field = value;
+                    this.RaisePropertyChanged("ATOED125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED1500 {
+            get {
+                return this.ATOED1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED1500Field, value) != true)) {
+                    this.ATOED1500Field = value;
+                    this.RaisePropertyChanged("ATOED1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED2000 {
+            get {
+                return this.ATOED2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED2000Field, value) != true)) {
+                    this.ATOED2000Field = value;
+                    this.RaisePropertyChanged("ATOED2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED250 {
+            get {
+                return this.ATOED250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED250Field, value) != true)) {
+                    this.ATOED250Field = value;
+                    this.RaisePropertyChanged("ATOED250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED3000 {
+            get {
+                return this.ATOED3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED3000Field, value) != true)) {
+                    this.ATOED3000Field = value;
+                    this.RaisePropertyChanged("ATOED3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED4000 {
+            get {
+                return this.ATOED4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED4000Field, value) != true)) {
+                    this.ATOED4000Field = value;
+                    this.RaisePropertyChanged("ATOED4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED500 {
+            get {
+                return this.ATOED500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED500Field, value) != true)) {
+                    this.ATOED500Field = value;
+                    this.RaisePropertyChanged("ATOED500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED6000 {
+            get {
+                return this.ATOED6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED6000Field, value) != true)) {
+                    this.ATOED6000Field = value;
+                    this.RaisePropertyChanged("ATOED6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED750 {
+            get {
+                return this.ATOED750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED750Field, value) != true)) {
+                    this.ATOED750Field = value;
+                    this.RaisePropertyChanged("ATOED750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOED8000 {
+            get {
+                return this.ATOED8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOED8000Field, value) != true)) {
+                    this.ATOED8000Field = value;
+                    this.RaisePropertyChanged("ATOED8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI1000 {
+            get {
+                return this.ATOEI1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI1000Field, value) != true)) {
+                    this.ATOEI1000Field = value;
+                    this.RaisePropertyChanged("ATOEI1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI125 {
+            get {
+                return this.ATOEI125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI125Field, value) != true)) {
+                    this.ATOEI125Field = value;
+                    this.RaisePropertyChanged("ATOEI125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI1500 {
+            get {
+                return this.ATOEI1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI1500Field, value) != true)) {
+                    this.ATOEI1500Field = value;
+                    this.RaisePropertyChanged("ATOEI1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI2000 {
+            get {
+                return this.ATOEI2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI2000Field, value) != true)) {
+                    this.ATOEI2000Field = value;
+                    this.RaisePropertyChanged("ATOEI2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI250 {
+            get {
+                return this.ATOEI250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI250Field, value) != true)) {
+                    this.ATOEI250Field = value;
+                    this.RaisePropertyChanged("ATOEI250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI3000 {
+            get {
+                return this.ATOEI3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI3000Field, value) != true)) {
+                    this.ATOEI3000Field = value;
+                    this.RaisePropertyChanged("ATOEI3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI4000 {
+            get {
+                return this.ATOEI4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI4000Field, value) != true)) {
+                    this.ATOEI4000Field = value;
+                    this.RaisePropertyChanged("ATOEI4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI500 {
+            get {
+                return this.ATOEI500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI500Field, value) != true)) {
+                    this.ATOEI500Field = value;
+                    this.RaisePropertyChanged("ATOEI500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI6000 {
+            get {
+                return this.ATOEI6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI6000Field, value) != true)) {
+                    this.ATOEI6000Field = value;
+                    this.RaisePropertyChanged("ATOEI6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI750 {
+            get {
+                return this.ATOEI750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI750Field, value) != true)) {
+                    this.ATOEI750Field = value;
+                    this.RaisePropertyChanged("ATOEI750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOEI8000 {
+            get {
+                return this.ATOEI8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOEI8000Field, value) != true)) {
+                    this.ATOEI8000Field = value;
+                    this.RaisePropertyChanged("ATOEI8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND1000 {
+            get {
+                return this.ATOND1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND1000Field, value) != true)) {
+                    this.ATOND1000Field = value;
+                    this.RaisePropertyChanged("ATOND1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND125 {
+            get {
+                return this.ATOND125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND125Field, value) != true)) {
+                    this.ATOND125Field = value;
+                    this.RaisePropertyChanged("ATOND125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND1500 {
+            get {
+                return this.ATOND1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND1500Field, value) != true)) {
+                    this.ATOND1500Field = value;
+                    this.RaisePropertyChanged("ATOND1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND2000 {
+            get {
+                return this.ATOND2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND2000Field, value) != true)) {
+                    this.ATOND2000Field = value;
+                    this.RaisePropertyChanged("ATOND2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND250 {
+            get {
+                return this.ATOND250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND250Field, value) != true)) {
+                    this.ATOND250Field = value;
+                    this.RaisePropertyChanged("ATOND250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND3000 {
+            get {
+                return this.ATOND3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND3000Field, value) != true)) {
+                    this.ATOND3000Field = value;
+                    this.RaisePropertyChanged("ATOND3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND4000 {
+            get {
+                return this.ATOND4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND4000Field, value) != true)) {
+                    this.ATOND4000Field = value;
+                    this.RaisePropertyChanged("ATOND4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND500 {
+            get {
+                return this.ATOND500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND500Field, value) != true)) {
+                    this.ATOND500Field = value;
+                    this.RaisePropertyChanged("ATOND500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND6000 {
+            get {
+                return this.ATOND6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND6000Field, value) != true)) {
+                    this.ATOND6000Field = value;
+                    this.RaisePropertyChanged("ATOND6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND750 {
+            get {
+                return this.ATOND750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND750Field, value) != true)) {
+                    this.ATOND750Field = value;
+                    this.RaisePropertyChanged("ATOND750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATOND8000 {
+            get {
+                return this.ATOND8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATOND8000Field, value) != true)) {
+                    this.ATOND8000Field = value;
+                    this.RaisePropertyChanged("ATOND8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI1000 {
+            get {
+                return this.ATONI1000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI1000Field, value) != true)) {
+                    this.ATONI1000Field = value;
+                    this.RaisePropertyChanged("ATONI1000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI125 {
+            get {
+                return this.ATONI125Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI125Field, value) != true)) {
+                    this.ATONI125Field = value;
+                    this.RaisePropertyChanged("ATONI125");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI1500 {
+            get {
+                return this.ATONI1500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI1500Field, value) != true)) {
+                    this.ATONI1500Field = value;
+                    this.RaisePropertyChanged("ATONI1500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI2000 {
+            get {
+                return this.ATONI2000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI2000Field, value) != true)) {
+                    this.ATONI2000Field = value;
+                    this.RaisePropertyChanged("ATONI2000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI250 {
+            get {
+                return this.ATONI250Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI250Field, value) != true)) {
+                    this.ATONI250Field = value;
+                    this.RaisePropertyChanged("ATONI250");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI3000 {
+            get {
+                return this.ATONI3000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI3000Field, value) != true)) {
+                    this.ATONI3000Field = value;
+                    this.RaisePropertyChanged("ATONI3000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI4000 {
+            get {
+                return this.ATONI4000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI4000Field, value) != true)) {
+                    this.ATONI4000Field = value;
+                    this.RaisePropertyChanged("ATONI4000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI500 {
+            get {
+                return this.ATONI500Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI500Field, value) != true)) {
+                    this.ATONI500Field = value;
+                    this.RaisePropertyChanged("ATONI500");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI6000 {
+            get {
+                return this.ATONI6000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI6000Field, value) != true)) {
+                    this.ATONI6000Field = value;
+                    this.RaisePropertyChanged("ATONI6000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI750 {
+            get {
+                return this.ATONI750Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI750Field, value) != true)) {
+                    this.ATONI750Field = value;
+                    this.RaisePropertyChanged("ATONI750");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ATONI8000 {
+            get {
+                return this.ATONI8000Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ATONI8000Field, value) != true)) {
+                    this.ATONI8000Field = value;
+                    this.RaisePropertyChanged("ATONI8000");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DESCATOTO {
+            get {
+                return this.DESCATOTOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DESCATOTOField, value) != true)) {
+                    this.DESCATOTOField = value;
+                    this.RaisePropertyChanged("DESCATOTO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DESCATOTOI {
+            get {
+                return this.DESCATOTOIField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DESCATOTOIField, value) != true)) {
+                    this.DESCATOTOIField = value;
+                    this.RaisePropertyChanged("DESCATOTOI");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OBSATOTOD {
+            get {
+                return this.OBSATOTODField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OBSATOTODField, value) != true)) {
+                    this.OBSATOTODField = value;
+                    this.RaisePropertyChanged("OBSATOTOD");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OBSATOTOI {
+            get {
+                return this.OBSATOTOIField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OBSATOTOIField, value) != true)) {
+                    this.OBSATOTOIField = value;
+                    this.RaisePropertyChanged("OBSATOTOI");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosConstantes", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosConstantes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlConstantes ConstantesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlConstantes Constantes {
+            get {
+                return this.ConstantesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ConstantesField, value) != true)) {
+                    this.ConstantesField = value;
+                    this.RaisePropertyChanged("Constantes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlConstantes", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlConstantes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CaderaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CinturaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaUltimaReglaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ICCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IMCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PesoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PresionDiastolicaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PresionSistolicaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PulsoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RespiracionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SaturacionOxigenoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TallaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TemperaturaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Cadera {
+            get {
+                return this.CaderaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CaderaField, value) != true)) {
+                    this.CaderaField = value;
+                    this.RaisePropertyChanged("Cadera");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Cintura {
+            get {
+                return this.CinturaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CinturaField, value) != true)) {
+                    this.CinturaField = value;
+                    this.RaisePropertyChanged("Cintura");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaUltimaRegla {
+            get {
+                return this.FechaUltimaReglaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaUltimaReglaField, value) != true)) {
+                    this.FechaUltimaReglaField = value;
+                    this.RaisePropertyChanged("FechaUltimaRegla");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ICC {
+            get {
+                return this.ICCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ICCField, value) != true)) {
+                    this.ICCField = value;
+                    this.RaisePropertyChanged("ICC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IMC {
+            get {
+                return this.IMCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IMCField, value) != true)) {
+                    this.IMCField = value;
+                    this.RaisePropertyChanged("IMC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Peso {
+            get {
+                return this.PesoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PesoField, value) != true)) {
+                    this.PesoField = value;
+                    this.RaisePropertyChanged("Peso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PresionDiastolica {
+            get {
+                return this.PresionDiastolicaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PresionDiastolicaField, value) != true)) {
+                    this.PresionDiastolicaField = value;
+                    this.RaisePropertyChanged("PresionDiastolica");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PresionSistolica {
+            get {
+                return this.PresionSistolicaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PresionSistolicaField, value) != true)) {
+                    this.PresionSistolicaField = value;
+                    this.RaisePropertyChanged("PresionSistolica");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Pulso {
+            get {
+                return this.PulsoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PulsoField, value) != true)) {
+                    this.PulsoField = value;
+                    this.RaisePropertyChanged("Pulso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Respiracion {
+            get {
+                return this.RespiracionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RespiracionField, value) != true)) {
+                    this.RespiracionField = value;
+                    this.RaisePropertyChanged("Respiracion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SaturacionOxigeno {
+            get {
+                return this.SaturacionOxigenoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SaturacionOxigenoField, value) != true)) {
+                    this.SaturacionOxigenoField = value;
+                    this.RaisePropertyChanged("SaturacionOxigeno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Talla {
+            get {
+                return this.TallaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TallaField, value) != true)) {
+                    this.TallaField = value;
+                    this.RaisePropertyChanged("Talla");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Temperatura {
+            get {
+                return this.TemperaturaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TemperaturaField, value) != true)) {
+                    this.TemperaturaField = value;
+                    this.RaisePropertyChanged("Temperatura");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosEpisodio", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosEpisodio : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlEpisodio EpisodioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlEpisodio Episodio {
+            get {
+                return this.EpisodioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EpisodioField, value) != true)) {
+                    this.EpisodioField = value;
+                    this.RaisePropertyChanged("Episodio");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlEpisodio", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlEpisodio : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AreaTrabajoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CaducidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContratanteCodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContratistaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmpTitularRUCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmpresaTitularField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GradoInstruccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OcupacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoDeExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoTareaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnidadCodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VigenciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ZonaTrabajoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AreaTrabajo {
+            get {
+                return this.AreaTrabajoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AreaTrabajoField, value) != true)) {
+                    this.AreaTrabajoField = value;
+                    this.RaisePropertyChanged("AreaTrabajo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Caducidad {
+            get {
+                return this.CaducidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CaducidadField, value) != true)) {
+                    this.CaducidadField = value;
+                    this.RaisePropertyChanged("Caducidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContratanteCodigo {
+            get {
+                return this.ContratanteCodigoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContratanteCodigoField, value) != true)) {
+                    this.ContratanteCodigoField = value;
+                    this.RaisePropertyChanged("ContratanteCodigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Contratista {
+            get {
+                return this.ContratistaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContratistaField, value) != true)) {
+                    this.ContratistaField = value;
+                    this.RaisePropertyChanged("Contratista");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmpTitularRUC {
+            get {
+                return this.EmpTitularRUCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpTitularRUCField, value) != true)) {
+                    this.EmpTitularRUCField = value;
+                    this.RaisePropertyChanged("EmpTitularRUC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmpresaTitular {
+            get {
+                return this.EmpresaTitularField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpresaTitularField, value) != true)) {
+                    this.EmpresaTitularField = value;
+                    this.RaisePropertyChanged("EmpresaTitular");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaExamen {
+            get {
+                return this.FechaExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaExamenField, value) != true)) {
+                    this.FechaExamenField = value;
+                    this.RaisePropertyChanged("FechaExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GradoInstruccion {
+            get {
+                return this.GradoInstruccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GradoInstruccionField, value) != true)) {
+                    this.GradoInstruccionField = value;
+                    this.RaisePropertyChanged("GradoInstruccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones {
+            get {
+                return this.ObservacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionesField, value) != true)) {
+                    this.ObservacionesField = value;
+                    this.RaisePropertyChanged("Observaciones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Ocupacion {
+            get {
+                return this.OcupacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OcupacionField, value) != true)) {
+                    this.OcupacionField = value;
+                    this.RaisePropertyChanged("Ocupacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoDeExamen {
+            get {
+                return this.TipoDeExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoDeExamenField, value) != true)) {
+                    this.TipoDeExamenField = value;
+                    this.RaisePropertyChanged("TipoDeExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoTarea {
+            get {
+                return this.TipoTareaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoTareaField, value) != true)) {
+                    this.TipoTareaField = value;
+                    this.RaisePropertyChanged("TipoTarea");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Unidad {
+            get {
+                return this.UnidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnidadField, value) != true)) {
+                    this.UnidadField = value;
+                    this.RaisePropertyChanged("Unidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UnidadCodigo {
+            get {
+                return this.UnidadCodigoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnidadCodigoField, value) != true)) {
+                    this.UnidadCodigoField = value;
+                    this.RaisePropertyChanged("UnidadCodigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Vigencia {
+            get {
+                return this.VigenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VigenciaField, value) != true)) {
+                    this.VigenciaField = value;
+                    this.RaisePropertyChanged("Vigencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ZonaTrabajo {
+            get {
+                return this.ZonaTrabajoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZonaTrabajoField, value) != true)) {
+                    this.ZonaTrabajoField = value;
+                    this.RaisePropertyChanged("ZonaTrabajo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosExamenFisico", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosExamenFisico : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlExamenFisico ExamenFisicoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlExamenFisico ExamenFisico {
+            get {
+                return this.ExamenFisicoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExamenFisicoField, value) != true)) {
+                    this.ExamenFisicoField = value;
+                    this.RaisePropertyChanged("ExamenFisico");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlExamenFisico", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlExamenFisico : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosExamenOcularVB", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosExamenOcularVB : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlExamenOcularVB ExamenOcularVBField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlExamenOcularVB ExamenOcularVB {
+            get {
+                return this.ExamenOcularVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExamenOcularVBField, value) != true)) {
+                    this.ExamenOcularVBField = value;
+                    this.RaisePropertyChanged("ExamenOcularVB");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlExamenOcularVB", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlExamenOcularVB : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RestriccionActualField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TestColoresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoRestriccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionCercaODCVBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionCercaODSCVBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionCercaOICVBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionCercaOISCVBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionLejosODCVBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionLejosODSCVBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionLejosOICVBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VisionLejosOISCVBField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RestriccionActual {
+            get {
+                return this.RestriccionActualField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RestriccionActualField, value) != true)) {
+                    this.RestriccionActualField = value;
+                    this.RaisePropertyChanged("RestriccionActual");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TestColores {
+            get {
+                return this.TestColoresField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TestColoresField, value) != true)) {
+                    this.TestColoresField = value;
+                    this.RaisePropertyChanged("TestColores");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoRestriccion {
+            get {
+                return this.TipoRestriccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoRestriccionField, value) != true)) {
+                    this.TipoRestriccionField = value;
+                    this.RaisePropertyChanged("TipoRestriccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionCercaODCVB {
+            get {
+                return this.VisionCercaODCVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionCercaODCVBField, value) != true)) {
+                    this.VisionCercaODCVBField = value;
+                    this.RaisePropertyChanged("VisionCercaODCVB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionCercaODSCVB {
+            get {
+                return this.VisionCercaODSCVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionCercaODSCVBField, value) != true)) {
+                    this.VisionCercaODSCVBField = value;
+                    this.RaisePropertyChanged("VisionCercaODSCVB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionCercaOICVB {
+            get {
+                return this.VisionCercaOICVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionCercaOICVBField, value) != true)) {
+                    this.VisionCercaOICVBField = value;
+                    this.RaisePropertyChanged("VisionCercaOICVB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionCercaOISCVB {
+            get {
+                return this.VisionCercaOISCVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionCercaOISCVBField, value) != true)) {
+                    this.VisionCercaOISCVBField = value;
+                    this.RaisePropertyChanged("VisionCercaOISCVB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionLejosODCVB {
+            get {
+                return this.VisionLejosODCVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionLejosODCVBField, value) != true)) {
+                    this.VisionLejosODCVBField = value;
+                    this.RaisePropertyChanged("VisionLejosODCVB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionLejosODSCVB {
+            get {
+                return this.VisionLejosODSCVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionLejosODSCVBField, value) != true)) {
+                    this.VisionLejosODSCVBField = value;
+                    this.RaisePropertyChanged("VisionLejosODSCVB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionLejosOICVB {
+            get {
+                return this.VisionLejosOICVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionLejosOICVBField, value) != true)) {
+                    this.VisionLejosOICVBField = value;
+                    this.RaisePropertyChanged("VisionLejosOICVB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VisionLejosOISCVB {
+            get {
+                return this.VisionLejosOISCVBField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VisionLejosOISCVBField, value) != true)) {
+                    this.VisionLejosOISCVBField = value;
+                    this.RaisePropertyChanged("VisionLejosOISCVB");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosHabitosToxicos", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosHabitosToxicos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlHabitosToxicos HabitosToxicosField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlHabitosToxicos HabitosToxicos {
+            get {
+                return this.HabitosToxicosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HabitosToxicosField, value) != true)) {
+                    this.HabitosToxicosField = value;
+                    this.RaisePropertyChanged("HabitosToxicos");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlHabitosToxicos", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlHabitosToxicos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaFinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechainicioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoHabitoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VigenciaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaFin {
+            get {
+                return this.FechaFinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaFinField, value) != true)) {
+                    this.FechaFinField = value;
+                    this.RaisePropertyChanged("FechaFin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fechainicio {
+            get {
+                return this.FechainicioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechainicioField, value) != true)) {
+                    this.FechainicioField = value;
+                    this.RaisePropertyChanged("Fechainicio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoHabito {
+            get {
+                return this.TipoHabitoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoHabitoField, value) != true)) {
+                    this.TipoHabitoField = value;
+                    this.RaisePropertyChanged("TipoHabito");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Vigencia {
+            get {
+                return this.VigenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VigenciaField, value) != true)) {
+                    this.VigenciaField = value;
+                    this.RaisePropertyChanged("Vigencia");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosHistoriaFamiliar", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosHistoriaFamiliar : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistoriaFamiliar HistoriaFamiliarField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistoriaFamiliar HistoriaFamiliar {
+            get {
+                return this.HistoriaFamiliarField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HistoriaFamiliarField, value) != true)) {
+                    this.HistoriaFamiliarField = value;
+                    this.RaisePropertyChanged("HistoriaFamiliar");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlHistoriaFamiliar", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlHistoriaFamiliar : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodigoCIEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaFinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechainicioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoCIE {
+            get {
+                return this.CodigoCIEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodigoCIEField, value) != true)) {
+                    this.CodigoCIEField = value;
+                    this.RaisePropertyChanged("CodigoCIE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaFin {
+            get {
+                return this.FechaFinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaFinField, value) != true)) {
+                    this.FechaFinField = value;
+                    this.RaisePropertyChanged("FechaFin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fechainicio {
+            get {
+                return this.FechainicioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechainicioField, value) != true)) {
+                    this.FechainicioField = value;
+                    this.RaisePropertyChanged("Fechainicio");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosHistorialFisiologico", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosHistorialFisiologico : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistorialFisiologico HistorialFisiologicoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistorialFisiologico HistorialFisiologico {
+            get {
+                return this.HistorialFisiologicoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HistorialFisiologicoField, value) != true)) {
+                    this.HistorialFisiologicoField = value;
+                    this.RaisePropertyChanged("HistorialFisiologico");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlHistorialFisiologico", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlHistorialFisiologico : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripciónField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaFinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechainicioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VigenciaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripción {
+            get {
+                return this.DescripciónField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripciónField, value) != true)) {
+                    this.DescripciónField = value;
+                    this.RaisePropertyChanged("Descripción");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaFin {
+            get {
+                return this.FechaFinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaFinField, value) != true)) {
+                    this.FechaFinField = value;
+                    this.RaisePropertyChanged("FechaFin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fechainicio {
+            get {
+                return this.FechainicioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechainicioField, value) != true)) {
+                    this.FechainicioField = value;
+                    this.RaisePropertyChanged("Fechainicio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tipo {
+            get {
+                return this.TipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoField, value) != true)) {
+                    this.TipoField = value;
+                    this.RaisePropertyChanged("Tipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Vigencia {
+            get {
+                return this.VigenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VigenciaField, value) != true)) {
+                    this.VigenciaField = value;
+                    this.RaisePropertyChanged("Vigencia");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosHistoriaLaboral", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosHistoriaLaboral : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistoriaLaboral HistoriaLaboralField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistoriaLaboral HistoriaLaboral {
+            get {
+                return this.HistoriaLaboralField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HistoriaLaboralField, value) != true)) {
+                    this.HistoriaLaboralField = value;
+                    this.RaisePropertyChanged("HistoriaLaboral");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlHistoriaLaboral", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlHistoriaLaboral : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ActividadCNAEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AlturaLaboralField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AreaTrabajoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionTareasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DuracionPuestoAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DuracionPuestoMField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DuracionTrabajosAlturaAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DuracionTrabajosAlturaMField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmpresaLaboralField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaFinPuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaInicioPuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PostulaPuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PuestoActualField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PuestosHistorialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RUCEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValoracionRiesgoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ZonaLaboralField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ActividadCNAE {
+            get {
+                return this.ActividadCNAEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActividadCNAEField, value) != true)) {
+                    this.ActividadCNAEField = value;
+                    this.RaisePropertyChanged("ActividadCNAE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AlturaLaboral {
+            get {
+                return this.AlturaLaboralField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AlturaLaboralField, value) != true)) {
+                    this.AlturaLaboralField = value;
+                    this.RaisePropertyChanged("AlturaLaboral");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AreaTrabajo {
+            get {
+                return this.AreaTrabajoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AreaTrabajoField, value) != true)) {
+                    this.AreaTrabajoField = value;
+                    this.RaisePropertyChanged("AreaTrabajo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescripcionTareas {
+            get {
+                return this.DescripcionTareasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionTareasField, value) != true)) {
+                    this.DescripcionTareasField = value;
+                    this.RaisePropertyChanged("DescripcionTareas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DuracionPuestoA {
+            get {
+                return this.DuracionPuestoAField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DuracionPuestoAField, value) != true)) {
+                    this.DuracionPuestoAField = value;
+                    this.RaisePropertyChanged("DuracionPuestoA");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DuracionPuestoM {
+            get {
+                return this.DuracionPuestoMField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DuracionPuestoMField, value) != true)) {
+                    this.DuracionPuestoMField = value;
+                    this.RaisePropertyChanged("DuracionPuestoM");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DuracionTrabajosAlturaA {
+            get {
+                return this.DuracionTrabajosAlturaAField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DuracionTrabajosAlturaAField, value) != true)) {
+                    this.DuracionTrabajosAlturaAField = value;
+                    this.RaisePropertyChanged("DuracionTrabajosAlturaA");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DuracionTrabajosAlturaM {
+            get {
+                return this.DuracionTrabajosAlturaMField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DuracionTrabajosAlturaMField, value) != true)) {
+                    this.DuracionTrabajosAlturaMField = value;
+                    this.RaisePropertyChanged("DuracionTrabajosAlturaM");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmpresaLaboral {
+            get {
+                return this.EmpresaLaboralField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpresaLaboralField, value) != true)) {
+                    this.EmpresaLaboralField = value;
+                    this.RaisePropertyChanged("EmpresaLaboral");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaFinPuesto {
+            get {
+                return this.FechaFinPuestoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaFinPuestoField, value) != true)) {
+                    this.FechaFinPuestoField = value;
+                    this.RaisePropertyChanged("FechaFinPuesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaInicioPuesto {
+            get {
+                return this.FechaInicioPuestoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaInicioPuestoField, value) != true)) {
+                    this.FechaInicioPuestoField = value;
+                    this.RaisePropertyChanged("FechaInicioPuesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PostulaPuesto {
+            get {
+                return this.PostulaPuestoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PostulaPuestoField, value) != true)) {
+                    this.PostulaPuestoField = value;
+                    this.RaisePropertyChanged("PostulaPuesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PuestoActual {
+            get {
+                return this.PuestoActualField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PuestoActualField, value) != true)) {
+                    this.PuestoActualField = value;
+                    this.RaisePropertyChanged("PuestoActual");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PuestosHistorial {
+            get {
+                return this.PuestosHistorialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PuestosHistorialField, value) != true)) {
+                    this.PuestosHistorialField = value;
+                    this.RaisePropertyChanged("PuestosHistorial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RUCEmpresa {
+            get {
+                return this.RUCEmpresaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RUCEmpresaField, value) != true)) {
+                    this.RUCEmpresaField = value;
+                    this.RaisePropertyChanged("RUCEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ValoracionRiesgo {
+            get {
+                return this.ValoracionRiesgoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValoracionRiesgoField, value) != true)) {
+                    this.ValoracionRiesgoField = value;
+                    this.RaisePropertyChanged("ValoracionRiesgo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ZonaLaboral {
+            get {
+                return this.ZonaLaboralField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZonaLaboralField, value) != true)) {
+                    this.ZonaLaboralField = value;
+                    this.RaisePropertyChanged("ZonaLaboral");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosHistoriaLaboralRI", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosHistoriaLaboralRI : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistoriaLaboralRI HistoriaLaboralRIField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlHistoriaLaboralRI HistoriaLaboralRI {
+            get {
+                return this.HistoriaLaboralRIField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HistoriaLaboralRIField, value) != true)) {
+                    this.HistoriaLaboralRIField = value;
+                    this.RaisePropertyChanged("HistoriaLaboralRI");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlHistoriaLaboralRI", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlHistoriaLaboralRI : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosMedicaciones", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosMedicaciones : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlMedicaciones MedicacionesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlMedicaciones Medicaciones {
+            get {
+                return this.MedicacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MedicacionesField, value) != true)) {
+                    this.MedicacionesField = value;
+                    this.RaisePropertyChanged("Medicaciones");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlMedicaciones", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlMedicaciones : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripciónField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaFinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechainicioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoDeMedicamentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VigenciaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripción {
+            get {
+                return this.DescripciónField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripciónField, value) != true)) {
+                    this.DescripciónField = value;
+                    this.RaisePropertyChanged("Descripción");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaFin {
+            get {
+                return this.FechaFinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaFinField, value) != true)) {
+                    this.FechaFinField = value;
+                    this.RaisePropertyChanged("FechaFin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fechainicio {
+            get {
+                return this.FechainicioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechainicioField, value) != true)) {
+                    this.FechainicioField = value;
+                    this.RaisePropertyChanged("Fechainicio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoDeMedicamento {
+            get {
+                return this.TipoDeMedicamentoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoDeMedicamentoField, value) != true)) {
+                    this.TipoDeMedicamentoField = value;
+                    this.RaisePropertyChanged("TipoDeMedicamento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Vigencia {
+            get {
+                return this.VigenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VigenciaField, value) != true)) {
+                    this.VigenciaField = value;
+                    this.RaisePropertyChanged("Vigencia");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosVacunas", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosVacunas : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlVacunas VacunasField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlVacunas Vacunas {
+            get {
+                return this.VacunasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VacunasField, value) != true)) {
+                    this.VacunasField = value;
+                    this.RaisePropertyChanged("Vacunas");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlVacunas", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlVacunas : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CódigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripciónField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DosisField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaFinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaInicioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Código {
+            get {
+                return this.CódigoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CódigoField, value) != true)) {
+                    this.CódigoField = value;
+                    this.RaisePropertyChanged("Código");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripción {
+            get {
+                return this.DescripciónField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripciónField, value) != true)) {
+                    this.DescripciónField = value;
+                    this.RaisePropertyChanged("Descripción");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Dosis {
+            get {
+                return this.DosisField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DosisField, value) != true)) {
+                    this.DosisField = value;
+                    this.RaisePropertyChanged("Dosis");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaFin {
+            get {
+                return this.FechaFinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaFinField, value) != true)) {
+                    this.FechaFinField = value;
+                    this.RaisePropertyChanged("FechaFin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaInicio {
+            get {
+                return this.FechaInicioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaInicioField, value) != true)) {
+                    this.FechaInicioField = value;
+                    this.RaisePropertyChanged("FechaInicio");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosVigilanciaSalud", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosVigilanciaSalud : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlVigilanciaSalud VigilanciaSaludField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlVigilanciaSalud VigilanciaSalud {
+            get {
+                return this.VigilanciaSaludField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VigilanciaSaludField, value) != true)) {
+                    this.VigilanciaSaludField = value;
+                    this.RaisePropertyChanged("VigilanciaSalud");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlVigilanciaSalud", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlVigilanciaSalud : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosLecturaOIT", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosLecturaOIT : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlLecturaOIT LecturaOITField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlLecturaOIT LecturaOIT {
+            get {
+                return this.LecturaOITField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LecturaOITField, value) != true)) {
+                    this.LecturaOITField = value;
+                    this.RaisePropertyChanged("LecturaOIT");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlLecturaOIT", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlLecturaOIT : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AnormalidadParenquitamosaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AnormalidadPleuralField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CalidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionAnormalidadPleuralField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionOtrasAnomaliasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionCalidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OpacidadesAbundanciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OpacidadesPequeñasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OtrasAnomaliasField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AnormalidadParenquitamosa {
+            get {
+                return this.AnormalidadParenquitamosaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnormalidadParenquitamosaField, value) != true)) {
+                    this.AnormalidadParenquitamosaField = value;
+                    this.RaisePropertyChanged("AnormalidadParenquitamosa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AnormalidadPleural {
+            get {
+                return this.AnormalidadPleuralField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnormalidadPleuralField, value) != true)) {
+                    this.AnormalidadPleuralField = value;
+                    this.RaisePropertyChanged("AnormalidadPleural");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Calidad {
+            get {
+                return this.CalidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CalidadField, value) != true)) {
+                    this.CalidadField = value;
+                    this.RaisePropertyChanged("Calidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescripcionAnormalidadPleural {
+            get {
+                return this.DescripcionAnormalidadPleuralField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionAnormalidadPleuralField, value) != true)) {
+                    this.DescripcionAnormalidadPleuralField = value;
+                    this.RaisePropertyChanged("DescripcionAnormalidadPleural");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescripcionOtrasAnomalias {
+            get {
+                return this.DescripcionOtrasAnomaliasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionOtrasAnomaliasField, value) != true)) {
+                    this.DescripcionOtrasAnomaliasField = value;
+                    this.RaisePropertyChanged("DescripcionOtrasAnomalias");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ObservacionCalidad {
+            get {
+                return this.ObservacionCalidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionCalidadField, value) != true)) {
+                    this.ObservacionCalidadField = value;
+                    this.RaisePropertyChanged("ObservacionCalidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OpacidadesAbundancia {
+            get {
+                return this.OpacidadesAbundanciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OpacidadesAbundanciaField, value) != true)) {
+                    this.OpacidadesAbundanciaField = value;
+                    this.RaisePropertyChanged("OpacidadesAbundancia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OpacidadesPequeñas {
+            get {
+                return this.OpacidadesPequeñasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OpacidadesPequeñasField, value) != true)) {
+                    this.OpacidadesPequeñasField = value;
+                    this.RaisePropertyChanged("OpacidadesPequeñas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OtrasAnomalias {
+            get {
+                return this.OtrasAnomaliasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OtrasAnomaliasField, value) != true)) {
+                    this.OtrasAnomaliasField = value;
+                    this.RaisePropertyChanged("OtrasAnomalias");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosPsicologia", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosPsicologia : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlPsicologia PsicologiaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlPsicologia Psicologia {
+            get {
+                return this.PsicologiaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PsicologiaField, value) != true)) {
+                    this.PsicologiaField = value;
+                    this.RaisePropertyChanged("Psicologia");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlPsicologia", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlPsicologia : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AptitudField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InformesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RecomendacionesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Aptitud {
+            get {
+                return this.AptitudField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AptitudField, value) != true)) {
+                    this.AptitudField = value;
+                    this.RaisePropertyChanged("Aptitud");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Informes {
+            get {
+                return this.InformesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InformesField, value) != true)) {
+                    this.InformesField = value;
+                    this.RaisePropertyChanged("Informes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones {
+            get {
+                return this.RecomendacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecomendacionesField, value) != true)) {
+                    this.RecomendacionesField = value;
+                    this.RaisePropertyChanged("Recomendaciones");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NatclarXML.IWSRIProveedorExterno")]
     public interface IWSRIProveedorExterno {
@@ -1023,11 +5817,59 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergias", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergiasResponse")]
         Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAlergias(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAlergias XML);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAnalitica", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAnaliticaResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAnalitica(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAnalitica XML);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPMedicos", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPMedicosResponse")]
         Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAPMedicos(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAPMedicos XML);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPQuirurgicos", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPQuirurgicosResponse")]
         Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAPQuirurgicos(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAPQuirurgicos XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAudiometria", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAudiometriaResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAudiometria(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAudiometria XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosConstantes", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosConstantesResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosConstantes(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosConstantes XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosEpisodio", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosEpisodioResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosEpisodio(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosEpisodio XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenFisico", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenFisicoResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosExamenFisico(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosExamenFisico XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenOcularVB", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenOcularVBResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosExamenOcularVB(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosExamenOcularVB XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHabitosToxicos", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHabitosToxicosResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHabitosToxicos(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHabitosToxicos XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaFamiliar", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaFamiliarResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistoriaFamiliar(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistoriaFamiliar XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistorialFisiologico", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistorialFisiologicoResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistorialFisiologico(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistorialFisiologico XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboral", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboralResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistoriaLaboral(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistoriaLaboral XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboralRI", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboralRIResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistoriaLaboralRI(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistoriaLaboralRI XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosMedicaciones", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosMedicacionesResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosMedicaciones(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosMedicaciones XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVacunas", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVacunasResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosVacunas(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosVacunas XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVigilanciaSalud", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVigilanciaSaludResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosVigilanciaSalud(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosVigilanciaSalud XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaOIT", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaOITResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosLecturaOIT(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosLecturaOIT XML);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaPsicologia", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaPsicologiaResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosLecturaPsicologia(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosPsicologia XML);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1069,12 +5911,76 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
             return base.Channel.EnviarDatosAlergias(XML);
         }
         
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAnalitica(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAnalitica XML) {
+            return base.Channel.EnviarDatosAnalitica(XML);
+        }
+        
         public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAPMedicos(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAPMedicos XML) {
             return base.Channel.EnviarDatosAPMedicos(XML);
         }
         
         public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAPQuirurgicos(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAPQuirurgicos XML) {
             return base.Channel.EnviarDatosAPQuirurgicos(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAudiometria(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAudiometria XML) {
+            return base.Channel.EnviarDatosAudiometria(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosConstantes(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosConstantes XML) {
+            return base.Channel.EnviarDatosConstantes(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosEpisodio(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosEpisodio XML) {
+            return base.Channel.EnviarDatosEpisodio(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosExamenFisico(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosExamenFisico XML) {
+            return base.Channel.EnviarDatosExamenFisico(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosExamenOcularVB(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosExamenOcularVB XML) {
+            return base.Channel.EnviarDatosExamenOcularVB(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHabitosToxicos(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHabitosToxicos XML) {
+            return base.Channel.EnviarDatosHabitosToxicos(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistoriaFamiliar(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistoriaFamiliar XML) {
+            return base.Channel.EnviarDatosHistoriaFamiliar(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistorialFisiologico(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistorialFisiologico XML) {
+            return base.Channel.EnviarDatosHistorialFisiologico(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistoriaLaboral(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistoriaLaboral XML) {
+            return base.Channel.EnviarDatosHistoriaLaboral(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosHistoriaLaboralRI(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosHistoriaLaboralRI XML) {
+            return base.Channel.EnviarDatosHistoriaLaboralRI(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosMedicaciones(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosMedicaciones XML) {
+            return base.Channel.EnviarDatosMedicaciones(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosVacunas(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosVacunas XML) {
+            return base.Channel.EnviarDatosVacunas(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosVigilanciaSalud(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosVigilanciaSalud XML) {
+            return base.Channel.EnviarDatosVigilanciaSalud(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosLecturaOIT(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosLecturaOIT XML) {
+            return base.Channel.EnviarDatosLecturaOIT(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosLecturaPsicologia(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosPsicologia XML) {
+            return base.Channel.EnviarDatosLecturaPsicologia(XML);
         }
     }
 }
