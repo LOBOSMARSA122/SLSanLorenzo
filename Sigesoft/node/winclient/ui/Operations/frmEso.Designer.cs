@@ -253,13 +253,13 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
+            Infragistics.Win.Appearance appearance104 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn13 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn14 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn18 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -740,6 +740,9 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
+            this.grbLevantamiento = new System.Windows.Forms.GroupBox();
+            this.rbLevantSI = new System.Windows.Forms.RadioButton();
+            this.rbLevantNO = new System.Windows.Forms.RadioButton();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -840,6 +843,7 @@
             this.pnlLeftPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
+            this.grbLevantamiento.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcSubMain
@@ -3207,6 +3211,7 @@
             // 
             // tpConclusion
             // 
+            this.tpConclusion.Controls.Add(this.grbLevantamiento);
             this.tpConclusion.Controls.Add(this.checkFirmaYanacocha);
             this.tpConclusion.Controls.Add(this.btnSubirInterconsulta);
             this.tpConclusion.Controls.Add(this.btn7C);
@@ -3367,7 +3372,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(582, 15);
+            this.label34.Location = new System.Drawing.Point(818, 18);
             this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(63, 13);
@@ -3376,11 +3381,11 @@
             // 
             // txtComentarioAptitud
             // 
-            this.txtComentarioAptitud.Location = new System.Drawing.Point(647, 3);
+            this.txtComentarioAptitud.Location = new System.Drawing.Point(884, 3);
             this.txtComentarioAptitud.Multiline = true;
             this.txtComentarioAptitud.Name = "txtComentarioAptitud";
             this.txtComentarioAptitud.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtComentarioAptitud.Size = new System.Drawing.Size(601, 36);
+            this.txtComentarioAptitud.Size = new System.Drawing.Size(434, 36);
             this.txtComentarioAptitud.TabIndex = 98;
             this.txtComentarioAptitud.Text = "NINGUNA";
             // 
@@ -7530,14 +7535,14 @@
             // 
             // uvExamen
             // 
-            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance15.BackColor2 = System.Drawing.Color.Transparent;
-            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance15.BorderColor = System.Drawing.Color.Red;
-            appearance15.BorderColor2 = System.Drawing.Color.Red;
-            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance15;
+            appearance104.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance104.BackColor2 = System.Drawing.Color.Transparent;
+            appearance104.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance104.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance104.BorderColor = System.Drawing.Color.Red;
+            appearance104.BorderColor2 = System.Drawing.Color.Red;
+            appearance104.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance104;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -7572,12 +7577,47 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6});
+            ultraDataColumn13,
+            ultraDataColumn14,
+            ultraDataColumn15,
+            ultraDataColumn16,
+            ultraDataColumn17,
+            ultraDataColumn18});
+            // 
+            // grbLevantamiento
+            // 
+            this.grbLevantamiento.Controls.Add(this.rbLevantNO);
+            this.grbLevantamiento.Controls.Add(this.rbLevantSI);
+            this.grbLevantamiento.Enabled = false;
+            this.grbLevantamiento.Location = new System.Drawing.Point(585, 3);
+            this.grbLevantamiento.Name = "grbLevantamiento";
+            this.grbLevantamiento.Size = new System.Drawing.Size(228, 35);
+            this.grbLevantamiento.TabIndex = 108;
+            this.grbLevantamiento.TabStop = false;
+            this.grbLevantamiento.Text = "¿Necesita levantamiento de Observación?";
+            this.grbLevantamiento.Visible = false;
+            // 
+            // rbLevantSI
+            // 
+            this.rbLevantSI.AutoSize = true;
+            this.rbLevantSI.Location = new System.Drawing.Point(56, 12);
+            this.rbLevantSI.Name = "rbLevantSI";
+            this.rbLevantSI.Size = new System.Drawing.Size(33, 17);
+            this.rbLevantSI.TabIndex = 0;
+            this.rbLevantSI.Text = "SI";
+            this.rbLevantSI.UseVisualStyleBackColor = true;
+            // 
+            // rbLevantNO
+            // 
+            this.rbLevantNO.AutoSize = true;
+            this.rbLevantNO.Checked = true;
+            this.rbLevantNO.Location = new System.Drawing.Point(120, 12);
+            this.rbLevantNO.Name = "rbLevantNO";
+            this.rbLevantNO.Size = new System.Drawing.Size(39, 17);
+            this.rbLevantNO.TabIndex = 0;
+            this.rbLevantNO.TabStop = true;
+            this.rbLevantNO.Text = "NO";
+            this.rbLevantNO.UseVisualStyleBackColor = true;
             // 
             // frmEso
             // 
@@ -7735,6 +7775,8 @@
             this.pnlLeftPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
+            this.grbLevantamiento.ResumeLayout(false);
+            this.grbLevantamiento.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8221,5 +8263,8 @@
         private System.Windows.Forms.TextBox txtFechaUltimoPAP;
         private System.Windows.Forms.CheckBox checkFirmaYanacocha;
         private Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
+        private System.Windows.Forms.GroupBox grbLevantamiento;
+        private System.Windows.Forms.RadioButton rbLevantSI;
+        private System.Windows.Forms.RadioButton rbLevantNO;
     }
 }

@@ -1509,7 +1509,7 @@
             this.btnBotonOculto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBotonOculto.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBotonOculto.ForeColor = System.Drawing.Color.Black;
-            this.btnBotonOculto.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnBotonOculto.Image = ((System.Drawing.Image)(resources.GetObject("btnBotonOculto.Image")));
             this.btnBotonOculto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBotonOculto.Location = new System.Drawing.Point(500, 625);
             this.btnBotonOculto.Margin = new System.Windows.Forms.Padding(2);
