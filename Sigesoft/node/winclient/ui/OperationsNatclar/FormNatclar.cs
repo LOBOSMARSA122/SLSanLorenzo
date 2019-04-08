@@ -152,6 +152,11 @@ namespace Sigesoft.Node.WinClient.UI.OperationsNatclar
                     var objQuiru = new EstructuraDatosAPQuirurgicos();
                     objQuiru.APQUIRURGICOS = objQuiru.APQUIRURGICOS = new XmlAntecedentesPatologicosQuirurgicos();
                    
+                    objQuiru.DatosPaciente = new XmlDatosPaciente();
+
+                    //objQuiru.DatosExamen = new XmlDatosExamen();
+
+
                     #region Antecedentes Quirurgico
                     var antecedentesQuirurgicos = new HistoryBL().GetPersonMedicalHistoryPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, personId).FindAll(p => p.v_DiseasesId == "N009-DD000000637");
 
