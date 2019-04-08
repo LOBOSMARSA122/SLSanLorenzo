@@ -8786,12 +8786,24 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (int.Parse(cbAptitudEso.SelectedValue.ToString()) == (int)AptitudeStatus.AptoObs || int.Parse(cbAptitudEso.SelectedValue.ToString()) == (int)AptitudeStatus.NoApto)
             {
                 txtComentarioAptitud.Enabled = true;
+                grbLevantamiento.Enabled = true;
+            }
+            else if (int.Parse(cbAptitudEso.SelectedValue.ToString()) != (int)AptitudeStatus.AptoObs && int.Parse(cbAptitudEso.SelectedValue.ToString()) != (int)AptitudeStatus.NoApto)
+            {
+                if (rbLevantSI.Checked)
+                {
+                    rbLevantSI.Checked = false;
+                    rbLevantNO.Checked = true;
+                    grbLevantamiento.Enabled = false;
+                }
             }
             else
             {
-                txtComentarioAptitud.Text = "";
+
                 txtComentarioAptitud.Enabled = true;
+                grbLevantamiento.Enabled = false;
             }
+
         }
 
         private void cbEstadoComponente_SelectedIndexChanged(object sender, EventArgs e)
