@@ -835,6 +835,7 @@
             this.grdDataService.AfterRowExpanded += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.grdPrueba_AfterRowExpanded);
             this.grdDataService.BeforeRowExpanded += new Infragistics.Win.UltraWinGrid.CancelableRowEventHandler(this.grdPrueba_BeforeRowExpanded);
             this.grdDataService.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataService_AfterSelectChange);
+            this.grdDataService.BeforeRowsDeleted += new Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventHandler(this.grdDataService_BeforeRowsDeleted);
             this.grdDataService.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdDataService_ClickCell);
             this.grdDataService.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseEnterElement);
             this.grdDataService.MouseLeaveElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseLeaveElement);

@@ -33,7 +33,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
         public void GrabarEnvio(envionatclarDto pobjDtoEntity, List<string> ClientSession)
         {
-            string NewId = pobjDtoEntity.v_ServiceId;
+            var NewId = Common.Utils.GetNewId(int.Parse(ClientSession[0]), Utils.GetNextSecuentialId(int.Parse(ClientSession[0]), 355), "EN");
+            string serviceId = pobjDtoEntity.v_ServiceId;
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -43,8 +44,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 objEntity.d_InsertDate = DateTime.Now;
                 objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
                 objEntity.i_IsDeleted = 0;
-                // Autogeneramos el Pk de la tabla                 
-                objEntity.v_ServiceId = NewId;
+                // Autogeneramos el Pk de la tabla
+                objEntity.v_EnvioNatclarId = NewId;
+                objEntity.v_ServiceId = serviceId;
 
                 dbContext.AddToenvionatclar(objEntity);
                 dbContext.SaveChanges();

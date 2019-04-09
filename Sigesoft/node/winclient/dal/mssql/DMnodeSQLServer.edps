@@ -15,9 +15,7 @@
         <Column RemoveUnderscores="False" RemoveInvalidCharacters="True" CodeCase="Unchanged" AddPrefix="" AddSuffix="" RemovePrefixes="" RemoveSuffixes="" PluralizationName="Unchanged" />
       </ModelFirstNamingRules>
     </ModelFirst>
-    <Diagrams>
-      <Diagram Name="Diagram1" DefaultDiagram="True" />
-    </Diagrams>
+    <Diagrams />
     <Templates>
       <Template Name="EntityObject" Description="Use this template to generate a strongly-typed ObjectContext class and persistence-aware classes." Enabled="True" PredefinedTemplateName="Entity C#">
         <ed:Property Name="ValidationFramework" Type="EntityDeveloper.TemplateEngine.ValidationFramework, EntityDeveloper.Common, Version=5.7.436.0, Culture=neutral, PublicKeyToken=09af7300eec23701">
