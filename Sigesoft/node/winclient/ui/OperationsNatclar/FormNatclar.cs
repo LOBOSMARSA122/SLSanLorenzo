@@ -890,7 +890,83 @@ namespace Sigesoft.Node.WinClient.UI.OperationsNatclar
                     break;
 
                 case "DocumentosImagenes":
-                    //do something
+
+                    var objDocsImgs = new EstructuraDatosDocseImagenes();
+
+                    var docimgs = _ServiceBL.GetFilePdfsByServiceId(ref objOperationResult, serviceId);
+                  
+                    
+                    datosPaciente = oNatclarBL.DatosXmlNatclar(serviceId);
+                    ubigeoPaciente = oNatclarBL.DevolverUbigue(datosPaciente.DepartamentoNacimiento, datosPaciente.ProvinciaNacimiento, datosPaciente.ProvinciaNacimiento);
+
+                    #region DatosPaciente
+                    objDocsImgs.DatosPaciente = new XmlDatosPaciente();
+
+                    lError = "datosPaciente.Nombre";
+                    objDocsImgs.DatosPaciente.Nombre = datosPaciente.Nombre;
+                    lError = "datosPaciente.Dni";
+                    objDocsImgs.DatosPaciente.DNI = datosPaciente.Dni;
+                    lError = "datosPaciente.DepartamentoNacimiento ";
+                    objDocsImgs.DatosPaciente.DepartamentoNacimiento = short.Parse(ubigeoPaciente.depar);
+                    lError = "datosPaciente.Direccion";
+                    objDocsImgs.DatosPaciente.Direccion = datosPaciente.Direccion;
+                    lError = "datosPaciente.DistritoNacimiento";
+                    objDocsImgs.DatosPaciente.DistritoNacimiento = short.Parse(ubigeoPaciente.distr);
+                    lError = "datosPaciente.Email";
+                    objDocsImgs.DatosPaciente.Email = datosPaciente.Email;
+                    lError = "datosPaciente.EstadoCivil";
+                    objDocsImgs.DatosPaciente.EstadoCivil = "S";
+                    lError = "datosPaciente.FechaNacimiento";
+                    objDocsImgs.DatosPaciente.FechaNacimiento = datosPaciente.FechaNacimiento;
+                    lError = "datosPaciente.Hc";
+                    objDocsImgs.DatosPaciente.HC = datosPaciente.Hc;
+                    lError = "datosPaciente.PrimerApellido";
+                    objDocsImgs.DatosPaciente.PrimerApellido = datosPaciente.PrimerApellido;
+                    lError = "datosPaciente.SegundoApellido";
+                    objDocsImgs.DatosPaciente.SegundoApellido = datosPaciente.SegundoApellido;
+                    lError = "datosPaciente.ProvinciaNacimiento";
+                    objDocsImgs.DatosPaciente.ProvinciaNacimiento = short.Parse(ubigeoPaciente.prov);
+                    lError = "datosPaciente.ResidenciaActual";
+                    objDocsImgs.DatosPaciente.ResidenciaActual = datosPaciente.ResidenciaActual;
+                    lError = "datosPaciente.Sexo";
+                    objDocsImgs.DatosPaciente.Sexo = "M";
+                    lError = "datosPaciente.TipoDocumento";
+                    objDocsImgs.DatosPaciente.TipoDocumento = short.Parse(datosPaciente.TipoDocumento.ToString());
+
+                    #endregion
+
+                    #region DatosExamen
+
+                    objDocsImgs.DatosExamen = new XmlDatosExamen();
+
+                    lError = "datosPaciente.IDActuacion";
+                    objDocsImgs.DatosExamen.IDActuacion = datosPaciente.IDActuacion;
+                    lError = "datosPaciente.IDCentro";
+                    objDocsImgs.DatosExamen.IDCentro = datosPaciente.IDCentro;
+                    lError = "datosPaciente.FechaRegistro";
+                    objDocsImgs.DatosExamen.FechaRegistro = datosPaciente.FechaRegistro.Value.ToString("dd/MM/yyyy");
+                    lError = "datosPaciente.IDEstado";
+                    objDocsImgs.DatosExamen.IDEstado = datosPaciente.IDEstado.Value.ToString();
+                    lError = "datosPaciente.IDEstructura";
+                    objDocsImgs.DatosExamen.IDEstructura = datosPaciente.IDEstructura;
+                    lError = "datosPaciente.IDExamen";
+                    objDocsImgs.DatosExamen.IDExamen = datosPaciente.IDExamen;
+                    lError = "datosPaciente.TipoExamen";
+                    objDocsImgs.DatosExamen.TipoExamen = datosPaciente.TipoExamen.Value.ToString();
+
+                    #endregion
+
+                    foreach (var item in docimgs)
+                    {
+                        objDocsImgs.DocumentoseImagenes = new XmlDatosDocumentoseImagenes();
+                        objDocsImgs.DocumentoseImagenes.Fecha = item.FechaServicio.ToString();
+                        objDocsImgs.DocumentoseImagenes.Tipo = item.CategoryId.ToString();
+                        objDocsImgs.DocumentoseImagenes.IdentificadorDocumento = item.v_MultimediaFileId;
+                        objDocsImgs.DocumentoseImagenes.Titulo = item.v_FileName;
+                        //objDocsImgs.DocumentoseImagenes.Observaciones = item.v_Comment;
+
+                        LanzarDatos(client.EnviarDatosDocumentoseImagenes(objDocsImgs), e, column, serviceId);
+                    }
                     break;
             }
 

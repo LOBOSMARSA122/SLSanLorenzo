@@ -19,6 +19,12 @@
   <wsdl:message name="IWSRIProveedorExterno_EnviarDatosExamen_OutputMessage">
     <wsdl:part name="parameters" element="tns:EnviarDatosExamenResponse" />
   </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosDocumentoseImagenes" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosDocumentoseImagenesResponse" />
+  </wsdl:message>
   <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAlergias_InputMessage">
     <wsdl:part name="parameters" element="tns:EnviarDatosAlergias" />
   </wsdl:message>
@@ -142,6 +148,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamen" message="tns:IWSRIProveedorExterno_EnviarDatosExamen_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenResponse" message="tns:IWSRIProveedorExterno_EnviarDatosExamen_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EnviarDatosDocumentoseImagenes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenes" message="tns:IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenesResponse" message="tns:IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EnviarDatosAlergias">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergias" message="tns:IWSRIProveedorExterno_EnviarDatosAlergias_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergiasResponse" message="tns:IWSRIProveedorExterno_EnviarDatosAlergias_OutputMessage" />
@@ -232,6 +242,15 @@
     </wsdl:operation>
     <wsdl:operation name="EnviarDatosExamen">
       <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosDocumentoseImagenes">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

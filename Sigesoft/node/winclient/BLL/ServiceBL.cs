@@ -10114,8 +10114,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_FileName = D.v_FileName,
 								 b_File = D.b_File,
                                  FechaServicio = A.d_ServiceDate.Value,
-                                 CategoryId = B1.i_CategoryId.Value
-
+                                 CategoryId = B1.i_CategoryId.Value,
+                                 //v_Comment = D.v_Comment,
 							 });
 
 				List<multimediafileList> obj = query.ToList();
