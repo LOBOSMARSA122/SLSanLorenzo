@@ -825,7 +825,7 @@
             this.grdDataService.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.grdDataService.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdDataService.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.grdDataService.Location = new System.Drawing.Point(6, 29);
+            this.grdDataService.Location = new System.Drawing.Point(0, 29);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
             this.grdDataService.Size = new System.Drawing.Size(1126, 474);
@@ -833,7 +833,6 @@
             this.grdDataService.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataService_InitializeLayout);
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
             this.grdDataService.AfterRowExpanded += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.grdPrueba_AfterRowExpanded);
-            this.grdDataService.BeforeRowExpanded += new Infragistics.Win.UltraWinGrid.CancelableRowEventHandler(this.grdPrueba_BeforeRowExpanded);
             this.grdDataService.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataService_AfterSelectChange);
             this.grdDataService.BeforeRowsDeleted += new Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventHandler(this.grdDataService_BeforeRowsDeleted);
             this.grdDataService.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdDataService_ClickCell);

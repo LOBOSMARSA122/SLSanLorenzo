@@ -34,7 +34,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("b_select");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatosPersonales", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatosPersonales", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatosAlergias", 1);
@@ -77,12 +77,14 @@
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatosAnalitica", 20);
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DocumentosImagenes", 21);
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -276,6 +278,13 @@
             ultraGridColumn24.CellButtonAppearance = appearance23;
             ultraGridColumn24.Header.VisiblePosition = 24;
             ultraGridColumn24.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
+            ultraGridColumn25.ButtonDisplayStyle = Infragistics.Win.UltraWinGrid.ButtonDisplayStyle.Always;
+            appearance24.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
+            appearance24.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance24.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            ultraGridColumn25.CellButtonAppearance = appearance24;
+            ultraGridColumn25.Header.VisiblePosition = 25;
+            ultraGridColumn25.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn2,
             ultraGridColumn6,
@@ -301,7 +310,8 @@
             ultraGridColumn21,
             ultraGridColumn22,
             ultraGridColumn23,
-            ultraGridColumn24});
+            ultraGridColumn24,
+            ultraGridColumn25});
             this.grdDataService.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdDataService.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.grdDataService.DisplayLayout.InterBandSpacing = 10;
@@ -314,38 +324,38 @@
             this.grdDataService.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdDataService.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
             this.grdDataService.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance24.BackColor = System.Drawing.Color.Transparent;
-            this.grdDataService.DisplayLayout.Override.CardAreaAppearance = appearance24;
-            appearance25.BackColor = System.Drawing.Color.White;
-            appearance25.BackColor2 = System.Drawing.Color.White;
-            appearance25.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdDataService.DisplayLayout.Override.CellAppearance = appearance25;
-            this.grdDataService.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            this.grdDataService.DisplayLayout.Override.CardAreaAppearance = appearance25;
             appearance26.BackColor = System.Drawing.Color.White;
-            appearance26.BackColor2 = System.Drawing.Color.LightGray;
-            appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance26.BorderColor = System.Drawing.Color.DarkGray;
-            appearance26.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdDataService.DisplayLayout.Override.HeaderAppearance = appearance26;
+            appearance26.BackColor2 = System.Drawing.Color.White;
+            appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdDataService.DisplayLayout.Override.CellAppearance = appearance26;
+            this.grdDataService.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance27.BackColor = System.Drawing.Color.White;
+            appearance27.BackColor2 = System.Drawing.Color.LightGray;
+            appearance27.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance27.BorderColor = System.Drawing.Color.DarkGray;
+            appearance27.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdDataService.DisplayLayout.Override.HeaderAppearance = appearance27;
             this.grdDataService.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance27.AlphaLevel = ((short)(187));
-            appearance27.BackColor = System.Drawing.Color.Gainsboro;
-            appearance27.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance27.ForeColor = System.Drawing.Color.Black;
-            appearance27.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdDataService.DisplayLayout.Override.RowAlternateAppearance = appearance27;
-            appearance28.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdDataService.DisplayLayout.Override.RowSelectorAppearance = appearance28;
+            appearance28.AlphaLevel = ((short)(187));
+            appearance28.BackColor = System.Drawing.Color.Gainsboro;
+            appearance28.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance28.ForeColor = System.Drawing.Color.Black;
+            appearance28.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdDataService.DisplayLayout.Override.RowAlternateAppearance = appearance28;
+            appearance29.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdDataService.DisplayLayout.Override.RowSelectorAppearance = appearance29;
             this.grdDataService.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.RowIndex;
             this.grdDataService.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance29.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance29.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance29.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance29.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance29.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance29.FontData.BoldAsString = "False";
-            appearance29.ForeColor = System.Drawing.Color.Black;
-            this.grdDataService.DisplayLayout.Override.SelectedRowAppearance = appearance29;
+            appearance30.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance30.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance30.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance30.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance30.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance30.FontData.BoldAsString = "False";
+            appearance30.ForeColor = System.Drawing.Color.Black;
+            this.grdDataService.DisplayLayout.Override.SelectedRowAppearance = appearance30;
             this.grdDataService.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.grdDataService.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grdDataService.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;

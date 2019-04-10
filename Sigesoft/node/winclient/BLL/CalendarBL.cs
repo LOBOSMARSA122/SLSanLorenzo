@@ -1418,21 +1418,6 @@ namespace Sigesoft.Node.WinClient.BLL
                //Validar que un paciente no se pueda agendar el mismo día con el mismo protocolo
                string pstrFilterExpression = "v_PersonId==" + "\"" + pstrPacientId + "\"" + " && " + "v_ProtocolId==" + "\"" + pobjDtoEntity.v_ProtocolId + "\"" + " && " + "d_DateTimeCalendar==" + "\"" + pobjDtoEntity.d_DateTimeCalendar.ToString() + "\"";
                int Contador = _objCalendarBL.ValidateShedule(ref objOperationResult, pobjDtoEntity.v_ProtocolId, pstrPacientId, pobjDtoEntity.d_DateTimeCalendar.Value);
-               //if (Contador > 0)
-               //{
-               //    pobjOperationResult.ErrorMessage = "No puede agendar a un mismo paciente con un mismo protocolo y en un mismo día.";
-               //    return null;
-               //}
-
-               //if (pstrNuevoContinuacion == "Nuevo")
-               //{
-               //    int Contador1 = _objCalendarBL.ValidateSheduleCurrent(ref objOperationResult, pstrPacientId, pobjDtoEntity.d_DateTimeCalendar.Value);
-               //    if (Contador1 > 0)
-               //    {
-               //        pobjOperationResult.ErrorMessage = "El paciente no se puede agendar porque tiene un servicio por iniciar, iniciado o incompleto.";
-               //        return null;
-               //    }
-               //}
 
 
                //Crear Instancia del Servicio y de Componente del Servicio

@@ -889,7 +889,9 @@ namespace Sigesoft.Node.WinClient.UI.OperationsNatclar
                     //do something
                     break;
 
-
+                case "DocumentosImagenes":
+                    //do something
+                    break;
             }
 
             #endregion

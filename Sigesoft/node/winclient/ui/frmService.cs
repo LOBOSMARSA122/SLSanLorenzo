@@ -3230,10 +3230,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-        private void grdPrueba_BeforeRowExpanded(object sender, CancelableRowEventArgs e)
-        {
-            
-        }
+
 
         private static void InitializeRowDetail(UltraGridRow row, DiagnosticRepositoryJerarquizada item)
         {
@@ -3257,10 +3254,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-        private void grdDataService_InitializeLayout_1(object sender, InitializeLayoutEventArgs e)
-        {
 
-        }
 
         private void grdDataService_BeforeRowsDeleted(object sender, BeforeRowsDeletedEventArgs e)
         {
