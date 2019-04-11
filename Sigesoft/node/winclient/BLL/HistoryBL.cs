@@ -39,7 +39,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
                            select new HistoryList
                            {
+                               
                                v_HistoryId = A.v_HistoryId,
+                              
                                d_StartDate = A.d_StartDate,
                                d_EndDate = A.d_EndDate,
                                v_Organization = A.v_Organization,

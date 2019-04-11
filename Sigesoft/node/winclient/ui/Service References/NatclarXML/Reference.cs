@@ -486,6 +486,208 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosDocseImagenes", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class EstructuraDatosDocseImagenes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPacienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosDocumentoseImagenes DocumentoseImagenesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen DatosExamen {
+            get {
+                return this.DatosExamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosExamenField, value) != true)) {
+                    this.DatosExamenField = value;
+                    this.RaisePropertyChanged("DatosExamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosPaciente DatosPaciente {
+            get {
+                return this.DatosPacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatosPacienteField, value) != true)) {
+                    this.DatosPacienteField = value;
+                    this.RaisePropertyChanged("DatosPaciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosDocumentoseImagenes DocumentoseImagenes {
+            get {
+                return this.DocumentoseImagenesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentoseImagenesField, value) != true)) {
+                    this.DocumentoseImagenesField = value;
+                    this.RaisePropertyChanged("DocumentoseImagenes");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlDatosDocumentoseImagenes", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlDatosDocumentoseImagenes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdentificadorDocumentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TituloField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Codigo {
+            get {
+                return this.CodigoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodigoField, value) != true)) {
+                    this.CodigoField = value;
+                    this.RaisePropertyChanged("Codigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fecha {
+            get {
+                return this.FechaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaField, value) != true)) {
+                    this.FechaField = value;
+                    this.RaisePropertyChanged("Fecha");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdentificadorDocumento {
+            get {
+                return this.IdentificadorDocumentoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdentificadorDocumentoField, value) != true)) {
+                    this.IdentificadorDocumentoField = value;
+                    this.RaisePropertyChanged("IdentificadorDocumento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones {
+            get {
+                return this.ObservacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionesField, value) != true)) {
+                    this.ObservacionesField = value;
+                    this.RaisePropertyChanged("Observaciones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tipo {
+            get {
+                return this.TipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoField, value) != true)) {
+                    this.TipoField = value;
+                    this.RaisePropertyChanged("Tipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Titulo {
+            get {
+                return this.TituloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TituloField, value) != true)) {
+                    this.TituloField = value;
+                    this.RaisePropertyChanged("Titulo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EstructuraDatosAlergias", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
     [System.SerializableAttribute()]
     public partial class EstructuraDatosAlergias : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -5380,6 +5582,15 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlDiagnosticos DiagnosticosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlRecomendaciones RecomendacionesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Sigesoft.Node.WinClient.UI.NatclarXML.XmlVigilanciSalud VigilanciaSaludField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -5387,6 +5598,1636 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlDiagnosticos Diagnosticos {
+            get {
+                return this.DiagnosticosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DiagnosticosField, value) != true)) {
+                    this.DiagnosticosField = value;
+                    this.RaisePropertyChanged("Diagnosticos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlRecomendaciones Recomendaciones {
+            get {
+                return this.RecomendacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecomendacionesField, value) != true)) {
+                    this.RecomendacionesField = value;
+                    this.RaisePropertyChanged("Recomendaciones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Sigesoft.Node.WinClient.UI.NatclarXML.XmlVigilanciSalud VigilanciaSalud {
+            get {
+                return this.VigilanciaSaludField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VigilanciaSaludField, value) != true)) {
+                    this.VigilanciaSaludField = value;
+                    this.RaisePropertyChanged("VigilanciaSalud");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlDiagnosticos", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlDiagnosticos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico02Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico03Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico04Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico05Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico06Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico07Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico08Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico09Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico10Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico11Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico12Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico13Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico14Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico15Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico16Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico17Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico18Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico19Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnostico20Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Diagnóstico01Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase01Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase02Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase03Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase04Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase05Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase06Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase07Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase08Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase09Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase10Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase11Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase12Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase13Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase14Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase15Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase16Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase17Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase18Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase19Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fase20Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Fecha19Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro01Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro02Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro03Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro04Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro05Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro06Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro07Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro08Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro09Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro10Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro11Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro12Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro13Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro14Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro15Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro16Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro17Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro18Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaRegistro20Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones01Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones02Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones03Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones04Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones05Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones06Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones07Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones08Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones09Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones10Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones11Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones12Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones13Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones14Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones15Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones16Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones17Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones18Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones19Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Observaciones20Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico02 {
+            get {
+                return this.Diagnostico02Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico02Field, value) != true)) {
+                    this.Diagnostico02Field = value;
+                    this.RaisePropertyChanged("Diagnostico02");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico03 {
+            get {
+                return this.Diagnostico03Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico03Field, value) != true)) {
+                    this.Diagnostico03Field = value;
+                    this.RaisePropertyChanged("Diagnostico03");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico04 {
+            get {
+                return this.Diagnostico04Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico04Field, value) != true)) {
+                    this.Diagnostico04Field = value;
+                    this.RaisePropertyChanged("Diagnostico04");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico05 {
+            get {
+                return this.Diagnostico05Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico05Field, value) != true)) {
+                    this.Diagnostico05Field = value;
+                    this.RaisePropertyChanged("Diagnostico05");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico06 {
+            get {
+                return this.Diagnostico06Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico06Field, value) != true)) {
+                    this.Diagnostico06Field = value;
+                    this.RaisePropertyChanged("Diagnostico06");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico07 {
+            get {
+                return this.Diagnostico07Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico07Field, value) != true)) {
+                    this.Diagnostico07Field = value;
+                    this.RaisePropertyChanged("Diagnostico07");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico08 {
+            get {
+                return this.Diagnostico08Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico08Field, value) != true)) {
+                    this.Diagnostico08Field = value;
+                    this.RaisePropertyChanged("Diagnostico08");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico09 {
+            get {
+                return this.Diagnostico09Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico09Field, value) != true)) {
+                    this.Diagnostico09Field = value;
+                    this.RaisePropertyChanged("Diagnostico09");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico10 {
+            get {
+                return this.Diagnostico10Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico10Field, value) != true)) {
+                    this.Diagnostico10Field = value;
+                    this.RaisePropertyChanged("Diagnostico10");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico11 {
+            get {
+                return this.Diagnostico11Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico11Field, value) != true)) {
+                    this.Diagnostico11Field = value;
+                    this.RaisePropertyChanged("Diagnostico11");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico12 {
+            get {
+                return this.Diagnostico12Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico12Field, value) != true)) {
+                    this.Diagnostico12Field = value;
+                    this.RaisePropertyChanged("Diagnostico12");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico13 {
+            get {
+                return this.Diagnostico13Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico13Field, value) != true)) {
+                    this.Diagnostico13Field = value;
+                    this.RaisePropertyChanged("Diagnostico13");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico14 {
+            get {
+                return this.Diagnostico14Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico14Field, value) != true)) {
+                    this.Diagnostico14Field = value;
+                    this.RaisePropertyChanged("Diagnostico14");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico15 {
+            get {
+                return this.Diagnostico15Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico15Field, value) != true)) {
+                    this.Diagnostico15Field = value;
+                    this.RaisePropertyChanged("Diagnostico15");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico16 {
+            get {
+                return this.Diagnostico16Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico16Field, value) != true)) {
+                    this.Diagnostico16Field = value;
+                    this.RaisePropertyChanged("Diagnostico16");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico17 {
+            get {
+                return this.Diagnostico17Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico17Field, value) != true)) {
+                    this.Diagnostico17Field = value;
+                    this.RaisePropertyChanged("Diagnostico17");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico18 {
+            get {
+                return this.Diagnostico18Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico18Field, value) != true)) {
+                    this.Diagnostico18Field = value;
+                    this.RaisePropertyChanged("Diagnostico18");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico19 {
+            get {
+                return this.Diagnostico19Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico19Field, value) != true)) {
+                    this.Diagnostico19Field = value;
+                    this.RaisePropertyChanged("Diagnostico19");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnostico20 {
+            get {
+                return this.Diagnostico20Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnostico20Field, value) != true)) {
+                    this.Diagnostico20Field = value;
+                    this.RaisePropertyChanged("Diagnostico20");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Diagnóstico01 {
+            get {
+                return this.Diagnóstico01Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Diagnóstico01Field, value) != true)) {
+                    this.Diagnóstico01Field = value;
+                    this.RaisePropertyChanged("Diagnóstico01");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase01 {
+            get {
+                return this.Fase01Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase01Field, value) != true)) {
+                    this.Fase01Field = value;
+                    this.RaisePropertyChanged("Fase01");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase02 {
+            get {
+                return this.Fase02Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase02Field, value) != true)) {
+                    this.Fase02Field = value;
+                    this.RaisePropertyChanged("Fase02");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase03 {
+            get {
+                return this.Fase03Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase03Field, value) != true)) {
+                    this.Fase03Field = value;
+                    this.RaisePropertyChanged("Fase03");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase04 {
+            get {
+                return this.Fase04Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase04Field, value) != true)) {
+                    this.Fase04Field = value;
+                    this.RaisePropertyChanged("Fase04");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase05 {
+            get {
+                return this.Fase05Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase05Field, value) != true)) {
+                    this.Fase05Field = value;
+                    this.RaisePropertyChanged("Fase05");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase06 {
+            get {
+                return this.Fase06Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase06Field, value) != true)) {
+                    this.Fase06Field = value;
+                    this.RaisePropertyChanged("Fase06");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase07 {
+            get {
+                return this.Fase07Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase07Field, value) != true)) {
+                    this.Fase07Field = value;
+                    this.RaisePropertyChanged("Fase07");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase08 {
+            get {
+                return this.Fase08Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase08Field, value) != true)) {
+                    this.Fase08Field = value;
+                    this.RaisePropertyChanged("Fase08");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase09 {
+            get {
+                return this.Fase09Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase09Field, value) != true)) {
+                    this.Fase09Field = value;
+                    this.RaisePropertyChanged("Fase09");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase10 {
+            get {
+                return this.Fase10Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase10Field, value) != true)) {
+                    this.Fase10Field = value;
+                    this.RaisePropertyChanged("Fase10");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase11 {
+            get {
+                return this.Fase11Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase11Field, value) != true)) {
+                    this.Fase11Field = value;
+                    this.RaisePropertyChanged("Fase11");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase12 {
+            get {
+                return this.Fase12Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase12Field, value) != true)) {
+                    this.Fase12Field = value;
+                    this.RaisePropertyChanged("Fase12");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase13 {
+            get {
+                return this.Fase13Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase13Field, value) != true)) {
+                    this.Fase13Field = value;
+                    this.RaisePropertyChanged("Fase13");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase14 {
+            get {
+                return this.Fase14Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase14Field, value) != true)) {
+                    this.Fase14Field = value;
+                    this.RaisePropertyChanged("Fase14");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase15 {
+            get {
+                return this.Fase15Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase15Field, value) != true)) {
+                    this.Fase15Field = value;
+                    this.RaisePropertyChanged("Fase15");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase16 {
+            get {
+                return this.Fase16Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase16Field, value) != true)) {
+                    this.Fase16Field = value;
+                    this.RaisePropertyChanged("Fase16");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase17 {
+            get {
+                return this.Fase17Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase17Field, value) != true)) {
+                    this.Fase17Field = value;
+                    this.RaisePropertyChanged("Fase17");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase18 {
+            get {
+                return this.Fase18Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase18Field, value) != true)) {
+                    this.Fase18Field = value;
+                    this.RaisePropertyChanged("Fase18");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase19 {
+            get {
+                return this.Fase19Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase19Field, value) != true)) {
+                    this.Fase19Field = value;
+                    this.RaisePropertyChanged("Fase19");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fase20 {
+            get {
+                return this.Fase20Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fase20Field, value) != true)) {
+                    this.Fase20Field = value;
+                    this.RaisePropertyChanged("Fase20");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fecha19 {
+            get {
+                return this.Fecha19Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Fecha19Field, value) != true)) {
+                    this.Fecha19Field = value;
+                    this.RaisePropertyChanged("Fecha19");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro01 {
+            get {
+                return this.FechaRegistro01Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro01Field, value) != true)) {
+                    this.FechaRegistro01Field = value;
+                    this.RaisePropertyChanged("FechaRegistro01");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro02 {
+            get {
+                return this.FechaRegistro02Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro02Field, value) != true)) {
+                    this.FechaRegistro02Field = value;
+                    this.RaisePropertyChanged("FechaRegistro02");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro03 {
+            get {
+                return this.FechaRegistro03Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro03Field, value) != true)) {
+                    this.FechaRegistro03Field = value;
+                    this.RaisePropertyChanged("FechaRegistro03");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro04 {
+            get {
+                return this.FechaRegistro04Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro04Field, value) != true)) {
+                    this.FechaRegistro04Field = value;
+                    this.RaisePropertyChanged("FechaRegistro04");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro05 {
+            get {
+                return this.FechaRegistro05Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro05Field, value) != true)) {
+                    this.FechaRegistro05Field = value;
+                    this.RaisePropertyChanged("FechaRegistro05");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro06 {
+            get {
+                return this.FechaRegistro06Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro06Field, value) != true)) {
+                    this.FechaRegistro06Field = value;
+                    this.RaisePropertyChanged("FechaRegistro06");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro07 {
+            get {
+                return this.FechaRegistro07Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro07Field, value) != true)) {
+                    this.FechaRegistro07Field = value;
+                    this.RaisePropertyChanged("FechaRegistro07");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro08 {
+            get {
+                return this.FechaRegistro08Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro08Field, value) != true)) {
+                    this.FechaRegistro08Field = value;
+                    this.RaisePropertyChanged("FechaRegistro08");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro09 {
+            get {
+                return this.FechaRegistro09Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro09Field, value) != true)) {
+                    this.FechaRegistro09Field = value;
+                    this.RaisePropertyChanged("FechaRegistro09");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro10 {
+            get {
+                return this.FechaRegistro10Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro10Field, value) != true)) {
+                    this.FechaRegistro10Field = value;
+                    this.RaisePropertyChanged("FechaRegistro10");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro11 {
+            get {
+                return this.FechaRegistro11Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro11Field, value) != true)) {
+                    this.FechaRegistro11Field = value;
+                    this.RaisePropertyChanged("FechaRegistro11");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro12 {
+            get {
+                return this.FechaRegistro12Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro12Field, value) != true)) {
+                    this.FechaRegistro12Field = value;
+                    this.RaisePropertyChanged("FechaRegistro12");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro13 {
+            get {
+                return this.FechaRegistro13Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro13Field, value) != true)) {
+                    this.FechaRegistro13Field = value;
+                    this.RaisePropertyChanged("FechaRegistro13");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro14 {
+            get {
+                return this.FechaRegistro14Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro14Field, value) != true)) {
+                    this.FechaRegistro14Field = value;
+                    this.RaisePropertyChanged("FechaRegistro14");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro15 {
+            get {
+                return this.FechaRegistro15Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro15Field, value) != true)) {
+                    this.FechaRegistro15Field = value;
+                    this.RaisePropertyChanged("FechaRegistro15");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro16 {
+            get {
+                return this.FechaRegistro16Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro16Field, value) != true)) {
+                    this.FechaRegistro16Field = value;
+                    this.RaisePropertyChanged("FechaRegistro16");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro17 {
+            get {
+                return this.FechaRegistro17Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro17Field, value) != true)) {
+                    this.FechaRegistro17Field = value;
+                    this.RaisePropertyChanged("FechaRegistro17");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro18 {
+            get {
+                return this.FechaRegistro18Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro18Field, value) != true)) {
+                    this.FechaRegistro18Field = value;
+                    this.RaisePropertyChanged("FechaRegistro18");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FechaRegistro20 {
+            get {
+                return this.FechaRegistro20Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaRegistro20Field, value) != true)) {
+                    this.FechaRegistro20Field = value;
+                    this.RaisePropertyChanged("FechaRegistro20");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones01 {
+            get {
+                return this.Observaciones01Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones01Field, value) != true)) {
+                    this.Observaciones01Field = value;
+                    this.RaisePropertyChanged("Observaciones01");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones02 {
+            get {
+                return this.Observaciones02Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones02Field, value) != true)) {
+                    this.Observaciones02Field = value;
+                    this.RaisePropertyChanged("Observaciones02");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones03 {
+            get {
+                return this.Observaciones03Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones03Field, value) != true)) {
+                    this.Observaciones03Field = value;
+                    this.RaisePropertyChanged("Observaciones03");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones04 {
+            get {
+                return this.Observaciones04Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones04Field, value) != true)) {
+                    this.Observaciones04Field = value;
+                    this.RaisePropertyChanged("Observaciones04");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones05 {
+            get {
+                return this.Observaciones05Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones05Field, value) != true)) {
+                    this.Observaciones05Field = value;
+                    this.RaisePropertyChanged("Observaciones05");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones06 {
+            get {
+                return this.Observaciones06Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones06Field, value) != true)) {
+                    this.Observaciones06Field = value;
+                    this.RaisePropertyChanged("Observaciones06");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones07 {
+            get {
+                return this.Observaciones07Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones07Field, value) != true)) {
+                    this.Observaciones07Field = value;
+                    this.RaisePropertyChanged("Observaciones07");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones08 {
+            get {
+                return this.Observaciones08Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones08Field, value) != true)) {
+                    this.Observaciones08Field = value;
+                    this.RaisePropertyChanged("Observaciones08");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones09 {
+            get {
+                return this.Observaciones09Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones09Field, value) != true)) {
+                    this.Observaciones09Field = value;
+                    this.RaisePropertyChanged("Observaciones09");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones10 {
+            get {
+                return this.Observaciones10Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones10Field, value) != true)) {
+                    this.Observaciones10Field = value;
+                    this.RaisePropertyChanged("Observaciones10");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones11 {
+            get {
+                return this.Observaciones11Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones11Field, value) != true)) {
+                    this.Observaciones11Field = value;
+                    this.RaisePropertyChanged("Observaciones11");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones12 {
+            get {
+                return this.Observaciones12Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones12Field, value) != true)) {
+                    this.Observaciones12Field = value;
+                    this.RaisePropertyChanged("Observaciones12");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones13 {
+            get {
+                return this.Observaciones13Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones13Field, value) != true)) {
+                    this.Observaciones13Field = value;
+                    this.RaisePropertyChanged("Observaciones13");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones14 {
+            get {
+                return this.Observaciones14Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones14Field, value) != true)) {
+                    this.Observaciones14Field = value;
+                    this.RaisePropertyChanged("Observaciones14");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones15 {
+            get {
+                return this.Observaciones15Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones15Field, value) != true)) {
+                    this.Observaciones15Field = value;
+                    this.RaisePropertyChanged("Observaciones15");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones16 {
+            get {
+                return this.Observaciones16Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones16Field, value) != true)) {
+                    this.Observaciones16Field = value;
+                    this.RaisePropertyChanged("Observaciones16");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones17 {
+            get {
+                return this.Observaciones17Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones17Field, value) != true)) {
+                    this.Observaciones17Field = value;
+                    this.RaisePropertyChanged("Observaciones17");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones18 {
+            get {
+                return this.Observaciones18Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones18Field, value) != true)) {
+                    this.Observaciones18Field = value;
+                    this.RaisePropertyChanged("Observaciones18");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones19 {
+            get {
+                return this.Observaciones19Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones19Field, value) != true)) {
+                    this.Observaciones19Field = value;
+                    this.RaisePropertyChanged("Observaciones19");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones20 {
+            get {
+                return this.Observaciones20Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Observaciones20Field, value) != true)) {
+                    this.Observaciones20Field = value;
+                    this.RaisePropertyChanged("Observaciones20");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlRecomendaciones", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlRecomendaciones : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones01Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones02Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones03Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones04Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones05Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones06Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones07Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones08Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones09Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Recomendaciones10Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones01 {
+            get {
+                return this.Recomendaciones01Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones01Field, value) != true)) {
+                    this.Recomendaciones01Field = value;
+                    this.RaisePropertyChanged("Recomendaciones01");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones02 {
+            get {
+                return this.Recomendaciones02Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones02Field, value) != true)) {
+                    this.Recomendaciones02Field = value;
+                    this.RaisePropertyChanged("Recomendaciones02");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones03 {
+            get {
+                return this.Recomendaciones03Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones03Field, value) != true)) {
+                    this.Recomendaciones03Field = value;
+                    this.RaisePropertyChanged("Recomendaciones03");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones04 {
+            get {
+                return this.Recomendaciones04Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones04Field, value) != true)) {
+                    this.Recomendaciones04Field = value;
+                    this.RaisePropertyChanged("Recomendaciones04");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones05 {
+            get {
+                return this.Recomendaciones05Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones05Field, value) != true)) {
+                    this.Recomendaciones05Field = value;
+                    this.RaisePropertyChanged("Recomendaciones05");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones06 {
+            get {
+                return this.Recomendaciones06Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones06Field, value) != true)) {
+                    this.Recomendaciones06Field = value;
+                    this.RaisePropertyChanged("Recomendaciones06");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones07 {
+            get {
+                return this.Recomendaciones07Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones07Field, value) != true)) {
+                    this.Recomendaciones07Field = value;
+                    this.RaisePropertyChanged("Recomendaciones07");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones08 {
+            get {
+                return this.Recomendaciones08Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones08Field, value) != true)) {
+                    this.Recomendaciones08Field = value;
+                    this.RaisePropertyChanged("Recomendaciones08");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones09 {
+            get {
+                return this.Recomendaciones09Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones09Field, value) != true)) {
+                    this.Recomendaciones09Field = value;
+                    this.RaisePropertyChanged("Recomendaciones09");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recomendaciones10 {
+            get {
+                return this.Recomendaciones10Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Recomendaciones10Field, value) != true)) {
+                    this.Recomendaciones10Field = value;
+                    this.RaisePropertyChanged("Recomendaciones10");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="XmlVigilanciSalud", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno")]
+    [System.SerializableAttribute()]
+    public partial class XmlVigilanciSalud : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CalificacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DictamenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionesCalificacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ObservacionesDictamenField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Calificacion {
+            get {
+                return this.CalificacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CalificacionField, value) != true)) {
+                    this.CalificacionField = value;
+                    this.RaisePropertyChanged("Calificacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Dictamen {
+            get {
+                return this.DictamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DictamenField, value) != true)) {
+                    this.DictamenField = value;
+                    this.RaisePropertyChanged("Dictamen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ObservacionesCalificacion {
+            get {
+                return this.ObservacionesCalificacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionesCalificacionField, value) != true)) {
+                    this.ObservacionesCalificacionField = value;
+                    this.RaisePropertyChanged("ObservacionesCalificacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ObservacionesDictamen {
+            get {
+                return this.ObservacionesDictamenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObservacionesDictamenField, value) != true)) {
+                    this.ObservacionesDictamenField = value;
+                    this.RaisePropertyChanged("ObservacionesDictamen");
+                }
             }
         }
         
@@ -5814,6 +7655,9 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamen", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenResponse")]
         Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosExamen(Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen XML);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenes", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenesResponse")]
+        Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosDocumentoseImagenes(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosDocseImagenes XML);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergias", ReplyAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergiasResponse")]
         Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAlergias(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAlergias XML);
         
@@ -5905,6 +7749,10 @@ namespace Sigesoft.Node.WinClient.UI.NatclarXML {
         
         public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosExamen(Sigesoft.Node.WinClient.UI.NatclarXML.XmlDatosExamen XML) {
             return base.Channel.EnviarDatosExamen(XML);
+        }
+        
+        public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosDocumentoseImagenes(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosDocseImagenes XML) {
+            return base.Channel.EnviarDatosDocumentoseImagenes(XML);
         }
         
         public Sigesoft.Node.WinClient.UI.NatclarXML.Resultado EnviarDatosAlergias(Sigesoft.Node.WinClient.UI.NatclarXML.EstructuraDatosAlergias XML) {

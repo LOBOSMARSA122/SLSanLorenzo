@@ -39,6 +39,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="XmlDatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+  <xs:complexType name="EstructuraDatosDocseImagenes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+      <xs:element minOccurs="0" name="DocumentoseImagenes" nillable="true" type="tns:XmlDatosDocumentoseImagenes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosDocseImagenes" nillable="true" type="tns:EstructuraDatosDocseImagenes" />
+  <xs:complexType name="XmlDatosDocumentoseImagenes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentificadorDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlDatosDocumentoseImagenes" nillable="true" type="tns:XmlDatosDocumentoseImagenes" />
   <xs:complexType name="EstructuraDatosAlergias">
     <xs:sequence>
       <xs:element minOccurs="0" name="Alergias" nillable="true" type="tns:XmlDatosAlergias" />
@@ -467,9 +486,122 @@
   </xs:complexType>
   <xs:element name="EstructuraDatosVigilanciaSalud" nillable="true" type="tns:EstructuraDatosVigilanciaSalud" />
   <xs:complexType name="XmlVigilanciaSalud">
-    <xs:sequence />
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Diagnosticos" nillable="true" type="tns:XmlDiagnosticos" />
+      <xs:element minOccurs="0" name="Recomendaciones" nillable="true" type="tns:XmlRecomendaciones" />
+      <xs:element minOccurs="0" name="VigilanciaSalud" nillable="true" type="tns:XmlVigilanciSalud" />
+    </xs:sequence>
   </xs:complexType>
   <xs:element name="XmlVigilanciaSalud" nillable="true" type="tns:XmlVigilanciaSalud" />
+  <xs:complexType name="XmlDiagnosticos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Diagnostico02" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico03" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico04" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico05" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico06" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico07" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico08" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico09" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico10" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico11" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico12" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico13" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico14" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico15" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico16" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico17" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico18" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico19" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnostico20" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnóstico01" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase01" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase02" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase03" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase04" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase05" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase06" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase07" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase08" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase09" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase10" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase11" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase12" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase13" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase14" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase15" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase16" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase17" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase18" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase19" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fase20" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha19" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro01" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro02" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro03" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro04" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro05" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro06" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro07" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro08" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro09" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro10" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro11" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro12" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro13" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro14" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro15" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro16" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro17" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro18" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRegistro20" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones01" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones02" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones03" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones04" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones05" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones06" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones07" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones08" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones09" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones10" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones11" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones12" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones13" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones14" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones15" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones16" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones17" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones18" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones19" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Observaciones20" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlDiagnosticos" nillable="true" type="tns:XmlDiagnosticos" />
+  <xs:complexType name="XmlRecomendaciones">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Recomendaciones01" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones02" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones03" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones04" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones05" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones06" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones07" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones08" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones09" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recomendaciones10" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlRecomendaciones" nillable="true" type="tns:XmlRecomendaciones" />
+  <xs:complexType name="XmlVigilanciSalud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Calificacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Dictamen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ObservacionesCalificacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ObservacionesDictamen" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlVigilanciSalud" nillable="true" type="tns:XmlVigilanciSalud" />
   <xs:complexType name="EstructuraDatosLecturaOIT">
     <xs:sequence>
       <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
