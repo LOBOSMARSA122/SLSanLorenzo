@@ -2986,6 +2986,7 @@ namespace NetPdf
             document.Add(filiationWorker);
 
             #endregion
+
             #endregion
             document.Close();
             writer.Close();
