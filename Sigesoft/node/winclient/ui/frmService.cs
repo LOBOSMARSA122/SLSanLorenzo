@@ -970,11 +970,23 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         else if (e.Row.Cells["i_ServiceStatusId"].Value.ToString() == ((int)ServiceStatus.Culminado).ToString())
                         {
-                            e.Row.Appearance.BackColor = Color.GreenYellow;
-                            e.Row.Appearance.BackColor2 = Color.White;
-                            //Y doy el efecto degradado vertical
-                            e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                            if (e.Row.Cells["v_AptitudeStatusName"].Value.ToString() == "OBSERVADO")
+                            {
+                                e.Row.Appearance.BackColor = Color.OrangeRed;
+                                e.Row.Appearance.BackColor2 = Color.White;
+                                //Y doy el efecto degradado vertical
+                                e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                            }
+                            else
+                            {
+                                e.Row.Appearance.BackColor = Color.GreenYellow;
+                                e.Row.Appearance.BackColor2 = Color.White;
+                                //Y doy el efecto degradado vertical
+                                e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                            }
+                            
                         }
+                        
                     }
 
                     if (e.Row.Cells["i_StatusLiquidation"].Value == null)
@@ -3189,10 +3201,16 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdPrueba_AfterRowExpanded(object sender, RowEventArgs e)
         {
-            //grdDataService.Rows[e.Row.Index].Selected = true;
-            DeleteAllChildRows(e.Row);
-            var serviceId = e.Row.Cells["v_ServiceId"].Value.ToString();
 
+            foreach (var ultraGridRow in grdDataService.Selected.Rows)
+            {
+                ultraGridRow.Selected = false;
+            }
+            e.Row.Selected = true;
+            e.Row.Activated = true;
+            DeleteAllChildRows(e.Row);
+
+            var serviceId = e.Row.Cells["v_ServiceId"].Value.ToString();
             var list = new DxFrecuenteBL().getDataService(serviceId);
 
             foreach (var item in list)
@@ -3200,9 +3218,6 @@ namespace Sigesoft.Node.WinClient.UI
                 if (grdDataService.ActiveRow != null)
                 {
                     var row = grdDataService.DisplayLayout.Bands[1].AddNew();
-                    //if (row == null) return;
-                    //grdPrueba.Rows.Move(row, grdPrueba.Rows.Count - 1);
-                    //grdPrueba.ActiveRowScrollRegion.ScrollRowIntoView(row);
                     InitializeRowDetail(row, item);
                 }
                 else
@@ -3215,10 +3230,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-        private void grdPrueba_BeforeRowExpanded(object sender, CancelableRowEventArgs e)
-        {
-            
-        }
+
 
         private static void InitializeRowDetail(UltraGridRow row, DiagnosticRepositoryJerarquizada item)
         {
@@ -3234,16 +3246,19 @@ namespace Sigesoft.Node.WinClient.UI
                 UltraGridRow[] rows = (UltraGridRow[])childBand.Rows.All;
                 foreach (UltraGridRow row in rows)
                 {
-                    row.Cells["v_DiseasesName"].Value = "";
-                    row.Cells["v_RecomendationsName"].Value = "";
-                    row.Cells["v_RestricctionName"].Value = "";
+                    row.Delete();
+                    //row.Cells["v_DiseasesName"].Value = "";
+                    //row.Cells["v_RecomendationsName"].Value = "";
+                    //row.Cells["v_RestricctionName"].Value = "";
                 }
             }
         }
 
-        private void grdDataService_InitializeLayout_1(object sender, InitializeLayoutEventArgs e)
-        {
 
+
+        private void grdDataService_BeforeRowsDeleted(object sender, BeforeRowsDeletedEventArgs e)
+        {
+            e.DisplayPromptMsg = false;
         }
     }
 }

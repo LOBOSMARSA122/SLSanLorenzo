@@ -14,6 +14,7 @@ namespace Sigesoft.Common
         public ConexionSigesoft()
         {
             cadena = Common.Utils.GetApplicationConfigValue("ConexionSigesoft");
+
             conectarsigesoft.ConnectionString = cadena;
         }
         public void opensigesoft()

@@ -399,6 +399,9 @@
             this.lblRecordCountTotalDiagnosticos = new System.Windows.Forms.Label();
             this.btnAceptarDX = new System.Windows.Forms.Button();
             this.tpConclusion = new System.Windows.Forms.TabPage();
+            this.grbLevantamiento = new System.Windows.Forms.GroupBox();
+            this.rbLevantNO = new System.Windows.Forms.RadioButton();
+            this.rbLevantSI = new System.Windows.Forms.RadioButton();
             this.checkFirmaYanacocha = new System.Windows.Forms.CheckBox();
             this.btnSubirInterconsulta = new System.Windows.Forms.Button();
             this.btn7C = new System.Windows.Forms.Button();
@@ -778,6 +781,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdTotalDiagnosticos)).BeginInit();
             this.cmTotalDx.SuspendLayout();
             this.tpConclusion.SuspendLayout();
+            this.grbLevantamiento.SuspendLayout();
             this.gbRecomendaciones_Conclusiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).BeginInit();
             this.gbRestricciones_Conclusiones.SuspendLayout();
@@ -3207,6 +3211,7 @@
             // 
             // tpConclusion
             // 
+            this.tpConclusion.Controls.Add(this.grbLevantamiento);
             this.tpConclusion.Controls.Add(this.checkFirmaYanacocha);
             this.tpConclusion.Controls.Add(this.btnSubirInterconsulta);
             this.tpConclusion.Controls.Add(this.btn7C);
@@ -3232,6 +3237,41 @@
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
             this.tpConclusion.UseVisualStyleBackColor = true;
+            // 
+            // grbLevantamiento
+            // 
+            this.grbLevantamiento.Controls.Add(this.rbLevantNO);
+            this.grbLevantamiento.Controls.Add(this.rbLevantSI);
+            this.grbLevantamiento.Enabled = false;
+            this.grbLevantamiento.Location = new System.Drawing.Point(585, 3);
+            this.grbLevantamiento.Name = "grbLevantamiento";
+            this.grbLevantamiento.Size = new System.Drawing.Size(228, 35);
+            this.grbLevantamiento.TabIndex = 108;
+            this.grbLevantamiento.TabStop = false;
+            this.grbLevantamiento.Text = "¿Necesita levantamiento de Observación?";
+            this.grbLevantamiento.Visible = false;
+            // 
+            // rbLevantNO
+            // 
+            this.rbLevantNO.AutoSize = true;
+            this.rbLevantNO.Checked = true;
+            this.rbLevantNO.Location = new System.Drawing.Point(120, 12);
+            this.rbLevantNO.Name = "rbLevantNO";
+            this.rbLevantNO.Size = new System.Drawing.Size(39, 17);
+            this.rbLevantNO.TabIndex = 0;
+            this.rbLevantNO.TabStop = true;
+            this.rbLevantNO.Text = "NO";
+            this.rbLevantNO.UseVisualStyleBackColor = true;
+            // 
+            // rbLevantSI
+            // 
+            this.rbLevantSI.AutoSize = true;
+            this.rbLevantSI.Location = new System.Drawing.Point(56, 12);
+            this.rbLevantSI.Name = "rbLevantSI";
+            this.rbLevantSI.Size = new System.Drawing.Size(33, 17);
+            this.rbLevantSI.TabIndex = 0;
+            this.rbLevantSI.Text = "SI";
+            this.rbLevantSI.UseVisualStyleBackColor = true;
             // 
             // checkFirmaYanacocha
             // 
@@ -3367,7 +3407,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(582, 15);
+            this.label34.Location = new System.Drawing.Point(818, 18);
             this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(63, 13);
@@ -3376,11 +3416,11 @@
             // 
             // txtComentarioAptitud
             // 
-            this.txtComentarioAptitud.Location = new System.Drawing.Point(647, 3);
+            this.txtComentarioAptitud.Location = new System.Drawing.Point(884, 3);
             this.txtComentarioAptitud.Multiline = true;
             this.txtComentarioAptitud.Name = "txtComentarioAptitud";
             this.txtComentarioAptitud.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtComentarioAptitud.Size = new System.Drawing.Size(601, 36);
+            this.txtComentarioAptitud.Size = new System.Drawing.Size(434, 36);
             this.txtComentarioAptitud.TabIndex = 98;
             this.txtComentarioAptitud.Text = "NINGUNA";
             // 
@@ -7643,6 +7683,8 @@
             this.cmTotalDx.ResumeLayout(false);
             this.tpConclusion.ResumeLayout(false);
             this.tpConclusion.PerformLayout();
+            this.grbLevantamiento.ResumeLayout(false);
+            this.grbLevantamiento.PerformLayout();
             this.gbRecomendaciones_Conclusiones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).EndInit();
             this.gbRestricciones_Conclusiones.ResumeLayout(false);
@@ -8221,5 +8263,8 @@
         private System.Windows.Forms.TextBox txtFechaUltimoPAP;
         private System.Windows.Forms.CheckBox checkFirmaYanacocha;
         private Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
+        private System.Windows.Forms.GroupBox grbLevantamiento;
+        private System.Windows.Forms.RadioButton rbLevantSI;
+        private System.Windows.Forms.RadioButton rbLevantNO;
     }
 }

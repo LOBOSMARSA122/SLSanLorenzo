@@ -41,101 +41,101 @@ namespace Sigesoft.Node.WinClient.UI
             //    this.Close();
             //}
             InitializeComponent();
-            #region Setear Usuarios
-                 #region Obtener ip Local
-                        string localIP = "";
-                        string hostName = Dns.GetHostName();
-                        localIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
-                #endregion
-                        #region Setear ip
-                        if (localIP == "192.168.1.179")
-                        {
-                            txtUserName.Text = "sa";
-                            txtPassword.Text = "Alph@2536";
-                        } 
-                        else if (localIP == "192.168.1.71")
-                        {
-                            txtUserName.Text = "sa";
-                            txtPassword.Text = "Alph@2536";
-                        }
-                        else if (localIP == "192.168.1.106")
-                        {
-                            txtUserName.Text = "ruth.quispe";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.184")
-                        {
-                            txtUserName.Text = "cesar.medina";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.52")
-                        {
-                            txtUserName.Text = "cinthya.vasquez";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.81")
-                        {
-                            txtUserName.Text = "mmedina";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.80")
-                        {
-                            txtUserName.Text = "rocio.medina";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.117")
-                        {
-                            txtUserName.Text = "vladimir.figueroa";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.182")
-                        {
-                            txtUserName.Text = "roberto.perez";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.120")
-                        {
-                            txtUserName.Text = "roger.narro";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.73")
-                        {
-                            txtUserName.Text = "sali.palacios";
-                            txtPassword.Text = "";
-                        }
-                        else if (localIP == "192.168.1.69")
-                        {
-                            txtUserName.Text = "sa";
-                            txtPassword.Text = "Alph@2536";
-                        }
-                        else if (localIP == "25.4.135.45")
-                        {
-                            txtUserName.Text = "sa";
-                            txtPassword.Text = "Alph@2536";
-                        }
-                        else if (localIP == "192.168.0.26")
-                        {
-                            txtUserName.Text = "sa";
-                            txtPassword.Text = "Alph@2536";
-                        }
-                        else
-                        {
-                            if (bool.Parse(Common.Utils.GetApplicationConfigValue("Developer")))
-                            {
-                                txtUserName.Text = "sa";
-                                txtPassword.Text = "Alph@2536";
-                            }
-                            else
-                            {
-                                txtUserName.Text = "";
-                                txtPassword.Text = "";
-                            }
+            //#region Setear Usuarios
+            //     #region Obtener ip Local
+            //            string localIP = "";
+            //            string hostName = Dns.GetHostName();
+            //            localIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+            //    #endregion
+            //            #region Setear ip
+            //            if (localIP == "192.168.1.179")
+            //            {
+            //                txtUserName.Text = "sa";
+            //                txtPassword.Text = "Alph@2536";
+            //            } 
+            //            else if (localIP == "192.168.1.71")
+            //            {
+            //                txtUserName.Text = "sa";
+            //                txtPassword.Text = "Alph@2536";
+            //            }
+            //            else if (localIP == "192.168.1.106")
+            //            {
+            //                txtUserName.Text = "ruth.quispe";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.184")
+            //            {
+            //                txtUserName.Text = "cesar.medina";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.52")
+            //            {
+            //                txtUserName.Text = "cinthya.vasquez";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.81")
+            //            {
+            //                txtUserName.Text = "mmedina";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.80")
+            //            {
+            //                txtUserName.Text = "rocio.medina";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.117")
+            //            {
+            //                txtUserName.Text = "vladimir.figueroa";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.182")
+            //            {
+            //                txtUserName.Text = "roberto.perez";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.120")
+            //            {
+            //                txtUserName.Text = "roger.narro";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.73")
+            //            {
+            //                txtUserName.Text = "sali.palacios";
+            //                txtPassword.Text = "";
+            //            }
+            //            else if (localIP == "192.168.1.69")
+            //            {
+            //                txtUserName.Text = "sa";
+            //                txtPassword.Text = "Alph@2536";
+            //            }
+            //            else if (localIP == "25.4.135.45")
+            //            {
+            //                txtUserName.Text = "sa";
+            //                txtPassword.Text = "Alph@2536";
+            //            }
+            //            else if (localIP == "192.168.0.26")
+            //            {
+            //                txtUserName.Text = "sa";
+            //                txtPassword.Text = "Alph@2536";
+            //            }
+            //            else
+            //            {
+            //                if (bool.Parse(Common.Utils.GetApplicationConfigValue("Developer")))
+            //                {
+            //                    txtUserName.Text = "sa";
+            //                    txtPassword.Text = "Alph@2536";
+            //                }
+            //                else
+            //                {
+            //                    txtUserName.Text = "";
+            //                    txtPassword.Text = "";
+            //                }
                             
-                        }
+            //            }
 
-                        #endregion
+            //            #endregion
 
-            #endregion
+            //#endregion
 
            
         }

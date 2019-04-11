@@ -16,9 +16,8 @@ namespace Sigesoft.Node.WinClient.BLL
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var query = from A in dbContext.calendar
+                var query = from A in dbContext.service
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                            join C in dbContext.service on A.v_ServiceId equals C.v_ServiceId
                             // Ubigeo de la persona *******************************************************
                             join dep in dbContext.datahierarchy on new { a = B.i_DepartmentId.Value, b = groupUbigeo }
                                                  equals new { a = dep.i_ItemId, b = dep.i_GroupId } into dep_join
@@ -39,9 +38,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                 TipoDocumento = B.i_DocTypeId.Value,
                                 Dni = B.v_DocNumber,
                                 Sexo = B.i_SexTypeId.Value,
-                                PrimerApellido = B.v_FirstName,
-                                SegundoApellido = B.v_FirstLastName,
-                                Nombre =B.v_SecondLastName,
+                                PrimerApellido = B.v_FirstLastName,
+                                SegundoApellido = B.v_SecondLastName,
+                                Nombre = B.v_FirstName,
                                 EstadoCivil = B.i_MaritalStatusId.Value,
                                 FechaNacimientoSigesoft = B.d_Birthdate.Value,
                                 ProvinciaNacimiento = prov.v_Value1,
@@ -54,10 +53,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                 IDCentro = "CX35",
                                 IDExamen = serviceId,
                                 IDActuacion = "",
-                                TipoExamen = C.i_MasterServiceId.Value,
+                                TipoExamen = A.i_MasterServiceId.Value,
                                 IDEstado = B.i_IsDeleted,
-                                FechaRegistro = C.d_ServiceDate.Value,
-                                FechaUltimaRegla = C.v_FechaUltimoPAP
+                                FechaRegistro = A.d_ServiceDate.Value,
+                                FechaUltimaRegla = A.v_FechaUltimoPAP
                             };
 
 

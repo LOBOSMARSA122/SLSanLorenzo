@@ -761,5 +761,11 @@ namespace Sigesoft.Common
         ResultadoEvaluacion_Motivacion = 259,
         ResultadoEvaluacion_NIVEL_EMPO = 260,
     }
+
+    public enum EstadoEnvioNatclar
+    {
+        Ok = 1,
+        Fail = 2
+    }
 }
 

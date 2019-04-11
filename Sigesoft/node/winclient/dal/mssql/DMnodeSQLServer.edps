@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityDeveloper Version="5.7.436.0">
   <ModelSettings xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" AppConnectionStringName="SigesoftConnectionString" ConnectionStringInAppConfig="True" RegenareteConnectionStringInAppConfig="True" TargetFramework="Net40" DetectTPTInheritance="False" EntityFrameworkVersion="Version4" IncludeForeignKeysInModel="true" DetectFunctionBasedColumnDefault="false">
-    <Connection ConnectionString="Data Source=.\OMEGANET_2019;Initial Catalog=SanLorenzo1102;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=123456" Provider="System.Data.SqlClient" />
+    <Connection ConnectionString="Data Source=192.168.0.104\OMEGANET_2019;Initial Catalog=SanLorenzo1102;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=123456" Provider="System.Data.SqlClient" />
     <Generation />
     <DatabaseFirstNamingRules>
       <EntitySet PluralizationName="Unchanged" />
@@ -15,9 +15,7 @@
         <Column RemoveUnderscores="False" RemoveInvalidCharacters="True" CodeCase="Unchanged" AddPrefix="" AddSuffix="" RemovePrefixes="" RemoveSuffixes="" PluralizationName="Unchanged" />
       </ModelFirstNamingRules>
     </ModelFirst>
-    <Diagrams>
-      <Diagram Name="Diagram1" DefaultDiagram="True" />
-    </Diagrams>
+    <Diagrams />
     <Templates>
       <Template Name="EntityObject" Description="Use this template to generate a strongly-typed ObjectContext class and persistence-aware classes." Enabled="True" PredefinedTemplateName="Entity C#">
         <ed:Property Name="ValidationFramework" Type="EntityDeveloper.TemplateEngine.ValidationFramework, EntityDeveloper.Common, Version=5.7.436.0, Culture=neutral, PublicKeyToken=09af7300eec23701">

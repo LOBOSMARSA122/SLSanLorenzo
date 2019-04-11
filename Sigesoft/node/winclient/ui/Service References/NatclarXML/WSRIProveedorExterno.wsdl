@@ -19,11 +19,23 @@
   <wsdl:message name="IWSRIProveedorExterno_EnviarDatosExamen_OutputMessage">
     <wsdl:part name="parameters" element="tns:EnviarDatosExamenResponse" />
   </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosDocumentoseImagenes" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosDocumentoseImagenesResponse" />
+  </wsdl:message>
   <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAlergias_InputMessage">
     <wsdl:part name="parameters" element="tns:EnviarDatosAlergias" />
   </wsdl:message>
   <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAlergias_OutputMessage">
     <wsdl:part name="parameters" element="tns:EnviarDatosAlergiasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAnalitica_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosAnalitica" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAnalitica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosAnaliticaResponse" />
   </wsdl:message>
   <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAPMedicos_InputMessage">
     <wsdl:part name="parameters" element="tns:EnviarDatosAPMedicos" />
@@ -37,6 +49,96 @@
   <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAPQuirurgicos_OutputMessage">
     <wsdl:part name="parameters" element="tns:EnviarDatosAPQuirurgicosResponse" />
   </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAudiometria_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosAudiometria" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosAudiometria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosAudiometriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosConstantes_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosConstantes" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosConstantes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosConstantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosEpisodio_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosEpisodio" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosEpisodio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosEpisodioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosExamenFisico_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosExamenFisico" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosExamenFisico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosExamenFisicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosExamenOcularVB_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosExamenOcularVB" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosExamenOcularVB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosExamenOcularVBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHabitosToxicos_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHabitosToxicos" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHabitosToxicos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHabitosToxicosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistoriaFamiliar_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistoriaFamiliar" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistoriaFamiliar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistoriaFamiliarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistorialFisiologico_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistorialFisiologico" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistorialFisiologico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistorialFisiologicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistoriaLaboral_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistoriaLaboral" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistoriaLaboral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistoriaLaboralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistoriaLaboralRI_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistoriaLaboralRI" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosHistoriaLaboralRI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosHistoriaLaboralRIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosMedicaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosMedicaciones" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosMedicaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosMedicacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosVacunas_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosVacunas" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosVacunas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosVacunasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosVigilanciaSalud_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosVigilanciaSalud" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosVigilanciaSalud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosVigilanciaSaludResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosLecturaOIT_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosLecturaOIT" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosLecturaOIT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosLecturaOITResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosLecturaPsicologia_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosLecturaPsicologia" />
+  </wsdl:message>
+  <wsdl:message name="IWSRIProveedorExterno_EnviarDatosLecturaPsicologia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarDatosLecturaPsicologiaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWSRIProveedorExterno">
     <wsdl:operation name="EnviarDatosPaciente">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosPaciente" message="tns:IWSRIProveedorExterno_EnviarDatosPaciente_InputMessage" />
@@ -46,9 +148,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamen" message="tns:IWSRIProveedorExterno_EnviarDatosExamen_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenResponse" message="tns:IWSRIProveedorExterno_EnviarDatosExamen_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EnviarDatosDocumentoseImagenes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenes" message="tns:IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenesResponse" message="tns:IWSRIProveedorExterno_EnviarDatosDocumentoseImagenes_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EnviarDatosAlergias">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergias" message="tns:IWSRIProveedorExterno_EnviarDatosAlergias_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergiasResponse" message="tns:IWSRIProveedorExterno_EnviarDatosAlergias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosAnalitica">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAnalitica" message="tns:IWSRIProveedorExterno_EnviarDatosAnalitica_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAnaliticaResponse" message="tns:IWSRIProveedorExterno_EnviarDatosAnalitica_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EnviarDatosAPMedicos">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPMedicos" message="tns:IWSRIProveedorExterno_EnviarDatosAPMedicos_InputMessage" />
@@ -57,6 +167,66 @@
     <wsdl:operation name="EnviarDatosAPQuirurgicos">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPQuirurgicos" message="tns:IWSRIProveedorExterno_EnviarDatosAPQuirurgicos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPQuirurgicosResponse" message="tns:IWSRIProveedorExterno_EnviarDatosAPQuirurgicos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosAudiometria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAudiometria" message="tns:IWSRIProveedorExterno_EnviarDatosAudiometria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAudiometriaResponse" message="tns:IWSRIProveedorExterno_EnviarDatosAudiometria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosConstantes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosConstantes" message="tns:IWSRIProveedorExterno_EnviarDatosConstantes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosConstantesResponse" message="tns:IWSRIProveedorExterno_EnviarDatosConstantes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosEpisodio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosEpisodio" message="tns:IWSRIProveedorExterno_EnviarDatosEpisodio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosEpisodioResponse" message="tns:IWSRIProveedorExterno_EnviarDatosEpisodio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosExamenFisico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenFisico" message="tns:IWSRIProveedorExterno_EnviarDatosExamenFisico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenFisicoResponse" message="tns:IWSRIProveedorExterno_EnviarDatosExamenFisico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosExamenOcularVB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenOcularVB" message="tns:IWSRIProveedorExterno_EnviarDatosExamenOcularVB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenOcularVBResponse" message="tns:IWSRIProveedorExterno_EnviarDatosExamenOcularVB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHabitosToxicos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHabitosToxicos" message="tns:IWSRIProveedorExterno_EnviarDatosHabitosToxicos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHabitosToxicosResponse" message="tns:IWSRIProveedorExterno_EnviarDatosHabitosToxicos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistoriaFamiliar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaFamiliar" message="tns:IWSRIProveedorExterno_EnviarDatosHistoriaFamiliar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaFamiliarResponse" message="tns:IWSRIProveedorExterno_EnviarDatosHistoriaFamiliar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistorialFisiologico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistorialFisiologico" message="tns:IWSRIProveedorExterno_EnviarDatosHistorialFisiologico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistorialFisiologicoResponse" message="tns:IWSRIProveedorExterno_EnviarDatosHistorialFisiologico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistoriaLaboral">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboral" message="tns:IWSRIProveedorExterno_EnviarDatosHistoriaLaboral_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboralResponse" message="tns:IWSRIProveedorExterno_EnviarDatosHistoriaLaboral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistoriaLaboralRI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboralRI" message="tns:IWSRIProveedorExterno_EnviarDatosHistoriaLaboralRI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboralRIResponse" message="tns:IWSRIProveedorExterno_EnviarDatosHistoriaLaboralRI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosMedicaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosMedicaciones" message="tns:IWSRIProveedorExterno_EnviarDatosMedicaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosMedicacionesResponse" message="tns:IWSRIProveedorExterno_EnviarDatosMedicaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosVacunas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVacunas" message="tns:IWSRIProveedorExterno_EnviarDatosVacunas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVacunasResponse" message="tns:IWSRIProveedorExterno_EnviarDatosVacunas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosVigilanciaSalud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVigilanciaSalud" message="tns:IWSRIProveedorExterno_EnviarDatosVigilanciaSalud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVigilanciaSaludResponse" message="tns:IWSRIProveedorExterno_EnviarDatosVigilanciaSalud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosLecturaOIT">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaOIT" message="tns:IWSRIProveedorExterno_EnviarDatosLecturaOIT_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaOITResponse" message="tns:IWSRIProveedorExterno_EnviarDatosLecturaOIT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosLecturaPsicologia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaPsicologia" message="tns:IWSRIProveedorExterno_EnviarDatosLecturaPsicologia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaPsicologiaResponse" message="tns:IWSRIProveedorExterno_EnviarDatosLecturaPsicologia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWSRIProveedorExterno" type="tns:IWSRIProveedorExterno">
@@ -79,8 +249,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EnviarDatosDocumentoseImagenes">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosDocumentoseImagenes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="EnviarDatosAlergias">
       <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAlergias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosAnalitica">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAnalitica" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -99,6 +287,141 @@
     </wsdl:operation>
     <wsdl:operation name="EnviarDatosAPQuirurgicos">
       <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAPQuirurgicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosAudiometria">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosAudiometria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosConstantes">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosConstantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosEpisodio">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosEpisodio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosExamenFisico">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenFisico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosExamenOcularVB">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosExamenOcularVB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHabitosToxicos">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHabitosToxicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistoriaFamiliar">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaFamiliar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistorialFisiologico">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistorialFisiologico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistoriaLaboral">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosHistoriaLaboralRI">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosHistoriaLaboralRI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosMedicaciones">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosMedicaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosVacunas">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVacunas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosVigilanciaSalud">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosVigilanciaSalud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosLecturaOIT">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaOIT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarDatosLecturaPsicologia">
+      <soap:operation soapAction="http://tempuri.org/IWSRIProveedorExterno/EnviarDatosLecturaPsicologia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
