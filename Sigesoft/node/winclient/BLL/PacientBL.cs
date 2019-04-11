@@ -10103,6 +10103,184 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public List<PacientList> GetPacientsPagedAndFiltered_Apellidos(ref OperationResult objOperationResult, int pintPageIndex, int pintResultsPerPage, string pstrFilterExpression, string apPat, string apMat)
+        {
+            try
+            {
+                int intId = -1;
+                bool FindById = int.TryParse(pstrFilterExpression, out intId);
+                var Id = intId.ToString();
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from A in dbContext.pacient
+                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                             from J2 in J2_join.DefaultIfEmpty()
+                             where  (B.v_FirstLastName.Contains(apPat) && B.v_SecondLastName.Contains(apMat)) && B.i_IsDeleted == 0
+                             select new PacientList
+                             {
+                                 v_PersonId = A.v_PersonId,
+                                 v_FirstName = B.v_FirstName,
+                                 v_FirstLastName = B.v_FirstLastName,
+                                 v_SecondLastName = B.v_SecondLastName,
+                                 v_AdressLocation = B.v_AdressLocation,
+                                 v_TelephoneNumber = B.v_TelephoneNumber,
+                                 v_Mail = B.v_Mail,
+                                 v_CreationUser = J1.v_UserName,
+                                 v_UpdateUser = J2.v_UserName,
+                                 d_CreationDate = A.d_InsertDate,
+                                 d_UpdateDate = A.d_UpdateDate,
+                                 i_DepartmentId = B.i_DepartmentId,
+                                 i_ProvinceId = B.i_ProvinceId,
+                                 i_DistrictId = B.i_DistrictId,
+                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
+                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
+                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
+                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
+                                 i_NumberDependentChildren = B.i_NumberDependentChildren
+
+                             }).Concat
+                            (from A in dbContext.pacient
+                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                             from J2 in J2_join.DefaultIfEmpty()
+                             where B.v_DocNumber == Id && B.i_IsDeleted == 0
+                             select new PacientList
+                             {
+                                 v_PersonId = A.v_PersonId,
+                                 v_FirstName = B.v_FirstName,
+                                 v_FirstLastName = B.v_FirstLastName,
+                                 v_SecondLastName = B.v_SecondLastName,
+                                 v_AdressLocation = B.v_AdressLocation,
+                                 v_TelephoneNumber = B.v_TelephoneNumber,
+                                 v_Mail = B.v_Mail,
+                                 v_CreationUser = J1.v_UserName,
+                                 v_UpdateUser = J2.v_UserName,
+                                 d_CreationDate = A.d_InsertDate,
+                                 d_UpdateDate = A.d_UpdateDate,
+                                 i_DepartmentId = B.i_DepartmentId,
+                                 i_ProvinceId = B.i_ProvinceId,
+                                 i_DistrictId = B.i_DistrictId,
+                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
+                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
+                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
+                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
+                                 i_NumberDependentChildren = B.i_NumberDependentChildren
+                             }).OrderBy("v_FirstLastName").Take(pintResultsPerPage);
+
+                List<PacientList> objData = query.ToList();
+                objOperationResult.Success = 1;
+                return objData;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public List<PacientList> GetPacientsPagedAndFiltered_Apellidos_Nombre(ref OperationResult objOperationResult, int pintPageIndex, int pintResultsPerPage, string pstrFilterExpression, string apPat, string apMat, string nombre)
+        {
+            try
+            {
+                int intId = -1;
+                bool FindById = int.TryParse(pstrFilterExpression, out intId);
+                var Id = intId.ToString();
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from A in dbContext.pacient
+                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                             from J2 in J2_join.DefaultIfEmpty()
+                             where (B.v_FirstLastName.Contains(apPat) && B.v_SecondLastName.Contains(apMat) && B.v_FirstName.Contains(nombre)) && B.i_IsDeleted == 0
+                             select new PacientList
+                             {
+                                 v_PersonId = A.v_PersonId,
+                                 v_FirstName = B.v_FirstName,
+                                 v_FirstLastName = B.v_FirstLastName,
+                                 v_SecondLastName = B.v_SecondLastName,
+                                 v_AdressLocation = B.v_AdressLocation,
+                                 v_TelephoneNumber = B.v_TelephoneNumber,
+                                 v_Mail = B.v_Mail,
+                                 v_CreationUser = J1.v_UserName,
+                                 v_UpdateUser = J2.v_UserName,
+                                 d_CreationDate = A.d_InsertDate,
+                                 d_UpdateDate = A.d_UpdateDate,
+                                 i_DepartmentId = B.i_DepartmentId,
+                                 i_ProvinceId = B.i_ProvinceId,
+                                 i_DistrictId = B.i_DistrictId,
+                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
+                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
+                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
+                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
+                                 i_NumberDependentChildren = B.i_NumberDependentChildren
+
+                             }).Concat
+                            (from A in dbContext.pacient
+                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                             from J2 in J2_join.DefaultIfEmpty()
+                             where B.v_DocNumber == Id && B.i_IsDeleted == 0
+                             select new PacientList
+                             {
+                                 v_PersonId = A.v_PersonId,
+                                 v_FirstName = B.v_FirstName,
+                                 v_FirstLastName = B.v_FirstLastName,
+                                 v_SecondLastName = B.v_SecondLastName,
+                                 v_AdressLocation = B.v_AdressLocation,
+                                 v_TelephoneNumber = B.v_TelephoneNumber,
+                                 v_Mail = B.v_Mail,
+                                 v_CreationUser = J1.v_UserName,
+                                 v_UpdateUser = J2.v_UserName,
+                                 d_CreationDate = A.d_InsertDate,
+                                 d_UpdateDate = A.d_UpdateDate,
+                                 i_DepartmentId = B.i_DepartmentId,
+                                 i_ProvinceId = B.i_ProvinceId,
+                                 i_DistrictId = B.i_DistrictId,
+                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
+                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
+                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
+                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
+                                 i_NumberDependentChildren = B.i_NumberDependentChildren
+                             }).OrderBy("v_FirstLastName").Take(pintResultsPerPage);
+
+                List<PacientList> objData = query.ToList();
+                objOperationResult.Success = 1;
+                return objData;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
     }
 }
 

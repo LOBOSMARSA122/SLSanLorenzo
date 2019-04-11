@@ -302,25 +302,25 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
                     var filesNameToMergeOrder = new List<string>();
                     var Reportes = GetChekedItems(chklConsolidadoReportes);
-                    //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-                    //{
-                    //    System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
-                    //        Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
-
-                    //    foreach (var item in _ComponentsIdsOrdenados)
-                    //    {
-                    //        var path = _ruta + _serviceId + "-" + item + ".pdf";
-                    //        if (_filesNameToMerge.Find(p => p == path) != null)
-                    //        {
-                    //            filesNameToMergeOrder.Add(path);
-                    //        }
-                    //    }
-                    //};
-
                     using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                     {
-                        CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
+                        System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
+                            Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
+
+                        foreach (var item in _ComponentsIdsOrdenados)
+                        {
+                            var path = _ruta + _serviceId + "-" + item + ".pdf";
+                            if (_filesNameToMerge.Find(p => p == path) != null)
+                            {
+                                filesNameToMergeOrder.Add(path);
+                            }
+                        }
                     };
+
+                    //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                    //{
+                    //    CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
+                    //};
 
                     //var x = filesNameToMergeOrder.ToList();
                     var x = _filesNameToMerge.ToList();
