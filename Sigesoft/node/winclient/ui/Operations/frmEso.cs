@@ -2938,6 +2938,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
                 }  
 	        }
+           else
+           {
+               MessageBox.Show("Ya se guardó el examen. \nPara editar: vuelva a ingresar.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+           }
         }
 
         private void SaveExamBySelectedTab(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
@@ -9907,7 +9911,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnGuardarExamen_MouseClick(object sender, MouseEventArgs e)
         {
-            toolTip1.Show("\n Ya se guardo el examen. \n Para editar: vuelva a ingresar.",btnGuardarExamen, 1500);
+            if (cbEstadoComponente.Enabled == false)
+            {
+               
+            }
+            
+            //toolTip1.Show("\n Ya se guardo el examen. \n Para editar: vuelva a ingresar.",btnGuardarExamen, 1500);
         }
 
     }
