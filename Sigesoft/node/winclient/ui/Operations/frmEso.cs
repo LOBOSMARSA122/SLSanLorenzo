@@ -9907,7 +9907,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnGuardarExamen_MouseClick(object sender, MouseEventArgs e)
         {
-            toolTip1.Show("\n Ya se guardo el examen",btnGuardarExamen, 1500);
+            toolTip1.Show("\n Ya se guardo el examen. \n Para editar: vuelva a ingresar.",btnGuardarExamen, 1500);
         }
 
     }
