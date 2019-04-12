@@ -36,6 +36,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 {
     public partial class frmEso : Form
     {
+        private string[] RecordExam = new string[100];
+        private int i = 0;
        
 
         public class RunWorkerAsyncPackage
@@ -46,6 +48,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             public int? i_SystemUserSuplantadorId { get; set; }
             public int? i_SystemUserEspecialistaId { get; set; }
             
+
         }
 
         public class ValidacionAMC
@@ -2625,6 +2628,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 LoadDataBySelectedComponent(_componentId);
             }
 
+            for (int j = 0; j < i; j++)
+			{
+                if (_componentId == RecordExam[j].ToString())
+                {
+                    cbEstadoComponente.Enabled = false;
+                    break;
+                }
+                else
+	            {
+                    cbEstadoComponente.Enabled = true;
+	            }
+			}
         }
 
         private void LoadDataBySelectedComponent(string pstrComponentId)
@@ -2909,21 +2924,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnGuardarExamen_Click(object sender, EventArgs e)
         {
-            _chkApprovedEnabled = chkApproved.Enabled;
+           if (cbEstadoComponente.Enabled == true)
+	        {
+                _chkApprovedEnabled = chkApproved.Enabled;
+                var scope = new TransactionScope(
+                    TransactionScopeOption.RequiresNew, 
+                    new TransactionOptions(){
 
-            var scope = new TransactionScope(
-                TransactionScopeOption.RequiresNew, 
-                            new TransactionOptions(){
-
-                                IsolationLevel = System.Transactions.IsolationLevel.Snapshot
-                        });
-
-            using (scope)
-            {
-                SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
-            }
-
-           
+                        IsolationLevel = System.Transactions.IsolationLevel.Snapshot
+                    });
+                using (scope)
+                {
+                    SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+                }  
+	        }
         }
 
         private void SaveExamBySelectedTab(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
@@ -3025,6 +3039,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     //MessageBox.Show("Por favor corrija la información ingresada. Vea los indicadores de error.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
+                RecordExam[i] = _componentId;
+                i++;
+                cbEstadoComponente.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -9886,6 +9903,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         {
             textQuienHepatitisB.Enabled = false;
             textQuienHepatitisB.Text = "";
+        }
+
+        private void btnGuardarExamen_MouseClick(object sender, MouseEventArgs e)
+        {
+            toolTip1.Show("\n Ya se guardo el examen",btnGuardarExamen, 1500);
         }
 
     }
