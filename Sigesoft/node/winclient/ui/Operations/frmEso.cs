@@ -37,7 +37,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
     public partial class frmEso : Form
     {
         private string[] RecordExam = new string[100];
-        private int i = 0;
+        private int m = 0;
        
 
         public class RunWorkerAsyncPackage
@@ -2628,7 +2628,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 LoadDataBySelectedComponent(_componentId);
             }
 
-            for (int j = 0; j < i; j++)
+            for (int j = 0; j < m; j++)
 			{
                 if (_componentId == RecordExam[j].ToString())
                 {
@@ -3043,9 +3043,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     //MessageBox.Show("Por favor corrija la información ingresada. Vea los indicadores de error.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                RecordExam[i] = _componentId;
-                i++;
-                cbEstadoComponente.Enabled = false;
+               
             }
             catch (Exception ex)
             {
@@ -3144,7 +3142,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                                                     _personId,
                                                                     _serviceComponentId);
                     }
-
+                    RecordExam[m] = _componentId;
+                    m++;
+                    cbEstadoComponente.Enabled = false;
                 }
                 catch (Exception ex)
                 {
