@@ -3144,7 +3144,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     }
                     RecordExam[m] = _componentId;
                     m++;
-                    cbEstadoComponente.Enabled = false;
+                    //cbEstadoComponente.Enabled = false;
                 }
                 catch (Exception ex)
                 {
