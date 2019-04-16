@@ -3142,9 +3142,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                                                     _personId,
                                                                     _serviceComponentId);
                     }
-                    RecordExam[m] = _componentId;
-                    m++;
-                    cbEstadoComponente.Enabled = false;
+                    //RecordExam[m] = _componentId;
+                    //m++;
+                    //cbEstadoComponente.Enabled = false;
                 }
                 catch (Exception ex)
                 {
