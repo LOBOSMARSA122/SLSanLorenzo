@@ -302,25 +302,25 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
                     var filesNameToMergeOrder = new List<string>();
                     var Reportes = GetChekedItems(chklConsolidadoReportes);
-                    //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-                    //{
-                    //    System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
-                    //        Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
-
-                    //    foreach (var item in _ComponentsIdsOrdenados)
-                    //    {
-                    //        var path = _ruta + _serviceId + "-" + item + ".pdf";
-                    //        if (_filesNameToMerge.Find(p => p == path) != null)
-                    //        {
-                    //            filesNameToMergeOrder.Add(path);
-                    //        }
-                    //    }
-                    //};
-
                     using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                     {
-                        CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
+                        System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
+                            Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
+
+                        foreach (var item in _ComponentsIdsOrdenados)
+                        {
+                            var path = _ruta + _serviceId + "-" + item + ".pdf";
+                            if (_filesNameToMerge.Find(p => p == path) != null)
+                            {
+                                filesNameToMergeOrder.Add(path);
+                            }
+                        }
                     };
+
+                    //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                    //{
+                    //    CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
+                    //};
 
                     //var x = filesNameToMergeOrder.ToList();
                     var x = _filesNameToMerge.ToList();
@@ -3375,6 +3375,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     Generate_Informe_Ecografico_Obstetrico_Pelvico(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.IE_OBSTETRICO_PELVICO_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
                     break;
+                case Constants.AUTORIZACION_REALIZACION_EXAMEN_MEDICO_LIBERACION_INFORMACION:
+                    GenerateAutorizacion_Realizacion_Ex_Lumina(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.AUTORIZACION_REALIZACION_EXAMEN_MEDICO_LIBERACION_INFORMACION)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
+                    break;
                 ///GenerateInforme_Resultados_San_Martinm
                 case Constants.INFORME_EXAMENES_ESPECIALES:
                     GenerateExamenesEspecialesReport(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.INFORME_EXAMENES_ESPECIALES)));
@@ -4068,6 +4072,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             //var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
             InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(filiationData, pathFile, datosP, MedicalCenter);
+        }
+        private void GenerateAutorizacion_Realizacion_Ex_Lumina(string pathFile)
+        {
+            //No usa var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var filiationData = _pacientBL.GetPacientReportEPS_FirmaHuella(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
+
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_ExoLab();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+
+            Autorizacion_Realizacion_Ex_Lumina.CreateAutorizacion_Realizacion_Ex_Lumina(pathFile, datosP, MedicalCenter, filiationData);
         }
         private void GenerateInformeResultadosAutorizacionCoimolache(string pathFile)
         {

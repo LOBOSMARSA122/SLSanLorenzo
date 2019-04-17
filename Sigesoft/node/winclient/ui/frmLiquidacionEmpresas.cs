@@ -356,7 +356,6 @@ namespace Sigesoft.Node.WinClient.UI
                     this.Enabled = true;
                 }
             }
-            
             else if (rbLiqPendFacturar.Checked)
             {
                 using (new LoadingClass.PleaseWait(this.Location, "Generando..."))

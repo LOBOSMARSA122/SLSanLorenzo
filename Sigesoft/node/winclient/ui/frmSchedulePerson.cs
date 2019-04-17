@@ -13,6 +13,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using Infragistics.Win;
 using ScrapperReniecSunat;
+using System.Transactions;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -692,175 +693,187 @@ namespace Sigesoft.Node.WinClient.UI
         {
             try
             {
-                OperationResult objOperationResult = new OperationResult();
-                CalendarBL _objCalendarBL = new CalendarBL();
-                calendarDto objCalendarDto = new calendarDto();
+                
+                    OperationResult objOperationResult = new OperationResult();
+                    CalendarBL _objCalendarBL = new CalendarBL();
+                    calendarDto objCalendarDto = new calendarDto();
 
-                componentDto objComponentDto = new componentDto();
-                MedicalExamBL objComponentBL = new MedicalExamBL();
+                    componentDto objComponentDto = new componentDto();
+                    MedicalExamBL objComponentBL = new MedicalExamBL();
 
-                ServiceBL _ObjServiceBL = new ServiceBL();
-                serviceDto objServiceDto = new serviceDto();
-                servicecomponentDto objServiceComponentDto = new servicecomponentDto();
+                    ServiceBL _ObjServiceBL = new ServiceBL();
+                    serviceDto objServiceDto = new serviceDto();
+                    servicecomponentDto objServiceComponentDto = new servicecomponentDto();
 
-                ProtocolBL _objProtocolBL = new ProtocolBL();
-                List<ProtocolComponentList> objProtocolComponentList = new List<ProtocolComponentList>();
+                    ProtocolBL _objProtocolBL = new ProtocolBL();
+                    List<ProtocolComponentList> objProtocolComponentList = new List<ProtocolComponentList>();
 
-                string NuevoContinuacion;
+                    string NuevoContinuacion;
 
-                string serviceId;
+                    string serviceId;
 
-                if (dtpDateTimeCalendar.Value < DateTime.Now.Date)
-                {
-                    MessageBox.Show("No se permite agendar con una fecha anterior a la actual.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (cboMedicoTratante.SelectedValue.ToString() == "0" && ddlMasterServiceId.SelectedValue.ToString() != "2")
-                {
-                    MessageBox.Show("Por favor seleccione médico tratante.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (uvschedule.Validate(true, false).IsValid)
-                {
-                    if (PacientId == null)
+                    if (dtpDateTimeCalendar.Value < DateTime.Now.Date)
                     {
-                        MessageBox.Show("Por favor seleccione un paciente.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("No se permite agendar con una fecha anterior a la actual.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
-                    if (MessageBox.Show("¿Está seguro de realizar la cita?.", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    if (cboMedicoTratante.SelectedValue.ToString() == "0" && ddlMasterServiceId.SelectedValue.ToString() != "2")
                     {
+                        MessageBox.Show("Por favor seleccione médico tratante.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-
-                    if (ModeAgenda == "New")
+                    if (uvschedule.Validate(true, false).IsValid)
                     {
-                        using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                        if (PacientId == null)
                         {
-                            if (_EntryToMedicalCenter != null)
+                            MessageBox.Show("Por favor seleccione un paciente.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        if (MessageBox.Show("¿Está seguro de realizar la cita?.", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+
+                        if (ModeAgenda == "New")
+                        {
+                            using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
                             {
-                                objCalendarDto.d_EntryTimeCM = _EntryToMedicalCenter;
-                            }
+                                if (_EntryToMedicalCenter != null)
+                                {
+                                    objCalendarDto.d_EntryTimeCM = _EntryToMedicalCenter;
+                                }
 
-                            objCalendarDto.v_PersonId = PacientId;
-                            objCalendarDto.d_DateTimeCalendar = dtpDateTimeCalendar.Value.Date + dtpOnlyTime.Value.TimeOfDay;
-                            objCalendarDto.i_ServiceTypeId = Int32.Parse(ddlServiceTypeId.SelectedValue.ToString());
-                            objCalendarDto.i_CalendarStatusId = Int32.Parse(ddlCalendarStatusId.SelectedValue.ToString());
-                            objCalendarDto.i_ServiceId = Int32.Parse(ddlMasterServiceId.SelectedValue.ToString());
+                                objCalendarDto.v_PersonId = PacientId;
+                                objCalendarDto.d_DateTimeCalendar = dtpDateTimeCalendar.Value.Date + dtpOnlyTime.Value.TimeOfDay;
+                                objCalendarDto.i_ServiceTypeId = Int32.Parse(ddlServiceTypeId.SelectedValue.ToString());
+                                objCalendarDto.i_CalendarStatusId = Int32.Parse(ddlCalendarStatusId.SelectedValue.ToString());
+                                objCalendarDto.i_ServiceId = Int32.Parse(ddlMasterServiceId.SelectedValue.ToString());
 
-                            //if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros).ToString())
-                            //{
-                            //    objCalendarDto.v_ProtocolId = Constants.CONSULTAMEDICA;
-                            //}
-                            //else
-                            //{
+                                //if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros).ToString())
+                                //{
+                                //    objCalendarDto.v_ProtocolId = Constants.CONSULTAMEDICA;
+                                //}
+                                //else
+                                //{
                                 objCalendarDto.v_ProtocolId = _ProtocolId;
-                            //}
+                                //}
 
-                            objCalendarDto.i_NewContinuationId = Int32.Parse(ddlNewContinuationId.SelectedValue.ToString());
-                            objCalendarDto.i_LineStatusId = Int32.Parse(ddlLineStatusId.SelectedValue.ToString());
-                            objCalendarDto.i_IsVipId = Int32.Parse(ddlVipId.SelectedValue.ToString());
-                            objCalendarDto.v_ServiceId = _ServiceId;
+                                objCalendarDto.i_NewContinuationId = Int32.Parse(ddlNewContinuationId.SelectedValue.ToString());
+                                objCalendarDto.i_LineStatusId = Int32.Parse(ddlLineStatusId.SelectedValue.ToString());
+                                objCalendarDto.i_IsVipId = Int32.Parse(ddlVipId.SelectedValue.ToString());
+                                objCalendarDto.v_ServiceId = _ServiceId;
 
-                            if (rbNew.Checked)
+                                if (rbNew.Checked)
+                                {
+                                    NuevoContinuacion = "Nuevo";
+                                }
+                                else
+                                {
+                                    NuevoContinuacion = "Continuacion";
+                                }
+
+                                using (var ts = new TransactionScope())
+                                {
+
+                                    if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
+                                    {
+                                        serviceId = _objCalendarBL.AddShedule_Atx(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion, Int32.Parse(cboMedicoTratante.SelectedValue.ToString()));
+                                    }
+
+                                    
+                                    else
+                                    {
+                                        serviceId = _objCalendarBL.AddShedule(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), _ProtocolId, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion);
+                                    }
+
+
+                                    var oHospitalizacionserviceDto = new hospitalizacionserviceDto();
+
+                                    oHospitalizacionserviceDto.v_HopitalizacionId = _nroHospitalizacion;
+                                    oHospitalizacionserviceDto.v_ServiceId = serviceId;
+
+                                    new HospitalizacionBL().AddHospitalizacionService(ref objOperationResult, oHospitalizacionserviceDto, Globals.ClientSession.GetAsList());
+
+
+                                    ts.Complete();
+                                }
+
+
+                            }
+                        }
+                        else if (ModeAgenda == "Edit")
+                        {
+                            using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
                             {
-                                NuevoContinuacion = "Nuevo";
+                                CalendarBL oCalendarBL = new CalendarBL();
+                                objCalendarDto = oCalendarBL.GetCalendar(ref objOperationResult, _CalendarId);
+
+                                objCalendarDto.v_PersonId = PacientId;
+                                objCalendarDto.d_DateTimeCalendar = dtpDateTimeCalendar.Value;
+                                objCalendarDto.i_ServiceTypeId = Int32.Parse(ddlServiceTypeId.SelectedValue.ToString());
+                                objCalendarDto.i_CalendarStatusId = Int32.Parse(ddlCalendarStatusId.SelectedValue.ToString());
+                                objCalendarDto.i_ServiceId = Int32.Parse(ddlMasterServiceId.SelectedValue.ToString());
+                                objCalendarDto.v_CalendarId = _CalendarId;
+                                objCalendarDto.v_ServiceId = _ServiceId;
+
+                                if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
+                                {
+                                    objCalendarDto.v_ProtocolId = Constants.CONSULTAMEDICA;
+                                }
+                                else
+                                {
+                                    objCalendarDto.v_ProtocolId = _ProtocolId;
+                                }
+
+                                objCalendarDto.i_NewContinuationId = Int32.Parse(ddlNewContinuationId.SelectedValue.ToString());
+                                objCalendarDto.i_LineStatusId = Int32.Parse(ddlLineStatusId.SelectedValue.ToString());
+                                objCalendarDto.i_IsVipId = Int32.Parse(ddlVipId.SelectedValue.ToString());
+
+                                _objCalendarBL.UpdateCalendar(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList());
+                            }
+
+                        }
+                        else if (ModeAgenda == "Reschedule")
+                        {
+                            using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                            {
+                                CalendarBL objCalendarBL = new CalendarBL();
+
+                                ServiceBL objServiceBL = new ServiceBL();
+
+                                if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
+                                {
+                                    objCalendarBL.Reschedule(ref objOperationResult, Globals.ClientSession.GetAsList(), _CalendarId, dtpDateTimeCalendar.Value, Int32.Parse(ddlVipId.SelectedValue.ToString()), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()));
+                                }
+                                else
+                                {
+                                    objCalendarBL.Reschedule(ref objOperationResult, Globals.ClientSession.GetAsList(), _CalendarId, dtpDateTimeCalendar.Value, Int32.Parse(ddlVipId.SelectedValue.ToString()), _ProtocolId, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()));
+                                }
+
+                            }
+                        }
+
+                        //// Analizar el resultado de la operación
+                        if (objOperationResult.Success == 1)  // Operación sin error
+                        {
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+
+                        }
+                        else  // Operación con error
+                        {
+                            if (objOperationResult.ErrorMessage != null)
+                            {
+                                MessageBox.Show(objOperationResult.ErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
                             {
-                                NuevoContinuacion = "Continuacion";
+                                MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                // Se queda en el formulario.
                             }
-
-                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
-                            {
-                                serviceId = _objCalendarBL.AddShedule_Atx(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion, Int32.Parse(cboMedicoTratante.SelectedValue.ToString()));
-                            }
-                            else
-                            {
-                                serviceId = _objCalendarBL.AddShedule(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), _ProtocolId, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion);
-                            }
-
-                            var  oHospitalizacionserviceDto = new hospitalizacionserviceDto();
-
-                            oHospitalizacionserviceDto.v_HopitalizacionId = _nroHospitalizacion;
-                            oHospitalizacionserviceDto.v_ServiceId = serviceId;
-
-                            new HospitalizacionBL().AddHospitalizacionService(ref objOperationResult, oHospitalizacionserviceDto, Globals.ClientSession.GetAsList());
-
                         }
-                    }
-                    else if (ModeAgenda == "Edit")
-                    {
-                        using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
-                        {
-                            CalendarBL oCalendarBL = new CalendarBL();
-                            objCalendarDto = oCalendarBL.GetCalendar(ref objOperationResult, _CalendarId);
-
-                            objCalendarDto.v_PersonId = PacientId;
-                            objCalendarDto.d_DateTimeCalendar = dtpDateTimeCalendar.Value;
-                            objCalendarDto.i_ServiceTypeId = Int32.Parse(ddlServiceTypeId.SelectedValue.ToString());
-                            objCalendarDto.i_CalendarStatusId = Int32.Parse(ddlCalendarStatusId.SelectedValue.ToString());
-                            objCalendarDto.i_ServiceId = Int32.Parse(ddlMasterServiceId.SelectedValue.ToString());
-                            objCalendarDto.v_CalendarId = _CalendarId;
-                            objCalendarDto.v_ServiceId = _ServiceId;
-
-                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
-                            {
-                                objCalendarDto.v_ProtocolId = Constants.CONSULTAMEDICA;
-                            }
-                            else
-                            {
-                                objCalendarDto.v_ProtocolId = _ProtocolId;
-                            }
-
-                            objCalendarDto.i_NewContinuationId = Int32.Parse(ddlNewContinuationId.SelectedValue.ToString());
-                            objCalendarDto.i_LineStatusId = Int32.Parse(ddlLineStatusId.SelectedValue.ToString());
-                            objCalendarDto.i_IsVipId = Int32.Parse(ddlVipId.SelectedValue.ToString());
-
-                            _objCalendarBL.UpdateCalendar(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList());
-                        }
-
-                    }
-                    else if (ModeAgenda == "Reschedule")
-                    {
-                        using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
-                        {
-                            CalendarBL objCalendarBL = new CalendarBL();
-
-                            ServiceBL objServiceBL = new ServiceBL();
-
-                            if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString() || ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaSeguros).ToString())
-                            {
-                                objCalendarBL.Reschedule(ref objOperationResult, Globals.ClientSession.GetAsList(), _CalendarId, dtpDateTimeCalendar.Value, Int32.Parse(ddlVipId.SelectedValue.ToString()), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()));
-                            }
-                            else
-                            {
-                                objCalendarBL.Reschedule(ref objOperationResult, Globals.ClientSession.GetAsList(), _CalendarId, dtpDateTimeCalendar.Value, Int32.Parse(ddlVipId.SelectedValue.ToString()), _ProtocolId, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()));
-                            }
-
-                        }
-                    }
-
-                    //// Analizar el resultado de la operación
-                    if (objOperationResult.Success == 1)  // Operación sin error
-                    {
-                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                      
-                    }
-                    else  // Operación con error
-                    {
-                        if (objOperationResult.ErrorMessage != null)
-                        {
-                            MessageBox.Show(objOperationResult.ErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            // Se queda en el formulario.
-                        }
-                    }
-                }
+                    }         
 
             }
             catch (Exception ex)

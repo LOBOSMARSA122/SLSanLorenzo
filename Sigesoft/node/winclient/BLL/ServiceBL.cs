@@ -2724,25 +2724,28 @@ namespace Sigesoft.Node.WinClient.BLL
 			string NewId = "(No generado)";
 			try
 			{
-				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-				servicecomponent objEntity = servicecomponentAssembler.ToEntity(pobjDtoEntity);
 
-				objEntity.d_InsertDate = DateTime.Now;
-				objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
-				objEntity.i_IsDeleted = 0;
-				// Autogeneramos el Pk de la tabla
-				int intNodeId = int.Parse(ClientSession[0]);
-				NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 24), "SC");
-				objEntity.v_ServiceComponentId = NewId;
+                    SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                    servicecomponent objEntity = servicecomponentAssembler.ToEntity(pobjDtoEntity);
 
-				dbContext.AddToservicecomponent(objEntity);
-				dbContext.SaveChanges();
+                    objEntity.d_InsertDate = DateTime.Now;
+                    objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
+                    objEntity.i_IsDeleted = 0;
+                    // Autogeneramos el Pk de la tabla
+                    int intNodeId = int.Parse(ClientSession[0]);
+                    NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 24), "SC");
+                    objEntity.v_ServiceComponentId = NewId;
 
-				pobjOperationResult.Success = 1;
-				// Llenar entidad Log
-				LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "COMPONENTE DE SERVICIO", "v_ServiceComponentId=" + NewId.ToString(), Success.Ok, null);
-				return;
-			}
+                    dbContext.AddToservicecomponent(objEntity);
+                    dbContext.SaveChanges();
+
+                    pobjOperationResult.Success = 1;
+                    // Llenar entidad Log
+                    LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "COMPONENTE DE SERVICIO", "v_ServiceComponentId=" + NewId.ToString(), Success.Ok, null);
+
+                }
+
+              
 			catch (Exception ex)
 			{
 				pobjOperationResult.Success = 0;
@@ -3590,30 +3593,30 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				#region Recomendation
 
-				var _valueFieldsRecome = (from s in dbContext.service
-										  join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
-										  join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
-										  join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
-										  join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
-										  join rec in dbContext.componentfieldvaluesrecommendation on cfsv.v_ComponentFieldValuesId equals rec.v_ComponentFieldValuesId
-										  join mrec in dbContext.masterrecommendationrestricction on rec.v_MasterRecommendationRestricctionId equals mrec.v_MasterRecommendationRestricctionId
+                var _valueFieldsRecome = (from s in dbContext.service
+                                          join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
+                                          join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
+                                          join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
+                                          join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
+                                          join rec in dbContext.componentfieldvaluesrecommendation on cfsv.v_ComponentFieldValuesId equals rec.v_ComponentFieldValuesId
+                                          join mrec in dbContext.masterrecommendationrestricction on rec.v_MasterRecommendationRestricctionId equals mrec.v_MasterRecommendationRestricctionId
 
-										  where (rec.i_IsDeleted == isDeleted) &&
-												(mrec.i_TypifyingId == recomId) &&
-												(s.v_ServiceId == pstrServiceId)&&
-												(sc.i_IsDeleted == isDeleted)
+                                          where (rec.i_IsDeleted == isDeleted) &&
+                                                (mrec.i_TypifyingId == recomId) &&
+                                                (s.v_ServiceId == pstrServiceId) &&
+                                                (sc.i_IsDeleted == isDeleted)
 
-										  select new RecomendationList
-										  {
-											  v_ComponentFieldValuesRecommendationId = rec.v_ComponentFieldValuesRecommendationId,
-											  v_ComponentFieldValuesId = rec.v_ComponentFieldValuesId,
-											  v_MasterRecommendationId = rec.v_MasterRecommendationRestricctionId,
-											  v_RecommendationName = mrec.v_Name,
-											  v_ComponentId = sc.v_ComponentId,
-											  i_RecordStatus = (int)RecordStatus.Grabado,
-											  i_RecordType = (int)RecordType.NoTemporal,
+                                          select new RecomendationList
+                                          {
+                                              v_ComponentFieldValuesRecommendationId = rec.v_ComponentFieldValuesRecommendationId,
+                                              v_ComponentFieldValuesId = rec.v_ComponentFieldValuesId,
+                                              v_MasterRecommendationId = rec.v_MasterRecommendationRestricctionId,
+                                              v_RecommendationName = mrec.v_Name,
+                                              v_ComponentId = sc.v_ComponentId,
+                                              i_RecordStatus = (int)RecordStatus.Grabado,
+                                              i_RecordType = (int)RecordType.NoTemporal,
 
-										  }).ToList();
+                                          }).ToList();
 
 				#endregion
 
@@ -5720,11 +5723,6 @@ namespace Sigesoft.Node.WinClient.BLL
 			string NewId = "(No generado)";
 			try
 			{
-
-
-				using (var ts = new TransactionScope())
-				{
-
 					SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
 					int intNodeId = int.Parse(ClientSession[0]);
@@ -5897,8 +5895,6 @@ namespace Sigesoft.Node.WinClient.BLL
 					// Llenar entidad Log
                     LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "CAMPOS DE UN COMPONENTE DE SERVICIO", "v_ServiceComponentId=" + NewId.ToString(), Success.Ok, null);
 
-					ts.Complete();
-				}
 			}
 			catch (Exception ex)
 			{
@@ -10118,8 +10114,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_FileName = D.v_FileName,
 								 b_File = D.b_File,
                                  FechaServicio = A.d_ServiceDate.Value,
-                                 CategoryId = B1.i_CategoryId.Value
-
+                                 CategoryId = B1.i_CategoryId.Value,
+                                 //v_Comment = D.v_Comment,
 							 });
 
 				List<multimediafileList> obj = query.ToList();
@@ -32964,7 +32960,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 2
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                     //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
@@ -33111,7 +33107,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 1
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                     //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                     select new Liquidacion
                                     {
@@ -33256,7 +33252,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != ""
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                     //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                     select new Liquidacion
                                     {
@@ -33405,7 +33401,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 //&& A1.i_CalendarStatusId != 4
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "") && A.i_MasterServiceId != 12
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "")
+                                && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                 //&& A.i_ServiceStatusId == 3  && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
@@ -33548,7 +33545,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 from H in J5_join.DefaultIfEmpty()
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && A.i_MasterServiceId != 12
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2
+                                && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                 // && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {

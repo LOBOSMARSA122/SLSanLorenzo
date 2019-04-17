@@ -44,6 +44,7 @@ namespace Sigesoft.Node.WinClient.UI
         private SaveFileDialog saveFileDialog2 = new SaveFileDialog();
         private BindingList<ServiceGridJerarquizadaList> ListaGrilla = new BindingList<ServiceGridJerarquizadaList>();
         private MergeExPDF _mergeExPDF = new MergeExPDF();
+        private bool mergeRow = false;
         public frmService()
         {
             InitializeComponent();
@@ -3201,39 +3202,39 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdPrueba_AfterRowExpanded(object sender, RowEventArgs e)
         {
-
-            foreach (var ultraGridRow in grdDataService.Selected.Rows)
+            if (mergeRow == false)
             {
-                ultraGridRow.Selected = false;
-            }
-            e.Row.Selected = true;
-            e.Row.Activated = true;
-            DeleteAllChildRows(e.Row);
-
-            var serviceId = e.Row.Cells["v_ServiceId"].Value.ToString();
-            var list = new DxFrecuenteBL().getDataService(serviceId);
-
-            foreach (var item in list)
-            {
-                if (grdDataService.ActiveRow != null)
+                foreach (var ultraGridRow in grdDataService.Selected.Rows)
                 {
-                    var row = grdDataService.DisplayLayout.Bands[1].AddNew();
-                    InitializeRowDetail(row, item);
+                    ultraGridRow.Selected = false;
                 }
-                else
+                e.Row.Selected = true;
+                e.Row.Activated = true;
+                DeleteAllChildRows(e.Row);
+
+                var serviceId = e.Row.Cells["v_ServiceId"].Value.ToString();
+                var list = new DxFrecuenteBL().getDataService(serviceId);
+
+                foreach (var item in list)
                 {
-                    //e.Row.Cells["Diagnosticos"].Value = new BindingList<DiagnosticRepositoryJerarquizada>(); 
-                    //var row = grdPrueba.DisplayLayout.Bands[1].AddNew();
-                    //if (row == null) return;
-                    //InitializeRowDetail(row, item);
+                    if (grdDataService.ActiveRow != null)
+                    {
+                        var row = grdDataService.DisplayLayout.Bands[1].AddNew();
+                        InitializeRowDetail(row, item);
+                    }
+                    else
+                    {
+                        //e.Row.Cells["Diagnosticos"].Value = new BindingList<DiagnosticRepositoryJerarquizada>(); 
+                        //var row = grdPrueba.DisplayLayout.Bands[1].AddNew();
+                        //if (row == null) return;
+                        //InitializeRowDetail(row, item);
+                    }
                 }
             }
-        }
-
-        private void grdPrueba_BeforeRowExpanded(object sender, CancelableRowEventArgs e)
-        {
             
         }
+
+
 
         private static void InitializeRowDetail(UltraGridRow row, DiagnosticRepositoryJerarquizada item)
         {
@@ -3257,14 +3258,16 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-        private void grdDataService_InitializeLayout_1(object sender, InitializeLayoutEventArgs e)
-        {
 
-        }
 
         private void grdDataService_BeforeRowsDeleted(object sender, BeforeRowsDeletedEventArgs e)
         {
             e.DisplayPromptMsg = false;
+        }
+
+        private void grdDataService_InitializeGroupByRow(object sender, InitializeGroupByRowEventArgs e)
+        {
+            mergeRow = true;
         }
     }
 }

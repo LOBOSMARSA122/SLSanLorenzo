@@ -1952,6 +1952,7 @@
             this.btnGuardarExamen.Text = "      Guardar";
             this.btnGuardarExamen.UseVisualStyleBackColor = false;
             this.btnGuardarExamen.Click += new System.EventHandler(this.btnGuardarExamen_Click);
+            this.btnGuardarExamen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnGuardarExamen_MouseClick);
             // 
             // btnAddListaNerga
             // 

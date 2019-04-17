@@ -153,11 +153,14 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else
             {
-                var objData = GetData(0, null, txtFirstLastNameDocNumber.Text.Trim());
+                var objData = GetData(0, null, txtFirstLastNameDocNumber.Text);
 
                 grdData.DataSource = objData;
-
-                lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                if (objData != null)
+                {
+                    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                }
+                
                 if (grdData.Rows.Count > 0)
                 {
                     grdData.Rows[0].Selected = true;
@@ -169,14 +172,46 @@ namespace Sigesoft.Node.WinClient.UI
         private List<PacientList> GetData(int pintPageIndex, int? pintPageSize, string pstrFilterExpression)
         {
             OperationResult objOperationResult = new OperationResult();
-            var pacients = _objBL.GetPacientsPagedAndFiltered(ref objOperationResult, pintPageIndex, 99999, pstrFilterExpression);
+            string[] Apellidos = pstrFilterExpression.Split(' '); string apMat = ""; string apPat = ""; string nombre = "";
+            int x = Apellidos.Count();
+            List<PacientList> pacients = null;
+            if (x == 1)
+            {
+                pacients = _objBL.GetPacientsPagedAndFiltered(ref objOperationResult, pintPageIndex, 99999, pstrFilterExpression);
+            }
+            else if (x == 2)
+            {
+                apPat = Apellidos[0]; apMat = Apellidos[1];
+                pacients = _objBL.GetPacientsPagedAndFiltered_Apellidos(ref objOperationResult, pintPageIndex, 99999, pstrFilterExpression, apPat, apMat);
+
+            }
+            else if (x == 3)
+            {
+                apPat = Apellidos[0]; apMat = Apellidos[1]; nombre = Apellidos[2];
+                pacients = _objBL.GetPacientsPagedAndFiltered_Apellidos_Nombre(ref objOperationResult, pintPageIndex, 99999, pstrFilterExpression, apPat, apMat, nombre);
+
+            }
+            else if (x >= 4)
+            {
+                MessageBox.Show("El criterio de búsqueda es de 3 palabras, no admite apellidos compuestos", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //return pacients;
+            }
+           
+            
 
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            if (pacients == null)
+            {
+                MessageBox.Show("No se encontraron resultados, busque así: ApPaterno ApMaterno Nombre", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                pacients = _objBL.GetPacientsPagedAndFiltered(ref objOperationResult, pintPageIndex, 99999, "");
+            }
+            
             return pacients;
+            
         }
 
         private void mnuGridNuevo_Click(object sender, EventArgs e)
