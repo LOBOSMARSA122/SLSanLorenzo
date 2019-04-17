@@ -2923,7 +2923,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ProcessControlBySelectedTab_AMC(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
         {
-<<<<<<< HEAD
             if (_serviceComponentFieldsList == null)
                 _serviceComponentFieldsList = new List<ServiceComponentFieldsList>();
 
@@ -3189,26 +3188,24 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             oDataEso.NroIntentos = "----";
             oDataEso.datos = _serviceComponentFieldsList;
             OpenFormProcesoEso(oDataEso);
-=======
-           if (cbEstadoComponente.Enabled == true)
-	        {
-                _chkApprovedEnabled = chkApproved.Enabled;
-                var scope = new TransactionScope(
-                    TransactionScopeOption.RequiresNew, 
-                    new TransactionOptions(){
+           //if (cbEstadoComponente.Enabled == true)
+           // {
+           //     _chkApprovedEnabled = chkApproved.Enabled;
+           //     var scope = new TransactionScope(
+           //         TransactionScopeOption.RequiresNew, 
+           //         new TransactionOptions(){
 
-                        IsolationLevel = System.Transactions.IsolationLevel.Snapshot
-                    });
-                using (scope)
-                {
-                    SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
-                }  
-	        }
-           else
-           {
-               MessageBox.Show("Ya se guardó el examen. \nPara editar: vuelva a ingresar.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           }
->>>>>>> 503673104c694f1da99418cf35e20cbf7881f71c
+           //             IsolationLevel = System.Transactions.IsolationLevel.Snapshot
+           //         });
+           //     using (scope)
+           //     {
+           //         SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+           //     }  
+           // }
+           //else
+           //{
+           //    MessageBox.Show("Ya se guardó el examen. \nPara editar: vuelva a ingresar.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+           //}
         }
 
         private bool validacionAuditado()
