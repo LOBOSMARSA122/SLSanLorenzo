@@ -18,7 +18,7 @@ namespace Sigesoft.Node.WinClient.UI
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmLogin());
             bool instanceCountOne = false;
-            bool OnlyStartOnce = bool.Parse(Common.Utils.GetApplicationConfigValue("OnlyStartOnce").ToString());
+            bool OnlyStartOnce = bool.Parse(Common.Utils.GetApplicationConfigValue("OnlyStartOnce"));
 
             if (OnlyStartOnce)
             {

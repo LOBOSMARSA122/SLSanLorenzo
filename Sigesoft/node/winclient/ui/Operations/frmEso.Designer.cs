@@ -331,6 +331,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardarAnamnesis = new System.Windows.Forms.Button();
             this.tpExam = new System.Windows.Forms.TabPage();
+            this.chkSaveAsync = new System.Windows.Forms.CheckBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tcExamList = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
@@ -740,7 +741,6 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dsInformeEcograficoRenal1 = new Sigesoft.Node.WinClient.UI.Dataset.dsInformeEcograficoRenal();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
             this.tcSubMain.SuspendLayout();
@@ -1825,6 +1825,7 @@
             // 
             // tpExam
             // 
+            this.tpExam.Controls.Add(this.chkSaveAsync);
             this.tpExam.Controls.Add(this.splitContainer2);
             this.tpExam.Controls.Add(this.btnServiciosAnteriores);
             this.tpExam.Controls.Add(this.statusStrip1);
@@ -1838,6 +1839,16 @@
             this.tpExam.Text = "EXÁMENES";
             this.tpExam.ToolTipText = "EXAMENES";
             this.tpExam.UseVisualStyleBackColor = true;
+            // 
+            // chkSaveAsync
+            // 
+            this.chkSaveAsync.AutoSize = true;
+            this.chkSaveAsync.Location = new System.Drawing.Point(1149, 618);
+            this.chkSaveAsync.Name = "chkSaveAsync";
+            this.chkSaveAsync.Size = new System.Drawing.Size(138, 17);
+            this.chkSaveAsync.TabIndex = 99;
+            this.chkSaveAsync.Text = "Usar grabado asíncrono";
+            this.chkSaveAsync.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
@@ -7591,7 +7602,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 732);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 766);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -7624,7 +7635,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 749);
+            this.ClientSize = new System.Drawing.Size(1350, 783);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;
@@ -7961,7 +7972,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnSubirInterconsulta;
         private System.Windows.Forms.TabPage tpFormatoAtencionIntegral;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label15;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdCronicos;
         private System.Windows.Forms.Button btnNuevoCronico;
@@ -8266,5 +8276,6 @@
         private System.Windows.Forms.GroupBox grbLevantamiento;
         private System.Windows.Forms.RadioButton rbLevantSI;
         private System.Windows.Forms.RadioButton rbLevantNO;
+        private System.Windows.Forms.CheckBox chkSaveAsync;
     }
 }
