@@ -66,7 +66,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         #region Declarations
         List<ValidacionAMC> _oListValidacionAMC = new List<ValidacionAMC>();
         private int _EsMayuscula = int.Parse(Common.Utils.GetApplicationConfigValue("EsMayuscula"));
-
         private ServiceList _datosPersona;
         private string _v_CustomerOrganizationId;
         private int _AMCGenero;
@@ -2922,33 +2921,311 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         }
 
-        private void btnGuardarExamen_Click(object sender, EventArgs e)
+        private void ProcessControlBySelectedTab_AMC(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
         {
-           if (cbEstadoComponente.Enabled == true)
-	        {
-                _chkApprovedEnabled = chkApproved.Enabled;
-                var scope = new TransactionScope(
-                    TransactionScopeOption.RequiresNew, 
-                    new TransactionOptions(){
+            if (_serviceComponentFieldsList == null)
+                _serviceComponentFieldsList = new List<ServiceComponentFieldsList>();
 
-                        IsolationLevel = System.Transactions.IsolationLevel.Snapshot
-                    });
-                using (scope)
+            KeyTagControl keyTagControl = null;
+
+            string value1 = null;
+
+            ServiceComponentFieldsList serviceComponentFields = null;
+            ServiceComponentFieldValuesList serviceComponentFieldValues = null;
+
+                var serviceComponentId = selectedTab.Tab.Tag.ToString();
+                var componentId = selectedTab.Tab.Key;
+                var component = _tmpServiceComponentsForBuildMenuList.Find(p => p.v_ComponentId == componentId);
+
+                if (_EstadoComponente == (int)ServiceComponentStatus.Evaluado)
                 {
-                    SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
-                }  
-	        }
-           else
-           {
-               MessageBox.Show("Ya se guardó el examen. \nPara editar: vuelva a ingresar.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           }
+                    selectedTab.Tab.Appearance.BackColor = Color.Pink;
+                }
+                else
+                {
+                    selectedTab.Tab.Appearance.BackColor = Color.Transparent;
+                }
+                foreach (var item in component.Fields)
+                {
+
+                    #region Nueva logica de busqueda de los campos por ID
+
+                    var fields = selectedTab.Controls.Find(item.v_ComponentFieldId, true);
+
+                    if (fields.Length != 0)
+                    {
+                        // Capturar objeto tag
+                        keyTagControl = (KeyTagControl)fields[0].Tag;
+
+                        // Datos de servicecomponentfieldValues Ejem: 1.80 ; 95 KG
+                        value1 = GetValueControl(keyTagControl.i_ControlId, fields[0]);
+
+                        if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma || keyTagControl.i_ControlId == (int)ControlType.UcAudiometria || keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia || keyTagControl.i_ControlId == (int)ControlType.UcAcumetria || keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi || keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra || keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia || keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica || keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco || keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular || keyTagControl.i_ControlId == (int)ControlType.UcFototipo)
+                        {
+                            foreach (var value in _tmpListValuesOdontograma)
+                            {
+                                #region Armar entidad de datos desde los user controls [Odontograma / Audiometria]
+
+                                _serviceComponentFieldValuesList = new List<ServiceComponentFieldValuesList>();
+                                serviceComponentFields = new ServiceComponentFieldsList();
+                                serviceComponentFieldValues = new ServiceComponentFieldValuesList();
+
+                                serviceComponentFields.v_ComponentFieldsId = value.v_ComponentFieldId;
+                                serviceComponentFields.v_ServiceComponentId = serviceComponentId;
+
+
+                                serviceComponentFieldValues.v_Value1 = value.v_Value1;
+                                _serviceComponentFieldValuesList.Add(serviceComponentFieldValues);
+
+                                serviceComponentFields.ServiceComponentFieldValues = _serviceComponentFieldValuesList;
+                                // Agregar a mi lista
+                                _serviceComponentFieldsList.Add(serviceComponentFields);
+
+                                #endregion
+                            }
+                        }
+                        else    // Todos los demas examenes
+                        {
+                            #region Armar entidad de datos que se va a grabar
+
+                            // Datos de servicecomponentfields Ejem: Talla ; Peso ; etc
+                            serviceComponentFields = new ServiceComponentFieldsList();
+
+                            serviceComponentFields.v_ComponentFieldsId = keyTagControl.v_ComponentFieldsId;
+                            serviceComponentFields.v_ServiceComponentId = serviceComponentId;
+
+                            _serviceComponentFieldValuesList = new List<ServiceComponentFieldValuesList>();
+                            serviceComponentFieldValues = new ServiceComponentFieldValuesList();
+
+                            serviceComponentFieldValues.v_ComponentFieldValuesId = keyTagControl.v_ComponentFieldValuesId;
+                            serviceComponentFieldValues.v_Value1 = value1;
+                            _serviceComponentFieldValuesList.Add(serviceComponentFieldValues);
+
+                            serviceComponentFields.ServiceComponentFieldValues = _serviceComponentFieldValuesList;
+
+                            // Agregar a mi lista
+                            _serviceComponentFieldsList.Add(serviceComponentFields);
+
+                            #endregion
+                        }
+                    }
+
+                    #endregion
+
+                }
+
+
+
+
+        }
+        
+        private void OpenFormProcesoEso(DataEso datos)
+        {
+            Form procesoEso = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "frmProcesosEso").SingleOrDefault<Form>();
+
+            if (procesoEso != null)
+            {
+                procesoEso.Select();
+                procesoEso.WindowState = FormWindowState.Minimized;
+                var frm = (frmProcesosEso) procesoEso;
+                frm.DataSource = datos;
+            }
+            else
+            {
+                procesoEso = new frmProcesosEso();
+                var frm = (frmProcesosEso)procesoEso;
+                frm.DataSource = datos;
+                procesoEso.Show();
+            }
         }
 
-        private void SaveExamBySelectedTab(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
+        private void transformarData(List<ServiceComponentFieldsList> datos)
+        {
+            if (datos.Any())
+            {
+                foreach (var item in datos)
+                {
+                    item.v_ServiceId = _serviceId;
+                }
+            }
+        }
+
         
+        private void btnGuardarExamen_Click(object sender, EventArgs e)
+        {
+            if (chkSaveAsync.Checked)
+                  GrabarAsync();
+            else
+                SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+         
+        }
+
+        private void GrabarAsync()
+        {
+            UltraValidator uv = null;
+            var result = _dicUltraValidators.TryGetValue(_componentId, out uv);
+            if (!result) return;
+
+            if (uv.Validate(false, true).IsValid)
+            {
+                _chkApprovedEnabled = chkApproved.Enabled;
+
+                if (!validacionAuditado())
+                {
+                    if (int.Parse(cbEstadoComponente.SelectedValue.ToString()) ==
+                        (int)ServiceComponentStatus.Auditado && _profesionId == 30) //evaluador
+                    {
+
+                        MessageBox.Show("El examen ya fue AUDITADO, no puede guardar los cambios.", "CONFIRMACIÓN!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        return;
+                    }
+                    var respuesta = MessageBox.Show("¿Está seguro de grabar este registro?", "CONFIRMACIÓN!",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        IniciarGrabadoAsincrono(tcExamList.SelectedTab.TabPage);
+                        GrabarDiagnosticos();
+                        _isChangeValue = false;
+                    }
+                }
+            }
+        }
+
+        private void GrabarDiagnosticos()
+        {
+            OperationResult objOperationResult = new OperationResult();
+            int? systemUserSuplantadorId = 0;
+
+            #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
+
+            var serviceComponentDto = new servicecomponentDto();
+            serviceComponentDto.v_ServiceComponentId = _serviceComponentId;
+            //Obtener fecha de Actualizacion
+            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, _serviceComponentId).d_UpdateDate;
+            serviceComponentDto.v_Comment = txtComentario.Text;
+            //grabar estado del examen según profesión del usuario
+            if (_profesionId == 30) // evaluador
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
+                _EstadoComponente = (int)ServiceComponentStatus.Evaluado;
+            }
+            else if (_profesionId == 31 || _profesionId == 32)//auditor
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
+                _EstadoComponente = (int)ServiceComponentStatus.Auditado;
+            }
+            serviceComponentDto.i_ServiceComponentStatusId = int.Parse(cbEstadoComponente.SelectedValue.ToString());
+            _EstadoComponente = int.Parse(cbEstadoComponente.SelectedValue.ToString());
+            serviceComponentDto.i_ExternalInternalId = int.Parse(cbTipoProcedenciaExamen.SelectedValue.ToString());
+            serviceComponentDto.i_IsApprovedId = Convert.ToInt32(chkApproved.Checked);
+
+            serviceComponentDto.v_ComponentId = _componentId;
+            serviceComponentDto.v_ServiceId = _serviceId;
+            serviceComponentDto.d_UpdateDate = FechaUpdate;
+            #endregion
+
+             if (chkUtilizarFirma.Checked)
+             {
+                 var frm = new Popups.frmSelectSignature();
+                 frm.ShowDialog();
+
+                 if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+                 {
+                     systemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
+                 }
+             }
+
+            #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
+           
+            // Grabar Dx por examen componente mas sus restricciones
+            if (systemUserSuplantadorId != null)
+            {
+                Globals.ClientSession.i_SystemUserId = (int)systemUserSuplantadorId;
+            }
+            else
+            {
+                Globals.ClientSession.i_SystemUserId = Globals.ClientSession.i_SystemUserCopyId;
+            }
+
+            _serviceBL.AddDiagnosticRepository(ref objOperationResult,
+                                               _tmpExamDiagnosticComponentList,
+                                                serviceComponentDto,
+                                                Globals.ClientSession.GetAsList(),
+                                                _chkApprovedEnabled, chkUtilizarFirma.Checked);
+
+
+            _serviceComponentFieldsList = null;
+            _tmpListValuesOdontograma = null;
+            #endregion
+
+            #region refrescar
+
+            flagValueChange = false;
+            InitializeData();
+            //LoadDataBySelectedComponent(_componentId);
+            GetTotalDiagnosticsForGridView();
+            ConclusionesyTratamiento_LoadAllGrid();
+
+
+
+            #endregion
+
+
+        }
+
+        private void IniciarGrabadoAsincrono(Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl)
+        {
+            _serviceComponentFieldsList = new List<ServiceComponentFieldsList>();
+            ProcessControlBySelectedTab_AMC(ultraTabPageControl);
+
+            DataEso oDataEso = new DataEso();
+            oDataEso.categoria = ultraTabPageControl.Tab.Text;
+            oDataEso.v_ServiceId = _serviceId;
+            oDataEso.v_PersonId = _personId;
+            oDataEso.v_ServiceComponentId = _serviceComponentId;
+            oDataEso.Estado = "En espera";
+            oDataEso.NroIntentos = "----";
+            oDataEso.datos = _serviceComponentFieldsList;
+            OpenFormProcesoEso(oDataEso);
+           //if (cbEstadoComponente.Enabled == true)
+           // {
+           //     _chkApprovedEnabled = chkApproved.Enabled;
+           //     var scope = new TransactionScope(
+           //         TransactionScopeOption.RequiresNew, 
+           //         new TransactionOptions(){
+
+           //             IsolationLevel = System.Transactions.IsolationLevel.Snapshot
+           //         });
+           //     using (scope)
+           //     {
+           //         SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+           //     }  
+           // }
+           //else
+           //{
+           //    MessageBox.Show("Ya se guardó el examen. \nPara editar: vuelva a ingresar.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+           //}
+        }
+
+        private bool validacionAuditado()
+        {
+            if (int.Parse(cbEstadoComponente.SelectedValue.ToString()) == (int)ServiceComponentStatus.Auditado && _profesionId == 30)//evaluador
+            {
+                MessageBox.Show("El examen ya fue AUDITADO, no puede guardar los cambios.", "CONFIRMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return true;
+            }
+            return false;
+        }
+
+        #region refactoring ....
+
+        private void SaveExamBySelectedTab(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
         {
             // Desactivar el flag de hubo alguna modificacion
             _isChangeValue = false;
+            _chkApprovedEnabled = chkApproved.Enabled;
+
 
             UltraValidator uv = null;
 
@@ -3061,7 +3338,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
             {
 
-                
+
                 RunWorkerAsyncPackage packageForSave = (RunWorkerAsyncPackage)e.Argument;
 
                 bool result = false;
@@ -3081,6 +3358,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     if (packageForSave.ServiceComponent.d_UpdateDate == null)
                     {
+                        _serviceComponentFieldsList[0].v_ServiceId = _serviceId;
                         result = _serviceBL.AddServiceComponentValues(ref objOperationResult,
                                                        _serviceComponentFieldsList,
                                                        Globals.ClientSession.GetAsList(),
@@ -3156,7 +3434,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
                 #endregion
-                
+
                 #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
 
                 // Grabar Dx por examen componente mas sus restricciones
@@ -3219,6 +3497,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //}
 
         }
+        
+
+        #endregion
 
         private void bgwSaveExamen_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -3829,7 +4110,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 if (result == DialogResult.Yes)
                 {
-                    SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+                    if (chkSaveAsync.Checked)
+                        GrabarAsync();
+                    else
+                        SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
                 }
                 else
                 {

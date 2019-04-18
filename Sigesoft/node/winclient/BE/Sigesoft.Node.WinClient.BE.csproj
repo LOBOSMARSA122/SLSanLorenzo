@@ -51,6 +51,7 @@
     <Compile Include="Custom\Adulto.cs" />
     <Compile Include="Custom\AdultoMayor.cs" />
     <Compile Include="Custom\ConsultaGerencia.cs" />
+    <Compile Include="Custom\DatoEso.cs" />
     <Compile Include="Custom\DynamicSchedule.cs" />
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
