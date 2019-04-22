@@ -16,6 +16,10 @@ namespace Sigesoft.Common
         public const int COLUMNAS_POR_CONTROL = 3;
 
         #region consentimiento coimolache
+        public const string AUTORIZACION_REALIZACION_EXAMEN_MEDICO_LIBERACION_INFORMACION = "AUT_REAL_EX_MED_LIBER_INF";
+        #endregion
+
+        #region consentimiento coimolache
         public const string CONSENTIMIENTO_INFORMADO_EXAMEN_MEDICO_COIMOLACHE = "C_I_EX_NED_COIMO";
         #endregion
 

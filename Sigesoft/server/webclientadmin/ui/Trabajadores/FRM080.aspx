@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FRM080.aspx.cs" Inherits="Sigesoft.Server.WebClientAdmin.UI.Clientes.FRM080" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FRM080.aspx.cs" Inherits="Sigesoft.Server.WebClientAdmin.UI.Clientes.FRM080" %>
 <%@ Register assembly="FineUI" namespace="FineUI" tagprefix="x" %>
 <!DOCTYPE html>
 

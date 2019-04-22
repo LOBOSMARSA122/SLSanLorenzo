@@ -1692,7 +1692,7 @@
             this.Name = "frmHistory";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHistory_FormClosing);
             this.Load += new System.EventHandler(this.frmHistory_Load);
             this.tabControl1.ResumeLayout(false);

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Tree>
   <TreeNode Text="Descarga de archivos" SingleClickExpand="true"  >
-    <TreeNode Text="Ficha Médica del Trabajador" NavigateUrl="~/Trabajadores/FRM080.aspx"  />
+    <TreeNode Text="Ficha Médica del Trabajador" NavigateUrl="~/Trabajadores/FRM081.aspx"  />
 
   </TreeNode>
 </Tree>

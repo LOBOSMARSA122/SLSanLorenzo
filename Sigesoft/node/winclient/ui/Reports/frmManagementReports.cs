@@ -2151,6 +2151,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Declaracion_Jurada_EMO_Secutiras.CreateDeclaracion_Jurada_EMO_Secutiras( pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
         }
+
+        private void GenerateAutorizacion_Realizacion_Ex_Lumina(string pathFile)
+        {
+            //No usa var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente_SECURITAS(_serviceId);//_pacientBL.DevolverDatosPaciente(_serviceId);//
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_ExoLab();//_serviceBL.GetInfoMedicalCenter();//
+            var filiationData = _pacientBL.GetPacientReportEPS_FirmaHuella(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
+
+            Autorizacion_Realizacion_Ex_Lumina.CreateAutorizacion_Realizacion_Ex_Lumina(pathFile, datosP, MedicalCenter, filiationData);
+        }
         private void GenerateExamen_Dermatologico_Ocupacional(string pathFile)
         {
             var _DataService = _serviceBL.GetInformacion_3img(_serviceId);//_serviceBL.GetInformacion_OtrosExamenes(_serviceId);//
@@ -5741,6 +5751,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.Declaracion_Jurada_EMO_SECURITAS:
                     GenerateDeclaracion_Jurada_EMO_Secutiras(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.Declaracion_Jurada_EMO_SECURITAS)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.AUTORIZACION_REALIZACION_EXAMEN_MEDICO_LIBERACION_INFORMACION:
+                    GenerateAutorizacion_Realizacion_Ex_Lumina(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.AUTORIZACION_REALIZACION_EXAMEN_MEDICO_LIBERACION_INFORMACION)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.EVALUACION_DERMATOLOGICA_OC_ID:

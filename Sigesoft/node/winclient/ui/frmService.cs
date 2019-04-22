@@ -44,6 +44,7 @@ namespace Sigesoft.Node.WinClient.UI
         private SaveFileDialog saveFileDialog2 = new SaveFileDialog();
         private BindingList<ServiceGridJerarquizadaList> ListaGrilla = new BindingList<ServiceGridJerarquizadaList>();
         private MergeExPDF _mergeExPDF = new MergeExPDF();
+        private bool mergeRow = false;
         public frmService()
         {
             InitializeComponent();
@@ -3201,33 +3202,36 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdPrueba_AfterRowExpanded(object sender, RowEventArgs e)
         {
-
-            foreach (var ultraGridRow in grdDataService.Selected.Rows)
+            if (mergeRow == false)
             {
-                ultraGridRow.Selected = false;
-            }
-            e.Row.Selected = true;
-            e.Row.Activated = true;
-            DeleteAllChildRows(e.Row);
-
-            var serviceId = e.Row.Cells["v_ServiceId"].Value.ToString();
-            var list = new DxFrecuenteBL().getDataService(serviceId);
-
-            foreach (var item in list)
-            {
-                if (grdDataService.ActiveRow != null)
+                foreach (var ultraGridRow in grdDataService.Selected.Rows)
                 {
-                    var row = grdDataService.DisplayLayout.Bands[1].AddNew();
-                    InitializeRowDetail(row, item);
+                    ultraGridRow.Selected = false;
                 }
-                else
+                e.Row.Selected = true;
+                e.Row.Activated = true;
+                DeleteAllChildRows(e.Row);
+
+                var serviceId = e.Row.Cells["v_ServiceId"].Value.ToString();
+                var list = new DxFrecuenteBL().getDataService(serviceId);
+
+                foreach (var item in list)
                 {
-                    //e.Row.Cells["Diagnosticos"].Value = new BindingList<DiagnosticRepositoryJerarquizada>(); 
-                    //var row = grdPrueba.DisplayLayout.Bands[1].AddNew();
-                    //if (row == null) return;
-                    //InitializeRowDetail(row, item);
+                    if (grdDataService.ActiveRow != null)
+                    {
+                        var row = grdDataService.DisplayLayout.Bands[1].AddNew();
+                        InitializeRowDetail(row, item);
+                    }
+                    else
+                    {
+                        //e.Row.Cells["Diagnosticos"].Value = new BindingList<DiagnosticRepositoryJerarquizada>(); 
+                        //var row = grdPrueba.DisplayLayout.Bands[1].AddNew();
+                        //if (row == null) return;
+                        //InitializeRowDetail(row, item);
+                    }
                 }
             }
+            
         }
 
 
@@ -3259,6 +3263,69 @@ namespace Sigesoft.Node.WinClient.UI
         private void grdDataService_BeforeRowsDeleted(object sender, BeforeRowsDeletedEventArgs e)
         {
             e.DisplayPromptMsg = false;
+        }
+
+        private void grdDataService_InitializeGroupByRow(object sender, InitializeGroupByRowEventArgs e)
+        {
+            mergeRow = true;
+        }
+
+        private void grdDataService_DoubleClickCell(object sender, DoubleClickCellEventArgs e)
+        {
+            try
+            {
+                Form frm;
+                int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+                if (TserviceId == (int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros)
+                {
+                    #region ESO V2 (Asíncrono)
+                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                    frm.ShowDialog();
+                    #endregion
+                }
+                else
+                {
+                    //Obtener Estado del servicio
+                    var estadoAptitud = int.Parse(grdDataService.Selected.Rows[0].Cells["i_AptitudeStatusId"].Value.ToString());
+
+                    if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud == (int)AptitudeStatus.AptoObs)
+                    {
+                        //Obtener el usuario
+                        int UserId = Globals.ClientSession.i_SystemUserId;
+                        if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        frm = new Operations.FrmEsoV2(_serviceId, null, "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm.ShowDialog();
+                        this.Enabled = true;
+                    }
+
+
+                }
+
+                btnFilter_Click(sender, e);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("SELECCIONE UNA SERVICIO A MODIFICAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
+            }
         }
     }
 }

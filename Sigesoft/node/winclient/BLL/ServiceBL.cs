@@ -32770,6 +32770,7 @@ namespace Sigesoft.Node.WinClient.BLL
             try
             {
                 var query = from A in dbContext.service
+                            join A1 in dbContext.calendar on A.v_ServiceId equals A1.v_ServiceId
                             join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
                             join C in dbContext.person on A.v_PersonId equals C.v_PersonId
                             join D in dbContext.groupoccupation on B.v_GroupOccupationId equals D.v_GroupOccupationId
@@ -32799,7 +32800,8 @@ namespace Sigesoft.Node.WinClient.BLL
                             join Z in dbContext.person on Y.v_PersonId equals Z.v_PersonId
 
                             where A.i_IsDeleted == 0
-                            && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.i_IsFac != 2 && A.v_NroLiquidacion == null || A.v_NroLiquidacion == ""
+                            && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null &&
+                            A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "") && A1.i_CalendarStatusId != 4
                             //&& A.i_ServiceStatusId == 3
                             select new Liquidacion
                             {
@@ -32961,7 +32963,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 where A.i_IsDeleted == 0 
                                 && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 2
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                     //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
@@ -33108,7 +33110,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != "" && A.i_IsFac == 1
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                     //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                     select new Liquidacion
                                     {
@@ -33253,7 +33255,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     where A.i_IsDeleted == 0 
                                     && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null && A.v_NroLiquidacion != null && A.v_NroLiquidacion != ""
-                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 12
+                                    && A1.i_CalendarStatusId != 4 && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                     //&& A.i_ServiceStatusId == 3 && A.i_MasterServiceId != 10
                                     select new Liquidacion
                                     {
@@ -33402,7 +33404,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 //&& A1.i_CalendarStatusId != 4
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "") && A.i_MasterServiceId != 12
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && (A.v_NroLiquidacion == null || A.v_NroLiquidacion == "")
+                                && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                 //&& A.i_ServiceStatusId == 3  && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
@@ -33545,7 +33548,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 from H in J5_join.DefaultIfEmpty()
 
                                 where A.i_IsDeleted == 0 && A1.i_CalendarStatusId != 4
-                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2 && A.i_MasterServiceId != 12
+                                && (A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate) && C.d_Birthdate != null && A.i_IsFac != 2
+                                && A.i_MasterServiceId != 11 && A.i_MasterServiceId != 12 && A.i_MasterServiceId != 13
                                 // && A.i_MasterServiceId != 10
                                 select new Liquidacion
                                 {
@@ -34017,7 +34021,7 @@ namespace Sigesoft.Node.WinClient.BLL
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
             var query = from A in dbContext.liquidacion
-                        where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate && A.v_NroFactura == ""
+                        where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate && ( A.v_NroFactura == "" || A.v_NroFactura == null)
 
                         select new LiquidacionEmpresa
                         {
@@ -34407,6 +34411,7 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.service
+                            join A1 in dbContext.calendar on A.v_ServiceId equals A1.v_ServiceId
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                             join C in dbContext.liquidacion on A.v_NroLiquidacion equals C.v_NroLiquidacion
                             join D in dbContext.calendar on A.v_ServiceId equals D.v_ServiceId
@@ -34419,7 +34424,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                             equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join
                             from J1 in J1_join.DefaultIfEmpty()
 
-                            where A.i_IsDeleted == 0 && A.v_NroLiquidacion == nrLiquidacion
+                            where A.i_IsDeleted == 0 && A.v_NroLiquidacion == nrLiquidacion && A1.i_CalendarStatusId != 4
                             select new LiquidacionesConsolidadoDetalle
                             {
                                 v_OrganizationId = G.v_OrganizationId,

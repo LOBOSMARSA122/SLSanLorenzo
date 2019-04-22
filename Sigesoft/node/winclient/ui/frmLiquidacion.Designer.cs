@@ -550,7 +550,6 @@
             // btnExportAramark
             // 
             this.btnExportAramark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportAramark.Enabled = false;
             this.btnExportAramark.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportAramark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExportAramark.Location = new System.Drawing.Point(6, 440);
