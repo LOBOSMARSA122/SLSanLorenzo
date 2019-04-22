@@ -3053,6 +3053,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         
         private void btnGuardarExamen_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+           
+            if (cbEstadoComponente.Enabled == true)
+	        {
+=======
             if (chkSaveAsync.Checked)
                   GrabarAsync();
             else
@@ -3068,6 +3073,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             if (uv.Validate(false, true).IsValid)
             {
+>>>>>>> 2e7c605737bf9e1e9773947d8ee28ceac461d5da
                 _chkApprovedEnabled = chkApproved.Enabled;
 
                 if (!validacionAuditado())
