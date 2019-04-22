@@ -2513,30 +2513,7 @@ namespace NetPdf
 
                     if (serviceComponent.ServiceComponentFields.Count > 0)
                     {
-                        //var conclusionRxDes = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID);
-                        ////var conclusionOitDes = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID);
-                        //var exPolvoDes = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_EXPOSICION_POLVO_DESCRIPCION_ID);
 
-                        //string valueA = string.Empty;
-                        ////string valueB = string.Empty;
-                        //string valueC = string.Empty;
-                        //string finalValue = string.Empty;
-
-                        //if (conclusionRxDes != null)
-                        //    valueA = conclusionRxDes.v_Value1;                      
-
-                        ////if (conclusionOitDes != null)
-                        ////    valueB = conclusionOitDes.v_Value1;
-
-                        //if (exPolvoDes != null)
-                        //    valueC = exPolvoDes.v_Value1;
-
-                        //if (string.IsNullOrEmpty(valueA) && string.IsNullOrEmpty(valueC)) // && string.IsNullOrEmpty(valueC))
-                        //    finalValue = "NO SE HAN REGISTRADO DATOS.";
-                        //else
-                        //    finalValue = string.Format("{0}, {1}", valueA, valueC); //, valueC);
-
-                        //cells.Add(new PdfPCell(new Phrase(finalValue, fontColumnValue)));
 
                         var dxRx = serviceComponent.DiagnosticRepository;//          .Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTOGRAMA_CONCLUSIONES_DESCRIPCION_ID);
 

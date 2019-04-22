@@ -93,6 +93,7 @@
     <Compile Include="Autorizacion_Realizacion_Ex_Lumina.cs" />
     <Compile Include="CertificadoAptitudCompleto.cs" />
     <Compile Include="CertificadoAptitudMedico_Cosapi.cs" />
+    <Compile Include="Certificado_AptitudMedicoOcupacional.cs" />
     <Compile Include="Certificado_Psicosensometrico_Datos.cs" />
     <Compile Include="Certificado_Suficiencia_Medica_Brigadistas.cs" />
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />

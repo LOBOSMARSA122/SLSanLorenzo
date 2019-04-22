@@ -3438,15 +3438,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
             var ValoresDxLab = _serviceBL.ValoresComponenteAMC_(_serviceId, 1);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
-            var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+            //var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
+            //var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
             var serviceComponents = _serviceBL.GetServiceComponentsReport_New312(_serviceId);
 
             FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                         filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
-                        _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
-                        ExamenFisico, Oftalmologia, Psicologia, OIT, RX, Laboratorio, Audiometria, Espirometria,
-                        _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter, TestIhihara, TestEstereopsis,
+                        _listMedicoPersonales, _listaHabitoNocivos,
+                        Audiometria,// Psicologia, OIT, RX,  , Espirometria,
+                        _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter, //TestIhihara, TestEstereopsis,
                         serviceComponents, pathFile);
         }
 
