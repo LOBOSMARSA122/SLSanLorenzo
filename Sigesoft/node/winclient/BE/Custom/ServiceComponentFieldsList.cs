@@ -6,7 +6,8 @@ using System.Text;
 namespace Sigesoft.Node.WinClient.BE
 {
     public class ServiceComponentFieldsList
-    {     
+    {
+
         public string v_ServiceComponentFieldsId { get; set; }
         public string v_ComponentFieldsId { get; set; }
         public string v_ServiceComponentId { get; set; }    
@@ -39,5 +40,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_Paciente { get; set; }       
         public DateTime? d_ServiceDate { get; set; }
         public string v_ComponentFieldId { get; set; }
+
     }
 }

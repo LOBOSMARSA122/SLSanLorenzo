@@ -37,6 +37,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Clientes
               DivControls.Controls.Add(new LiteralControl("<br>"));
           }
         }
+
         private void link_Click(object sender, System.EventArgs e)
         {
             string rutaReportes = WebConfigurationManager.AppSettings["rutaReportes"];

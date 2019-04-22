@@ -1688,6 +1688,12 @@
     <Compile Include="Operations\Popups\frmPopupServiciosAnteriores.Designer.cs">
       <DependentUpon>frmPopupServiciosAnteriores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Popups\frmProcesosEso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\Popups\frmProcesosEso.Designer.cs">
+      <DependentUpon>frmProcesosEso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Popups\frmSelectSignature.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4025,6 +4031,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmPopupServiciosAnteriores.resx">
       <DependentUpon>frmPopupServiciosAnteriores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\Popups\frmProcesosEso.resx">
+      <DependentUpon>frmProcesosEso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmSelectSignature.resx">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
