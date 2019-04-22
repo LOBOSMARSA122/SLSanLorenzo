@@ -2924,7 +2924,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnGuardarExamen_Click(object sender, EventArgs e)
         {
-           if (cbEstadoComponente.Enabled == true)
+           
+            if (cbEstadoComponente.Enabled == true)
 	        {
                 _chkApprovedEnabled = chkApproved.Enabled;
                 var scope = new TransactionScope(
@@ -2969,72 +2970,79 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     }
 
                     DialogResult Result = MessageBox.Show("¿Está seguro de grabar este registro?", "CONFIRMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    OperationResult objOperationResult = new OperationResult();
-                    if (Result == DialogResult.Yes)
+
+                    using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
                     {
-                        // Mostrar pantalla grabando...
-                        this.Enabled = false;
-                        //frmWaiting.Show(this);
-
-                        #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
-
-                        var serviceComponentDto = new servicecomponentDto();
-                        serviceComponentDto.v_ServiceComponentId = _serviceComponentId;
-                        //Obtener fecha de Actualizacion
-                        var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, _serviceComponentId).d_UpdateDate;
-                        serviceComponentDto.v_Comment = txtComentario.Text;
-                        //grabar estado del examen según profesión del usuario
-                        if (_profesionId == 30) // evaluador
+                        OperationResult objOperationResult = new OperationResult();
+                        if (Result == DialogResult.Yes)
                         {
-                            serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
-                            _EstadoComponente = (int)ServiceComponentStatus.Evaluado;
-                        }
-                        else if (_profesionId == 31 || _profesionId == 32)//auditor
-                        {
-                            serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
-                            _EstadoComponente = (int)ServiceComponentStatus.Auditado;
-                        }
-                        serviceComponentDto.i_ServiceComponentStatusId = int.Parse(cbEstadoComponente.SelectedValue.ToString());
-                        _EstadoComponente = int.Parse(cbEstadoComponente.SelectedValue.ToString());
-                        serviceComponentDto.i_ExternalInternalId = int.Parse(cbTipoProcedenciaExamen.SelectedValue.ToString());
-                        serviceComponentDto.i_IsApprovedId = Convert.ToInt32(chkApproved.Checked);
+                            // Mostrar pantalla grabando...
+                            this.Enabled = false;
+                            //frmWaiting.Show(this);
 
-                        serviceComponentDto.v_ComponentId = _componentId;
-                        serviceComponentDto.v_ServiceId = _serviceId;
-                        serviceComponentDto.d_UpdateDate = FechaUpdate;
-                        #endregion
+                            #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
 
-                        // Generar packete con data para grabar y pasarselo al hilo 
-                        RunWorkerAsyncPackage packageForSave = new RunWorkerAsyncPackage();
-
-                        if (chkUtilizarFirma.Checked)
-                        {
-                            var frm = new Popups.frmSelectSignature();
-                            frm.ShowDialog();
-
-                            if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+                            var serviceComponentDto = new servicecomponentDto();
+                            serviceComponentDto.v_ServiceComponentId = _serviceComponentId;
+                            //Obtener fecha de Actualizacion
+                            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, _serviceComponentId).d_UpdateDate;
+                            serviceComponentDto.v_Comment = txtComentario.Text;
+                            //grabar estado del examen según profesión del usuario
+                            if (_profesionId == 30) // evaluador
                             {
-                                packageForSave.i_SystemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
+                                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
+                                _EstadoComponente = (int)ServiceComponentStatus.Evaluado;
+                            }
+                            else if (_profesionId == 31 || _profesionId == 32)//auditor
+                            {
+                                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
+                                _EstadoComponente = (int)ServiceComponentStatus.Auditado;
+                            }
+                            serviceComponentDto.i_ServiceComponentStatusId = int.Parse(cbEstadoComponente.SelectedValue.ToString());
+                            _EstadoComponente = int.Parse(cbEstadoComponente.SelectedValue.ToString());
+                            serviceComponentDto.i_ExternalInternalId = int.Parse(cbTipoProcedenciaExamen.SelectedValue.ToString());
+                            serviceComponentDto.i_IsApprovedId = Convert.ToInt32(chkApproved.Checked);
+
+                            serviceComponentDto.v_ComponentId = _componentId;
+                            serviceComponentDto.v_ServiceId = _serviceId;
+                            serviceComponentDto.d_UpdateDate = FechaUpdate;
+                            #endregion
+
+                            // Generar packete con data para grabar y pasarselo al hilo 
+                            RunWorkerAsyncPackage packageForSave = new RunWorkerAsyncPackage();
+
+                            if (chkUtilizarFirma.Checked)
+                            {
+                                var frm = new Popups.frmSelectSignature();
+                                frm.ShowDialog();
+
+                                if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+                                {
+                                    packageForSave.i_SystemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
+                                }
+
                             }
 
-                        }
-
-                        if (cbEstadoComponente.SelectedValue.ToString() == "8")
-                        {
-                            var frm = new Operations.Popups.frmEspecialista();
-                            frm.ShowDialog();
-                            if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+                            if (cbEstadoComponente.SelectedValue.ToString() == "8")
                             {
-                                serviceComponentDto.i_SystemUserEspecialistaId = frm.i_SystemUserEspecialistaId;
+                                var frm = new Operations.Popups.frmEspecialista();
+                                frm.ShowDialog();
+                                if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+                                {
+                                    serviceComponentDto.i_SystemUserEspecialistaId = frm.i_SystemUserEspecialistaId;
+                                }
                             }
-                        }
 
 
-                        packageForSave.SelectedTab = selectedTab;
-                        packageForSave.ExamDiagnosticComponentList = _tmpExamDiagnosticComponentList;
-                        packageForSave.ServiceComponent = serviceComponentDto;
+                            packageForSave.SelectedTab = selectedTab;
+                            packageForSave.ExamDiagnosticComponentList = _tmpExamDiagnosticComponentList;
+                            packageForSave.ServiceComponent = serviceComponentDto;
 
-                        bgwSaveExamen.RunWorkerAsync(packageForSave);
+                            bgwSaveExamen.RunWorkerAsync(packageForSave);
+
+                    }
+
+                   
 
                     }
                 }
@@ -3058,8 +3066,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             //try
             //{
-            using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
-            {
+            //using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+            //{
 
                 
                 RunWorkerAsyncPackage packageForSave = (RunWorkerAsyncPackage)e.Argument;
@@ -3209,7 +3217,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
 
-            }
+            //}
 
             //}
             //catch (Exception ex)

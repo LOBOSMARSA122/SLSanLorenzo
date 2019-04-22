@@ -3269,5 +3269,63 @@ namespace Sigesoft.Node.WinClient.UI
         {
             mergeRow = true;
         }
+
+        private void grdDataService_DoubleClickCell(object sender, DoubleClickCellEventArgs e)
+        {
+            try
+            {
+                Form frm;
+                int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+                if (TserviceId == (int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros)
+                {
+                    #region ESO V2 (Asíncrono)
+                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                    frm.ShowDialog();
+                    #endregion
+                }
+                else
+                {
+                    //Obtener Estado del servicio
+                    var estadoAptitud = int.Parse(grdDataService.Selected.Rows[0].Cells["i_AptitudeStatusId"].Value.ToString());
+
+                    if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud == (int)AptitudeStatus.AptoObs)
+                    {
+                        //Obtener el usuario
+                        int UserId = Globals.ClientSession.i_SystemUserId;
+                        if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        frm = new Operations.FrmEsoV2(_serviceId, null, "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm.ShowDialog();
+                        this.Enabled = true;
+                    }
+
+
+                }
+
+                btnFilter_Click(sender, e);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("SELECCIONE UNA SERVICIO A MODIFICAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
+            }
+        }
     }
 }

@@ -4377,10 +4377,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnGuardarExamen_Click(object sender, EventArgs e)
         {
-            if (_isChangeValue && cbEstadoComponente.SelectedValue.ToString() == ((int)ServiceComponentStatus.Iniciado).ToString())
+            if (_isChangeValue && cbEstadoComponente.SelectedValue.ToString() != ((int)ServiceComponentStatus.Iniciado).ToString())
             {
-                var result = MessageBox.Show("Ha realizado cambios, por lo tanto el estado del examen NO debe ser INICIADO", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
+                btnGuardarExamen.Enabled = true;
+                //var result = MessageBox.Show("Ha realizado cambios, por lo tanto el estado del examen NO debe ser INICIADO", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //return;
             }
             else
             {
@@ -6853,6 +6854,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             //Y doy el efecto degradado vertical
             e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+        }
+
+        private void grdServiciosAnteriores_ClickCell(object sender, ClickCellEventArgs e)
+        {
+            btnVerServicioAnterior.Enabled = (grdServiciosAnteriores.Selected.Rows.Count > 0);
+
+            if (grdServiciosAnteriores.Selected.Rows.Count == 0)
+                return;
+
+            _serviceIdByWiewServiceHistory = grdServiciosAnteriores.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+        }
+
+        private void btnVerEditarAntecedentes_Click(object sender, EventArgs e)
+        {
+            ViewEditAntecedent();
         }
     }
 }
