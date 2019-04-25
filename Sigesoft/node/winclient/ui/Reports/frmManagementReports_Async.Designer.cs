@@ -30,8 +30,8 @@
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chkTodos = new System.Windows.Forms.CheckBox();
-            this.chklConsolidadoReportes = new System.Windows.Forms.CheckedListBox();
             this.btnConsolidadoReportes = new System.Windows.Forms.Button();
+            this.chklConsolidadoReportes = new System.Windows.Forms.CheckedListBox();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +46,7 @@
             this.groupBox4.TabIndex = 139;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reportes Seleccionados";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // chkTodos
             // 
@@ -57,18 +58,6 @@
             this.chkTodos.Text = "Seleccionar Todos";
             this.chkTodos.UseVisualStyleBackColor = true;
             this.chkTodos.CheckedChanged += new System.EventHandler(this.chkTodos_CheckedChanged);
-            // 
-            // chklConsolidadoReportes
-            // 
-            this.chklConsolidadoReportes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.chklConsolidadoReportes.CheckOnClick = true;
-            this.chklConsolidadoReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chklConsolidadoReportes.FormattingEnabled = true;
-            this.chklConsolidadoReportes.Location = new System.Drawing.Point(16, 39);
-            this.chklConsolidadoReportes.Name = "chklConsolidadoReportes";
-            this.chklConsolidadoReportes.Size = new System.Drawing.Size(379, 274);
-            this.chklConsolidadoReportes.TabIndex = 25;
             // 
             // btnConsolidadoReportes
             // 
@@ -91,6 +80,18 @@
             this.btnConsolidadoReportes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnConsolidadoReportes.UseVisualStyleBackColor = false;
             this.btnConsolidadoReportes.Click += new System.EventHandler(this.btnConsolidadoReportes_Click);
+            // 
+            // chklConsolidadoReportes
+            // 
+            this.chklConsolidadoReportes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chklConsolidadoReportes.CheckOnClick = true;
+            this.chklConsolidadoReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chklConsolidadoReportes.FormattingEnabled = true;
+            this.chklConsolidadoReportes.Location = new System.Drawing.Point(16, 39);
+            this.chklConsolidadoReportes.Name = "chklConsolidadoReportes";
+            this.chklConsolidadoReportes.Size = new System.Drawing.Size(379, 274);
+            this.chklConsolidadoReportes.TabIndex = 25;
             // 
             // frmManagementReports_Async
             // 

@@ -28,7 +28,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         OrganizationBL _organizationBL = new OrganizationBL();
         OperationResult _objOperationResult = new OperationResult();
         private MergeExPDF _mergeExPDF = new MergeExPDF();
-        private List<string> _filesNameToMerge = new List<string>();
+        public List<string> _filesNameToMerge = new List<string>();
         private string _empresaClienteId;
         private string _serviceId;
         List<ServiceComponentList> _listaDosaje = new List<ServiceComponentList>();        
@@ -309,7 +309,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                         foreach (var item in _ComponentsIdsOrdenados)
                         {
-                            var path = _ruta + _serviceId + "-" + item + ".pdf";
+                            var componentId = item.Split('|')[0];
+                            var path = _ruta + _serviceId + "-" + componentId + ".pdf";
                             if (_filesNameToMerge.Find(p => p == path) != null)
                             {
                                 filesNameToMergeOrder.Add(path);
@@ -322,8 +323,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     //    CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
                     //};
 
-                    //var x = filesNameToMergeOrder.ToList();
-                    var x = _filesNameToMerge.ToList();
+                    var x = filesNameToMergeOrder.ToList();
+                    //var x = _filesNameToMerge.ToList();
                     _mergeExPDF.FilesName = x;
                     _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
                     _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
@@ -347,7 +348,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     //Cambiar de estado a generado de reportes
                     _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
 
-                    Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", _ruta + _serviceId + ".pdf");
+                    //Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", _ruta + _serviceId + ".pdf");
 
                 }
                 else
@@ -405,33 +406,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             rp = new Reports.crConsolidatedReports();
             _filesNameToMerge = new List<string>();
 
-            //foreach (var com in reportesId)
-            //{
-            //    int IdCrystal = GetIdCrystal(com);
-            //    tasks.Add(Task<string>.Factory.StartNew( () => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
-              
-            //}
-
             foreach (var com in reportesId)
             {
-                int IdCrystal = 0;
+                int IdCrystal = GetIdCrystal(com);
+                tasks.Add(Task<string>.Factory.StartNew(() => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
 
-                var array = com.Split('|');
-
-                if (array.Count() == 1)
-                {
-                    IdCrystal = 0;
-                }
-                else if (array[1] == "")
-                {
-                    IdCrystal = 0;
-                }
-                else
-                {
-                    IdCrystal = int.Parse(array[1].ToString());
-                }
-
-                ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
             }
 
             if (Publicar)
@@ -4766,5 +4745,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
 
         #endregion
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

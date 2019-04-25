@@ -267,7 +267,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     var groupBoxes = GetGroupBoxes(component, groupComponentName.v_ComponentId);
                     foreach (var groupbox in groupBoxes)
                     {
-                        var groupBox = CreateGroupBoxForGroup(groupbox);
+                        var groupBox = CreateGroupBoxForGroup(groupbox, serviceComponentsInfo);
                         fieldsByGroupBoxCount++;
                         var tableLayoutPanel = CreateTableLayoutForControls(groupbox, component);
                         var fieldsByGroupBox = GetFieldsEachGroups(component, groupbox, groupComponentName);
@@ -290,7 +290,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     SetDefaultValueAfterBuildMenu(component);
                     SearchControlAndSetValue(tab.TabPage, serviceComponentsInfo);
                 }
-                _cancelEventSelectedIndexChange = false; 
+                _cancelEventSelectedIndexChange = false;
+                
             }
         }
         
@@ -301,6 +302,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             ValidacionAMC oValidacionAMC = null;
             var x = serviceComponentsInfo.ServiceComponentFields;
             var y = x.Select(p => p.ServiceComponentFieldValues).ToList();
+
+            //var value = y.Find(p => p[0].v_ComponentFieldId = "idcomponent");
+
             _oListValidacionAMC = new List<ValidacionAMC>();
             foreach (var item in y)
             {
@@ -1327,7 +1331,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             };
             if (component.i_ServiceComponentStatusId == (int)ServiceComponentStatus.Evaluado) ultraTab.Appearance.BackColor = Color.Pink;
             tcExamList.Tabs.Add(ultraTab);
-
             return ultraTab;
         }
 
@@ -1365,6 +1368,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 AutoSize = true,
                 Dock = DockStyle.Top
             };
+          
             return gbGroupedComponent;
         }
 
@@ -1386,7 +1390,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             return (int)Math.Ceiling(a / (double)b);
         }
 
-        private static GroupBox CreateGroupBoxForGroup(ComponentFieldsList groupbox)
+        private static GroupBox CreateGroupBoxForGroup(ComponentFieldsList groupbox, ServiceComponentList serviceComponentsInfo)
         {
             var groupBox = new GroupBox
             {
@@ -1396,6 +1400,26 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 AutoSize = true,
                 Dock = DockStyle.Top
             };
+            var x = serviceComponentsInfo.ServiceComponentFields;
+            var y = x.Select(p => p.ServiceComponentFieldValues).ToList();
+
+            //var profusion_0 = y.Find(p => p[0].v_ComponentFieldId == "N002-MF000000222")[0].v_Value1;
+            if (y.Find(p => p[0].v_ComponentFieldId == "N002-MF000000222")[0].v_Value1 == "1" && groupbox.v_Group == "C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")
+            {
+                groupBox.Enabled = false;
+            }
+            if (y.Find(p => p[0].v_ComponentFieldId == "N009-MF000000761")[0].v_Value1 == "1" && (groupbox.v_Group == "C 4.1 Placa Pleurales" || groupbox.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura"))
+            {
+                groupBox.Enabled = false;
+            }
+            if (y.Find(p => p[0].v_ComponentFieldId == "N009-MF000000760")[0].v_Value1 == "1" && groupbox.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
+            {
+                groupBox.Enabled = false;
+            }
+            //if (groupbox.v_ComponentFieldId == "N009-MF000000728" || groupbox.v_Group == "C 4.1 Placa Pleurales" || groupbox.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura" || groupbox.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
+            //{
+            //    groupBox.Enabled = false;
+            //}
             return groupBox;
         }
 
@@ -2570,6 +2594,150 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var tagCtrl = (KeyTagControl)senderCtrl.Tag;
             // Capturar valor inicial
             //_oldValue = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
+            if (tagCtrl.v_ComponentId == "N009-ME000000062")
+            {
+                GroupBox gb = null;
+                gb = (GroupBox)FindControlInCurrentTab("gb_C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N002-MF000000222")
+                {
+                    gb.Enabled = false;
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N002-MF000000221" || tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" || tagCtrl.v_ComponentFieldsId == "N009-MF000000722" || tagCtrl.v_ComponentFieldsId == "N009-MF000000723" || tagCtrl.v_ComponentFieldsId == "N009-MF000000724"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000725" || tagCtrl.v_ComponentFieldsId == "N009-MF000000726"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000727")
+                {
+                    gb.Enabled = true;
+                }
+
+                GroupBox gb41 = null;
+                GroupBox gb42 = null;
+                gb41 = (GroupBox)FindControlInCurrentTab("gb_C 4.1 Placa Pleurales")[0];
+                gb42 = (GroupBox)FindControlInCurrentTab("gb_C 4.2 Engrosamiento Difuso de la Pleura")[0];
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003194")
+                {
+                    gb41.Enabled = true;
+                    gb42.Enabled = true;
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000000761")
+                {
+                    gb41.Enabled = false;
+                    gb42.Enabled = false;
+                }
+
+                GroupBox gb6 = null;
+                gb6 = (GroupBox)FindControlInCurrentTab("gb_C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003195")
+                {
+                    gb6.Enabled = true;
+                    gb6.Enabled = true;
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000000760")
+                {
+                    gb6.Enabled = false;
+                    gb6.Enabled = false;
+                }
+            }
+            else if (tagCtrl.v_ComponentId == "N009-ME000000444")
+            {
+                GroupBox gbE = null;
+                gbE = (GroupBox)FindControlInCurrentTab("gb_E. FUNCIONES COGNITIVAS")[0];
+                GroupBox gbF = null;
+                gbF = (GroupBox)FindControlInCurrentTab("gb_F. ASPECTOS INTRA E INTERPERSONALES")[0];
+                GroupBox gbG = null;
+                gbG = (GroupBox)FindControlInCurrentTab("gb_G. PERFIL DE PERSONALIDAD - TEST DE COLORES")[0];
+                GroupBox gbH = null;
+                gbH = (GroupBox)FindControlInCurrentTab("gb_H. ADAPTABILIDAD, CAPACIDAD DE AFRONTE - HOMBRE BAJO LA LLUVIA")[0];
+
+                GroupBox gbI = null;
+                gbI = (GroupBox)FindControlInCurrentTab("gb_I. FUNCIONES COGNITIVAS.")[0];
+                GroupBox gbJ = null;
+                gbJ = (GroupBox)FindControlInCurrentTab("gb_J. ASPECTOS INTRA E INTERPERSONALES")[0];
+                GroupBox gbK = null;
+                gbK = (GroupBox)FindControlInCurrentTab("gb_K. PERFIL DE PERSONALIDAD")[0];
+                GroupBox gbL = null;
+                gbL = (GroupBox)FindControlInCurrentTab("gb_L.  ADAPTABILIDAD - CLIMA SOCIAL, LABORAL")[0];
+
+                var value = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
+
+
+                RadioButton valSC = (RadioButton)FindControlInCurrentTab("N009-MF000003531")[0];
+                RadioButton valSI = (RadioButton)FindControlInCurrentTab("N009-MF000003530")[0];
+                RadioButton valGA = (RadioButton)FindControlInCurrentTab("N009-MF000003532")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003531")
+                {
+
+                    gbE.Enabled = true;
+                    gbF.Enabled = true;
+                    gbG.Enabled = true;
+                    gbH.Enabled = true;
+
+                    gbI.Enabled = true;
+                    gbJ.Enabled = true;
+                    gbK.Enabled = true;
+                    gbL.Enabled = true;
+
+                    if (valSC.Checked != true)
+                    {
+                        gbE.Enabled = false;
+                        gbF.Enabled = false;
+                        gbG.Enabled = false;
+                        gbH.Enabled = false;
+
+                        gbI.Enabled = true;
+                        gbJ.Enabled = true;
+                        gbK.Enabled = true;
+                        gbL.Enabled = true;
+                    }
+                    //else
+                    //{
+                    //    gbE.Enabled = true;
+                    //    gbF.Enabled = true;
+                    //    gbG.Enabled = true;
+                    //    gbH.Enabled = true;
+                    //}
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000003530")
+                {
+                    gbE.Enabled = true;
+                    gbF.Enabled = true;
+                    gbG.Enabled = true;
+                    gbH.Enabled = true;
+
+                    gbI.Enabled = true;
+                    gbJ.Enabled = true;
+                    gbK.Enabled = true;
+                    gbL.Enabled = true;
+
+                    if (valSI.Checked != true)
+                    {
+                        gbI.Enabled = false;
+                        gbJ.Enabled = false;
+                        gbK.Enabled = false;
+                        gbL.Enabled = false;
+
+                        gbE.Enabled = true;
+                        gbF.Enabled = true;
+                        gbG.Enabled = true;
+                        gbH.Enabled = true;
+                    }
+                    //else
+                    //{
+                    //    gbI.Enabled = true;
+                    //    gbJ.Enabled = true;
+                    //    gbK.Enabled = true;
+                    //    gbL.Enabled = true;
+                    //}
+                }
+
+
+            }
 
         }
 
@@ -2848,6 +3016,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             _componentId = e.Tab.Key;
             _serviceComponentId = e.Tab.Tag.ToString();
             LoadDataBySelectedComponent(_componentId, _serviceComponentId);
+           
         }
 
         private void LoadDataBySelectedComponent(string componentId, string serviceComponentId)
@@ -4377,7 +4546,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnGuardarExamen_Click(object sender, EventArgs e)
         {
-            if (_isChangeValue && cbEstadoComponente.SelectedValue.ToString() != ((int)ServiceComponentStatus.Iniciado).ToString())
+            if (_isChangeValue && cbEstadoComponente.SelectedValue.ToString() == ((int)ServiceComponentStatus.Iniciado).ToString())
             {
                 btnGuardarExamen.Enabled = true;
                 //var result = MessageBox.Show("Ha realizado cambios, por lo tanto el estado del examen NO debe ser INICIADO", "CONFIRMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -5427,6 +5596,42 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var obj = e.Tab.TabControl.ActiveTab;
 
             SaveExamWherePendingChange();
+            OperationResult objOperationResult = new OperationResult();
+            var _tmpServiceComponentsForBuildMenuList = new ServiceBL().GetServiceComponentsForBuildMenu(ref objOperationResult, _serviceId);
+            foreach (BE.ComponentList com in _tmpServiceComponentsForBuildMenuList)
+            {
+                if (com.v_GroupedComponentName == "RAYOS X")
+                {
+                    foreach (var gcn in com.GroupedComponentsName)
+                    {
+                        if (gcn.v_GroupedComponentName == "RADIOGRAFÍA OIT")
+                        {
+                            var fieldsByComponent = _tmpServiceComponentsForBuildMenuList
+                                .SelectMany(p => p.Fields)
+                                .ToList()
+                                .FindAll(p => p.v_ComponentId == gcn.v_ComponentId);
+                            var groupBoxes = fieldsByComponent.GroupBy(q => new { q.v_Group }).Select(g => g.First()).OrderBy(o => o.v_Group).ToList();
+                            GroupBox gb = null;
+                            foreach (var g in groupBoxes)
+                            {
+                                if (g.v_ComponentFieldId == "N009-MF000000728" || g.v_Group == "C 4.1 Placa Pleurales" || g.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura" || g.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
+                                {
+                                   //gb = (GroupBox)FindControlInCurrentTab_OIT("gb_" + g.v_Group)[0];
+                                   //gb.Enabled = false;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        private Control[] FindControlInCurrentTab_OIT(string key)
+        {
+            var currentTabPage = tcExamList.SelectedTab.TabPage;
+            var findControl = currentTabPage.Controls.Find(key, true);
+            return findControl;
         }
 
         private void btnGuardarConclusiones_Click(object sender, EventArgs e)
