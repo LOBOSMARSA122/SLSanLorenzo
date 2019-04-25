@@ -148,7 +148,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var list = new List<PagoEspecialistaOcupacional>();
                 var dbContext = new SigesoftEntitiesModel();
 
-                var specialistConfigurations = dbContext.medico.Where(p => p.i_MasterServiceId == (int)MasterService.Eso && p.i_MasterServiceTypeId == (int)ServiceType.Empresarial && p.i_SystemUserId == systemUserId && p.i_IsDeleted == 0);
+                var specialistConfigurations = dbContext.medico.Where(p => p.i_MasterServiceId == (int)MasterService.Eso && p.i_MasterServiceTypeId == (int)ServiceType.Empresarial && p.i_SystemUserId == systemUserId && p.i_IsDeleted == 0).ToList();
 
                 var servicecomponents = (from a in dbContext.servicecomponent
                                          join b in dbContext.service on a.v_ServiceId equals b.v_ServiceId

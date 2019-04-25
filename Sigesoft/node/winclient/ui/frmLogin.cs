@@ -203,7 +203,6 @@ namespace Sigesoft.Node.WinClient.UI
             //    }
             //}
 
-
             //if (Validador != true)
             //{
             //    MessageBox.Show(objOperationResult.ExceptionMessage, "Error al conectarse a Base de Datos !!", MessageBoxButtons.OK, MessageBoxIcon.Error);

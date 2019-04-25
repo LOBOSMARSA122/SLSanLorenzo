@@ -1074,7 +1074,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateAnexo312(string pathFile)
         {
 
-            //Demoraba 13 seg //ahora 5-4 seg
+            //Demoraba 15-16 seg
             var filiationData = _pacientBL.GetPacientReportEPS_312(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId); //
             var _listAtecedentesOcupacionales = _historyBL.GetHistoryReport(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
@@ -1082,45 +1082,58 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacientId);
 
-            var Antropometria = _serviceBL.ValoresComponente(_serviceId, Constants.ANTROPOMETRIA_ID);
-            var FuncionesVitales = _serviceBL.ValoresComponente(_serviceId, Constants.FUNCIONES_VITALES_ID);
-            var ExamenFisico = _serviceBL.ValoresComponente(_serviceId, Constants.EXAMEN_FISICO_ID);
-            var Oftalmologia = _serviceBL.ValoresComponente(_serviceId, Constants.OFTALMOLOGIA_ID);
-            var Psicologia = _serviceBL.ValoresExamenComponete(_serviceId, Constants.PSICOLOGIA_ID, 195);
-            var OIT = _serviceBL.ValoresExamenComponete(_serviceId, Constants.OIT_ID, 211);
-            var RX = _serviceBL.ValoresExamenComponete(_serviceId, Constants.RX_TORAX_ID, 135);
+            #region OLd
+            //var Antropometria = _serviceBL.ValoresComponente(_serviceId, Constants.ANTROPOMETRIA_ID);
+            //var FuncionesVitales = _serviceBL.ValoresComponente(_serviceId, Constants.FUNCIONES_VITALES_ID);
+            //var ExamenFisico = _serviceBL.ValoresComponente(_serviceId, Constants.EXAMEN_FISICO_ID);
+            //var Oftalmologia = _serviceBL.ValoresComponente(_serviceId, Constants.OFTALMOLOGIA_ID);
 
-            var Laboratorio = new List<ServiceComponentFieldValuesList>();
-            var CentroMEdico = _serviceBL.GetInfoMedicalCenter();
 
-            if (CentroMEdico.v_IdentificationNumber == "20519254086")// se hizo para mavimedic (loco cambio el id de informe médico)
-            {
-                Laboratorio = _serviceBL.ValoresComponente(_serviceId, "N001-ME000000000");
-            }
-            else
-            {
-                Laboratorio = _serviceBL.ValoresComponente(_serviceId, Constants.INFORME_LABORATORIO_ID);
-            }
+            //var Psicologia = _serviceBL.ValoresExamenComponete(_serviceId, Constants.PSICOLOGIA_ID, 195);
+            //var OIT = _serviceBL.ValoresExamenComponete(_serviceId, Constants.OIT_ID, 211);
+            //var RX = _serviceBL.ValoresExamenComponete(_serviceId, Constants.RX_TORAX_ID, 135);
+
+            //var Laboratorio = new List<ServiceComponentFieldValuesList>();
+            //if (CentroMEdico.v_IdentificationNumber == "20519254086")// se hizo para mavimedic (loco cambio el id de informe médico)
+            //{
+            //    Laboratorio = _serviceBL.ValoresComponente(_serviceId, "N001-ME000000000");
+            //}
+            //else
+            //{
+              //  Laboratorio = _serviceBL.ValoresComponente(_serviceId, Constants.INFORME_LABORATORIO_ID);
+            //}
 
             //var Audiometria = _serviceBL.ValoresComponente(_serviceId, Constants.AUDIOMETRIA_ID);
+            //var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
+            //var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+            //var Espirometria = _serviceBL.ValoresExamenComponete(_serviceId, Constants.ESPIROMETRIA_ID, 210);
+            #endregion
+            
+            var CentroMEdico = _serviceBL.GetInfoMedicalCenter();
+
+            
             var Audiometria = _serviceBL.GetDiagnosticForAudiometria(_serviceId, Constants.AUDIOMETRIA_ID);
-            var Espirometria = _serviceBL.ValoresExamenComponete(_serviceId, Constants.ESPIROMETRIA_ID, 210);
+            
             var _DiagnosticRepository = _serviceBL.GetServiceDisgnosticsReports(_serviceId);
             var _Recomendation = _serviceBL.GetServiceRecommendationByServiceId(_serviceId);
+
             var _ExamenesServicio = _serviceBL.GetServiceComponentsReport_New312(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
+
             var ValoresDxLab = _serviceBL.ValoresComponenteAMC_(_serviceId, 1);
             var MedicalCenter = CentroMEdico;//_serviceBL.GetInfoMedicalCenter();
-            var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
-            var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+            
             var serviceComponents = _ExamenesServicio;//_serviceBL.GetServiceComponentsReport(_serviceId);//
 
             FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                         filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
-                        _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
-                        ExamenFisico, Oftalmologia, Psicologia, OIT, RX, Laboratorio, Audiometria, Espirometria,
-                        _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter, TestIhihara, TestEstereopsis,
+                        _listMedicoPersonales, _listaHabitoNocivos, 
+                        //Antropometria, FuncionesVitales, ExamenFisico, Oftalmologia, Laboratorio,
+                        Audiometria, //Psicologia, OIT, RX, Espirometria,
+                        _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter, //TestIhihara, TestEstereopsis,
                         serviceComponents, pathFile);
         }
+
+
 
         private void CreateFichaMedicaTrabajador2(string pathFile)
         {
@@ -2978,6 +2991,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             _pacientId = pPacienteId;
             switch (componentId)
             {
+
                 case Constants.INFORME_CERTIFICADO_APTITUD:
                     var INFORME_CERTIFICADO_APTITUD = new ServiceBL().GetAptitudeCertificateRefact(ref objOperationResult, _serviceId);
 

@@ -2550,7 +2550,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								v_CatemenialRegime = A.v_CatemenialRegime,
 								i_MacId = A.i_MacId,
 								i_DestinationMedicationId = A.i_DestinationMedicationId,
-								i_TransportMedicationId = (int)A.i_TransportMedicationId,
+								i_TransportMedicationId = A.i_TransportMedicationId,
 								i_HasMedicalBreakId = A.i_HasMedicalBreakId,
 								i_HasRestrictionId = A.i_HasRestrictionId,
 								d_MedicalBreakStartDate = A.d_MedicalBreakStartDate,
@@ -8975,6 +8975,7 @@ namespace Sigesoft.Node.WinClient.BLL
 						 select new DiagnosticRepositoryList
 						 {
 							 v_ServiceId = a.v_ServiceId,
+                            
 							 v_PersonName = string.Format("{0} {1}, {2}", a.v_FirstLastName, a.v_SecondLastName, a.v_FirstName),
 							 b_Logo = a.b_Logo,
 							 v_DocTypeName = a.v_DocTypeName,
