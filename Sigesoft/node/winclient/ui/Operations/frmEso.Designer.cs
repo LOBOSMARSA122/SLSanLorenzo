@@ -1851,6 +1851,7 @@
             this.chkSaveAsync.TabIndex = 99;
             this.chkSaveAsync.Text = "Usar grabado asíncrono";
             this.chkSaveAsync.UseVisualStyleBackColor = true;
+            this.chkSaveAsync.Visible = false;
             // 
             // splitContainer2
             // 
