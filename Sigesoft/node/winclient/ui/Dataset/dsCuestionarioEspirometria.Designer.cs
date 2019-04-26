@@ -439,6 +439,12 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnNroCigarros;
             
+            private global::System.Data.DataColumn columnESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS;
+            
+            private global::System.Data.DataColumn columnESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO;
+            
+            private global::System.Data.DataColumn columnESPIROMETRIA_OBSERVACIONES_ASMA;
+            
             private global::System.Data.DataColumn columnLogoCliente;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1116,6 +1122,30 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ESPIROMETRIA_OBSERVACIONES_ASMA_CRISISColumn {
+                get {
+                    return this.columnESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPOColumn {
+                get {
+                    return this.columnESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ESPIROMETRIA_OBSERVACIONES_ASMAColumn {
+                get {
+                    return this.columnESPIROMETRIA_OBSERVACIONES_ASMA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn LogoClienteColumn {
                 get {
                     return this.columnLogoCliente;
@@ -1240,6 +1270,9 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string Observacion, 
                         string ServiceComponentId, 
                         string NroCigarros, 
+                        string ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS, 
+                        string ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO, 
+                        string ESPIROMETRIA_OBSERVACIONES_ASMA, 
                         byte[] LogoCliente) {
                 dtCuestionarioEspirometriaRow rowdtCuestionarioEspirometriaRow = ((dtCuestionarioEspirometriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1323,6 +1356,9 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         Observacion,
                         ServiceComponentId,
                         NroCigarros,
+                        ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS,
+                        ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO,
+                        ESPIROMETRIA_OBSERVACIONES_ASMA,
                         LogoCliente};
                 rowdtCuestionarioEspirometriaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtCuestionarioEspirometriaRow);
@@ -1426,6 +1462,9 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnObservacion = base.Columns["Observacion"];
                 this.columnServiceComponentId = base.Columns["ServiceComponentId"];
                 this.columnNroCigarros = base.Columns["NroCigarros"];
+                this.columnESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS = base.Columns["ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS"];
+                this.columnESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO = base.Columns["ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO"];
+                this.columnESPIROMETRIA_OBSERVACIONES_ASMA = base.Columns["ESPIROMETRIA_OBSERVACIONES_ASMA"];
                 this.columnLogoCliente = base.Columns["LogoCliente"];
             }
             
@@ -1592,6 +1631,12 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnServiceComponentId);
                 this.columnNroCigarros = new global::System.Data.DataColumn("NroCigarros", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNroCigarros);
+                this.columnESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS = new global::System.Data.DataColumn("ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS);
+                this.columnESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO = new global::System.Data.DataColumn("ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO);
+                this.columnESPIROMETRIA_OBSERVACIONES_ASMA = new global::System.Data.DataColumn("ESPIROMETRIA_OBSERVACIONES_ASMA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESPIROMETRIA_OBSERVACIONES_ASMA);
                 this.columnLogoCliente = new global::System.Data.DataColumn("LogoCliente", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLogoCliente);
                 this.columnFVCDes.Caption = "FVC";
@@ -3096,6 +3141,57 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_CRISISColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS\' de la tabla \'dtCu" +
+                                "estionarioEspirometria\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_CRISISColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO\' de la tabla \'dtCu" +
+                                "estionarioEspirometria\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ESPIROMETRIA_OBSERVACIONES_ASMA {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ESPIROMETRIA_OBSERVACIONES_ASMA\' de la tabla \'dtCuestiona" +
+                                "rioEspirometria\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte[] LogoCliente {
                 get {
                     try {
@@ -4069,6 +4165,42 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNroCigarrosNull() {
                 this[this.tabledtCuestionarioEspirometria.NroCigarrosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsESPIROMETRIA_OBSERVACIONES_ASMA_CRISISNull() {
+                return this.IsNull(this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_CRISISColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetESPIROMETRIA_OBSERVACIONES_ASMA_CRISISNull() {
+                this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_CRISISColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPONull() {
+                return this.IsNull(this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPONull() {
+                this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsESPIROMETRIA_OBSERVACIONES_ASMANull() {
+                return this.IsNull(this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetESPIROMETRIA_OBSERVACIONES_ASMANull() {
+                this[this.tabledtCuestionarioEspirometria.ESPIROMETRIA_OBSERVACIONES_ASMAColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

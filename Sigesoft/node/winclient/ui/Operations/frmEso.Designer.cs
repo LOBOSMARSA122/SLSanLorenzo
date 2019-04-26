@@ -1843,12 +1843,15 @@
             // chkSaveAsync
             // 
             this.chkSaveAsync.AutoSize = true;
+            this.chkSaveAsync.Checked = true;
+            this.chkSaveAsync.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSaveAsync.Location = new System.Drawing.Point(1149, 618);
             this.chkSaveAsync.Name = "chkSaveAsync";
             this.chkSaveAsync.Size = new System.Drawing.Size(138, 17);
             this.chkSaveAsync.TabIndex = 99;
             this.chkSaveAsync.Text = "Usar grabado asíncrono";
             this.chkSaveAsync.UseVisualStyleBackColor = true;
+            this.chkSaveAsync.Visible = false;
             // 
             // splitContainer2
             // 
