@@ -40,7 +40,7 @@
             this.groupBox4.Controls.Add(this.chkTodos);
             this.groupBox4.Controls.Add(this.btnConsolidadoReportes);
             this.groupBox4.Controls.Add(this.chklConsolidadoReportes);
-            this.groupBox4.Location = new System.Drawing.Point(12, 11);
+            this.groupBox4.Location = new System.Drawing.Point(12, 10);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(413, 367);
             this.groupBox4.TabIndex = 139;
