@@ -23993,6 +23993,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                Fecha =  a.Fecha,
 							   Fecha_S = a.Fecha.Value.ToString("dd/MM/yyyy"),
 							   NombreTrabajador = a.NombreTrabajador,
+                               FechaNacimineto = a.FechaNacimineto,
 							   FechaNacimineto_S = a.FechaNacimineto.Value.ToString("dd/MM/yyyy"),
                                RazonSocial = a.RazonSocial,
                                ActividadEconomica = a.ActividadEconomica,
@@ -24009,6 +24010,10 @@ namespace Sigesoft.Node.WinClient.BLL
 							   Pregunta4ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_4).v_Value1,
 							   Pregunta5ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5).v_Value1,
                                NroCigarros = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000003660").v_Value1,
+
+                               ESPIROMETRIA_OBSERVACIONES_ASMA = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA).v_Value1,
+                               ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO = Espirometria.Count == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO).v_Value1,
+                               ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS = Espirometria.Count == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS).v_Value1,
 
 							   HemoptisisSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.PIROMETRIA_ANTECEDENTES_HEMOSTISIS).v_Value1,
 							   PseumotoraxSiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_PNEUMOTORAX).v_Value1,
@@ -34508,6 +34513,56 @@ namespace Sigesoft.Node.WinClient.BLL
             return string.Format("N{0}-{1}", nodeId.ToString("000"), nro.ToString("000000000"));
         }
 
+        public void GenerarLiquidacion_Ocupacional(ref OperationResult objOperationResult, string[] serviceIds, List<string> ClientSession, string organizationId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            OperationResult objOperationResult1 = new OperationResult();
+            var oLiquidacionBL = new LiquidacionBL();
+
+            try
+            {
+                int intNodeId = int.Parse(ClientSession[0]);
+
+                var nroLiquidacion = ObtnerNroLiquidacion(intNodeId);
+                float monto = 0;
+                foreach (var serviceId in serviceIds)
+                {
+                    monto += GetServiceComponentsLiquidacion(ref objOperationResult1, serviceId).Sum(s => s.r_Price).Value;
+                }
+                organizationId = organizationId.Split('|').ToArray()[0].ToString();
+                var oliquidacionDto = new liquidacionDto();
+                //oliquidacionDto.v_ServiceId = serviceId;
+                oliquidacionDto.v_OrganizationId = organizationId;
+                oliquidacionDto.v_NroLiquidacion = nroLiquidacion;
+                oliquidacionDto.d_Monto = decimal.Parse(monto.ToString());
+                oliquidacionDto.d_FechaVencimiento = null;
+                oliquidacionDto.v_NroFactura = "";
+                var NewId = oLiquidacionBL.AddLiquidacion(ref objOperationResult1, oliquidacionDto, ClientSession);
+
+                foreach (var serviceId in serviceIds)
+                {
+                    var objEntitySource = (from a in dbContext.service
+                                           where a.v_ServiceId == serviceId
+                                           select a).FirstOrDefault();
+
+                    objEntitySource.v_NroLiquidacion = nroLiquidacion;
+
+                    // Guardar los cambios
+                    dbContext.SaveChanges();
+                }
+
+                objOperationResult.Success = 1;
+
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                throw;
+            }
+        }
+
+        //cagadddddddddddddddoooo
         public void GenerarLiquidacion(ref OperationResult objOperationResult, string[] serviceIds,List<string> ClientSession, string organizationId, string _serviceId)
 	    {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -34529,24 +34584,24 @@ namespace Sigesoft.Node.WinClient.BLL
                     #endregion
                     var cadena1 = "select SC.d_SaldoAseguradora from service SR inner join servicecomponent SC on SR.v_ServiceId = SC.v_ServiceId where SR.v_ServiceId='" + serviceId + "' and SC.r_Price<>0";
                     SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
-                    SqlDataReader lector = comando.ExecuteReader();
+                    SqlDataReader lector1 = comando.ExecuteReader();
                     
-                    while (lector.Read())
+                    while (lector1.Read())
                     {
-                        var _monto = lector.GetValue(0).ToString();
+                        var _monto = lector1.GetValue(0).ToString();
                         if (_monto == "")
                         {
                             ocupacional = true;
                         }
                         else
                         {
-                            monto += float.Parse(lector.GetValue(0).ToString());
+                            monto += float.Parse(lector1.GetValue(0).ToString());
                         }
                     }
-                    lector.Close();
+                    lector1.Close();
                     cadena1 = "select RC.d_SaldoAseguradora from receta RC inner join service SC on SC.v_ServiceId = RC.v_ServiceId where SC.v_ServiceId='" + serviceId + "'";
                     comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
-                    lector = comando.ExecuteReader();
+                    SqlDataReader lector = comando.ExecuteReader();
 
                     while (lector.Read())
                     {

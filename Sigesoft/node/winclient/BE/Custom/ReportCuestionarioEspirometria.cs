@@ -24,6 +24,10 @@ namespace Sigesoft.Node.WinClient.BE
         public string Pregunta6ASiNo { get; set; }
         public string Pregunta7ASiNo { get; set; }
 
+        public string ESPIROMETRIA_OBSERVACIONES_ASMA { get; set; }
+        public string ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO { get; set; }
+        public string ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS { get; set; }
+
 
         public string HemoptisisSiNo { get; set; }
         public string PseumotoraxSiNo { get; set; }
