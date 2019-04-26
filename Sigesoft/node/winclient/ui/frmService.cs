@@ -13,7 +13,9 @@ using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
-using Infragistics.Win.UltraWinDataSource;  
+using Infragistics.Win.UltraWinDataSource;
+using Sigesoft.Node.WinClient.UI.Reports;
+
 //using iTextSharp.text;
 //using iTextSharp.text.pdf;
 //using iTextSharp.text.pdf.draw;
@@ -39,12 +41,14 @@ namespace Sigesoft.Node.WinClient.UI
         List<string> _ListaServicios;
         List<string> _ListaServiciosHistoria;
         List<string> _ListaServiciosAdjuntar;
+        private OrganizationBL _organizationBL = new OrganizationBL() ;
         private SaveFileDialog saveFileDialog1 = new SaveFileDialog();
         private Sigesoft.Node.WinClient.UI.Utils.CustomizedToolTip _customizedToolTip = null;
         private SaveFileDialog saveFileDialog2 = new SaveFileDialog();
         private BindingList<ServiceGridJerarquizadaList> ListaGrilla = new BindingList<ServiceGridJerarquizadaList>();
         private MergeExPDF _mergeExPDF = new MergeExPDF();
         private bool mergeRow = false;
+        private List<string> _ComponentsIdsOrdenados = new List<string>();
         public frmService()
         {
             InitializeComponent();
@@ -749,8 +753,8 @@ namespace Sigesoft.Node.WinClient.UI
                         var ExamenFisico = _serviceBL.ValoresComponente(_serviceId, Constants.EXAMEN_FISICO_ID);
                         var Oftalmologia = _serviceBL.ValoresComponente(_serviceId, Constants.OFTALMOLOGIA_ID);
 
-                        var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
-                        var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+                        //var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
+                        //var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
 
                         var Psicologia = _serviceBL.ValoresExamenComponete(_serviceId, Constants.PSICOLOGIA_ID, 195);
                         var RX = _serviceBL.ValoresExamenComponete(_serviceId, Constants.RX_TORAX_ID, 211);
@@ -776,9 +780,9 @@ namespace Sigesoft.Node.WinClient.UI
 
                         FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                                   filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
-                                  _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
-                                  ExamenFisico, Oftalmologia, Psicologia, RX, RX1, Laboratorio, Audiometria, Espirometria,
-                                  _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,TestIhihara,TestEstereopsis,
+                                  _listMedicoPersonales, _listaHabitoNocivos,  
+                                  Audiometria, // Psicologia, RX, RX1, , Espirometria,
+                                  _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,//TestIhihara,TestEstereopsis,
                                   serviceComponents, saveFileDialog2.FileName);
 
                         this.Enabled = true;
@@ -914,7 +918,7 @@ namespace Sigesoft.Node.WinClient.UI
                     frm.ShowDialog();
                 }     
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("SELECCIONE UNA SERVICIO A GENERAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnFilter_Click(sender, e);
@@ -1814,7 +1818,6 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 List<ServiceComponentList> serviceComponents = new List<ServiceComponentList>();
                 List<ServiceComponentList> ListaOrdenada = new List<ServiceComponentList>();
-
     
 
                 //Obtener todos los servicios que no tienes generación de reportes y estén culminados
@@ -1822,342 +1825,275 @@ namespace Sigesoft.Node.WinClient.UI
 
                 foreach (var item_0 in ListaServicios)
                 {
-                    serviceComponents = new List<ServiceComponentList>();
-                    ConsolidadoReportes = new List<ServiceComponentList>();
-                    serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(item_0.ServiceId);
 
-                    foreach (var item in serviceComponents)
-                    {
-                        if (item.v_ComponentId == Constants.ALTURA_7D_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 8;
-                        }
-                        else if (item.v_ComponentId == Constants.EVA_ERGONOMICA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 9;
-                        }
-                        if (item.v_ComponentId == Constants.OSTEO_MUSCULAR_ID_1)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 10;
-                        }
-                        else if (item.v_ComponentId == Constants.ALTURA_ESTRUCTURAL_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 11;
-                        }
-                        else if (item.v_ComponentId == Constants.TEST_VERTIGO_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 12;
-                        }
-                        else if (item.v_ComponentId == Constants.EVA_NEUROLOGICA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 13;
-                        }
-                        else if (item.v_ComponentId == Constants.SINTOMATICO_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 14;
-                        }
-                        else if (item.v_ComponentId == Constants.TAMIZAJE_DERMATOLOGIO_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 15;
-                        }
-                        else if (item.v_ComponentId == Constants.TESTOJOSECO_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 16;
-                        }
-                        else if (item.v_ComponentId == Constants.OFTALMOLOGIA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 17;
-                        }
-                        else if (item.v_ComponentId == Constants.RX_TORAX_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 18;
-                        }
-                        else if (item.v_ComponentId == Constants.OIT_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 19;
-                        }
-                        else if (item.v_ComponentId == Constants.LUMBOSACRA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 20;
-                        }
-                        else if (item.v_ComponentId == Constants.ACUMETRIA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 21;
-                        }
-                        else if (item.v_ComponentId == Constants.OTOSCOPIA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 22;
-                        }
-                        else if (item.v_ComponentId == Constants.AUDIOMETRIA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 23;
-                        }
-                        else if (item.v_ComponentId == Constants.ODONTOGRAMA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 24;
-                        }
-                        else if (item.v_ComponentId == Constants.ESPIROMETRIA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 25;
-                        }
-                        else if (item.v_ComponentId == Constants.ELECTROCARDIOGRAMA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 26;
-                        }
-
-                        else if (item.v_ComponentId == Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 28;
-                        }
-                        else if (item.v_ComponentId == Constants.PSICOLOGIA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 29;
-                        }
-                        else if (item.v_ComponentId == Constants.EVALUACION_PSICOLABORAL)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 30;
-                        }
-                        else if (item.v_ComponentId == Constants.SOMNOLENCIA_ID)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 31;
-                        }
-                        else if (item.v_ComponentId == Constants.FICHA_OTOSCOPIA)
-                        {
-                            var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                            ent.Orden = 32;
-                        }
+                     var serviceComponents_ = _serviceBL.GetServiceComponentsForManagementReport(item_0.ServiceId);
+                     var empresaClienteId = item_0.EmpresaCliente;
+                       var ordenReportes = _organizationBL.GetOrdenReportes_(ref _objOperationResult, empresaClienteId);
+                       var componentIds = ordenReportes.Select(p => p.v_ComponentId).ToList();
+                       var reportsCrystal = ordenReportes.FindAll(p => p.v_ComponentId.Contains("N00"));
+                       var reportsPdf = ordenReportes.Except(reportsCrystal).ToList();
 
 
-                    }
-                    string[] ConsolidadoReportesForPrint = new string[] 
-                    {
-                        Constants.ALTURA_ESTRUCTURAL_ID,
-                        Constants.ALTURA_7D_ID,
-                        Constants.CUESTIONARIO_ACTIVIDAD_FISICA,
-                        Constants.OSTEO_MUSCULAR_ID_1,                
-                        Constants.ESPIROMETRIA_ID,     
-                        Constants.AUDIOMETRIA_ID,  
-                        Constants.OFTALMOLOGIA_ID,
-                        Constants.TESTOJOSECO_ID, 
-                        Constants.ELECTROCARDIOGRAMA_ID,
-                        Constants.EVA_CARDIOLOGICA_ID,
-                        Constants.EVA_NEUROLOGICA_ID,
-                        Constants.OSTEO_MUSCULAR_ID_2,
-                        Constants.EVA_OSTEO_ID,
-                        Constants.HISTORIA_CLINICA_PSICOLOGICA_ID,
-                        Constants.EVALUACION_PSICOLABORAL,
-                        Constants.ECOGRAFIA_ABDOMINAL_ID,
-                        Constants.INFORME_ECOGRAFICO_PROSTATA_ID,
-                        Constants.ECOGRAFIA_RENAL_ID,
-                        Constants.OIT_ID,
-                        Constants.RX_TORAX_ID,
-                        Constants.ODONTOGRAMA_ID,
-                        Constants.TAMIZAJE_DERMATOLOGIO_ID,
-                        //Constants.PRUEBA_ESFUERZO_ID,
-                        Constants.PSICOLOGIA_ID,
-                        //Constants.GINECOLOGIA_ID,
-                        Constants.C_N_ID,
-                        Constants.TEST_VERTIGO_ID,
-                        Constants.EVA_ERGONOMICA_ID,
-                        Constants.SOMNOLENCIA_ID,
-                        Constants.ACUMETRIA_ID,
-                        Constants.OTOSCOPIA_ID,
-                        Constants.SINTOMATICO_ID,
-                        Constants.LUMBOSACRA_ID
-                    };
+                       serviceComponents_ = serviceComponents_.FindAll(p => componentIds.Contains(p.v_ComponentId)).ToList();
+                       var list = serviceComponents.Union(reportsPdf).ToList();
 
-                    string[] InformeAnexo3121 = new string[] 
-                    { 
-                        Constants.EXAMEN_FISICO_ID
-               
-                    };
-                    string[] InformeFisico7C1 = new string[] 
-                    { 
-                        Constants.EXAMEN_FISICO_7C_ID               
-                    };
-                    string[] ExamenBioquimica1 = new string[] 
-                    { 
-                         Constants.GLUCOSA_ID,
-                        Constants.COLESTEROL_ID,
-                        Constants.TRIGLICERIDOS_ID,
-                        Constants.COLESTEROL_HDL_ID,
-                        Constants.COLESTEROL_LDL_ID,
-                        Constants.COLESTEROL_VLDL_ID,
-                        Constants.UREA_ID,
-                        Constants.CREATININA_ID,
-                        Constants.TGO_ID,
-                        Constants.TGP_ID,
-                        Constants.TEST_ESTEREOPSIS_ID,
-                        Constants.ANTIGENO_PROSTATICO_ID,
-                        Constants.PLOMO_SANGRE_ID,
-                        Constants.BIOQUIMICA01_ID,
-                        Constants.BIOQUIMICA02_ID,
-                        Constants.BIOQUIMICA03_ID
-                    };
-                    string[] ExamenEspeciales1 = new string[] 
-                    { 
-                        Constants.BK_DIRECTO_ID,
-                        Constants.EXAMEN_ELISA_ID,
-                        Constants.HEPATITIS_A_ID,
-                        Constants.HEPATITIS_C_ID,
-                        Constants.SUB_UNIDAD_BETA_CUALITATIVO_ID,
-                        Constants.VDRL_ID,
-                    };
+                       var ListOrdenada = new List<ServiceComponentList>();
+
+                       //var serviceComponenteEstado = _serviceBL.GetServiceComponentsReport(item_0);
+                       var listCompExec = new List<string>();
+                       listCompExec.Add(Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+                       listCompExec.Add(Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
+                       listCompExec.Add(Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_ID);
+                       listCompExec.Add(Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_ID);
+
+                       var serviceComponenteEstado = _serviceBL.ValoresComponente_ManagerReport(item_0.ServiceId, listCompExec);
+
+                       //var serviceComponenteEstado = _serviceBL.ValoresComponente_ManagerReport(string.Empty, listCompExec);
+
+                       foreach (var item in ordenReportes)
+                       {
+                           var obj = new ServiceComponentList();
+                           var exist = list.Find(p => p.v_ComponentId == item.v_ComponentId);
+
+                           if (exist != null)
+                           {
+                               obj.v_ComponentId = item.v_ComponentId + "|" + item.i_NombreCrystalId;
+                               obj.v_ComponentName = item.v_ComponentName;
+                               obj.i_Orden = item.i_Orden;
+
+                               ListOrdenada.Add(obj);
+                           }
+                       }
+
+                       #region RX
+                       var rx = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 6 && p.i_ServiceComponentStatusId == 7);
+                       if (rx.Count != 0)
+                       {
+                           if (rx[0].i_GenderId == (int)Sigesoft.Common.Gender.FEMENINO)
+                           {
+                               ///
+                               var mujeres_AUTORIZACION_Si = serviceComponenteEstado.Find(p =>
+                                    p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_SI);
 
 
-                    ConsolidadoReportes.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "CONSENTIMIENTO INFORMADO ", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO });
-                    ConsolidadoReportes.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD SIN Diagnósticos ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_SIN_DX });
-                    ConsolidadoReportes.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD EMPRESARIAL ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_EMPRESARIAL });
-                    //ConsolidadoReportes.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD Completo", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_COMPLETO });
-                    //ConsolidadoReportes.Add(new ServiceComponentList { Orden = 5, v_ComponentName = "CERTIFICADO APTITUD SM ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_SM });
-                    ConsolidadoReportes.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD });
-                    //ConsolidadoReportes.Add(new ServiceComponentList { Orden = 7, v_ComponentName = "INFORME MÉDICO RESUMEN", v_ComponentId = Constants.INFORME_MEDICO_RESUMEN });
-                    ConsolidadoReportes.Add(new ServiceComponentList { Orden = 3, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 1", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR });
-                    ConsolidadoReportes.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 2", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2 });
-                    serviceComponents.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 3", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_3 });
-                    var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(item_0.ServiceId);
-                    var ResultadoAnexo3121 = serviceComponents11.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
-                    if (ResultadoAnexo3121.Count() != 0)
-                    {
-                        ConsolidadoReportes.Add(new ServiceComponentList { Orden = 5, v_ComponentName = "ANEXO 312", v_ComponentId = Constants.INFORME_ANEXO_312 });
-                    }
-                    var ResultadoFisico7C1 = serviceComponents11.FindAll(p => InformeFisico7C1.Contains(p.v_ComponentId)).ToList();
-                    if (ResultadoFisico7C1.Count() != 0)
-                    {
-                        ConsolidadoReportes.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 7C", v_ComponentId = Constants.INFORME_ANEXO_7C });
-                    }
-                    ConsolidadoReportes.Add(new ServiceComponentList { Orden = 7, v_ComponentName = "HISTORIA OCUPACIONAL", v_ComponentId = Constants.INFORME_HISTORIA_OCUPACIONAL });
-                    var ResultadoBioquimico1 = serviceComponents11.FindAll(p => ExamenBioquimica1.Contains(p.v_ComponentId)).ToList();
-                    if (ResultadoBioquimico1.Count() != 0)
-                    {
-                        ConsolidadoReportes.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "INFORME DE LABORATORIO", v_ComponentId = Constants.INFORME_LABORATORIO_CLINICO });
-                    }
-                    
-                    ConsolidadoReportes.AddRange(serviceComponents.FindAll(p => ConsolidadoReportesForPrint.Contains(p.v_ComponentId)));
+                               var mujeres_AUTORIZACION_No = serviceComponenteEstado.Find(p =>
+                                   p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_NO);
 
-                    ListaOrdenada = ConsolidadoReportes.OrderBy(p => p.Orden).ToList();
+                               var si_AUTORIZACION = mujeres_AUTORIZACION_Si == null ? "" : mujeres_AUTORIZACION_Si.v_Value1;
+                               var no_AUTORIZACION = mujeres_AUTORIZACION_No == null ? "" : mujeres_AUTORIZACION_No.v_Value1;
+
+                               ////
+                               var mujeres_EXONERACION_Si = serviceComponenteEstado.Find(p =>
+                                   p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI);
+
+
+                               var mujeres_EXONERACION_No = serviceComponenteEstado.Find(p =>
+                                   p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO);
+
+                               var si_EXONERACION = mujeres_EXONERACION_Si == null ? "" : mujeres_EXONERACION_Si.v_Value1;
+                               var no_EXONERACION = mujeres_EXONERACION_No == null ? "" : mujeres_EXONERACION_No.v_Value1;
+
+                               if (no_AUTORIZACION == "1")
+                               {
+                                   if (si_EXONERACION == "1")
+                                   {
+                                       ListOrdenada = ListOrdenada.FindAll(
+                                           p =>
+                                               p.v_ComponentId.Split('|')[0] != "N002-ME000000032" &&
+                                               p.v_ComponentId.Split('|')[0] != "N009-ME000000302" &&
+                                               p.v_ComponentId.Split('|')[0] != "N009-ME000000062" &&
+                                               p.v_ComponentId.Split('|')[0] != "N009-ME000000130");
+                                   }
+                                   else
+                                   {
+                                       ListOrdenada = ListOrdenada.FindAll(
+                                           p =>
+                                               p.v_ComponentId.Split('|')[0] != "N009-ME000000442" && p.v_ComponentId.Split('|')[0] != "N009-ME000000440");
+                                   }
+                               }
+                               else if (si_AUTORIZACION == "1")
+                               {
+                                   ListOrdenada = ListOrdenada.FindAll(
+                                       p =>
+                                           p.v_ComponentId.Split('|')[0] != "N009-ME000000442" && p.v_ComponentId.Split('|')[0] != "N009-ME000000440");
+                               }
+                           }
+                           else
+                           {
+                               var exoneracionsi = serviceComponenteEstado.Find(p =>
+                               p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI);
+
+                               var exoneracionno = serviceComponenteEstado.Find(p =>
+                               p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO);
+
+                               //var exoneracionsi = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI);
+                               //var exoneracionno = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO);
+
+                               var si = exoneracionsi == null ? "" : exoneracionsi.v_Value1; //exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI).v_Value1;
+                               var no = exoneracionno == null ? "" : exoneracionno.v_Value1; //exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO).v_Value1;
+                               if (si == "1")
+                               {
+                                   ListOrdenada = ListOrdenada.FindAll(
+                                p =>
+                                    p.v_ComponentId.Split('|')[0] != "N002-ME000000032" && p.v_ComponentId.Split('|')[0] != "N009-ME000000062" &&
+                                    p.v_ComponentId.Split('|')[0] != "N009-ME000000130" && p.v_ComponentId.Split('|')[0] != "N009-ME000000302"
+                                    && p.v_ComponentId != "N009-ME000000442");
+                               }
+                               else
+                               {
+                                   ListOrdenada = ListOrdenada.FindAll(
+                                       p =>
+                                           p.v_ComponentId.Split('|')[0] != "N009-ME000000440" && p.v_ComponentId.Split('|')[0] != "N009-ME000000442");
+                               }
+                           }
+
+                       }
+                       else
+                       {
+                           ListOrdenada = ListOrdenada.FindAll(
+                              p =>
+                                  p.v_ComponentId.Split('|')[0] != "N009-ME000000440" && p.v_ComponentId.Split('|')[0] != "N009-ME000000442");
+                       }
 
 
 
+                       #endregion
+
+                       #region Lab
+                       var lab = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 1 && p.i_ServiceComponentStatusId == 7);
+                       if (lab.Count != 0)
+                       {
+                           ///
+                           var laboratorio_si = serviceComponenteEstado.Find(p =>
+                               p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI);
 
 
+                           var laboratorio_no = serviceComponenteEstado.Find(p =>
+                               p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO);
 
-                    //Verificar si tiene orden de resportes
-                    List<string> reportesId = new List<string>();
-                    OrganizationBL oOrganizationBL = new OrganizationBL();
-                    OperationResult objOperationResult = new OperationResult();
-                    List<ServiceComponentList> ListaFinalOrdena = new List<ServiceComponentList>();
-                    var ListaOrdenReportes = oOrganizationBL.GetOrdenReportes(ref objOperationResult, item_0.EmpresaCliente);
-                    if (ListaOrdenReportes.Count > 0)
-                    {
-                        serviceComponents = new List<ServiceComponentList>();
-                        serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(item_0.ServiceId);
+                           var si_lab = laboratorio_si == null ? "" : laboratorio_si.v_Value1;
+                           var no_lab = laboratorio_no == null ? "" : laboratorio_no.v_Value1;
 
-                        //serviceComponents.Add(new ServiceComponentList {  v_ComponentName = "CONSENTIMIENTO INFORMADO ", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO });
+                           //var si_lab = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI).v_Value1;
+                           //var no_lab = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO).v_Value1;
 
-                        serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "CONSENTIMIENTO INFORMADO ", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO });
-                        serviceComponents.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD SIN Diagnósticos ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_SIN_DX });
-                        serviceComponents.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD EMPRESARIAL ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_EMPRESARIAL });
-                        serviceComponents.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD });
-                        serviceComponents.Add(new ServiceComponentList { Orden = 3, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 1", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR });
-                        serviceComponents.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 2", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_2 });
-                        serviceComponents.Add(new ServiceComponentList { Orden = 4, v_ComponentName = "FICHA MÉDICA DEL TRABAJADOR 3", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_3 });
-                        serviceComponents.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "INFORME DE LABORATORIO", v_ComponentId = Constants.INFORME_LABORATORIO_CLINICO });
-
-                        //var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
-                        var ResultadoAnexo312 = serviceComponents.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
-                        if (ResultadoAnexo312.Count() != 0)
-                        {
-                            serviceComponents.Add(new ServiceComponentList { Orden = 5, v_ComponentName = "ANEXO 312", v_ComponentId = Constants.INFORME_ANEXO_312 });
-                        }
-                        var ResultadoFisico7C = serviceComponents.FindAll(p => InformeFisico7C1.Contains(p.v_ComponentId)).ToList();
-                        if (ResultadoFisico7C.Count() != 0)
-                        {
-                            serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 7C", v_ComponentId = Constants.INFORME_ANEXO_7C });
-                        }
-                        serviceComponents.Add(new ServiceComponentList { Orden = 7, v_ComponentName = "HISTORIA OCUPACIONAL", v_ComponentId = Constants.INFORME_HISTORIA_OCUPACIONAL });
-            
+                           if (si_lab == "1")
+                           {
+                               ListOrdenada = ListOrdenada.FindAll(
+                                   p =>
+                                       p.v_ComponentId.Split('|')[0] != "N001-ME000000000" && p.v_ComponentId.Split('|')[0] != "N009-ME000000461" &&
+                                       p.v_ComponentId.Split('|')[0] != "N009-ME000000053" && p.v_ComponentId.Split('|')[0] != "ILAB_CLINICO");
+                           }
+                           else
+                           {
+                               ListOrdenada = ListOrdenada.FindAll(
+                                   p =>
+                                       p.v_ComponentId.Split('|')[0] != "N009-ME000000441");
+                           }
+                       }
+                       else
+                       {
+                           ListOrdenada = ListOrdenada.FindAll(
+                               p =>
+                                   p.v_ComponentId.Split('|')[0] != "N009-ME000000441");
+                       }
 
 
-                        ListaOrdenada = new List<ServiceComponentList>();
-                        ServiceComponentList oServiceComponentList = null;
+                       #endregion
+
+                       #region Espiro
+                       var espiro = serviceComponenteEstado.FindAll(p => p.i_CategoryId == 16 && p.i_ServiceComponentStatusId == 7);
+
+                       if (espiro.Count != 0)
+                       {
+
+                           var si_esp = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI).v_Value1;
+                           var no_esp = serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO) == null ? "" : serviceComponenteEstado.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO).v_Value1;
+
+                           if (si_esp == "1")
+                           {
+                               ListOrdenada = ListOrdenada.FindAll(
+                                   p =>
+                                       p.v_ComponentId.Split('|')[0] != "N002-ME000000031" && p.v_ComponentId.Split('|')[0] != "INFORME_ESPIRO" && p.v_ComponentId.Split('|')[0] != "N009-ME000000516");
+                           }
+                           else
+                           {
+                               ListOrdenada = ListOrdenada.FindAll(
+                                   p =>
+                                       p.v_ComponentId.Split('|')[0] != "N009-ME000000513");
+                           }
+                       }
+                       else
+                       {
+                           ListOrdenada = ListOrdenada.FindAll(
+                               p =>
+                                   p.v_ComponentId.Split('|')[0] != "N009-ME000000513");
+                       }
 
 
-                        foreach (var item in ListaOrdenReportes)
-                        {
-                            oServiceComponentList = new ServiceComponentList();
-                            oServiceComponentList.v_ComponentName = item.v_NombreReporte;
-                            oServiceComponentList.v_ComponentId = item.v_ComponenteId +'|' +item.i_NombreCrystalId;
-                            ListaOrdenada.Add(oServiceComponentList);
-                        }
+                       #endregion
+
+                       _ComponentsIdsOrdenados = ListOrdenada.Select(p => p.v_ComponentId).ToList();
 
 
-                        foreach (var item in ListaOrdenada)
-                        {
-                            //var ComponenteId = "";
-                            //if (item.v_ComponentId.Length > 16)
-                            //{
-                            //    ComponenteId = item.v_ComponentId.Substring(0, 16);
-                            //}
-                            //else
-                            //{
-                            //    ComponenteId = item.v_ComponentId;
-                            //}
-                            var array = item.v_ComponentId.Split('|');
-                            foreach (var item1 in serviceComponents)
-                            {
-                                if (array[0].ToString() == item1.v_ComponentId)
-                                {
-                                    ListaFinalOrdena.Add(item);
-                                }
-                            }
-                        }
+                       #region ....
+                       OperationResult objOperationResult = new OperationResult();
 
-                       
-                        foreach (var item1 in ListaFinalOrdena)
-                        {
-                            reportesId.Add(item1.v_ComponentId);
-                        }
+                       string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+                       string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+                       string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+                       var filesNameToMergeOrder = new List<string>();
+                       using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                       {
+                           frmManagementReports_Async frm = new frmManagementReports_Async("","","","","");
+
+                           System.Threading.Tasks.Task.Factory.StartNew(() => frm.CrearReportesCrystal(item_0.ServiceId, item_0.PacienteId, _ComponentsIdsOrdenados, null, true)).Wait();
+
+                           foreach (var item in _ComponentsIdsOrdenados)
+                           {
+                               var componentId = item.Split('|')[0];
+                               var path = _ruta + item_0.ServiceId + "-" + componentId + ".pdf";
+                               if (frm._filesNameToMerge.Find(p => p == path) != null)
+                               {
+                                   filesNameToMergeOrder.Add(path);
+                               }
+                           }
+                       };
+
+                       //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                       //{
+                       //    CrearReportesCrystal(item_0.ServiceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
+                       //};
+
+                       var x = filesNameToMergeOrder.ToList();
+                       //var x = _filesNameToMerge.ToList();
+                       _mergeExPDF.FilesName = x;
+                       _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + item_0.ServiceId + ".pdf";
+                       _mergeExPDF.DestinationFile = _ruta + item_0.ServiceId + ".pdf";
+                       _mergeExPDF.Execute();
+                       //_mergeExPDF.RunFile();
+
+                       var oService = _serviceBL.GetServiceShort(item_0.ServiceId);
+                       _mergeExPDF.FilesName = x;
+                       _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                       if (oService.Empresa != oService.Contract)
+                       {
+                           _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - Contrata (" + oService.Contract + ") - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                           _mergeExPDF.Execute();
+                       }
+                       else if (oService.Empresa == oService.Contract)
+                       {
+                           _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                           _mergeExPDF.Execute();
+                       }
+
+                       //Cambiar de estado a generado de reportes
+                       _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, item_0.ServiceId, Globals.ClientSession.GetAsList());
 
 
-                    }
-                    else
-                    {                       
-                        foreach (var item1 in ListaOrdenada)
-                        {
-                            reportesId.Add(item1.v_ComponentId);
-                        }
-                    }
+                       #endregion
 
-                                       
-                        Reports.frmManagementReports frm = new Reports.frmManagementReports();
-
-                        frm.GenerarReportes(item_0.ServiceId, item_0.PacienteId, reportesId);
-                  
-                }
+                }  
 
                 BindGrid();
 
@@ -3049,8 +2985,9 @@ namespace Sigesoft.Node.WinClient.UI
                 int eso = 1;
                 if (flagPantalla == 2)
                 {
+                    var dni = grdDataService.Selected.Rows[0].Cells["v_PacientDocument"].Value.ToString();
                     var frm = new Reports.frmManagementReports_Async(_serviceId, _EmpresaClienteId, _pacientId,
-                        _customerOrganizationName);
+                        _customerOrganizationName, dni);
                     frm.ShowDialog();
                 }
                 else
@@ -3269,5 +3206,187 @@ namespace Sigesoft.Node.WinClient.UI
         {
             mergeRow = true;
         }
+
+        private void grdDataService_DoubleClickCell(object sender, DoubleClickCellEventArgs e)
+        {
+            try
+            {
+                Form frm;
+                int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+                if (TserviceId == (int)MasterService.AtxMedicaParticular || TserviceId == (int)MasterService.AtxMedicaSeguros)
+                {
+                    #region ESO V2 (Asíncrono)
+                    frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                    frm.ShowDialog();
+                    #endregion
+                }
+                else
+                {
+                    //Obtener Estado del servicio
+                    var estadoAptitud = int.Parse(grdDataService.Selected.Rows[0].Cells["i_AptitudeStatusId"].Value.ToString());
+
+                    if (estadoAptitud != (int)AptitudeStatus.SinAptitud || estadoAptitud == (int)AptitudeStatus.AptoObs)
+                    {
+                        //Obtener el usuario
+                        int UserId = Globals.ClientSession.i_SystemUserId;
+                        if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+                        else
+                        {
+                            this.Enabled = false;
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
+                            this.Enabled = true;
+                        }
+
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        frm = new Operations.FrmEsoV2(_serviceId, null, "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm.ShowDialog();
+                        this.Enabled = true;
+                    }
+
+
+                }
+
+                btnFilter_Click(sender, e);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("SELECCIONE UNA SERVICIO A MODIFICAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnFilter_Click(sender, e);
+            }
+        }
+
+
+        //#region MyRegion
+
+        //private static List<Task<string>> tasks = new List<Task<string>>();
+        //public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
+        //{
+        //    OperationResult objOperationResult = new OperationResult();
+        //    MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
+        //    crConsolidatedReports rp = null;
+        //    rp = new Reports.crConsolidatedReports();
+        //    _filesNameToMerge = new List<string>();
+
+        //    foreach (var com in reportesId)
+        //    {
+        //        int IdCrystal = GetIdCrystal(com);
+        //        tasks.Add(Task<string>.Factory.StartNew(() => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
+
+        //    }
+
+        //    //foreach (var com in reportesId)
+        //    //{
+        //    //    int IdCrystal = 0;
+
+        //    //    var array = com.Split('|');
+
+        //    //    if (array.Count() == 1)
+        //    //    {
+        //    //        IdCrystal = 0;
+        //    //    }
+        //    //    else if (array[1] == "")
+        //    //    {
+        //    //        IdCrystal = 0;
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        IdCrystal = int.Parse(array[1].ToString());
+        //    //    }
+
+        //    //    ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
+        //    //}
+
+        //    if (!Publicar)
+        //    {
+        //        #region Adjuntar Archivos Adjuntos
+
+        //        string rutaInterconsulta = Common.Utils.GetApplicationConfigValue("Interconsulta").ToString();
+
+        //        List<string> files = Directory.GetFiles(rutaInterconsulta, "*.pdf").ToList();
+        //        var o = _serviceBL.GetServiceShort(serviceId);
+
+        //        var Resultado = files.Find(p => p == rutaInterconsulta + serviceId + "-" + o.Paciente + ".pdf");
+        //        if (Resultado != null)
+        //        {
+        //            _filesNameToMerge.Add(rutaInterconsulta + _serviceId + "-" + o.Paciente + ".pdf");
+        //        }
+
+        //        var ListaPdf = _serviceBL.GetFilePdfsByServiceId(ref objOperationResult, _serviceId);
+        //        if (ListaPdf != null)
+        //        {
+        //            if (ListaPdf.ToList().Count != 0)
+        //            {
+        //                foreach (var item in ListaPdf)
+        //                {
+        //                    var multimediaFile = _multimediaFileBL.GetMultimediaFileById(ref objOperationResult, item.v_MultimediaFileId);
+        //                    string rutaOrigenArchivo = "";
+        //                    if (multimediaFile.ByteArrayFile == null)
+        //                    {
+        //                        var a = multimediaFile.FileName.Split('-');
+        //                        var consultorio = a[2].Substring(0, a[2].Length - 0);
+        //                        if (consultorio == "ESPIROMETRÍA")
+        //                        {
+        //                            rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgESPIROOrigen").ToString();
+        //                        }
+        //                        else if (consultorio == "RAYOS X")
+        //                        {
+        //                            rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgRxOrigen").ToString();
+        //                        }
+        //                        else if (consultorio == "CARDIOLOGÍA")
+        //                        {
+        //                            rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgEKGOrigen").ToString();
+        //                        }
+        //                        else if (consultorio == "LABORATORIO")
+        //                        {
+        //                            rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgLABOrigen").ToString();
+        //                        }
+        //                        else if (consultorio == "PSICOLOGÍA")
+        //                        {
+        //                            rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgPSICOOrigen").ToString();
+        //                        }
+        //                        else if (consultorio == "OFTALMOLOGÍA")
+        //                        {
+        //                            rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgOftalmoOrigen").ToString();
+        //                        }
+        //                        else if (consultorio == "MEDICINA")
+        //                        {
+        //                            rutaOrigenArchivo = Common.Utils.GetApplicationConfigValue("ImgMedicinaOrigen").ToString();
+        //                        }
+        //                        else
+        //                        {
+        //                            MessageBox.Show("No se ha configurado una _ruta para subir el archivo.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                            return;
+        //                        }
+        //                        var path = rutaOrigenArchivo + item.v_FileName;
+        //                        _filesNameToMerge.Add(path);
+        //                    }
+        //                    else
+        //                    {
+        //                        var path = _ruta + _serviceId + "-" + item.v_FileName;
+        //                        File.WriteAllBytes(path, multimediaFile.ByteArrayFile);
+        //                        _filesNameToMerge.Add(path);
+        //                    }
+        //                }
+        //            }
+        //        }
+
+
+
+        //        #endregion
+        //    }
+        //}
+
+
+        //#endregion
     }
 }

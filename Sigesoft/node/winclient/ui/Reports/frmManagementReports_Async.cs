@@ -28,7 +28,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         OrganizationBL _organizationBL = new OrganizationBL();
         OperationResult _objOperationResult = new OperationResult();
         private MergeExPDF _mergeExPDF = new MergeExPDF();
-        private List<string> _filesNameToMerge = new List<string>();
+        public List<string> _filesNameToMerge = new List<string>();
         private string _empresaClienteId;
         private string _serviceId;
         List<ServiceComponentList> _listaDosaje = new List<ServiceComponentList>();        
@@ -39,14 +39,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         PacientBL _pacientBL = new PacientBL();
         HistoryBL _historyBL = new HistoryBL();
         string ruta;
+        private string _dni;
         private List<string>_ComponentsIdsOrdenados = new List<string>();
 
-        public frmManagementReports_Async(string serviceId, string EmpresaClienteId, string pacientId, string customerOrganizationName)
+        public frmManagementReports_Async(string serviceId, string EmpresaClienteId, string pacientId, string customerOrganizationName, string dni)
         {
             _empresaClienteId = EmpresaClienteId;
             _serviceId = serviceId;
             _pacientId = pacientId;
-            _customerOrganizationName = customerOrganizationName; 
+            _customerOrganizationName = customerOrganizationName;
+            _dni = dni;
             InitializeComponent();
         }
 
@@ -309,11 +311,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                         foreach (var item in _ComponentsIdsOrdenados)
                         {
-                            var path = _ruta + _serviceId + "-" + item + ".pdf";
+                            var componentId = item.Split('|')[0];
+                            var path = _ruta + _serviceId + "-" + componentId + ".pdf";
                             if (_filesNameToMerge.Find(p => p == path) != null)
                             {
                                 filesNameToMergeOrder.Add(path);
                             }
+                        }
+                        var adj = _filesNameToMerge.FindAll(p => p.Contains(_dni));
+                        if (adj != null)
+                        {
+                            foreach (var item in adj)
+                            {
+                                filesNameToMergeOrder.Add(item);
+                            }
+
                         }
                     };
 
@@ -322,8 +334,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     //    CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
                     //};
 
-                    //var x = filesNameToMergeOrder.ToList();
-                    var x = _filesNameToMerge.ToList();
+                    var x = filesNameToMergeOrder.ToList();
+                    //var x = _filesNameToMerge.ToList();
                     _mergeExPDF.FilesName = x;
                     _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
                     _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
@@ -347,7 +359,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     //Cambiar de estado a generado de reportes
                     _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
 
-                    Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", _ruta + _serviceId + ".pdf");
+                    //Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", _ruta + _serviceId + ".pdf");
 
                 }
                 else
@@ -405,33 +417,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             rp = new Reports.crConsolidatedReports();
             _filesNameToMerge = new List<string>();
 
-            //foreach (var com in reportesId)
-            //{
-            //    int IdCrystal = GetIdCrystal(com);
-            //    tasks.Add(Task<string>.Factory.StartNew( () => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
-              
-            //}
-
             foreach (var com in reportesId)
             {
-                int IdCrystal = 0;
+                int IdCrystal = GetIdCrystal(com);
+                tasks.Add(Task<string>.Factory.StartNew(() => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
 
-                var array = com.Split('|');
-
-                if (array.Count() == 1)
-                {
-                    IdCrystal = 0;
-                }
-                else if (array[1] == "")
-                {
-                    IdCrystal = 0;
-                }
-                else
-                {
-                    IdCrystal = int.Parse(array[1].ToString());
-                }
-
-                ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
             }
 
             if (Publicar)
@@ -3442,15 +3432,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
             var ValoresDxLab = _serviceBL.ValoresComponenteAMC_(_serviceId, 1);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
-            var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+            //var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
+            //var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
             var serviceComponents = _serviceBL.GetServiceComponentsReport_New312(_serviceId);
 
             FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                         filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
-                        _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
-                        ExamenFisico, Oftalmologia, Psicologia, OIT, RX, Laboratorio, Audiometria, Espirometria,
-                        _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter, TestIhihara, TestEstereopsis,
+                        _listMedicoPersonales, _listaHabitoNocivos,
+                        Audiometria,// Psicologia, OIT, RX,  , Espirometria,
+                        _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter, //TestIhihara, TestEstereopsis,
                         serviceComponents, pathFile);
         }
 
@@ -4766,5 +4756,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
 
         #endregion
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -2513,30 +2513,7 @@ namespace NetPdf
 
                     if (serviceComponent.ServiceComponentFields.Count > 0)
                     {
-                        //var conclusionRxDes = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID);
-                        ////var conclusionOitDes = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID);
-                        //var exPolvoDes = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_EXPOSICION_POLVO_DESCRIPCION_ID);
 
-                        //string valueA = string.Empty;
-                        ////string valueB = string.Empty;
-                        //string valueC = string.Empty;
-                        //string finalValue = string.Empty;
-
-                        //if (conclusionRxDes != null)
-                        //    valueA = conclusionRxDes.v_Value1;                      
-
-                        ////if (conclusionOitDes != null)
-                        ////    valueB = conclusionOitDes.v_Value1;
-
-                        //if (exPolvoDes != null)
-                        //    valueC = exPolvoDes.v_Value1;
-
-                        //if (string.IsNullOrEmpty(valueA) && string.IsNullOrEmpty(valueC)) // && string.IsNullOrEmpty(valueC))
-                        //    finalValue = "NO SE HAN REGISTRADO DATOS.";
-                        //else
-                        //    finalValue = string.Format("{0}, {1}", valueA, valueC); //, valueC);
-
-                        //cells.Add(new PdfPCell(new Phrase(finalValue, fontColumnValue)));
 
                         var dxRx = serviceComponent.DiagnosticRepository;//          .Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTOGRAMA_CONCLUSIONES_DESCRIPCION_ID);
 
@@ -3891,26 +3868,30 @@ namespace NetPdf
             #region Inmunizaciones
             ServiceComponentList findInmunizaciones = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
             string ValorTetano = "", ValorInfluenza = "", ValorHepB = "", ValorFiebAm = "";
-            var tetano = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TETANO_ANEXO16_ID);
-            if (tetano != null)
+            if (findInmunizaciones != null)
             {
-                if (tetano.v_Value1 != null) ValorTetano = tetano.v_Value1;
+                var tetano = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TETANO_ANEXO16_ID);
+                if (tetano != null)
+                {
+                    if (tetano.v_Value1 != null) ValorTetano = tetano.v_Value1;
+                }
+                var influenza = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFLUENZA_ANEXO16_ID);
+                if (influenza != null)
+                {
+                    if (influenza.v_Value1 != null) ValorInfluenza = influenza.v_Value1;
+                }
+                var HepB = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITISB_ANEXO16_ID);
+                if (HepB != null)
+                {
+                    if (HepB.v_Value1 != null) ValorHepB = HepB.v_Value1;
+                }
+                var FiebAm = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FIEBAMARILLA_ANEXO16_ID);
+                if (FiebAm != null)
+                {
+                    if (FiebAm.v_Value1 != null) ValorFiebAm = FiebAm.v_Value1;
+                }
             }
-            var influenza = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFLUENZA_ANEXO16_ID);
-            if (influenza != null)
-            {
-                if (influenza.v_Value1 != null) ValorInfluenza = influenza.v_Value1;
-            }
-            var HepB = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITISB_ANEXO16_ID);
-            if (HepB != null)
-            {
-                if (HepB.v_Value1 != null) ValorHepB = HepB.v_Value1;
-            }
-            var FiebAm = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FIEBAMARILLA_ANEXO16_ID);
-            if (FiebAm != null)
-            {
-                if (FiebAm.v_Value1 != null) ValorFiebAm = FiebAm.v_Value1;
-            }
+            
             #endregion
 
             var dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE");

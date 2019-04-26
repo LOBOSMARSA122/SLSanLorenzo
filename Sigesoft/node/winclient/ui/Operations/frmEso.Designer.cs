@@ -2099,6 +2099,8 @@
             // cbEstadoComponente
             // 
             this.cbEstadoComponente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbEstadoComponente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbEstadoComponente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbEstadoComponente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstadoComponente.FormattingEnabled = true;
             this.cbEstadoComponente.Location = new System.Drawing.Point(137, 74);

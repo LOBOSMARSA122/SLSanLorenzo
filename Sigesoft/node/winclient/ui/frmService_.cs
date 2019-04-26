@@ -684,8 +684,8 @@ namespace Sigesoft.Node.WinClient.UI
                         var ExamenFisico = _serviceBL.ValoresComponente(_serviceId, Constants.EXAMEN_FISICO_ID);
                         var Oftalmologia = _serviceBL.ValoresComponente(_serviceId, Constants.OFTALMOLOGIA_ID);
 
-                        var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
-                        var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+                        //var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
+                        //var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
 
                         var Psicologia = _serviceBL.ValoresExamenComponete(_serviceId, Constants.PSICOLOGIA_ID, 195);
                         var RX = _serviceBL.ValoresExamenComponete(_serviceId, Constants.RX_TORAX_ID, 211);
@@ -711,9 +711,9 @@ namespace Sigesoft.Node.WinClient.UI
 
                         FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                                   filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
-                                  _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
-                                  ExamenFisico, Oftalmologia, Psicologia, RX, RX1, Laboratorio, Audiometria, Espirometria,
-                                  _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,TestIhihara,TestEstereopsis,
+                                  _listMedicoPersonales, _listaHabitoNocivos,
+                                  Audiometria,//Psicologia, RX, RX1, , Espirometria,
+                                  _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,//TestIhihara,TestEstereopsis,
                                   serviceComponents, saveFileDialog2.FileName);
 
                         this.Enabled = true;

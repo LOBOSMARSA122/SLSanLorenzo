@@ -2620,6 +2620,7 @@ namespace Sigesoft.Common
 
         #region IDs Informes
 
+        public const string CERTIFICADO_APTITUD_MEDICO_OCUPACIONAL = "CAMO";
 
         public const string INFORME_ANEXO_312 = "312";
         public const string INFORME_ANEXO_7C = "7C";

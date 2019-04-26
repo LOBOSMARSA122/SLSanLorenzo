@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -9,6 +10,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using Sigesoft.Node.WinClient.BE;
 using System.Web.Configuration;
+
     
 
 namespace NetPdf
@@ -23,31 +25,46 @@ namespace NetPdf
         }
 
         public static void CreateFichaMedicalOcupacional312Report(ServiceList DataService,
-                                                                    PacientList filiationData,
-                                                                    List<HistoryList> listAtecedentesOcupacionales,
-                                                                    List<FamilyMedicalAntecedentsList> listaPatologicosFamiliares,
-                                                                    List<PersonMedicalHistoryList> listMedicoPersonales,
-                                                                    List<NoxiousHabitsList> listaHabitoNocivos,
-                                                                    List<ServiceComponentFieldValuesList> Antropometria,
-                                                                    List<ServiceComponentFieldValuesList> FuncionesVitales,
-                                                                    List<ServiceComponentFieldValuesList> ExamenFisco,
-                                                                    List<ServiceComponentFieldValuesList> Oftalmologia,
-                                                                    List<ServiceComponentFieldValuesList> Psicologia,
-                                                                    List<ServiceComponentFieldValuesList> OIT,
-                                                                    List<ServiceComponentFieldValuesList> RX,
-                                                                    List<ServiceComponentFieldValuesList> Laboratorio,
-                                                                    string Audiometria,
-                                                                    List<ServiceComponentFieldValuesList> Espirometria,
-                                                                    List<DiagnosticRepositoryList> ListDiagnosticRepository,
-                                                                    List<RecomendationList> ListRecomendation,
-                                                                    List<ServiceComponentList> ExamenesServicio,
-                                                                    List<ServiceComponentFieldValuesList> ValoresDxLaboratorio,
-                                                                    organizationDto infoEmpresaPropietaria,
-                                                                    List<ServiceComponentFieldValuesList> TestIshihara,
-                                                                    List<ServiceComponentFieldValuesList> TestEstereopsis,
-                                                                    List<ServiceComponentList> serviceComponent,
-                                                                    string filePDF)
+            PacientList filiationData,
+            List<HistoryList> listAtecedentesOcupacionales,
+            List<FamilyMedicalAntecedentsList> listaPatologicosFamiliares,
+            List<PersonMedicalHistoryList> listMedicoPersonales,
+            List<NoxiousHabitsList> listaHabitoNocivos,
+            //List<ServiceComponentFieldValuesList> Antropometria,
+            //List<ServiceComponentFieldValuesList> FuncionesVitales,
+            //List<ServiceComponentFieldValuesList> ExamenFisco,
+            //List<ServiceComponentFieldValuesList> Oftalmologia,
+            //List<ServiceComponentFieldValuesList> Psicologia,
+            //List<ServiceComponentFieldValuesList> OIT,
+            //List<ServiceComponentFieldValuesList> RX,
+            //List<ServiceComponentFieldValuesList> Laboratorio,
+            string Audiometria,
+            //List<ServiceComponentFieldValuesList> Espirometria,
+            List<DiagnosticRepositoryList> ListDiagnosticRepository,
+            List<RecomendationList> ListRecomendation,
+            List<ServiceComponentList> ExamenesServicio,
+            List<ServiceComponentFieldValuesList> ValoresDxLaboratorio,
+            organizationDto infoEmpresaPropietaria,
+            //List<ServiceComponentFieldValuesList> TestIshihara,
+            //List<ServiceComponentFieldValuesList> TestEstereopsis,
+            List<ServiceComponentList> serviceComponent,
+            string filePDF)
         {
+
+            //Components---------->>>>>>>>>
+
+            List<ServiceComponentFieldsList> Antropometria = ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000002") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000002").ServiceComponentFields;
+            List<ServiceComponentFieldsList> FuncionesVitales = ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000001") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000001").ServiceComponentFields;
+            List<ServiceComponentFieldsList> ExamenFisco = ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000022") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000022").ServiceComponentFields;
+            List<ServiceComponentFieldsList> Oftalmologia = ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000028") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000028").ServiceComponentFields;
+            List<ServiceComponentFieldsList> Laboratorio = ExamenesServicio.Find(a => a.v_ComponentId == "N001-ME000000000") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N001-ME000000000").ServiceComponentFields;
+
+            List<ServiceComponentFieldsList> Psicologia = ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000033") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000033").ServiceComponentFields;
+            List<ServiceComponentFieldsList> OIT = ExamenesServicio.Find(a => a.v_ComponentId == "N009-ME000000062") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N009-ME000000062").ServiceComponentFields;
+            List<ServiceComponentFieldsList> RX = ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000032") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000032").ServiceComponentFields;
+            List<ServiceComponentFieldsList> Espirometria = ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000031") == null ? new List<ServiceComponentFieldsList>() : ExamenesServicio.Find(a => a.v_ComponentId == "N002-ME000000031").ServiceComponentFields;
+
+
             Document document = new Document();
             document.SetPageSize(iTextSharp.text.PageSize.A4);
 
@@ -65,6 +82,7 @@ namespace NetPdf
             document.Open();
             // step 4: we Add content to the document
             // we define some fonts
+
             #region Declaration Tables
 
             var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.White);
@@ -74,7 +92,7 @@ namespace NetPdf
             //string[] columnValues = null;
             string[] columnHeaders = null;
 
-       
+
             PdfPTable filiationWorker = new PdfPTable(8);
 
             PdfPTable table = null;
@@ -85,24 +103,38 @@ namespace NetPdf
 
             #region Fonts
 
-            Font fontTitle1 = FontFactory.GetFont("Arial", 11, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontTitle2 = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
-            Font fontTitleTable = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontTitleTableNegro = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontSubTitle = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.White));
-            Font fontSubTitleNegroNegrita = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitle1 = FontFactory.GetFont("Arial", 11, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontTitle2 = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.NORMAL,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontTitleTable = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontTitleTableNegro = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontSubTitle = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.White));
+            Font fontSubTitleNegroNegrita = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
 
-            Font fontColumnValue = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
-            Font fontTitleTableAntecedentesOcupacionales = FontFactory.GetFont("Arial", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontColumnValueAntecedentesOcupacionales = FontFactory.GetFont("Arial", 5, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
-            Font fontColumnValueNegrita = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.NORMAL,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontTitleTableAntecedentesOcupacionales = FontFactory.GetFont("Arial", 5, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueAntecedentesOcupacionales = FontFactory.GetFont("Arial", 5, iTextSharp.text.Font.NORMAL,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueNegrita = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
 
-            Font fontAptitud = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontAptitud = FontFactory.GetFont("Arial", 7, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
 
 
-            Font fontColumnValueBold = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontColumnValue1 = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueBold = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD,
+                new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue1 = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.NORMAL,
+                new BaseColor(System.Drawing.Color.Black));
 
             //Font fontTitleTableNegro = FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
 
@@ -111,6 +143,7 @@ namespace NetPdf
             //document.Add(new Paragraph("\r\n"));
             //document.Add(new Paragraph("\r\n"));
             //document.Add(new Paragraph("\r\n"));
+
             #region Title     
 
             PdfPCell CellLogo = null;
@@ -118,120 +151,135 @@ namespace NetPdf
             PdfPCell cellPhoto1 = null;
 
             if (filiationData.b_Photo != null)
-                cellPhoto1 = new PdfPCell(HandlingItextSharp.GetImage(filiationData.b_Photo, 23F)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT };
+                cellPhoto1 = new PdfPCell(HandlingItextSharp.GetImage(filiationData.b_Photo, 23F))
+                    {HorizontalAlignment = PdfPCell.ALIGN_RIGHT};
             else
-                cellPhoto1 = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT };
+                cellPhoto1 = new PdfPCell(new Phrase(" ", fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_RIGHT};
 
             if (infoEmpresaPropietaria.b_Image != null)
             {
-                CellLogo = new PdfPCell(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image, 30F)) 
-                                { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+                CellLogo = new PdfPCell(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image, 30F))
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT};
             }
             else
             {
-                CellLogo = new PdfPCell(new Phrase(" ", fontColumnValue)) 
-                                { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+                CellLogo = new PdfPCell(new Phrase(" ", fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT};
             }
 
-            columnWidths = new float[] { 100f };
+            columnWidths = new float[] {100f};
 
             var cellsTit = new List<PdfPCell>()
-            { 
+            {
 
                 new PdfPCell(new Phrase("FICHA MÉDICO OCUPACIONAL", fontTitle1))
-                                { HorizontalAlignment = PdfPCell.ALIGN_CENTER },
-                new PdfPCell(new Phrase("(ANEXO N° 02 - RM. N° 312-2011/MINSA)", fontSubTitleNegroNegrita)) 
-                                { HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                    {HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                new PdfPCell(new Phrase("(ANEXO N° 02 - RM. N° 312-2011/MINSA)", fontSubTitleNegroNegrita))
+                    {HorizontalAlignment = PdfPCell.ALIGN_CENTER},
             };
 
-            table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, PdfPCell.NO_BORDER, null,
+                fontTitleTable);
 
             cells.Add(CellLogo);
             cells.Add(new PdfPCell(table));
             cells.Add(cellPhoto1);
 
-            columnWidths = new float[] { 20f, 60f, 20f };
+            columnWidths = new float[] {20f, 60f, 20f};
 
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null,
+                fontTitleTable);
             document.Add(table);
 
             #endregion
 
-                         
+
             #region Cabecera del Reporte
 
             string PreOcupacional = "", Periodica = "", Retiro = "", Otros = "";
 
-            if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional)
+            if (DataService != null)
             {
-                PreOcupacional = "X";
-            }
-            else if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PeriodicoAnual)
-            {
-                Periodica = "X";
-            }
-            else if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.Retiro)
-            {
-                Retiro = "X";
-            }
-            else
-            {
-                Otros = "X";
-            }
 
-            string Mes = "";
-            Mes = Sigesoft.Common.Utils.Getmouth(DataService.i_MesV);
+                if (DataService.i_EsoTypeId == (int) Sigesoft.Common.TypeESO.PreOcupacional)
+                {
+                    PreOcupacional = "X";
+                }
+                else if (DataService.i_EsoTypeId == (int) Sigesoft.Common.TypeESO.PeriodicoAnual)
+                {
+                    Periodica = "X";
+                }
+                else if (DataService.i_EsoTypeId == (int) Sigesoft.Common.TypeESO.Retiro)
+                {
+                    Retiro = "X";
+                }
+                else
+                {
+                    Otros = "X";
+                }
 
+                string Mes = "";
+                Mes = Sigesoft.Common.Utils.Getmouth(DataService.i_MesV);
+
+                cells = new List<PdfPCell>()
+                {
+                    //fila
+                    new PdfPCell(new Phrase("N° DE FICHA MÉDICA: ", fontColumnValue)),
+                    new PdfPCell(new Phrase(DataService.v_ServiceId, fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("FECHA DE ATENCIÓN", fontColumnValue))
+                        {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase("DÍA", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase(DataService.i_DiaV.ToString(), fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("MES", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase(Mes.ToUpper(), fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("AÑO", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase(DataService.i_AnioV.ToString(), fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+                    //fila
+                    new PdfPCell(new Phrase("TIPO DE EVALUACIÓN: ", fontColumnValue)),
+                    new PdfPCell(new Phrase("PRE EMPLEO", fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase(PreOcupacional, fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("ANUAL", fontColumnValue))
+                        {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase(Periodica, fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("RETIRO", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase(Retiro, fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("OTROS", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(new Phrase(Otros, fontColumnValue))
+                        {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+                    //fila
+                    new PdfPCell(new Phrase("LUGAR DE EXAMEN:", fontColumnValue)),
+                    new PdfPCell(new Phrase(DataService.v_OwnerOrganizationName, fontColumnValue)) {Colspan = 9},
+
+
+                };
+                columnWidths = new float[] {15f, 15f, 7f, 5f, 5f, 5f, 5f, 10f, 7f, 5f};
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+
+                document.Add(filiationWorker);
             
 
-            cells = new List<PdfPCell>()
-                 {
-                    //fila
-                    new PdfPCell(new Phrase("N° DE FICHA MÉDICA: ", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase(DataService.v_ServiceId, fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                    
-                    new PdfPCell(new Phrase("FECHA DE ATENCIÓN", fontColumnValue))
-                                             { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase("DÍA", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(DataService.i_DiaV.ToString(), fontColumnValue))
-                                             { HorizontalAlignment = PdfPCell.ALIGN_LEFT},                    
-                    new PdfPCell(new Phrase("MES", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(Mes.ToUpper(), fontColumnValue))
-                                          { HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase("AÑO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(DataService.i_AnioV.ToString(), fontColumnValue))
-                                              { HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    
-                     //fila
-                    new PdfPCell(new Phrase("TIPO DE EVALUACIÓN: ", fontColumnValue)),                                                       
-                    new PdfPCell(new Phrase("PRE EMPLEO", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},  
-                    new PdfPCell(new Phrase(PreOcupacional, fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase("ANUAL", fontColumnValue))
-                                 { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(Periodica, fontColumnValue))
-                                          { HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(Retiro, fontColumnValue))
-                                          { HorizontalAlignment = PdfPCell.ALIGN_LEFT},                 
-                    new PdfPCell(new Phrase("OTROS", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(Otros, fontColumnValue))
-                                          { HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
-                     //fila
-                    new PdfPCell(new Phrase("LUGAR DE EXAMEN:", fontColumnValue)),                                                       
-                    new PdfPCell(new Phrase(DataService.v_OwnerOrganizationName, fontColumnValue)) { Colspan = 9},   
-                 
-                 
-                 };
 
-            columnWidths = new float[] { 15f, 15f, 7f, 5f, 5f, 5f, 5f, 10f, 7f, 5f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
 
-            document.Add(filiationWorker);
+
 
             #endregion
 
             #region Datos de la Empresa
+
             //string empresageneral = DataService.v_CustomerOrganizationName;
             //string empresacontrata = DataService.EmpresaEmpleadora;
             //string empresasubcontrata = DataService.EmpresaTrabajo;
@@ -240,9 +288,9 @@ namespace NetPdf
             //if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
             //else empr_Conct = empresacontrata;
 
-            
+
             String PuestoPostula = "";
-            if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional)
+            if (DataService.i_EsoTypeId == (int) Sigesoft.Common.TypeESO.PreOcupacional)
             {
                 PuestoPostula = DataService.v_CurrentOccupation;
             }
@@ -250,39 +298,42 @@ namespace NetPdf
             {
                 PuestoPostula = "";
             }
+
             cells = new List<PdfPCell>()
-                {
-                     //fila
-                    new PdfPCell(new Phrase("RAZÓN SOCIAL:", fontColumnValue)),  
-                    new PdfPCell(new Phrase(DataService.EmpresaTrabajo, fontColumnValue))
-                                 { Colspan=7, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase("R.U.C. NRO: ", fontColumnValue)),   
-                     new PdfPCell(new Phrase(DataService.RUC, fontColumnValue)),
+            {
+                //fila
+                new PdfPCell(new Phrase("RAZÓN SOCIAL:", fontColumnValue)),
+                new PdfPCell(new Phrase(DataService.EmpresaTrabajo, fontColumnValue))
+                    {Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase("R.U.C. NRO: ", fontColumnValue)),
+                new PdfPCell(new Phrase(DataService.RUC, fontColumnValue)),
 
-                    //fila
-                    new PdfPCell(new Phrase("ACTIVIDAD ECONÓMICA:", fontColumnValue)),
-                                new PdfPCell(new Phrase(DataService.RubroEmpresaTrabajo, fontColumnValue))
-                                 { Colspan=9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                //fila
+                new PdfPCell(new Phrase("ACTIVIDAD ECONÓMICA:", fontColumnValue)),
+                new PdfPCell(new Phrase(DataService.RubroEmpresaTrabajo, fontColumnValue))
+                    {Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
-                    //fila
-                    new PdfPCell(new Phrase("LUGAR DE TRABAJO:", fontColumnValue)),
-                                new PdfPCell(new Phrase(DataService.DireccionEmpresaTrabajo, fontColumnValue)) 
-                                    { Colspan=9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                //fila
+                new PdfPCell(new Phrase("LUGAR DE TRABAJO:", fontColumnValue)),
+                new PdfPCell(new Phrase(DataService.DireccionEmpresaTrabajo, fontColumnValue))
+                    {Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
-                     //fila
-                    new PdfPCell(new Phrase("PUESTO DE TRABAJO:", fontColumnValue)),
-                                new PdfPCell(new Phrase(DataService.v_CurrentOccupation, fontColumnValue)) 
-                                    { Colspan=9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                //fila
+                new PdfPCell(new Phrase("PUESTO DE TRABAJO:", fontColumnValue)),
+                new PdfPCell(new Phrase(DataService.v_CurrentOccupation, fontColumnValue))
+                    {Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
-                    //fila
-                    new PdfPCell(new Phrase("PUESTO AL QUE POSTULA (SOLO PRE EMPLEO): ", fontColumnValue))
-                                    { Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
-                    new PdfPCell(new Phrase(PuestoPostula, fontColumnValue))
-                                    { Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
-                };
-            columnWidths = new float[] { 15f, 10f, 7f, 5f, 5f, 5f, 5f, 5f, 8f, 9f };
+                //fila
+                new PdfPCell(new Phrase("PUESTO AL QUE POSTULA (SOLO PRE EMPLEO): ", fontColumnValue))
+                    {Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase(PuestoPostula, fontColumnValue))
+                    {Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+            };
+            columnWidths = new float[] {15f, 10f, 7f, 5f, 5f, 5f, 5f, 5f, 8f, 9f};
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "I. DATOS DE LA EMPRESA", fontTitleTable);
+            filiationWorker =
+                HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "I. DATOS DE LA EMPRESA",
+                    fontTitleTable);
 
             document.Add(filiationWorker);
 
@@ -303,7 +354,7 @@ namespace NetPdf
 
             string ResidenciaLugarTrabajoSI = "", ResidenciaLugarTrabajoNO = "";
 
-            if (DataService.i_ResidenceInWorkplaceId == (int)Sigesoft.Common.SiNo.SI)
+            if (DataService.i_ResidenceInWorkplaceId == (int) Sigesoft.Common.SiNo.SI)
             {
                 ResidenciaLugarTrabajoSI = "X";
             }
@@ -315,11 +366,11 @@ namespace NetPdf
 
             string ESSALUD = "", EPS = "", SCTR = "", OTRO = "";
 
-            if (DataService.i_TypeOfInsuranceId == (int)Sigesoft.Common.TypeOfInsurance.ESSALUD)
+            if (DataService.i_TypeOfInsuranceId == (int) Sigesoft.Common.TypeOfInsurance.ESSALUD)
             {
                 ESSALUD = "X";
             }
-            else if (DataService.i_TypeOfInsuranceId == (int)Sigesoft.Common.TypeOfInsurance.EPS)
+            else if (DataService.i_TypeOfInsuranceId == (int) Sigesoft.Common.TypeOfInsurance.EPS)
             {
                 EPS = "X";
             }
@@ -331,7 +382,8 @@ namespace NetPdf
             string DNI = "", Pass = "", Carnet = "";
 
             if (DataService.i_DocTypeId == 1)
-            {cells.Add(new PdfPCell(new Phrase("ESTE EXAMEN NO APLICA AL PROTOCOLO DE ATENCIÓN.", fontColumnValue)));
+            {
+                cells.Add(new PdfPCell(new Phrase("ESTE EXAMEN NO APLICA AL PROTOCOLO DE ATENCIÓN.", fontColumnValue)));
                 DNI = "X";
             }
             else if (DataService.i_DocTypeId == 2)
@@ -342,121 +394,133 @@ namespace NetPdf
             {
                 Carnet = "X";
             }
+
             string Mes1 = "";
             Mes1 = Sigesoft.Common.Utils.Getmouth(DataService.i_MesN);
 
             cells = new List<PdfPCell>()
-                {
-                    //fila
-                    new PdfPCell(new Phrase("NOMBRES Y APELLIDOS: ", fontColumnValue)), 
-                    new PdfPCell(new Phrase(DataService.v_Pacient, fontColumnValue))
-                                                                        { Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
-                    //new PdfPCell(new PdfPCell(HandlingItextSharp.GetImage(filiationData.b_Photo, 15F)) )
-                    //                                                   { Rowspan = 5, HorizontalAlignment = PdfPCell.ALIGN_CENTER, 
-                    //                                                     VerticalAlignment = PdfPCell.ALIGN_MIDDLE 
-                    //                                                   },
-                     //new PdfPCell(cellPhoto),
-                    //fila
-                    new PdfPCell(new Phrase("FECHA DE NACIMIENTO: ", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase("DÍA: ", fontColumnValue))
-                                                     { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(DataService.i_DiaN.ToString(), fontColumnValue)), 
-                    new PdfPCell(new Phrase("MES: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(Mes1.ToUpper(), fontColumnValue))
-                                                     { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase("AÑO: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(DataService.i_AnioN.ToString(), fontColumnValue)),
-                 
-                    //fila
-                    new PdfPCell(new Phrase("EDAD: ", fontColumnValue)), 
-                    new PdfPCell(new Phrase(DataService.i_Edad.ToString(), fontColumnValue)),
-                     new PdfPCell(new Phrase("años", fontColumnValue))
-                                                    { Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},                   
-           
+            {
+                //fila
+                new PdfPCell(new Phrase("NOMBRES Y APELLIDOS: ", fontColumnValue)),
+                new PdfPCell(new Phrase(DataService.v_Pacient, fontColumnValue))
+                    {Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                //new PdfPCell(new PdfPCell(HandlingItextSharp.GetImage(filiationData.b_Photo, 15F)) )
+                //                                                   { Rowspan = 5, HorizontalAlignment = PdfPCell.ALIGN_CENTER, 
+                //                                                     VerticalAlignment = PdfPCell.ALIGN_MIDDLE 
+                //                                                   },
+                //new PdfPCell(cellPhoto),
+                //fila
+                new PdfPCell(new Phrase("FECHA DE NACIMIENTO: ", fontColumnValue)),
+                new PdfPCell(new Phrase("DÍA: ", fontColumnValue))
+                    {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.i_DiaN.ToString(), fontColumnValue)),
+                new PdfPCell(new Phrase("MES: ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(Mes1.ToUpper(), fontColumnValue))
+                    {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase("AÑO: ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.i_AnioN.ToString(), fontColumnValue)),
 
-                    //fila
-                    new PdfPCell(new Phrase("[DOCUMENTO DE IDENTIDAD CARNET DE EXTRANJERÍA (  " + Carnet +"  ), DNI (  " + DNI+"  ), PASAPORTE (  " + Pass + "  )]: ", fontColumnValue))
-                                                { Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
-                    new PdfPCell(new Phrase(DataService.v_DocNumber, fontColumnValue))
-                                                                        { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
-                  
-                    //fila
-                    new PdfPCell(new Phrase("DIRECCIÓN FISCAL: ", fontColumnValue)) {  HorizontalAlignment = PdfPCell.ALIGN_RIGHT},  
-                    new PdfPCell(new Phrase(DataService.v_AdressLocation, fontColumnValue))
-                                                                        { Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
-
-                    //fila
-                    new PdfPCell(new Phrase("DISTRITO: ", fontColumnValue)){  HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(DataService.DistritoPaciente, fontColumnValue)) 
-                                              { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},   
-                    new PdfPCell(new Phrase("PROVINCIA: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
-                    new PdfPCell(new Phrase(DataService.ProvinciaPaciente, fontColumnValue)),
-                    new PdfPCell(new Phrase("DEPARTAMENTO: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
-                    new PdfPCell(new Phrase(DataService.DepartamentoPaciente, fontColumnValue)) 
-                                                         { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                //fila
+                new PdfPCell(new Phrase("EDAD: ", fontColumnValue)),
+                new PdfPCell(new Phrase(DataService.i_Edad.ToString(), fontColumnValue)),
+                new PdfPCell(new Phrase("años", fontColumnValue))
+                    {Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
 
-                    //fila
-                    new PdfPCell(new Phrase("RESIDENCIA EN LUGAR DE TRABAJO: ", fontColumnValue)){  HorizontalAlignment = PdfPCell.ALIGN_RIGHT},                                  
-                    new PdfPCell(new Phrase("SI: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},                                 
-                    new PdfPCell(new Phrase(ResidenciaLugarTrabajoSI, fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
-                    new PdfPCell(new Phrase("NO: ", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(ResidenciaLugarTrabajoNO, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase("TIEMPO DE RESIDENCIA EN LUGAR DE TRABAJO: ", fontColumnValue))
-                                         { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
-                    new PdfPCell(new Phrase(DataService.v_ResidenceTimeInWorkplace, fontColumnValue)),
-                    new PdfPCell(new Phrase("AÑOS ", fontColumnValue)),
-                 
+                //fila
+                new PdfPCell(new Phrase(
+                        "[DOCUMENTO DE IDENTIDAD CARNET DE EXTRANJERÍA (  " + Carnet + "  ), DNI (  " + DNI +
+                        "  ), PASAPORTE (  " + Pass + "  )]: ", fontColumnValue))
+                    {Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase(DataService.v_DocNumber, fontColumnValue))
+                    {Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
-                    //fila
-                    new PdfPCell(new Phrase("ESSALUD", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},                                  
-                    new PdfPCell(new Phrase(ESSALUD, fontColumnValue)),                                    
-                    new PdfPCell(new Phrase("EPS", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},   
-                    new PdfPCell(new Phrase(EPS, fontColumnValue)),
-                    new PdfPCell(new Phrase("OTRO", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},  
-                     new PdfPCell(new Phrase("", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase("SCTR", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},                                      
-                    new PdfPCell(new Phrase(" ", fontColumnValue)), 
-                    new PdfPCell(new Phrase("OTRO", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},  
-                    new PdfPCell(new Phrase(OTRO, fontColumnValue)),
+                //fila
+                new PdfPCell(new Phrase("DIRECCIÓN FISCAL: ", fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.v_AdressLocation, fontColumnValue))
+                    {Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
-                     //fila
-                    new PdfPCell(new Phrase("CORREO ELECTRÓNICO: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},                                  
-                    new PdfPCell(new Phrase(DataService.Email == "" ? "NO REFIERE" : DataService.Email, fontColumnValue))       
-                                    { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT},        
-                    new PdfPCell(new Phrase("TELÉFONO: ", fontColumnValue))
-                                    { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(DataService.Telefono, fontColumnValue))
-                                    { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                //fila
+                new PdfPCell(new Phrase("DISTRITO: ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.DistritoPaciente, fontColumnValue))
+                    {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase("PROVINCIA: ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.ProvinciaPaciente, fontColumnValue)),
+                new PdfPCell(new Phrase("DEPARTAMENTO: ", fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.DepartamentoPaciente, fontColumnValue))
+                    {Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
-                    //fila
-                    new PdfPCell(new Phrase("ESTADO CIVIL: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},                                
-                    new PdfPCell(new Phrase(DataService.EstadoCivil, fontColumnValue))       
-                                    { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},        
-                    new PdfPCell(new Phrase("GRADO DE INSTRUCCIÓN: ", fontColumnValue))
-                                    { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(DataService.GradoInstruccion, fontColumnValue))
-                                    { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
 
-                     //fila
-                    new PdfPCell(new Phrase("N° TOTAL DE HIJOS VIVOS: ", fontColumnValue))
-                                    { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},               
-                    new PdfPCell(new Phrase(filiationData.i_NumberLivingChildren.ToString(), fontColumnValue))       
-                                    { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},        
-                    new PdfPCell(new Phrase("N° FALLECIDOS: ", fontColumnValue))
-                                    { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(filiationData.i_NumberDependentChildren.ToString(), fontColumnValue))
-                                    { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                                                
-                                                   
-                };
+                //fila
+                new PdfPCell(new Phrase("RESIDENCIA EN LUGAR DE TRABAJO: ", fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase("SI: ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(ResidenciaLugarTrabajoSI, fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase("NO: ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(ResidenciaLugarTrabajoNO, fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase("TIEMPO DE RESIDENCIA EN LUGAR DE TRABAJO: ", fontColumnValue))
+                    {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase(DataService.v_ResidenceTimeInWorkplace, fontColumnValue)),
+                new PdfPCell(new Phrase("AÑOS ", fontColumnValue)),
 
-            columnWidths = new float[] { 15f, 13f, 7f, 10f, 14f, 14f, 5f, 5f, 8f, 9f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "II. FILIACIÓN DEL TRABAJADOR", fontTitleTable);
+                //fila
+                new PdfPCell(new Phrase("ESSALUD", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(ESSALUD, fontColumnValue)),
+                new PdfPCell(new Phrase("EPS", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(EPS, fontColumnValue)),
+                new PdfPCell(new Phrase("OTRO", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase("", fontColumnValue)),
+                new PdfPCell(new Phrase("SCTR", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(" ", fontColumnValue)),
+                new PdfPCell(new Phrase("OTRO", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(OTRO, fontColumnValue)),
+
+                //fila
+                new PdfPCell(new Phrase("CORREO ELECTRÓNICO: ", fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.Email == "" ? "NO REFIERE" : DataService.Email, fontColumnValue))
+                    {Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase("TELÉFONO: ", fontColumnValue))
+                    {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.Telefono, fontColumnValue))
+                    {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+                //fila
+                new PdfPCell(new Phrase("ESTADO CIVIL: ", fontColumnValue))
+                    {HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.EstadoCivil, fontColumnValue))
+                    {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase("GRADO DE INSTRUCCIÓN: ", fontColumnValue))
+                    {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(DataService.GradoInstruccion, fontColumnValue))
+                    {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+                //fila
+                new PdfPCell(new Phrase("N° TOTAL DE HIJOS VIVOS: ", fontColumnValue))
+                    {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                new PdfPCell(new Phrase(filiationData.i_NumberLivingChildren.ToString(), fontColumnValue))
+                    {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase("N° FALLECIDOS: ", fontColumnValue))
+                    {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                new PdfPCell(new Phrase(filiationData.i_NumberDependentChildren.ToString(), fontColumnValue))
+                    {Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+            };
+
+            columnWidths = new float[] {15f, 13f, 7f, 10f, 14f, 14f, 5f, 5f, 8f, 9f};
+
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths,
+                "II. FILIACIÓN DEL TRABAJADOR", fontTitleTable);
 
             document.Add(filiationWorker);
+        }
 
-            #endregion
+        #endregion
 
             #region Antecedentes Ocupacionales
 
@@ -985,10 +1049,11 @@ namespace NetPdf
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "V. ANTECEDENTES PATOLÓGICOS FAMILIARES" + noRefiere, fontTitleTable, null);
 
             document.Add(table);
-
-            cells = new List<PdfPCell>()
+            if (DataService != null)
+            {
+                cells = new List<PdfPCell>()
                 {
-                   //fila
+                    //fila
                     new PdfPCell(new Phrase("Nro. HIJOS VIVOS", fontColumnValue)){  HorizontalAlignment = PdfPCell.ALIGN_RIGHT},   
                     new PdfPCell(new Phrase(DataService.HijosVivos == null ? "" : DataService.HijosVivos.ToString(), fontColumnValue)){  HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
                     new PdfPCell(new Phrase("NRO. HIJOS MUERTOS", fontColumnValue)){ Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},        
@@ -998,11 +1063,13 @@ namespace NetPdf
   
                 };
 
-            columnWidths = new float[] { 15f, 5f, 5f, 5f, 15f, 5f, 5f, 5f };
+                columnWidths = new float[] { 15f, 5f, 5f, 5f, 15f, 5f, 5f, 5f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
+                document.Add(filiationWorker);
+            }
+            
 
             cells = new List<PdfPCell>()
                {
@@ -1119,22 +1186,42 @@ namespace NetPdf
 
             #region Evaluación Médica
 
+            #region Old
             //Antropometria
-            string Talla = ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)).v_Value1;
-            string Peso = ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)).v_Value1;
-            string IMC = ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)).v_Value1;
-            string ICC = ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)).v_Value1;
-            string PerimetroCadera = ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)).v_Value1;
-            string PerimetroAbdominal = ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)).v_Value1;
-            string PorcentajeGrasaCorporal = ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)).v_Value1;
+            //string Talla = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)).v_Value1;
+            //string Peso = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)).v_Value1;
+            //string IMC = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)).v_Value1;
+            //string ICC = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)).v_Value1;
+            //string PerimetroCadera = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)).v_Value1;
+            //string PerimetroAbdominal = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)).v_Value1;
+            //string PorcentajeGrasaCorporal = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)).v_Value1;
+
+            ////Funciones Vitales
+            //string FrecResp = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)).v_Value1;
+            //string frecCard = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)).v_Value1;
+            //string PAD = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)).v_Value1;
+            //string PAS = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)).v_Value1;
+            //string Temperatura = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)).v_Value1;
+            //string SaturacionOxigeno = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)).v_Value1;
+
+            #endregion
+
+            //Antropometria
+            string Talla = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)).v_Value1;
+            string Peso = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)).v_Value1;
+            string IMC = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)).v_Value1;
+            string ICC = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)).v_Value1;
+            string PerimetroCadera = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)).v_Value1;
+            string PerimetroAbdominal = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)).v_Value1;
+            string PorcentajeGrasaCorporal = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)).v_Value1;
 
             //Funciones Vitales
-            string FrecResp = ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)).v_Value1;
-            string frecCard = ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)).v_Value1;
-            string PAD = ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)).v_Value1;
-            string PAS = ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)).v_Value1;
-            string Temperatura = ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)).v_Value1;
-            string SaturacionOxigeno = ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)).v_Value1;
+            string FrecResp = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)).v_Value1;
+            string frecCard = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)).v_Value1;
+            string PAD = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)).v_Value1;
+            string PAS = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)).v_Value1;
+            string Temperatura = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)).v_Value1;
+            string SaturacionOxigeno = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)).v_Value1;
 
             string ConcatenadoOtros = "";
 
@@ -1162,160 +1249,163 @@ namespace NetPdf
             ConcatenadoOtros = ConcatenadoOtros == "" ? string.Empty : ConcatenadoOtros.Substring(0, ConcatenadoOtros.Length - 2);
             //Examen fisico
             //string Estoscopia = "";
-            //if (((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 != null)
+            //if ((ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 != null)
             //{
-            string Estoscopia = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
+            string Estoscopia = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
             //}
 
 
-            //     Estoscopia = ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
+            //     Estoscopia = (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
 
-            string Estado_Mental = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)).v_Value1;
+            string Estado_Mental = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)).v_Value1;
 
             string PielX = "";
-            string Piel = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)).v_Value1;
-            string PielHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)).v_Value1;
+            string Piel = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)).v_Value1;
+            string PielHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)).v_Value1;
             if (PielHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) PielX = "X";
 
             string CabelloX = "";
-            string Cabello = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)).v_Value1;
-            string CabelloHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)).v_Value1;
+            string Cabello = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)).v_Value1;
+            string CabelloHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)).v_Value1;
             if (CabelloHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) CabelloX = "X";
 
 
             string OidoX = "";
-            string Oido = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)).v_Value1;
-            string OidoHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)).v_Value1;
+            string Oido = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)).v_Value1;
+            string OidoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)).v_Value1;
             if (OidoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) OidoX = "X";
 
 
             string NarizX = "";
-            string Nariz = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)).v_Value1;
-            string NarizHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)).v_Value1;
+            string Nariz = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)).v_Value1;
+            string NarizHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)).v_Value1;
             if (NarizHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) NarizX = "X";
 
 
             string BocaX = "";
-            string Boca = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)).v_Value1;
-            string BocaHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)).v_Value1;
+            string Boca = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)).v_Value1;
+            string BocaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)).v_Value1;
             if (BocaHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) BocaX = "X";
 
 
             string FaringeX = "";
-            string Faringe = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)).v_Value1;
-            string FaringeHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)).v_Value1;
+            string Faringe = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)).v_Value1;
+            string FaringeHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)).v_Value1;
             if (FaringeHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) FaringeX = "X";
 
 
             string CuelloX = "";
-            string Cuello = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)).v_Value1;
-            string CuelloHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)).v_Value1;
+            string Cuello = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)).v_Value1;
+            string CuelloHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)).v_Value1;
             if (CuelloHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) CuelloX = "X";
 
 
             string ApaRespiratorioX = "";
-            string ApaRespiratorio = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)).v_Value1;
-            string ApaRespiratorioHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)).v_Value1;
+            string ApaRespiratorio = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)).v_Value1;
+            string ApaRespiratorioHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)).v_Value1;
             if (ApaRespiratorioHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaRespiratorioX = "X";
 
 
             string ApaCardioVascularX = "";
-            string ApaCardioVascular = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)).v_Value1;
-            string ApaCardioVascularHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)).v_Value1;
+            string ApaCardioVascular = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)).v_Value1;
+            string ApaCardioVascularHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)).v_Value1;
             if (ApaCardioVascularHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaCardioVascularX = "X";
 
 
             string ApaDigestivoX = "";
-            string ApaDigestivo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)).v_Value1;
-            string ApaDigestivoHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)).v_Value1;
+            string ApaDigestivo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)).v_Value1;
+            string ApaDigestivoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)).v_Value1;
             if (ApaDigestivoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaDigestivoX = "X";
 
 
             string ApaGenitoUrinarioX = "";
-            string ApaGenitoUrinario = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)).v_Value1;
-            string ApaGenitoUrinarioHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)).v_Value1;
+            string ApaGenitoUrinario = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)).v_Value1;
+            string ApaGenitoUrinarioHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)).v_Value1;
             if (ApaGenitoUrinarioHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaGenitoUrinarioX = "X";
 
             // Alejandro
             // si es mujer el trabajador mostrar sus antecedentes
-
-            int? sex = DataService.i_SexTypeId;
-
-            if (sex == (int?)Sigesoft.Common.Gender.FEMENINO)
+            if (DataService != null)
             {
-                ApaGenitoUrinario = string.Format("MENARQUIA: {0} ," +
-                                                   "FUM: {1} ," +
-                                                   "RÉGIMEN CATAMENIAL: {2} ," +
-                                                   "GESTACIÓN Y PARIDAD: {3} ," +
-                                                   "MAC: {4} ," +
-                                                   "CIRUGÍA GINECOLÓGICA: {5}", string.IsNullOrEmpty(DataService.v_Menarquia) ? "NO REFIERE" : DataService.v_Menarquia,
-                                                                                DataService.d_Fur == null ? "NO REFIERE" : DataService.d_Fur.Value.ToShortDateString(),
-                                                                                string.IsNullOrEmpty(DataService.v_CatemenialRegime) ? "NO REFIERE" : DataService.v_CatemenialRegime,
-                                                                                DataService.v_Gestapara,  
-                                                                                DataService.v_Mac,
-                                                                                string.IsNullOrEmpty(DataService.v_CiruGine) ? "NO REFIERE" : DataService.v_CiruGine);
-                                                                                                                                                                                                                                                                                                                        
+                int? sex = DataService.i_SexTypeId;
+
+                if (sex == (int?)Sigesoft.Common.Gender.FEMENINO)
+                {
+                    ApaGenitoUrinario = string.Format("MENARQUIA: {0} ," +
+                                                      "FUM: {1} ," +
+                                                      "RÉGIMEN CATAMENIAL: {2} ," +
+                                                      "GESTACIÓN Y PARIDAD: {3} ," +
+                                                      "MAC: {4} ," +
+                                                      "CIRUGÍA GINECOLÓGICA: {5}", string.IsNullOrEmpty(DataService.v_Menarquia) ? "NO REFIERE" : DataService.v_Menarquia,
+                        DataService.d_Fur == null ? "NO REFIERE" : DataService.d_Fur.Value.ToShortDateString(),
+                        string.IsNullOrEmpty(DataService.v_CatemenialRegime) ? "NO REFIERE" : DataService.v_CatemenialRegime,
+                        DataService.v_Gestapara,
+                        DataService.v_Mac,
+                        string.IsNullOrEmpty(DataService.v_CiruGine) ? "NO REFIERE" : DataService.v_CiruGine);
+
+                }
             }
+            
 
             string ApaLocomotorX = "";
-            string ApaLocomotor = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)).v_Value1;
-            string ApaLocomotorHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)).v_Value1;
+            string ApaLocomotor = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)).v_Value1;
+            string ApaLocomotorHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)).v_Value1;
             if (ApaLocomotorHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaLocomotorX = "X";
 
 
             string MarchaX = "";
-            string Marcha = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)).v_Value1;
-            string MarchaHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)).v_Value1;
+            string Marcha = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)).v_Value1;
+            string MarchaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)).v_Value1;
             if (MarchaHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) MarchaX = "X";
 
 
             string ColumnaX = "";
-            string Columna = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)).v_Value1;
-            string ColumnaHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)).v_Value1;
+            string Columna = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)).v_Value1;
+            string ColumnaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)).v_Value1;
             if (ColumnaHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ColumnaX = "X";
 
 
             string SuperioresX = "";
-            string Superiores = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)).v_Value1;
-            string SuperioresHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)).v_Value1;
+            string Superiores = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)).v_Value1;
+            string SuperioresHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)).v_Value1;
             if (SuperioresHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) SuperioresX = "X";
 
 
             string InferioresX = "";
-            string Inferiores = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)).v_Value1;
-            string InferioresHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)).v_Value1;
+            string Inferiores = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)).v_Value1;
+            string InferioresHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)).v_Value1;
             if (InferioresHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) InferioresX = "X";
 
 
             string SistemaLinfaticoX = "";
-            string SistemaLinfatico = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)).v_Value1;
-            string SistemaLinfaticoHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)).v_Value1;
+            string SistemaLinfatico = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)).v_Value1;
+            string SistemaLinfaticoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)).v_Value1;
             if (SistemaLinfaticoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) SistemaLinfaticoX = "X";
 
 
             string SistemaNerviosoX = "";
-            string SistemaNervioso = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)).v_Value1;
-            string SistemaNerviosoHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)).v_Value1;
+            string SistemaNervioso = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)).v_Value1;
+            string SistemaNerviosoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)).v_Value1;
             if (SistemaNerviosoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) SistemaNerviosoX = "X";
 
 
 
-            string Hallazgos = Oftalmologia.Count() == 0 || ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)).v_Value1;
-            //string AgudezaVisualOjoDerechoSC = Oftalmologia.Count() == 0 || ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)).v_Value1;
-            //string AgudezaVisualOjoIzquierdoSC = Oftalmologia.Count() == 0 || ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)).v_Value1;
+            string Hallazgos = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)).v_Value1;
+            //string AgudezaVisualOjoDerechoSC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)).v_Value1;
+            //string AgudezaVisualOjoIzquierdoSC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)).v_Value1;
 
 
             ////var ff = Oftalmologia.Find(p => p.v_Value1 == "20 / 30");
-            //string AgudezaVisualOjoDerechoCC = Oftalmologia.Count() == 0 || ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)).v_Value1;
-            //string AgudezaVisualOjoIzquierdoCC = Oftalmologia.Count() == 0 || ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)).v_Value1;
+            //string AgudezaVisualOjoDerechoCC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)).v_Value1;
+            //string AgudezaVisualOjoIzquierdoCC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)).v_Value1;
 
             //var ss = Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_NORMAL_ID);
             ////var oTestIshihara = Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
 
             ////TEST DE ESTEREOPSIS:Frec. 10 seg/arc, Normal.
-            //string TestEstereopsisNormal = TestEstereopsis.Count() == 0 || ((ServiceComponentFieldValuesList)TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)).v_Value1;
-            //string TestEstereopsisAnormal = TestEstereopsis.Count() == 0 || ((ServiceComponentFieldValuesList)TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)).v_Value1;
-            //string TiempoEstereopsis = TestEstereopsis.Count() == 0 || ((ServiceComponentFieldValuesList)TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)).v_Value1;
+            //string TestEstereopsisNormal = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)).v_Value1;
+            //string TestEstereopsisAnormal = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)).v_Value1;
+            //string TiempoEstereopsis = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)).v_Value1;
 
             //string VisonProfundidad = "";
             //if (TestEstereopsisNormal == "1")
@@ -1328,9 +1418,9 @@ namespace NetPdf
             //}
 
             ////TEST DE ISHIHARA: Anormal, Discromatopsia: No definida.
-            //string TestIshiharaNormal = TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
-            //string TestIshiharaAnormal = TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-            //string Dicromatopsia = TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+            //string TestIshiharaNormal = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+            //string TestIshiharaAnormal = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+            //string Dicromatopsia = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
 
             //string VisonColores = "";
             //if (TestIshiharaNormal == "1")
@@ -1345,8 +1435,8 @@ namespace NetPdf
 
 
             //string OjoAnexoX = "";
-            //string OjoAnexo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)).v_Value1;
-            //string OjoAnexoHallazgo = ExamenFisco.Count() == 0 || ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)).v_Value1;
+            //string OjoAnexo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)).v_Value1;
+            //string OjoAnexoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)).v_Value1;
 
             //ServiceComponentList findOftalmologia = ExamenesServicio.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
            
@@ -1481,63 +1571,6 @@ namespace NetPdf
                     new PdfPCell(new Phrase(Cabello, fontColumnValue))
                                       { Colspan=10, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
 
-                                         //fila                                                
-                    // new PdfPCell(new Phrase("OJOS Y ANEXOS", fontColumnValue))
-                    //            { Rowspan=7, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    //new PdfPCell(new Phrase(OjoAnexoX, fontColumnValue))
-                    //            { Rowspan=7, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase("HALLAZGOS", fontColumnValue))
-                    //            { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    //new PdfPCell(new Phrase(Hallazgos, fontColumnValue))
-                    //                  { Colspan=9, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
-                    ////fila
-
-                    //new PdfPCell(new Phrase("AGUDEZA VISUAL", fontColumnValue)){Rowspan=2, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                
-
-                    ////Linea
-                    ////linea en blanco
-                    //new PdfPCell(new Phrase("O.D", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase("O.I", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase("O.D", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase("O.I", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-
-                 
-
-                    ////Linea
-                    //new PdfPCell(new Phrase("VISIÓN DE LEJOS",fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    //new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-
-                    ////Linea
-                    //new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    //new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    //new PdfPCell(new Phrase(ValorOI_VL_CC, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-
-                    //    //fila
-                    //new PdfPCell(new Phrase("VISIÓN DE PROFUNDIDAD", fontColumnValue))
-                    //            { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    //new PdfPCell(new Phrase(TiempoEstereopsis == "" ? "NO APLICA":"TEST DE ESTEREOPSIS: FREC. " + TiempoEstereopsis + "seg/arc, " +VisonProfundidad, fontColumnValue))
-                    //            { Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
-                    //new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValue))
-                    //                { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    //new PdfPCell(new Phrase(VisonColores == "" ? "NO APLICA":"TEST DE ISHIHARA: " +VisonColores, fontColumnValue))
-                    //            { Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
-
-                    //fila
-                    //new PdfPCell(new Phrase("EXAMEN CLÍNICO", fontColumnValue))
-                    //            { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    //new PdfPCell(new Phrase(OjoAnexo, fontColumnValue))
-                    //            { Colspan=8, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //fila                                                
                      new PdfPCell(new Phrase("OÍDO", fontColumnValue)),                   
@@ -2050,9 +2083,9 @@ namespace NetPdf
 
                     if (TestIshiharaa != null)
                     {
-                        string TestIshiharaNormal = TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
-                        string TestIshiharaAnormal = TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-                        string Dicromatopsia = TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+                        string TestIshiharaNormal = TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+                        string TestIshiharaAnormal = TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+                        string Dicromatopsia = TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshiharaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
 
 
                         if (TestIshiharaNormal == "1")
@@ -2200,9 +2233,9 @@ namespace NetPdf
             #region Evaluación Psicológicas
 
             //PSICOLOGIA
-            //string AreaCognitiva = Psicologia.Count() == 0 || ((ServiceComponentFieldValuesList)Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID)).v_Value1Name;
-            //string AreaEmocional = Psicologia.Count() == 0 || ((ServiceComponentFieldValuesList)Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID)).v_Value1Name;
-            string PsicologiaConclusiones = Psicologia.Count() == 0 || ((ServiceComponentFieldValuesList)Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_APTITUD_PSICOLOGICA_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_APTITUD_PSICOLOGICA_ID)).v_Value1;
+            //string AreaCognitiva = Psicologia.Count() == 0 || (Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID)) == null ? string.Empty : (Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID)).v_Value1Name;
+            //string AreaEmocional = Psicologia.Count() == 0 || (Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID)) == null ? string.Empty : (Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID)).v_Value1Name;
+            string PsicologiaConclusiones = Psicologia.Count() == 0 || (Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_APTITUD_PSICOLOGICA_ID)) == null ? string.Empty : (Psicologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.PSICOLOGIA_APTITUD_PSICOLOGICA_ID)).v_Value1;
 
             List<ServiceComponentList> ListaExamenesPsicologicos = ExamenesServicio.FindAll(p => p.i_CategoryId == 7).ToList();
             string DiagnosticosPsicologicos = "";
@@ -2261,15 +2294,15 @@ namespace NetPdf
 
             //RX
             //string ConclusionesOIT = OIT.Count() == 0 || OIT.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_ID) == null ? string.Empty : OIT.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_ID).v_Value1Name;
-            //string ConclusionesOITDescripcion = OIT.Count() == 0 || ((ServiceComponentFieldValuesList)OIT.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)OIT.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID)).v_Value1;
+            //string ConclusionesOITDescripcion = OIT.Count() == 0 || (OIT.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID)) == null ? string.Empty : (OIT.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID)).v_Value1;
             
-            //string ConclusionesRadiografica = RX.Count() == 0 || ((ServiceComponentFieldValuesList)RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_ID)).v_Value1Name;
+            //string ConclusionesRadiografica = RX.Count() == 0 || (RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_ID)) == null ? string.Empty : (RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_ID)).v_Value1Name;
 
 
             var Lista = ListDiagnosticRepository.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.RX_TORAX_ID || p.v_ComponentId == Sigesoft.Common.Constants.OIT_ID);
             var ListaConcatenada = string.Join(", ", Lista.Select(p => p.v_DiseasesName));
 
-            //string ConclusionesRadiograficaDescripcion = RX.Count() == 0 || ((ServiceComponentFieldValuesList)RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID)).v_Value1;
+            //string ConclusionesRadiograficaDescripcion = RX.Count() == 0 || (RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID)) == null ? string.Empty : (RX.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.RX_CONCLUSIONES_RADIOGRAFICAS_DESCRIPCION_ID)).v_Value1;
            
             
             
@@ -2402,7 +2435,7 @@ namespace NetPdf
             if (existeAudio != null) // El examen esta contemplado en el protocolo del paciente
             {
                 //Audiometria
-                //string ConclusionesAudiometria = Audiometria.Count() == 0 || ((ServiceComponentFieldValuesList)Audiometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.AUDIOMETRIA_CONCLUSIONES_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Audiometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.AUDIOMETRIA_CONCLUSIONES_ID)).v_Value1;
+                //string ConclusionesAudiometria = Audiometria.Count() == 0 || (Audiometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.AUDIOMETRIA_CONCLUSIONES_ID)) == null ? string.Empty : (Audiometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.AUDIOMETRIA_CONCLUSIONES_ID)).v_Value1;
                 string ConclusionesAudiometria = Audiometria;
                 //&& p.v_DiseasesId != Sigesoft.Common.Constants.NORMOACUSIA_OIDO_IZQUIERDO
                 var ListaAudioMetriaDx = ListDiagnosticRepository.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID || p.v_ComponentId == "N005-ME000000005");
@@ -2468,8 +2501,8 @@ namespace NetPdf
             if (existeEspiro != null) // El examen esta contemplado en el protocolo del paciente
             {
                 //ESPIROMETRIA
-                //string ResultadoEspirometria = Espirometria.Count() == 0 || ((ServiceComponentFieldValuesList)Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_RESULTADO_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_RESULTADO_ID)).v_Value1Name;
-                //string ObservacionEspirometria = Espirometria.Count() == 0 || ((ServiceComponentFieldValuesList)Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_OBSERVACION_ID)) == null ? string.Empty : ((ServiceComponentFieldValuesList)Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_OBSERVACION_ID)).v_Value1;
+                //string ResultadoEspirometria = Espirometria.Count() == 0 || (Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_RESULTADO_ID)) == null ? string.Empty : (Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_RESULTADO_ID)).v_Value1Name;
+                //string ObservacionEspirometria = Espirometria.Count() == 0 || (Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_OBSERVACION_ID)) == null ? string.Empty : (Espirometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ESPIROMETRIA_OBSERVACION_ID)).v_Value1;
 
                 var ListaEspirometriaDx = ListDiagnosticRepository.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
                 string DiagnosticoEspirometria = "";

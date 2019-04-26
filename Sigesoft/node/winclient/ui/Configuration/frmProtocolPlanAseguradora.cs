@@ -183,5 +183,16 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             _listToDelete.Add(item);
             _gridDataSouce.Remove(item);
         }
+
+        private void btnAgregarLinea_Click(object sender, EventArgs e)
+        {
+            frmAddLineSAM frm = new frmAddLineSAM();
+            frm.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
