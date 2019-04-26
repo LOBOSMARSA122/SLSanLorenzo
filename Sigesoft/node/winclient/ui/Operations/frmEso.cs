@@ -3163,7 +3163,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             flagValueChange = false;
             InitializeData();
-            //LoadDataBySelectedComponent(_componentId);
+            LoadDataBySelectedComponent(_componentId);
             GetTotalDiagnosticsForGridView();
             ConclusionesyTratamiento_LoadAllGrid();
 

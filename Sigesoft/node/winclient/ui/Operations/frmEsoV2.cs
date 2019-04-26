@@ -1401,25 +1401,33 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 Dock = DockStyle.Top
             };
             var x = serviceComponentsInfo.ServiceComponentFields;
-            var y = x.Select(p => p.ServiceComponentFieldValues).ToList();
-
-            //var profusion_0 = y.Find(p => p[0].v_ComponentFieldId == "N002-MF000000222")[0].v_Value1;
-            if (y.Find(p => p[0].v_ComponentFieldId == "N002-MF000000222")[0].v_Value1 == "1" && groupbox.v_Group == "C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")
+            if (serviceComponentsInfo.v_ComponentId == "N009-ME000000062")
             {
-                groupBox.Enabled = false;
+                if (serviceComponentsInfo.v_ServiceComponentStatusName != "POR INICIAR")
+                {
+                    var y = x.Select(p => p.ServiceComponentFieldValues).ToList();
+                    if (y.Find(p => p[0].v_ComponentFieldId == "N002-MF000000222")[0].v_Value1 == "1" && groupbox.v_Group == "C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")
+                    {
+                        groupBox.Enabled = false;
+                    }
+                    if (y.Find(p => p[0].v_ComponentFieldId == "N009-MF000000761")[0].v_Value1 == "1" && (groupbox.v_Group == "C 4.1 Placa Pleurales" || groupbox.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura"))
+                    {
+                        groupBox.Enabled = false;
+                    }
+                    if (y.Find(p => p[0].v_ComponentFieldId == "N009-MF000000760")[0].v_Value1 == "1" && groupbox.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
+                    {
+                        groupBox.Enabled = false;
+                    }
+                }
+                else
+                {
+                    if (groupbox.v_Group == "C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)" || groupbox.v_Group == "C 4.1 Placa Pleurales" || groupbox.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura" || groupbox.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
+                    {
+                        groupBox.Enabled = false;
+                    }
+                }
+                
             }
-            if (y.Find(p => p[0].v_ComponentFieldId == "N009-MF000000761")[0].v_Value1 == "1" && (groupbox.v_Group == "C 4.1 Placa Pleurales" || groupbox.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura"))
-            {
-                groupBox.Enabled = false;
-            }
-            if (y.Find(p => p[0].v_ComponentFieldId == "N009-MF000000760")[0].v_Value1 == "1" && groupbox.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
-            {
-                groupBox.Enabled = false;
-            }
-            //if (groupbox.v_ComponentFieldId == "N009-MF000000728" || groupbox.v_Group == "C 4.1 Placa Pleurales" || groupbox.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura" || groupbox.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
-            //{
-            //    groupBox.Enabled = false;
-            //}
             return groupBox;
         }
 
@@ -5594,37 +5602,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void tcExamList_SelectedTabChanging(object sender, SelectedTabChangingEventArgs e)
         {
             var obj = e.Tab.TabControl.ActiveTab;
-
             SaveExamWherePendingChange();
-            OperationResult objOperationResult = new OperationResult();
-            var _tmpServiceComponentsForBuildMenuList = new ServiceBL().GetServiceComponentsForBuildMenu(ref objOperationResult, _serviceId);
-            foreach (BE.ComponentList com in _tmpServiceComponentsForBuildMenuList)
-            {
-                if (com.v_GroupedComponentName == "RAYOS X")
-                {
-                    foreach (var gcn in com.GroupedComponentsName)
-                    {
-                        if (gcn.v_GroupedComponentName == "RADIOGRAFÍA OIT")
-                        {
-                            var fieldsByComponent = _tmpServiceComponentsForBuildMenuList
-                                .SelectMany(p => p.Fields)
-                                .ToList()
-                                .FindAll(p => p.v_ComponentId == gcn.v_ComponentId);
-                            var groupBoxes = fieldsByComponent.GroupBy(q => new { q.v_Group }).Select(g => g.First()).OrderBy(o => o.v_Group).ToList();
-                            GroupBox gb = null;
-                            foreach (var g in groupBoxes)
-                            {
-                                if (g.v_ComponentFieldId == "N009-MF000000728" || g.v_Group == "C 4.1 Placa Pleurales" || g.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura" || g.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
-                                {
-                                   //gb = (GroupBox)FindControlInCurrentTab_OIT("gb_" + g.v_Group)[0];
-                                   //gb.Enabled = false;
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
         }
 
         private Control[] FindControlInCurrentTab_OIT(string key)
