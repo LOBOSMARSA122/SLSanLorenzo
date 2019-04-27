@@ -367,16 +367,27 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
                     string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
                     string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
-
+                    var filesNameToMergeOrder = new List<string>();
                     var Reportes = GetChekedItems(chklConsolidadoReportes);
                     using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                     {
-                        CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
+                        System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
+                            Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
+
+                        foreach (var item in _ComponentsIdsOrdenados)
+                        {
+                            var componentId = item.Split('|')[0];
+                            var path = _ruta + _serviceId + "-" + componentId + ".pdf";
+                            if (_filesNameToMerge.Find(p => p == path) != null)
+                            {
+                                filesNameToMergeOrder.Add(path);
+                            }
+                        }
                     };
-                    var x = _filesNameToMerge.ToList();
+                    var x = filesNameToMergeOrder.ToList();
                     _mergeExPDF.FilesName = x;
-                    _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
-                    _mergeExPDF.DestinationFile = rutaBasura + _serviceId + ".pdf"; ;
+                    _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
+                    _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
                     _mergeExPDF.Execute();
                     _mergeExPDF.RunFile();
                 }
