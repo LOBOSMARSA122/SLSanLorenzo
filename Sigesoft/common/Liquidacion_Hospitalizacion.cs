@@ -457,10 +457,12 @@ namespace NetPdf
                 }
             #endregion
                 decimal totalFinal = sumaMedicina + sumaServicio + sumaHabitacion;
+
+                decimal subTotalFinal = totalFinal / (decimal)1.18;
+
+                decimal IGV = totalFinal - subTotalFinal;
                 
-                decimal IGV = totalFinal * (decimal)0.18;
                 
-                decimal subTotalFinal = totalFinal - IGV;
 
                 totalFinal = decimal.Round(totalFinal, 2);
                 IGV = decimal.Round(IGV, 2);
