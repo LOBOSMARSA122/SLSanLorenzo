@@ -24011,7 +24011,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   Pregunta5ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5).v_Value1,
                                NroCigarros = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000003660").v_Value1,
 
-                               ESPIROMETRIA_OBSERVACIONES_ASMA = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA).v_Value1,
+                               ESPIROMETRIA_OBSERVACIONES_ASMA = Espirometria.Count != 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA).v_Value1,
                                ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO = Espirometria.Count == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO).v_Value1,
                                ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS = Espirometria.Count == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS).v_Value1,
 
@@ -35567,7 +35567,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_PersonId = B.v_PersonId,
                                 v_ServiceId = A.v_ServiceId,
                                 v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-                                v_PacientDocument = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName + " " + "(HCL-" + B.v_DocNumber + ")",
+                                v_PacientDocument = B.v_DocNumber,
                                 d_ServiceDate = A.d_ServiceDate,
                                 i_ServiceStatusId = A.i_ServiceStatusId,
                                 i_StatusLiquidation = A.i_StatusLiquidation,
