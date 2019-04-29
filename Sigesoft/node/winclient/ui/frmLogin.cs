@@ -211,6 +211,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             ////----------------------------------------------------------------------------------------------------------------
 
+
             // Obtener el ID del nodo del archivo de configuración
             _intNodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
            
