@@ -2407,6 +2407,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
 
         }
+        
         private void LoadComboBox()
         {
             // Llenado de combos

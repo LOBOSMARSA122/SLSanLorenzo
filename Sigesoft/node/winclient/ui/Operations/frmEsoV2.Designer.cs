@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance107 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -732,9 +732,9 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblTrabajador = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblServicio = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lblTipoEso = new System.Windows.Forms.Label();
             this.lblProtocolName = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.lblView = new System.Windows.Forms.Label();
@@ -885,14 +885,14 @@
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance107.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance107.BackColor2 = System.Drawing.Color.Transparent;
+            appearance107.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance107.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance107.BorderColor = System.Drawing.Color.Red;
+            appearance107.BorderColor2 = System.Drawing.Color.Red;
+            appearance107.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance107;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -3511,6 +3511,7 @@
             this.cbSed.Name = "cbSed";
             this.cbSed.Size = new System.Drawing.Size(194, 21);
             this.cbSed.TabIndex = 10;
+            this.cbSed.SelectedIndexChanged += new System.EventHandler(this.cbSed_SelectedIndexChanged);
             // 
             // txtHallazgos
             // 
@@ -3553,6 +3554,7 @@
             this.cbApetito.Name = "cbApetito";
             this.cbApetito.Size = new System.Drawing.Size(194, 21);
             this.cbApetito.TabIndex = 8;
+            this.cbApetito.SelectedIndexChanged += new System.EventHandler(this.cbApetito_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -3574,6 +3576,7 @@
             this.cbDeposiciones.Name = "cbDeposiciones";
             this.cbDeposiciones.Size = new System.Drawing.Size(164, 21);
             this.cbDeposiciones.TabIndex = 6;
+            this.cbDeposiciones.SelectedIndexChanged += new System.EventHandler(this.cbDeposiciones_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -3595,6 +3598,7 @@
             this.cbOrina.Name = "cbOrina";
             this.cbOrina.Size = new System.Drawing.Size(194, 21);
             this.cbOrina.TabIndex = 4;
+            this.cbOrina.SelectedIndexChanged += new System.EventHandler(this.cbOrina_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -3616,6 +3620,7 @@
             this.cbSueño.Name = "cbSueño";
             this.cbSueño.Size = new System.Drawing.Size(194, 21);
             this.cbSueño.TabIndex = 2;
+            this.cbSueño.SelectedIndexChanged += new System.EventHandler(this.cbSueño_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -7590,9 +7595,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.Controls.Add(this.lblTrabajador);
             this.panel7.Controls.Add(this.label1);
-            this.panel7.Controls.Add(this.label18);
+            this.panel7.Controls.Add(this.lblServicio);
             this.panel7.Controls.Add(this.label16);
-            this.panel7.Controls.Add(this.label20);
+            this.panel7.Controls.Add(this.lblTipoEso);
             this.panel7.Controls.Add(this.lblProtocolName);
             this.panel7.Controls.Add(this.label21);
             this.panel7.Controls.Add(this.lblView);
@@ -7634,18 +7639,17 @@
             this.label1.Text = "Pciente:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label18
+            // lblServicio
             // 
-            this.label18.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label18.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(712, 24);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(139, 15);
-            this.label18.TabIndex = 86;
-            this.label18.Text = "lblServicio";
+            this.lblServicio.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblServicio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblServicio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServicio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblServicio.Location = new System.Drawing.Point(712, 24);
+            this.lblServicio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblServicio.Name = "lblServicio";
+            this.lblServicio.Size = new System.Drawing.Size(139, 15);
+            this.lblServicio.TabIndex = 86;
             // 
             // label16
             // 
@@ -7660,18 +7664,17 @@
             this.label16.Text = "Protocolo:";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label20
+            // lblTipoEso
             // 
-            this.label20.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label20.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label20.Location = new System.Drawing.Point(712, 4);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(139, 15);
-            this.label20.TabIndex = 87;
-            this.label20.Text = "lblTipoEso";
+            this.lblTipoEso.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblTipoEso.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTipoEso.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoEso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTipoEso.Location = new System.Drawing.Point(712, 4);
+            this.lblTipoEso.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTipoEso.Name = "lblTipoEso";
+            this.lblTipoEso.Size = new System.Drawing.Size(139, 15);
+            this.lblTipoEso.TabIndex = 87;
             // 
             // lblProtocolName
             // 
@@ -8202,9 +8205,9 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblTrabajador;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblServicio;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblTipoEso;
         private System.Windows.Forms.Label lblProtocolName;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label lblView;
