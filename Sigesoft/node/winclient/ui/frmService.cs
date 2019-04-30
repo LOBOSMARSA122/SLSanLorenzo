@@ -209,7 +209,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
 
-            var id1 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
+            //var id1 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
 
             if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
             {
@@ -2760,15 +2760,18 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                             var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                             ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
-
-                            if (personData.i_ServiceTypeId == 1)
+                            if (personData != null)
                             {
-                                btnHistoriaCl.Enabled = false;
+                                if (personData.i_ServiceTypeId == 1)
+                                {
+                                    btnHistoriaCl.Enabled = false;
+                                }
+                                else
+                                {
+                                    btnHistoriaCl.Enabled = true;
+                                }
                             }
-                            else
-                            {
-                                btnHistoriaCl.Enabled = true;
-                            }
+                            
 
                     }
                     if (rowSelected.Band.Index.ToString() == "1")
