@@ -3459,7 +3459,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 			var serviceComponentFieldValues = (from s in dbContext.service
 											   join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
-											   join scfs in dbContext.servicecomponentfields on sc.v_ServiceComponentId equals scfs.v_ServiceComponentId
+											   join scfs in dbContext.servicecomponentfields on serviceComponentId equals scfs.v_ServiceComponentId
 											   join A in dbContext.servicecomponentfieldvalues on scfs.v_ServiceComponentFieldsId equals A.v_ServiceComponentFieldsId
 
 											   where s.v_ServiceId == pstrServiceId &&
