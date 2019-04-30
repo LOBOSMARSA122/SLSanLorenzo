@@ -1188,40 +1188,40 @@ namespace NetPdf
 
             #region Old
             //Antropometria
-            //string Talla = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)).v_Value1;
-            //string Peso = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)).v_Value1;
-            //string IMC = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)).v_Value1;
-            //string ICC = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)).v_Value1;
-            //string PerimetroCadera = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)).v_Value1;
-            //string PerimetroAbdominal = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)).v_Value1;
-            //string PorcentajeGrasaCorporal = (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)).v_Value1;
+            //string Talla = (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)).v_Value1;
+            //string Peso = (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)).v_Value1;
+            //string IMC = (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)).v_Value1;
+            //string ICC = (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)).v_Value1;
+            //string PerimetroCadera = (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)).v_Value1;
+            //string PerimetroAbdominal = (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)).v_Value1;
+            //string PorcentajeGrasaCorporal = (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)) == null ? string.Empty : (Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)).v_Value1;
 
             ////Funciones Vitales
-            //string FrecResp = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)).v_Value1;
-            //string frecCard = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)).v_Value1;
-            //string PAD = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)).v_Value1;
-            //string PAS = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)).v_Value1;
-            //string Temperatura = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)).v_Value1;
-            //string SaturacionOxigeno = (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)).v_Value1;
+            //string FrecResp = (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)).v_Value1;
+            //string frecCard = (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)).v_Value1;
+            //string PAD = (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)).v_Value1;
+            //string PAS = (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)).v_Value1;
+            //string Temperatura = (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)).v_Value1;
+            //string SaturacionOxigeno = (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)) == null ? string.Empty : (FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)).v_Value1;
 
             #endregion
 
             //Antropometria
-            string Talla = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)).v_Value1;
-            string Peso = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)).v_Value1;
-            string IMC = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)).v_Value1;
-            string ICC = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)).v_Value1;
-            string PerimetroCadera = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)).v_Value1;
-            string PerimetroAbdominal = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)).v_Value1;
-            string PorcentajeGrasaCorporal = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)).v_Value1;
+            string Talla = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID)).v_Value1;
+            string Peso = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID)).v_Value1;
+            string IMC = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID)).v_Value1;
+            string ICC = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_INDICE_CINTURA_ID)).v_Value1;
+            string PerimetroCadera = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID)).v_Value1;
+            string PerimetroAbdominal = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID)).v_Value1;
+            string PorcentajeGrasaCorporal = ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)Antropometria.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID)).v_Value1;
 
             //Funciones Vitales
-            string FrecResp = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)).v_Value1;
-            string frecCard = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)).v_Value1;
-            string PAD = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)).v_Value1;
-            string PAS = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)).v_Value1;
-            string Temperatura = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)).v_Value1;
-            string SaturacionOxigeno = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)).v_Value1;
+            string FrecResp = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID)).v_Value1;
+            string frecCard = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID)).v_Value1;
+            string PAD = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID)).v_Value1;
+            string PAS = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID)).v_Value1;
+            string Temperatura = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID)).v_Value1;
+            string SaturacionOxigeno = ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)) == null ? string.Empty : ((ServiceComponentFieldsList)FuncionesVitales.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_SAT_O2_ID)).v_Value1;
 
             string ConcatenadoOtros = "";
 
@@ -1249,78 +1249,78 @@ namespace NetPdf
             ConcatenadoOtros = ConcatenadoOtros == "" ? string.Empty : ConcatenadoOtros.Substring(0, ConcatenadoOtros.Length - 2);
             //Examen fisico
             //string Estoscopia = "";
-            //if ((ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 != null)
+            //if ((ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 != null)
             //{
-            string Estoscopia = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
+            string Estoscopia = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
             //}
 
 
-            //     Estoscopia = (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
+            //     Estoscopia = (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1 == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_ECTOSCOPIA_GENERAL_DESCRIPCION_ID)).v_Value1;
 
-            string Estado_Mental = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)).v_Value1;
+            string Estado_Mental = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID)).v_Value1;
 
             string PielX = "";
-            string Piel = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)).v_Value1;
-            string PielHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)).v_Value1;
+            string Piel = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID)).v_Value1;
+            string PielHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_PIEL_ID)).v_Value1;
             if (PielHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) PielX = "X";
 
             string CabelloX = "";
-            string Cabello = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)).v_Value1;
-            string CabelloHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)).v_Value1;
+            string Cabello = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID)).v_Value1;
+            string CabelloHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CABELLO_ID)).v_Value1;
             if (CabelloHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) CabelloX = "X";
 
 
             string OidoX = "";
-            string Oido = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)).v_Value1;
-            string OidoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)).v_Value1;
+            string Oido = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID)).v_Value1;
+            string OidoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OIDOS_ID)).v_Value1;
             if (OidoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) OidoX = "X";
 
 
             string NarizX = "";
-            string Nariz = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)).v_Value1;
-            string NarizHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)).v_Value1;
+            string Nariz = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID)).v_Value1;
+            string NarizHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_NARIZ_ID)).v_Value1;
             if (NarizHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) NarizX = "X";
 
 
             string BocaX = "";
-            string Boca = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)).v_Value1;
-            string BocaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)).v_Value1;
+            string Boca = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID)).v_Value1;
+            string BocaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_BOCA_ID)).v_Value1;
             if (BocaHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) BocaX = "X";
 
 
             string FaringeX = "";
-            string Faringe = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)).v_Value1;
-            string FaringeHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)).v_Value1;
+            string Faringe = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_DESCRIPCION_ID)).v_Value1;
+            string FaringeHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_FARINGE_ID)).v_Value1;
             if (FaringeHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) FaringeX = "X";
 
 
             string CuelloX = "";
-            string Cuello = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)).v_Value1;
-            string CuelloHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)).v_Value1;
+            string Cuello = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID)).v_Value1;
+            string CuelloHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CUELLO_ID)).v_Value1;
             if (CuelloHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) CuelloX = "X";
 
 
             string ApaRespiratorioX = "";
-            string ApaRespiratorio = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)).v_Value1;
-            string ApaRespiratorioHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)).v_Value1;
+            string ApaRespiratorio = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID)).v_Value1;
+            string ApaRespiratorioHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATORESPIRATORIO_ID)).v_Value1;
             if (ApaRespiratorioHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaRespiratorioX = "X";
 
 
             string ApaCardioVascularX = "";
-            string ApaCardioVascular = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)).v_Value1;
-            string ApaCardioVascularHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)).v_Value1;
+            string ApaCardioVascular = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID)).v_Value1;
+            string ApaCardioVascularHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_CARDIO_VASCULAR_ID)).v_Value1;
             if (ApaCardioVascularHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaCardioVascularX = "X";
 
 
             string ApaDigestivoX = "";
-            string ApaDigestivo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)).v_Value1;
-            string ApaDigestivoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)).v_Value1;
+            string ApaDigestivo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID)).v_Value1;
+            string ApaDigestivoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_ID)).v_Value1;
             if (ApaDigestivoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaDigestivoX = "X";
 
 
             string ApaGenitoUrinarioX = "";
-            string ApaGenitoUrinario = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)).v_Value1;
-            string ApaGenitoUrinarioHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)).v_Value1;
+            string ApaGenitoUrinario = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID)).v_Value1;
+            string ApaGenitoUrinarioHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_GENITOURINARIO_ID)).v_Value1;
             if (ApaGenitoUrinarioHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaGenitoUrinarioX = "X";
 
             // Alejandro
@@ -1348,64 +1348,64 @@ namespace NetPdf
             
 
             string ApaLocomotorX = "";
-            string ApaLocomotor = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)).v_Value1;
-            string ApaLocomotorHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)).v_Value1;
+            string ApaLocomotor = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID)).v_Value1;
+            string ApaLocomotorHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_ID)).v_Value1;
             if (ApaLocomotorHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ApaLocomotorX = "X";
 
 
             string MarchaX = "";
-            string Marcha = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)).v_Value1;
-            string MarchaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)).v_Value1;
+            string Marcha = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID)).v_Value1;
+            string MarchaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_MARCHA_ID)).v_Value1;
             if (MarchaHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) MarchaX = "X";
 
 
             string ColumnaX = "";
-            string Columna = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)).v_Value1;
-            string ColumnaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)).v_Value1;
+            string Columna = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID)).v_Value1;
+            string ColumnaHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_COLMNA_ID)).v_Value1;
             if (ColumnaHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) ColumnaX = "X";
 
 
             string SuperioresX = "";
-            string Superiores = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)).v_Value1;
-            string SuperioresHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)).v_Value1;
+            string Superiores = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID)).v_Value1;
+            string SuperioresHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADE_SUPERIORES_ID)).v_Value1;
             if (SuperioresHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) SuperioresX = "X";
 
 
             string InferioresX = "";
-            string Inferiores = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)).v_Value1;
-            string InferioresHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)).v_Value1;
+            string Inferiores = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID)).v_Value1;
+            string InferioresHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_ID)).v_Value1;
             if (InferioresHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) InferioresX = "X";
 
 
             string SistemaLinfaticoX = "";
-            string SistemaLinfatico = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)).v_Value1;
-            string SistemaLinfaticoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)).v_Value1;
+            string SistemaLinfatico = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID)).v_Value1;
+            string SistemaLinfaticoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_LINFATICOS_ID)).v_Value1;
             if (SistemaLinfaticoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) SistemaLinfaticoX = "X";
 
 
             string SistemaNerviosoX = "";
-            string SistemaNervioso = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)).v_Value1;
-            string SistemaNerviosoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)).v_Value1;
+            string SistemaNervioso = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID)).v_Value1;
+            string SistemaNerviosoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_ID)).v_Value1;
             if (SistemaNerviosoHallazgo == ((int)Sigesoft.Common.NormalAlteradoHallazgo.SinHallazgos).ToString()) SistemaNerviosoX = "X";
 
 
 
-            string Hallazgos = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)).v_Value1;
-            //string AgudezaVisualOjoDerechoSC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)).v_Value1;
-            //string AgudezaVisualOjoIzquierdoSC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)).v_Value1;
+            string Hallazgos = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_HALLAZGOS_ID)).v_Value1;
+            //string AgudezaVisualOjoDerechoSC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_DERECHO)).v_Value1;
+            //string AgudezaVisualOjoIzquierdoSC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO)).v_Value1;
 
 
             ////var ff = Oftalmologia.Find(p => p.v_Value1 == "20 / 30");
-            //string AgudezaVisualOjoDerechoCC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)).v_Value1;
-            //string AgudezaVisualOjoIzquierdoCC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)).v_Value1;
+            //string AgudezaVisualOjoDerechoCC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO)).v_Value1;
+            //string AgudezaVisualOjoIzquierdoCC = Oftalmologia.Count() == 0 || (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)) == null ? string.Empty : (Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_IZQUIERDO)).v_Value1;
 
-            //var ss = Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_NORMAL_ID);
-            ////var oTestIshihara = Oftalmologia.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
+            //var ss = Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_NORMAL_ID);
+            ////var oTestIshihara = Oftalmologia.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
 
             ////TEST DE ESTEREOPSIS:Frec. 10 seg/arc, Normal.
-            //string TestEstereopsisNormal = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)).v_Value1;
-            //string TestEstereopsisAnormal = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)).v_Value1;
-            //string TiempoEstereopsis = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)).v_Value1;
+            //string TestEstereopsisNormal = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_NORMAL)).v_Value1;
+            //string TestEstereopsisAnormal = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_ANORMAL)).v_Value1;
+            //string TiempoEstereopsis = TestEstereopsis.Count() == 0 || (TestEstereopsis.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)) == null ? string.Empty : (TestEstereopsis.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ESTEREOPSIS_TIEMPO)).v_Value1;
 
             //string VisonProfundidad = "";
             //if (TestEstereopsisNormal == "1")
@@ -1418,9 +1418,9 @@ namespace NetPdf
             //}
 
             ////TEST DE ISHIHARA: Anormal, Discromatopsia: No definida.
-            //string TestIshiharaNormal = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
-            //string TestIshiharaAnormal = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-            //string Dicromatopsia = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+            //string TestIshiharaNormal = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+            //string TestIshiharaAnormal = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+            //string Dicromatopsia = TestIshihara.Count() == 0 || (TestIshihara.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : (TestIshihara.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
 
             //string VisonColores = "";
             //if (TestIshiharaNormal == "1")
@@ -1435,8 +1435,8 @@ namespace NetPdf
 
 
             //string OjoAnexoX = "";
-            //string OjoAnexo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)).v_Value1;
-            //string OjoAnexoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)).v_Value1;
+            //string OjoAnexo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID)).v_Value1;
+            //string OjoAnexoHallazgo = ExamenFisco.Count() == 0 || (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)) == null ? string.Empty : (ExamenFisco.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_OJOSANEXOS_ID)).v_Value1;
 
             //ServiceComponentList findOftalmologia = ExamenesServicio.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
            
@@ -1501,7 +1501,7 @@ namespace NetPdf
                {
                      //fila
                     new PdfPCell(new Phrase("ANAMNESIS", fontColumnValue)),
-                    new PdfPCell(new Phrase(DataService.v_Story, fontColumnValue))
+                    new PdfPCell(new Phrase(DataService.v_Story == null ?" - - - ":DataService.v_Story, fontColumnValue))
                                     { Colspan=11, HorizontalAlignment = PdfPCell.ALIGN_LEFT},                     
                     //fila
                     new PdfPCell(new Phrase("EXAMEN CLÍNICO", fontColumnValue))
