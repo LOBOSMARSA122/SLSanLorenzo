@@ -36078,5 +36078,42 @@ namespace Sigesoft.Node.WinClient.BLL
                 throw;
             }
         }
+
+        public ServiceComponentList GetServiceComponentsInfo_Security(ref OperationResult objOperationResult, string _serviceComponentId, string _serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from aaa in dbContext.servicecomponent//
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = aaa.i_InsertUserId.Value }//
+                                             equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+                             where aaa.v_ServiceComponentId == _serviceComponentId &&
+                                    aaa.i_IsDeleted == 0
+                             orderby aaa.i_index
+
+                             select new ServiceComponentList
+                             {
+                                 i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId.Value,
+                                 v_Comment = aaa.v_Comment,
+                                 i_ExternalInternalId = aaa.i_ExternalInternalId.Value,
+                                 v_CreationUser = J1.v_UserName,
+                                 d_CreationDate = aaa.d_InsertDate,
+                                 i_IsApprovedId = aaa.i_IsApprovedId
+                             }).FirstOrDefault();
+
+                // Cargar campos del componente Ejem Triaje : talla ; Peso ; etc
+                query.ServiceComponentFields = GetServiceComponentFields(_serviceComponentId, _serviceId);
+
+                objOperationResult.Success = 1;
+                return query;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
     }
 }
