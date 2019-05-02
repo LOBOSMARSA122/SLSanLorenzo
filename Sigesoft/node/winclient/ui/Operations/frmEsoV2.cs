@@ -3178,8 +3178,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void SearchControlAndSetValue_New(Control ctrlContainer)
         {
-            using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
-            {
                 KeyTagControl keyTagControl = null;
                 bool breakHazChildrenUC = false;
                 List<ServiceComponentFieldValuesList> dataSourceUserControls = null;
@@ -3382,7 +3380,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     }
                 }
 
-            };
+            
 
         }
 
@@ -5145,11 +5143,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta == DialogResult.Yes)
                     {
-                        using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
-                        {
-                            Thread.Sleep(3000);
-                        };
-                        MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                         IniciarGrabadoAsincrono(tcExamList.SelectedTab.TabPage);
                         GrabarDiagnosticos();
                         _isChangeValue = false;
@@ -5227,6 +5221,19 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     systemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
                 }
+                using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                {
+                    Thread.Sleep(3000);
+                };
+                MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                {
+                    Thread.Sleep(3000);
+                };
+                MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
@@ -5342,6 +5349,19 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                                 {
                                     packageForSave.i_SystemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
+                                    using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                                    {
+                                        Thread.Sleep(3000);
+                                    };
+                                    MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                                    {
+                                        Thread.Sleep(3000);
+                                    };
+                                    MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
                             }
@@ -6325,7 +6345,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void tcExamList_SelectedTabChanging(object sender, SelectedTabChangingEventArgs e)
         {
-            
+            var t = new Thread(() =>
+            {
+                using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                {
+                    Thread.Sleep(7500);
+                };
+                ;
+            });
+            t.Start();
             var obj = e.Tab.TabControl.ActiveTab;
             SaveExamWherePendingChange();
             
