@@ -558,6 +558,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 case ControlType.UcOsteoMuscular:
                     _tmpListValuesOdontograma = ((UserControls.ucOsteoMuscular)ctrl).DataSource;
                     break;
+                case ControlType.UcFototipo:
+                    _tmpListValuesOdontograma = ((UserControls.ucFotoTipo)ctrl).DataSource;
+                    break;
 
                 //case ControlType.ucPsicologia:
                 //    if (_esoTypeId == TypeESO.PreOcupacional)
@@ -5143,7 +5146,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta == DialogResult.Yes)
                     {
-                        
                         IniciarGrabadoAsincrono(tcExamList.SelectedTab.TabPage);
                         GrabarDiagnosticos();
                         _isChangeValue = false;
@@ -5221,19 +5223,31 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     systemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
                 }
-                using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                var t = new Thread(() =>
                 {
-                    Thread.Sleep(3000);
-                };
-                MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                    {
+                        Thread.Sleep(4000);
+                        MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    };
+                    ;
+                });
+                t.Start();
+               
+               
             }
             else
             {
-                using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                var t = new Thread(() =>
                 {
-                    Thread.Sleep(3000);
-                };
-                MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                    {
+                        Thread.Sleep(4000);
+                        MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    };
+                    ;
+                });
+                t.Start();
             }
 
             #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
@@ -5349,19 +5363,29 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                                 {
                                     packageForSave.i_SystemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
-                                    using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                                    var t = new Thread(() =>
                                     {
-                                        Thread.Sleep(3000);
-                                    };
-                                    MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                                        {
+                                            Thread.Sleep(4000);
+                                            MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        };
+                                        ;
+                                    });
+                                    t.Start();
                                 }
                                 else
                                 {
-                                    using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                                    var t = new Thread(() =>
                                     {
-                                        Thread.Sleep(3000);
-                                    };
-                                    MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                                        {
+                                            Thread.Sleep(4000);
+                                            MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        };
+                                        ;
+                                    });
+                                    t.Start();
                                 }
 
                             }
@@ -6349,7 +6373,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                 {
-                    Thread.Sleep(7500);
+                    Thread.Sleep(4000);
                 };
                 ;
             });
