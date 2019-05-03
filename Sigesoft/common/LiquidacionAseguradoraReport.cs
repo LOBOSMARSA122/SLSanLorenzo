@@ -469,8 +469,17 @@ namespace NetPdf
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase(totalTK, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
-                saldocoaseguropaciente += decimal.Parse(d_SaldoPacienteTK);
-                saldoaseguradora += decimal.Parse(d_SaldoAseguradoraTK);
+                if (d_SaldoPacienteTK.ToString() != "")
+                {
+                    saldocoaseguropaciente += decimal.Parse(d_SaldoPacienteTK);
+                }
+
+                if (d_SaldoAseguradoraTK.ToString() != "")
+                {
+                    saldoaseguradora += decimal.Parse(d_SaldoAseguradoraTK);
+                }
+                
+               
             }
             lector.Close();
             columnWidths = new float[] { 12.5f, 12.5f, 12.5f, 12.5f, 12.5f, 12.5f, 12.5f, 12.5f };

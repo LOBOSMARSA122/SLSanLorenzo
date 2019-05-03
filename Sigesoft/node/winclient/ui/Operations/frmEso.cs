@@ -2407,6 +2407,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
 
         }
+        
         private void LoadComboBox()
         {
             // Llenado de combos
@@ -2639,6 +2640,164 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     cbEstadoComponente.Enabled = true;
 	            }
 			}
+        }
+
+        private void LoadDataBySelectedComponent_Async(string pstrComponentId)
+        {
+                var arrComponentId = _componentId.Split('|');
+
+                if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)//audiometría
+                    || arrComponentId.Contains("N009-ME000000337")
+                    || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE)
+
+                    || arrComponentId.Contains(Constants.APENDICE_ID)//cardiologia
+                    || arrComponentId.Contains(Constants.ELECTROCARDIOGRAMA_ID)
+                    || arrComponentId.Contains(Constants.ELECTRO_GOLD)
+                    || arrComponentId.Contains(Constants.PRUEBA_ESFUERZO_ID)
+
+                    || arrComponentId.Contains(Constants.ESPIROMETRIA_ID)//espirometría
+
+                    || arrComponentId.Contains(Constants.INFORME_LABORATORIO_ID)//laboratorio
+                    || arrComponentId.Contains(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID)
+
+                    || arrComponentId.Contains(Constants.EXAMEN_FISICO_7C_ID)//medicina
+                    || arrComponentId.Contains(Constants.EXAMEN_FISICO_ID)
+                    || arrComponentId.Contains(Constants.ATENCION_INTEGRAL_ID)
+                    || arrComponentId.Contains(Constants.C_N_ID)//cuestionario nordico
+                    || arrComponentId.Contains(Constants.FICHA_SAS_ID)
+                    || arrComponentId.Contains(Constants.EVA_ERGONOMICA_ID)
+                    || arrComponentId.Contains(Constants.EVA_NEUROLOGICA_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_7D_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_ESTRUCTURAL_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_SUF_MED__OPERADORES_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_MUSCULAR_ID_1)
+                    || arrComponentId.Contains(Constants.FOTO_TIPO_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_COIMO)
+                    || arrComponentId.Contains(Constants.SINTOMATICO_ID)
+                    || arrComponentId.Contains(Constants.FICHA_SUFICIENCIA_MEDICA_ID)
+                    || arrComponentId.Contains(Constants.TAMIZAJE_DERMATOLOGIO_ID)
+                    || arrComponentId.Contains(Constants.TEST_VERTIGO_ID)
+                    || arrComponentId.Contains(Constants.EVA_OSTEO_ID)
+
+                    || arrComponentId.Contains(Constants.ODONTOGRAMA_ID)//odontologia
+
+                    || arrComponentId.Contains(Constants.OFTALMOLOGIA_ID)//oftalmologia
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                    || arrComponentId.Contains(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                    || arrComponentId.Contains(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID)
+                    || arrComponentId.Contains(Constants.PETRINOVIC_ID)
+                    || arrComponentId.Contains(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)
+                    || arrComponentId.Contains("N009-ME000000437")
+
+                    //|| arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
+                    //|| arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
+                    //|| arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
+                    //|| arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
+                    //|| arrComponentId.Contains(Constants.SOMNOLENCIA_ID)
+
+                    || arrComponentId.Contains(Constants.OIT_ID)//rayos x
+                    || arrComponentId.Contains(Constants.RX_TORAX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_AUTORIZACION_ID)
+
+                    || arrComponentId.Contains(Constants.LUMBOSACRA_ID)
+                    || arrComponentId.Contains(Constants.ELECTROENCEFALOGRAMA_ID)
+                    || arrComponentId.Contains("N009-ME000000302")
+                    )
+                {
+                    btnVisorReporteExamen.Text = string.Format("&Ver Reporte de ({0})", _examName);
+                    btnVisorReporteExamen.Visible = true;
+                }
+                else
+                {
+                    btnVisorReporteExamen.Visible = false;
+                }
+
+
+                OperationResult objOperationResult = new OperationResult();
+
+                if (_serviceComponentsInfo != null)
+                    _serviceComponentsInfo = null;
+
+                // Mostrar data de serviceComponent
+                _serviceComponentsInfo = _serviceBL.GetServiceComponentsInfo(ref objOperationResult, _serviceComponentId, _serviceId);
+
+
+
+
+
+
+                if (_serviceComponentsInfo != null)
+                {
+                    txtComentario.Text = _serviceComponentsInfo.v_Comment;
+                    cbEstadoComponente.SelectedValue = _serviceComponentsInfo.i_ServiceComponentStatusId == (int)ServiceComponentStatus.PorIniciar ? ((int)ServiceComponentStatus.Iniciado).ToString() : _serviceComponentsInfo.i_ServiceComponentStatusId.ToString();
+                    //_EstadoComponente = _serviceComponentsInfo.i_ServiceComponentStatusId == (int)ServiceComponentStatus.PorIniciar ? ((int)ServiceComponentStatus.Iniciado) : _serviceComponentsInfo.i_ServiceComponentStatusId;
+                    cbTipoProcedenciaExamen.SelectedValue = _serviceComponentsInfo.i_ExternalInternalId == null ? "1" : _serviceComponentsInfo.i_ExternalInternalId.ToString();
+                    chkApproved.Checked = Convert.ToBoolean(_serviceComponentsInfo.i_IsApprovedId);
+
+
+                    #region Permisos de lectura / Escritura x componente de acuerdo al rol del usuario
+
+                    SetSecurityByComponent();
+
+                    #endregion
+
+                    if (_serviceComponentsInfo.ServiceComponentFields.Count != 0)
+                    {
+                        // Flag para disparar el evento del selectedIndexChange luego de setear los valores x default
+                        _cancelEventSelectedIndexChange = true;
+                        // Llenar valores            
+                        SearchControlAndSetValue(tcExamList.SelectedTab.TabPage);
+
+                        _cancelEventSelectedIndexChange = false;
+                    }
+                    else
+                    {
+                        // Setear valores x defecto configurados en BD            
+                        SetDefaultValueBySelectedTab();
+                    }
+
+                    // Setear campos de auditoria
+                    tslUsuarioCrea.Text = string.Format("Usuario Crea : {0}", _serviceComponentsInfo.v_CreationUser);
+                    tslFechaCrea.Text = string.Format("Fecha Crea : {0} {1}", _serviceComponentsInfo.d_CreationDate.Value.ToShortDateString(), _serviceComponentsInfo.d_CreationDate.Value.ToShortTimeString());
+                    tslUsuarioAct.Text = string.Format("Usuario Act : {0}", _serviceComponentsInfo.v_UpdateUser == null ? string.Empty : _serviceComponentsInfo.v_UpdateUser);
+                    tslFechaAct.Text = string.Format("Fecha Act : {0} {1}", _serviceComponentsInfo.d_UpdateDate == null ? string.Empty : _serviceComponentsInfo.d_UpdateDate.Value.ToShortDateString(), _serviceComponentsInfo.d_UpdateDate == null ? string.Empty : _serviceComponentsInfo.d_UpdateDate.Value.ToShortTimeString());
+
+                }
+
+                var diagnosticList = _serviceBL.GetServiceComponentDisgnosticsForGridView(ref objOperationResult,
+                                                                                        _serviceId,
+                                                                                        pstrComponentId);
+
+                // Limpiar variable que contiene los Dx sugeridos / manuales
+                if (_tmpExamDiagnosticComponentList != null)
+                    _tmpExamDiagnosticComponentList = null;
+
+                if (diagnosticList != null && diagnosticList.Count != 0)
+                {
+                    // Cargar la grilla de DX sugeridos / manuales
+                    grdDiagnosticoPorExamenComponente.DataSource = diagnosticList;
+                    lblRecordCountDiagnosticoPorExamenCom.Text = string.Format("Se encontraron {0} registros.", diagnosticList.Count());
+
+                    // Cargar mi lista temporal con data k viene de BD
+                    _tmpExamDiagnosticComponentList = diagnosticList;
+
+                    // Analizar el resultado de la operación
+                    if (objOperationResult.Success != 1)
+                    {
+                        MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // Limpiar la grilla de DX con una entidad vacia
+                    grdDiagnosticoPorExamenComponente.DataSource = new DiagnosticRepositoryList();
+                    lblRecordCountDiagnosticoPorExamenCom.Text = string.Format("Se encontraron {0} registros.", 0);
+
+                }
+
+
         }
 
         private void LoadDataBySelectedComponent(string pstrComponentId)
@@ -3136,10 +3295,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                  }
              }
 
+             if (cbEstadoComponente.SelectedValue.ToString() == "8")
+             {
+                 var frm = new Operations.Popups.frmEspecialista();
+                 frm.ShowDialog();
+                 if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+                 {
+                     serviceComponentDto.i_SystemUserEspecialistaId = frm.i_SystemUserEspecialistaId;
+                 }
+             }
+
             #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
            
             // Grabar Dx por examen componente mas sus restricciones
-            if (systemUserSuplantadorId != null)
+             if (systemUserSuplantadorId != null && systemUserSuplantadorId != 0)
             {
                 Globals.ClientSession.i_SystemUserId = (int)systemUserSuplantadorId;
             }
@@ -3163,12 +3332,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             flagValueChange = false;
             InitializeData();
-            LoadDataBySelectedComponent(_componentId);
+            LoadDataBySelectedComponent_Async(_componentId);
+            //LoadDataBySelectedComponent(_componentId);
             GetTotalDiagnosticsForGridView();
             ConclusionesyTratamiento_LoadAllGrid();
-
-
-
             #endregion
 
 

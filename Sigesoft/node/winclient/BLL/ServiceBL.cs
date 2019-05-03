@@ -2518,11 +2518,11 @@ namespace Sigesoft.Node.WinClient.BLL
 								v_FirstLastName = D.v_FirstLastName,
 								v_SecondLastName = D.v_SecondLastName,
 								d_BirthDate = D.d_Birthdate,
-								i_SexTypeId = D.i_SexTypeId,
+                                i_SexTypeId = D.i_SexTypeId.Value,
                                 i_DocTypeId = D.i_DocTypeId.Value,
                                 v_Mail = D.v_Mail,
 								v_ServiceStatusName = B.v_Value1,
-								i_AptitudeStatusId = A.i_AptitudeStatusId,
+                                i_AptitudeStatusId = A.i_AptitudeStatusId.Value,
 								d_GlobalExpirationDate = A.d_GlobalExpirationDate.Value,
 								d_ObsExpirationDate = A.d_ObsExpirationDate,
 								d_ServiceDate = A.d_ServiceDate,
@@ -2536,33 +2536,33 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_AdressLocation = D.v_AdressLocation,
                                 v_BirthPlace = D.v_BirthPlace,
                                 v_TelephoneNumber = D.v_TelephoneNumber,
-								i_HasSymptomId = A.i_HasSymptomId,
+                                i_HasSymptomId = A.i_HasSymptomId.Value,
 								v_MainSymptom = A.v_MainSymptom,
-								i_TimeOfDisease = A.i_TimeOfDisease,
-								i_TimeOfDiseaseTypeId = A.i_TimeOfDiseaseTypeId,
+                                i_TimeOfDisease = A.i_TimeOfDisease.Value,
+                                i_TimeOfDiseaseTypeId = A.i_TimeOfDiseaseTypeId.Value,
 								v_Story = A.v_Story,
-								i_DreamId = A.i_DreamId,
-								i_UrineId = A.i_UrineId,
-								i_DepositionId = A.i_DepositionId,
-								i_AppetiteId = A.i_AppetiteId,
-								i_ThirstId = A.i_ThirstId,
+                                i_DreamId = A.i_DreamId.Value,
+                                i_UrineId = A.i_UrineId.Value,
+                                i_DepositionId = A.i_DepositionId.Value,
+                                i_AppetiteId = A.i_AppetiteId.Value,
+                                i_ThirstId = A.i_ThirstId.Value,
 								d_Fur = A.d_Fur.Value,
 								v_CatemenialRegime = A.v_CatemenialRegime,
-								i_MacId = A.i_MacId,
-								i_DestinationMedicationId = A.i_DestinationMedicationId,
-								i_TransportMedicationId = A.i_TransportMedicationId,
-								i_HasMedicalBreakId = A.i_HasMedicalBreakId,
-								i_HasRestrictionId = A.i_HasRestrictionId,
+								i_MacId = A.i_MacId.Value,
+								i_DestinationMedicationId = A.i_DestinationMedicationId.Value,
+								i_TransportMedicationId = A.i_TransportMedicationId.Value,
+								i_HasMedicalBreakId = A.i_HasMedicalBreakId.Value,
+								i_HasRestrictionId = A.i_HasRestrictionId.Value,
 								d_MedicalBreakStartDate = A.d_MedicalBreakStartDate,
 								d_MedicalBreakEndDate = A.d_MedicalBreakEndDate,
 								d_StartDateRestriction = A.d_StartDateRestriction,
 								d_EndDateRestriction = A.d_EndDateRestriction,
 								v_GeneralRecomendations = A.v_GeneralRecomendations,
-								i_IsNewControl = A.i_IsNewControl,
+								i_IsNewControl = A.i_IsNewControl.Value,
 								b_PersonImage = D.b_PersonImage,
-								i_HazInterconsultationId = A.i_HazInterconsultationId,
+								i_HazInterconsultationId = A.i_HazInterconsultationId.Value,
 								d_NextAppointment = A.d_NextAppointment,
-								i_SendToTracking = A.i_SendToTracking,
+								i_SendToTracking = A.i_SendToTracking.Value,
 								v_CurrentOccupation = D.v_CurrentOccupation,
 								d_PAP = A.d_PAP.Value,
 								d_Mamografia = A.d_Mamografia.Value,
@@ -2584,8 +2584,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_NroParejasActuales = A.v_NroParejasActuales,
                                 v_NroAbortos = A.v_NroAbortos,
                                 v_PrecisarCausas = A.v_PrecisarCausas,
-                                i_BloodFactorId =  D.i_BloodGroupId,
-                                i_BloodGroupId =  D.i_BloodFactorId,
+                                i_BloodFactorId =  D.i_BloodGroupId.Value,
+                                i_BloodGroupId =  D.i_BloodFactorId.Value,
                                 v_Procedencia = D.v_Procedencia,
                                 v_CentroEducativo = D.v_CentroEducativo,
                                 i_LevelOfId = D.i_LevelOfId.Value,
@@ -3459,7 +3459,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 			var serviceComponentFieldValues = (from s in dbContext.service
 											   join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
-											   join scfs in dbContext.servicecomponentfields on sc.v_ServiceComponentId equals scfs.v_ServiceComponentId
+											   join scfs in dbContext.servicecomponentfields on serviceComponentId equals scfs.v_ServiceComponentId
 											   join A in dbContext.servicecomponentfieldvalues on scfs.v_ServiceComponentFieldsId equals A.v_ServiceComponentFieldsId
 
 											   where s.v_ServiceId == pstrServiceId &&
@@ -36076,6 +36076,43 @@ namespace Sigesoft.Node.WinClient.BLL
             catch (Exception e)
             {
                 throw;
+            }
+        }
+
+        public ServiceComponentList GetServiceComponentsInfo_Security(ref OperationResult objOperationResult, string _serviceComponentId, string _serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from aaa in dbContext.servicecomponent//
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = aaa.i_InsertUserId.Value }//
+                                             equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+                             where aaa.v_ServiceComponentId == _serviceComponentId &&
+                                    aaa.i_IsDeleted == 0
+                             orderby aaa.i_index
+
+                             select new ServiceComponentList
+                             {
+                                 i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId.Value,
+                                 v_Comment = aaa.v_Comment,
+                                 i_ExternalInternalId = aaa.i_ExternalInternalId.Value,
+                                 v_CreationUser = J1.v_UserName,
+                                 d_CreationDate = aaa.d_InsertDate,
+                                 i_IsApprovedId = aaa.i_IsApprovedId
+                             }).FirstOrDefault();
+
+                // Cargar campos del componente Ejem Triaje : talla ; Peso ; etc
+                query.ServiceComponentFields = GetServiceComponentFields(_serviceComponentId, _serviceId);
+
+                objOperationResult.Success = 1;
+                return query;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
             }
         }
     }

@@ -1843,8 +1843,6 @@
             // chkSaveAsync
             // 
             this.chkSaveAsync.AutoSize = true;
-            this.chkSaveAsync.Checked = true;
-            this.chkSaveAsync.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSaveAsync.Location = new System.Drawing.Point(1149, 618);
             this.chkSaveAsync.Name = "chkSaveAsync";
             this.chkSaveAsync.Size = new System.Drawing.Size(138, 17);

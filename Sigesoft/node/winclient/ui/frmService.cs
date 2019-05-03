@@ -13,6 +13,7 @@ using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
+using System.Threading;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
 
@@ -209,7 +210,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
 
-            var id1 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
+            //var id1 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
 
             if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
             {
@@ -2760,15 +2761,18 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                             var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                             ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
-
-                            if (personData.i_ServiceTypeId == 1)
+                            if (personData != null)
                             {
-                                btnHistoriaCl.Enabled = false;
+                                if (personData.i_ServiceTypeId == 1)
+                                {
+                                    btnHistoriaCl.Enabled = false;
+                                }
+                                else
+                                {
+                                    btnHistoriaCl.Enabled = true;
+                                }
                             }
-                            else
-                            {
-                                btnHistoriaCl.Enabled = true;
-                            }
+                            
 
                     }
                     if (rowSelected.Band.Index.ToString() == "1")
@@ -3232,8 +3236,12 @@ namespace Sigesoft.Node.WinClient.UI
                         if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
                         {
                             this.Enabled = false;
-                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                            {
+                                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            };
                             frm.ShowDialog();
+                            
                             this.Enabled = true;
                         }
                         else
