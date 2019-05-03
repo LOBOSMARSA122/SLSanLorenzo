@@ -35567,7 +35567,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_PersonId = B.v_PersonId,
                                 v_ServiceId = A.v_ServiceId,
                                 v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-                                v_PacientDocument = B.v_DocNumber,
+                                v_PacientDocument = B.v_DocNumber + " " + B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
                                 d_ServiceDate = A.d_ServiceDate,
                                 i_ServiceStatusId = A.i_ServiceStatusId,
                                 i_StatusLiquidation = A.i_StatusLiquidation,
@@ -35584,7 +35584,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 Tercero = J22.v_Name,
                                 v_OrganizationName = J.v_Name,
                                 i_ServiceId = C.i_ServiceId,
-                                v_AptitudeStatusName = K.v_Value1
+                                v_AptitudeStatusName = K.v_Value1,
+                                v_DocNumber = B.v_DocNumber
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))

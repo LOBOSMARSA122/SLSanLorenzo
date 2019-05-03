@@ -2046,7 +2046,7 @@ namespace Sigesoft.Node.WinClient.UI
                        var filesNameToMergeOrder = new List<string>();
                        using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                        {
-                           frmManagementReports_Async frm = new frmManagementReports_Async("","","","","");
+                           frmManagementReports_Async frm = new frmManagementReports_Async("","","","","","");
 
                            System.Threading.Tasks.Task.Factory.StartNew(() => frm.CrearReportesCrystal(item_0.ServiceId, item_0.PacienteId, _ComponentsIdsOrdenados, null, true)).Wait();
 
@@ -2989,9 +2989,10 @@ namespace Sigesoft.Node.WinClient.UI
                 int eso = 1;
                 if (flagPantalla == 2)
                 {
-                    var dni = grdDataService.Selected.Rows[0].Cells["v_PacientDocument"].Value.ToString();
+                    var dni = grdDataService.Selected.Rows[0].Cells["v_DocNumber"].Value.ToString();
+                    var pacientName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
                     var frm = new Reports.frmManagementReports_Async(_serviceId, _EmpresaClienteId, _pacientId,
-                        _customerOrganizationName, dni);
+                        _customerOrganizationName, dni, pacientName);
                     frm.ShowDialog();
                 }
                 else

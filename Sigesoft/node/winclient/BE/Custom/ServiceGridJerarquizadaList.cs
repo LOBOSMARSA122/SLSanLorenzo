@@ -73,5 +73,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string Tercero{ get; set; }
         public int item { get; set; }
         public int? i_ApprovedUpdateUserId { get; set; }
+        public string v_DocNumber { get; set; }
     }
 }

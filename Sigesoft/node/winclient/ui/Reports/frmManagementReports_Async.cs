@@ -40,15 +40,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         HistoryBL _historyBL = new HistoryBL();
         string ruta;
         private string _dni;
+        private string _pacientName;
         private List<string>_ComponentsIdsOrdenados = new List<string>();
 
-        public frmManagementReports_Async(string serviceId, string EmpresaClienteId, string pacientId, string customerOrganizationName, string dni)
+        public frmManagementReports_Async(string serviceId, string EmpresaClienteId, string pacientId, string customerOrganizationName, string dni, string pacientName)
         {
             _empresaClienteId = EmpresaClienteId;
             _serviceId = serviceId;
             _pacientId = pacientId;
             _customerOrganizationName = customerOrganizationName;
             _dni = dni;
+            _pacientName = pacientName;
             InitializeComponent();
         }
 
@@ -319,9 +321,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                             }
                         }
                         var adj = _filesNameToMerge.FindAll(p => p.Contains(_dni));
-                        if (adj != null)
+                        if (adj.Count() > 0)
                         {
                             foreach (var item in adj)
+                            {
+                                filesNameToMergeOrder.Add(item);
+                            }
+
+                        }
+                        var adj_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+                        if (adj_2.Count() > 0)
+                        {
+                            foreach (var item in adj_2)
                             {
                                 filesNameToMergeOrder.Add(item);
                             }
