@@ -13,6 +13,7 @@ using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
+using System.Linq.Dynamic;
 using System.Threading;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
@@ -3004,9 +3005,9 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("SELECCIONE UNA SERVICIO A GENERAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show( "","", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnFilter_Click(sender, e);
             }
 
