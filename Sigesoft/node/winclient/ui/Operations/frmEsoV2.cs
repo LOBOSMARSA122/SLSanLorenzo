@@ -560,6 +560,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             return value1;
         }
 
+        private void comboBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
+
         private static void SetValueControl(int controlId, Control ctrl, string componentFieldsId, string tagComponentFieldsId, string value1, SiNo hasAutomaticDx)
         {
             switch ((ControlType)controlId)
@@ -712,7 +717,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 rbSiNo.CreateControl();
                                 rbSiNo.Checked = !string.IsNullOrEmpty(cf.v_DefaultText) && Convert.ToBoolean(int.Parse(cf.v_DefaultText));
                                 break;
-                            case ControlType.Radiobutton    :
+                            case ControlType.Radiobutton:
                                 RadioButton rb = (RadioButton)ctrl[0];
                                 rb.CreateControl();
                                 rb.Checked = !string.IsNullOrEmpty(cf.v_DefaultText) && Convert.ToBoolean(int.Parse(cf.v_DefaultText));
@@ -721,6 +726,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 ComboBox cbSiNo = (ComboBox)ctrl[0];
                                 cbSiNo.CreateControl();
                                 cbSiNo.SelectedValue = string.IsNullOrEmpty(cf.v_DefaultText) ? "-1" : cf.v_DefaultText;
+                                cbSiNo.MouseWheel += new MouseEventHandler(comboBox1_MouseWheel);
                                 break;
                             case ControlType.UcFileUpload:
                                 break;
@@ -728,6 +734,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 ComboBox cbList = (ComboBox)ctrl[0];
                                 cbList.CreateControl();
                                 cbList.SelectedValue = string.IsNullOrEmpty(cf.v_DefaultText) ? "-1" : cf.v_DefaultText;
+                                cbList.MouseWheel += new MouseEventHandler(comboBox1_MouseWheel);
                                 break;
                             case ControlType.UcOdontograma:
                                 //(UserControls.ucOdontograma).ClearValueControl();;

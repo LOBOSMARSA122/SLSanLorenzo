@@ -10,7 +10,16 @@
 namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
     
     
-    public partial class FRM031 {
+    public partial class FRM031_ {
+        
+        /// <summary>
+        /// Head1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
         /// form1 control.
@@ -58,6 +67,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         protected global::FineUI.Form Form2;
         
         /// <summary>
+        /// FormRow1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow1;
+        
+        /// <summary>
         /// Form3 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Form Form3;
+        
+        /// <summary>
+        /// FormRow2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow2;
         
         /// <summary>
         /// dpFechaInicio control.
@@ -83,87 +110,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.DatePicker dpFechaFin;
-        
-        /// <summary>
-        /// Form6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Form Form6;
-        
-        /// <summary>
-        /// FormRow5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow5;
-        
-        /// <summary>
-        /// ddlTipoESO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.DropDownList ddlTipoESO;
-        
-        /// <summary>
-        /// ddlAptitud control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.DropDownList ddlAptitud;
-        
-        /// <summary>
-        /// btnFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnFilter;
-        
-        /// <summary>
-        /// FormRow2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow2;
-        
-        /// <summary>
-        /// Form4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Form Form4;
-        
-        /// <summary>
-        /// FormRow3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow3;
-        
-        /// <summary>
-        /// txtTrabajador control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtTrabajador;
         
         /// <summary>
         /// Form7 control.
@@ -193,76 +139,31 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         protected global::FineUI.DropDownList ddlEmpresa;
         
         /// <summary>
-        /// FormRow1 control.
+        /// btnFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow1;
+        protected global::FineUI.Button btnFilter;
         
         /// <summary>
-        /// Form5 control.
+        /// btnExportar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Form Form5;
+        protected global::FineUI.Button btnExportar;
         
         /// <summary>
-        /// FormRow4 control.
+        /// FormRow10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow4;
-        
-        /// <summary>
-        /// txtHCL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtHCL;
-        
-        /// <summary>
-        /// Form8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Form Form8;
-        
-        /// <summary>
-        /// FormRow8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow8;
-        
-        /// <summary>
-        /// ddlProtocolo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.DropDownList ddlProtocolo;
-        
-        /// <summary>
-        /// FormRow6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow6;
+        protected global::FineUI.FormRow FormRow10;
         
         /// <summary>
         /// lblContador control.
@@ -274,96 +175,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         protected global::FineUI.Label lblContador;
         
         /// <summary>
-        /// grdData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Grid grdData;
-        
-        /// <summary>
-        /// Toolbar1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Toolbar Toolbar1;
-        
-        /// <summary>
-        /// btnNewCertificado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnNewCertificado;
-        
-        /// <summary>
-        /// btnExAltura control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnExAltura;
-        
-        /// <summary>
-        /// btnPsico control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnPsico;
-        
-        /// <summary>
-        /// btnToxi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnToxi;
-        
-        /// <summary>
-        /// btnNewFichaOcupacional control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnNewFichaOcupacional;
-        
-        /// <summary>
-        /// btnNewExamenes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnNewExamenes;
-        
-        /// <summary>
-        /// btnFMT1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnFMT1;
-        
-        /// <summary>
-        /// btnInterConsulta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnInterConsulta;
-        
-        /// <summary>
         /// hfRefresh control.
         /// </summary>
         /// <remarks>
@@ -371,50 +182,5 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.HiddenField hfRefresh;
-        
-        /// <summary>
-        /// winEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Window winEdit1;
-        
-        /// <summary>
-        /// winEdit2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Window winEdit2;
-        
-        /// <summary>
-        /// Window2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Window Window2;
-        
-        /// <summary>
-        /// winEdit3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Window winEdit3;
-        
-        /// <summary>
-        /// Window1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Window Window1;
     }
 }
