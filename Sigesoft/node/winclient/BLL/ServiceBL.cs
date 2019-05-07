@@ -35567,7 +35567,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_PersonId = B.v_PersonId,
                                 v_ServiceId = A.v_ServiceId,
                                 v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-                                v_PacientDocument = B.v_DocNumber,
+                                v_PacientDocument = B.v_DocNumber + " " + B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
                                 d_ServiceDate = A.d_ServiceDate,
                                 i_ServiceStatusId = A.i_ServiceStatusId,
                                 i_StatusLiquidation = A.i_StatusLiquidation,
@@ -35584,7 +35584,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 Tercero = J22.v_Name,
                                 v_OrganizationName = J.v_Name,
                                 i_ServiceId = C.i_ServiceId,
-                                v_AptitudeStatusName = K.v_Value1
+                                v_AptitudeStatusName = K.v_Value1,
+                                v_DocNumber = B.v_DocNumber
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -35644,8 +35645,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                             where sss.i_IsDeleted == 0 && 
                                   (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
-                                  sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 
-                                  &&(S.i_ParameterId == 10 || S.i_ParameterId == 27) 
+                                  (sss.i_MasterServiceId != 2) && A1.i_CalendarStatusId != 4 
+                                  &&(S.i_ParameterId == 10 || S.i_ParameterId == 27 || S.i_ParameterId == 12) 
 
                              select new ServiceList
                              {
@@ -35715,7 +35716,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     where sss.i_IsDeleted == 0 && 
                           (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
                           sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
-                                  S.i_ParameterId == 31
+                                  (S.i_ParameterId == 31 || S.i_ParameterId == 13)
 
                             select new ServiceList
                             {
@@ -35784,7 +35785,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     where sss.i_IsDeleted == 0 && 
                           (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
                           sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
-                                  S.i_ParameterId == 29
+                                  (S.i_ParameterId == 29 || S.i_ParameterId == 13)
 
                             select new ServiceList
                             {
@@ -35854,7 +35855,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     where sss.i_IsDeleted == 0 && 
                           (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
                           sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
-                                  S.i_ParameterId == 19
+                                  (S.i_ParameterId == 19 || S.i_ParameterId == 13)
 
                             select new ServiceList
                             {
@@ -35924,7 +35925,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     where sss.i_IsDeleted == 0 &&
                           (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
                           sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
-                                  (S.i_ParameterId == 23 || S.i_ParameterId == 30)
+                                  (S.i_ParameterId == 23 || S.i_ParameterId == 30 || S.i_ParameterId == 13)
 
                             select new ServiceList
                             {
@@ -36076,6 +36077,43 @@ namespace Sigesoft.Node.WinClient.BLL
             catch (Exception e)
             {
                 throw;
+            }
+        }
+
+        public ServiceComponentList GetServiceComponentsInfo_Security(ref OperationResult objOperationResult, string _serviceComponentId, string _serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from aaa in dbContext.servicecomponent//
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = aaa.i_InsertUserId.Value }//
+                                             equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+                             where aaa.v_ServiceComponentId == _serviceComponentId &&
+                                    aaa.i_IsDeleted == 0
+                             orderby aaa.i_index
+
+                             select new ServiceComponentList
+                             {
+                                 i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId.Value,
+                                 v_Comment = aaa.v_Comment,
+                                 i_ExternalInternalId = aaa.i_ExternalInternalId.Value,
+                                 v_CreationUser = J1.v_UserName,
+                                 d_CreationDate = aaa.d_InsertDate,
+                                 i_IsApprovedId = aaa.i_IsApprovedId
+                             }).FirstOrDefault();
+
+                // Cargar campos del componente Ejem Triaje : talla ; Peso ; etc
+                query.ServiceComponentFields = GetServiceComponentFields(_serviceComponentId, _serviceId);
+
+                objOperationResult.Success = 1;
+                return query;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
             }
         }
     }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance107 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -885,14 +885,14 @@
             // 
             // uvExamen
             // 
-            appearance107.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance107.BackColor2 = System.Drawing.Color.Transparent;
-            appearance107.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance107.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance107.BorderColor = System.Drawing.Color.Red;
-            appearance107.BorderColor2 = System.Drawing.Color.Red;
-            appearance107.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance107;
+            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance1.BackColor2 = System.Drawing.Color.Transparent;
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance1.BorderColor = System.Drawing.Color.Red;
+            appearance1.BorderColor2 = System.Drawing.Color.Red;
+            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance1;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -2494,6 +2494,7 @@
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(20, 1);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1312, 423);
+            this.ultraTabSharedControlsPage1.MouseLeave += new System.EventHandler(this.ultraTabSharedControlsPage1_MouseLeave);
             // 
             // groupBox4
             // 

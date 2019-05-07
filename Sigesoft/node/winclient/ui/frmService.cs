@@ -13,6 +13,8 @@ using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
+using System.Linq.Dynamic;
+using System.Threading;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
 
@@ -2045,7 +2047,7 @@ namespace Sigesoft.Node.WinClient.UI
                        var filesNameToMergeOrder = new List<string>();
                        using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                        {
-                           frmManagementReports_Async frm = new frmManagementReports_Async("","","","","");
+                           frmManagementReports_Async frm = new frmManagementReports_Async("","","","","","");
 
                            System.Threading.Tasks.Task.Factory.StartNew(() => frm.CrearReportesCrystal(item_0.ServiceId, item_0.PacienteId, _ComponentsIdsOrdenados, null, true)).Wait();
 
@@ -2988,9 +2990,10 @@ namespace Sigesoft.Node.WinClient.UI
                 int eso = 1;
                 if (flagPantalla == 2)
                 {
-                    var dni = grdDataService.Selected.Rows[0].Cells["v_PacientDocument"].Value.ToString();
+                    var dni = grdDataService.Selected.Rows[0].Cells["v_DocNumber"].Value.ToString();
+                    var pacientName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
                     var frm = new Reports.frmManagementReports_Async(_serviceId, _EmpresaClienteId, _pacientId,
-                        _customerOrganizationName, dni);
+                        _customerOrganizationName, dni, pacientName);
                     frm.ShowDialog();
                 }
                 else
@@ -3002,9 +3005,9 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("SELECCIONE UNA SERVICIO A GENERAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show( "","", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnFilter_Click(sender, e);
             }
 
@@ -3235,8 +3238,12 @@ namespace Sigesoft.Node.WinClient.UI
                         if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
                         {
                             this.Enabled = false;
-                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                            {
+                                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            };
                             frm.ShowDialog();
+                            
                             this.Enabled = true;
                         }
                         else

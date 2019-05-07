@@ -40,15 +40,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         HistoryBL _historyBL = new HistoryBL();
         string ruta;
         private string _dni;
+        private string _pacientName;
         private List<string>_ComponentsIdsOrdenados = new List<string>();
 
-        public frmManagementReports_Async(string serviceId, string EmpresaClienteId, string pacientId, string customerOrganizationName, string dni)
+        public frmManagementReports_Async(string serviceId, string EmpresaClienteId, string pacientId, string customerOrganizationName, string dni, string pacientName)
         {
             _empresaClienteId = EmpresaClienteId;
             _serviceId = serviceId;
             _pacientId = pacientId;
             _customerOrganizationName = customerOrganizationName;
             _dni = dni;
+            _pacientName = pacientName;
             InitializeComponent();
         }
 
@@ -294,11 +296,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 if (Result == System.Windows.Forms.DialogResult.Yes)
                 {
 
-                    if (!Common.Utils.AccesoInternet())
-                    {
-                        MessageBox.Show("Verifique la conexión de Internet para publicar", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
+                    //if (!Common.Utils.AccesoInternet())
+                    //{
+                    //    MessageBox.Show("Verifique la conexión de Internet para publicar", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    return;
+                    //}
                     string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
                     string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
                     string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
@@ -319,7 +321,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                             }
                         }
                         var adj = _filesNameToMerge.FindAll(p => p.Contains(_dni));
-                        if (adj != null)
+                        if (adj.Count() > 0)
                         {
                             foreach (var item in adj)
                             {
@@ -327,6 +329,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                             }
 
                         }
+                        var adj_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+                        if (adj_2.Count() > 0)
+                        {
+                            foreach (var item in adj_2)
+                            {
+                                filesNameToMergeOrder.Add(item);
+                            }
+
+                        }
+
+                        
+                        
                     };
 
                     //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
@@ -360,7 +374,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
 
                     //Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", _ruta + _serviceId + ".pdf");
-
+                    var adjunto = _filesNameToMerge.FindAll(p => p.Contains(_dni));
+                    var adjunto_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+                    if (adjunto.Count() > 0 && adjunto_2.Count() >0)
+                    {
+                        foreach (var pdf in _filesNameToMerge){foreach (var adj in adjunto){foreach (var otros in adjunto_2){if ((pdf != adj || pdf != otros) && pdf != _ruta+_serviceId + "-CAP.pdf"){System.IO.File.Delete(pdf);}}}}
+                    }
+                    else if (adjunto.Count() > 0 && adjunto_2.Count() == 0)
+                    {
+                        foreach (var pdf in _filesNameToMerge){foreach (var adj in adjunto){if (pdf != adj && pdf != _ruta+_serviceId + "-CAP.pdf"){System.IO.File.Delete(pdf);}}}
+                    }
+                    else if (adjunto.Count() == 0 && adjunto_2.Count() > 0)
+                    {
+                        foreach (var pdf in _filesNameToMerge){foreach (var adj in adjunto_2){if (pdf != adj && pdf != _ruta+_serviceId + "-CAP.pdf"){System.IO.File.Delete(pdf);}}}
+                    }
+                    
                 }
                 else
                 {
@@ -390,6 +418,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
                     _mergeExPDF.Execute();
                     _mergeExPDF.RunFile();
+                    foreach (var pdf in _filesNameToMerge)
+                    {
+                        System.IO.File.Delete(pdf);
+                    }
+                    string trashReport = _ruta + _serviceId + ".pdf";
+                    System.IO.File.Delete(trashReport);
                 }
         }
 
