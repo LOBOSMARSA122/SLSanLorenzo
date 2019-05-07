@@ -960,7 +960,7 @@
             this.tpConclusion.Controls.Add(this.btnGuardarConclusiones);
             this.tpConclusion.Location = new System.Drawing.Point(4, 22);
             this.tpConclusion.Name = "tpConclusion";
-            this.tpConclusion.Size = new System.Drawing.Size(1342, 620);
+            this.tpConclusion.Size = new System.Drawing.Size(1495, 620);
             this.tpConclusion.TabIndex = 2;
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
@@ -968,10 +968,11 @@
             // 
             // checkFirmaYanacocha
             // 
+            this.checkFirmaYanacocha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkFirmaYanacocha.AutoSize = true;
             this.checkFirmaYanacocha.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkFirmaYanacocha.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.checkFirmaYanacocha.Location = new System.Drawing.Point(968, 587);
+            this.checkFirmaYanacocha.Location = new System.Drawing.Point(1194, 584);
             this.checkFirmaYanacocha.Name = "checkFirmaYanacocha";
             this.checkFirmaYanacocha.Size = new System.Drawing.Size(121, 34);
             this.checkFirmaYanacocha.TabIndex = 111;
@@ -1145,7 +1146,7 @@
             // 
             // gbRecomendaciones_Conclusiones
             // 
-            this.gbRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gbRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.grdRecomendaciones_Conclusiones);
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.lblRecordCountRecomendaciones_Conclusiones);
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnAgregarRecomendaciones_Conclusiones);
@@ -1153,16 +1154,18 @@
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.chkinterconsulta);
             this.gbRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(10, 339);
+            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(12, 339);
             this.gbRecomendaciones_Conclusiones.Name = "gbRecomendaciones_Conclusiones";
-            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(650, 242);
+            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(746, 242);
             this.gbRecomendaciones_Conclusiones.TabIndex = 95;
             this.gbRecomendaciones_Conclusiones.TabStop = false;
             this.gbRecomendaciones_Conclusiones.Text = "Recomendaciones";
             // 
             // grdRecomendaciones_Conclusiones
             // 
-            this.grdRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grdRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdRecomendaciones_Conclusiones.CausesValidation = false;
             appearance2.BackColor = System.Drawing.Color.White;
             appearance2.BackColor2 = System.Drawing.Color.Silver;
@@ -1244,14 +1247,14 @@
             this.grdRecomendaciones_Conclusiones.Location = new System.Drawing.Point(13, 31);
             this.grdRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.grdRecomendaciones_Conclusiones.Name = "grdRecomendaciones_Conclusiones";
-            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(624, 182);
+            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(720, 182);
             this.grdRecomendaciones_Conclusiones.TabIndex = 98;
             // 
             // lblRecordCountRecomendaciones_Conclusiones
             // 
             this.lblRecordCountRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRecordCountRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(426, 10);
+            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(474, 10);
             this.lblRecordCountRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountRecomendaciones_Conclusiones.Name = "lblRecordCountRecomendaciones_Conclusiones";
             this.lblRecordCountRecomendaciones_Conclusiones.Size = new System.Drawing.Size(211, 19);
@@ -1304,7 +1307,7 @@
             // chkinterconsulta
             // 
             this.chkinterconsulta.AutoSize = true;
-            this.chkinterconsulta.Location = new System.Drawing.Point(528, 218);
+            this.chkinterconsulta.Location = new System.Drawing.Point(640, 218);
             this.chkinterconsulta.Name = "chkinterconsulta";
             this.chkinterconsulta.Size = new System.Drawing.Size(88, 17);
             this.chkinterconsulta.TabIndex = 105;
@@ -1314,7 +1317,7 @@
             // 
             // gbRestricciones_Conclusiones
             // 
-            this.gbRestricciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.gbRestricciones_Conclusiones.Controls.Add(this.grdRestricciones_Conclusiones);
             this.gbRestricciones_Conclusiones.Controls.Add(this.lblRecordCountRestricciones_Conclusiones);
             this.gbRestricciones_Conclusiones.Controls.Add(this.btnAgregarRestriccion_ConclusionesTratamiento);
@@ -1322,16 +1325,18 @@
             this.gbRestricciones_Conclusiones.Controls.Add(this.chkUtilizaFirmaAptitud);
             this.gbRestricciones_Conclusiones.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRestricciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRestricciones_Conclusiones.Location = new System.Drawing.Point(692, 339);
+            this.gbRestricciones_Conclusiones.Location = new System.Drawing.Point(764, 339);
             this.gbRestricciones_Conclusiones.Name = "gbRestricciones_Conclusiones";
-            this.gbRestricciones_Conclusiones.Size = new System.Drawing.Size(642, 242);
+            this.gbRestricciones_Conclusiones.Size = new System.Drawing.Size(721, 242);
             this.gbRestricciones_Conclusiones.TabIndex = 94;
             this.gbRestricciones_Conclusiones.TabStop = false;
             this.gbRestricciones_Conclusiones.Text = "Restricciones";
             // 
             // grdRestricciones_Conclusiones
             // 
-            this.grdRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grdRestricciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdRestricciones_Conclusiones.CausesValidation = false;
             appearance9.BackColor = System.Drawing.Color.White;
             appearance9.BackColor2 = System.Drawing.Color.Silver;
@@ -1409,14 +1414,14 @@
             this.grdRestricciones_Conclusiones.Location = new System.Drawing.Point(13, 31);
             this.grdRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.grdRestricciones_Conclusiones.Name = "grdRestricciones_Conclusiones";
-            this.grdRestricciones_Conclusiones.Size = new System.Drawing.Size(616, 182);
+            this.grdRestricciones_Conclusiones.Size = new System.Drawing.Size(695, 182);
             this.grdRestricciones_Conclusiones.TabIndex = 98;
             // 
             // lblRecordCountRestricciones_Conclusiones
             // 
             this.lblRecordCountRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRecordCountRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRestricciones_Conclusiones.Location = new System.Drawing.Point(432, 10);
+            this.lblRecordCountRestricciones_Conclusiones.Location = new System.Drawing.Point(471, 10);
             this.lblRecordCountRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountRestricciones_Conclusiones.Name = "lblRecordCountRestricciones_Conclusiones";
             this.lblRecordCountRestricciones_Conclusiones.Size = new System.Drawing.Size(197, 19);
@@ -1481,13 +1486,16 @@
             // 
             // gbConclusionesDiagnosticas
             // 
+            this.gbConclusionesDiagnosticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbConclusionesDiagnosticas.Controls.Add(this.grdConclusionesDiagnosticas);
             this.gbConclusionesDiagnosticas.Controls.Add(this.lblRecordCountConclusionesDiagnosticas);
             this.gbConclusionesDiagnosticas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbConclusionesDiagnosticas.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbConclusionesDiagnosticas.Location = new System.Drawing.Point(10, 37);
+            this.gbConclusionesDiagnosticas.Location = new System.Drawing.Point(12, 37);
             this.gbConclusionesDiagnosticas.Name = "gbConclusionesDiagnosticas";
-            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1329, 292);
+            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1473, 292);
             this.gbConclusionesDiagnosticas.TabIndex = 51;
             this.gbConclusionesDiagnosticas.TabStop = false;
             this.gbConclusionesDiagnosticas.Text = "Conclusiones Diagnósticas";
@@ -1606,10 +1614,10 @@
             this.grdConclusionesDiagnosticas.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdConclusionesDiagnosticas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdConclusionesDiagnosticas.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdConclusionesDiagnosticas.Location = new System.Drawing.Point(8, 18);
+            this.grdConclusionesDiagnosticas.Location = new System.Drawing.Point(5, 18);
             this.grdConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2);
             this.grdConclusionesDiagnosticas.Name = "grdConclusionesDiagnosticas";
-            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1316, 269);
+            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1463, 269);
             this.grdConclusionesDiagnosticas.TabIndex = 53;
             this.grdConclusionesDiagnosticas.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdConclusionesDiagnosticas_InitializeRow);
             this.grdConclusionesDiagnosticas.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdConclusionesDiagnosticas_ClickCell);
@@ -1622,7 +1630,7 @@
             this.lblRecordCountConclusionesDiagnosticas.Location = new System.Drawing.Point(878, -16);
             this.lblRecordCountConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountConclusionesDiagnosticas.Name = "lblRecordCountConclusionesDiagnosticas";
-            this.lblRecordCountConclusionesDiagnosticas.Size = new System.Drawing.Size(446, 19);
+            this.lblRecordCountConclusionesDiagnosticas.Size = new System.Drawing.Size(590, 19);
             this.lblRecordCountConclusionesDiagnosticas.TabIndex = 52;
             this.lblRecordCountConclusionesDiagnosticas.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountConclusionesDiagnosticas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1683,7 +1691,7 @@
             // 
             // btnGuardarConclusiones
             // 
-            this.btnGuardarConclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGuardarConclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardarConclusiones.BackColor = System.Drawing.SystemColors.Control;
             this.btnGuardarConclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnGuardarConclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -1691,7 +1699,7 @@
             this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarConclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarConclusiones.Image")));
             this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1123, 593);
+            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1333, 591);
             this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
             this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);
@@ -1706,7 +1714,7 @@
             this.tpAnalisisDx.Controls.Add(this.gbTotalDiagnostico);
             this.tpAnalisisDx.Location = new System.Drawing.Point(4, 22);
             this.tpAnalisisDx.Name = "tpAnalisisDx";
-            this.tpAnalisisDx.Size = new System.Drawing.Size(1342, 620);
+            this.tpAnalisisDx.Size = new System.Drawing.Size(1495, 620);
             this.tpAnalisisDx.TabIndex = 3;
             this.tpAnalisisDx.Text = "CONTROL DE CALIDAD";
             this.tpAnalisisDx.ToolTipText = "ANÁLISIS DE DIAGNÓSTICOS";
@@ -1736,7 +1744,7 @@
             this.gbEdicionDiagnosticoTotal.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbEdicionDiagnosticoTotal.Location = new System.Drawing.Point(10, 271);
             this.gbEdicionDiagnosticoTotal.Name = "gbEdicionDiagnosticoTotal";
-            this.gbEdicionDiagnosticoTotal.Size = new System.Drawing.Size(1324, 346);
+            this.gbEdicionDiagnosticoTotal.Size = new System.Drawing.Size(1476, 346);
             this.gbEdicionDiagnosticoTotal.TabIndex = 51;
             this.gbEdicionDiagnosticoTotal.TabStop = false;
             this.gbEdicionDiagnosticoTotal.Text = "Edición del Diagnóstico";
@@ -2222,7 +2230,7 @@
             this.gbTotalDiagnostico.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbTotalDiagnostico.Location = new System.Drawing.Point(10, 4);
             this.gbTotalDiagnostico.Name = "gbTotalDiagnostico";
-            this.gbTotalDiagnostico.Size = new System.Drawing.Size(1324, 261);
+            this.gbTotalDiagnostico.Size = new System.Drawing.Size(1482, 261);
             this.gbTotalDiagnostico.TabIndex = 50;
             this.gbTotalDiagnostico.TabStop = false;
             this.gbTotalDiagnostico.Text = "TOTAL DE DIAGNÓSTICOS";
@@ -2348,7 +2356,7 @@
             this.grdTotalDiagnosticos.Location = new System.Drawing.Point(11, 19);
             this.grdTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2);
             this.grdTotalDiagnosticos.Name = "grdTotalDiagnosticos";
-            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1307, 205);
+            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1465, 205);
             this.grdTotalDiagnosticos.TabIndex = 94;
             this.grdTotalDiagnosticos.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdTotalDiagnosticos_InitializeRow);
             this.grdTotalDiagnosticos.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdTotalDiagnosticos_AfterSelectChange);
@@ -2432,7 +2440,7 @@
             this.lblRecordCountTotalDiagnosticos.Location = new System.Drawing.Point(994, -33);
             this.lblRecordCountTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountTotalDiagnosticos.Name = "lblRecordCountTotalDiagnosticos";
-            this.lblRecordCountTotalDiagnosticos.Size = new System.Drawing.Size(308, 19);
+            this.lblRecordCountTotalDiagnosticos.Size = new System.Drawing.Size(466, 19);
             this.lblRecordCountTotalDiagnosticos.TabIndex = 49;
             this.lblRecordCountTotalDiagnosticos.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountTotalDiagnosticos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2443,7 +2451,7 @@
             this.tpExam.Location = new System.Drawing.Point(4, 22);
             this.tpExam.Name = "tpExam";
             this.tpExam.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExam.Size = new System.Drawing.Size(1342, 620);
+            this.tpExam.Size = new System.Drawing.Size(1495, 620);
             this.tpExam.TabIndex = 1;
             this.tpExam.Text = "EXÁMENES";
             this.tpExam.ToolTipText = "EXAMENES";
@@ -2466,7 +2474,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel2.Controls.Add(this.gbDiagnosticoExamen);
-            this.splitContainer2.Size = new System.Drawing.Size(1333, 619);
+            this.splitContainer2.Size = new System.Drawing.Size(1346, 619);
             this.splitContainer2.SplitterDistance = 428;
             this.splitContainer2.TabIndex = 59;
             // 
@@ -2480,7 +2488,7 @@
             this.tcExamList.Location = new System.Drawing.Point(0, 0);
             this.tcExamList.Name = "tcExamList";
             this.tcExamList.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tcExamList.Size = new System.Drawing.Size(1333, 425);
+            this.tcExamList.Size = new System.Drawing.Size(1346, 425);
             this.tcExamList.TabIndex = 1;
             this.tcExamList.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
             this.tcExamList.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
@@ -2493,7 +2501,7 @@
             this.ultraTabSharedControlsPage1.Font = new System.Drawing.Font("Microsoft Tai Le", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(20, 1);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1312, 423);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1325, 423);
             this.ultraTabSharedControlsPage1.MouseLeave += new System.EventHandler(this.ultraTabSharedControlsPage1_MouseLeave);
             // 
             // groupBox4
@@ -2902,19 +2910,22 @@
             this.General.Location = new System.Drawing.Point(4, 22);
             this.General.Name = "General";
             this.General.Padding = new System.Windows.Forms.Padding(3);
-            this.General.Size = new System.Drawing.Size(1342, 620);
+            this.General.Size = new System.Drawing.Size(1495, 620);
             this.General.TabIndex = 0;
             this.General.Text = "ANAMNESIS - ANTECEDENTES";
             this.General.UseVisualStyleBackColor = true;
             // 
             // gbServiciosAnteriores
             // 
+            this.gbServiciosAnteriores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbServiciosAnteriores.Controls.Add(this.grdServiciosAnteriores);
             this.gbServiciosAnteriores.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbServiciosAnteriores.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbServiciosAnteriores.Location = new System.Drawing.Point(693, 310);
+            this.gbServiciosAnteriores.Location = new System.Drawing.Point(781, 310);
             this.gbServiciosAnteriores.Name = "gbServiciosAnteriores";
-            this.gbServiciosAnteriores.Size = new System.Drawing.Size(642, 276);
+            this.gbServiciosAnteriores.Size = new System.Drawing.Size(698, 276);
             this.gbServiciosAnteriores.TabIndex = 96;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
@@ -2995,21 +3006,23 @@
             this.grdServiciosAnteriores.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdServiciosAnteriores.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdServiciosAnteriores.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdServiciosAnteriores.Location = new System.Drawing.Point(6, 19);
+            this.grdServiciosAnteriores.Location = new System.Drawing.Point(5, 19);
             this.grdServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.grdServiciosAnteriores.Name = "grdServiciosAnteriores";
-            this.grdServiciosAnteriores.Size = new System.Drawing.Size(629, 252);
+            this.grdServiciosAnteriores.Size = new System.Drawing.Size(686, 252);
             this.grdServiciosAnteriores.TabIndex = 94;
             this.grdServiciosAnteriores.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdServiciosAnteriores_ClickCell);
             // 
             // gbAntecedentes
             // 
+            this.gbAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gbAntecedentes.Controls.Add(this.grdAntecedentes);
             this.gbAntecedentes.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAntecedentes.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbAntecedentes.Location = new System.Drawing.Point(7, 310);
             this.gbAntecedentes.Name = "gbAntecedentes";
-            this.gbAntecedentes.Size = new System.Drawing.Size(677, 276);
+            this.gbAntecedentes.Size = new System.Drawing.Size(768, 276);
             this.gbAntecedentes.TabIndex = 95;
             this.gbAntecedentes.TabStop = false;
             this.gbAntecedentes.Text = "Antecedentes";
@@ -3093,7 +3106,7 @@
             this.grdAntecedentes.Location = new System.Drawing.Point(5, 19);
             this.grdAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.grdAntecedentes.Name = "grdAntecedentes";
-            this.grdAntecedentes.Size = new System.Drawing.Size(667, 252);
+            this.grdAntecedentes.Size = new System.Drawing.Size(758, 252);
             this.grdAntecedentes.TabIndex = 93;
             // 
             // groupBox15
@@ -3197,7 +3210,7 @@
             // 
             // btnVerServicioAnterior
             // 
-            this.btnVerServicioAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVerServicioAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnVerServicioAnterior.BackColor = System.Drawing.SystemColors.Control;
             this.btnVerServicioAnterior.Enabled = false;
             this.btnVerServicioAnterior.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -3208,7 +3221,7 @@
             this.btnVerServicioAnterior.ForeColor = System.Drawing.Color.Black;
             this.btnVerServicioAnterior.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
             this.btnVerServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerServicioAnterior.Location = new System.Drawing.Point(1168, 591);
+            this.btnVerServicioAnterior.Location = new System.Drawing.Point(1317, 591);
             this.btnVerServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerServicioAnterior.Name = "btnVerServicioAnterior";
             this.btnVerServicioAnterior.Size = new System.Drawing.Size(162, 24);
@@ -3469,7 +3482,7 @@
             this.btnVerEditarAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnVerEditarAntecedentes.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.btnVerEditarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(517, 591);
+            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(613, 594);
             this.btnVerEditarAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerEditarAntecedentes.Name = "btnVerEditarAntecedentes";
             this.btnVerEditarAntecedentes.Size = new System.Drawing.Size(162, 24);
@@ -3481,6 +3494,8 @@
             // 
             // gbFuncionesBiologicas
             // 
+            this.gbFuncionesBiologicas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbFuncionesBiologicas.Controls.Add(this.cbSed);
             this.gbFuncionesBiologicas.Controls.Add(this.txtHallazgos);
             this.gbFuncionesBiologicas.Controls.Add(this.label9);
@@ -3495,9 +3510,9 @@
             this.gbFuncionesBiologicas.Controls.Add(this.label5);
             this.gbFuncionesBiologicas.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFuncionesBiologicas.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbFuncionesBiologicas.Location = new System.Drawing.Point(574, 6);
+            this.gbFuncionesBiologicas.Location = new System.Drawing.Point(631, 6);
             this.gbFuncionesBiologicas.Name = "gbFuncionesBiologicas";
-            this.gbFuncionesBiologicas.Size = new System.Drawing.Size(761, 154);
+            this.gbFuncionesBiologicas.Size = new System.Drawing.Size(848, 154);
             this.gbFuncionesBiologicas.TabIndex = 1;
             this.gbFuncionesBiologicas.TabStop = false;
             this.gbFuncionesBiologicas.Text = "Funciones Biológicas";
@@ -3521,7 +3536,7 @@
             this.txtHallazgos.Multiline = true;
             this.txtHallazgos.Name = "txtHallazgos";
             this.txtHallazgos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtHallazgos.Size = new System.Drawing.Size(694, 66);
+            this.txtHallazgos.Size = new System.Drawing.Size(782, 66);
             this.txtHallazgos.TabIndex = 62;
             // 
             // label9
@@ -3649,7 +3664,7 @@
             this.gbSintomasySignos.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbSintomasySignos.Location = new System.Drawing.Point(7, 6);
             this.gbSintomasySignos.Name = "gbSintomasySignos";
-            this.gbSintomasySignos.Size = new System.Drawing.Size(561, 154);
+            this.gbSintomasySignos.Size = new System.Drawing.Size(614, 154);
             this.gbSintomasySignos.TabIndex = 0;
             this.gbSintomasySignos.TabStop = false;
             this.gbSintomasySignos.Text = "Sintomas y Signos";
@@ -3789,7 +3804,7 @@
             this.tcSubMain.Location = new System.Drawing.Point(0, 0);
             this.tcSubMain.Name = "tcSubMain";
             this.tcSubMain.SelectedIndex = 0;
-            this.tcSubMain.Size = new System.Drawing.Size(1350, 646);
+            this.tcSubMain.Size = new System.Drawing.Size(1503, 646);
             this.tcSubMain.TabIndex = 4;
             this.tcSubMain.Tag = "";
             // 
@@ -3799,7 +3814,7 @@
             this.tpAtencionIntegral.Location = new System.Drawing.Point(4, 22);
             this.tpAtencionIntegral.Name = "tpAtencionIntegral";
             this.tpAtencionIntegral.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAtencionIntegral.Size = new System.Drawing.Size(1342, 620);
+            this.tpAtencionIntegral.Size = new System.Drawing.Size(1495, 620);
             this.tpAtencionIntegral.TabIndex = 4;
             this.tpAtencionIntegral.Text = "FORMATO DE ATENCIÓN INTEGRAL";
             this.tpAtencionIntegral.UseVisualStyleBackColor = true;
@@ -3819,7 +3834,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.6875F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.3125F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1286, 632);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1439, 632);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel4
@@ -3830,7 +3845,7 @@
             this.panel4.Controls.Add(this.panel9);
             this.panel4.Location = new System.Drawing.Point(3, 317);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1280, 312);
+            this.panel4.Size = new System.Drawing.Size(1433, 312);
             this.panel4.TabIndex = 1;
             // 
             // panel9
@@ -3839,7 +3854,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1280, 312);
+            this.panel9.Size = new System.Drawing.Size(1433, 312);
             this.panel9.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -3860,13 +3875,13 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.0687F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.9313F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1280, 312);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1433, 312);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel10
             // 
             this.panel10.Controls.Add(this.label38);
-            this.panel10.Location = new System.Drawing.Point(12, 3);
+            this.panel10.Location = new System.Drawing.Point(13, 3);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1252, 25);
             this.panel10.TabIndex = 0;
@@ -3887,9 +3902,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel11.Controls.Add(this.grdPlanIntegral);
-            this.panel11.Location = new System.Drawing.Point(12, 34);
+            this.panel11.Location = new System.Drawing.Point(13, 34);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1252, 243);
+            this.panel11.Size = new System.Drawing.Size(1402, 243);
             this.panel11.TabIndex = 1;
             // 
             // grdPlanIntegral
@@ -3987,7 +4002,7 @@
             this.grdPlanIntegral.Location = new System.Drawing.Point(0, 0);
             this.grdPlanIntegral.Margin = new System.Windows.Forms.Padding(2);
             this.grdPlanIntegral.Name = "grdPlanIntegral";
-            this.grdPlanIntegral.Size = new System.Drawing.Size(1252, 243);
+            this.grdPlanIntegral.Size = new System.Drawing.Size(1402, 243);
             this.grdPlanIntegral.TabIndex = 63;
             // 
             // panel12
@@ -3996,7 +4011,7 @@
             this.panel12.Controls.Add(this.btnEliminarPlan);
             this.panel12.Controls.Add(this.btnEditarPlan);
             this.panel12.Controls.Add(this.btnNuevoPlan);
-            this.panel12.Location = new System.Drawing.Point(12, 283);
+            this.panel12.Location = new System.Drawing.Point(163, 283);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(1252, 26);
             this.panel12.TabIndex = 2;
@@ -4074,7 +4089,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1280, 308);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1433, 308);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -4091,7 +4106,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1274, 302);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1427, 302);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -4102,13 +4117,13 @@
             this.tableLayoutPanel4.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel5, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(640, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(716, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.81081F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.68919F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.16216F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(631, 296);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(708, 296);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // panel13
@@ -4117,7 +4132,7 @@
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(3, 35);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(625, 221);
+            this.panel13.Size = new System.Drawing.Size(702, 221);
             this.panel13.TabIndex = 2;
             // 
             // grdAgudos
@@ -4211,7 +4226,7 @@
             this.grdAgudos.Location = new System.Drawing.Point(0, 0);
             this.grdAgudos.Margin = new System.Windows.Forms.Padding(2);
             this.grdAgudos.Name = "grdAgudos";
-            this.grdAgudos.Size = new System.Drawing.Size(625, 221);
+            this.grdAgudos.Size = new System.Drawing.Size(702, 221);
             this.grdAgudos.TabIndex = 51;
             // 
             // panel3
@@ -4220,7 +4235,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(625, 26);
+            this.panel3.Size = new System.Drawing.Size(702, 26);
             this.panel3.TabIndex = 3;
             // 
             // label37
@@ -4239,7 +4254,7 @@
             this.panel5.Controls.Add(this.btnEliminarAgudo);
             this.panel5.Controls.Add(this.btnEditarAgudo);
             this.panel5.Controls.Add(this.btnNuevoAgudo);
-            this.panel5.Location = new System.Drawing.Point(3, 262);
+            this.panel5.Location = new System.Drawing.Point(80, 262);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(625, 31);
             this.panel5.TabIndex = 1;
@@ -4319,7 +4334,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.35521F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.64479F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(631, 296);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(707, 296);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // panel6
@@ -4328,7 +4343,7 @@
             this.panel6.Controls.Add(this.btnNuevoCronico);
             this.panel6.Controls.Add(this.btnEditarCronico);
             this.panel6.Controls.Add(this.btnEliminarCronico);
-            this.panel6.Location = new System.Drawing.Point(3, 262);
+            this.panel6.Location = new System.Drawing.Point(79, 262);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(625, 31);
             this.panel6.TabIndex = 2;
@@ -4402,7 +4417,7 @@
             this.panel2.Controls.Add(this.label26);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(625, 26);
+            this.panel2.Size = new System.Drawing.Size(701, 26);
             this.panel2.TabIndex = 0;
             // 
             // label26
@@ -4421,7 +4436,7 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(3, 35);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(625, 221);
+            this.panel14.Size = new System.Drawing.Size(701, 221);
             this.panel14.TabIndex = 3;
             // 
             // grdCronicos
@@ -4519,7 +4534,7 @@
             this.grdCronicos.Location = new System.Drawing.Point(0, 0);
             this.grdCronicos.Margin = new System.Windows.Forms.Padding(2);
             this.grdCronicos.Name = "grdCronicos";
-            this.grdCronicos.Size = new System.Drawing.Size(625, 221);
+            this.grdCronicos.Size = new System.Drawing.Size(701, 221);
             this.grdCronicos.TabIndex = 47;
             // 
             // tpDatosGeneralesAntecedentes
@@ -4528,7 +4543,7 @@
             this.tpDatosGeneralesAntecedentes.Location = new System.Drawing.Point(4, 22);
             this.tpDatosGeneralesAntecedentes.Name = "tpDatosGeneralesAntecedentes";
             this.tpDatosGeneralesAntecedentes.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDatosGeneralesAntecedentes.Size = new System.Drawing.Size(1342, 620);
+            this.tpDatosGeneralesAntecedentes.Size = new System.Drawing.Size(1495, 620);
             this.tpDatosGeneralesAntecedentes.TabIndex = 5;
             this.tpDatosGeneralesAntecedentes.Text = "DATOS GENERALES Y ANTECEDENTES";
             this.tpDatosGeneralesAntecedentes.UseVisualStyleBackColor = true;
@@ -4549,8 +4564,8 @@
             // 
             this.splitGeneral.Panel2.Controls.Add(this.tableLayoutPanel11);
             this.splitGeneral.Panel2.Controls.Add(this.splitAntecedentes);
-            this.splitGeneral.Size = new System.Drawing.Size(1286, 625);
-            this.splitGeneral.SplitterDistance = 618;
+            this.splitGeneral.Size = new System.Drawing.Size(1439, 625);
+            this.splitGeneral.SplitterDistance = 691;
             this.splitGeneral.TabIndex = 0;
             // 
             // tableLayoutPanel12
@@ -4565,7 +4580,7 @@
             this.tableLayoutPanel12.RowCount = 2;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.88F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.12F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(618, 625);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(691, 625);
             this.tableLayoutPanel12.TabIndex = 0;
             // 
             // panel20
@@ -4574,7 +4589,7 @@
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel20.Location = new System.Drawing.Point(3, 3);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(612, 161);
+            this.panel20.Size = new System.Drawing.Size(685, 161);
             this.panel20.TabIndex = 0;
             // 
             // groupBox3
@@ -4615,7 +4630,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(612, 161);
+            this.groupBox3.Size = new System.Drawing.Size(685, 161);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DATOS PERSONALES";
@@ -4909,7 +4924,7 @@
             this.panel21.Controls.Add(this.tbcDatos);
             this.panel21.Location = new System.Drawing.Point(3, 170);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(612, 452);
+            this.panel21.Size = new System.Drawing.Size(685, 452);
             this.panel21.TabIndex = 1;
             // 
             // tbcDatos
@@ -4921,7 +4936,7 @@
             this.tbcDatos.Location = new System.Drawing.Point(0, 0);
             this.tbcDatos.Name = "tbcDatos";
             this.tbcDatos.SelectedIndex = 0;
-            this.tbcDatos.Size = new System.Drawing.Size(612, 452);
+            this.tbcDatos.Size = new System.Drawing.Size(685, 452);
             this.tbcDatos.TabIndex = 114;
             // 
             // tbpAdultoMayor
@@ -4949,7 +4964,7 @@
             this.tbpAdultoMayor.Location = new System.Drawing.Point(4, 22);
             this.tbpAdultoMayor.Name = "tbpAdultoMayor";
             this.tbpAdultoMayor.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpAdultoMayor.Size = new System.Drawing.Size(604, 426);
+            this.tbpAdultoMayor.Size = new System.Drawing.Size(677, 426);
             this.tbpAdultoMayor.TabIndex = 0;
             this.tbpAdultoMayor.Text = "Adulto Mayor / Adulto";
             this.tbpAdultoMayor.UseVisualStyleBackColor = true;
@@ -5090,7 +5105,7 @@
             this.pnlEmbarazo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlEmbarazo.Location = new System.Drawing.Point(3, 211);
             this.pnlEmbarazo.Name = "pnlEmbarazo";
-            this.pnlEmbarazo.Size = new System.Drawing.Size(598, 212);
+            this.pnlEmbarazo.Size = new System.Drawing.Size(671, 212);
             this.pnlEmbarazo.TabIndex = 130;
             // 
             // btnEditarEmbarazo
@@ -5105,7 +5120,7 @@
             this.btnEditarEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnEditarEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEmbarazo.Image")));
             this.btnEditarEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarEmbarazo.Location = new System.Drawing.Point(508, 76);
+            this.btnEditarEmbarazo.Location = new System.Drawing.Point(581, 76);
             this.btnEditarEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarEmbarazo.Name = "btnEditarEmbarazo";
             this.btnEditarEmbarazo.Size = new System.Drawing.Size(75, 24);
@@ -5210,7 +5225,7 @@
             this.grdEmbarazos.Location = new System.Drawing.Point(6, 36);
             this.grdEmbarazos.Margin = new System.Windows.Forms.Padding(2);
             this.grdEmbarazos.Name = "grdEmbarazos";
-            this.grdEmbarazos.Size = new System.Drawing.Size(492, 113);
+            this.grdEmbarazos.Size = new System.Drawing.Size(565, 113);
             this.grdEmbarazos.TabIndex = 136;
             // 
             // label105
@@ -5230,7 +5245,7 @@
             this.textObservacionesEmbarazo.Location = new System.Drawing.Point(2, 167);
             this.textObservacionesEmbarazo.Multiline = true;
             this.textObservacionesEmbarazo.Name = "textObservacionesEmbarazo";
-            this.textObservacionesEmbarazo.Size = new System.Drawing.Size(591, 39);
+            this.textObservacionesEmbarazo.Size = new System.Drawing.Size(664, 39);
             this.textObservacionesEmbarazo.TabIndex = 134;
             // 
             // btnNuevoEmbarazo
@@ -5245,7 +5260,7 @@
             this.btnNuevoEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevoEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoEmbarazo.Image")));
             this.btnNuevoEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoEmbarazo.Location = new System.Drawing.Point(508, 46);
+            this.btnNuevoEmbarazo.Location = new System.Drawing.Point(581, 46);
             this.btnNuevoEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoEmbarazo.Name = "btnNuevoEmbarazo";
             this.btnNuevoEmbarazo.Size = new System.Drawing.Size(75, 24);
@@ -5266,7 +5281,7 @@
             this.btnEliminarEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarEmbarazo.Image")));
             this.btnEliminarEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarEmbarazo.Location = new System.Drawing.Point(508, 104);
+            this.btnEliminarEmbarazo.Location = new System.Drawing.Point(581, 104);
             this.btnEliminarEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarEmbarazo.Name = "btnEliminarEmbarazo";
             this.btnEliminarEmbarazo.Size = new System.Drawing.Size(75, 24);
@@ -7237,7 +7252,7 @@
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(664, 83);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(744, 83);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // panel19
@@ -7250,7 +7265,7 @@
             this.panel19.Controls.Add(this.txtDescripcionAntecedentes);
             this.panel19.Location = new System.Drawing.Point(3, 3);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(658, 77);
+            this.panel19.Size = new System.Drawing.Size(738, 77);
             this.panel19.TabIndex = 0;
             // 
             // btnGuardarAntecedentes
@@ -7259,7 +7274,7 @@
             this.btnGuardarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarAntecedentes.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarAntecedentes.Image")));
             this.btnGuardarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarAntecedentes.Location = new System.Drawing.Point(555, 16);
+            this.btnGuardarAntecedentes.Location = new System.Drawing.Point(635, 16);
             this.btnGuardarAntecedentes.Name = "btnGuardarAntecedentes";
             this.btnGuardarAntecedentes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnGuardarAntecedentes.Size = new System.Drawing.Size(92, 38);
@@ -7301,8 +7316,8 @@
             // splitAntecedentes.Panel2
             // 
             this.splitAntecedentes.Panel2.Controls.Add(this.tableLayoutPanel10);
-            this.splitAntecedentes.Size = new System.Drawing.Size(664, 539);
-            this.splitAntecedentes.SplitterDistance = 338;
+            this.splitAntecedentes.Size = new System.Drawing.Size(744, 539);
+            this.splitAntecedentes.SplitterDistance = 378;
             this.splitAntecedentes.TabIndex = 0;
             // 
             // tableLayoutPanel9
@@ -7317,7 +7332,7 @@
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.583774F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.41623F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(338, 539);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(378, 539);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // panel15
@@ -7326,7 +7341,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(3, 3);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(332, 34);
+            this.panel15.Size = new System.Drawing.Size(372, 34);
             this.panel15.TabIndex = 0;
             // 
             // label58
@@ -7347,7 +7362,7 @@
             this.panel17.Controls.Add(this.ultraAntActuales);
             this.panel17.Location = new System.Drawing.Point(3, 43);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(332, 493);
+            this.panel17.Size = new System.Drawing.Size(372, 493);
             this.panel17.TabIndex = 1;
             // 
             // ultraAntActuales
@@ -7388,7 +7403,7 @@
             this.ultraAntActuales.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.ultraAntActuales.Location = new System.Drawing.Point(0, 0);
             this.ultraAntActuales.Name = "ultraAntActuales";
-            this.ultraAntActuales.Size = new System.Drawing.Size(332, 493);
+            this.ultraAntActuales.Size = new System.Drawing.Size(372, 493);
             this.ultraAntActuales.TabIndex = 111;
             // 
             // tableLayoutPanel10
@@ -7403,7 +7418,7 @@
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.583774F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.41623F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(322, 539);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(362, 539);
             this.tableLayoutPanel10.TabIndex = 1;
             // 
             // panel16
@@ -7412,7 +7427,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(3, 3);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(316, 34);
+            this.panel16.Size = new System.Drawing.Size(356, 34);
             this.panel16.TabIndex = 0;
             // 
             // label39
@@ -7433,7 +7448,7 @@
             this.panel18.Controls.Add(this.ultraAntAnteriores);
             this.panel18.Location = new System.Drawing.Point(3, 43);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(316, 493);
+            this.panel18.Size = new System.Drawing.Size(356, 493);
             this.panel18.TabIndex = 1;
             // 
             // ultraAntAnteriores
@@ -7475,7 +7490,7 @@
             this.ultraAntAnteriores.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.ultraAntAnteriores.Location = new System.Drawing.Point(0, 0);
             this.ultraAntAnteriores.Name = "ultraAntAnteriores";
-            this.ultraAntAnteriores.Size = new System.Drawing.Size(316, 493);
+            this.ultraAntAnteriores.Size = new System.Drawing.Size(356, 493);
             this.ultraAntAnteriores.TabIndex = 111;
             // 
             // tpCuidadosPreventivos
@@ -7483,7 +7498,7 @@
             this.tpCuidadosPreventivos.Controls.Add(this.tableLayoutPanel13);
             this.tpCuidadosPreventivos.Location = new System.Drawing.Point(4, 22);
             this.tpCuidadosPreventivos.Name = "tpCuidadosPreventivos";
-            this.tpCuidadosPreventivos.Size = new System.Drawing.Size(1342, 620);
+            this.tpCuidadosPreventivos.Size = new System.Drawing.Size(1495, 620);
             this.tpCuidadosPreventivos.TabIndex = 6;
             this.tpCuidadosPreventivos.Text = "CUIDADOS PREVENTIVOS";
             this.tpCuidadosPreventivos.UseVisualStyleBackColor = true;
@@ -7502,7 +7517,7 @@
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(1292, 631);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(1445, 631);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
             // ultraPanel1
@@ -7516,7 +7531,7 @@
             this.ultraPanel1.ClientArea.Controls.Add(this.dataGridView1);
             this.ultraPanel1.Location = new System.Drawing.Point(3, 3);
             this.ultraPanel1.Name = "ultraPanel1";
-            this.ultraPanel1.Size = new System.Drawing.Size(1286, 572);
+            this.ultraPanel1.Size = new System.Drawing.Size(1439, 572);
             this.ultraPanel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -7529,7 +7544,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(10, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1266, 549);
+            this.dataGridView1.Size = new System.Drawing.Size(1419, 549);
             this.dataGridView1.TabIndex = 1;
             // 
             // panel27
@@ -7540,7 +7555,7 @@
             this.panel27.Controls.Add(this.btnGuardarCuidadosPreventivos);
             this.panel27.Location = new System.Drawing.Point(3, 581);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(1286, 47);
+            this.panel27.Size = new System.Drawing.Size(1439, 47);
             this.panel27.TabIndex = 1;
             // 
             // btnGuardarCuidadosPreventivos
@@ -7549,7 +7564,7 @@
             this.btnGuardarCuidadosPreventivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarCuidadosPreventivos.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarCuidadosPreventivos.Image")));
             this.btnGuardarCuidadosPreventivos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarCuidadosPreventivos.Location = new System.Drawing.Point(1171, 3);
+            this.btnGuardarCuidadosPreventivos.Location = new System.Drawing.Point(1324, 3);
             this.btnGuardarCuidadosPreventivos.Name = "btnGuardarCuidadosPreventivos";
             this.btnGuardarCuidadosPreventivos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnGuardarCuidadosPreventivos.Size = new System.Drawing.Size(92, 38);
@@ -7569,7 +7584,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1350, 55);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1509, 55);
             this.tableLayoutPanel6.TabIndex = 5;
             // 
             // tableLayoutPanel7
@@ -7586,7 +7601,7 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1344, 49);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1503, 49);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // panel7
@@ -7611,7 +7626,7 @@
             this.panel7.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel7.Location = new System.Drawing.Point(3, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1044, 43);
+            this.panel7.Size = new System.Drawing.Size(1168, 43);
             this.panel7.TabIndex = 0;
             // 
             // lblTrabajador
@@ -7807,9 +7822,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel8.Controls.Add(this.btnPerson);
             this.panel8.Controls.Add(this.btnSalir);
-            this.panel8.Location = new System.Drawing.Point(1053, 3);
+            this.panel8.Location = new System.Drawing.Point(1177, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(288, 43);
+            this.panel8.Size = new System.Drawing.Size(323, 43);
             this.panel8.TabIndex = 1;
             // 
             // btnPerson
@@ -7853,7 +7868,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1350, 701);
+            this.ClientSize = new System.Drawing.Size(1509, 701);
             this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.tcSubMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -7864,6 +7879,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EXAMENES MÉDICOS";
             this.Load += new System.EventHandler(this.FrmEsoV2_Load);
+            this.SizeChanged += new System.EventHandler(this.FrmEsoV2_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

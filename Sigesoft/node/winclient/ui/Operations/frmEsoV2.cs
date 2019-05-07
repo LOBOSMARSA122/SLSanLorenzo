@@ -9114,6 +9114,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         {
 
         }
+
+
+        private void FrmEsoV2_SizeChanged(object sender, EventArgs e)
+        {
+            gbRecomendaciones_Conclusiones.Width = tpConclusion.Width / 2 - 50;
+            gbRestricciones_Conclusiones.Width = tpConclusion.Width / 2 - 20;
+
+        }
         
     }
 }
