@@ -5473,7 +5473,7 @@
             this.tbpAdolescente.Location = new System.Drawing.Point(4, 22);
             this.tbpAdolescente.Name = "tbpAdolescente";
             this.tbpAdolescente.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpAdolescente.Size = new System.Drawing.Size(604, 426);
+            this.tbpAdolescente.Size = new System.Drawing.Size(677, 426);
             this.tbpAdolescente.TabIndex = 1;
             this.tbpAdolescente.Text = "Adolescente";
             // 
@@ -5780,7 +5780,7 @@
             this.tbpNinio.Controls.Add(this.ultgrboxDatosFamiliares);
             this.tbpNinio.Location = new System.Drawing.Point(4, 22);
             this.tbpNinio.Name = "tbpNinio";
-            this.tbpNinio.Size = new System.Drawing.Size(604, 426);
+            this.tbpNinio.Size = new System.Drawing.Size(677, 426);
             this.tbpNinio.TabIndex = 2;
             this.tbpNinio.Text = "Niño";
             this.tbpNinio.UseVisualStyleBackColor = true;
@@ -5790,12 +5790,12 @@
             this.ultgrboxVivienda.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxVivienda.Controls.Add(this.ultraExpandableGroupBoxPanel5);
             this.ultgrboxVivienda.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(587, 172);
+            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(660, 172);
             this.ultgrboxVivienda.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxVivienda.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 1062);
             this.ultgrboxVivienda.Name = "ultgrboxVivienda";
-            this.ultgrboxVivienda.Size = new System.Drawing.Size(587, 172);
+            this.ultgrboxVivienda.Size = new System.Drawing.Size(660, 172);
             this.ultgrboxVivienda.TabIndex = 158;
             this.ultgrboxVivienda.Text = "ANT. VIVIENDA / SANEAMIENTO BÁSICO";
             this.ultgrboxVivienda.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -5809,7 +5809,7 @@
             this.ultraExpandableGroupBoxPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraExpandableGroupBoxPanel5.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel5.Name = "ultraExpandableGroupBoxPanel5";
-            this.ultraExpandableGroupBoxPanel5.Size = new System.Drawing.Size(583, 146);
+            this.ultraExpandableGroupBoxPanel5.Size = new System.Drawing.Size(656, 146);
             this.ultraExpandableGroupBoxPanel5.TabIndex = 0;
             // 
             // textDesague
@@ -5851,12 +5851,12 @@
             this.ultgrboxFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel4);
             this.ultgrboxFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(587, 380);
+            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(660, 380);
             this.ultgrboxFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 682);
             this.ultgrboxFamiliares.Name = "ultgrboxFamiliares";
-            this.ultgrboxFamiliares.Size = new System.Drawing.Size(587, 380);
+            this.ultgrboxFamiliares.Size = new System.Drawing.Size(660, 380);
             this.ultgrboxFamiliares.TabIndex = 157;
             this.ultgrboxFamiliares.Text = "ANT. FAMILIARES";
             this.ultgrboxFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -5878,7 +5878,7 @@
             this.ultraExpandableGroupBoxPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraExpandableGroupBoxPanel4.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel4.Name = "ultraExpandableGroupBoxPanel4";
-            this.ultraExpandableGroupBoxPanel4.Size = new System.Drawing.Size(583, 354);
+            this.ultraExpandableGroupBoxPanel4.Size = new System.Drawing.Size(656, 354);
             this.ultraExpandableGroupBoxPanel4.TabIndex = 0;
             // 
             // label141
@@ -6414,12 +6414,12 @@
             this.ultgrboxNacimiento.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxNacimiento.Controls.Add(this.ultraExpandableGroupBoxPanel3);
             this.ultgrboxNacimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(587, 339);
+            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(660, 339);
             this.ultgrboxNacimiento.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxNacimiento.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 343);
             this.ultgrboxNacimiento.Name = "ultgrboxNacimiento";
-            this.ultgrboxNacimiento.Size = new System.Drawing.Size(587, 339);
+            this.ultgrboxNacimiento.Size = new System.Drawing.Size(660, 339);
             this.ultgrboxNacimiento.TabIndex = 156;
             this.ultgrboxNacimiento.Text = "ANT. PERSONALES - NACIMIENTO - ALIMENTACIÓN - PATOLOGÍAS ";
             this.ultgrboxNacimiento.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6450,7 +6450,7 @@
             this.ultraExpandableGroupBoxPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraExpandableGroupBoxPanel3.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel3.Name = "ultraExpandableGroupBoxPanel3";
-            this.ultraExpandableGroupBoxPanel3.Size = new System.Drawing.Size(583, 313);
+            this.ultraExpandableGroupBoxPanel3.Size = new System.Drawing.Size(656, 313);
             this.ultraExpandableGroupBoxPanel3.TabIndex = 0;
             // 
             // textOtrosAntecedentes
@@ -6624,7 +6624,7 @@
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape3,
             this.lineShape2});
-            this.shapeContainer2.Size = new System.Drawing.Size(583, 313);
+            this.shapeContainer2.Size = new System.Drawing.Size(656, 313);
             this.shapeContainer2.TabIndex = 172;
             this.shapeContainer2.TabStop = false;
             // 
@@ -6633,7 +6633,7 @@
             this.lineShape3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lineShape3.Name = "lineShape3";
             this.lineShape3.X1 = 3;
-            this.lineShape3.X2 = 570;
+            this.lineShape3.X2 = 643;
             this.lineShape3.Y1 = 184;
             this.lineShape3.Y2 = 184;
             // 
@@ -6642,7 +6642,7 @@
             this.lineShape2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lineShape2.Name = "lineShape2";
             this.lineShape2.X1 = 4;
-            this.lineShape2.X2 = 571;
+            this.lineShape2.X2 = 644;
             this.lineShape2.Y1 = 152;
             this.lineShape2.Y2 = 152;
             // 
@@ -6652,12 +6652,12 @@
             this.ultgrboxEmbarazo.Controls.Add(this.ultraExpandableGroupBoxPanel1);
             this.ultgrboxEmbarazo.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxEmbarazo.Expanded = false;
-            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(587, 214);
+            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(660, 214);
             this.ultgrboxEmbarazo.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxEmbarazo.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 317);
             this.ultgrboxEmbarazo.Name = "ultgrboxEmbarazo";
-            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(587, 26);
+            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(660, 26);
             this.ultgrboxEmbarazo.TabIndex = 155;
             this.ultgrboxEmbarazo.Text = "ANT. PERSONALES - EMBARAZO - PARTO";
             this.ultgrboxEmbarazo.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6785,12 +6785,12 @@
             this.ultgrboxDatosFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxDatosFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel2);
             this.ultgrboxDatosFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(587, 317);
+            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(660, 317);
             this.ultgrboxDatosFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxDatosFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxDatosFamiliares.Location = new System.Drawing.Point(0, 0);
             this.ultgrboxDatosFamiliares.Name = "ultgrboxDatosFamiliares";
-            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(587, 317);
+            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(660, 317);
             this.ultgrboxDatosFamiliares.TabIndex = 154;
             this.ultgrboxDatosFamiliares.Text = "DATOS GENERALES - FAMILIARES";
             this.ultgrboxDatosFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6844,7 +6844,7 @@
             this.ultraExpandableGroupBoxPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraExpandableGroupBoxPanel2.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel2.Name = "ultraExpandableGroupBoxPanel2";
-            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(583, 291);
+            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(656, 291);
             this.ultraExpandableGroupBoxPanel2.TabIndex = 0;
             // 
             // label140
@@ -7229,7 +7229,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(583, 291);
+            this.shapeContainer1.Size = new System.Drawing.Size(656, 291);
             this.shapeContainer1.TabIndex = 193;
             this.shapeContainer1.TabStop = false;
             // 
@@ -7238,7 +7238,7 @@
             this.lineShape1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = 5;
-            this.lineShape1.X2 = 572;
+            this.lineShape1.X2 = 645;
             this.lineShape1.Y1 = 73;
             this.lineShape1.Y2 = 73;
             // 
