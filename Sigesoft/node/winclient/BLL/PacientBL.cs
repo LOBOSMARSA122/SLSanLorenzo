@@ -7078,14 +7078,28 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
                                     from K in K_join.DefaultIfEmpty()
 
+                                    join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                    from C2 in C2_join.DefaultIfEmpty()
+
+                                    join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                    from C1 in C1_join.DefaultIfEmpty()
+
+                                    join CC in dbContext.organization on B.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                    from CC in CC_join.DefaultIfEmpty()
+
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
                                     select new MatrizLaZanja
                                     {
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
                                         ProtocolId = B.v_ProtocolId,
-                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerOrganizationId = C2.v_OrganizationId,
+                                        v_EmployerOrganizationId = C1.v_OrganizationId,
+                                        v_WorkingOrganizationId = CC.v_OrganizationId,
+
                                         v_CustomerLocationId = B.v_CustomerLocationId,
+                                        v_WorkingLocationId = B.v_WorkingLocationId,
+                                        v_EmployerLocationId = B.v_EmployerLocationId,
 
                                         ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
                                         Procedencia = D.v_Procedencia,
@@ -7120,8 +7134,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                    PersonId = a.PersonId,
                                    ProtocolId = a.ProtocolId,
                                    v_CustomerOrganizationId = a.v_CustomerOrganizationId,
-                                   v_CustomerLocationId = a.v_CustomerLocationId,
+                                   v_EmployerOrganizationId = a.v_EmployerOrganizationId,
+                                   v_WorkingOrganizationId = a.v_WorkingOrganizationId,
 
+                                   v_CustomerLocationId = a.v_CustomerLocationId,
+                                   v_EmployerLocationId = a.v_EmployerLocationId,
+                                   v_WorkingLocationId = a.v_WorkingLocationId,
 
                                    ApellidosNombres = a.ApellidosNombres,
                                    Procedencia = a.Procedencia,
@@ -7211,14 +7229,29 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join L in dbContext.datahierarchy on new { a = D.i_DocTypeId.Value, b = 106 }
                                     equals new { a = L.i_ItemId, b = L.i_GroupId }  // TIPO DOCUMENTO
 
+                                    join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                    from C2 in C2_join.DefaultIfEmpty()
+
+                                    join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                    from C1 in C1_join.DefaultIfEmpty()
+
+                                    join CC in dbContext.organization on B.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                    from CC in CC_join.DefaultIfEmpty()
+
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
                                     select new MatrizGoldFields
                                     {
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
                                         ProtocolId = B.v_ProtocolId,
-                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerOrganizationId = C2.v_OrganizationId,
+                                        v_EmployerOrganizationId = C1.v_OrganizationId,
+                                        v_WorkingOrganizationId = CC.v_OrganizationId,
+
                                         v_CustomerLocationId = B.v_CustomerLocationId,
+                                        v_WorkingLocationId = B.v_WorkingLocationId,
+                                        v_EmployerLocationId = B.v_EmployerLocationId,
+
                                         Condicion = "",
                                         FechaDigitacion = A.d_ServiceDate.Value,
                                         Empresa = J.v_Name,
@@ -7257,7 +7290,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                    PersonId = a.PersonId,
                                    ProtocolId = a.ProtocolId,
                                    v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                                   v_EmployerOrganizationId = a.v_EmployerOrganizationId,
+                                   v_WorkingOrganizationId = a.v_WorkingOrganizationId,
+
                                    v_CustomerLocationId = a.v_CustomerLocationId,
+                                   v_EmployerLocationId = a.v_EmployerLocationId,
+                                   v_WorkingLocationId = a.v_WorkingLocationId,
                                    Condicion = "",
                                    FechaDigitacion = a.FechaDigitacion,
                                    Empresa = a.Empresa,
@@ -7372,14 +7410,29 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join L in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 }
                                     equals new { a = L.i_ParameterId, b = L.i_GroupId }  // ESTADO APTITUD ESO     
 
+                                    join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                    from C2 in C2_join.DefaultIfEmpty()
+
+                                    join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                    from C1 in C1_join.DefaultIfEmpty()
+
+                                    join CC in dbContext.organization on B.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                    from CC in CC_join.DefaultIfEmpty()
+
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
                                     select new MatrizSolucionesManteIntegrales
                                     {
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
                                         ProtocolId = B.v_ProtocolId,
-                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerOrganizationId = C2.v_OrganizationId,
+                                        v_EmployerOrganizationId = C1.v_OrganizationId,
+                                        v_WorkingOrganizationId = CC.v_OrganizationId,
+
                                         v_CustomerLocationId = B.v_CustomerLocationId,
+                                        v_WorkingLocationId = B.v_WorkingLocationId,
+                                        v_EmployerLocationId = B.v_EmployerLocationId,
+
                                         TipoEmo = C.v_Value1,
                                         Dni = D.v_DocNumber,
                                         NumCelular = D.v_TelephoneNumber,
@@ -7419,7 +7472,12 @@ namespace Sigesoft.Node.WinClient.BLL
                             PersonId = a.PersonId,
                             ProtocolId = a.ProtocolId,
                             v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                            v_EmployerOrganizationId = a.v_EmployerOrganizationId,
+                            v_WorkingOrganizationId = a.v_WorkingOrganizationId,
+
                             v_CustomerLocationId = a.v_CustomerLocationId,
+                            v_EmployerLocationId = a.v_EmployerLocationId,
+                            v_WorkingLocationId = a.v_WorkingLocationId,
                             TipoEmo = a.TipoEmo,
                             Dni = a.Dni,
                             NumCelular = a.NumCelular,
@@ -7556,6 +7614,15 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     join p in dbContext.person on me.v_PersonId equals p.v_PersonId
 
+                                    join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                    from C2 in C2_join.DefaultIfEmpty()
+
+                                    join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                    from C1 in C1_join.DefaultIfEmpty()
+
+                                    join CC in dbContext.organization on B.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                    from CC in CC_join.DefaultIfEmpty()
+
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin &&
                                           (L.v_ComponentId == Constants.EXAMEN_FISICO_ID || L.v_ComponentId == Constants.EXAMEN_FISICO_7C_ID)
                                     select new MatrizMiBanco
@@ -7563,9 +7630,13 @@ namespace Sigesoft.Node.WinClient.BLL
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
                                         ProtocolId = B.v_ProtocolId,
-                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerOrganizationId = C2.v_OrganizationId,
+                                        v_EmployerOrganizationId = C1.v_OrganizationId,
+                                        v_WorkingOrganizationId = CC.v_OrganizationId,
+
                                         v_CustomerLocationId = B.v_CustomerLocationId,
-                                        v_EmployerOrganizationId = B.v_EmployerOrganizationId,
+                                        v_WorkingLocationId = B.v_WorkingLocationId,
+                                        v_EmployerLocationId = B.v_EmployerLocationId,
                                         Dni = D.v_DocNumber,
                                         Protocolo = B.v_Name,
                                         TipoEmo = C.v_Value1,
@@ -7604,7 +7675,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                    PersonId = a.PersonId,
                                    ProtocolId = a.ProtocolId,
                                    v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                                   v_EmployerOrganizationId = a.v_EmployerOrganizationId,
+                                   v_WorkingOrganizationId = a.v_WorkingOrganizationId,
+
                                    v_CustomerLocationId = a.v_CustomerLocationId,
+                                   v_EmployerLocationId = a.v_EmployerLocationId,
+                                   v_WorkingLocationId = a.v_WorkingLocationId,
                                    Dni = a.Dni,
                                    Protocolo = a.Protocolo,
                                    TipoEmo = a.TipoEmo,
@@ -7627,6 +7703,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Resultado = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000004933") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000004933").ValorName,
 
                                    FPsicoTiempoTrabajo = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001838") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001838").Valor,
+                                   Urea = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000253") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000253").Valor,
+                                   
                                    Talla = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000007") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000007").Valor,
                                    Peso = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000008") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000008").Valor,
                                    Imc = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000009") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N002-MF000000009").Valor,

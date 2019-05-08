@@ -1313,7 +1313,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.APENDICE_ID + "_02" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.APENDICE_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
@@ -1523,7 +1523,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + "1.pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
@@ -1534,7 +1534,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + "2.pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
@@ -1547,7 +1547,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + "_03" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
@@ -1648,7 +1648,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OFTALMOLOGIA_ID + "_02" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OFTALMOLOGIA_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
@@ -3407,6 +3407,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateAutorizacion_Realizacion_Ex_Lumina(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.AUTORIZACION_REALIZACION_EXAMEN_MEDICO_LIBERACION_INFORMACION)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
                     break;
+                case Constants.AUTORIZACION_LIBERACION_SAN_MARTIN:
+                    GenerateAutorizacion_Liberacion_SanMartin(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.AUTORIZACION_LIBERACION_SAN_MARTIN)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
+                    break;
                 ///GenerateInforme_Resultados_San_Martinm
                 case Constants.INFORME_EXAMENES_ESPECIALES:
                     GenerateExamenesEspecialesReport(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.INFORME_EXAMENES_ESPECIALES)));
@@ -4111,6 +4115,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
 
             Autorizacion_Realizacion_Ex_Lumina.CreateAutorizacion_Realizacion_Ex_Lumina(pathFile, datosP, MedicalCenter, filiationData);
+        }
+        private void GenerateAutorizacion_Liberacion_SanMartin(string pathFile)
+        {
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_ExoLab();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+
+            Aut_Liberacion_San_Martin.CreateAutorizacionLiberacionInformacionMedicaSanMartin(pathFile, datosP, MedicalCenter, filiationData);
         }
         private void GenerateInformeResultadosAutorizacionCoimolache(string pathFile)
         {
