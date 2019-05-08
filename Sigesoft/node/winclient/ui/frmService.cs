@@ -3238,10 +3238,18 @@ namespace Sigesoft.Node.WinClient.UI
                         if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
                         {
                             this.Enabled = false;
-                            using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                            var t = new Thread(() =>
                             {
-                                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
-                            };
+                                using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                                {
+                                    Thread.Sleep(2500);
+                                };
+                                ;
+                            });
+                            t.Start();
+                            
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            
                             frm.ShowDialog();
                             
                             this.Enabled = true;

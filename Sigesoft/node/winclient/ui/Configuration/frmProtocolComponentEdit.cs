@@ -73,7 +73,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         private void LoadComboBox()
         {
             OperationResult objOperationResult = new OperationResult();
-            Utils.LoadDropDownList(cbOperator, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 117, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cbOperator, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 117, null));
 
             Utils.LoadDropDownList(cbGender, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 130, null));
             Utils.LoadDropDownList(cbGrupoEtario, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 254, null), DropDownListAction.All);
@@ -86,7 +86,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
             if (!chkIsConditional.Checked)
             {
-                cbOperator.SelectedValue = "-1";
+                cbOperator.SelectedValue = "6";
                 txtAge.Value = 0;
                 cbGender.SelectedValue = ((int)GenderConditional.AMBOS).ToString();
                 cbGrupoEtario.SelectedValue = "-1";
@@ -131,6 +131,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             LoadComboBox();
 
             cbGender.SelectedValue = ((int)GenderConditional.AMBOS).ToString();
+            cbOperator.SelectedValue = ((int) Operator2Values.X_esMayorIgualque_A).ToString();
 
             if (_mode == "New")
             {

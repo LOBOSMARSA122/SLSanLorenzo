@@ -5247,7 +5247,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                     {
-                        Thread.Sleep(4000);
+                        Thread.Sleep(2500);
                         MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
                     ;
@@ -5262,7 +5262,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                     {
-                        Thread.Sleep(4000);
+                        Thread.Sleep(2500);
                         MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
                     ;
@@ -5387,7 +5387,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     {
                                         using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                                         {
-                                            Thread.Sleep(4000);
+                                            Thread.Sleep(2500);
                                             MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         };
                                         ;
@@ -5400,7 +5400,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     {
                                         using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                                         {
-                                            Thread.Sleep(4000);
+                                            Thread.Sleep(2500);
                                             MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         };
                                         ;
@@ -6393,7 +6393,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                 {
-                    Thread.Sleep(4000);
+                    Thread.Sleep(2500);
                 };
                 ;
             });
