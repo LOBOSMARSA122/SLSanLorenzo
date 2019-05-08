@@ -36116,5 +36116,28 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public string GetSubCategoryName(string componentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var name = (from com in dbContext.component
+
+                    join sys in dbContext.systemparameter on new {a = com.i_UIIndex.Value, b = 116} equals new
+                        {a = sys.i_ParameterId, b = sys.i_GroupId} 
+
+                    where com.v_ComponentId == componentId
+                            select sys.v_Value1).FirstOrDefault();
+
+
+                return name;
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

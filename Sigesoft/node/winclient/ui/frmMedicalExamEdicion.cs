@@ -18,15 +18,17 @@ namespace Sigesoft.Node.WinClient.UI
     { 
          MedicalExamBL _objMedicalExamBL = new MedicalExamBL();
          componentDto objmedicalexamDto;
-
+        private string Orden;
         string MedicalExamId;
         string Mode;
         string _NameComponentOld;
-
-        public frmMedicalExamEdicion( string strMedicalExamId,string pstrMode)
+        private ComboTreeNode valueCategoryId;
+        private string nameCategoryId;
+        public frmMedicalExamEdicion( string strMedicalExamId,string pstrMode, string orden)
         {
             InitializeComponent();
             Mode = pstrMode;
+            Orden = orden;
             MedicalExamId = strMedicalExamId;
         }
 
@@ -68,6 +70,7 @@ namespace Sigesoft.Node.WinClient.UI
                 OperationResult objOperationResult = new OperationResult();
 
                 //Llenado de combos
+                
                 Utils.LoadComboTreeBoxList(ddlCategoryId, BLL.Utils.GetSystemParameterForComboTreeBox(ref objOperationResult, 116, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(ddlDiagnosableId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(ddlComponentTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 126, null), DropDownListAction.Select);
@@ -89,8 +92,34 @@ namespace Sigesoft.Node.WinClient.UI
                     txtInsertName.Text = objmedicalexamDto.v_Name;
                     _NameComponentOld = objmedicalexamDto.v_Name;
 
-                    ComboTreeNode nodoABuscar = ddlCategoryId.AllNodes.First(x => x.Tag.ToString() == objmedicalexamDto.i_CategoryId.ToString());
-                    ddlCategoryId.SelectedNode = nodoABuscar;
+                    ComboTreeNode nodoABuscar = null;
+
+                    foreach (var nodeParent in ddlCategoryId.Nodes)
+                    {
+                        foreach (var nodeChildCategory in nodeParent.Nodes)
+                        {
+                            
+                            if (nodeChildCategory.Tag.ToString() == objmedicalexamDto.i_CategoryId.ToString())
+                            {
+                                
+                                foreach (var nodeChildSubCategory in nodeChildCategory.Nodes)
+                                {
+                                    if (nodeChildSubCategory.Tag.ToString() == Orden)
+                                    {
+                                        nodoABuscar = nodeChildSubCategory;
+                                    }
+                                    
+                                }
+
+                            }
+
+                        }
+                    }
+                    if (nodoABuscar != null)
+                    {
+                        ddlCategoryId.SelectedNode = nodoABuscar;
+                    }
+                    
 
                     unBasePrice.Text = objmedicalexamDto.r_BasePrice.ToString();
                     ddlDiagnosableId.SelectedValue = objmedicalexamDto.i_DiagnosableId.ToString();
@@ -115,7 +144,6 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(ddlCategoryId.Text);
 
             OperationResult objOperationResult = new OperationResult();
 
@@ -134,12 +162,21 @@ namespace Sigesoft.Node.WinClient.UI
 
                  if (Mode == "New")
                 {
+                    float priceSegus;
+                    if (txtTarifaSegus.Text == "")
+                    {
+                        priceSegus = 0;
+                    }
+                    else
+                    {
+                        priceSegus = float.Parse(txtTarifaSegus.Text);
+                    }
                     objmedicalexamDto = new componentDto();
 
                     // Populate the entity
                     objmedicalexamDto.v_Name = txtInsertName.Text;
-                 
-                        objmedicalexamDto.i_CategoryId = Convert.ToInt32(ddlCategoryId.SelectedNode.Tag);
+
+                    objmedicalexamDto.i_CategoryId = Convert.ToInt32(ddlCategoryId.SelectedNode.Parent.Tag);
                         objmedicalexamDto.r_BasePrice = float.Parse(unBasePrice.Text);
                         objmedicalexamDto.i_DiagnosableId = Convert.ToInt32(ddlDiagnosableId.SelectedValue);
                         objmedicalexamDto.i_ComponentTypeId = Convert.ToInt32(ddlComponentTypeId.SelectedValue);
@@ -148,7 +185,7 @@ namespace Sigesoft.Node.WinClient.UI
                         objmedicalexamDto.i_IsApprovedId = Convert.ToInt32(ddlIsApprovedId.SelectedValue);
                         objmedicalexamDto.i_ValidInDays = Convert.ToInt32(unValidInDays.Value);
                         objmedicalexamDto.v_IdUnidadProductiva = ddlUnidadProductiva.SelectedValue.ToString();
-                        objmedicalexamDto.r_PriceSegus = float.Parse(txtTarifaSegus.Text);
+                        objmedicalexamDto.r_PriceSegus = priceSegus;
                         objmedicalexamDto.v_CodigoSegus = txtCodigoSegus.Text;
                         // Save the data
                         _objMedicalExamBL.AddMedicalExam(ref objOperationResult, objmedicalexamDto, Globals.ClientSession.GetAsList());
@@ -157,6 +194,16 @@ namespace Sigesoft.Node.WinClient.UI
                 else if (Mode == "Edit")
                 {
                     bool pbIsChangeName;
+                    float priceSegus;
+                    if (txtTarifaSegus.Text == "")
+                    {
+                        priceSegus = 0;
+                    }
+                    else
+                    {
+                        priceSegus = float.Parse(txtTarifaSegus.Text);
+                    }
+                    
                     // Populate the entity
                     if (_NameComponentOld != txtInsertName.Text)
                     {
@@ -166,9 +213,9 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                         pbIsChangeName = false;
                     }
-                    objmedicalexamDto.v_Name = txtInsertName.Text;                   
-                    
-                    objmedicalexamDto.i_CategoryId = Convert.ToInt32(ddlCategoryId.SelectedNode.Tag);
+                    objmedicalexamDto.v_Name = txtInsertName.Text;
+
+                    objmedicalexamDto.i_CategoryId = Convert.ToInt32(ddlCategoryId.SelectedNode.Parent.Tag);
                     objmedicalexamDto.r_BasePrice = float.Parse(unBasePrice.Text);
                     objmedicalexamDto.i_DiagnosableId = Convert.ToInt32(ddlDiagnosableId.SelectedValue);
                     objmedicalexamDto.i_ComponentTypeId = Convert.ToInt32(ddlComponentTypeId.SelectedValue);
@@ -177,7 +224,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objmedicalexamDto.i_IsApprovedId = Convert.ToInt32(ddlIsApprovedId.SelectedValue);
                     objmedicalexamDto.i_ValidInDays = Convert.ToInt32(unValidInDays.Value);
                     objmedicalexamDto.v_IdUnidadProductiva = ddlUnidadProductiva.SelectedValue.ToString();
-                    objmedicalexamDto.r_PriceSegus = float.Parse(txtTarifaSegus.Text);
+                    objmedicalexamDto.r_PriceSegus = priceSegus;
                     objmedicalexamDto.v_CodigoSegus = txtCodigoSegus.Text;
                     // Save the data
                     _objMedicalExamBL.UpdateMedicalExam(ref objOperationResult,pbIsChangeName, objmedicalexamDto, Globals.ClientSession.GetAsList());
@@ -212,8 +259,8 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            //this.Close();
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Close();
         }
 
         private void unBasePrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -254,5 +301,20 @@ namespace Sigesoft.Node.WinClient.UI
             frm.Show();
         }
 
+        
+
+        private void ddlCategoryId_SelectedNodeChanged(object sender, EventArgs e)
+        {
+            if (ddlCategoryId.Path.Split('\\').Length == 2 || ddlCategoryId.Path.Split('\\').Length == 1 && ddlCategoryId.Text != "--Seleccionar--")
+            {
+                ddlCategoryId.SelectedNode = valueCategoryId;
+            }
+
+            valueCategoryId = ddlCategoryId.SelectedNode;
+            var nroOrden = ddlCategoryId.SelectedNode.Tag.ToString();
+            unUIIndex.Text = nroOrden;
         }
+
+
+    }
 }

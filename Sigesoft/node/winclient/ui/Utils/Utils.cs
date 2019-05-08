@@ -183,6 +183,44 @@ namespace Sigesoft.Node.WinClient.UI
             prmDropDownList.ExpandAll();
         }
 
+
+        public static void LoadComboTreeBoxList_(ComboTreeBox prmDropDownList, List<KeyValueDTOForTree> prmDataSource = null, DropDownListAction? prmDropDownListAction = null)
+        {
+            prmDropDownList.Nodes.Clear();
+
+            KeyValueDTOForTree firstItem = null;
+            if (prmDropDownListAction != null)
+            {
+                switch (prmDropDownListAction)
+                {
+                    case DropDownListAction.All:
+                        firstItem = new KeyValueDTOForTree() { Id = Constants.AllValue, Value1 = Constants.All };
+
+                        break;
+                    case DropDownListAction.Select:
+                        firstItem = new KeyValueDTOForTree() { Id = Constants.SelectValue, Value1 = Constants.Select };
+                        break;
+                }
+            }
+
+            if (prmDataSource != null)
+            {
+                prmDropDownList.Nodes.AddRange(ProcessDataForComboTreeBox(prmDataSource, prmDataSource[0].ParentId));
+            }
+
+            if (firstItem != null)
+            {
+                ComboTreeNode firstNode = new ComboTreeNode(firstItem.Value1);
+                firstNode.Tag = firstItem.Id;
+
+                prmDropDownList.Nodes.Insert(0, firstNode);
+                prmDropDownList.SelectedNode = firstNode;
+            }
+
+            prmDropDownList.ExpandAll();
+        }
+
+
         private static List<ComboTreeNode> ProcessDataForComboTreeBox(List<KeyValueDTOForTree> pDataToIterate, string pParentId)
         {
             List<ComboTreeNode> nodes = new List<ComboTreeNode>();

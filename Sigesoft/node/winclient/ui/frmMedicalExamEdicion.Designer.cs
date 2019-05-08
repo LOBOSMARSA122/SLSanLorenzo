@@ -32,34 +32,34 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedicalExamEdicion));
             this.Nombre = new System.Windows.Forms.Label();
             this.txtInsertName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.uvMedicalExamEdit = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.ddlCategoryId = new ComboTreeBox();
-            this.ddlDiagnosableId = new System.Windows.Forms.ComboBox();
-            this.ddlComponentTypeId = new System.Windows.Forms.ComboBox();
-            this.ddlUIIsVisibleId = new System.Windows.Forms.ComboBox();
-            this.ddlIsApprovedId = new System.Windows.Forms.ComboBox();
-            this.unBasePrice = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.unUIIndex = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.unValidInDays = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ddlUnidadProductiva = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnAgregarLinea = new System.Windows.Forms.Button();
             this.btnAgregarLineaSAM = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtCodigoSegus = new System.Windows.Forms.TextBox();
             this.txtTarifaSegus = new System.Windows.Forms.TextBox();
+            this.txtCodigoSegus = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ddlCategoryId = new ComboTreeBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ddlDiagnosableId = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ddlComponentTypeId = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ddlUnidadProductiva = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ddlUIIsVisibleId = new System.Windows.Forms.ComboBox();
+            this.unUIIndex = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ddlIsApprovedId = new System.Windows.Forms.ComboBox();
+            this.unValidInDays = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.label9 = new System.Windows.Forms.Label();
+            this.unBasePrice = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.uvMedicalExamEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unUIIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unValidInDays)).BeginInit();
@@ -81,137 +81,15 @@
             this.txtInsertName.Margin = new System.Windows.Forms.Padding(2);
             this.txtInsertName.MaxLength = 250;
             this.txtInsertName.Name = "txtInsertName";
-            this.txtInsertName.Size = new System.Drawing.Size(217, 20);
+            this.txtInsertName.Size = new System.Drawing.Size(390, 20);
             this.txtInsertName.TabIndex = 1;
             this.uvMedicalExamEdit.GetValidationSettings(this.txtInsertName).DataType = typeof(string);
             this.uvMedicalExamEdit.GetValidationSettings(this.txtInsertName).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
             this.uvMedicalExamEdit.GetValidationSettings(this.txtInsertName).IsRequired = true;
             // 
-            // label4
+            // uvMedicalExamEdit
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(55, 50);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Categoría";
-            // 
-            // ddlCategoryId
-            // 
-            this.ddlCategoryId.DropDownHeight = 500;
-            this.ddlCategoryId.DroppedDown = false;
-            this.ddlCategoryId.Location = new System.Drawing.Point(111, 46);
-            this.ddlCategoryId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlCategoryId.Name = "ddlCategoryId";
-            this.ddlCategoryId.SelectedNode = null;
-            this.ddlCategoryId.ShowPath = true;
-            this.ddlCategoryId.Size = new System.Drawing.Size(216, 19);
-            this.ddlCategoryId.TabIndex = 2;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlCategoryId).DataType = typeof(string);
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlCategoryId).IsRequired = true;
-            // 
-            // ddlDiagnosableId
-            // 
-            this.ddlDiagnosableId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlDiagnosableId.DropDownWidth = 300;
-            this.ddlDiagnosableId.FormattingEnabled = true;
-            this.ddlDiagnosableId.Location = new System.Drawing.Point(111, 70);
-            this.ddlDiagnosableId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlDiagnosableId.Name = "ddlDiagnosableId";
-            this.ddlDiagnosableId.Size = new System.Drawing.Size(82, 21);
-            this.ddlDiagnosableId.TabIndex = 3;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).DataType = typeof(string);
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).IsRequired = true;
-            // 
-            // ddlComponentTypeId
-            // 
-            this.ddlComponentTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlComponentTypeId.DropDownWidth = 300;
-            this.ddlComponentTypeId.FormattingEnabled = true;
-            this.ddlComponentTypeId.Location = new System.Drawing.Point(111, 96);
-            this.ddlComponentTypeId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlComponentTypeId.Name = "ddlComponentTypeId";
-            this.ddlComponentTypeId.Size = new System.Drawing.Size(217, 21);
-            this.ddlComponentTypeId.TabIndex = 5;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).DataType = typeof(string);
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).IsRequired = true;
-            // 
-            // ddlUIIsVisibleId
-            // 
-            this.ddlUIIsVisibleId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlUIIsVisibleId.DropDownWidth = 300;
-            this.ddlUIIsVisibleId.FormattingEnabled = true;
-            this.ddlUIIsVisibleId.Location = new System.Drawing.Point(111, 122);
-            this.ddlUIIsVisibleId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlUIIsVisibleId.Name = "ddlUIIsVisibleId";
-            this.ddlUIIsVisibleId.Size = new System.Drawing.Size(82, 21);
-            this.ddlUIIsVisibleId.TabIndex = 6;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).DataType = typeof(string);
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).IsRequired = true;
-            // 
-            // ddlIsApprovedId
-            // 
-            this.ddlIsApprovedId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlIsApprovedId.DropDownWidth = 300;
-            this.ddlIsApprovedId.FormattingEnabled = true;
-            this.ddlIsApprovedId.Location = new System.Drawing.Point(111, 148);
-            this.ddlIsApprovedId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlIsApprovedId.Name = "ddlIsApprovedId";
-            this.ddlIsApprovedId.Size = new System.Drawing.Size(82, 21);
-            this.ddlIsApprovedId.TabIndex = 8;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).DataType = typeof(string);
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).IsRequired = true;
-            // 
-            // unBasePrice
-            // 
-            this.unBasePrice.Location = new System.Drawing.Point(279, 70);
-            this.unBasePrice.Margin = new System.Windows.Forms.Padding(2);
-            this.unBasePrice.Name = "unBasePrice";
-            this.unBasePrice.Size = new System.Drawing.Size(48, 20);
-            this.unBasePrice.TabIndex = 4;
-            this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).DataType = typeof(string);
-            this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).IsRequired = true;
-            this.unBasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unBasePrice_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(210, 73);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Precio Base";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 76);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Diagnosticable";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 102);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Tipo Componente";
+            this.uvMedicalExamEdit.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
             // 
             // comboBox1
             // 
@@ -223,98 +101,13 @@
             this.comboBox1.Size = new System.Drawing.Size(108, 21);
             this.comboBox1.TabIndex = 24;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(57, 128);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Es Visible";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(218, 125);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "Nro Orden";
-            // 
-            // unUIIndex
-            // 
-            this.unUIIndex.AutoSize = false;
-            this.unUIIndex.Location = new System.Drawing.Point(279, 121);
-            this.unUIIndex.Margin = new System.Windows.Forms.Padding(2);
-            this.unUIIndex.MaxValue = 9999;
-            this.unUIIndex.Name = "unUIIndex";
-            this.unUIIndex.PromptChar = ' ';
-            this.unUIIndex.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.unUIIndex.Size = new System.Drawing.Size(47, 20);
-            this.unUIIndex.TabIndex = 7;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(48, 154);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 13);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Aprobación";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(201, 149);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 13);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Vigencia(dias)";
-            // 
-            // unValidInDays
-            // 
-            this.unValidInDays.AutoSize = false;
-            this.unValidInDays.Location = new System.Drawing.Point(279, 146);
-            this.unValidInDays.Margin = new System.Windows.Forms.Padding(2);
-            this.unValidInDays.MaxValue = 9999;
-            this.unValidInDays.Name = "unValidInDays";
-            this.unValidInDays.PromptChar = ' ';
-            this.unValidInDays.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.unValidInDays.Size = new System.Drawing.Size(47, 20);
-            this.unValidInDays.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 200);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Unidad Productiva";
-            // 
-            // ddlUnidadProductiva
-            // 
-            this.ddlUnidadProductiva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlUnidadProductiva.DropDownWidth = 300;
-            this.ddlUnidadProductiva.FormattingEnabled = true;
-            this.ddlUnidadProductiva.Location = new System.Drawing.Point(111, 196);
-            this.ddlUnidadProductiva.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlUnidadProductiva.Name = "ddlUnidadProductiva";
-            this.ddlUnidadProductiva.Size = new System.Drawing.Size(205, 21);
-            this.ddlUnidadProductiva.TabIndex = 12;
-            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(258, 229);
+            this.btnCancel.Location = new System.Drawing.Point(426, 242);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
@@ -327,9 +120,9 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOK.Location = new System.Drawing.Point(178, 229);
+            this.btnOK.Location = new System.Drawing.Point(346, 242);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 24);
@@ -350,7 +143,7 @@
             this.btnAgregarLinea.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarLinea.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarLinea.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarLinea.Image")));
-            this.btnAgregarLinea.Location = new System.Drawing.Point(319, 196);
+            this.btnAgregarLinea.Location = new System.Drawing.Point(505, 195);
             this.btnAgregarLinea.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarLinea.Name = "btnAgregarLinea";
             this.btnAgregarLinea.Size = new System.Drawing.Size(27, 21);
@@ -377,50 +170,263 @@
             this.btnAgregarLineaSAM.TabIndex = 62;
             this.btnAgregarLineaSAM.UseVisualStyleBackColor = false;
             // 
+            // txtTarifaSegus
+            // 
+            this.txtTarifaSegus.Location = new System.Drawing.Point(396, 172);
+            this.txtTarifaSegus.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTarifaSegus.MaxLength = 250;
+            this.txtTarifaSegus.Name = "txtTarifaSegus";
+            this.txtTarifaSegus.Size = new System.Drawing.Size(105, 20);
+            this.txtTarifaSegus.TabIndex = 11;
+            // 
+            // txtCodigoSegus
+            // 
+            this.txtCodigoSegus.Location = new System.Drawing.Point(109, 171);
+            this.txtCodigoSegus.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCodigoSegus.MaxLength = 250;
+            this.txtCodigoSegus.Name = "txtCodigoSegus";
+            this.txtCodigoSegus.Size = new System.Drawing.Size(137, 20);
+            this.txtCodigoSegus.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(55, 49);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Categoría";
+            // 
+            // ddlCategoryId
+            // 
+            this.ddlCategoryId.DropDownHeight = 500;
+            this.ddlCategoryId.DroppedDown = false;
+            this.ddlCategoryId.Location = new System.Drawing.Point(111, 45);
+            this.ddlCategoryId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlCategoryId.Name = "ddlCategoryId";
+            this.ddlCategoryId.SelectedNode = null;
+            this.ddlCategoryId.ShowPath = true;
+            this.ddlCategoryId.Size = new System.Drawing.Size(390, 19);
+            this.ddlCategoryId.TabIndex = 2;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlCategoryId).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlCategoryId).IsRequired = true;
+            this.ddlCategoryId.SelectedNodeChanged += new System.EventHandler(this.ddlCategoryId_SelectedNodeChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(328, 72);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Precio Base";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 75);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Diagnosticable";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(210, 176);
+            this.label10.Location = new System.Drawing.Point(325, 175);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 13);
             this.label10.TabIndex = 20;
             this.label10.Text = "Tarifa Segus";
             // 
+            // ddlDiagnosableId
+            // 
+            this.ddlDiagnosableId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDiagnosableId.DropDownWidth = 300;
+            this.ddlDiagnosableId.FormattingEnabled = true;
+            this.ddlDiagnosableId.Location = new System.Drawing.Point(111, 69);
+            this.ddlDiagnosableId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlDiagnosableId.Name = "ddlDiagnosableId";
+            this.ddlDiagnosableId.Size = new System.Drawing.Size(135, 21);
+            this.ddlDiagnosableId.TabIndex = 3;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlDiagnosableId).IsRequired = true;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(36, 176);
+            this.label11.Location = new System.Drawing.Point(36, 175);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 13);
             this.label11.TabIndex = 20;
             this.label11.Text = "Código Segus";
             // 
-            // txtCodigoSegus
+            // label5
             // 
-            this.txtCodigoSegus.Location = new System.Drawing.Point(109, 172);
-            this.txtCodigoSegus.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodigoSegus.MaxLength = 250;
-            this.txtCodigoSegus.Name = "txtCodigoSegus";
-            this.txtCodigoSegus.Size = new System.Drawing.Size(84, 20);
-            this.txtCodigoSegus.TabIndex = 10;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 101);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Tipo Componente";
             // 
-            // txtTarifaSegus
+            // ddlComponentTypeId
             // 
-            this.txtTarifaSegus.Location = new System.Drawing.Point(279, 173);
-            this.txtTarifaSegus.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTarifaSegus.MaxLength = 250;
-            this.txtTarifaSegus.Name = "txtTarifaSegus";
-            this.txtTarifaSegus.Size = new System.Drawing.Size(48, 20);
-            this.txtTarifaSegus.TabIndex = 11;
+            this.ddlComponentTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlComponentTypeId.DropDownWidth = 300;
+            this.ddlComponentTypeId.FormattingEnabled = true;
+            this.ddlComponentTypeId.Location = new System.Drawing.Point(111, 95);
+            this.ddlComponentTypeId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlComponentTypeId.Name = "ddlComponentTypeId";
+            this.ddlComponentTypeId.Size = new System.Drawing.Size(390, 21);
+            this.ddlComponentTypeId.TabIndex = 5;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlComponentTypeId).IsRequired = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 199);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Unidad Productiva";
+            // 
+            // ddlUnidadProductiva
+            // 
+            this.ddlUnidadProductiva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlUnidadProductiva.DropDownWidth = 300;
+            this.ddlUnidadProductiva.FormattingEnabled = true;
+            this.ddlUnidadProductiva.Location = new System.Drawing.Point(111, 195);
+            this.ddlUnidadProductiva.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlUnidadProductiva.Name = "ddlUnidadProductiva";
+            this.ddlUnidadProductiva.Size = new System.Drawing.Size(390, 21);
+            this.ddlUnidadProductiva.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(57, 127);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Es Visible";
+            // 
+            // ddlUIIsVisibleId
+            // 
+            this.ddlUIIsVisibleId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlUIIsVisibleId.DropDownWidth = 300;
+            this.ddlUIIsVisibleId.FormattingEnabled = true;
+            this.ddlUIIsVisibleId.Location = new System.Drawing.Point(111, 121);
+            this.ddlUIIsVisibleId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlUIIsVisibleId.Name = "ddlUIIsVisibleId";
+            this.ddlUIIsVisibleId.Size = new System.Drawing.Size(135, 21);
+            this.ddlUIIsVisibleId.TabIndex = 6;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlUIIsVisibleId).IsRequired = true;
+            // 
+            // unUIIndex
+            // 
+            this.unUIIndex.AutoSize = false;
+            this.unUIIndex.Enabled = false;
+            this.unUIIndex.Location = new System.Drawing.Point(396, 123);
+            this.unUIIndex.Margin = new System.Windows.Forms.Padding(2);
+            this.unUIIndex.MaxValue = 9999;
+            this.unUIIndex.Name = "unUIIndex";
+            this.unUIIndex.PromptChar = ' ';
+            this.unUIIndex.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.unUIIndex.Size = new System.Drawing.Size(105, 20);
+            this.unUIIndex.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(336, 123);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Nro Orden";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(48, 153);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Aprobación";
+            // 
+            // ddlIsApprovedId
+            // 
+            this.ddlIsApprovedId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIsApprovedId.DropDownWidth = 300;
+            this.ddlIsApprovedId.FormattingEnabled = true;
+            this.ddlIsApprovedId.Location = new System.Drawing.Point(111, 147);
+            this.ddlIsApprovedId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlIsApprovedId.Name = "ddlIsApprovedId";
+            this.ddlIsApprovedId.Size = new System.Drawing.Size(135, 21);
+            this.ddlIsApprovedId.TabIndex = 8;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlIsApprovedId).IsRequired = true;
+            // 
+            // unValidInDays
+            // 
+            this.unValidInDays.AutoSize = false;
+            this.unValidInDays.Location = new System.Drawing.Point(396, 148);
+            this.unValidInDays.Margin = new System.Windows.Forms.Padding(2);
+            this.unValidInDays.MaxValue = 9999;
+            this.unValidInDays.Name = "unValidInDays";
+            this.unValidInDays.PromptChar = ' ';
+            this.unValidInDays.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.unValidInDays.Size = new System.Drawing.Size(105, 20);
+            this.unValidInDays.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(319, 147);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Vigencia(dias)";
+            // 
+            // unBasePrice
+            // 
+            this.unBasePrice.Location = new System.Drawing.Point(396, 72);
+            this.unBasePrice.Margin = new System.Windows.Forms.Padding(2);
+            this.unBasePrice.Name = "unBasePrice";
+            this.unBasePrice.Size = new System.Drawing.Size(105, 20);
+            this.unBasePrice.TabIndex = 4;
+            this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).IsRequired = true;
+            this.unBasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unBasePrice_KeyPress);
             // 
             // frmMedicalExamEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(354, 270);
+            this.ClientSize = new System.Drawing.Size(551, 277);
             this.ControlBox = false;
             this.Controls.Add(this.btnAgregarLinea);
             this.Controls.Add(this.unBasePrice);
@@ -469,33 +475,33 @@
 
         private System.Windows.Forms.Label Nombre;
         private System.Windows.Forms.TextBox txtInsertName;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private Infragistics.Win.Misc.UltraValidator uvMedicalExamEdit;
-        private ComboTreeBox ddlCategoryId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox ddlDiagnosableId;
-        private System.Windows.Forms.ComboBox ddlComponentTypeId;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox ddlUIIsVisibleId;
-        private System.Windows.Forms.Label label7;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor unUIIndex;
-        private System.Windows.Forms.ComboBox ddlIsApprovedId;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor unValidInDays;
-        private System.Windows.Forms.TextBox unBasePrice;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox ddlUnidadProductiva;
         private System.Windows.Forms.Button btnAgregarLinea;
         private System.Windows.Forms.Button btnAgregarLineaSAM;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtCodigoSegus;
         private System.Windows.Forms.TextBox txtTarifaSegus;
+        private System.Windows.Forms.TextBox txtCodigoSegus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox ddlDiagnosableId;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox ddlComponentTypeId;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox ddlUnidadProductiva;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox ddlUIIsVisibleId;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor unUIIndex;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox ddlIsApprovedId;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor unValidInDays;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox unBasePrice;
+        private ComboTreeBox ddlCategoryId;
     }
 }

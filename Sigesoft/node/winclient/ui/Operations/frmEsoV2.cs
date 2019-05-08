@@ -1404,16 +1404,29 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private static GroupBox CreateGroupBoxComponent(ComponentList groupBox)
         {
+            var subcategory = ObtenerCategory(groupBox.v_ComponentId);
             var gbGroupedComponent = new GroupBox
             {
-                Text = groupBox.v_GroupedComponentName,
+                Text = groupBox.v_GroupedComponentName + " - " + subcategory,
                 Name = "gb_" + groupBox.v_GroupedComponentName,
                 BackColor = Color.LightCyan,
                 AutoSize = true,
-                Dock = DockStyle.Top
+                Dock = DockStyle.Top,
+
             };
           
             return gbGroupedComponent;
+        }
+
+        private static object ObtenerCategory(string componentId)
+        {
+            var name = new ServiceBL().GetSubCategoryName(componentId);
+
+            if (name == null)
+            {
+                return "";
+            }
+            return name;
         }
 
         private static TableLayoutPanel CreateTableLayoutForControls(ComponentFieldsList groupbox, ComponentList component)
