@@ -588,6 +588,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             return value1;
         }
 
+        private void comboBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
+
         private static void SetValueControl(int controlId, Control ctrl, string componentFieldsId, string tagComponentFieldsId, string value1, SiNo hasAutomaticDx)
         {
             switch ((ControlType)controlId)
@@ -740,7 +745,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 rbSiNo.CreateControl();
                                 rbSiNo.Checked = !string.IsNullOrEmpty(cf.v_DefaultText) && Convert.ToBoolean(int.Parse(cf.v_DefaultText));
                                 break;
-                            case ControlType.Radiobutton    :
+                            case ControlType.Radiobutton:
                                 RadioButton rb = (RadioButton)ctrl[0];
                                 rb.CreateControl();
                                 rb.Checked = !string.IsNullOrEmpty(cf.v_DefaultText) && Convert.ToBoolean(int.Parse(cf.v_DefaultText));
@@ -749,6 +754,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 ComboBox cbSiNo = (ComboBox)ctrl[0];
                                 cbSiNo.CreateControl();
                                 cbSiNo.SelectedValue = string.IsNullOrEmpty(cf.v_DefaultText) ? "-1" : cf.v_DefaultText;
+                                cbSiNo.MouseWheel += new MouseEventHandler(comboBox1_MouseWheel);
                                 break;
                             case ControlType.UcFileUpload:
                                 break;
@@ -756,6 +762,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 ComboBox cbList = (ComboBox)ctrl[0];
                                 cbList.CreateControl();
                                 cbList.SelectedValue = string.IsNullOrEmpty(cf.v_DefaultText) ? "-1" : cf.v_DefaultText;
+                                cbList.MouseWheel += new MouseEventHandler(comboBox1_MouseWheel);
                                 break;
                             case ControlType.UcOdontograma:
                                 //(UserControls.ucOdontograma).ClearValueControl();;
@@ -1397,16 +1404,29 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private static GroupBox CreateGroupBoxComponent(ComponentList groupBox)
         {
+            var subcategory = ObtenerCategory(groupBox.v_ComponentId);
             var gbGroupedComponent = new GroupBox
             {
-                Text = groupBox.v_GroupedComponentName,
+                Text = groupBox.v_GroupedComponentName + " - " + subcategory,
                 Name = "gb_" + groupBox.v_GroupedComponentName,
                 BackColor = Color.LightCyan,
                 AutoSize = true,
-                Dock = DockStyle.Top
+                Dock = DockStyle.Top,
+
             };
           
             return gbGroupedComponent;
+        }
+
+        private static object ObtenerCategory(string componentId)
+        {
+            var name = new ServiceBL().GetSubCategoryName(componentId);
+
+            if (name == null)
+            {
+                return "";
+            }
+            return name;
         }
 
         private static TableLayoutPanel CreateTableLayoutForControls(ComponentFieldsList groupbox, ComponentList component)
@@ -5227,7 +5247,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                     {
-                        Thread.Sleep(4000);
+                        Thread.Sleep(2500);
                         MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
                     ;
@@ -5242,7 +5262,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                     {
-                        Thread.Sleep(4000);
+                        Thread.Sleep(2500);
                         MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
                     ;
@@ -5367,7 +5387,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     {
                                         using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                                         {
-                                            Thread.Sleep(4000);
+                                            Thread.Sleep(2500);
                                             MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         };
                                         ;
@@ -5380,7 +5400,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     {
                                         using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                                         {
-                                            Thread.Sleep(4000);
+                                            Thread.Sleep(2500);
                                             MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         };
                                         ;
@@ -6373,7 +6393,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                 {
-                    Thread.Sleep(4000);
+                    Thread.Sleep(2500);
                 };
                 ;
             });
@@ -9105,6 +9125,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ultraTabSharedControlsPage1_MouseLeave(object sender, EventArgs e)
         {
+
+        }
+
+
+        private void FrmEsoV2_SizeChanged(object sender, EventArgs e)
+        {
+            gbRecomendaciones_Conclusiones.Width = tpConclusion.Width / 2 - 50;
+            gbRestricciones_Conclusiones.Width = tpConclusion.Width / 2 - 20;
 
         }
         

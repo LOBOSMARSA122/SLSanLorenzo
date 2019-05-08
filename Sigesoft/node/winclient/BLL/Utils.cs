@@ -331,6 +331,7 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
 
+
         public static List<KeyValueDTOForTree> GetDataHierarchyForComboTreeBox(ref OperationResult pobjOperationResult, int pintGroupId, string pstrSortExpression)
         {
             //mon.IsActive = true;
@@ -441,7 +442,6 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-
         public static List<KeyValueDTO> GetSystemParameterByParentIdForCombo(ref OperationResult pobjOperationResult, int pintGroupId, int pintParentParameterId, string pstrSortExpression)
         {
             //mon.IsActive = true;
@@ -472,6 +472,48 @@ namespace Sigesoft.Node.WinClient.BLL
                                 Value1 = x.v_Value1,
                                 Value2 = x.v_Value2
                             }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public static List<KeyValueDTOForTree> GetSystemParameterByParentIdForComboTreeBox(ref OperationResult pobjOperationResult, int pintGroupId, int pintParentParameterId, string pstrSortExpression)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.systemparameter
+                    where a.i_GroupId == pintGroupId &&
+                          a.i_ParentParameterId == pintParentParameterId && a.i_IsDeleted == 0
+                    select a;
+
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                else
+                {
+                    query = query.OrderBy("v_Value1");
+                }
+
+                var query2 = query.AsEnumerable()
+                    .Select(x => new KeyValueDTOForTree
+                    {
+                        Id = x.i_ParameterId.ToString(),
+                        ParentId = x.i_ParentParameterId.ToString(),
+                        Value1 = x.v_Value1,
+                        Value2 = x.v_Value2
+                    }).ToList();
 
                 pobjOperationResult.Success = 1;
                 return query2;

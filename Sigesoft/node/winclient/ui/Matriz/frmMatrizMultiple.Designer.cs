@@ -1092,6 +1092,7 @@
             // btnExportShauindo
             // 
             this.btnExportShauindo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportShauindo.Enabled = false;
             this.btnExportShauindo.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportShauindo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExportShauindo.Location = new System.Drawing.Point(6, 456);

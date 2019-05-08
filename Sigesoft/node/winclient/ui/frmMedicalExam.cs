@@ -65,7 +65,7 @@ namespace Sigesoft.Node.WinClient.UI
             // Establecer el filtro inicial para los datos
             strFilterExpression = null;
             //Llenado de combos
-            Utils.LoadComboTreeBoxList(ddlCategoryId, BLL.Utils.GetSystemParameterForComboTreeBox(ref objOperationResult, 116, null), DropDownListAction.All);
+            Utils.LoadComboTreeBoxList_(ddlCategoryId, BLL.Utils.GetSystemParameterForComboTreeBox(ref objOperationResult, 116, null), DropDownListAction.All);
             cbLine.Select();
             object listaLine = LlenarLines();
             cbLine.DataSource = listaLine;
@@ -183,7 +183,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void mnuGridNewMedicalExam_Click(object sender, EventArgs e)
         {
-            frmMedicalExamEdicion frm = new frmMedicalExamEdicion("","New");
+            frmMedicalExamEdicion frm = new frmMedicalExamEdicion("","New", "");
             frm.ShowDialog();
 
             if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
@@ -197,7 +197,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             string strMedicalExamId = grdDataMedicalExam.Selected.Rows[0].Cells[0].Value.ToString();
 
-            frmMedicalExamEdicion frm = new frmMedicalExamEdicion(strMedicalExamId, "Edit");
+            frmMedicalExamEdicion frm = new frmMedicalExamEdicion(strMedicalExamId, "Edit", "");
             frm.ShowDialog();
 
             //if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
@@ -459,7 +459,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            frmMedicalExamEdicion frm = new frmMedicalExamEdicion("", "New");
+            frmMedicalExamEdicion frm = new frmMedicalExamEdicion("", "New", "");
             frm.ShowDialog();
 
             if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
@@ -475,8 +475,8 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnEditar_Click(object sender, EventArgs e)
         {
             string strMedicalExamId = grdDataMedicalExam.Selected.Rows[0].Cells["v_MedicalExamId"].Value.ToString();
-
-            frmMedicalExamEdicion frm = new frmMedicalExamEdicion(strMedicalExamId, "Edit");
+            string orden = grdDataMedicalExam.Selected.Rows[0].Cells["i_UIIndex"].Value.ToString();
+            frmMedicalExamEdicion frm = new frmMedicalExamEdicion(strMedicalExamId, "Edit", orden);
             frm.ShowDialog();
 
             if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)

@@ -290,118 +290,89 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void btnConsolidadoReportes_Click(object sender, EventArgs e)
         {
-                DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                OperationResult objOperationResult = new OperationResult();
+            DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            OperationResult objOperationResult = new OperationResult();
+            string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+            string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+            string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+            var filesNameToMergeOrder = new List<string>();
+            var Reportes = GetChekedItems(chklConsolidadoReportes);
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
+                    Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
 
-                if (Result == System.Windows.Forms.DialogResult.Yes)
+                foreach (var item in _ComponentsIdsOrdenados)
                 {
-
-                    if (!Common.Utils.AccesoInternet())
+                    var componentId = item.Split('|')[0];
+                    var path = _ruta + _serviceId + "-" + componentId + ".pdf";
+                    if (_filesNameToMerge.Find(p => p == path) != null)
                     {
-                        MessageBox.Show("Verifique la conexión de Internet para publicar", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
+                        filesNameToMergeOrder.Add(path);
                     }
-                    string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
-                    string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-                    string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
-                    var filesNameToMergeOrder = new List<string>();
-                    var Reportes = GetChekedItems(chklConsolidadoReportes);
-                    using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                }
+            };
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                var adj = _filesNameToMerge.FindAll(p => p.Contains(_dni));
+                if (adj.Count() > 0)
+                {
+                    foreach (var item in adj)
                     {
-                        System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
-                            Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
-
-                        foreach (var item in _ComponentsIdsOrdenados)
-                        {
-                            var componentId = item.Split('|')[0];
-                            var path = _ruta + _serviceId + "-" + componentId + ".pdf";
-                            if (_filesNameToMerge.Find(p => p == path) != null)
-                            {
-                                filesNameToMergeOrder.Add(path);
-                            }
-                        }
-                        var adj = _filesNameToMerge.FindAll(p => p.Contains(_dni));
-                        if (adj.Count() > 0)
-                        {
-                            foreach (var item in adj)
-                            {
-                                filesNameToMergeOrder.Add(item);
-                            }
-
-                        }
-                        var adj_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
-                        if (adj_2.Count() > 0)
-                        {
-                            foreach (var item in adj_2)
-                            {
-                                filesNameToMergeOrder.Add(item);
-                            }
-
-                        }
-                    };
-
-                    //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-                    //{
-                    //    CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false);
-                    //};
-
-                    var x = filesNameToMergeOrder.ToList();
-                    //var x = _filesNameToMerge.ToList();
-                    _mergeExPDF.FilesName = x;
-                    _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
-                    _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
-                    _mergeExPDF.Execute();
-                    _mergeExPDF.RunFile();
-
-                    var oService = _serviceBL.GetServiceShort(_serviceId);
-                    _mergeExPDF.FilesName = x;
-                    _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-                    if (oService.Empresa != oService.Contract)
-                    {
-                        _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - Contrata (" + oService.Contract + ") - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-                        _mergeExPDF.Execute();
+                        filesNameToMergeOrder.Add(item);
                     }
-                    else if (oService.Empresa == oService.Contract)
-                    {
-                        _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-                        _mergeExPDF.Execute();
-                    }
-
-                    //Cambiar de estado a generado de reportes
-                    _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
-
-                    //Common.Utils.SendFileFtp("ftp.site4now.net", "SLReportesMedicos", "SLRepotMed123_", _ruta + _serviceId + ".pdf");
 
                 }
-                else
+                var adj_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+                if (adj_2.Count() > 0)
                 {
-                    string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
-                    string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-                    string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
-                    var filesNameToMergeOrder = new List<string>();
-                    var Reportes = GetChekedItems(chklConsolidadoReportes);
-                    using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                    foreach (var item in adj_2)
                     {
-                        System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
-                            Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
+                        filesNameToMergeOrder.Add(item);
+                    }
 
-                        foreach (var item in _ComponentsIdsOrdenados)
-                        {
-                            var componentId = item.Split('|')[0];
-                            var path = _ruta + _serviceId + "-" + componentId + ".pdf";
-                            if (_filesNameToMerge.Find(p => p == path) != null)
-                            {
-                                filesNameToMergeOrder.Add(path);
-                            }
-                        }
-                    };
-                    var x = filesNameToMergeOrder.ToList();
-                    _mergeExPDF.FilesName = x;
-                    _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
-                    _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
-                    _mergeExPDF.Execute();
-                    _mergeExPDF.RunFile();
                 }
+                _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
+
+            }
+            var x = filesNameToMergeOrder.ToList();
+            _mergeExPDF.FilesName = x;
+            _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
+            _mergeExPDF.DestinationFile = _ruta + _serviceId + ".pdf";
+            _mergeExPDF.Execute();
+            _mergeExPDF.RunFile();
+            var oService = _serviceBL.GetServiceShort(_serviceId);
+            _mergeExPDF.FilesName = x;
+            _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+            if (oService.Empresa != oService.Contract && Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - Contrata (" + oService.Contract + ") - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                _mergeExPDF.Execute();
+            }
+            else if (oService.Empresa == oService.Contract && Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                _mergeExPDF.Execute();
+            }
+            var adjunto = _filesNameToMerge.FindAll(p => p.Contains(_dni));
+            var adjunto_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+            if (adjunto.Count() > 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { foreach (var otros in adjunto_2) { if ((pdf != adj || pdf != otros) && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } } }
+            }
+            else if (adjunto.Count() > 0 && adjunto_2.Count() == 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+            }
+            else if (adjunto.Count() == 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto_2) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+            }
+            else
+            {
+                foreach (var pdf in _filesNameToMerge) {  System.IO.File.Delete(pdf); }
+            }
+
         }
 
         private void chklChekedAll(CheckedListBox chkl, bool checkedState)
@@ -442,8 +413,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             foreach (var com in reportesId)
             {
                 int IdCrystal = GetIdCrystal(com);
-                tasks.Add(Task<string>.Factory.StartNew(() => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
-
+                //tasks.Add(Task<string>.Factory.StartNew(() => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
+                ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal);
             }
 
             if (Publicar)
@@ -568,6 +539,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             DataSet ds = null;
             DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
             OperationResult objOperationResult = new OperationResult();
+            List<string> filesName = new List<string>();
+            MergeExPDF mergeExPDF = new MergeExPDF();
+            List<string> unirPdfS = new List<string>();
             _serviceId = serviceId;
             _pacientId = pPacienteId;
             switch (componentId)
@@ -796,6 +770,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.INFORME_ANTECEDENTE_PATOLOGICO + "01" + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
@@ -815,9 +790,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.INFORME_ANTECEDENTE_PATOLOGICO + "02" + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
+                    #region Unir Pdfs
+                    //Unir pdfS en un solo archivo
+                    unirPdfS = filesName.ToList();
+                    mergeExPDF.FilesName = unirPdfS;
+                    mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.INFORME_ANTECEDENTE_PATOLOGICO + ".pdf";
+                    mergeExPDF.Execute();
+                    _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                    #endregion   
                     break;
 
                 case Constants.OSTEO_COIMO:
@@ -835,6 +819,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_COIMO + "01" + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
@@ -855,9 +840,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_COIMO + "02" + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
+                    #region Unir Pdfs
+                    //Unir pdfS en un solo archivo
+                    unirPdfS = filesName.ToList();
+                    mergeExPDF.FilesName = unirPdfS;
+
+                    mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.OSTEO_COIMO + ".pdf";
+                    mergeExPDF.Execute();
+
+                    _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                    #endregion   
+
                     break;
                 case Constants.TOXICOLOGICO_ID:
                     var TOXICOLOGICO_ID = new ServiceBL().GetReportToxicologico(_serviceId, Constants.TOXICOLOGICO_ID);
@@ -892,7 +889,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.INFORME_DECLARACION_CI + "03" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.INFORME_DECLARACION_CI + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
@@ -986,6 +983,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_1 + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
@@ -998,9 +996,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_2 + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
+                    #region Unir Pdfs
+                    //Unir pdfS en un solo archivo
+                    unirPdfS = filesName.ToList();
+                    mergeExPDF.FilesName = unirPdfS;
+
+                    mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_1 + ".pdf";
+                    mergeExPDF.Execute();
+
+                    _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                    #endregion   
+
                     break;
 
                 case Constants.OSTEO_MUSCULAR_ID_2:
@@ -1797,7 +1807,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     dsGetRepo = new DataSet();
                     DataTable dtINFORME_ESPIROMETRIA = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(INFORME_ESPIROMETRIA);
-                    dtINFORME_ESPIROMETRIA.TableName = "dtCuestionarioEspirometria";
+                    dtINFORME_ESPIROMETRIA.TableName = "dtInformeEspirometria";
                     dsGetRepo.Tables.Add(dtINFORME_ESPIROMETRIA);
                     if (pintIdCrystal == 46)
                     {
@@ -1947,6 +1957,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.C_N_ID + ".pdf";
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.C_N_ID + "_01.pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
@@ -1959,10 +1970,22 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.C_N_ID + "_02" + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
 
                     rp.Export();
                     rp.Close();
+                    #region Unir Pdfs
+                    //Unir pdfS en un solo archivo
+                    unirPdfS = filesName.ToList();
+                    mergeExPDF.FilesName = unirPdfS;
+
+                    mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.C_N_ID + ".pdf";
+                    mergeExPDF.Execute();
+
+                    _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                    #endregion   
+
                     break;
 
 
@@ -2315,8 +2338,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "_01" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + "_01" + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        filesName.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
                         rp.Close();
@@ -2326,11 +2350,22 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "_02" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + "_02" + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        filesName.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
                         rp.Close();
+                        #region Unir Pdfs
+                        //Unir pdfS en un solo archivo
+                        unirPdfS = filesName.ToList();
+                        mergeExPDF.FilesName = unirPdfS;
+
+                        mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + ".pdf";
+                        mergeExPDF.Execute();
+
+                        _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                        #endregion   
 
                     }
                     else if (pintIdCrystal == 55)
@@ -2343,6 +2378,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         objDiskOpt = new DiskFileDestinationOptions();
                         objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "01" + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        filesName.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
                         rp.Close();
@@ -2354,9 +2390,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         objDiskOpt = new DiskFileDestinationOptions();
                         objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "02" + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        filesName.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
                         rp.Close();
+                        #region Unir Pdfs
+                        //Unir pdfS en un solo archivo
+                        unirPdfS = filesName.ToList();
+                        mergeExPDF.FilesName = unirPdfS;
+
+                        mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + ".pdf";
+                        mergeExPDF.Execute();
+
+                        _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                        #endregion   
 
                     }
                     else
@@ -2366,8 +2413,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + "-1.pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        filesName.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
 
                         rp.Export();
@@ -2379,12 +2427,23 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + "2" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + "-2" + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        filesName.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
 
                         rp.Export();
                         rp.Close();
+                        #region Unir Pdfs
+                        //Unir pdfS en un solo archivo
+                        unirPdfS = filesName.ToList();
+                        mergeExPDF.FilesName = unirPdfS;
+
+                        mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + ".pdf";
+                        mergeExPDF.Execute();
+
+                        _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                        #endregion   
                     }
                     break;
                 case Constants.EVA_NEUROLOGICA_ID:
@@ -2528,6 +2587,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.EVA_ERGONOMICA_ID + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
 
                     rp.Export();
@@ -2542,6 +2602,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + "EVA_ERGONOMICA_ID2" + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
 
                     rp.Export();
@@ -2556,10 +2617,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     objDiskOpt = new DiskFileDestinationOptions();
                     objDiskOpt.DiskFileName = _ruta + serviceId + "-" + "EVA_ERGONOMICA_ID3" + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
 
                     rp.Export();
                     rp.Close();
+                    #region Unir Pdfs
+                    //Unir pdfS en un solo archivo
+                    unirPdfS = filesName.ToList();
+                    mergeExPDF.FilesName = unirPdfS;
+
+                    mergeExPDF.DestinationFile = _ruta + serviceId + "-" + Constants.EVA_ERGONOMICA_ID + ".pdf";
+                    mergeExPDF.Execute();
+
+                    _filesNameToMerge.Add(mergeExPDF.DestinationFile);
+                    #endregion   
                     break;
 
 
@@ -2958,8 +3030,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID +
-                                                  "02" + ".pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
 
@@ -2974,7 +3045,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID + "01.pdf";
+                        objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
 
@@ -3004,8 +3075,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case "N009-ME000000337":
                     
-                    List<string> filesName = new List<string>();
-                    MergeExPDF mergeExPDF = new MergeExPDF(); 
+                    //List<string> filesName = new List<string>();
+                    //MergeExPDF mergeExPDF = new MergeExPDF(); 
                     var Cusestionario_audiometria = new ServiceBL().GetCustionarioAudiometria(_serviceId, "N009-ME000000337");
 
                     dsGetRepo = new DataSet();
@@ -3040,7 +3111,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     #region Unir Pdfs
                     //Unir pdfS en un solo archivo
-                    var unirPdfS = filesName.ToList();
+                    unirPdfS = filesName.ToList();
                     mergeExPDF.FilesName = unirPdfS;
 
                     mergeExPDF.DestinationFile = _ruta + serviceId + "-" + "N009-ME000000337" + ".pdf";

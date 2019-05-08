@@ -229,22 +229,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
         private List<ServiceList> GetData(int pintPageIndex, int pintPageSize, string pstrSortExpression, string pstrFilterExpression)
         {
             OperationResult objOperationResult = new OperationResult();
-            ProtocolBL _protocolBL = new ProtocolBL();
             var _objData = _ServiceBL.GetService(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression,dpFechaInicio.SelectedDate.Value,dpFechaFin.SelectedDate.Value.AddDays(1));
-            var litsProtocol = _protocolBL.GetProtocolBySystemUser(ref objOperationResult, ((ClientSession)Session["objClientSession"]).i_SystemUserId);
-            List<ServiceList> _objData2 = new List<ServiceList>();
-            //var _objData2 = null;
-            foreach (var protocol in litsProtocol)
-            {
-                foreach (var service in _objData)
-                {
-                    if (protocol.Id == service.v_ProtocolId)
-                    {
-                        _objData2.Add(service);
-                    }
-                }
-            }
-            _objData = _objData2;
+
             if (ddlEmpresa.SelectedValue.ToString() == "-1")
             {
                  var ObtenerEmpresasCliente = new ProtocolBL().GetOrganizationCustumerByProtocolSystemUser(ref objOperationResult, ((ClientSession)Session["objClientSession"]).i_SystemUserId);

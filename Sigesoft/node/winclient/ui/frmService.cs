@@ -13,6 +13,7 @@ using System.IO;
 using NetPdf;
 using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
+using System.Linq.Dynamic;
 using System.Threading;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
@@ -3004,9 +3005,9 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("SELECCIONE UNA SERVICIO A GENERAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show( "","", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnFilter_Click(sender, e);
             }
 
@@ -3237,10 +3238,18 @@ namespace Sigesoft.Node.WinClient.UI
                         if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
                         {
                             this.Enabled = false;
-                            using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                            var t = new Thread(() =>
                             {
-                                frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
-                            };
+                                using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                                {
+                                    Thread.Sleep(2500);
+                                };
+                                ;
+                            });
+                            t.Start();
+                            
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            
                             frm.ShowDialog();
                             
                             this.Enabled = true;
