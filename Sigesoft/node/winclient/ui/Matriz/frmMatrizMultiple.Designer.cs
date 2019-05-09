@@ -34,7 +34,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoEmo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DniPasaporte");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaExamen");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ApellidosNombres");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ApellidosNombres", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaNacimiento");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelefonoContacto");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("edad");
@@ -308,7 +308,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn558 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CilindrosGranulosos");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn559 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CilindrosLeucocitarios");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn560 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CilindrosHematicos");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn561 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Piocitos", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn561 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Piocitos");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn562 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FilamentosMucoides");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn563 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Patologico");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn564 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LeusVDRL");
@@ -823,6 +823,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn749 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaRecepcion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn750 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ObservacionesCredicorp");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FPsicoTiempoTrabajo");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Urea");
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
@@ -3064,6 +3065,7 @@
             ultraGridColumn749.Header.VisiblePosition = 128;
             ultraGridColumn750.Header.VisiblePosition = 129;
             ultraGridColumn13.Header.VisiblePosition = 130;
+            ultraGridColumn29.Header.VisiblePosition = 131;
             ultraGridBand5.Columns.AddRange(new object[] {
             ultraGridColumn7,
             ultraGridColumn88,
@@ -3195,7 +3197,8 @@
             ultraGridColumn748,
             ultraGridColumn749,
             ultraGridColumn750,
-            ultraGridColumn13});
+            ultraGridColumn13,
+            ultraGridColumn29});
             this.grdMiBanco.DisplayLayout.BandsSerializer.Add(ultraGridBand5);
             this.grdMiBanco.DisplayLayout.InterBandSpacing = 10;
             this.grdMiBanco.DisplayLayout.MaxColScrollRegions = 1;

@@ -29123,7 +29123,6 @@ namespace NetPdf
                 var Value_HEMATOCRITO_ID = oLABORATORIO_HEMATOCRITO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO_ID);
 
 
-
                 ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }

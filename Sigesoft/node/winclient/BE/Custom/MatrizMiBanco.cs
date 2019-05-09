@@ -14,6 +14,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_CustomerLocationId { get; set; }
         public string v_EmployerOrganizationId { get; set; }
         public string v_EmployerLocationId { get; set; }
+        public string v_WorkingOrganizationId { get; set; }
+        public string v_WorkingLocationId { get; set; }	
         public string Dni { get; set; }
         public string Protocolo { get; set; }
         public string TipoEmo { get; set; }
@@ -56,6 +58,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string AntecedentesHipertension { get; set; }
         public string EvaluacionOsteoMuscular { get; set; }
         public string DxEkg { get; set; }
+        public string Urea { get; set; }
 
         public string OjoDerechoSC { get; set; }
         public string OjoIzquierdoSC { get; set; }

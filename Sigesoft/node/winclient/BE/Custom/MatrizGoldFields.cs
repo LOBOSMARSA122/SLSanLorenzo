@@ -12,6 +12,10 @@ namespace Sigesoft.Node.WinClient.BE
         public string ProtocolId { get; set; }
         public string v_CustomerOrganizationId { get; set; }
         public string v_CustomerLocationId { get; set; }
+        public string v_EmployerOrganizationId { get; set; }
+        public string v_EmployerLocationId { get; set; }
+        public string v_WorkingOrganizationId { get; set; }
+        public string v_WorkingLocationId { get; set; }	
 
         public string Condicion { get; set; }
         public DateTime? FechaDigitacion { get; set; }

@@ -15,6 +15,10 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+        #region AUTORIZACION LIBERACION - SAN MARTIN
+        public const string AUTORIZACION_LIBERACION_SAN_MARTIN = "AUT_LIB_INF_SAN_MARTIN";
+        #endregion
+
         #region consentimiento coimolache
         public const string AUTORIZACION_REALIZACION_EXAMEN_MEDICO_LIBERACION_INFORMACION = "AUT_REAL_EX_MED_LIBER_INF";
         #endregion
