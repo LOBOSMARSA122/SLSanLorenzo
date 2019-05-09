@@ -54,7 +54,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private string SetChanges()
         {
-            string cadena = "";
+            string cadena = _protocolBL.GetComentaryUpdateByProtocolId(_protocolId);
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
             foreach (var item in nombreCampos)
             {
                 var fields = this.Controls.Find(item, true);
@@ -71,10 +72,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                         cadena += item + ":" + ValorCampo + "|";
                     }
                 }
-            }
-            if (cadena.Length > 0)
-            {
-                cadena += "FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
             }
 
             return cadena;
@@ -329,7 +326,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 _protocolDTO.i_ValidInDays = txtComision.Text != string.Empty ? int.Parse(txtComision.Text) : (int?)null;
                 _protocolDTO.i_IsActive = Convert.ToInt32(chkEsActivo.Checked);
                 _protocolDTO.v_NombreVendedor = cboVendedor.Text;
-
+                _protocolDTO.v_ComentaryUpdate = SetChanges();
 
                 // Grabar componentes del protocolo
                 if (_mode == "New" || _mode == "Clon")
@@ -429,6 +426,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                             protocolComponent.i_GrupoEtarioId = item.i_GrupoEtarioId;
                             protocolComponent.r_Imc = item.r_Imc;
                             protocolComponent.i_IsConditionalId = item.i_IsConditionalId;
+                            
                             _protocolcomponentListDTOUpdate.Add(protocolComponent);
                         }
 
@@ -469,7 +467,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     // Se queda en el formulario.
                 }
 
-                SetChanges();
+                
             }
             else
             {

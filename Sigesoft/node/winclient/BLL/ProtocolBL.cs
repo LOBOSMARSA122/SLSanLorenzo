@@ -8,6 +8,7 @@ using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
 using Sigesoft.Common;
 using System.Collections;
+using System.Net.Sockets;
 
 namespace Sigesoft.Node.WinClient.BLL
 {
@@ -158,8 +159,21 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
         //}
-     
 
+        public string GetComentaryUpdateByProtocolId(string protocolId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var comentary = (from pro in dbContext.protocol
+                where pro.v_ProtocolId == protocolId
+                select pro.v_ComentaryUpdate).FirstOrDefault();
+
+            if (comentary == null)
+            {
+                return "";
+            }
+
+            return comentary;
+        }
         public string AddProtocol(ref OperationResult pobjOperationResult, protocolDto pobjProtocol, List<protocolcomponentDto> pobjProtocolComponent, List<string> ClientSession)
         {
             //mon.IsActive = true;
