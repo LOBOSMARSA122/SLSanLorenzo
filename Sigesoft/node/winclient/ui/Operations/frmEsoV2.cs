@@ -167,6 +167,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 checkFirmaYanacocha.Visible = false;
                 checkFirmaYanacocha.Enabled = false;
             }
+            splitContainer2.SplitterDistance = splitContainer2.Height - 200;
         }
 
         private void InitializeForm()
@@ -9155,6 +9156,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "View", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
                 frm.ShowDialog();
+            }
+        }
+
+        private void tcSubMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tcSubMain.SelectedIndex == 1)
+            {
+                lblView.Visible = true;
+            }
+            else
+            {
+                lblView.Visible = false;
             }
         }
         
