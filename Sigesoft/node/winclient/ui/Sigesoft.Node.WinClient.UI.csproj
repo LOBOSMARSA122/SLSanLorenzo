@@ -1375,12 +1375,6 @@
     <Compile Include="Operations\frmContainerEso.Designer.cs">
       <DependentUpon>frmContainerEso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\frmRibbonEso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Operations\frmRibbonEso.Designer.cs">
-      <DependentUpon>frmRibbonEso.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmRolCuota.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3888,9 +3882,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\frmContainerEso.resx">
       <DependentUpon>frmContainerEso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Operations\frmRibbonEso.resx">
-      <DependentUpon>frmRibbonEso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRolCuota.resx">
       <DependentUpon>frmRolCuota.cs</DependentUpon>

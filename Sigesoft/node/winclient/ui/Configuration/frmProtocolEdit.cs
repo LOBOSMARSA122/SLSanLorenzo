@@ -37,16 +37,29 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             InitializeComponent();
             _protocolId = id;
             _mode = mode;
+            
         }
      
         private void frmProtocolEdit_Load(object sender, EventArgs e)
         {
+
             LoadData();
             if (grdExternalUser.Rows.Count != 0)
                 grdExternalUser.Rows[0].Selected = true;
             if (grdProtocolComponent.Rows.Count != 0)
                 grdProtocolComponent.Rows[0].Selected = true;
-            
+            foreach (var control in this.groupBox1.Controls)
+            {
+                //switch (control.GetType())
+                //{
+                //    case TextBox:
+                //        var verdad = true;
+                //        break;
+                //    default:
+                //        break;
+                //}
+                var type = control.GetType();
+            }
         }
 
         private void SearchControlAndSetEvents(Control ctrlContainer)
