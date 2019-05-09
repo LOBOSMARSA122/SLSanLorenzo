@@ -860,7 +860,7 @@
             this.tcSubMain.Location = new System.Drawing.Point(12, 41);
             this.tcSubMain.Name = "tcSubMain";
             this.tcSubMain.SelectedIndex = 0;
-            this.tcSubMain.Size = new System.Drawing.Size(1329, 672);
+            this.tcSubMain.Size = new System.Drawing.Size(1329, 557);
             this.tcSubMain.TabIndex = 0;
             // 
             // tpAntecedentes
@@ -869,7 +869,7 @@
             this.tpAntecedentes.Location = new System.Drawing.Point(4, 22);
             this.tpAntecedentes.Name = "tpAntecedentes";
             this.tpAntecedentes.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAntecedentes.Size = new System.Drawing.Size(1321, 646);
+            this.tpAntecedentes.Size = new System.Drawing.Size(1321, 531);
             this.tpAntecedentes.TabIndex = 5;
             this.tpAntecedentes.Text = "ANTECEDENTES";
             this.tpAntecedentes.UseVisualStyleBackColor = true;
@@ -1040,7 +1040,7 @@
             this.gbServiciosAnteriores.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbServiciosAnteriores.Location = new System.Drawing.Point(13, 16);
             this.gbServiciosAnteriores.Name = "gbServiciosAnteriores";
-            this.gbServiciosAnteriores.Size = new System.Drawing.Size(537, 460);
+            this.gbServiciosAnteriores.Size = new System.Drawing.Size(585, 460);
             this.gbServiciosAnteriores.TabIndex = 4;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
@@ -1148,7 +1148,7 @@
             this.grdServiciosAnteriores.Location = new System.Drawing.Point(5, 47);
             this.grdServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.grdServiciosAnteriores.Name = "grdServiciosAnteriores";
-            this.grdServiciosAnteriores.Size = new System.Drawing.Size(529, 408);
+            this.grdServiciosAnteriores.Size = new System.Drawing.Size(522, 408);
             this.grdServiciosAnteriores.TabIndex = 58;
             this.grdServiciosAnteriores.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdServiciosAnteriores_AfterSelectChange);
             this.grdServiciosAnteriores.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdServiciosAnteriores_MouseDown);
@@ -1202,7 +1202,7 @@
             this.General.Location = new System.Drawing.Point(4, 22);
             this.General.Name = "General";
             this.General.Padding = new System.Windows.Forms.Padding(3);
-            this.General.Size = new System.Drawing.Size(1321, 646);
+            this.General.Size = new System.Drawing.Size(1321, 531);
             this.General.TabIndex = 0;
             this.General.Text = "ANAMNESIS";
             this.General.UseVisualStyleBackColor = true;
@@ -1834,7 +1834,7 @@
             this.tpExam.Location = new System.Drawing.Point(4, 22);
             this.tpExam.Name = "tpExam";
             this.tpExam.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExam.Size = new System.Drawing.Size(1321, 646);
+            this.tpExam.Size = new System.Drawing.Size(1321, 531);
             this.tpExam.TabIndex = 1;
             this.tpExam.Text = "EXÁMENES";
             this.tpExam.ToolTipText = "EXAMENES";
@@ -2386,7 +2386,7 @@
             this.tslFechaCrea,
             this.tslUsuarioAct,
             this.tslFechaAct});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 613);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 498);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1315, 30);
             this.statusStrip1.TabIndex = 10;
@@ -2444,7 +2444,7 @@
             this.btnAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnAntecedentes.Image = ((System.Drawing.Image)(resources.GetObject("btnAntecedentes.Image")));
             this.btnAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAntecedentes.Location = new System.Drawing.Point(1023, 589);
+            this.btnAntecedentes.Location = new System.Drawing.Point(1023, 474);
             this.btnAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAntecedentes.Name = "btnAntecedentes";
             this.btnAntecedentes.Size = new System.Drawing.Size(113, 24);
@@ -2462,7 +2462,7 @@
             this.tpAnalisisDx.Controls.Add(this.btnAceptarDX);
             this.tpAnalisisDx.Location = new System.Drawing.Point(4, 22);
             this.tpAnalisisDx.Name = "tpAnalisisDx";
-            this.tpAnalisisDx.Size = new System.Drawing.Size(1321, 646);
+            this.tpAnalisisDx.Size = new System.Drawing.Size(1321, 531);
             this.tpAnalisisDx.TabIndex = 3;
             this.tpAnalisisDx.Text = "CONTROL DE CALIDAD";
             this.tpAnalisisDx.ToolTipText = "ANÁLISIS DE DIAGNÓSTICOS";
@@ -3247,7 +3247,7 @@
             this.tpConclusion.Controls.Add(this.btnGuardarConclusiones);
             this.tpConclusion.Location = new System.Drawing.Point(4, 22);
             this.tpConclusion.Name = "tpConclusion";
-            this.tpConclusion.Size = new System.Drawing.Size(1321, 646);
+            this.tpConclusion.Size = new System.Drawing.Size(1321, 531);
             this.tpConclusion.TabIndex = 2;
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
@@ -4018,7 +4018,7 @@
             this.tpFormatoAtencionIntegral.Location = new System.Drawing.Point(4, 22);
             this.tpFormatoAtencionIntegral.Name = "tpFormatoAtencionIntegral";
             this.tpFormatoAtencionIntegral.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFormatoAtencionIntegral.Size = new System.Drawing.Size(1321, 646);
+            this.tpFormatoAtencionIntegral.Size = new System.Drawing.Size(1321, 531);
             this.tpFormatoAtencionIntegral.TabIndex = 6;
             this.tpFormatoAtencionIntegral.Text = "FORMATO DE ATENCIÓN INTEGRAL";
             this.tpFormatoAtencionIntegral.UseVisualStyleBackColor = true;
@@ -4534,7 +4534,7 @@
             this.tpDatosAntecedentes.Controls.Add(this.shapeContainer1);
             this.tpDatosAntecedentes.Location = new System.Drawing.Point(4, 22);
             this.tpDatosAntecedentes.Name = "tpDatosAntecedentes";
-            this.tpDatosAntecedentes.Size = new System.Drawing.Size(1321, 646);
+            this.tpDatosAntecedentes.Size = new System.Drawing.Size(1321, 531);
             this.tpDatosAntecedentes.TabIndex = 7;
             this.tpDatosAntecedentes.Text = "DATOS GENERALES Y ANTECEDENTES";
             this.tpDatosAntecedentes.UseVisualStyleBackColor = true;
@@ -7335,7 +7335,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1321, 646);
+            this.shapeContainer1.Size = new System.Drawing.Size(1321, 531);
             this.shapeContainer1.TabIndex = 109;
             this.shapeContainer1.TabStop = false;
             // 
@@ -7354,7 +7354,7 @@
             this.tpCuidadosPreventivos.Location = new System.Drawing.Point(4, 22);
             this.tpCuidadosPreventivos.Name = "tpCuidadosPreventivos";
             this.tpCuidadosPreventivos.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCuidadosPreventivos.Size = new System.Drawing.Size(1321, 646);
+            this.tpCuidadosPreventivos.Size = new System.Drawing.Size(1321, 531);
             this.tpCuidadosPreventivos.TabIndex = 8;
             this.tpCuidadosPreventivos.Text = "CUIDADOS PREVENTIVOS";
             this.tpCuidadosPreventivos.UseVisualStyleBackColor = true;

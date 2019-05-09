@@ -129,7 +129,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private ninioDto objNinioDto = null;
         private DateTime? _FechaServico;
         #endregion
-
+        private PacientBL _pacientBL = new PacientBL();
         public int? _EstadoComponente = null;
         private ServiceBL _serviceBL = new ServiceBL();
         private string _customerOrganizationName;
@@ -4452,42 +4452,45 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void grdTotalDiagnosticos_InitializeRow(object sender, InitializeRowEventArgs e)
         {
-            var caliFinal = (FinalQualification)e.Row.Cells["i_FinalQualificationId"].Value;
-            var dx = e.Row.Cells["v_DiseasesId"].Value.ToString();
-
-            switch (caliFinal)
+            var cell = e.Row.Cells["i_FinalQualificationId"].Value;
+            if (cell != null)
             {
-                case FinalQualification.SinCalificar:
+                var caliFinal = (FinalQualification)cell;
+                var dx = e.Row.Cells["v_DiseasesId"].Value.ToString();
 
-                    if (dx != Constants.EXAMEN_DE_SALUD_SIN_ALTERACION)
-                    {
-                        e.Row.Appearance.BackColor = Color.Pink;
-                        e.Row.Appearance.BackColor2 = Color.Pink;
-                    }
-                    else
-                    {
-                        e.Row.Appearance.BackColor = Color.White;
-                        e.Row.Appearance.BackColor2 = Color.White;
-                    }
+                switch (caliFinal)
+                {
+                    case FinalQualification.SinCalificar:
 
-                    break;
-                case FinalQualification.Definitivo:
-                    e.Row.Appearance.BackColor = Color.LawnGreen;
-                    e.Row.Appearance.BackColor2 = Color.LawnGreen;
-                    break;
-                case FinalQualification.Presuntivo:
-                    e.Row.Appearance.BackColor = Color.LawnGreen;
-                    e.Row.Appearance.BackColor2 = Color.LawnGreen;
-                    break;
-                case FinalQualification.Descartado:
-                    e.Row.Appearance.BackColor = Color.DarkGray;
-                    e.Row.Appearance.BackColor2 = Color.DarkGray;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                        if (dx != Constants.EXAMEN_DE_SALUD_SIN_ALTERACION)
+                        {
+                            e.Row.Appearance.BackColor = Color.Pink;
+                            e.Row.Appearance.BackColor2 = Color.Pink;
+                        }
+                        else
+                        {
+                            e.Row.Appearance.BackColor = Color.White;
+                            e.Row.Appearance.BackColor2 = Color.White;
+                        }
+
+                        break;
+                    case FinalQualification.Definitivo:
+                        e.Row.Appearance.BackColor = Color.LawnGreen;
+                        e.Row.Appearance.BackColor2 = Color.LawnGreen;
+                        break;
+                    case FinalQualification.Presuntivo:
+                        e.Row.Appearance.BackColor = Color.LawnGreen;
+                        e.Row.Appearance.BackColor2 = Color.LawnGreen;
+                        break;
+                    case FinalQualification.Descartado:
+                        e.Row.Appearance.BackColor = Color.DarkGray;
+                        e.Row.Appearance.BackColor2 = Color.DarkGray;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             e.Row.Appearance.BackGradientStyle = GradientStyle.VerticalBump;
-
         }
 
         private void grdTotalDiagnosticos_BeforePerformAction(object sender, BeforeUltraGridPerformActionEventArgs e)
@@ -9134,6 +9137,25 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             gbRecomendaciones_Conclusiones.Width = tpConclusion.Width / 2 - 50;
             gbRestricciones_Conclusiones.Width = tpConclusion.Width / 2 - 20;
 
+        }
+
+        private void btnVerServicioAnterior_Click(object sender, EventArgs e)
+        {
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceIdByWiewServiceHistory);
+
+            var ServiceDate = grdServiciosAnteriores.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString();
+            if (ServiceDate.ToString().Split(' ')[0] == DateTime.Now.ToString().Split(' ')[0])
+            {
+
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+            else
+            {
+
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "View", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
         }
         
     }

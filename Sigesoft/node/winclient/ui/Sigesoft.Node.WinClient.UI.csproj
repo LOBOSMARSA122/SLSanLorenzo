@@ -1369,6 +1369,18 @@
     <Compile Include="frmReporteGerencia.Designer.cs">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\frmContainerEso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\frmContainerEso.Designer.cs">
+      <DependentUpon>frmContainerEso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\frmRibbonEso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\frmRibbonEso.Designer.cs">
+      <DependentUpon>frmRibbonEso.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRolCuota.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3874,6 +3886,12 @@
     <EmbeddedResource Include="frmReporteGerencia.resx">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Operations\frmContainerEso.resx">
+      <DependentUpon>frmContainerEso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\frmRibbonEso.resx">
+      <DependentUpon>frmRibbonEso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRolCuota.resx">
       <DependentUpon>frmRolCuota.cs</DependentUpon>
     </EmbeddedResource>
@@ -6342,6 +6360,7 @@
     <None Include="Resources\calendar_view_week.png" />
     <None Include="Resources\chart_organisation.png" />
     <None Include="Resources\creditcards.png" />
+    <Content Include="Images\folder.png" />
     <Content Include="Resources\cuadradoazul.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -7126,7 +7145,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

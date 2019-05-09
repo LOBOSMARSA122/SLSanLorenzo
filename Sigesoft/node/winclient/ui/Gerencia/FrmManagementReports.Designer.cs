@@ -54,6 +54,7 @@
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool29 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmTipoExamen");
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagementReports));
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool30 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmCredito");
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool31 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmMes");
@@ -64,7 +65,6 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool34 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmCompanias_Asistencial");
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagementReports));
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool36 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Por Tipo pago");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Sigesoft.Node.WinClient.UI.Gerencia.FrmTipoPago_Asistencial");
@@ -146,7 +146,7 @@
             appearance2.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_home;
             buttonTool28.SharedPropsInternal.AppearancesLarge.Appearance = appearance2;
             buttonTool28.SharedPropsInternal.Caption = "Por Contrata";
-            appearance3.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
+            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
             buttonTool29.SharedPropsInternal.AppearancesLarge.Appearance = appearance3;
             buttonTool29.SharedPropsInternal.Caption = "Por Tipo de Examen";
             appearance4.Image = global::Sigesoft.Node.WinClient.UI.Resources.creditcards;
@@ -179,7 +179,7 @@
             appearance13.Image = ((object)(resources.GetObject("appearance13.Image")));
             buttonTool8.SharedPropsInternal.AppearancesLarge.Appearance = appearance13;
             buttonTool8.SharedPropsInternal.Caption = "Por Año";
-            appearance14.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            appearance14.Image = ((object)(resources.GetObject("appearance14.Image")));
             buttonTool9.SharedPropsInternal.AppearancesLarge.Appearance = appearance14;
             buttonTool9.SharedPropsInternal.Caption = "Buscar Examen";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
@@ -207,9 +207,9 @@
             this._FrmManagementReports_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._FrmManagementReports_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._FrmManagementReports_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._FrmManagementReports_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 185);
+            this._FrmManagementReports_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 158);
             this._FrmManagementReports_Toolbars_Dock_Area_Left.Name = "_FrmManagementReports_Toolbars_Dock_Area_Left";
-            this._FrmManagementReports_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(4, 493);
+            this._FrmManagementReports_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(4, 520);
             this._FrmManagementReports_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _FrmManagementReports_Toolbars_Dock_Area_Right
@@ -219,9 +219,9 @@
             this._FrmManagementReports_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._FrmManagementReports_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._FrmManagementReports_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._FrmManagementReports_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1158, 185);
+            this._FrmManagementReports_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1158, 158);
             this._FrmManagementReports_Toolbars_Dock_Area_Right.Name = "_FrmManagementReports_Toolbars_Dock_Area_Right";
-            this._FrmManagementReports_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(4, 493);
+            this._FrmManagementReports_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(4, 520);
             this._FrmManagementReports_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _FrmManagementReports_Toolbars_Dock_Area_Top
@@ -232,7 +232,7 @@
             this._FrmManagementReports_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._FrmManagementReports_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._FrmManagementReports_Toolbars_Dock_Area_Top.Name = "_FrmManagementReports_Toolbars_Dock_Area_Top";
-            this._FrmManagementReports_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1162, 185);
+            this._FrmManagementReports_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1162, 158);
             this._FrmManagementReports_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _FrmManagementReports_Toolbars_Dock_Area_Bottom
