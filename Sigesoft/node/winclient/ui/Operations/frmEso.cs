@@ -8402,20 +8402,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void btnVerServicioAnterior_Click(object sender, EventArgs e)
         {
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
-
+        
             var ServiceDate = grdServiciosAnteriores.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString();
-
             if (ServiceDate.ToString().Split(' ')[0] == DateTime.Now.ToString().Split(' ')[0])
             {
+
                 var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "", (int)MasterService.Eso);
                 frm.ShowDialog();
             }
             else
             {
+
                 var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
                 frm.ShowDialog();
             }
-          
+
             /////
         }
 

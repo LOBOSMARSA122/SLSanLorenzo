@@ -30,6 +30,101 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         private int _rowIndexPc;
         private string _personId;
         private int? _systemUserId;
+
+        
+        #endregion
+
+        #region GetChanges
+        string[] nombreCampos =
+        {
+
+            "cbEmpresaTrabajo", "cbEmpresaCliente", "cbEmpresaEmpleadora", "cbGeso", "cbTipoServicio",
+            "cbServicio", "txtCentroCosto", "chkEsComisionable", "txtComision", "chkEsActivo", "cboVendedor",
+            "txtNombreProtocolo", "cbTipoExamen"
+        };
+
+        private List<Campo> ListValuesCampo = new List<Campo>();
+
+        private class Campo
+        {
+            public string NombreCampo { get; set; }
+            public string ValorCampo { get; set; }
+        }
+
+
+        private string SetChanges()
+        {
+            string cadena = _protocolBL.GetComentaryUpdateByProtocolId(_protocolId);
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampo.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        cadena += item + ":" + ValorCampo + "|";
+                    }
+                }
+            }
+
+            return cadena;
+        }
+
+        private void SetOldValues()
+        {
+
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    Campo _Campo = new Campo();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampo.Add(_Campo);
+                }
+            }
+        }
+
+        private string GetValueControl(string ControlId, Control ctrl)
+        {
+            string value1 = null;
+
+            switch (ControlId)
+            {
+                case "TextBox":
+                    value1 = ((TextBox)ctrl).Text;
+                    break;
+                case "ComboBox":
+                    value1 = ((ComboBox)ctrl).Text;
+                    break;
+                case "CheckBox":
+                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
+                    break;
+                case "RadioButton":
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
+                    break;
+
+                default:
+                    break;
+            }
+
+            return value1;
+        }
+
         #endregion
         
         public frmProtocolEdit(string id, string mode)
@@ -37,18 +132,22 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             InitializeComponent();
             _protocolId = id;
             _mode = mode;
+
         }
-     
+
         private void frmProtocolEdit_Load(object sender, EventArgs e)
         {
+            
             LoadData();
             if (grdExternalUser.Rows.Count != 0)
                 grdExternalUser.Rows[0].Selected = true;
             if (grdProtocolComponent.Rows.Count != 0)
                 grdProtocolComponent.Rows[0].Selected = true;
-            
-        }
 
+            SetOldValues();
+
+        }
+        
         private void SearchControlAndSetEvents(Control ctrlContainer)
         {
             foreach (Control ctrl in ctrlContainer.Controls)
@@ -90,7 +189,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             if (_mode == "New")
             {
                 // Additional logic here.
-                txtProtocolName.Select();
+                txtNombreProtocolo.Select();
 
             }
             else if (_mode == "Edit")
@@ -100,27 +199,27 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 string idOrgInter = "-1";
 
                 // cabecera del protocolo
-                txtProtocolName.Text = _protocolDTO.v_Name;
-                cbEsoType.SelectedValue = _protocolDTO.i_EsoTypeId.ToString();
+                txtNombreProtocolo.Text = _protocolDTO.v_Name;
+                cbTipoExamen.SelectedValue = _protocolDTO.i_EsoTypeId.ToString();
                 // Almacenar temporalmente
-                _protocolName = txtProtocolName.Text;
+                _protocolName = txtNombreProtocolo.Text;
 
                 if (_protocolDTO.v_WorkingOrganizationId != "-1" && _protocolDTO.v_WorkingLocationId != "-1")
                 {
                     idOrgInter = string.Format("{0}|{1}", _protocolDTO.v_WorkingOrganizationId, _protocolDTO.v_WorkingLocationId);
                 }
 
-                cbIntermediaryOrganization.SelectedValue = idOrgInter;
-                cbOrganizationInvoice.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_CustomerOrganizationId, _protocolDTO.v_CustomerLocationId);
-                cbOrganization.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_EmployerOrganizationId, _protocolDTO.v_EmployerLocationId);
+                cbEmpresaTrabajo.SelectedValue = idOrgInter;
+                cbEmpresaCliente.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_CustomerOrganizationId, _protocolDTO.v_CustomerLocationId);
+                cbEmpresaEmpleadora.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_EmployerOrganizationId, _protocolDTO.v_EmployerLocationId);
                 cbGeso.SelectedValue = _protocolDTO.v_GroupOccupationId;
-                cbServiceType.SelectedValue = _protocolDTO.i_MasterServiceTypeId.ToString();
-                cbService.SelectedValue = _protocolDTO.i_MasterServiceId.ToString();
-                txtCostCenter.Text = _protocolDTO.v_CostCenter;
-                chkIsHasVigency.Checked = Convert.ToBoolean(_protocolDTO.i_HasVigency);
-                txtValidDays.Enabled = chkIsHasVigency.Checked;
-                txtValidDays.Text = _protocolDTO.i_ValidInDays.ToString();
-                chkIsActive.Checked = Convert.ToBoolean(_protocolDTO.i_IsActive);
+                cbTipoServicio.SelectedValue = _protocolDTO.i_MasterServiceTypeId.ToString();
+                cbServicio.SelectedValue = _protocolDTO.i_MasterServiceId.ToString();
+                txtCentroCosto.Text = _protocolDTO.v_CostCenter;
+                chkEsComisionable.Checked = Convert.ToBoolean(_protocolDTO.i_HasVigency);
+                txtComision.Enabled = chkEsComisionable.Checked;
+                txtComision.Text = _protocolDTO.i_ValidInDays.ToString();
+                chkEsActivo.Checked = Convert.ToBoolean(_protocolDTO.i_IsActive);
                 cboVendedor.Text = _protocolDTO.v_NombreVendedor;
 
                 // Componentes del protocolo
@@ -139,7 +238,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             }
             else if (_mode == "Clon")
             {
-                txtProtocolName.Select();
+                txtNombreProtocolo.Select();
 
                 // Componentes del protocolo
                 var dataListPc = _protocolBL.GetProtocolComponents(ref objOperationResult, _protocolId);
@@ -160,8 +259,10 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         {
             // validar
             OperationResult objOperationResult = new OperationResult();
-            return _protocolBL.IsExistsProtocolName(ref objOperationResult, txtProtocolName.Text);          
+            return _protocolBL.IsExistsProtocolName(ref objOperationResult, txtNombreProtocolo.Text);          
         }
+
+        
 
         private void btnOK_Click(object sender, EventArgs e)
         {
@@ -200,32 +301,32 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
                 #endregion
 
-                var id = cbOrganization.SelectedValue.ToString().Split('|');
-                var id1 = cbOrganizationInvoice.SelectedValue.ToString().Split('|');         
-                var id2 = cbIntermediaryOrganization.SelectedValue.ToString().Split('|');
+                var id = cbEmpresaEmpleadora.SelectedValue.ToString().Split('|');
+                var id1 = cbEmpresaCliente.SelectedValue.ToString().Split('|');         
+                var id2 = cbEmpresaTrabajo.SelectedValue.ToString().Split('|');
 
                 if (_protocolDTO == null)
                 {
                     _protocolDTO = new protocolDto();
                 }
 
-                _protocolDTO.v_Name = txtProtocolName.Text;
+                _protocolDTO.v_Name = txtNombreProtocolo.Text;
                 _protocolDTO.v_EmployerOrganizationId = id[0];
                 _protocolDTO.v_EmployerLocationId = id[1];
-                _protocolDTO.i_EsoTypeId = int.Parse(cbEsoType.SelectedValue.ToString());
+                _protocolDTO.i_EsoTypeId = int.Parse(cbTipoExamen.SelectedValue.ToString());
                 _protocolDTO.v_GroupOccupationId = cbGeso.SelectedValue.ToString();
                 _protocolDTO.v_CustomerOrganizationId = id1[0];
                 _protocolDTO.v_CustomerLocationId = id1[1];            
                 _protocolDTO.v_WorkingOrganizationId = id2[0];
-                _protocolDTO.v_WorkingLocationId = cbIntermediaryOrganization.SelectedValue.ToString() != "-1" ? id2[1] : "-1";           
-                _protocolDTO.i_MasterServiceId = int.Parse(cbService.SelectedValue.ToString());                    
-                _protocolDTO.v_CostCenter = txtCostCenter.Text;
-                _protocolDTO.i_MasterServiceTypeId = int.Parse(cbServiceType.SelectedValue.ToString());
-                _protocolDTO.i_HasVigency = Convert.ToInt32(chkIsHasVigency.Checked);
-                _protocolDTO.i_ValidInDays = txtValidDays.Text != string.Empty ? int.Parse(txtValidDays.Text) : (int?)null;
-                _protocolDTO.i_IsActive = Convert.ToInt32(chkIsActive.Checked);
+                _protocolDTO.v_WorkingLocationId = cbEmpresaTrabajo.SelectedValue.ToString() != "-1" ? id2[1] : "-1";           
+                _protocolDTO.i_MasterServiceId = int.Parse(cbServicio.SelectedValue.ToString());                    
+                _protocolDTO.v_CostCenter = txtCentroCosto.Text;
+                _protocolDTO.i_MasterServiceTypeId = int.Parse(cbTipoServicio.SelectedValue.ToString());
+                _protocolDTO.i_HasVigency = Convert.ToInt32(chkEsComisionable.Checked);
+                _protocolDTO.i_ValidInDays = txtComision.Text != string.Empty ? int.Parse(txtComision.Text) : (int?)null;
+                _protocolDTO.i_IsActive = Convert.ToInt32(chkEsActivo.Checked);
                 _protocolDTO.v_NombreVendedor = cboVendedor.Text;
-
+                _protocolDTO.v_ComentaryUpdate = SetChanges();
 
                 // Grabar componentes del protocolo
                 if (_mode == "New" || _mode == "Clon")
@@ -263,15 +364,15 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                    if (!string.IsNullOrEmpty(_protocolId))
                    {
                        _mode = "Edit";
-                       _protocolName = txtProtocolName.Text;
+                       _protocolName = txtNombreProtocolo.Text;
                    }
 
                 }
                 else if (_mode == "Edit")
                 {
                     #region Validar Nombre del prorocolo
-                                    
-                    if (txtProtocolName.Text != _protocolName)
+
+                    if (txtNombreProtocolo.Text != _protocolName)
                     {
                         if (IsExistsProtocolName())
                         {
@@ -325,31 +426,34 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                             protocolComponent.i_GrupoEtarioId = item.i_GrupoEtarioId;
                             protocolComponent.r_Imc = item.r_Imc;
                             protocolComponent.i_IsConditionalId = item.i_IsConditionalId;
+                            
                             _protocolcomponentListDTOUpdate.Add(protocolComponent);
-                        }  
+                        }
 
                         // Delete
                         if (item.i_RecordType == (int)RecordType.NoTemporal && item.i_RecordStatus == (int)RecordStatus.EliminadoLogico)
                         {
                             protocolcomponentDto protocolComponent = new protocolcomponentDto();
 
-                            protocolComponent.v_ProtocolComponentId = item.v_ProtocolComponentId;                           
+                            protocolComponent.v_ProtocolComponentId = item.v_ProtocolComponentId;
                             _protocolcomponentListDTODelete.Add(protocolComponent);
-                        }  
+                        }
 
                     }
                     _protocolBL.UpdateProtocol(ref objOperationResult,
                         _protocolDTO,
                         _protocolcomponentListDTO,
                         _protocolcomponentListDTOUpdate.Count == 0 ? null : _protocolcomponentListDTOUpdate,
-                        _protocolcomponentListDTODelete.Count == 0 ? null : _protocolcomponentListDTODelete, 
+                        _protocolcomponentListDTODelete.Count == 0 ? null : _protocolcomponentListDTODelete,
                         Globals.ClientSession.GetAsList());
 
-                }             
+                }
 
                 // Analizar el resultado de la operación
                 if (objOperationResult.Success == 1)  // Operación sin error
                 {
+
+
                     //this.DialogResult = DialogResult.OK;
                     MessageBox.Show("Se grabo correctamente.", "INFORMACION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -363,6 +467,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     // Se queda en el formulario.
                 }
 
+                
             }
             else
             {
@@ -371,13 +476,14 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
            
         }
 
+
         private void LoadComboBox()
         {
             // Llenado de combos
             // Tipos de eso
             OperationResult objOperationResult = new OperationResult();
             Utils.LoadDropDownList(cbGeso, "Value1", "Id", BLL.Utils.GetGESO(ref objOperationResult, null), DropDownListAction.Select);
-            Utils.LoadDropDownList(cbEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cbTipoExamen, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.Select);
 
             Utils.LoadDropDownList(cboVendedor, "Value1", "", BLL.Utils.GetVendedor(ref objOperationResult));
 
@@ -389,19 +495,19 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             var dataListOrganization2 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
             
 
-            Utils.LoadDropDownList(cbOrganization,
+            Utils.LoadDropDownList(cbEmpresaEmpleadora,
                 "Value1",
                 "Id",
                 dataListOrganization,
                 DropDownListAction.Select);
 
-            Utils.LoadDropDownList(cbIntermediaryOrganization,
+            Utils.LoadDropDownList(cbEmpresaTrabajo,
                "Value1",
                "Id",
                dataListOrganization1,
                DropDownListAction.Select);
 
-            Utils.LoadDropDownList(cbOrganizationInvoice,
+            Utils.LoadDropDownList(cbEmpresaCliente,
               "Value1",
               "Id",
               dataListOrganization2,
@@ -410,9 +516,9 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             
 
             //Llenado de los tipos de servicios [Emp/Part]
-            Utils.LoadDropDownList(cbServiceType, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cbTipoServicio, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.Select);
             // combo servicio
-            Utils.LoadDropDownList(cbService, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cbServicio, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
           
            
         }
@@ -430,19 +536,19 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             var dataListOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
             var dataListOrganization2 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
 
-            Utils.LoadDropDownList(cbOrganization,
+            Utils.LoadDropDownList(cbEmpresaEmpleadora,
                 "Value1",
                 "Id",
                 dataListOrganization,
                 DropDownListAction.Select);
 
-            Utils.LoadDropDownList(cbIntermediaryOrganization,
+            Utils.LoadDropDownList(cbEmpresaTrabajo,
                "Value1",
                "Id",
                dataListOrganization1,
                DropDownListAction.Select);
 
-            Utils.LoadDropDownList(cbOrganizationInvoice,
+            Utils.LoadDropDownList(cbEmpresaCliente,
               "Value1",
               "Id",
               dataListOrganization2,
@@ -451,15 +557,15 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             // Set combos
             if (_mode == "Edit")
             {
-                cbOrganization.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_EmployerOrganizationId, _protocolDTO.v_EmployerLocationId);
+                cbEmpresaEmpleadora.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_EmployerOrganizationId, _protocolDTO.v_EmployerLocationId);
 
                 if (_protocolDTO.v_WorkingOrganizationId != "-1" && _protocolDTO.v_WorkingLocationId != "-1")
                 {
                     idOrgInter = string.Format("{0}|{1}", _protocolDTO.v_WorkingOrganizationId, _protocolDTO.v_WorkingLocationId);
                 }
 
-                cbIntermediaryOrganization.SelectedValue = idOrgInter;
-                cbOrganizationInvoice.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_CustomerOrganizationId, _protocolDTO.v_CustomerLocationId);
+                cbEmpresaTrabajo.SelectedValue = idOrgInter;
+                cbEmpresaCliente.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_CustomerOrganizationId, _protocolDTO.v_CustomerLocationId);
             }
         }
 
@@ -533,7 +639,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void LoadcbGESO()
         {
-            var index = cbOrganization.SelectedIndex;
+            var index = cbEmpresaEmpleadora.SelectedIndex;
 
             if (index == 0 || index == -1)
             {
@@ -542,7 +648,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 return;
             }
 
-            var dataList = cbOrganization.SelectedValue.ToString().Split('|');
+            var dataList = cbEmpresaEmpleadora.SelectedValue.ToString().Split('|');
             string idOrg = dataList[0];
             string idLoc = dataList[1];
 
@@ -614,19 +720,19 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void cbServiceType_TextChanged(object sender, EventArgs e)
         {
-            if (cbServiceType.SelectedIndex == 0 || cbServiceType.SelectedIndex == -1)
+            if (cbTipoServicio.SelectedIndex == 0 || cbTipoServicio.SelectedIndex == -1)
                 return;
 
             OperationResult objOperationResult = new OperationResult();
-            var id = int.Parse(cbServiceType.SelectedValue.ToString());
-            Utils.LoadDropDownList(cbService, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
+            var id = int.Parse(cbTipoServicio.SelectedValue.ToString());
+            Utils.LoadDropDownList(cbServicio, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
 
         }
 
         private void chkIsHasVigency_CheckedChanged(object sender, EventArgs e)
         {
-            txtValidDays.Focus();
-            txtValidDays.Enabled = (chkIsHasVigency.Checked);
+            txtComision.Focus();
+            txtComision.Enabled = (chkEsComisionable.Checked);
         }
 
         private void txtValidDays_KeyPress(object sender, KeyPressEventArgs e)
@@ -651,24 +757,24 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void cbService_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbService.SelectedValue == null)
+            if (cbServicio.SelectedValue == null)
             {
                 OperationResult objOperationResult = new OperationResult();
-                Utils.LoadDropDownList(cbService, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(cbServicio, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.Select);
                 return;
             }
 
-            if (cbService.SelectedValue.ToString() == ((int)MasterService.ConsultaMedica).ToString())
+            if (cbServicio.SelectedValue.ToString() == ((int)MasterService.ConsultaMedica).ToString())
             {
-                cbEsoType.Enabled = false;
-                uvProtocol.GetValidationSettings(cbEsoType).Condition = new OperatorCondition(ConditionOperator.NotEquals, "", false, typeof(string));
-                uvProtocol.GetValidationSettings(cbEsoType).IsRequired = false;
+                cbTipoExamen.Enabled = false;
+                uvProtocol.GetValidationSettings(cbTipoExamen).Condition = new OperatorCondition(ConditionOperator.NotEquals, "", false, typeof(string));
+                uvProtocol.GetValidationSettings(cbTipoExamen).IsRequired = false;
             }
             else
             {
-                cbEsoType.Enabled = true;
-                uvProtocol.GetValidationSettings(cbEsoType).Condition = new OperatorCondition(ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-                uvProtocol.GetValidationSettings(cbEsoType).IsRequired = true;
+                cbTipoExamen.Enabled = true;
+                uvProtocol.GetValidationSettings(cbTipoExamen).Condition = new OperatorCondition(ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+                uvProtocol.GetValidationSettings(cbTipoExamen).IsRequired = true;
             }
         }
        
@@ -831,13 +937,13 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         {
             if (_mode !="Edit")
             {
-                if (cbOrganizationInvoice.SelectedValue == "-1") return;
-                if (cbOrganizationInvoice.SelectedValue != null)
+                if (cbEmpresaCliente.SelectedValue == "-1") return;
+                if (cbEmpresaCliente.SelectedValue != null)
                 {
-                    var id1 = cbOrganizationInvoice.SelectedValue.ToString();
+                    var id1 = cbEmpresaCliente.SelectedValue.ToString();
 
-                    cbOrganization.SelectedValue = id1;
-                    cbIntermediaryOrganization.SelectedValue = id1;
+                    cbEmpresaEmpleadora.SelectedValue = id1;
+                    cbEmpresaTrabajo.SelectedValue = id1;
                 }
             }
            

@@ -129,7 +129,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private ninioDto objNinioDto = null;
         private DateTime? _FechaServico;
         #endregion
-
+        private PacientBL _pacientBL = new PacientBL();
         public int? _EstadoComponente = null;
         private ServiceBL _serviceBL = new ServiceBL();
         private string _customerOrganizationName;
@@ -167,6 +167,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 checkFirmaYanacocha.Visible = false;
                 checkFirmaYanacocha.Enabled = false;
             }
+            splitContainer2.SplitterDistance = splitContainer2.Height - 200;
         }
 
         private void InitializeForm()
@@ -1556,7 +1557,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERECOME", _formActions);
             _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERESTRIC", _formActions);
-
             if (btnAceptarDX.Enabled) return;
             cbCalificacionFinal.Enabled = false;
             cbTipoDx.Enabled = false;
@@ -4452,42 +4452,45 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void grdTotalDiagnosticos_InitializeRow(object sender, InitializeRowEventArgs e)
         {
-            var caliFinal = (FinalQualification)e.Row.Cells["i_FinalQualificationId"].Value;
-            var dx = e.Row.Cells["v_DiseasesId"].Value.ToString();
-
-            switch (caliFinal)
+            var cell = e.Row.Cells["i_FinalQualificationId"].Value;
+            if (cell != null)
             {
-                case FinalQualification.SinCalificar:
+                var caliFinal = (FinalQualification)cell;
+                var dx = e.Row.Cells["v_DiseasesId"].Value.ToString();
 
-                    if (dx != Constants.EXAMEN_DE_SALUD_SIN_ALTERACION)
-                    {
-                        e.Row.Appearance.BackColor = Color.Pink;
-                        e.Row.Appearance.BackColor2 = Color.Pink;
-                    }
-                    else
-                    {
-                        e.Row.Appearance.BackColor = Color.White;
-                        e.Row.Appearance.BackColor2 = Color.White;
-                    }
+                switch (caliFinal)
+                {
+                    case FinalQualification.SinCalificar:
 
-                    break;
-                case FinalQualification.Definitivo:
-                    e.Row.Appearance.BackColor = Color.LawnGreen;
-                    e.Row.Appearance.BackColor2 = Color.LawnGreen;
-                    break;
-                case FinalQualification.Presuntivo:
-                    e.Row.Appearance.BackColor = Color.LawnGreen;
-                    e.Row.Appearance.BackColor2 = Color.LawnGreen;
-                    break;
-                case FinalQualification.Descartado:
-                    e.Row.Appearance.BackColor = Color.DarkGray;
-                    e.Row.Appearance.BackColor2 = Color.DarkGray;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                        if (dx != Constants.EXAMEN_DE_SALUD_SIN_ALTERACION)
+                        {
+                            e.Row.Appearance.BackColor = Color.Pink;
+                            e.Row.Appearance.BackColor2 = Color.Pink;
+                        }
+                        else
+                        {
+                            e.Row.Appearance.BackColor = Color.White;
+                            e.Row.Appearance.BackColor2 = Color.White;
+                        }
+
+                        break;
+                    case FinalQualification.Definitivo:
+                        e.Row.Appearance.BackColor = Color.LawnGreen;
+                        e.Row.Appearance.BackColor2 = Color.LawnGreen;
+                        break;
+                    case FinalQualification.Presuntivo:
+                        e.Row.Appearance.BackColor = Color.LawnGreen;
+                        e.Row.Appearance.BackColor2 = Color.LawnGreen;
+                        break;
+                    case FinalQualification.Descartado:
+                        e.Row.Appearance.BackColor = Color.DarkGray;
+                        e.Row.Appearance.BackColor2 = Color.DarkGray;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             e.Row.Appearance.BackGradientStyle = GradientStyle.VerticalBump;
-
         }
 
         private void grdTotalDiagnosticos_BeforePerformAction(object sender, BeforeUltraGridPerformActionEventArgs e)
@@ -8324,6 +8327,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 _personImage = personData.b_PersonImage;
 
                 lblTipoEso.Text = personData.v_EsoTypeName;
+                lblServicio.Text = personData.v_ServiceId;
                 lblProtocolName.Text = personData.v_ProtocolName;
                 _ProtocolId = personData.v_ProtocolId;
                 _customerOrganizationName = personData.v_EmployerOrganizationName;
@@ -9134,6 +9138,73 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             gbRecomendaciones_Conclusiones.Width = tpConclusion.Width / 2 - 50;
             gbRestricciones_Conclusiones.Width = tpConclusion.Width / 2 - 20;
 
+        }
+
+        private void btnVerServicioAnterior_Click(object sender, EventArgs e)
+        {
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceIdByWiewServiceHistory);
+
+            var ServiceDate = grdServiciosAnteriores.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString();
+            if (ServiceDate.ToString().Split(' ')[0] == DateTime.Now.ToString().Split(' ')[0])
+            {
+
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+            else
+            {
+
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "View", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+        }
+
+        private void tcSubMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tcSubMain.SelectedIndex == 1)
+            {
+                lblView.Visible = true;
+            }
+            else if (tcSubMain.SelectedIndex == 3)
+            {
+            //    btnGuardarConclusiones.Visible = true;
+            //    btnGuardarConclusiones.Location = new Point(1147, 500);
+            //    btnInterConsulta.Visible = true;
+            //    btnInterConsulta.Location = new Point(12, 500);
+            //    btnSubirInterconsulta.Visible = true;
+            //    btnSubirInterconsulta.Location = new Point(175, 500);
+            //    btnCertificadoAptitud.Visible = true;
+            //    btnCertificadoAptitud.Location = new Point(338, 500);
+            //    btn312.Visible = true;
+            //    btn312.Location = new Point(508, 500);
+            //    btn7C.Visible = true;
+            //    btn7C.Location = new Point(676, 500);
+                chkinterconsulta.Visible = true;
+                chkinterconsulta.Location = new Point(504, 186);
+            //    chkUtilizaFirmaAptitud.Visible = true;
+            //    chkUtilizaFirmaAptitud.Location = new Point(1014, 500);
+            //    checkFirmaYanacocha.Visible = true;
+            //    checkFirmaYanacocha.Location = new Point(850, 500);
+
+            }
+            else
+            {
+                lblView.Visible = false;
+            }
+        }
+
+        private void cbAptitudEso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbAptitudEso.SelectedIndex != (int)AptitudeStatus.Apto && cbAptitudEso.SelectedIndex != (int)AptitudeStatus.SinAptitud)
+            {
+                label34.Visible = true;
+                txtComentarioAptitud.Visible = true;
+            }
+            else
+            {
+                label34.Visible = false;
+                txtComentarioAptitud.Visible = false;
+            }
         }
         
     }

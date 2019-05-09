@@ -860,7 +860,7 @@
             this.tcSubMain.Location = new System.Drawing.Point(12, 41);
             this.tcSubMain.Name = "tcSubMain";
             this.tcSubMain.SelectedIndex = 0;
-            this.tcSubMain.Size = new System.Drawing.Size(1329, 672);
+            this.tcSubMain.Size = new System.Drawing.Size(1329, 593);
             this.tcSubMain.TabIndex = 0;
             // 
             // tpAntecedentes
@@ -869,7 +869,7 @@
             this.tpAntecedentes.Location = new System.Drawing.Point(4, 22);
             this.tpAntecedentes.Name = "tpAntecedentes";
             this.tpAntecedentes.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAntecedentes.Size = new System.Drawing.Size(1321, 646);
+            this.tpAntecedentes.Size = new System.Drawing.Size(1321, 531);
             this.tpAntecedentes.TabIndex = 5;
             this.tpAntecedentes.Text = "ANTECEDENTES";
             this.tpAntecedentes.UseVisualStyleBackColor = true;
@@ -1040,7 +1040,7 @@
             this.gbServiciosAnteriores.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbServiciosAnteriores.Location = new System.Drawing.Point(13, 16);
             this.gbServiciosAnteriores.Name = "gbServiciosAnteriores";
-            this.gbServiciosAnteriores.Size = new System.Drawing.Size(537, 460);
+            this.gbServiciosAnteriores.Size = new System.Drawing.Size(585, 460);
             this.gbServiciosAnteriores.TabIndex = 4;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
@@ -1148,7 +1148,7 @@
             this.grdServiciosAnteriores.Location = new System.Drawing.Point(5, 47);
             this.grdServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.grdServiciosAnteriores.Name = "grdServiciosAnteriores";
-            this.grdServiciosAnteriores.Size = new System.Drawing.Size(529, 408);
+            this.grdServiciosAnteriores.Size = new System.Drawing.Size(522, 408);
             this.grdServiciosAnteriores.TabIndex = 58;
             this.grdServiciosAnteriores.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdServiciosAnteriores_AfterSelectChange);
             this.grdServiciosAnteriores.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdServiciosAnteriores_MouseDown);
@@ -1202,7 +1202,7 @@
             this.General.Location = new System.Drawing.Point(4, 22);
             this.General.Name = "General";
             this.General.Padding = new System.Windows.Forms.Padding(3);
-            this.General.Size = new System.Drawing.Size(1321, 646);
+            this.General.Size = new System.Drawing.Size(1321, 531);
             this.General.TabIndex = 0;
             this.General.Text = "ANAMNESIS";
             this.General.UseVisualStyleBackColor = true;
@@ -1834,7 +1834,7 @@
             this.tpExam.Location = new System.Drawing.Point(4, 22);
             this.tpExam.Name = "tpExam";
             this.tpExam.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExam.Size = new System.Drawing.Size(1321, 646);
+            this.tpExam.Size = new System.Drawing.Size(1321, 531);
             this.tpExam.TabIndex = 1;
             this.tpExam.Text = "EXÁMENES";
             this.tpExam.ToolTipText = "EXAMENES";
@@ -2386,7 +2386,7 @@
             this.tslFechaCrea,
             this.tslUsuarioAct,
             this.tslFechaAct});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 613);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 498);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1315, 30);
             this.statusStrip1.TabIndex = 10;
@@ -2444,7 +2444,7 @@
             this.btnAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnAntecedentes.Image = ((System.Drawing.Image)(resources.GetObject("btnAntecedentes.Image")));
             this.btnAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAntecedentes.Location = new System.Drawing.Point(1023, 589);
+            this.btnAntecedentes.Location = new System.Drawing.Point(1023, 474);
             this.btnAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAntecedentes.Name = "btnAntecedentes";
             this.btnAntecedentes.Size = new System.Drawing.Size(113, 24);
@@ -2462,7 +2462,7 @@
             this.tpAnalisisDx.Controls.Add(this.btnAceptarDX);
             this.tpAnalisisDx.Location = new System.Drawing.Point(4, 22);
             this.tpAnalisisDx.Name = "tpAnalisisDx";
-            this.tpAnalisisDx.Size = new System.Drawing.Size(1321, 646);
+            this.tpAnalisisDx.Size = new System.Drawing.Size(1321, 531);
             this.tpAnalisisDx.TabIndex = 3;
             this.tpAnalisisDx.Text = "CONTROL DE CALIDAD";
             this.tpAnalisisDx.ToolTipText = "ANÁLISIS DE DIAGNÓSTICOS";
@@ -3247,7 +3247,7 @@
             this.tpConclusion.Controls.Add(this.btnGuardarConclusiones);
             this.tpConclusion.Location = new System.Drawing.Point(4, 22);
             this.tpConclusion.Name = "tpConclusion";
-            this.tpConclusion.Size = new System.Drawing.Size(1321, 646);
+            this.tpConclusion.Size = new System.Drawing.Size(1321, 567);
             this.tpConclusion.TabIndex = 2;
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
@@ -3293,7 +3293,7 @@
             this.checkFirmaYanacocha.AutoSize = true;
             this.checkFirmaYanacocha.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkFirmaYanacocha.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.checkFirmaYanacocha.Location = new System.Drawing.Point(957, 569);
+            this.checkFirmaYanacocha.Location = new System.Drawing.Point(957, 534);
             this.checkFirmaYanacocha.Name = "checkFirmaYanacocha";
             this.checkFirmaYanacocha.Size = new System.Drawing.Size(121, 34);
             this.checkFirmaYanacocha.TabIndex = 107;
@@ -3312,7 +3312,7 @@
             this.btnSubirInterconsulta.ForeColor = System.Drawing.Color.Black;
             this.btnSubirInterconsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirInterconsulta.Image")));
             this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubirInterconsulta.Location = new System.Drawing.Point(220, 566);
+            this.btnSubirInterconsulta.Location = new System.Drawing.Point(220, 602);
             this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
             this.btnSubirInterconsulta.Size = new System.Drawing.Size(158, 24);
@@ -3334,7 +3334,7 @@
             this.btn7C.ForeColor = System.Drawing.Color.Black;
             this.btn7C.Image = ((System.Drawing.Image)(resources.GetObject("btn7C.Image")));
             this.btn7C.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn7C.Location = new System.Drawing.Point(356, 608);
+            this.btn7C.Location = new System.Drawing.Point(356, 644);
             this.btn7C.Margin = new System.Windows.Forms.Padding(2);
             this.btn7C.Name = "btn7C";
             this.btn7C.Size = new System.Drawing.Size(159, 24);
@@ -3356,7 +3356,7 @@
             this.btnInterConsulta.ForeColor = System.Drawing.Color.Black;
             this.btnInterConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnInterConsulta.Image")));
             this.btnInterConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInterConsulta.Location = new System.Drawing.Point(31, 567);
+            this.btnInterConsulta.Location = new System.Drawing.Point(31, 603);
             this.btnInterConsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnInterConsulta.Name = "btnInterConsulta";
             this.btnInterConsulta.Size = new System.Drawing.Size(158, 24);
@@ -3378,7 +3378,7 @@
             this.btn312.ForeColor = System.Drawing.Color.Black;
             this.btn312.Image = ((System.Drawing.Image)(resources.GetObject("btn312.Image")));
             this.btn312.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn312.Location = new System.Drawing.Point(193, 608);
+            this.btn312.Location = new System.Drawing.Point(193, 644);
             this.btn312.Margin = new System.Windows.Forms.Padding(2);
             this.btn312.Name = "btn312";
             this.btn312.Size = new System.Drawing.Size(159, 24);
@@ -3400,7 +3400,7 @@
             this.btnCertificadoAptitud.ForeColor = System.Drawing.Color.Black;
             this.btnCertificadoAptitud.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificadoAptitud.Image")));
             this.btnCertificadoAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCertificadoAptitud.Location = new System.Drawing.Point(410, 567);
+            this.btnCertificadoAptitud.Location = new System.Drawing.Point(410, 603);
             this.btnCertificadoAptitud.Margin = new System.Windows.Forms.Padding(2);
             this.btnCertificadoAptitud.Name = "btnCertificadoAptitud";
             this.btnCertificadoAptitud.Size = new System.Drawing.Size(159, 24);
@@ -3448,7 +3448,7 @@
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnRemoverRecomendaciones_Conclusiones);
             this.gbRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(31, 334);
+            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(31, 352);
             this.gbRecomendaciones_Conclusiones.Name = "gbRecomendaciones_Conclusiones";
             this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(611, 228);
             this.gbRecomendaciones_Conclusiones.TabIndex = 95;
@@ -3613,7 +3613,7 @@
             this.gbRestricciones_Conclusiones.Controls.Add(this.chkUtilizaFirmaAptitud);
             this.gbRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRestricciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRestricciones_Conclusiones.Location = new System.Drawing.Point(695, 335);
+            this.gbRestricciones_Conclusiones.Location = new System.Drawing.Point(695, 336);
             this.gbRestricciones_Conclusiones.Name = "gbRestricciones_Conclusiones";
             this.gbRestricciones_Conclusiones.Size = new System.Drawing.Size(616, 228);
             this.gbRestricciones_Conclusiones.TabIndex = 94;
@@ -3786,7 +3786,7 @@
             this.gbConclusionesDiagnosticas.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbConclusionesDiagnosticas.Location = new System.Drawing.Point(10, 37);
             this.gbConclusionesDiagnosticas.Name = "gbConclusionesDiagnosticas";
-            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1301, 292);
+            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1301, 328);
             this.gbConclusionesDiagnosticas.TabIndex = 51;
             this.gbConclusionesDiagnosticas.TabStop = false;
             this.gbConclusionesDiagnosticas.Text = "Conclusiones Diagnósticas";
@@ -3908,7 +3908,7 @@
             this.grdConclusionesDiagnosticas.Location = new System.Drawing.Point(8, 21);
             this.grdConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2);
             this.grdConclusionesDiagnosticas.Name = "grdConclusionesDiagnosticas";
-            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1288, 266);
+            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1288, 302);
             this.grdConclusionesDiagnosticas.TabIndex = 51;
             this.grdConclusionesDiagnosticas.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdConclusionesDiagnosticas_InitializeRow);
             this.grdConclusionesDiagnosticas.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdConclusionesDiagnosticas_ClickCell);
@@ -3918,7 +3918,7 @@
             this.lblRecordCountConclusionesDiagnosticas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCountConclusionesDiagnosticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountConclusionesDiagnosticas.Location = new System.Drawing.Point(883, 77);
+            this.lblRecordCountConclusionesDiagnosticas.Location = new System.Drawing.Point(883, 113);
             this.lblRecordCountConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountConclusionesDiagnosticas.Name = "lblRecordCountConclusionesDiagnosticas";
             this.lblRecordCountConclusionesDiagnosticas.Size = new System.Drawing.Size(418, 19);
@@ -3987,7 +3987,7 @@
             this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarConclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarConclusiones.Image")));
             this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1103, 574);
+            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1103, 575);
             this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
             this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);
@@ -4018,7 +4018,7 @@
             this.tpFormatoAtencionIntegral.Location = new System.Drawing.Point(4, 22);
             this.tpFormatoAtencionIntegral.Name = "tpFormatoAtencionIntegral";
             this.tpFormatoAtencionIntegral.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFormatoAtencionIntegral.Size = new System.Drawing.Size(1321, 646);
+            this.tpFormatoAtencionIntegral.Size = new System.Drawing.Size(1321, 531);
             this.tpFormatoAtencionIntegral.TabIndex = 6;
             this.tpFormatoAtencionIntegral.Text = "FORMATO DE ATENCIÓN INTEGRAL";
             this.tpFormatoAtencionIntegral.UseVisualStyleBackColor = true;
@@ -4534,7 +4534,7 @@
             this.tpDatosAntecedentes.Controls.Add(this.shapeContainer1);
             this.tpDatosAntecedentes.Location = new System.Drawing.Point(4, 22);
             this.tpDatosAntecedentes.Name = "tpDatosAntecedentes";
-            this.tpDatosAntecedentes.Size = new System.Drawing.Size(1321, 646);
+            this.tpDatosAntecedentes.Size = new System.Drawing.Size(1321, 531);
             this.tpDatosAntecedentes.TabIndex = 7;
             this.tpDatosAntecedentes.Text = "DATOS GENERALES Y ANTECEDENTES";
             this.tpDatosAntecedentes.UseVisualStyleBackColor = true;
@@ -7335,7 +7335,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1321, 646);
+            this.shapeContainer1.Size = new System.Drawing.Size(1321, 531);
             this.shapeContainer1.TabIndex = 109;
             this.shapeContainer1.TabStop = false;
             // 
@@ -7354,7 +7354,7 @@
             this.tpCuidadosPreventivos.Location = new System.Drawing.Point(4, 22);
             this.tpCuidadosPreventivos.Name = "tpCuidadosPreventivos";
             this.tpCuidadosPreventivos.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCuidadosPreventivos.Size = new System.Drawing.Size(1321, 646);
+            this.tpCuidadosPreventivos.Size = new System.Drawing.Size(1321, 531);
             this.tpCuidadosPreventivos.TabIndex = 8;
             this.tpCuidadosPreventivos.Text = "CUIDADOS PREVENTIVOS";
             this.tpCuidadosPreventivos.UseVisualStyleBackColor = true;

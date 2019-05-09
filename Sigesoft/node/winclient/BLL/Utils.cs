@@ -84,6 +84,38 @@ namespace Sigesoft.Node.WinClient.BLL
 
         #region KeyValueDTO
 
+        public static List<KeyValueDTO> GetServiceByPersonForCombo(ref OperationResult pobjOperationResult, string v_PersonId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.service
+                    where a.v_PersonId == v_PersonId
+                    select a;
+
+                query = query.OrderBy("v_ServiceId");
+                
+
+                var query2 = query.AsEnumerable()
+                    .Select(x => new KeyValueDTO
+                    {
+                        Id = x.v_ServiceId,
+                        Value1 = x.d_ServiceDate.ToString() + " / " + x.v_ServiceId,
+                        Value2 = x.d_ServiceDate.ToString(),
+                        IdI = x.i_MasterServiceId.Value,
+                    }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
         public static List<KeyValueDTO> GetProtocolsByOrganizationForCombo(ref OperationResult pobjOperationResult, string v_CustomerOrganizationId, string v_CustomerLocationId, string pstrSortExpression)
         {
             //mon.IsActive = true;

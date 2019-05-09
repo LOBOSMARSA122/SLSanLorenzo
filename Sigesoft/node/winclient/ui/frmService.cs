@@ -482,7 +482,9 @@ namespace Sigesoft.Node.WinClient.UI
                     else
                     {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
+                        _pacientId = grdDataService.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
+                        frm = new Operations.frmContainerEso(_serviceId, null, "Service", (int)MasterService.Eso, _pacientId);
+                        //frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
                         frm.ShowDialog();
                         this.Enabled = true;
                     }
@@ -3247,8 +3249,8 @@ namespace Sigesoft.Node.WinClient.UI
                                 ;
                             });
                             t.Start();
-                            
-                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm = new Operations.frmContainerEso(_serviceId, "TRIAJE", "Service", TserviceId, _pacientId);
+                            //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                             
                             frm.ShowDialog();
                             
@@ -3257,7 +3259,8 @@ namespace Sigesoft.Node.WinClient.UI
                         else
                         {
                             this.Enabled = false;
-                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm = new Operations.frmContainerEso(_serviceId, "TRIAJE", "Service", TserviceId, _pacientId);
+                            //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                             frm.ShowDialog();
                             this.Enabled = true;
                         }
@@ -3266,7 +3269,8 @@ namespace Sigesoft.Node.WinClient.UI
                     else
                     {
                         this.Enabled = false;
-                        frm = new Operations.FrmEsoV2(_serviceId, null, "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                        frm = new Operations.frmContainerEso(_serviceId, null, "Service",TserviceId, _pacientId);
+                        //frm = new Operations.FrmEsoV2(_serviceId, null, "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                         frm.ShowDialog();
                         this.Enabled = true;
                     }
