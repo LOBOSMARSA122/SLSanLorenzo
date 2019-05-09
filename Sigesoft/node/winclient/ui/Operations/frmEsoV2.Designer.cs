@@ -31,22 +31,6 @@
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn71 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn72 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn73 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecommendationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn74 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn75 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordStatus");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn77 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordType");
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_ItemId");
@@ -84,6 +68,22 @@
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn71 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn72 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn73 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecommendationId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn74 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn75 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordStatus");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn77 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordType");
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Item");
@@ -273,17 +273,11 @@
             this.label34 = new System.Windows.Forms.Label();
             this.txtFecVctoGlobal = new System.Windows.Forms.TextBox();
             this.txtComentarioAptitud = new System.Windows.Forms.TextBox();
-            this.gbRecomendaciones_Conclusiones = new System.Windows.Forms.GroupBox();
-            this.grdRecomendaciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.lblRecordCountRecomendaciones_Conclusiones = new System.Windows.Forms.Label();
-            this.btnAgregarRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
-            this.btnRemoverRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
-            this.chkinterconsulta = new System.Windows.Forms.CheckBox();
             this.gbRestricciones_Conclusiones = new System.Windows.Forms.GroupBox();
-            this.grdRestricciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.lblRecordCountRestricciones_Conclusiones = new System.Windows.Forms.Label();
             this.btnAgregarRestriccion_ConclusionesTratamiento = new System.Windows.Forms.Button();
             this.btnRemoverRestricciones_ConclusionesTratamiento = new System.Windows.Forms.Button();
+            this.grdRestricciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.lblRecordCountRestricciones_Conclusiones = new System.Windows.Forms.Label();
             this.chkUtilizaFirmaAptitud = new System.Windows.Forms.CheckBox();
             this.gbConclusionesDiagnosticas = new System.Windows.Forms.GroupBox();
             this.grdConclusionesDiagnosticas = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -294,6 +288,12 @@
             this.lbl3333 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.btnGuardarConclusiones = new System.Windows.Forms.Button();
+            this.gbRecomendaciones_Conclusiones = new System.Windows.Forms.GroupBox();
+            this.grdRecomendaciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.lblRecordCountRecomendaciones_Conclusiones = new System.Windows.Forms.Label();
+            this.btnAgregarRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
+            this.btnRemoverRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
+            this.chkinterconsulta = new System.Windows.Forms.CheckBox();
             this.tpAnalisisDx = new System.Windows.Forms.TabPage();
             this.gbEdicionDiagnosticoTotal = new System.Windows.Forms.GroupBox();
             this.btnAceptarDX = new System.Windows.Forms.Button();
@@ -753,12 +753,12 @@
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnalisisDx)).BeginInit();
             this.tpConclusion.SuspendLayout();
-            this.gbRecomendaciones_Conclusiones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).BeginInit();
             this.gbRestricciones_Conclusiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_Conclusiones)).BeginInit();
             this.gbConclusionesDiagnosticas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdConclusionesDiagnosticas)).BeginInit();
+            this.gbRecomendaciones_Conclusiones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).BeginInit();
             this.tpAnalisisDx.SuspendLayout();
             this.gbEdicionDiagnosticoTotal.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1139,181 +1139,10 @@
             this.txtComentarioAptitud.Multiline = true;
             this.txtComentarioAptitud.Name = "txtComentarioAptitud";
             this.txtComentarioAptitud.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtComentarioAptitud.Size = new System.Drawing.Size(465, 36);
+            this.txtComentarioAptitud.Size = new System.Drawing.Size(431, 36);
             this.txtComentarioAptitud.TabIndex = 98;
             this.txtComentarioAptitud.Text = "NINGUNA";
             this.txtComentarioAptitud.Visible = false;
-            // 
-            // gbRecomendaciones_Conclusiones
-            // 
-            this.gbRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.grdRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.lblRecordCountRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnAgregarRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnRemoverRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.chkinterconsulta);
-            this.gbRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(12, 289);
-            this.gbRecomendaciones_Conclusiones.Name = "gbRecomendaciones_Conclusiones";
-            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(655, 210);
-            this.gbRecomendaciones_Conclusiones.TabIndex = 95;
-            this.gbRecomendaciones_Conclusiones.TabStop = false;
-            this.gbRecomendaciones_Conclusiones.Text = "Recomendaciones";
-            // 
-            // grdRecomendaciones_Conclusiones
-            // 
-            this.grdRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdRecomendaciones_Conclusiones.CausesValidation = false;
-            appearance16.BackColor = System.Drawing.Color.White;
-            appearance16.BackColor2 = System.Drawing.Color.Silver;
-            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Appearance = appearance16;
-            ultraGridColumn70.Header.VisiblePosition = 0;
-            ultraGridColumn70.Hidden = true;
-            ultraGridColumn71.Header.VisiblePosition = 1;
-            ultraGridColumn71.Hidden = true;
-            ultraGridColumn72.Header.VisiblePosition = 2;
-            ultraGridColumn72.Hidden = true;
-            ultraGridColumn73.Header.VisiblePosition = 3;
-            ultraGridColumn73.Hidden = true;
-            ultraGridColumn74.Header.Caption = "Recomendaciones";
-            ultraGridColumn74.Header.VisiblePosition = 4;
-            ultraGridColumn74.Width = 602;
-            ultraGridColumn75.Header.VisiblePosition = 5;
-            ultraGridColumn75.Hidden = true;
-            ultraGridColumn76.Header.VisiblePosition = 6;
-            ultraGridColumn76.Hidden = true;
-            ultraGridColumn77.Header.VisiblePosition = 7;
-            ultraGridColumn77.Hidden = true;
-            ultraGridBand3.Columns.AddRange(new object[] {
-            ultraGridColumn70,
-            ultraGridColumn71,
-            ultraGridColumn72,
-            ultraGridColumn73,
-            ultraGridColumn74,
-            ultraGridColumn75,
-            ultraGridColumn76,
-            ultraGridColumn77});
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.InterBandSpacing = 10;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CardAreaAppearance = appearance17;
-            appearance18.BackColor = System.Drawing.Color.White;
-            appearance18.BackColor2 = System.Drawing.Color.White;
-            appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellAppearance = appearance18;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance19.BackColor = System.Drawing.Color.White;
-            appearance19.BackColor2 = System.Drawing.Color.LightGray;
-            appearance19.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance19.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderAppearance = appearance19;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance20.AlphaLevel = ((short)(187));
-            appearance20.BackColor = System.Drawing.Color.Gainsboro;
-            appearance20.BackColor2 = System.Drawing.Color.LightGray;
-            appearance20.ForeColor = System.Drawing.Color.Black;
-            appearance20.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowAlternateAppearance = appearance20;
-            appearance21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectorAppearance = appearance21;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance22.BackColor = System.Drawing.Color.Gainsboro;
-            appearance22.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance22.FontData.BoldAsString = "False";
-            appearance22.ForeColor = System.Drawing.Color.Black;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectedRowAppearance = appearance22;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdRecomendaciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdRecomendaciones_Conclusiones.Location = new System.Drawing.Point(13, 31);
-            this.grdRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.grdRecomendaciones_Conclusiones.Name = "grdRecomendaciones_Conclusiones";
-            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(629, 150);
-            this.grdRecomendaciones_Conclusiones.TabIndex = 98;
-            // 
-            // lblRecordCountRecomendaciones_Conclusiones
-            // 
-            this.lblRecordCountRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblRecordCountRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(419, 15);
-            this.lblRecordCountRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountRecomendaciones_Conclusiones.Name = "lblRecordCountRecomendaciones_Conclusiones";
-            this.lblRecordCountRecomendaciones_Conclusiones.Size = new System.Drawing.Size(211, 19);
-            this.lblRecordCountRecomendaciones_Conclusiones.TabIndex = 85;
-            this.lblRecordCountRecomendaciones_Conclusiones.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountRecomendaciones_Conclusiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAgregarRecomendaciones_Conclusiones
-            // 
-            this.btnAgregarRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAgregarRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarRecomendaciones_Conclusiones.Enabled = false;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_Conclusiones.Image")));
-            this.btnAgregarRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRecomendaciones_Conclusiones.Location = new System.Drawing.Point(5, 181);
-            this.btnAgregarRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarRecomendaciones_Conclusiones.Name = "btnAgregarRecomendaciones_Conclusiones";
-            this.btnAgregarRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
-            this.btnAgregarRecomendaciones_Conclusiones.TabIndex = 96;
-            this.btnAgregarRecomendaciones_Conclusiones.Text = "      Agregar";
-            this.btnAgregarRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
-            // 
-            // btnRemoverRecomendaciones_Conclusiones
-            // 
-            this.btnRemoverRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRemoverRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverRecomendaciones_Conclusiones.Enabled = false;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendaciones_Conclusiones.Image")));
-            this.btnRemoverRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRecomendaciones_Conclusiones.Location = new System.Drawing.Point(105, 181);
-            this.btnRemoverRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverRecomendaciones_Conclusiones.Name = "btnRemoverRecomendaciones_Conclusiones";
-            this.btnRemoverRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
-            this.btnRemoverRecomendaciones_Conclusiones.TabIndex = 97;
-            this.btnRemoverRecomendaciones_Conclusiones.Text = "     Eliminar";
-            this.btnRemoverRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
-            // 
-            // chkinterconsulta
-            // 
-            this.chkinterconsulta.AutoSize = true;
-            this.chkinterconsulta.Location = new System.Drawing.Point(640, 218);
-            this.chkinterconsulta.Name = "chkinterconsulta";
-            this.chkinterconsulta.Size = new System.Drawing.Size(88, 17);
-            this.chkinterconsulta.TabIndex = 105;
-            this.chkinterconsulta.Text = "Interconsulta";
-            this.chkinterconsulta.UseVisualStyleBackColor = true;
-            this.chkinterconsulta.Visible = false;
             // 
             // gbRestricciones_Conclusiones
             // 
@@ -1331,6 +1160,50 @@
             this.gbRestricciones_Conclusiones.TabIndex = 94;
             this.gbRestricciones_Conclusiones.TabStop = false;
             this.gbRestricciones_Conclusiones.Text = "Restricciones";
+            // 
+            // btnAgregarRestriccion_ConclusionesTratamiento
+            // 
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Enabled = false;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarRestriccion_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_ConclusionesTratamiento.Image")));
+            this.btnAgregarRestriccion_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Location = new System.Drawing.Point(13, 181);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Name = "btnAgregarRestriccion_ConclusionesTratamiento";
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Size = new System.Drawing.Size(76, 24);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.TabIndex = 96;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Text = "      Agregar";
+            this.btnAgregarRestriccion_ConclusionesTratamiento.UseVisualStyleBackColor = false;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Visible = false;
+            // 
+            // btnRemoverRestricciones_ConclusionesTratamiento
+            // 
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Enabled = false;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverRestricciones_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestricciones_ConclusionesTratamiento.Image")));
+            this.btnRemoverRestricciones_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Location = new System.Drawing.Point(108, 181);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Name = "btnRemoverRestricciones_ConclusionesTratamiento";
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Size = new System.Drawing.Size(77, 24);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.TabIndex = 97;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Text = "     Eliminar";
+            this.btnRemoverRestricciones_ConclusionesTratamiento.UseVisualStyleBackColor = false;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Visible = false;
             // 
             // grdRestricciones_Conclusiones
             // 
@@ -1428,50 +1301,6 @@
             this.lblRecordCountRestricciones_Conclusiones.TabIndex = 51;
             this.lblRecordCountRestricciones_Conclusiones.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountRestricciones_Conclusiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAgregarRestriccion_ConclusionesTratamiento
-            // 
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Enabled = false;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRestriccion_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_ConclusionesTratamiento.Image")));
-            this.btnAgregarRestriccion_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Location = new System.Drawing.Point(13, 181);
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Name = "btnAgregarRestriccion_ConclusionesTratamiento";
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Size = new System.Drawing.Size(76, 24);
-            this.btnAgregarRestriccion_ConclusionesTratamiento.TabIndex = 96;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Text = "      Agregar";
-            this.btnAgregarRestriccion_ConclusionesTratamiento.UseVisualStyleBackColor = false;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Visible = false;
-            // 
-            // btnRemoverRestricciones_ConclusionesTratamiento
-            // 
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Enabled = false;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverRestricciones_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestricciones_ConclusionesTratamiento.Image")));
-            this.btnRemoverRestricciones_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Location = new System.Drawing.Point(108, 181);
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Name = "btnRemoverRestricciones_ConclusionesTratamiento";
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Size = new System.Drawing.Size(77, 24);
-            this.btnRemoverRestricciones_ConclusionesTratamiento.TabIndex = 97;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Text = "     Eliminar";
-            this.btnRemoverRestricciones_ConclusionesTratamiento.UseVisualStyleBackColor = false;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Visible = false;
             // 
             // chkUtilizaFirmaAptitud
             // 
@@ -1644,6 +1473,7 @@
             this.cbAptitudEso.Name = "cbAptitudEso";
             this.cbAptitudEso.Size = new System.Drawing.Size(199, 21);
             this.cbAptitudEso.TabIndex = 31;
+            this.cbAptitudEso.SelectedIndexChanged += new System.EventHandler(this.cbAptitudEso_SelectedIndexChanged);
             // 
             // lblFecVctoObs
             // 
@@ -1707,6 +1537,177 @@
             this.btnGuardarConclusiones.Text = "      Guardar Conclusiones";
             this.btnGuardarConclusiones.UseVisualStyleBackColor = false;
             this.btnGuardarConclusiones.Click += new System.EventHandler(this.btnGuardarConclusiones_Click);
+            // 
+            // gbRecomendaciones_Conclusiones
+            // 
+            this.gbRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.grdRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.lblRecordCountRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnAgregarRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnRemoverRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.chkinterconsulta);
+            this.gbRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(12, 289);
+            this.gbRecomendaciones_Conclusiones.Name = "gbRecomendaciones_Conclusiones";
+            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(655, 210);
+            this.gbRecomendaciones_Conclusiones.TabIndex = 95;
+            this.gbRecomendaciones_Conclusiones.TabStop = false;
+            this.gbRecomendaciones_Conclusiones.Text = "Recomendaciones";
+            // 
+            // grdRecomendaciones_Conclusiones
+            // 
+            this.grdRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdRecomendaciones_Conclusiones.CausesValidation = false;
+            appearance16.BackColor = System.Drawing.Color.White;
+            appearance16.BackColor2 = System.Drawing.Color.Silver;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Appearance = appearance16;
+            ultraGridColumn70.Header.VisiblePosition = 0;
+            ultraGridColumn70.Hidden = true;
+            ultraGridColumn71.Header.VisiblePosition = 1;
+            ultraGridColumn71.Hidden = true;
+            ultraGridColumn72.Header.VisiblePosition = 2;
+            ultraGridColumn72.Hidden = true;
+            ultraGridColumn73.Header.VisiblePosition = 3;
+            ultraGridColumn73.Hidden = true;
+            ultraGridColumn74.Header.Caption = "Recomendaciones";
+            ultraGridColumn74.Header.VisiblePosition = 4;
+            ultraGridColumn74.Width = 602;
+            ultraGridColumn75.Header.VisiblePosition = 5;
+            ultraGridColumn75.Hidden = true;
+            ultraGridColumn76.Header.VisiblePosition = 6;
+            ultraGridColumn76.Hidden = true;
+            ultraGridColumn77.Header.VisiblePosition = 7;
+            ultraGridColumn77.Hidden = true;
+            ultraGridBand3.Columns.AddRange(new object[] {
+            ultraGridColumn70,
+            ultraGridColumn71,
+            ultraGridColumn72,
+            ultraGridColumn73,
+            ultraGridColumn74,
+            ultraGridColumn75,
+            ultraGridColumn76,
+            ultraGridColumn77});
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.InterBandSpacing = 10;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CardAreaAppearance = appearance17;
+            appearance18.BackColor = System.Drawing.Color.White;
+            appearance18.BackColor2 = System.Drawing.Color.White;
+            appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellAppearance = appearance18;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance19.BackColor = System.Drawing.Color.White;
+            appearance19.BackColor2 = System.Drawing.Color.LightGray;
+            appearance19.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance19.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderAppearance = appearance19;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance20.AlphaLevel = ((short)(187));
+            appearance20.BackColor = System.Drawing.Color.Gainsboro;
+            appearance20.BackColor2 = System.Drawing.Color.LightGray;
+            appearance20.ForeColor = System.Drawing.Color.Black;
+            appearance20.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowAlternateAppearance = appearance20;
+            appearance21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectorAppearance = appearance21;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance22.BackColor = System.Drawing.Color.Gainsboro;
+            appearance22.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance22.FontData.BoldAsString = "False";
+            appearance22.ForeColor = System.Drawing.Color.Black;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectedRowAppearance = appearance22;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdRecomendaciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdRecomendaciones_Conclusiones.Location = new System.Drawing.Point(13, 31);
+            this.grdRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.grdRecomendaciones_Conclusiones.Name = "grdRecomendaciones_Conclusiones";
+            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(629, 150);
+            this.grdRecomendaciones_Conclusiones.TabIndex = 98;
+            // 
+            // lblRecordCountRecomendaciones_Conclusiones
+            // 
+            this.lblRecordCountRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblRecordCountRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(419, 15);
+            this.lblRecordCountRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountRecomendaciones_Conclusiones.Name = "lblRecordCountRecomendaciones_Conclusiones";
+            this.lblRecordCountRecomendaciones_Conclusiones.Size = new System.Drawing.Size(211, 19);
+            this.lblRecordCountRecomendaciones_Conclusiones.TabIndex = 85;
+            this.lblRecordCountRecomendaciones_Conclusiones.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountRecomendaciones_Conclusiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnAgregarRecomendaciones_Conclusiones
+            // 
+            this.btnAgregarRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAgregarRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarRecomendaciones_Conclusiones.Enabled = false;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_Conclusiones.Image")));
+            this.btnAgregarRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarRecomendaciones_Conclusiones.Location = new System.Drawing.Point(5, 181);
+            this.btnAgregarRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarRecomendaciones_Conclusiones.Name = "btnAgregarRecomendaciones_Conclusiones";
+            this.btnAgregarRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
+            this.btnAgregarRecomendaciones_Conclusiones.TabIndex = 96;
+            this.btnAgregarRecomendaciones_Conclusiones.Text = "      Agregar";
+            this.btnAgregarRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
+            // 
+            // btnRemoverRecomendaciones_Conclusiones
+            // 
+            this.btnRemoverRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnRemoverRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverRecomendaciones_Conclusiones.Enabled = false;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendaciones_Conclusiones.Image")));
+            this.btnRemoverRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverRecomendaciones_Conclusiones.Location = new System.Drawing.Point(105, 181);
+            this.btnRemoverRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverRecomendaciones_Conclusiones.Name = "btnRemoverRecomendaciones_Conclusiones";
+            this.btnRemoverRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
+            this.btnRemoverRecomendaciones_Conclusiones.TabIndex = 97;
+            this.btnRemoverRecomendaciones_Conclusiones.Text = "     Eliminar";
+            this.btnRemoverRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
+            // 
+            // chkinterconsulta
+            // 
+            this.chkinterconsulta.AutoSize = true;
+            this.chkinterconsulta.Location = new System.Drawing.Point(640, 218);
+            this.chkinterconsulta.Name = "chkinterconsulta";
+            this.chkinterconsulta.Size = new System.Drawing.Size(88, 17);
+            this.chkinterconsulta.TabIndex = 105;
+            this.chkinterconsulta.Text = "Interconsulta";
+            this.chkinterconsulta.UseVisualStyleBackColor = true;
+            this.chkinterconsulta.Visible = false;
             // 
             // tpAnalisisDx
             // 
@@ -7890,14 +7891,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.uvAnalisisDx)).EndInit();
             this.tpConclusion.ResumeLayout(false);
             this.tpConclusion.PerformLayout();
-            this.gbRecomendaciones_Conclusiones.ResumeLayout(false);
-            this.gbRecomendaciones_Conclusiones.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).EndInit();
             this.gbRestricciones_Conclusiones.ResumeLayout(false);
             this.gbRestricciones_Conclusiones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_Conclusiones)).EndInit();
             this.gbConclusionesDiagnosticas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdConclusionesDiagnosticas)).EndInit();
+            this.gbRecomendaciones_Conclusiones.ResumeLayout(false);
+            this.gbRecomendaciones_Conclusiones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).EndInit();
             this.tpAnalisisDx.ResumeLayout(false);
             this.gbEdicionDiagnosticoTotal.ResumeLayout(false);
             this.gbEdicionDiagnosticoTotal.PerformLayout();
