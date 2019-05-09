@@ -1896,6 +1896,7 @@
             this.btnRemoverRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
             this.btnRemoverRestriccion_Analisis.TabIndex = 95;
             this.btnRemoverRestriccion_Analisis.UseVisualStyleBackColor = false;
+            this.btnRemoverRestriccion_Analisis.Visible = false;
             this.btnRemoverRestriccion_Analisis.Click += new System.EventHandler(this.btnRemoverRestriccion_Analisis_Click);
             // 
             // btnAgregarRestriccion_Analisis
@@ -1917,6 +1918,7 @@
             this.btnAgregarRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
             this.btnAgregarRestriccion_Analisis.TabIndex = 94;
             this.btnAgregarRestriccion_Analisis.UseVisualStyleBackColor = false;
+            this.btnAgregarRestriccion_Analisis.Visible = false;
             this.btnAgregarRestriccion_Analisis.Click += new System.EventHandler(this.btnAgregarRestriccion_Analisis_Click);
             // 
             // lblRecordCountRestricciones_AnalisisDx
@@ -2052,6 +2054,7 @@
             this.btnRemoverRecomendacion_AnalisisDx.Size = new System.Drawing.Size(30, 24);
             this.btnRemoverRecomendacion_AnalisisDx.TabIndex = 95;
             this.btnRemoverRecomendacion_AnalisisDx.UseVisualStyleBackColor = false;
+            this.btnRemoverRecomendacion_AnalisisDx.Visible = false;
             this.btnRemoverRecomendacion_AnalisisDx.Click += new System.EventHandler(this.btnRemoverRecomendacion_AnalisisDx_Click);
             // 
             // btnAgregarRecomendaciones_AnalisisDx
@@ -2073,6 +2076,7 @@
             this.btnAgregarRecomendaciones_AnalisisDx.Size = new System.Drawing.Size(30, 24);
             this.btnAgregarRecomendaciones_AnalisisDx.TabIndex = 94;
             this.btnAgregarRecomendaciones_AnalisisDx.UseVisualStyleBackColor = false;
+            this.btnAgregarRecomendaciones_AnalisisDx.Visible = false;
             this.btnAgregarRecomendaciones_AnalisisDx.Click += new System.EventHandler(this.btnAgregarRecomendaciones_AnalisisDx_Click);
             // 
             // lblRecordCountRecomendaciones_AnalisisDx
