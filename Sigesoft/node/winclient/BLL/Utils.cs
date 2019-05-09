@@ -102,7 +102,8 @@ namespace Sigesoft.Node.WinClient.BLL
                     {
                         Id = x.v_ServiceId,
                         Value1 = x.d_ServiceDate.ToString() + " / " + x.v_ServiceId,
-                        Value2 = x.d_ServiceDate.ToString()
+                        Value2 = x.d_ServiceDate.ToString(),
+                        IdI = x.i_MasterServiceId.Value,
                     }).ToList();
 
                 pobjOperationResult.Success = 1;

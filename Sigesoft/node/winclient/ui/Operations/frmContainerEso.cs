@@ -82,6 +82,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (ddlExamenesAnterioes.SelectedValue.ToString() != "-1")
             {
                 _serviceId = ddlExamenesAnterioes.SelectedValue.ToString();
+                _tipo = _KeyValueDTO.Find(x => x.Id == _serviceId).IdI;
             }
             
             createTabePage();

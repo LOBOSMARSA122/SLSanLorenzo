@@ -68,28 +68,28 @@
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordCount2 = new System.Windows.Forms.Label();
             this.uvProtocol = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.cbOrganizationInvoice = new System.Windows.Forms.ComboBox();
+            this.cbEmpresaCliente = new System.Windows.Forms.ComboBox();
             this.cbGeso = new System.Windows.Forms.ComboBox();
-            this.cbEsoType = new System.Windows.Forms.ComboBox();
-            this.cbOrganization = new System.Windows.Forms.ComboBox();
-            this.cbServiceType = new System.Windows.Forms.ComboBox();
-            this.cbService = new System.Windows.Forms.ComboBox();
-            this.txtProtocolName = new System.Windows.Forms.TextBox();
-            this.cbIntermediaryOrganization = new System.Windows.Forms.ComboBox();
+            this.cbTipoExamen = new System.Windows.Forms.ComboBox();
+            this.cbEmpresaEmpleadora = new System.Windows.Forms.ComboBox();
+            this.cbTipoServicio = new System.Windows.Forms.ComboBox();
+            this.cbServicio = new System.Windows.Forms.ComboBox();
+            this.txtNombreProtocolo = new System.Windows.Forms.TextBox();
+            this.cbEmpresaTrabajo = new System.Windows.Forms.ComboBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtDocNumber = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboVendedor = new System.Windows.Forms.ComboBox();
             this.btnAgregarEmpresaContrata = new System.Windows.Forms.Button();
-            this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.chkEsActivo = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtValidDays = new System.Windows.Forms.TextBox();
+            this.txtComision = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkIsHasVigency = new System.Windows.Forms.CheckBox();
+            this.chkEsComisionable = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtCostCenter = new System.Windows.Forms.TextBox();
+            this.txtCentroCosto = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -272,22 +272,22 @@
             this.lblRecordCount2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblRecordCount2.Click += new System.EventHandler(this.lblRecordCount2_Click);
             // 
-            // cbOrganizationInvoice
+            // cbEmpresaCliente
             // 
-            this.cbOrganizationInvoice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbOrganizationInvoice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbOrganizationInvoice.DropDownWidth = 500;
-            this.cbOrganizationInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbOrganizationInvoice.FormattingEnabled = true;
-            this.cbOrganizationInvoice.Location = new System.Drawing.Point(112, 51);
-            this.cbOrganizationInvoice.Name = "cbOrganizationInvoice";
-            this.cbOrganizationInvoice.Size = new System.Drawing.Size(437, 21);
-            this.cbOrganizationInvoice.TabIndex = 22;
-            this.uvProtocol.GetValidationSettings(this.cbOrganizationInvoice).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvProtocol.GetValidationSettings(this.cbOrganizationInvoice).DataType = typeof(string);
-            this.uvProtocol.GetValidationSettings(this.cbOrganizationInvoice).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvProtocol.GetValidationSettings(this.cbOrganizationInvoice).IsRequired = true;
-            this.cbOrganizationInvoice.SelectedIndexChanged += new System.EventHandler(this.cbOrganizationInvoice_SelectedIndexChanged);
+            this.cbEmpresaCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbEmpresaCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbEmpresaCliente.DropDownWidth = 500;
+            this.cbEmpresaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEmpresaCliente.FormattingEnabled = true;
+            this.cbEmpresaCliente.Location = new System.Drawing.Point(112, 51);
+            this.cbEmpresaCliente.Name = "cbEmpresaCliente";
+            this.cbEmpresaCliente.Size = new System.Drawing.Size(437, 21);
+            this.cbEmpresaCliente.TabIndex = 22;
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaCliente).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaCliente).DataType = typeof(string);
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaCliente).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaCliente).IsRequired = true;
+            this.cbEmpresaCliente.SelectedIndexChanged += new System.EventHandler(this.cbOrganizationInvoice_SelectedIndexChanged);
             // 
             // cbGeso
             // 
@@ -305,100 +305,100 @@
             this.uvProtocol.GetValidationSettings(this.cbGeso).IsRequired = true;
             this.cbGeso.SelectedIndexChanged += new System.EventHandler(this.cbGeso_SelectedIndexChanged);
             // 
-            // cbEsoType
+            // cbTipoExamen
             // 
-            this.cbEsoType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbEsoType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbEsoType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEsoType.FormattingEnabled = true;
-            this.cbEsoType.Location = new System.Drawing.Point(112, 132);
-            this.cbEsoType.Name = "cbEsoType";
-            this.cbEsoType.Size = new System.Drawing.Size(437, 21);
-            this.cbEsoType.TabIndex = 16;
-            this.uvProtocol.GetValidationSettings(this.cbEsoType).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvProtocol.GetValidationSettings(this.cbEsoType).DataType = typeof(string);
-            this.uvProtocol.GetValidationSettings(this.cbEsoType).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvProtocol.GetValidationSettings(this.cbEsoType).IsRequired = true;
-            this.cbEsoType.SelectedIndexChanged += new System.EventHandler(this.cbEsoType_SelectedIndexChanged);
+            this.cbTipoExamen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbTipoExamen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbTipoExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoExamen.FormattingEnabled = true;
+            this.cbTipoExamen.Location = new System.Drawing.Point(112, 132);
+            this.cbTipoExamen.Name = "cbTipoExamen";
+            this.cbTipoExamen.Size = new System.Drawing.Size(437, 21);
+            this.cbTipoExamen.TabIndex = 16;
+            this.uvProtocol.GetValidationSettings(this.cbTipoExamen).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvProtocol.GetValidationSettings(this.cbTipoExamen).DataType = typeof(string);
+            this.uvProtocol.GetValidationSettings(this.cbTipoExamen).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvProtocol.GetValidationSettings(this.cbTipoExamen).IsRequired = true;
+            this.cbTipoExamen.SelectedIndexChanged += new System.EventHandler(this.cbEsoType_SelectedIndexChanged);
             // 
-            // cbOrganization
+            // cbEmpresaEmpleadora
             // 
-            this.cbOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbOrganization.DropDownWidth = 500;
-            this.cbOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbOrganization.FormattingEnabled = true;
-            this.cbOrganization.Location = new System.Drawing.Point(112, 78);
-            this.cbOrganization.Name = "cbOrganization";
-            this.cbOrganization.Size = new System.Drawing.Size(437, 21);
-            this.cbOrganization.TabIndex = 14;
-            this.uvProtocol.GetValidationSettings(this.cbOrganization).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvProtocol.GetValidationSettings(this.cbOrganization).DataType = typeof(string);
-            this.uvProtocol.GetValidationSettings(this.cbOrganization).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvProtocol.GetValidationSettings(this.cbOrganization).IsRequired = true;
-            this.cbOrganization.SelectedIndexChanged += new System.EventHandler(this.cbOrganization_SelectedIndexChanged);
+            this.cbEmpresaEmpleadora.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbEmpresaEmpleadora.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbEmpresaEmpleadora.DropDownWidth = 500;
+            this.cbEmpresaEmpleadora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEmpresaEmpleadora.FormattingEnabled = true;
+            this.cbEmpresaEmpleadora.Location = new System.Drawing.Point(112, 78);
+            this.cbEmpresaEmpleadora.Name = "cbEmpresaEmpleadora";
+            this.cbEmpresaEmpleadora.Size = new System.Drawing.Size(437, 21);
+            this.cbEmpresaEmpleadora.TabIndex = 14;
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaEmpleadora).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaEmpleadora).DataType = typeof(string);
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaEmpleadora).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaEmpleadora).IsRequired = true;
+            this.cbEmpresaEmpleadora.SelectedIndexChanged += new System.EventHandler(this.cbOrganization_SelectedIndexChanged);
             // 
-            // cbServiceType
+            // cbTipoServicio
             // 
-            this.cbServiceType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbServiceType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbServiceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbServiceType.FormattingEnabled = true;
-            this.cbServiceType.Location = new System.Drawing.Point(686, 51);
-            this.cbServiceType.Name = "cbServiceType";
-            this.cbServiceType.Size = new System.Drawing.Size(250, 21);
-            this.cbServiceType.TabIndex = 26;
-            this.uvProtocol.GetValidationSettings(this.cbServiceType).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvProtocol.GetValidationSettings(this.cbServiceType).DataType = typeof(string);
-            this.uvProtocol.GetValidationSettings(this.cbServiceType).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvProtocol.GetValidationSettings(this.cbServiceType).IsRequired = true;
-            this.cbServiceType.SelectedIndexChanged += new System.EventHandler(this.cbServiceType_SelectedIndexChanged);
-            this.cbServiceType.TextChanged += new System.EventHandler(this.cbServiceType_TextChanged);
+            this.cbTipoServicio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbTipoServicio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbTipoServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoServicio.FormattingEnabled = true;
+            this.cbTipoServicio.Location = new System.Drawing.Point(686, 51);
+            this.cbTipoServicio.Name = "cbTipoServicio";
+            this.cbTipoServicio.Size = new System.Drawing.Size(250, 21);
+            this.cbTipoServicio.TabIndex = 26;
+            this.uvProtocol.GetValidationSettings(this.cbTipoServicio).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvProtocol.GetValidationSettings(this.cbTipoServicio).DataType = typeof(string);
+            this.uvProtocol.GetValidationSettings(this.cbTipoServicio).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvProtocol.GetValidationSettings(this.cbTipoServicio).IsRequired = true;
+            this.cbTipoServicio.SelectedIndexChanged += new System.EventHandler(this.cbServiceType_SelectedIndexChanged);
+            this.cbTipoServicio.TextChanged += new System.EventHandler(this.cbServiceType_TextChanged);
             // 
-            // cbService
+            // cbServicio
             // 
-            this.cbService.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbService.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbService.FormattingEnabled = true;
-            this.cbService.Location = new System.Drawing.Point(686, 78);
-            this.cbService.Name = "cbService";
-            this.cbService.Size = new System.Drawing.Size(250, 21);
-            this.cbService.TabIndex = 32;
-            this.uvProtocol.GetValidationSettings(this.cbService).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvProtocol.GetValidationSettings(this.cbService).DataType = typeof(string);
-            this.uvProtocol.GetValidationSettings(this.cbService).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvProtocol.GetValidationSettings(this.cbService).IsRequired = true;
-            this.cbService.SelectedIndexChanged += new System.EventHandler(this.cbService_SelectedIndexChanged);
+            this.cbServicio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbServicio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbServicio.FormattingEnabled = true;
+            this.cbServicio.Location = new System.Drawing.Point(686, 78);
+            this.cbServicio.Name = "cbServicio";
+            this.cbServicio.Size = new System.Drawing.Size(250, 21);
+            this.cbServicio.TabIndex = 32;
+            this.uvProtocol.GetValidationSettings(this.cbServicio).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvProtocol.GetValidationSettings(this.cbServicio).DataType = typeof(string);
+            this.uvProtocol.GetValidationSettings(this.cbServicio).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvProtocol.GetValidationSettings(this.cbServicio).IsRequired = true;
+            this.cbServicio.SelectedIndexChanged += new System.EventHandler(this.cbService_SelectedIndexChanged);
             // 
-            // txtProtocolName
+            // txtNombreProtocolo
             // 
-            this.txtProtocolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProtocolName.Location = new System.Drawing.Point(112, 25);
-            this.txtProtocolName.MaxLength = 100;
-            this.txtProtocolName.Name = "txtProtocolName";
-            this.txtProtocolName.Size = new System.Drawing.Size(437, 20);
-            this.txtProtocolName.TabIndex = 11;
-            this.uvProtocol.GetValidationSettings(this.txtProtocolName).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "", true, typeof(string));
-            this.uvProtocol.GetValidationSettings(this.txtProtocolName).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvProtocol.GetValidationSettings(this.txtProtocolName).IsRequired = true;
-            this.txtProtocolName.TextChanged += new System.EventHandler(this.txtProtocolName_TextChanged);
+            this.txtNombreProtocolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreProtocolo.Location = new System.Drawing.Point(112, 25);
+            this.txtNombreProtocolo.MaxLength = 100;
+            this.txtNombreProtocolo.Name = "txtNombreProtocolo";
+            this.txtNombreProtocolo.Size = new System.Drawing.Size(437, 20);
+            this.txtNombreProtocolo.TabIndex = 11;
+            this.uvProtocol.GetValidationSettings(this.txtNombreProtocolo).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "", true, typeof(string));
+            this.uvProtocol.GetValidationSettings(this.txtNombreProtocolo).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvProtocol.GetValidationSettings(this.txtNombreProtocolo).IsRequired = true;
+            this.txtNombreProtocolo.TextChanged += new System.EventHandler(this.txtProtocolName_TextChanged);
             // 
-            // cbIntermediaryOrganization
+            // cbEmpresaTrabajo
             // 
-            this.cbIntermediaryOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbIntermediaryOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbIntermediaryOrganization.DropDownWidth = 500;
-            this.cbIntermediaryOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIntermediaryOrganization.FormattingEnabled = true;
-            this.cbIntermediaryOrganization.Location = new System.Drawing.Point(112, 105);
-            this.cbIntermediaryOrganization.Name = "cbIntermediaryOrganization";
-            this.cbIntermediaryOrganization.Size = new System.Drawing.Size(437, 21);
-            this.cbIntermediaryOrganization.TabIndex = 20;
-            this.uvProtocol.GetValidationSettings(this.cbIntermediaryOrganization).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvProtocol.GetValidationSettings(this.cbIntermediaryOrganization).DataType = typeof(string);
-            this.uvProtocol.GetValidationSettings(this.cbIntermediaryOrganization).IsRequired = true;
-            this.cbIntermediaryOrganization.SelectedIndexChanged += new System.EventHandler(this.cbIntermediaryOrganization_SelectedIndexChanged);
+            this.cbEmpresaTrabajo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbEmpresaTrabajo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbEmpresaTrabajo.DropDownWidth = 500;
+            this.cbEmpresaTrabajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEmpresaTrabajo.FormattingEnabled = true;
+            this.cbEmpresaTrabajo.Location = new System.Drawing.Point(112, 105);
+            this.cbEmpresaTrabajo.Name = "cbEmpresaTrabajo";
+            this.cbEmpresaTrabajo.Size = new System.Drawing.Size(437, 21);
+            this.cbEmpresaTrabajo.TabIndex = 20;
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaTrabajo).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaTrabajo).DataType = typeof(string);
+            this.uvProtocol.GetValidationSettings(this.cbEmpresaTrabajo).IsRequired = true;
+            this.cbEmpresaTrabajo.SelectedIndexChanged += new System.EventHandler(this.cbIntermediaryOrganization_SelectedIndexChanged);
             // 
             // txtUser
             // 
@@ -425,27 +425,27 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cboVendedor);
             this.groupBox1.Controls.Add(this.btnAgregarEmpresaContrata);
-            this.groupBox1.Controls.Add(this.chkIsActive);
-            this.groupBox1.Controls.Add(this.cbOrganizationInvoice);
+            this.groupBox1.Controls.Add(this.chkEsActivo);
+            this.groupBox1.Controls.Add(this.cbEmpresaCliente);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtValidDays);
+            this.groupBox1.Controls.Add(this.txtComision);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.chkIsHasVigency);
-            this.groupBox1.Controls.Add(this.cbService);
+            this.groupBox1.Controls.Add(this.chkEsComisionable);
+            this.groupBox1.Controls.Add(this.cbServicio);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.cbServiceType);
-            this.groupBox1.Controls.Add(this.txtCostCenter);
+            this.groupBox1.Controls.Add(this.cbTipoServicio);
+            this.groupBox1.Controls.Add(this.txtCentroCosto);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.cbIntermediaryOrganization);
+            this.groupBox1.Controls.Add(this.cbEmpresaTrabajo);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cbGeso);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.cbEsoType);
+            this.groupBox1.Controls.Add(this.cbTipoExamen);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.cbOrganization);
+            this.groupBox1.Controls.Add(this.cbEmpresaEmpleadora);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.txtProtocolName);
+            this.groupBox1.Controls.Add(this.txtNombreProtocolo);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
@@ -500,19 +500,19 @@
             this.btnAgregarEmpresaContrata.UseVisualStyleBackColor = false;
             this.btnAgregarEmpresaContrata.Click += new System.EventHandler(this.btnAgregarEmpresaContrata_Click);
             // 
-            // chkIsActive
+            // chkEsActivo
             // 
-            this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Checked = true;
-            this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsActive.ForeColor = System.Drawing.Color.Black;
-            this.chkIsActive.Location = new System.Drawing.Point(880, 132);
-            this.chkIsActive.Name = "chkIsActive";
-            this.chkIsActive.Size = new System.Drawing.Size(56, 17);
-            this.chkIsActive.TabIndex = 36;
-            this.chkIsActive.Text = "Activo";
-            this.chkIsActive.UseVisualStyleBackColor = true;
+            this.chkEsActivo.AutoSize = true;
+            this.chkEsActivo.Checked = true;
+            this.chkEsActivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEsActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEsActivo.ForeColor = System.Drawing.Color.Black;
+            this.chkEsActivo.Location = new System.Drawing.Point(880, 132);
+            this.chkEsActivo.Name = "chkEsActivo";
+            this.chkEsActivo.Size = new System.Drawing.Size(56, 17);
+            this.chkEsActivo.TabIndex = 36;
+            this.chkEsActivo.Text = "Activo";
+            this.chkEsActivo.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -526,18 +526,18 @@
             this.label3.Text = "Emp. Cliente";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtValidDays
+            // txtComision
             // 
-            this.txtValidDays.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValidDays.Enabled = false;
-            this.txtValidDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValidDays.Location = new System.Drawing.Point(787, 129);
-            this.txtValidDays.MaxLength = 250;
-            this.txtValidDays.Name = "txtValidDays";
-            this.txtValidDays.Size = new System.Drawing.Size(46, 20);
-            this.txtValidDays.TabIndex = 35;
-            this.txtValidDays.TextChanged += new System.EventHandler(this.txtValidDays_TextChanged);
-            this.txtValidDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValidDays_KeyPress);
+            this.txtComision.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtComision.Enabled = false;
+            this.txtComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComision.Location = new System.Drawing.Point(787, 129);
+            this.txtComision.MaxLength = 250;
+            this.txtComision.Name = "txtComision";
+            this.txtComision.Size = new System.Drawing.Size(46, 20);
+            this.txtComision.TabIndex = 35;
+            this.txtComision.TextChanged += new System.EventHandler(this.txtValidDays_TextChanged);
+            this.txtComision.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValidDays_KeyPress);
             // 
             // label2
             // 
@@ -552,18 +552,18 @@
             this.label2.Text = "% de Comisión";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // chkIsHasVigency
+            // chkEsComisionable
             // 
-            this.chkIsHasVigency.AutoSize = true;
-            this.chkIsHasVigency.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsHasVigency.ForeColor = System.Drawing.Color.Black;
-            this.chkIsHasVigency.Location = new System.Drawing.Point(585, 133);
-            this.chkIsHasVigency.Name = "chkIsHasVigency";
-            this.chkIsHasVigency.Size = new System.Drawing.Size(108, 17);
-            this.chkIsHasVigency.TabIndex = 33;
-            this.chkIsHasVigency.Text = "Es comisionable?";
-            this.chkIsHasVigency.UseVisualStyleBackColor = true;
-            this.chkIsHasVigency.CheckedChanged += new System.EventHandler(this.chkIsHasVigency_CheckedChanged);
+            this.chkEsComisionable.AutoSize = true;
+            this.chkEsComisionable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEsComisionable.ForeColor = System.Drawing.Color.Black;
+            this.chkEsComisionable.Location = new System.Drawing.Point(585, 133);
+            this.chkEsComisionable.Name = "chkEsComisionable";
+            this.chkEsComisionable.Size = new System.Drawing.Size(108, 17);
+            this.chkEsComisionable.TabIndex = 33;
+            this.chkEsComisionable.Text = "Es comisionable?";
+            this.chkEsComisionable.UseVisualStyleBackColor = true;
+            this.chkEsComisionable.CheckedChanged += new System.EventHandler(this.chkIsHasVigency_CheckedChanged);
             // 
             // label1
             // 
@@ -591,15 +591,15 @@
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // txtCostCenter
+            // txtCentroCosto
             // 
-            this.txtCostCenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCostCenter.Location = new System.Drawing.Point(686, 105);
-            this.txtCostCenter.MaxLength = 250;
-            this.txtCostCenter.Name = "txtCostCenter";
-            this.txtCostCenter.Size = new System.Drawing.Size(250, 20);
-            this.txtCostCenter.TabIndex = 24;
-            this.txtCostCenter.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
+            this.txtCentroCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCentroCosto.Location = new System.Drawing.Point(686, 105);
+            this.txtCentroCosto.MaxLength = 250;
+            this.txtCentroCosto.Name = "txtCentroCosto";
+            this.txtCentroCosto.Size = new System.Drawing.Size(250, 20);
+            this.txtCentroCosto.TabIndex = 24;
+            this.txtCentroCosto.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
             // 
             // label13
             // 
@@ -985,7 +985,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.Location = new System.Drawing.Point(881, 642);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
@@ -998,7 +998,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOK.Location = new System.Drawing.Point(802, 642);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
@@ -1050,32 +1050,32 @@
         private System.Windows.Forms.Label lblRecordCount2;
         private Infragistics.Win.Misc.UltraValidator uvProtocol;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtCostCenter;
+        private System.Windows.Forms.TextBox txtCentroCosto;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cbOrganizationInvoice;
+        private System.Windows.Forms.ComboBox cbEmpresaCliente;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbIntermediaryOrganization;
+        private System.Windows.Forms.ComboBox cbEmpresaTrabajo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbGeso;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cbEsoType;
+        private System.Windows.Forms.ComboBox cbTipoExamen;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cbOrganization;
+        private System.Windows.Forms.ComboBox cbEmpresaEmpleadora;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtProtocolName;
+        private System.Windows.Forms.TextBox txtNombreProtocolo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ContextMenuStrip cmProtocol;
         private System.Windows.Forms.ToolStripMenuItem New;
         private System.Windows.Forms.ToolStripMenuItem Edit;
         private System.Windows.Forms.ToolStripMenuItem delete;
-        private System.Windows.Forms.ComboBox cbServiceType;
+        private System.Windows.Forms.ComboBox cbTipoServicio;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbService;
+        private System.Windows.Forms.ComboBox cbServicio;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtValidDays;
+        private System.Windows.Forms.TextBox txtComision;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox chkIsHasVigency;
-        private System.Windows.Forms.CheckBox chkIsActive;
+        private System.Windows.Forms.CheckBox chkEsComisionable;
+        private System.Windows.Forms.CheckBox chkEsActivo;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpExamenes;
         private System.Windows.Forms.TabPage tpUsuariosExternos;
