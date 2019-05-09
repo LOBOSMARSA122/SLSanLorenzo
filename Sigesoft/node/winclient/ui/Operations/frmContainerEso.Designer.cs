@@ -41,7 +41,7 @@
             this.tcContEso.Location = new System.Drawing.Point(9, 36);
             this.tcContEso.Name = "tcContEso";
             this.tcContEso.SelectedIndex = 0;
-            this.tcContEso.Size = new System.Drawing.Size(1525, 740);
+            this.tcContEso.Size = new System.Drawing.Size(1325, 650);
             this.tcContEso.TabIndex = 2;
             // 
             // ddlExamenesAnterioes
@@ -66,14 +66,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1546, 795);
+            this.ClientSize = new System.Drawing.Size(1346, 705);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddlExamenesAnterioes);
             this.Controls.Add(this.tcContEso);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmContainerEso";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Exámenes";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmContainerEso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1557,7 +1557,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERECOME", _formActions);
             _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERESTRIC", _formActions);
-
             if (btnAceptarDX.Enabled) return;
             cbCalificacionFinal.Enabled = false;
             cbTipoDx.Enabled = false;
@@ -9165,6 +9164,28 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (tcSubMain.SelectedIndex == 1)
             {
                 lblView.Visible = true;
+            }
+            else if (tcSubMain.SelectedIndex == 3)
+            {
+            //    btnGuardarConclusiones.Visible = true;
+            //    btnGuardarConclusiones.Location = new Point(1147, 500);
+            //    btnInterConsulta.Visible = true;
+            //    btnInterConsulta.Location = new Point(12, 500);
+            //    btnSubirInterconsulta.Visible = true;
+            //    btnSubirInterconsulta.Location = new Point(175, 500);
+            //    btnCertificadoAptitud.Visible = true;
+            //    btnCertificadoAptitud.Location = new Point(338, 500);
+            //    btn312.Visible = true;
+            //    btn312.Location = new Point(508, 500);
+            //    btn7C.Visible = true;
+            //    btn7C.Location = new Point(676, 500);
+                chkinterconsulta.Visible = true;
+                chkinterconsulta.Location = new Point(504, 186);
+            //    chkUtilizaFirmaAptitud.Visible = true;
+            //    chkUtilizaFirmaAptitud.Location = new Point(1014, 500);
+            //    checkFirmaYanacocha.Visible = true;
+            //    checkFirmaYanacocha.Location = new Point(850, 500);
+
             }
             else
             {
