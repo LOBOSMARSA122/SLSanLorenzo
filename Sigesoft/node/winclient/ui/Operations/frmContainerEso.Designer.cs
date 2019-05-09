@@ -28,19 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.tcContEso = new System.Windows.Forms.TabControl();
             this.ddlExamenesAnterioes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1541, 795);
-            this.splitter1.TabIndex = 1;
-            this.splitter1.TabStop = false;
             // 
             // tcContEso
             // 
@@ -79,7 +70,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddlExamenesAnterioes);
             this.Controls.Add(this.tcContEso);
-            this.Controls.Add(this.splitter1);
             this.Name = "frmContainerEso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Exámenes";
@@ -92,7 +82,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.TabControl tcContEso;
         private System.Windows.Forms.ComboBox ddlExamenesAnterioes;
         private System.Windows.Forms.Label label1;

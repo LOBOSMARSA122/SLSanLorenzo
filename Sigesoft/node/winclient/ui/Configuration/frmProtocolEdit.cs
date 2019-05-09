@@ -31,7 +31,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         private string _personId;
         private int? _systemUserId;
         #endregion
-        
+
+
         public frmProtocolEdit(string id, string mode)
         {
             InitializeComponent();
@@ -48,18 +49,21 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 grdExternalUser.Rows[0].Selected = true;
             if (grdProtocolComponent.Rows.Count != 0)
                 grdProtocolComponent.Rows[0].Selected = true;
-            foreach (var control in this.groupBox1.Controls)
-            {
-                //switch (control.GetType())
-                //{
-                //    case TextBox:
-                //        var verdad = true;
-                //        break;
-                //    default:
-                //        break;
-                //}
-                var type = control.GetType();
-            }
+
+
+            //cbIntermediaryOrganization = ;
+            //cbOrganizationInvoice = ;
+            //cbOrganization = ;
+            //cbGeso =  ;
+            //cbServiceType = ;
+            //cbService = ;
+            //txtCostCenter = ;
+            //chkIsHasVigency =  ;
+            //txtValidDays =  ;
+            //txtValidDays =  ;
+            //chkIsActive =  ;
+            //cboVendedor =  ;
+
         }
 
         private void SearchControlAndSetEvents(Control ctrlContainer)
@@ -376,6 +380,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     // Se queda en el formulario.
                 }
 
+                
+
             }
             else
             {
@@ -383,6 +389,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             }
            
         }
+
+        
 
         private void LoadComboBox()
         {

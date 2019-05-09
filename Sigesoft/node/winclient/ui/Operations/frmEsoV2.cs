@@ -8328,6 +8328,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 _personImage = personData.b_PersonImage;
 
                 lblTipoEso.Text = personData.v_EsoTypeName;
+                lblServicio.Text = personData.v_ServiceId;
                 lblProtocolName.Text = personData.v_ProtocolName;
                 _ProtocolId = personData.v_ProtocolId;
                 _customerOrganizationName = personData.v_EmployerOrganizationName;

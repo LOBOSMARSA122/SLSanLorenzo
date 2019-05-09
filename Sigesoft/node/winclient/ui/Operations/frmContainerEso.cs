@@ -70,7 +70,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             frm.Parent = tab;
 
             frm.Visible = true;
-
+          
             tcContEso.TabPages.Add(tab);
             frm.FormBorderStyle = FormBorderStyle.None;
             tcContEso.SelectedTab = tab;
