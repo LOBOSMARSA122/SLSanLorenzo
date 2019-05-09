@@ -9192,6 +9192,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 lblView.Visible = false;
             }
         }
+
+        private void cbAptitudEso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbAptitudEso.SelectedIndex != (int)AptitudeStatus.Apto && cbAptitudEso.SelectedIndex != (int)AptitudeStatus.SinAptitud)
+            {
+                label34.Visible = true;
+                txtComentarioAptitud.Visible = true;
+            }
+            else
+            {
+                label34.Visible = false;
+                txtComentarioAptitud.Visible = false;
+            }
+        }
         
     }
 }
