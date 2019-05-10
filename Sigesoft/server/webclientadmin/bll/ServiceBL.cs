@@ -14621,7 +14621,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                DosisFrecuencia = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DOSIS_FRECUENCIA_ID, "NOCOMBO", 0, "SI"),
                                Descripcion = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID, "NOCOMBO", 0, "SI"),
                                DermatopiaSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
-                               NikolskySiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
+                               NikolskySiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_NIKOLSKY_ID, "NOCOMBO", 0, "SI"),
                                v_OwnerOrganizationName = (from n in dbContext.organization
                                                           where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
                                                           select n.v_Name).SingleOrDefault<string>(),
@@ -18885,7 +18885,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                     join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
                                     join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
                                     join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
-                                    join dise in dbContext.diseases on cfsv.v_Diseases equals dise.v_DiseasesId
+                                    join dise in dbContext.diseases on cfsv.v_DiseasesId equals dise.v_DiseasesId
                                     where (cfsv.i_IsDeleted == isDeleted) &&
                                           (s.v_ServiceId == pstrServiceId) &&
                                           (sc.i_IsDeleted == isDeleted) &&
@@ -18902,7 +18902,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                         i_IsAnormal = cfsv.i_IsAnormal,
                                         i_ValidationMonths = cfsv.i_ValidationMonths,
                                         v_DiseasesName = cfsv.diseases.v_Name,
-                                        v_DiseasesId = cfsv.v_Diseases,
+                                        v_DiseasesId = cfsv.v_DiseasesId,
                                         v_ComponentId = sc.v_ComponentId,
                                         i_GenderId = cfsv.i_GenderId,
                                         v_CIE10 = dise.v_CIE10Id

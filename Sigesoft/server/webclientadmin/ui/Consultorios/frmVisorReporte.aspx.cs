@@ -498,11 +498,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var filiationData = _pacientBL.GetPacientReportEPS_Oftalmo(_serviceId);//_pacientBL.GetPacientReportEPS(_serviceId);//
             var serviceComponents = _serviceBL.GetServiceComponentsReport_Oftalmo(_serviceId);//_serviceBL.GetServiceComponentsReport(_serviceId);//
             var datosP = _pacientBL.DevolverDatosPaciente_Oftalmo(_serviceId);//_pacientBL.DevolverDatosPaciente(_serviceId);//
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
             var _ExamenesServicio = serviceComponents;//_serviceBL.GetServiceComponentsReport(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, _path, datosGrabo, _ExamenesServicio, diagnosticRepository);
+            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, serviceComponents, MedicalCenter, datosP, _path, datosGrabo, _ExamenesServicio, diagnosticRepository);
             Session["NombreTrabajador"] = datosP.Trabajador.Replace(" ", "_");
             System.IO.File.Copy(_path,Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Oftalmología" + ".pdf"),true);
         }
@@ -770,12 +770,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
           {             
             var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);             
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();              
-            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);              
+            //var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);              
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);             
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);              
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);            
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
-            Anexo16A.CreateAnexo16A(_DataService, _ruta, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+            Anexo16A.CreateAnexo16A(_DataService, _ruta, datosP, MedicalCenter, serviceComponents, diagnosticRepository, datosGrabo);
             Session["NombreTrabajador"] = datosP.Trabajador.Replace(" ","_");
             System.IO.File.Copy(_ruta , Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "7D" + ".pdf"), true);       
           }

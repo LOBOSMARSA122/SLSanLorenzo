@@ -1038,33 +1038,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
         #endregion
 
-        public List<Sigesoft.Node.WinClient.BE.OrdenReportes> GetOrdenExcel(ref OperationResult pobjOperationResult, string organizationId)
-        {
-            try
-            {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-
-                var Lista = (from ord in dbContext.ordenexcel
-                    where ord.v_OrganizationId == organizationId
-                    select new Sigesoft.Node.WinClient.BE.OrdenReportes
-                    {
-                        b_Seleccionar = true,
-                        v_OrdenReporteId = ord.v_OrdenExcelId,
-                        v_ColumnaId = ord.v_KeyColumna,
-                        v_CampoId = ord.v_NombreColumna,
-                        i_Orden = ord.i_Orden.Value,
-                    }).ToList();
-
-                return Lista;
-
-            }
-            catch (Exception e)
-            {
-                pobjOperationResult.ExceptionMessage = e.Message;
-                return null;
-            }
-        }
-
         public void AddNodeOrganizationLoactionWarehouse(ref OperationResult pobjOperationResult, NodeOrganizationLoactionWarehouseList pobjNodeOrgLocationWarehouse, List<nodeorganizationlocationwarehouseprofileDto> pobjWarehouseList, List<string> ClientSession)
         {
             //mon.IsActive = true;
