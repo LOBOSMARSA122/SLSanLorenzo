@@ -14621,7 +14621,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                DosisFrecuencia = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DOSIS_FRECUENCIA_ID, "NOCOMBO", 0, "SI"),
                                Descripcion = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID, "NOCOMBO", 0, "SI"),
                                DermatopiaSiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
-                               NikolskySiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID, "NOCOMBO", 0, "SI"),
+                               NikolskySiNo = GetServiceComponentFielValue(a.Ficha, pstrComponentId, Constants.TAMIZAJE_DERMATOLOGIO_NIKOLSKY_ID, "NOCOMBO", 0, "SI"),
                                v_OwnerOrganizationName = (from n in dbContext.organization
                                                           where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
                                                           select n.v_Name).SingleOrDefault<string>(),
