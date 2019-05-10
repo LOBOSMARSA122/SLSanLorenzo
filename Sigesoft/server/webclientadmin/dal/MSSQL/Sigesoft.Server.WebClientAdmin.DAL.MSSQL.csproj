@@ -83,19 +83,14 @@
     <Compile Include="GeneratedAssemblers\embarzoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\workstationdangersAssembler.cs" />
     <Compile Include="GeneratedAssemblers\warehouseAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\vigilanciaserviceAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\vigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\tramasAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\testcorrunceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserrolenodeAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemusergobalprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemparameterAssembler.cs" />
     <Compile Include="GeneratedAssemblers\supplierAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\subscriptionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\softwarecomponentreleaseAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderAssembler.cs" />
@@ -128,8 +123,6 @@
     <Compile Include="GeneratedAssemblers\productAssembler.cs" />
     <Compile Include="GeneratedAssemblers\procedurebyserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\problemaAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\planvigilanciadiseasesAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\planvigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planintegralAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personmedicalhistoryAssembler.cs" />
@@ -139,9 +132,9 @@
     <Compile Include="GeneratedAssemblers\organizationpersonAssembler.cs" />
     <Compile Include="GeneratedAssemblers\organizationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ordenreporteAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\ordenexcelAssembler.cs" />
     <Compile Include="GeneratedAssemblers\occupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\noxioushabitsAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\notificationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodesyncstatusAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeserviceprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeorganizationprofileAssembler.cs" />
@@ -159,7 +152,6 @@
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\liquidacionAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\identitystringAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
@@ -173,17 +165,21 @@
     <Compile Include="GeneratedAssemblers\resumentipoempresaResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reportegerencialResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reporteatencionmedicaResultAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\obtenervaloresResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\obtenerproductoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\obtenerpreciotarifarioResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\obtenernetoporcobrarResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gerenciatipopagoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gerenciatipoexamenResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\gerenciacreditoxempresaResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gerenciacreditoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturadeudoraResultAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Node\WinClient\DAL\MSSQL\Sigesoft.Node.WinClient.DAL.MSSQL.csproj">
+      <Project>{0B732067-FEC9-4DA2-AFD9-6DA773094E3E}</Project>
+      <Name>Sigesoft.Node.WinClient.DAL.MSSQL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\be\Sigesoft.Server.WebClientAdmin.BE.csproj">
       <Project>{B78BC42C-F0B2-4842-8C13-8D0DF6DBE65D}</Project>
       <Name>Sigesoft.Server.WebClientAdmin.BE</Name>

@@ -11,6 +11,7 @@ using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
 using Infragistics.Win.UltraWinGrid;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 namespace Sigesoft.Node.WinClient.UI.Configuration
 {
@@ -35,6 +36,95 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             _id = id;
             _mode = mode;
         }
+
+
+        #region GetChanges
+        string[] nombreCampos =
+        {
+
+            "txtPrecioFinal", "chkExamenAdicional", "chkExamenCondicional", "cbOperador", "txtEdad",
+            "cbGenero", "chkIMC", "txtMayorque", "cbGrupoEtario"
+        };
+
+        private List<Campos> ListValuesCampo = new List<Campos>();
+
+        
+
+
+        private string SetChanges()
+        {
+            string cadena = _protocolBL.GetComentaryUpdateByProtocolComponentId(_id);
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampo.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        cadena += item + ":" + ValorCampo + "|";
+                    }
+                }
+            }
+
+            return cadena;
+        }
+
+        private void SetOldValues()
+        {
+
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    Campos _Campo = new Campos();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampo.Add(_Campo);
+                }
+            }
+        }
+
+        private string GetValueControl(string ControlId, Control ctrl)
+        {
+            string value1 = null;
+
+            switch (ControlId)
+            {
+                case "TextBox":
+                    value1 = ((TextBox)ctrl).Text;
+                    break;
+                case "ComboBox":
+                    value1 = ((ComboBox)ctrl).Text;
+                    break;
+                case "CheckBox":
+                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
+                    break;
+                case "RadioButton":
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return value1;
+        }
+
+        #endregion
+        
 
         private List<MedicalExamList> GetData(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
         {
@@ -73,22 +163,22 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         private void LoadComboBox()
         {
             OperationResult objOperationResult = new OperationResult();
-            Utils.LoadDropDownList(cbOperator, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 117, null));
+            Utils.LoadDropDownList(cbOperador, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 117, null));
 
-            Utils.LoadDropDownList(cbGender, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 130, null));
+            Utils.LoadDropDownList(cbGenero, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 130, null));
             Utils.LoadDropDownList(cbGrupoEtario, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 254, null), DropDownListAction.All);
             
         }
 
         private void chkIsConditional_CheckedChanged(object sender, EventArgs e)
         {
-            gbConditional.Enabled = (chkIsConditional.Checked);
+            gbConditional.Enabled = (chkExamenCondicional.Checked);
 
-            if (!chkIsConditional.Checked)
+            if (!chkExamenCondicional.Checked)
             {
-                cbOperator.SelectedValue = "6";
-                txtAge.Value = 0;
-                cbGender.SelectedValue = ((int)GenderConditional.AMBOS).ToString();
+                cbOperador.SelectedValue = "6";
+                txtEdad.Value = 0;
+                cbGenero.SelectedValue = ((int)GenderConditional.AMBOS).ToString();
                 cbGrupoEtario.SelectedValue = "-1";
             }
 
@@ -130,8 +220,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
             LoadComboBox();
 
-            cbGender.SelectedValue = ((int)GenderConditional.AMBOS).ToString();
-            cbOperator.SelectedValue = ((int) Operator2Values.X_esMayorIgualque_A).ToString();
+            cbGenero.SelectedValue = ((int)GenderConditional.AMBOS).ToString();
+            cbOperador.SelectedValue = ((int) Operator2Values.X_esMayorIgualque_A).ToString();
 
             if (_mode == "New")
             {
@@ -147,12 +237,12 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 var findResult = _tmpProtocolcomponentList.Find(p => p.v_ProtocolComponentId == _id);
 
                 lblExamenSeleccionado.Text = findResult.v_ComponentName;
-                txtFinalPrice.Value = findResult.r_Price;
-                chkExaAdd.Checked = Convert.ToBoolean(findResult.i_isAdditional);
-                chkIsConditional.Checked = Convert.ToBoolean(findResult.i_IsConditionalId);                
-                cbOperator.SelectedValue = findResult.i_OperatorId.ToString();
-                txtAge.Value = findResult.i_Age;
-                cbGender.SelectedValue = findResult.i_GenderId.ToString();
+                txtPrecioFinal.Value = findResult.r_Price;
+                chkExamenAdicional.Checked = Convert.ToBoolean(findResult.i_isAdditional);
+                chkExamenCondicional.Checked = Convert.ToBoolean(findResult.i_IsConditionalId);                
+                cbOperador.SelectedValue = findResult.i_OperatorId.ToString();
+                txtEdad.Value = findResult.i_Age;
+                cbGenero.SelectedValue = findResult.i_GenderId.ToString();
                 cbGrupoEtario.SelectedValue = findResult.i_GrupoEtarioId.ToString();
                 if (findResult.i_IsConditionalIMC == 1)
                 {
@@ -164,6 +254,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 }
                 txtMayorque.Value = findResult.r_Imc;
 
+                SetOldValues();
             }
         }
 
@@ -189,14 +280,14 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             //    return;
             //}
 
-            if (chkIsConditional.Checked)
+            if (chkExamenCondicional.Checked)
             {
-                if (cbOperator.SelectedIndex != 0)
+                if (cbOperador.SelectedIndex != 0)
                 {
-                    if (Convert.ToInt32(txtAge.Value) == 0)
+                    if (Convert.ToInt32(txtEdad.Value) == 0)
                     {
                         MessageBox.Show("Por favor ingrese una edad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtAge.Focus();
+                        txtEdad.Focus();
                         return;
                     }
                 }
@@ -258,11 +349,11 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             string gender = string.Empty;
             int? age = 0;
 
-            if (chkIsConditional.Checked)
+            if (chkExamenCondicional.Checked)
             {
-                opera = cbOperator.SelectedIndex != 0 ? cbOperator.Text : string.Empty;
-                gender = cbGender.Text;
-                age = Convert.ToInt32(txtAge.Value);
+                opera = cbOperador.SelectedIndex != 0 ? cbOperador.Text : string.Empty;
+                gender = cbGenero.Text;
+                age = Convert.ToInt32(txtEdad.Value);
             }
             else
             {
@@ -282,7 +373,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     _protocolcomponent.v_ComponentId = _componentId;
                     _protocolcomponent.v_ComponentName = grdComponent.Selected.Rows[0].Cells[1].Value.ToString();
 
-                    _protocolcomponent.r_Price = float.Parse(txtFinalPrice.Value.ToString());
+                    _protocolcomponent.r_Price = float.Parse(txtPrecioFinal.Value.ToString());
                     _protocolcomponent.v_Operator = opera;
                     _protocolcomponent.i_Age = age;
                     _protocolcomponent.v_Gender = gender;
@@ -290,11 +381,11 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     _protocolcomponent.i_IsConditionalIMC = chkIMC.Checked == true ? 1 : 0;
                     _protocolcomponent.r_Imc = decimal.Parse(txtMayorque.Value.ToString());
 
-                    _protocolcomponent.i_isAdditional = Convert.ToInt32(chkExaAdd.Checked);
-                    _protocolcomponent.i_IsConditionalId = Convert.ToInt32(chkIsConditional.Checked);
-                    _protocolcomponent.v_IsConditional = chkIsConditional.Checked ? "Si" : "No";
-                    _protocolcomponent.i_OperatorId = Convert.ToInt32(cbOperator.SelectedValue);
-                    _protocolcomponent.i_GenderId = Convert.ToInt32(cbGender.SelectedValue);
+                    _protocolcomponent.i_isAdditional = Convert.ToInt32(chkExamenAdicional.Checked);
+                    _protocolcomponent.i_IsConditionalId = Convert.ToInt32(chkExamenCondicional.Checked);
+                    _protocolcomponent.v_IsConditional = chkExamenCondicional.Checked ? "Si" : "No";
+                    _protocolcomponent.i_OperatorId = Convert.ToInt32(cbOperador.SelectedValue);
+                    _protocolcomponent.i_GenderId = Convert.ToInt32(cbGenero.SelectedValue);
                     _protocolcomponent.i_GrupoEtarioId = Convert.ToInt32(cbGrupoEtario.SelectedValue);
                     _protocolcomponent.i_RecordStatus = (int)RecordStatus.Agregado;
                     _protocolcomponent.v_ComponentTypeName = grdComponent.Selected.Rows[0].Cells["v_ComponentTypeName"].Value.ToString();
@@ -308,7 +399,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     {
                         if (findResult.i_RecordType == (int)RecordType.NoTemporal)   // El registro Tiene in ID de BD
                         {
-                            findResult.r_Price = float.Parse(txtFinalPrice.Value.ToString());
+                            findResult.r_Price = float.Parse(txtPrecioFinal.Value.ToString());
                             findResult.v_Operator = opera;
                             findResult.i_Age = age;
                             findResult.v_Gender = gender;
@@ -316,18 +407,18 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                             _protocolcomponent.i_IsConditionalIMC = chkIMC.Checked == true ? 1 : 0;
                             _protocolcomponent.r_Imc = decimal.Parse(txtMayorque.Value.ToString());
 
-                            findResult.i_isAdditional = Convert.ToInt32(chkExaAdd.Checked);
-                            findResult.i_IsConditionalId = Convert.ToInt32(chkIsConditional.Checked);
-                            findResult.v_IsConditional = chkIsConditional.Checked ? "Si" : "No";
-                            findResult.i_OperatorId = Convert.ToInt32(cbOperator.SelectedValue);
-                            findResult.i_GenderId = Convert.ToInt32(cbGender.SelectedValue);
+                            findResult.i_isAdditional = Convert.ToInt32(chkExamenAdicional.Checked);
+                            findResult.i_IsConditionalId = Convert.ToInt32(chkExamenCondicional.Checked);
+                            findResult.v_IsConditional = chkExamenCondicional.Checked ? "Si" : "No";
+                            findResult.i_OperatorId = Convert.ToInt32(cbOperador.SelectedValue);
+                            findResult.i_GenderId = Convert.ToInt32(cbGenero.SelectedValue);
                             findResult.i_GrupoEtarioId = Convert.ToInt32(cbGrupoEtario.SelectedValue);
                             findResult.v_ComponentTypeName = grdComponent.Selected.Rows[0].Cells["v_ComponentTypeName"].Value.ToString();
                             findResult.i_RecordStatus = (int)RecordStatus.Grabado;                           
                         }
                         else if (findResult.i_RecordType == (int)RecordType.Temporal)   // El registro tiene un ID temporal [GUID]
                         {
-                            findResult.r_Price = float.Parse(txtFinalPrice.Value.ToString());
+                            findResult.r_Price = float.Parse(txtPrecioFinal.Value.ToString());
                             findResult.v_Operator = opera;
                             findResult.i_Age = age;
                             findResult.v_Gender = gender;
@@ -335,11 +426,11 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                             _protocolcomponent.i_IsConditionalIMC = chkIMC.Checked == true ? 1 : 0;
                             _protocolcomponent.r_Imc = decimal.Parse(txtMayorque.Value.ToString());
 
-                            findResult.i_isAdditional = Convert.ToInt32(chkExaAdd.Checked);
-                            findResult.i_IsConditionalId = Convert.ToInt32(chkIsConditional.Checked);
-                            findResult.v_IsConditional = chkIsConditional.Checked ? "Si" : "No";
-                            findResult.i_OperatorId = Convert.ToInt32(cbOperator.SelectedValue);
-                            findResult.i_GenderId = Convert.ToInt32(cbGender.SelectedValue);
+                            findResult.i_isAdditional = Convert.ToInt32(chkExamenAdicional.Checked);
+                            findResult.i_IsConditionalId = Convert.ToInt32(chkExamenCondicional.Checked);
+                            findResult.v_IsConditional = chkExamenCondicional.Checked ? "Si" : "No";
+                            findResult.i_OperatorId = Convert.ToInt32(cbOperador.SelectedValue);
+                            findResult.i_GenderId = Convert.ToInt32(cbGenero.SelectedValue);
                             findResult.i_GrupoEtarioId = Convert.ToInt32(cbGrupoEtario.SelectedValue);
                             findResult.v_ComponentTypeName = grdComponent.Selected.Rows[0].Cells["v_ComponentTypeName"].Value.ToString();
                             findResult.i_RecordStatus = (int)RecordStatus.Agregado;                           
@@ -358,7 +449,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             {
                 var findResult = _tmpProtocolcomponentList.Find(p => p.v_ProtocolComponentId == _id);
 
-                findResult.r_Price = float.Parse(txtFinalPrice.Value.ToString());
+                findResult.r_Price = float.Parse(txtPrecioFinal.Value.ToString());
                 findResult.v_Operator = opera;
                 findResult.i_Age = age;
                 findResult.v_Gender = gender;
@@ -370,11 +461,11 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 }
                 findResult.r_Imc = decimal.Parse(txtMayorque.Value.ToString());
 
-                findResult.i_isAdditional = Convert.ToInt32(chkExaAdd.Checked);
-                findResult.i_IsConditionalId = Convert.ToInt32(chkIsConditional.Checked);
-                findResult.v_IsConditional = chkIsConditional.Checked ? "Si" : "No";
-                findResult.i_OperatorId = Convert.ToInt32(cbOperator.SelectedValue);
-                findResult.i_GenderId = Convert.ToInt32(cbGender.SelectedValue);
+                findResult.i_isAdditional = Convert.ToInt32(chkExamenAdicional.Checked);
+                findResult.i_IsConditionalId = Convert.ToInt32(chkExamenCondicional.Checked);
+                findResult.v_IsConditional = chkExamenCondicional.Checked ? "Si" : "No";
+                findResult.i_OperatorId = Convert.ToInt32(cbOperador.SelectedValue);
+                findResult.i_GenderId = Convert.ToInt32(cbGenero.SelectedValue);
                 findResult.i_GrupoEtarioId = Convert.ToInt32(cbGrupoEtario.SelectedValue);
                 findResult.i_RecordStatus = (int)RecordStatus.Modificado;
 
@@ -389,7 +480,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             {
                 UltraGrid grd = ((UltraGrid)sender);
                 _componentId = grdComponent.Selected.Rows[0].Cells[0].Value.ToString();
-                txtFinalPrice.Value = grd.Selected.Rows[0].Cells["r_BasePrice"].Value.ToString();
+                txtPrecioFinal.Value = grd.Selected.Rows[0].Cells["r_BasePrice"].Value.ToString();
                 lblExamenSeleccionado.Text = grd.Selected.Rows[0].Cells["v_Name"].Value.ToString();
             }
         }

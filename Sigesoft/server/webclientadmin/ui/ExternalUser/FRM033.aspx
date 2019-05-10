@@ -172,13 +172,22 @@
         })
         
 
-        function SetDataTable(values) {
-            console.log(values);
+        function SetDataTable(valuesBoard) {
+            var values = valuesBoard.ListaMatriz;
+            var ordenReporte = valuesBoard.ListaOrdenReporte;
+            console.log(valuesBoard);
+
+            var arrKeys = [];
+
+            for (var a = 0; a < ordenReporte.length; a++) {
+                arrKeys.push(ordenReporte[a].v_ColumnaId);
+            }
+            console.log(arrKeys);
             if (values.length > 0) {
                 var html = "";
                 var arrHtmlCabecera = []
                 for (var key in values[0]) {
-                    if (key != "__type") {
+                    if (arrKeys.indexOf(key) !== -1) {
                         arrHtmlCabecera.push('<th id=' + key + ' scope="col">' + key + '</th>');
                     }                    
                 }
@@ -190,21 +199,25 @@
                     rows += "<tr>";
 
                     for (var column in values[i]) {
-                        if (column !== "__type") {
-                            if (column == "FechaNacimiento" || column == "d_Fur" || column  == "FechaExamen" || column == "FechaSegundaProgramacion" || column == "FechaProgramacion" || column == "FechaDeVencimiento") {
+
+                        if (arrKeys.indexOf(column) !== -1) {
+                            if (column == "FechaNacimiento" || column == "d_Fur" || column == "FechaExamen" || column == "FechaSegundaProgramacion" || column == "FechaProgramacion" || column == "FechaDeVencimiento") {
                                 if (values[i][column] != null) {
                                     var year = new Date(parseInt(values[i][column].substr(6))).getFullYear();
                                     var month = new Date(parseInt(values[i][column].substr(6))).getMonth();
                                     var day = new Date(parseInt(values[i][column].substr(6))).getDate();
                                     values[i][column] = day + "/" + month + "/" + year;
                                 }
-                                    
+
                             }
                             if (values[i][column] == "null" || values[i][column] == null) {
                                 values[i][column] = "";
                             }
                             rows += '<td nowrap>' + values[i][column] + '</td>';
                         }
+
+                        
+                        
                     }
                     rows += "</tr>";
                 }

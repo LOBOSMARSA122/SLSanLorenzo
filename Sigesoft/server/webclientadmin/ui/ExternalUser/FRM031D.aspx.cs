@@ -74,7 +74,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             switch (componentId)
             {
                 case Constants.INFORME_ANEXO_312:
-                    GenerateAnexo312(RutaTemporal, ServicioId, PacienteId, EmpresaCliente);
+                    //GenerateAnexo312(RutaTemporal, ServicioId, PacienteId, EmpresaCliente);
                     break;
                 case Constants.INFORME_FICHA_MEDICA_TRABAJADOR:
                     GenerateInformeMedicoTrabajador(RutaTemporal, ServicioId, PacienteId, EmpresaCliente);
@@ -93,45 +93,45 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             }
         }
 
-        private void GenerateAnexo312(string pathFile, string ServicioId, string PacienteId, string EmpresaCliente)
-        {
-            var filiationData = _pacientBL.GetPacientReportEPS(ServicioId);
-            var _listAtecedentesOcupacionales = _historyBL.GetHistoryReport(PacienteId);
-            var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(PacienteId);
-            var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(PacienteId);
-            var _DataService = _serviceBL.GetServiceReport(ServicioId);
-            var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(PacienteId);
+        //private void GenerateAnexo312(string pathFile, string ServicioId, string PacienteId, string EmpresaCliente)
+        //{
+        //    var filiationData = _pacientBL.GetPacientReportEPS(ServicioId);
+        //    var _listAtecedentesOcupacionales = _historyBL.GetHistoryReport(PacienteId);
+        //    var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(PacienteId);
+        //    var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(PacienteId);
+        //    var _DataService = _serviceBL.GetServiceReport(ServicioId);
+        //    var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(PacienteId);
 
-            var Antropometria = _serviceBL.ValoresComponente(ServicioId, Constants.ANTROPOMETRIA_ID);
-            var FuncionesVitales = _serviceBL.ValoresComponente(ServicioId, Constants.FUNCIONES_VITALES_ID);
-            var ExamenFisico = _serviceBL.ValoresComponente(ServicioId, Constants.EXAMEN_FISICO_ID);
-            var Oftalmologia = _serviceBL.ValoresComponente(ServicioId, Constants.OFTALMOLOGIA_ID);
-            var Psicologia = _serviceBL.ValoresExamenComponete(ServicioId, Constants.PSICOLOGIA_ID, 195);
-            var OIT = _serviceBL.ValoresExamenComponete(ServicioId, Constants.OIT_ID, 211);
+        //    var Antropometria = _serviceBL.ValoresComponente(ServicioId, Constants.ANTROPOMETRIA_ID);
+        //    var FuncionesVitales = _serviceBL.ValoresComponente(ServicioId, Constants.FUNCIONES_VITALES_ID);
+        //    var ExamenFisico = _serviceBL.ValoresComponente(ServicioId, Constants.EXAMEN_FISICO_ID);
+        //    var Oftalmologia = _serviceBL.ValoresComponente(ServicioId, Constants.OFTALMOLOGIA_ID);
+        //    var Psicologia = _serviceBL.ValoresExamenComponete(ServicioId, Constants.PSICOLOGIA_ID, 195);
+        //    var OIT = _serviceBL.ValoresExamenComponete(ServicioId, Constants.OIT_ID, 211);
 
-            var RX = _serviceBL.ValoresExamenComponete(ServicioId, Constants.RX_TORAX_ID, 211);
-            var RX1 = _serviceBL.ValoresExamenComponete(ServicioId, Constants.RX_TORAX_ID, 135);
-            var Laboratorio = _serviceBL.ValoresComponente(ServicioId, Constants.INFORME_LABORATORIO_ID);
-            //var Audiometria = _serviceBL.ValoresComponente(ServicioId, Constants.AUDIOMETRIA_ID);
-            var Audiometria = _serviceBL.GetDiagnosticForAudiometria(ServicioId, Constants.AUDIOMETRIA_ID);
-            var Espirometria = _serviceBL.ValoresExamenComponete(ServicioId, Constants.ESPIROMETRIA_ID, 210);
-            var _DiagnosticRepository = _serviceBL.GetServiceDisgnosticsReports(ServicioId);
-            var _Recomendation = _serviceBL.GetServiceRecommendationByServiceId(ServicioId);
-            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(ServicioId);
-            var ValoresDxLab = _serviceBL.ValoresComponenteAMC(ServicioId, 1);
-            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            //var TestIhihara = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ISHIHARA_ID);
-            //var TestEstereopsis = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ESTEREOPSIS_ID);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport(ServicioId);
+        //    var RX = _serviceBL.ValoresExamenComponete(ServicioId, Constants.RX_TORAX_ID, 211);
+        //    var RX1 = _serviceBL.ValoresExamenComponete(ServicioId, Constants.RX_TORAX_ID, 135);
+        //    var Laboratorio = _serviceBL.ValoresComponente(ServicioId, Constants.INFORME_LABORATORIO_ID);
+        //    //var Audiometria = _serviceBL.ValoresComponente(ServicioId, Constants.AUDIOMETRIA_ID);
+        //    var Audiometria = _serviceBL.GetDiagnosticForAudiometria(ServicioId, Constants.AUDIOMETRIA_ID);
+        //    var Espirometria = _serviceBL.ValoresExamenComponete(ServicioId, Constants.ESPIROMETRIA_ID, 210);
+        //    var _DiagnosticRepository = _serviceBL.GetServiceDisgnosticsReports(ServicioId);
+        //    var _Recomendation = _serviceBL.GetServiceRecommendationByServiceId(ServicioId);
+        //    var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(ServicioId);
+        //    var ValoresDxLab = _serviceBL.ValoresComponenteAMC(ServicioId, 1);
+        //    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+        //    var TestIhihara = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ISHIHARA_ID);
+        //    var TestEstereopsis = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ESTEREOPSIS_ID);
+        //    var serviceComponents = _serviceBL.GetServiceComponentsReport(ServicioId);
 
 
-            FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
-                     filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
-                     _listMedicoPersonales, _listaHabitoNocivos,
-                     Audiometria,// Psicologia, OIT, RX,  , Espirometria,
-                     _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,//TestIhihara,TestEstereopsis,
-                     serviceComponents, pathFile);
-        }
+        //    FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
+        //             filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
+        //             _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales, ExamenFisico, Oftalmologia,Psicologia,
+        //             Audiometria, Psicologia, OIT, RX,  Espirometria,
+        //             _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,TestIhihara,TestEstereopsis,
+        //             serviceComponents, pathFile);
+        //}
 
         private void GenerateInformeMedicoTrabajador(string pathFile, string ServicioId, string PacienteId, string EmpresaCliente)
         {
@@ -193,7 +193,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             switch (componentId)
             {
                 case Constants.INFORME_ANEXO_312:
-                    GenerateAnexo312(RutaTemporal, ServicioId, PacienteId, EmpresaCliente);
+                    //GenerateAnexo312(RutaTemporal, ServicioId, PacienteId, EmpresaCliente);
                     _filesNameToMerge.Add(RutaTemporal);
                     break;
                 case Constants.INFORME_FICHA_MEDICA_TRABAJADOR:

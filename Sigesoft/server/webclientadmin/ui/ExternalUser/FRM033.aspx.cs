@@ -16,6 +16,7 @@ using System.Web.Services;
 using System.Web.Script.Services;
 using CrystalDecisions.Shared.Json;
 using Newtonsoft.Json;
+using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Server.WebClientAdmin.BE.Custom;
 
 namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
@@ -89,12 +90,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
         }
 
         [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public static List<Sigesoft.Node.WinClient.BE.MatrizExcel> ImprimirTabla(string FechaInicio, string FechaFin, string OrganizationId)
+        public static Sigesoft.Node.WinClient.BE.BoardMatriz ImprimirTabla(string FechaInicio, string FechaFin, string OrganizationId)
         {
-
+            OperationResult objOperationResult = new OperationResult();
             if (OrganizationId != "-1")
             {
                 List<string> Filters = new List<string>();
+               Sigesoft.Node.WinClient.BE.BoardMatriz _BoardMatriz = new Sigesoft.Node.WinClient.BE.BoardMatriz();
+
                 Filters.Add("v_CustomerOrganizationId==" + "\"" + OrganizationId + "\"");
                 string strFilterExpression = null;
                 if (Filters.Count > 0)
@@ -108,21 +111,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
 
                 }
                 var _objData = new ProtocolBL().ReporteMatrizExcel(DateTime.Parse(FechaInicio), DateTime.Parse(FechaFin), OrganizationId, strFilterExpression);
-
-                return _objData;
+                var listaOrdenExcel = new OrganizationBL().GetOrdenExcel(ref objOperationResult, OrganizationId);
+                _BoardMatriz.ListaMatriz = _objData;
+                _BoardMatriz.ListaOrdenReporte = listaOrdenExcel;
+                return _BoardMatriz;
             }
 
             return null;
-            //if (ddlEmpresa.SelectedValue.ToString() != "-1")
-            //{
-            //    var fechInicio = dpFechaInicio.SelectedDate.Value;
-            //    Filters.Add("v_CustomerOrganizationId==" + "\"" + ddlEmpresa.SelectedValue + "\"");
-            //    
-            //    return fechInicio;  
 
-            //}
-
-            //return FechaInicio + "|" + FechaFin + "|" + OrganizationId;
         }
 
         private List<Sigesoft.Node.WinClient.BE.MatrizExcel> GetData(string pstrFilterExpression)

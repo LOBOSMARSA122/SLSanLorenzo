@@ -95,7 +95,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
             var query = (from A in dbContext.componentfieldvalues
-                         where A.v_DiseasesId == pDiseases && A.v_ComponentFieldId == pComponentFieldId
+                         where A.v_Diseases == pDiseases && A.v_ComponentFieldId == pComponentFieldId
 
                          select new
                          {

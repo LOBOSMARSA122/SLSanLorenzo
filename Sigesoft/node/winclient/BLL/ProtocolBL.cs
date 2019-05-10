@@ -367,6 +367,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         objEntitySource1.i_GrupoEtarioId = item.i_GrupoEtarioId;
                         objEntitySource1.r_Imc = item.r_Imc;
                         objEntitySource1.i_IsDeleted = 0;
+                        objEntitySource1.v_ComentaryUpdate = item.v_ComentaryUpdate;
 
                         objEntitySource1.d_UpdateDate = DateTime.Now;
                         objEntitySource1.i_UpdateUserId = Int32.Parse(ClientSession[2]);
@@ -2324,6 +2325,20 @@ namespace Sigesoft.Node.WinClient.BLL
                 throw;
             }
         }
-        
+
+        public string GetComentaryUpdateByProtocolComponentId(string protocolComponentId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var comentary = (from pro in dbContext.protocolcomponent
+                    where pro.v_ProtocolComponentId == protocolComponentId
+                    select pro.v_ComentaryUpdate).FirstOrDefault();
+
+            if (comentary == null)
+            {
+                return "";
+            }
+
+            return comentary;
+        }
     }
 }
