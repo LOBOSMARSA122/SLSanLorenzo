@@ -105,6 +105,7 @@
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="Coprocultivo_PSeriado.cs" />
     <Compile Include="ConexionSambhs.cs" />
+    <Compile Include="Declaracion_Jurada_Sintomatico_Respiratorio.cs" />
     <Compile Include="Informe_Radiologico_Lumina.cs" />
     <Compile Include="LiquidacionAseguradoraReport.cs" />
     <Compile Include="Osteomuscular_MiBanco.cs" />
