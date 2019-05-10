@@ -99,5 +99,18 @@ namespace Sigesoft.Node.Contasol.Integration.Contasol
                 throw;
             }
         }
+
+        public string GetComentaryUpdateByPlanId(int planId)
+        {
+            using (var dbContext = new SigesoftEntitiesModel())
+            {
+
+                var comentario = (from pl in dbContext.plan
+                    where pl.i_PlanId == planId
+                    select pl.v_ComentaryUpdate).FirstOrDefault();
+
+                return comentario;
+            }
+        }
     }
 }

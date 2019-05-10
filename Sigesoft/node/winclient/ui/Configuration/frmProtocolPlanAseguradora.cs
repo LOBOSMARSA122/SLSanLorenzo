@@ -27,34 +27,64 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         #region GetChanges
 
-        //private List<Campos> SetChangeProtocolComponent(BindingList<planDto> NewListPlan)
-        //{
-        //    var old = _OldProtocolcomponentListForcomentary;
-        //    var nuevo = _tmpProtocolcomponentList;
-        //    bool cambios = false;
-        //    List<Campos> ComentaryProtComponent = new List<Campos>();
-        //    foreach (var itemOld in old)
-        //    {
-        //        string cadena = _protocolBL.GetComentaryUpdateByProtocolComponentId(itemOld.v_ProtocolComponentId);
+        private List<Campos> SetChangeProtocolComponent(List<planDto> NewListPlan)
+        {
+            //var nuevo = _tmpProtocolcomponentList;
+            
+            List<Campos> ListPlan = new List<Campos>();
+            foreach (var itemOld in OldListPlan)
+            {
+                bool cambios = false;
+                string comentario = _objPlanBl.GetComentaryUpdateByPlanId(itemOld.i_PlanId);
+
+                comentario += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+                var itemNew = NewListPlan.Find(x => x.i_PlanId == itemOld.i_PlanId);
+                
+                if (itemOld.i_EsCoaseguro != itemNew.i_EsCoaseguro)
+                {
+                    var valor = itemOld.i_EsCoaseguro == 0 && itemOld.i_EsCoaseguro != null ? "NO" : "SI";
+                    comentario += "EsCoaseguro:" + valor + "|";
+                    cambios = true;
+                }
+
+                if (itemOld.d_Importe != itemNew.d_Importe)
+                {
+                    comentario += "Importe:" + itemOld.d_Importe + "|";
+                    cambios = true;
+                }
+
+                if (itemOld.d_ImporteCo != itemNew.d_ImporteCo)
+                {
+                    comentario += "ImporteCo:" + itemOld.d_ImporteCo + "|";
+                    cambios = true;
+                }
+
+                if (itemOld.i_EsDeducible != itemNew.i_EsDeducible)
+                {
+                    var valor = itemOld.i_EsDeducible == 0 && itemOld.i_EsDeducible != null ? "NO" : "SI";
+                    comentario += "EsDeducible:" + valor + "|";
+                    cambios = true;
+                }
+
+                if (itemOld.NombreLinea != itemNew.NombreLinea)
+                {
+                    comentario += "UnidadProductiva:" + itemOld.NombreLinea + "|";
+                    cambios = true;
+                }
 
 
-        //        cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
-        //        var itemNew = nuevo.Find(x => x.v_ProtocolComponentId == itemOld.v_ProtocolComponentId);
 
-        //        if (cambios)
-        //        {
-        //            Campos _Campos = new Campos();
-        //            _Campos.ValorCampo = cadena;
-        //            _Campos.NombreCampo = itemOld.v_ProtocolComponentId;
-        //            ComentaryProtComponent.Add(_Campos);
-        //        }
+                if (cambios)
+                {
+                    Campos _Campos = new Campos();
+                    _Campos.ValorCampo = comentario;
+                    _Campos.NombreCampo = itemOld.i_PlanId.ToString();
+                    ListPlan.Add(_Campos);
+                }
+            }
 
-
-        //    }
-
-        //    return ComentaryProtComponent;
-
-        //}
+            return ListPlan;
+        }
 
 
         #endregion
@@ -86,7 +116,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 else
                     cboEmpresa.SelectedIndex = 0;
                 _gridDataSouce = _objPlanBl.ObtenerPlanesPorProtocolo(ref objOperationResult1, _protocolId);
-                OldListPlan = _gridDataSouce;
+
                 grd.DataSource = _gridDataSouce;
             }
             catch (Exception ex)
@@ -168,6 +198,9 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         {
             try
             {
+                //Obtengo la data antes de que se actualize
+                OldListPlan = _objPlanBl.ObtenerPlanesPorProtocolo(ref objOperationResult1, _protocolId);
+
                 objOperationResult1 = new OperationResult();
                 var data = grd.Rows.Select(p => (planDto)p.ListObject).ToList();
                 foreach (var item in data)
@@ -191,7 +224,17 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     item.v_OrganizationSeguroId = _aseguradoraId.Trim();
                 }
 
-                //SetChangeProtocolComponent(data);
+                var cambiados = SetChangeProtocolComponent(data);
+
+                foreach (var plan in cambiados)
+                {
+                    var itemData = data.Find(y => y.i_PlanId == Int32.Parse(plan.NombreCampo));
+                    if (itemData != null)
+                    {
+                        data.Find(y => y.i_PlanId == Int32.Parse(plan.NombreCampo)).v_ComentaryUpdate = plan.ValorCampo;
+                    }
+                }
+
                 _objPlanBl.UpdatePlan(_aseguradoraId, _protocolId, data, _listToDelete);
                 Close();
             }

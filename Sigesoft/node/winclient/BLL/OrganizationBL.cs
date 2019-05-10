@@ -13,6 +13,15 @@ namespace Sigesoft.Node.WinClient.BLL
 {
    public class OrganizationBL
     {
+
+        public string GetComentaryUpdateByOrganizationId(string organizationId)
+        {
+            using (var dbContext = new SigesoftEntitiesModel())
+            {
+                return dbContext.organization.FirstOrDefault(p => p.v_OrganizationId == organizationId).v_ComentaryUpdate;
+            }
+        }
+
        public bool OrganizacionExiste(string ruc)
        {
            try

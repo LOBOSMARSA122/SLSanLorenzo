@@ -56,10 +56,11 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         {
             var old = _OldProtocolcomponentListForcomentary;
             var nuevo = _tmpProtocolcomponentList;
-            bool cambios = false;
+            
             List<Campos> ComentaryProtComponent = new List<Campos>();
             foreach (var itemOld in old)
             {
+                bool cambios = false;
                 string cadena = _protocolBL.GetComentaryUpdateByProtocolComponentId(itemOld.v_ProtocolComponentId);
 
                 

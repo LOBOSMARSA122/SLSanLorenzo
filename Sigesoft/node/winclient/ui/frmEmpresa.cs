@@ -12,6 +12,7 @@ using Sigesoft.Node.WinClient.BE;
 using System.IO;
 using System.Drawing.Imaging;
 using ScrapperReniecSunat;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -44,7 +45,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         OccupationBL _objOccupationBL = new OccupationBL();
         occupationDto objOccupationDto;
-
+        organizationDto OldData = new organizationDto();
         string _empresaPlantillaId = "";
         string _nombreEmpresaPlantillaId = "";
         private CodigoEmpresaList _objCodigoEmpresaList = new CodigoEmpresaList();
@@ -69,6 +70,101 @@ namespace Sigesoft.Node.WinClient.UI
 
         //--------------------------------------------------------------------------
 
+        #region GetChanges
+        string[] nombreCampos =
+        {
+
+            "ddlOrganizationypeId1", "txtCiiu", "txtIdentificationNumber", "txtSector", "txtName",
+            "txtContacName1", "txtEmail", "txtContacto", "txtEmailContacto", "txtContactoeMedico", "txtEmailMedico",
+            "txtAddress", "txtObservation", "txtPhoneNumber"
+        };
+
+        private List<Campos> ListValuesCampo = new List<Campos>();
+
+        private string SetChanges()
+        {
+            string cadena = _objBL.GetComentaryUpdateByOrganizationId(_organizationId);
+            if (cadena == null)
+                cadena = "";
+            string oldComentary = cadena;
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            bool change = false;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampo.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        cadena += item + ":" + ValorCampo + "|";
+                        change = true;
+                    }
+                }
+            }
+            if (change)
+            {
+                return cadena;
+            }
+
+            return oldComentary;
+        }
+
+        private void SetOldValues()
+        {
+            ListValuesCampo = new List<Campos>();
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    Campos _Campo = new Campos();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampo.Add(_Campo);
+                }
+            }
+        }
+
+        private string GetValueControl(string ControlId, Control ctrl)
+        {
+            string value1 = null;
+
+            switch (ControlId)
+            {
+                case "TextBox":
+                    value1 = ((TextBox)ctrl).Text;
+                    break;
+                case "ComboBox":
+                    value1 = ((ComboBox)ctrl).Text;
+                    break;
+                case "CheckBox":
+                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString() == "0" ? "SI" : "NO";
+                    break;
+                case "RadioButton":
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString() == "0" ? "SI" : "NO";
+                    break;
+                default:
+                    break;
+            }
+
+            return value1;
+        }
+
+        #endregion
+        
         public frmEmpresa()
         {
 
@@ -403,7 +499,9 @@ namespace Sigesoft.Node.WinClient.UI
                 objOrganizationDto = new organizationDto();
 
                 objOrganizationDto = _objBL.GetOrganization(ref objOperationResult, _organizationId);
-
+                //PARA DETECTAR LOS CAMBIOS
+                OldData = objOrganizationDto;
+                //////
                 ddlOrganizationypeId1.SelectedValue = objOrganizationDto.i_OrganizationTypeId.ToString();
                 ddlSectorTypeId.SelectedValue = objOrganizationDto.i_SectorTypeId.ToString();
                 txtName.Text = objOrganizationDto.v_Name;
@@ -437,6 +535,8 @@ namespace Sigesoft.Node.WinClient.UI
 
 
                 pbEmpresaImage.Image = Common.Utils.BytesArrayToImage(objOrganizationDto.b_Image, pbEmpresaImage);
+
+                SetOldValues();
             }
 
             //Cargar Grillas
@@ -698,8 +798,16 @@ namespace Sigesoft.Node.WinClient.UI
                     objOrganizationDto.v_EmailMedico = txtEmailMedico.Text;
                     objOrganizationDto.v_EmailContacto = txtEmailContacto.Text;
                     objOrganizationDto.i_NumberQuotasMen = rbConDx.Checked == true ? (int)EmpresaDx.ConDx : (int)EmpresaDx.SinDx;
-                    objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text);
-                    objOrganizationDto.r_FactorMed = decimal.Parse(txtFactorMed.Text);
+                    if (txtFactor.Text != "")
+                    {
+                        objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text); 
+                    }
+                    if (txtFactorMed.Text != "")
+                    {
+                        objOrganizationDto.r_FactorMed = decimal.Parse(txtFactorMed.Text);
+                    }
+                    
+                    
 
                     var arr = txtAddress.Text.Split('-').Reverse().ToArray();
                     var sede = arr[0].ToString();
@@ -784,6 +892,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
                 else if (Mode == "Edit")
                 {
+
                     // Populate the entity
                     objOrganizationDto.v_OrganizationId = _organizationId;
                     objOrganizationDto.i_OrganizationTypeId = int.Parse(ddlOrganizationypeId1.SelectedValue.ToString());
@@ -802,9 +911,15 @@ namespace Sigesoft.Node.WinClient.UI
                     objOrganizationDto.v_EmailMedico = txtEmailMedico.Text;
                     objOrganizationDto.v_EmailContacto = txtEmailContacto.Text;
                     objOrganizationDto.i_NumberQuotasMen = rbConDx.Checked == true ? (int)EmpresaDx.ConDx : (int)EmpresaDx.SinDx;
-                    objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text);
-                    objOrganizationDto.r_FactorMed = decimal.Parse(txtFactorMed.Text);
-
+                    if (txtFactor.Text != "")
+                    {
+                        objOrganizationDto.r_Factor = decimal.Parse(txtFactor.Text);
+                    }
+                    if (txtFactorMed.Text != "")
+                    {
+                        objOrganizationDto.r_FactorMed = decimal.Parse(txtFactorMed.Text);
+                    }
+                    objOrganizationDto.v_ComentaryUpdate = SetChanges();
                     if (pbEmpresaImage.Image != null)
                     {
                         MemoryStream ms = new MemoryStream();
@@ -892,6 +1007,8 @@ namespace Sigesoft.Node.WinClient.UI
                     btnOK.Enabled = false;
                     btnNuevo.Enabled = true;
                     btnAgregarSector.Enabled = false;
+
+                    SetOldValues();
                 }
 
 
