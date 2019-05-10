@@ -42,44 +42,45 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolComponentEdit));
             this.gbAddExam = new Infragistics.Win.Misc.UltraGroupBox();
             this.lblRecordCountMedicalExam = new System.Windows.Forms.Label();
             this.grdComponent = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCount1 = new System.Windows.Forms.Label();
-            this.chkIsConditional = new System.Windows.Forms.CheckBox();
+            this.chkExamenCondicional = new System.Windows.Forms.CheckBox();
             this.gbConditional = new Infragistics.Win.Misc.UltraGroupBox();
             this.txtMayorque = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.chkIMC = new System.Windows.Forms.CheckBox();
-            this.txtAge = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.cbGender = new System.Windows.Forms.ComboBox();
-            this.cbOperator = new System.Windows.Forms.ComboBox();
+            this.txtEdad = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.cbGenero = new System.Windows.Forms.ComboBox();
+            this.cbOperador = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.lblExamenSeleccionado = new System.Windows.Forms.Label();
-            this.txtFinalPrice = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.txtPrecioFinal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbGrupoEtario = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.chkExaAdd = new System.Windows.Forms.CheckBox();
+            this.chkExamenAdicional = new System.Windows.Forms.CheckBox();
             this.gbFilter = new Infragistics.Win.Misc.UltraGroupBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.txtComponentName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gbAddExam)).BeginInit();
             this.gbAddExam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdComponent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbConditional)).BeginInit();
             this.gbConditional.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMayorque)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEdad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFinalPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioFinal)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbFilter)).BeginInit();
             this.gbFilter.SuspendLayout();
@@ -205,25 +206,25 @@
             this.lblRecordCount1.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCount1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // chkIsConditional
+            // chkExamenCondicional
             // 
-            this.chkIsConditional.AutoSize = true;
-            this.chkIsConditional.ForeColor = System.Drawing.Color.Black;
-            this.chkIsConditional.Location = new System.Drawing.Point(19, 143);
-            this.chkIsConditional.Name = "chkIsConditional";
-            this.chkIsConditional.Size = new System.Drawing.Size(151, 17);
-            this.chkIsConditional.TabIndex = 49;
-            this.chkIsConditional.Text = "Es un examen Condicional";
-            this.chkIsConditional.UseVisualStyleBackColor = true;
-            this.chkIsConditional.CheckedChanged += new System.EventHandler(this.chkIsConditional_CheckedChanged);
+            this.chkExamenCondicional.AutoSize = true;
+            this.chkExamenCondicional.ForeColor = System.Drawing.Color.Black;
+            this.chkExamenCondicional.Location = new System.Drawing.Point(19, 143);
+            this.chkExamenCondicional.Name = "chkExamenCondicional";
+            this.chkExamenCondicional.Size = new System.Drawing.Size(151, 17);
+            this.chkExamenCondicional.TabIndex = 49;
+            this.chkExamenCondicional.Text = "Es un examen Condicional";
+            this.chkExamenCondicional.UseVisualStyleBackColor = true;
+            this.chkExamenCondicional.CheckedChanged += new System.EventHandler(this.chkIsConditional_CheckedChanged);
             // 
             // gbConditional
             // 
             this.gbConditional.Controls.Add(this.txtMayorque);
             this.gbConditional.Controls.Add(this.chkIMC);
-            this.gbConditional.Controls.Add(this.txtAge);
-            this.gbConditional.Controls.Add(this.cbGender);
-            this.gbConditional.Controls.Add(this.cbOperator);
+            this.gbConditional.Controls.Add(this.txtEdad);
+            this.gbConditional.Controls.Add(this.cbGenero);
+            this.gbConditional.Controls.Add(this.cbOperador);
             this.gbConditional.Controls.Add(this.label4);
             this.gbConditional.Controls.Add(this.label6);
             this.gbConditional.Enabled = false;
@@ -255,32 +256,32 @@
             this.chkIMC.UseVisualStyleBackColor = true;
             this.chkIMC.CheckedChanged += new System.EventHandler(this.chkIMC_CheckedChanged);
             // 
-            // txtAge
+            // txtEdad
             // 
-            this.txtAge.Location = new System.Drawing.Point(181, 28);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.PromptChar = ' ';
-            this.txtAge.Size = new System.Drawing.Size(73, 21);
-            this.txtAge.TabIndex = 20;
+            this.txtEdad.Location = new System.Drawing.Point(181, 28);
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.PromptChar = ' ';
+            this.txtEdad.Size = new System.Drawing.Size(73, 21);
+            this.txtEdad.TabIndex = 20;
             // 
-            // cbGender
+            // cbGenero
             // 
-            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGender.FormattingEnabled = true;
-            this.cbGender.Location = new System.Drawing.Point(75, 55);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(96, 21);
-            this.cbGender.TabIndex = 19;
+            this.cbGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGenero.FormattingEnabled = true;
+            this.cbGenero.Location = new System.Drawing.Point(75, 55);
+            this.cbGenero.Name = "cbGenero";
+            this.cbGenero.Size = new System.Drawing.Size(96, 21);
+            this.cbGenero.TabIndex = 19;
             // 
-            // cbOperator
+            // cbOperador
             // 
-            this.cbOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbOperator.FormattingEnabled = true;
-            this.cbOperator.Location = new System.Drawing.Point(75, 28);
-            this.cbOperator.Name = "cbOperator";
-            this.cbOperator.Size = new System.Drawing.Size(96, 21);
-            this.cbOperator.TabIndex = 17;
-            this.cbOperator.SelectedIndexChanged += new System.EventHandler(this.cbOperator_SelectedIndexChanged);
+            this.cbOperador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOperador.FormattingEnabled = true;
+            this.cbOperador.Location = new System.Drawing.Point(75, 28);
+            this.cbOperador.Name = "cbOperador";
+            this.cbOperador.Size = new System.Drawing.Size(96, 21);
+            this.cbOperador.TabIndex = 17;
+            this.cbOperador.SelectedIndexChanged += new System.EventHandler(this.cbOperator_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -309,7 +310,7 @@
             // ultraGroupBox3
             // 
             this.ultraGroupBox3.Controls.Add(this.lblExamenSeleccionado);
-            this.ultraGroupBox3.Controls.Add(this.txtFinalPrice);
+            this.ultraGroupBox3.Controls.Add(this.txtPrecioFinal);
             this.ultraGroupBox3.Controls.Add(this.label1);
             this.ultraGroupBox3.Controls.Add(this.label2);
             this.ultraGroupBox3.Location = new System.Drawing.Point(16, 35);
@@ -328,15 +329,15 @@
             this.lblExamenSeleccionado.Size = new System.Drawing.Size(218, 20);
             this.lblExamenSeleccionado.TabIndex = 54;
             // 
-            // txtFinalPrice
+            // txtPrecioFinal
             // 
-            this.txtFinalPrice.Location = new System.Drawing.Point(66, 49);
-            this.txtFinalPrice.Name = "txtFinalPrice";
-            this.txtFinalPrice.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
-            this.txtFinalPrice.PromptChar = ' ';
-            this.txtFinalPrice.Size = new System.Drawing.Size(91, 21);
-            this.txtFinalPrice.TabIndex = 15;
-            this.txtFinalPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFinalPrice_KeyPress);
+            this.txtPrecioFinal.Location = new System.Drawing.Point(66, 49);
+            this.txtPrecioFinal.Name = "txtPrecioFinal";
+            this.txtPrecioFinal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
+            this.txtPrecioFinal.PromptChar = ' ';
+            this.txtPrecioFinal.Size = new System.Drawing.Size(91, 21);
+            this.txtPrecioFinal.TabIndex = 15;
+            this.txtPrecioFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFinalPrice_KeyPress);
             // 
             // label1
             // 
@@ -366,9 +367,9 @@
             // 
             this.groupBox2.Controls.Add(this.cbGrupoEtario);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.chkExaAdd);
+            this.groupBox2.Controls.Add(this.chkExamenAdicional);
             this.groupBox2.Controls.Add(this.ultraGroupBox3);
-            this.groupBox2.Controls.Add(this.chkIsConditional);
+            this.groupBox2.Controls.Add(this.chkExamenCondicional);
             this.groupBox2.Controls.Add(this.gbConditional);
             this.groupBox2.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox2.Location = new System.Drawing.Point(528, 17);
@@ -400,16 +401,16 @@
             this.label3.Text = "Grupo Etario";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // chkExaAdd
+            // chkExamenAdicional
             // 
-            this.chkExaAdd.AutoSize = true;
-            this.chkExaAdd.ForeColor = System.Drawing.Color.Black;
-            this.chkExaAdd.Location = new System.Drawing.Point(19, 120);
-            this.chkExaAdd.Name = "chkExaAdd";
-            this.chkExaAdd.Size = new System.Drawing.Size(139, 17);
-            this.chkExaAdd.TabIndex = 50;
-            this.chkExaAdd.Text = "Es un examen Adicional";
-            this.chkExaAdd.UseVisualStyleBackColor = true;
+            this.chkExamenAdicional.AutoSize = true;
+            this.chkExamenAdicional.ForeColor = System.Drawing.Color.Black;
+            this.chkExamenAdicional.Location = new System.Drawing.Point(19, 120);
+            this.chkExamenAdicional.Name = "chkExamenAdicional";
+            this.chkExamenAdicional.Size = new System.Drawing.Size(139, 17);
+            this.chkExamenAdicional.TabIndex = 50;
+            this.chkExamenAdicional.Text = "Es un examen Adicional";
+            this.chkExamenAdicional.UseVisualStyleBackColor = true;
             // 
             // gbFilter
             // 
@@ -423,6 +424,28 @@
             this.gbFilter.Size = new System.Drawing.Size(488, 52);
             this.gbFilter.TabIndex = 21;
             this.gbFilter.Text = "Busqueda / Filtro";
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(406, 22);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 22);
+            this.btnFilter.TabIndex = 54;
+            this.btnFilter.Text = "&Buscar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // txtComponentName
             // 
@@ -456,7 +479,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.Location = new System.Drawing.Point(773, 354);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
@@ -476,7 +499,7 @@
             this.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.ForeColor = System.Drawing.Color.Black;
-            this.btnOK.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOK.Location = new System.Drawing.Point(694, 354);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
@@ -487,28 +510,6 @@
             this.btnOK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(406, 22);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 22);
-            this.btnFilter.TabIndex = 54;
-            this.btnFilter.Text = "&Buscar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // frmProtocolComponentEdit
             // 
@@ -537,11 +538,11 @@
             this.gbConditional.ResumeLayout(false);
             this.gbConditional.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMayorque)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEdad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
             this.ultraGroupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFinalPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioFinal)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbFilter)).EndInit();
@@ -555,15 +556,15 @@
 
         private Infragistics.Win.Misc.UltraGroupBox gbAddExam;
         private System.Windows.Forms.Label lblRecordCount1;
-        private System.Windows.Forms.CheckBox chkIsConditional;
+        private System.Windows.Forms.CheckBox chkExamenCondicional;
         private Infragistics.Win.Misc.UltraGroupBox gbConditional;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtAge;
-        private System.Windows.Forms.ComboBox cbGender;
-        private System.Windows.Forms.ComboBox cbOperator;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtEdad;
+        private System.Windows.Forms.ComboBox cbGenero;
+        private System.Windows.Forms.ComboBox cbOperador;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox3;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtFinalPrice;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtPrecioFinal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblRecordCountMedicalExam;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdComponent;
@@ -578,7 +579,7 @@
         private System.Windows.Forms.Button btnOK;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtMayorque;
         private System.Windows.Forms.CheckBox chkIMC;
-        private System.Windows.Forms.CheckBox chkExaAdd;
+        private System.Windows.Forms.CheckBox chkExamenAdicional;
         private System.Windows.Forms.ComboBox cbGrupoEtario;
         private System.Windows.Forms.Label label3;
     }

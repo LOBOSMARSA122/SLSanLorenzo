@@ -3426,6 +3426,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateExamen_Dermatologico_Ocupacional(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.EVALUACION_DERMATOLOGICA_OC_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
                     break;
+                case Constants.DECLARACION_JURADA_SINTOMATICO_RESPIRATORIO_ID:
+                    GenerateDeclaracion_Jurada_SINTOMATICO(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.DECLARACION_JURADA_SINTOMATICO_RESPIRATORIO_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
+                    break;
                 case Constants.CERT_SUF_MED_ALTURA_ID:
                     GenerateCertificado_Suficiencia_Medica_Trabajo_Altura_V4(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + Constants.CERT_SUF_MED_ALTURA_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_ruta, _serviceId + "-" + componentId)));
@@ -4648,6 +4652,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
             Examen_Dermatologico_Ocupacional.CreateExamen_Dermatologico_Ocupacional(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
+        }
+
+        private void GenerateDeclaracion_Jurada_SINTOMATICO(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            //var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            Declaracion_Jurada_Sintomatico_Respiratorio.CreateDeclaracionJurada_Sintomatico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
         }
         
         private void GenerateCertificado_Suficiencia_Medica_Trabajo_Altura_V4(string pathFile)

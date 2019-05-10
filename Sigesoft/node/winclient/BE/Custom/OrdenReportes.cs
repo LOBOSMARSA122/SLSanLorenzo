@@ -15,6 +15,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_NombreCrystal { get; set; }
         public int? i_NombreCrystalId { get; set; }
         public string v_ComponenteId_ { get; set; }
-        
+
+        public string v_ColumnaId { get; set; }
+        public string v_CampoId { get; set; }
     }
 }
