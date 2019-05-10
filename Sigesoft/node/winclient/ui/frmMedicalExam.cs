@@ -170,7 +170,11 @@ namespace Sigesoft.Node.WinClient.UI
         {
             OperationResult objOperationResult = new OperationResult();
             var _objData = _objMedicalExamBL.GetMedicalExamPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression);
-
+            if (_objData.Count == 0)
+            {
+                pstrFilterExpression = "i_UIIndex==" + ddlCategoryId.SelectedNode.Tag.ToString() + " && i_IsDeleted==0";
+                _objData = _objMedicalExamBL.GetMedicalExamPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression);
+            }
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);

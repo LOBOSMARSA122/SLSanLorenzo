@@ -3,6 +3,7 @@ using Sigesoft.Common;
 using Sigesoft.Node.Contasol.Integration;
 using Sigesoft.Node.Contasol.Integration.Contasol;
 using Sigesoft.Node.WinClient.BE;
+using Sigesoft.Node.WinClient.BE.Custom;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,43 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         OperationResult objOperationResult1 = new OperationResult();
         BindingList<planDto> _gridDataSouce;
         List<planDto> _listToDelete;
+        BindingList<planDto> OldListPlan = new BindingList<planDto>();
+
+        #region GetChanges
+
+        //private List<Campos> SetChangeProtocolComponent(BindingList<planDto> NewListPlan)
+        //{
+        //    var old = _OldProtocolcomponentListForcomentary;
+        //    var nuevo = _tmpProtocolcomponentList;
+        //    bool cambios = false;
+        //    List<Campos> ComentaryProtComponent = new List<Campos>();
+        //    foreach (var itemOld in old)
+        //    {
+        //        string cadena = _protocolBL.GetComentaryUpdateByProtocolComponentId(itemOld.v_ProtocolComponentId);
+
+
+        //        cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+        //        var itemNew = nuevo.Find(x => x.v_ProtocolComponentId == itemOld.v_ProtocolComponentId);
+
+        //        if (cambios)
+        //        {
+        //            Campos _Campos = new Campos();
+        //            _Campos.ValorCampo = cadena;
+        //            _Campos.NombreCampo = itemOld.v_ProtocolComponentId;
+        //            ComentaryProtComponent.Add(_Campos);
+        //        }
+
+
+        //    }
+
+        //    return ComentaryProtComponent;
+
+        //}
+
+
+        #endregion
+        
+
 
         public frmProtocolPlanAseguradora(string pstrProtocolId, string pstrAseguradoraId, string pstrNombreProtocolo)
         {
@@ -48,6 +86,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 else
                     cboEmpresa.SelectedIndex = 0;
                 _gridDataSouce = _objPlanBl.ObtenerPlanesPorProtocolo(ref objOperationResult1, _protocolId);
+                OldListPlan = _gridDataSouce;
                 grd.DataSource = _gridDataSouce;
             }
             catch (Exception ex)
@@ -152,6 +191,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     item.v_OrganizationSeguroId = _aseguradoraId.Trim();
                 }
 
+                //SetChangeProtocolComponent(data);
                 _objPlanBl.UpdatePlan(_aseguradoraId, _protocolId, data, _listToDelete);
                 Close();
             }
