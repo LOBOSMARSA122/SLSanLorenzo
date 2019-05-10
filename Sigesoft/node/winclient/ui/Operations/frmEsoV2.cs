@@ -25,6 +25,7 @@ using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
 using Sigesoft.Node.Contasol.Integration;
 using System.Transactions;
+using NetPdf;
 
 
 namespace Sigesoft.Node.WinClient.UI.Operations
@@ -7541,32 +7542,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnCertificadoAptitud_Click(object sender, EventArgs e)
         {
-            OperationResult objOperationResult = new OperationResult();
-
-            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
-
-            ServiceList _DataService = new ServiceBL().GetServiceReport(_serviceId);
-
-
-            PacientList filiationData = new PacientBL().GetPacientReportEPS(_serviceId);
-
-            idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
-            PacientId = idPerson.v_PersonId.ToString();
-
-            frmManagementReports frmManagmentReport = new frmManagementReports();
-            DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
-
-            List<ServiceComponentList> serviceComponents = new ServiceBL().GetServiceComponentsReport(_serviceId);
-
-            var arrComponentId = _componentId.Split('|');
-
-            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-            {
-                Form frm = null;
-
-                frm = new Reports.frmOccupationalMedicalAptitudeCertificate(_serviceId);
-                frm.ShowDialog();
-            }
+           
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -8829,8 +8805,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     // Datos de servicecomponentfieldValues Ejem: 1.80 ; 95 KG
                     value1 = GetValueControl(keyTagControl.i_ControlId, fields[0]);
-                    
-                    if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma || keyTagControl.i_ControlId == (int)ControlType.UcAudiometria || keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia || keyTagControl.i_ControlId == (int)ControlType.UcAcumetria || keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi || keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra || keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia || keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica || keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco || keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular || keyTagControl.i_ControlId == (int)ControlType.UcFototipo)
+
+                    if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma || keyTagControl.i_ControlId == (int)ControlType.UcAudiometria || keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia || keyTagControl.i_ControlId == (int)ControlType.UcAcumetria || keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi || keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra || keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia || keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica || keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco || keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular || keyTagControl.i_ControlId == (int)ControlType.UcFototipo || keyTagControl.i_ControlId == (int)ControlType.Fecha)
                     {
                         foreach (var value in _tmpListValuesOdontograma)
                         {
