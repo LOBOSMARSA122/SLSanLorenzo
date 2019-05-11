@@ -4250,7 +4250,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             item.d_ApprovedInsertDate = DateTime.Now;
                         }
                     }
-                    else if (item.i_ApprovedUpdateUserId != null && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)) && (enabledchkSuplant.Value == false))
+                    else if (item.i_ApprovedUpdateUserId != null && (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador || (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)) && (enabledchkSuplant.Value == false))
                     {
                         if (isApproved == (int)SiNo.SI)
                         {

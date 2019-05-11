@@ -563,6 +563,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 case ControlType.UcFototipo:
                     _tmpListValuesOdontograma = ((UserControls.ucFotoTipo)ctrl).DataSource;
                     break;
+                case ControlType.Fecha:
+                    value1 = ((DateTimePicker)ctrl).Text;
+                    break;
 
                 //case ControlType.ucPsicologia:
                 //    if (_esoTypeId == TypeESO.PreOcupacional)
@@ -602,6 +605,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 case ControlType.Fecha:
                     if (componentFieldsId == tagComponentFieldsId)
                     {
+                        if (value1 == null)
+                        {
+                            value1 = DateTime.Now.ToString();
+                        }
                         ((DateTimePicker)ctrl).Value = Convert.ToDateTime(value1);
                         if (hasAutomaticDx == SiNo.SI)
                             ctrl.BackColor = Color.Pink;
@@ -3179,7 +3186,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
-        private void tcExamList_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
+        public void tcExamList_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
         {
             _examName = e.Tab.Text;
 
@@ -3200,7 +3207,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             PopulateDataExam(serviceComponentId);
         }
 
-        private void SearchControlAndSetValue_New(Control ctrlContainer)
+        public void SearchControlAndSetValue_New(Control ctrlContainer)
         {
                 KeyTagControl keyTagControl = null;
                 bool breakHazChildrenUC = false;
@@ -3370,6 +3377,25 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 breakHazChildrenUC = true;
 
                                 #endregion
+                            }
+                            else if (keyTagControl.i_ControlId == (int)ControlType.Fecha)
+                            {
+                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
+                                foreach (var item in dataSourceUserControls)
+                                {
+                                    if (item.v_ComponentFieldId == "N009-MF000003434")
+                                    {
+                                        if (item.v_Value1 != null)
+                                        {
+                                            ((DateTimePicker)ctrl).Value = Convert.ToDateTime(item.v_Value1);
+                                        }
+                                        else
+                                        {
+                                            ((DateTimePicker)ctrl).Value = DateTime.Now;
+                                        }
+
+                                    }
+                                }
                             }
                             else
                             {
@@ -5105,6 +5131,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         {
             
             GrabarAsync();
+            
 
             #region Old
 
@@ -5158,14 +5185,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 if (!validacionAuditado())
                 {
-                    if (int.Parse(cbEstadoComponente.SelectedValue.ToString()) ==
-                        (int)ServiceComponentStatus.Auditado && _profesionId == 30) //evaluador
-                    {
+                    //if (int.Parse(cbEstadoComponente.SelectedValue.ToString()) ==
+                    //    (int)ServiceComponentStatus.Auditado && _profesionId == 30) //evaluador
+                    //{
 
-                        MessageBox.Show("El examen ya fue AUDITADO, no puede guardar los cambios.", "CONFIRMACIÓN!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        return;
-                    }
+                    //    MessageBox.Show("El examen ya fue AUDITADO, no puede guardar los cambios.", "CONFIRMACIÓN!",
+                    //        MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    //    return;
+                    //}
                     var respuesta = MessageBox.Show("¿Está seguro de grabar este registro?", "CONFIRMACIÓN!",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta == DialogResult.Yes)
@@ -5247,37 +5274,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     systemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
                 }
-                var t = new Thread(() =>
-                {
-                    using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
-                    {
-                        Thread.Sleep(2500);
-                        MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    };
-                    ;
-                });
-                t.Start();
-               
-               
-            }
-            else
-            {
-                var t = new Thread(() =>
-                {
-                    using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
-                    {
-                        Thread.Sleep(2500);
-                        MessageBox.Show("Grabado correctamente", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    };
-                    ;
-                });
-                t.Start();
             }
 
             #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
 
             // Grabar Dx por examen componente mas sus restricciones
-            if (systemUserSuplantadorId != null)
+            if (systemUserSuplantadorId != null && systemUserSuplantadorId != 0)
             {
                 Globals.ClientSession.i_SystemUserId = (int)systemUserSuplantadorId;
             }
@@ -8753,14 +8755,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (procesoEso != null)
             {
                 procesoEso.Select();
-                procesoEso.WindowState = FormWindowState.Minimized;
+                procesoEso.WindowState = FormWindowState.Normal	;
                 var frm = (frmProcesosEso)procesoEso;
+                frm.Show();
                 frm.DataSource = datos;
             }
             else
             {
                 procesoEso = new frmProcesosEso();
                 var frm = (frmProcesosEso)procesoEso;
+                frm.Show();
                 frm.DataSource = datos;
                 procesoEso.Show();
             }
@@ -8783,7 +8787,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var componentId = selectedTab.Tab.Key;
             var component = _tmpServiceComponentsForBuildMenuList.Find(p => p.v_ComponentId == componentId);
 
-            if (_EstadoComponente == (int)ServiceComponentStatus.Evaluado)
+            if (_EstadoComponente == (int)ServiceComponentStatus.Evaluado || cbEstadoComponente.SelectedIndex == 1)
             {
                 selectedTab.Tab.Appearance.BackColor = Color.Pink;
             }
@@ -8805,30 +8809,41 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     // Datos de servicecomponentfieldValues Ejem: 1.80 ; 95 KG
                     value1 = GetValueControl(keyTagControl.i_ControlId, fields[0]);
-
-                    if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma || keyTagControl.i_ControlId == (int)ControlType.UcAudiometria || keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia || keyTagControl.i_ControlId == (int)ControlType.UcAcumetria || keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi || keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra || keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia || keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica || keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco || keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular || keyTagControl.i_ControlId == (int)ControlType.UcFototipo || keyTagControl.i_ControlId == (int)ControlType.Fecha)
+                    if (keyTagControl.i_ControlId == (int)ControlType.Fecha)
                     {
-                        foreach (var value in _tmpListValuesOdontograma)
+                        
+                    }
+                    value1 = GetValueControl(keyTagControl.i_ControlId, fields[0]);
+                    if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma || keyTagControl.i_ControlId == (int)ControlType.UcAudiometria || keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia || keyTagControl.i_ControlId == (int)ControlType.UcAcumetria || keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi || keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra || keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia || keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica || keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco || keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular || keyTagControl.i_ControlId == (int)ControlType.UcFototipo)
+                    {
+                        try
                         {
-                            #region Armar entidad de datos desde los user controls [Odontograma / Audiometria]
+                            foreach (var value in _tmpListValuesOdontograma)
+                            {
+                                #region Armar entidad de datos desde los user controls [Odontograma / Audiometria]
 
-                            _serviceComponentFieldValuesList = new List<ServiceComponentFieldValuesList>();
-                            serviceComponentFields = new ServiceComponentFieldsList();
-                            serviceComponentFieldValues = new ServiceComponentFieldValuesList();
+                                _serviceComponentFieldValuesList = new List<ServiceComponentFieldValuesList>();
+                                serviceComponentFields = new ServiceComponentFieldsList();
+                                serviceComponentFieldValues = new ServiceComponentFieldValuesList();
 
-                            serviceComponentFields.v_ComponentFieldsId = value.v_ComponentFieldId;
-                            serviceComponentFields.v_ServiceComponentId = serviceComponentId;
+                                serviceComponentFields.v_ComponentFieldsId = value.v_ComponentFieldId;
+                                serviceComponentFields.v_ServiceComponentId = serviceComponentId;
 
 
-                            serviceComponentFieldValues.v_Value1 = value.v_Value1;
-                            _serviceComponentFieldValuesList.Add(serviceComponentFieldValues);
+                                serviceComponentFieldValues.v_Value1 = value.v_Value1;
+                                _serviceComponentFieldValuesList.Add(serviceComponentFieldValues);
 
-                            serviceComponentFields.ServiceComponentFieldValues = _serviceComponentFieldValuesList;
-                            // Agregar a mi lista
-                            _serviceComponentFieldsList.Add(serviceComponentFields);
-
-                            #endregion
+                                serviceComponentFields.ServiceComponentFieldValues = _serviceComponentFieldValuesList;
+                                // Agregar a mi lista
+                                _serviceComponentFieldsList.Add(serviceComponentFields);
+                            }
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                            #endregion
+                        
                     }
                     else    // Todos los demas examenes
                     {
@@ -8851,7 +8866,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                         // Agregar a mi lista
                         _serviceComponentFieldsList.Add(serviceComponentFields);
-
                         #endregion
                     }
                 }
@@ -8859,8 +8873,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
             }
-
-
+            SearchControlAndSetValue(tcExamList.SelectedTab.TabPage, _serviceComponentsInfo);
 
 
         }

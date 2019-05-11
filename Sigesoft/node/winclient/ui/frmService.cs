@@ -3249,8 +3249,8 @@ namespace Sigesoft.Node.WinClient.UI
                                 ;
                             });
                             t.Start();
-                            frm = new Operations.frmContainerEso(_serviceId, "TRIAJE", "Service", TserviceId, _pacientId);
-                            //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            //frm = new Operations.frmContainerEso(_serviceId, "TRIAJE", "Service", TserviceId, _pacientId);
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                             
                             frm.ShowDialog();
                             
