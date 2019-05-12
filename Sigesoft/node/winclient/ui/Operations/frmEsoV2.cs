@@ -3206,242 +3206,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             PaintGrdDiagnosticoPorExamenComponente();
             PopulateDataExam(serviceComponentId);
         }
-
-        public void SearchControlAndSetValue_New(Control ctrlContainer)
+   
+        private void LoadDataBySelectedComponent_Async(string pstrComponentId)
         {
-                KeyTagControl keyTagControl = null;
-                bool breakHazChildrenUC = false;
-                List<ServiceComponentFieldValuesList> dataSourceUserControls = null;
-
-
-                ValidacionAMC oValidacionAMC = null;
-                var x = _serviceComponentsInfo.ServiceComponentFields;
-                var y = x.Select(p => p.ServiceComponentFieldValues).ToList();
-                _oListValidacionAMC = new List<ValidacionAMC>();
-                foreach (var item in y)
-                {
-                    oValidacionAMC = new ValidacionAMC();
-                    oValidacionAMC.v_ServiceComponentFieldValuesId = item[0].v_ServiceComponentFieldValuesId;
-                    oValidacionAMC.v_Value1 = item[0].v_Value1;
-                    oValidacionAMC.v_ComponentFieldsId = item[0].v_ComponentFieldId;
-                    _oListValidacionAMC.Add(oValidacionAMC);
-                }
-
-                foreach (Control ctrl in ctrlContainer.Controls)
-                {
-                    if (ctrl.Tag != null)
-                    {
-                        var t = ctrl.Tag.GetType();
-
-                        // Los controles que tienen el objeto KeyTagControl en su propiedad Tag son los controles que se crean dinamicamente
-                        // y tienen una logica particular de muestreo de datos
-
-                        if (t == typeof(KeyTagControl))
-                        {
-                            // Capturar objeto tag
-                            keyTagControl = (KeyTagControl)ctrl.Tag;
-
-                            if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma)
-                            {
-                                #region Setear valores en Odontograma
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("ODO"));
-                                ((UserControls.ucOdontograma)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucOdontograma)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcAudiometria)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("AUD"));
-                                ((UserControls.ucAudiometria)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucAudiometria)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("SOM"));
-                                ((UserControls.ucSomnolencia)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucSomnolencia)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcAcumetria)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("ACU"));
-                                ((UserControls.ucAcumetria)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucAcumetria)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcFototipo)
-                            {
-                                #region Setear valores en FotoTipo
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("FOT"));
-                                var multimediaFileId = dataSourceUserControls.Find(xp => xp.v_ComponentFieldId == Constants.txt_MULTIMEDIA_FILE_FOTO_TIPO).v_Value1;
-                                ServiceBL oServiceBl = new ServiceBL();
-                                var a = oServiceBl.ObtenerImageMultimedia(multimediaFileId);
-                                ((UserControls.ucFotoTipo)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                dataSourceUserControls.Add(new ServiceComponentFieldValuesList() { fotoTipo = a });
-                                ((UserControls.ucFotoTipo)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("RES"));
-                                ((UserControls.ucSintomaticoResp)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucSintomaticoResp)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("RXL"));
-                                ((UserControls.ucRXLumboSacra)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucRXLumboSacra)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("OJS"));
-                                ((UserControls.ucOjoSeco)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucOjoSeco)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("OTO"));
-                                ((UserControls.ucOtoscopia)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucOtoscopia)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("EVA"));
-                                ((UserControls.ucEvaluacionErgonomica)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucEvaluacionErgonomica)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular)
-                            {
-                                #region Setear valores en udiometria
-
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                dataSourceUserControls = dataSourceUserControls.FindAll(p => p.v_ComponentFieldId.Contains("OTS"));
-                                ((UserControls.ucOsteoMuscular)ctrl).DataSource = new List<ServiceComponentFieldValuesList>();
-                                ((UserControls.ucOsteoMuscular)ctrl).DataSource = dataSourceUserControls;
-                                breakHazChildrenUC = true;
-
-                                #endregion
-                            }
-                            else if (keyTagControl.i_ControlId == (int)ControlType.Fecha)
-                            {
-                                dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
-                                foreach (var item in dataSourceUserControls)
-                                {
-                                    if (item.v_ComponentFieldId == "N009-MF000003434")
-                                    {
-                                        if (item.v_Value1 != null)
-                                        {
-                                            ((DateTimePicker)ctrl).Value = Convert.ToDateTime(item.v_Value1);
-                                        }
-                                        else
-                                        {
-                                            ((DateTimePicker)ctrl).Value = DateTime.Now;
-                                        }
-
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                foreach (var item in _serviceComponentsInfo.ServiceComponentFields)
-                                {
-                                    var componentFieldsId = item.v_ComponentFieldsId;
-
-                                    foreach (var fv in item.ServiceComponentFieldValues)
-                                    {
-                                        #region Setear valores en el caso de controles dinamicos
-
-                                        SetValueControl(keyTagControl.i_ControlId,
-                                                        ctrl,
-                                                        componentFieldsId,
-                                                        keyTagControl.v_ComponentFieldsId,
-                                                        fv.v_Value1,
-                                                        item.i_HasAutomaticDxId == null ? (int)SiNo.NO : (SiNo)item.i_HasAutomaticDxId);
-
-                                        #endregion
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    if (ctrl.HasChildren)
-                    {
-                        if (!breakHazChildrenUC && keyTagControl == null)
-                        {
-                            SearchControlAndSetValue_New(ctrl);
-                        }
-                    }
-                }
-
-            
-
-        }
-
-        private void LoadDataBySelectedComponent_New(string pstrComponentId)
-        {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action<string>(LoadDataBySelectedComponent_New), pstrComponentId);
-            }
-            else
-            {
+          
                 var arrComponentId = _componentId.Split('|');
 
                 if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)//audiometría
@@ -3546,7 +3314,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         // Flag para disparar el evento del selectedIndexChange luego de setear los valores x default
                         _cancelEventSelectedIndexChange = true;
                         // Llenar valores            
-                        SearchControlAndSetValue_New(tcExamList.SelectedTab.TabPage);
+                        //SearchControlAndSetValue(tcExamList.SelectedTab.TabPage, _serviceComponentsInfo);
 
                         _cancelEventSelectedIndexChange = false;
                     }
@@ -3555,6 +3323,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         // Setear valores x defecto configurados en BD            
                         SetDefaultValueBySelectedTab();
                     }
+
+
+                    if (_serviceComponentsInfo.d_UpdateDate != null)
+                        lblUsuGraba.Text = _serviceComponentsInfo.v_UpdateUser == null ? "" : _serviceComponentsInfo.v_UpdateUser.ToUpper();
+                    if (_serviceComponentsInfo.d_UpdateDate != null)
+                        lblFechaGraba.Text = _serviceComponentsInfo.d_UpdateDate == null ? "" : _serviceComponentsInfo.d_UpdateDate.Value.ToString("dd-MMMM-yyyy (hh:mm) ");
 
                     // Setear campos de auditoria
                     //tslUsuarioCrea.Text = string.Format("Usuario Crea : {0}", _serviceComponentsInfo.v_CreationUser);
@@ -3595,8 +3369,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 }
 
-            }
-
             //if (tcExamList.SelectedTab.TabPage.Tab.Text == "MEDICINA")
             //{
             //    string pstrPersonId = _personId;
@@ -3607,6 +3379,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         }
 
+        
         private void PopulateGridDiagnostic(string componentId)
         {
             ClearGridDiagnostic();
@@ -5303,7 +5076,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             flagValueChange = false;
             InitializeData();
-            LoadDataBySelectedComponent_New(_componentId);
+            //LoadDataBySelectedComponent_New(_componentId);
+            LoadDataBySelectedComponent_Async(_componentId);
             GetTotalDiagnosticsForGridView();
             ConclusionesyTratamiento_LoadAllGrid();
 
@@ -8278,7 +8052,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             ViewEditAntecedent();
         }
 
-
         private void InitializeData()
         {
             if (this.InvokeRequired)
@@ -8747,7 +8520,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
-
         private void OpenFormProcesoEso(DataEso datos)
         {
             Form procesoEso = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "frmProcesosEso").SingleOrDefault<Form>();
@@ -8769,7 +8541,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 procesoEso.Show();
             }
         }
-
 
         private void ProcessControlBySelectedTab_AMC(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
         {
@@ -8873,7 +8644,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
             }
-            SearchControlAndSetValue(tcExamList.SelectedTab.TabPage, _serviceComponentsInfo);
+           
 
 
         }
