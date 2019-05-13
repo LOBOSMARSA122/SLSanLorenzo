@@ -60,7 +60,8 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 if (uvComponent.Validate(true, false).IsValid)
                 {
-                    this.Close();
+                    //this.Close();
+
                     frmOffice frm = new frmOffice(ddlComponentId.Text,int.Parse(ddlComponentId.SelectedValue.ToString()));
                     frm._componentIds = _componentIds;
                     frm.ShowDialog();

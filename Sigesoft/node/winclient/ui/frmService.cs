@@ -15,6 +15,7 @@ using Infragistics.Win.UltraWinGrid;
 using System.Diagnostics;
 using System.Linq.Dynamic;
 using System.Threading;
+using System.Windows.Shell;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
 
@@ -462,19 +463,19 @@ namespace Sigesoft.Node.WinClient.UI
                         if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
                         {
                             this.Enabled = false;
-                            frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
-                            frm.ShowDialog();
-                            //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            //frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
                             //frm.ShowDialog();
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
                             this.Enabled = true;
                         }
                         else
                         {
                             this.Enabled = false;
-                            frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
-                            frm.ShowDialog();
-                            //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            //frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
                             //frm.ShowDialog();
+                            frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
+                            frm.ShowDialog();
                             this.Enabled = true;
                         }
 
@@ -3253,7 +3254,6 @@ namespace Sigesoft.Node.WinClient.UI
                             //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                             
                             frm.ShowDialog();
-                            
                             this.Enabled = true;
                         }
                         else
@@ -3280,9 +3280,9 @@ namespace Sigesoft.Node.WinClient.UI
 
                 btnFilter_Click(sender, e);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                MessageBox.Show("SELECCIONE UNA SERVICIO A MODIFICAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(exception.ToString(), "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnFilter_Click(sender, e);
             }
         }

@@ -354,24 +354,24 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
                 _mergeExPDF.Execute();
             }
-            var adjunto = _filesNameToMerge.FindAll(p => p.Contains(_dni));
-            var adjunto_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
-            if (adjunto.Count() > 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { foreach (var otros in adjunto_2) { if ((pdf != adj || pdf != otros) && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } } }
-            }
-            else if (adjunto.Count() > 0 && adjunto_2.Count() == 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
-            }
-            else if (adjunto.Count() == 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto_2) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
-            }
-            else
-            {
-                foreach (var pdf in _filesNameToMerge) {  System.IO.File.Delete(pdf); }
-            }
+            //var adjunto = _filesNameToMerge.FindAll(p => p.Contains(_dni));
+            //var adjunto_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+            //if (adjunto.Count() > 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { foreach (var otros in adjunto_2) { if ((pdf != adj || pdf != otros) && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } } }
+            //}
+            //else if (adjunto.Count() > 0 && adjunto_2.Count() == 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+            //}
+            //else if (adjunto.Count() == 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto_2) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+            //}
+            //else
+            //{
+            //    foreach (var pdf in _filesNameToMerge) {  System.IO.File.Delete(pdf); }
+            //}
 
         }
 

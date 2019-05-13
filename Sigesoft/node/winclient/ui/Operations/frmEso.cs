@@ -3018,6 +3018,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         keyTagControl = (KeyTagControl)fields[0].Tag;
 
                         // Datos de servicecomponentfieldValues Ejem: 1.80 ; 95 KG
+                        if (keyTagControl.i_ControlId == (int)ControlType.Fecha)
+                        {
+
+                        }
                         value1 = GetValueControl(keyTagControl.i_ControlId, fields[0]);
 
                         if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma || keyTagControl.i_ControlId == (int)ControlType.UcAudiometria || keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia || keyTagControl.i_ControlId == (int)ControlType.UcAcumetria || keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi || keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra || keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia || keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica || keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco || keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular || keyTagControl.i_ControlId == (int)ControlType.UcFototipo)
@@ -3118,6 +3122,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                         // Datos de servicecomponentfieldValues Ejem: 1.80 ; 95 KG
                         value1 = GetValueControl(keyTagControl.i_ControlId, fields[0]);
+                        if (keyTagControl.i_ControlId == (int)ControlType.Fecha)
+                        {
+                            
+                        }
 
                         if (keyTagControl.i_ControlId == (int)ControlType.UcOdontograma || keyTagControl.i_ControlId == (int)ControlType.UcAudiometria || keyTagControl.i_ControlId == (int)ControlType.UcSomnolencia || keyTagControl.i_ControlId == (int)ControlType.UcAcumetria || keyTagControl.i_ControlId == (int)ControlType.UcSintomaticoRespi || keyTagControl.i_ControlId == (int)ControlType.UcRxLumboSacra || keyTagControl.i_ControlId == (int)ControlType.UcOtoscopia || keyTagControl.i_ControlId == (int)ControlType.UcEvaluacionErgonomica || keyTagControl.i_ControlId == (int)ControlType.UcOjoSeco || keyTagControl.i_ControlId == (int)ControlType.UcOsteoMuscular || keyTagControl.i_ControlId == (int)ControlType.UcFototipo)
                         {
@@ -4982,6 +4990,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             KeyTagControl keyTagControl = null;
             bool breakHazChildrenUC = false;
             List<ServiceComponentFieldValuesList> dataSourceUserControls = null;
+            DateTime fechaTime;
 
 
             ValidacionAMC oValidacionAMC = null;
@@ -5148,6 +5157,25 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                             #endregion
                         }
+                        else if (keyTagControl.i_ControlId == (int)ControlType.Fecha)
+                        {
+                            dataSourceUserControls = _serviceComponentsInfo.ServiceComponentFields.SelectMany(p => p.ServiceComponentFieldValues).ToList();
+                            foreach (var item in dataSourceUserControls)
+                            {
+                                if (item.v_ComponentFieldId == "N009-MF000003434")
+                                {
+                                    if (item.v_Value1 != null)
+                                    {
+                                        ((DateTimePicker)ctrl).Value = Convert.ToDateTime(item.v_Value1);
+                                    }
+                                    else
+                                    {
+                                        ((DateTimePicker)ctrl).Value = DateTime.Now;
+                                    }
+                                    
+                                }
+                            }
+                        }
                         else
                         {
                             foreach (var item in _serviceComponentsInfo.ServiceComponentFields)
@@ -5157,7 +5185,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 foreach (var fv in item.ServiceComponentFieldValues)
                                 {
                                     #region Setear valores en el caso de controles dinamicos
-
                                     SetValueControl(keyTagControl.i_ControlId,
                                                     ctrl,
                                                     componentFieldsId,

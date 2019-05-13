@@ -37,95 +37,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             _mode = mode;
         }
 
-
-        #region GetChanges
-        string[] nombreCampos =
-        {
-
-            "txtPrecioFinal", "chkExamenAdicional", "chkExamenCondicional", "cbOperador", "txtEdad",
-            "cbGenero", "chkIMC", "txtMayorque", "cbGrupoEtario"
-        };
-
-        private List<Campos> ListValuesCampo = new List<Campos>();
-
-        
-
-
-        private string SetChanges()
-        {
-            string cadena = _protocolBL.GetComentaryUpdateByProtocolComponentId(_id);
-            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
-            foreach (var item in nombreCampos)
-            {
-                var fields = this.Controls.Find(item, true);
-                string keyTagControl;
-                string value1;
-                if (fields.Length > 0)
-                {
-                    keyTagControl = fields[0].GetType().Name;
-                    value1 = GetValueControl(keyTagControl, fields[0]);
-
-                    var ValorCampo = ListValuesCampo.Find(x => x.NombreCampo == item).ValorCampo;
-                    if (ValorCampo != value1)
-                    {
-                        cadena += item + ":" + ValorCampo + "|";
-                    }
-                }
-            }
-
-            return cadena;
-        }
-
-        private void SetOldValues()
-        {
-
-            string keyTagControl = null;
-            string value1 = null;
-            foreach (var item in nombreCampos)
-            {
-                var fields = this.Controls.Find(item, true);
-
-                if (fields.Length > 0)
-                {
-                    keyTagControl = fields[0].GetType().Name;
-                    value1 = GetValueControl(keyTagControl, fields[0]);
-
-                    Campos _Campo = new Campos();
-                    _Campo.NombreCampo = item;
-                    _Campo.ValorCampo = value1;
-                    ListValuesCampo.Add(_Campo);
-                }
-            }
-        }
-
-        private string GetValueControl(string ControlId, Control ctrl)
-        {
-            string value1 = null;
-
-            switch (ControlId)
-            {
-                case "TextBox":
-                    value1 = ((TextBox)ctrl).Text;
-                    break;
-                case "ComboBox":
-                    value1 = ((ComboBox)ctrl).Text;
-                    break;
-                case "CheckBox":
-                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
-                    break;
-                case "RadioButton":
-                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
-                    break;
-                default:
-                    break;
-            }
-
-            return value1;
-        }
-
-        #endregion
-        
-
         private List<MedicalExamList> GetData(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
         {
             OperationResult objOperationResult = new OperationResult();
@@ -254,7 +165,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 }
                 txtMayorque.Value = findResult.r_Imc;
 
-                SetOldValues();
+
             }
         }
 
