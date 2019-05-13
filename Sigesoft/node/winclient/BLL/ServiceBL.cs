@@ -32787,7 +32787,8 @@ namespace Sigesoft.Node.WinClient.BLL
                             join F in dbContext.organization on B.v_CustomerOrganizationId equals F.v_OrganizationId
                             join I in dbContext.location on B.v_CustomerLocationId equals I.v_LocationId
 
-                            join BB in dbContext.organization on B.v_EmployerOrganizationId equals BB.v_OrganizationId
+                            //join BB in dbContext.organization on B.v_EmployerOrganizationId equals BB.v_OrganizationId
+                            join BB in dbContext.organization on A.v_OrganizationId equals BB.v_OrganizationId
                             join CC in dbContext.location on B.v_EmployerLocationId equals CC.v_LocationId
 
                             join G in dbContext.organization on B.v_WorkingOrganizationId equals G.v_OrganizationId into J4_join
@@ -32816,7 +32817,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 i_EsoTypeId = B.i_EsoTypeId.Value,
                                 Esotype = J1.v_Value1,
                                 v_CustomerOrganizationId = F.v_OrganizationId,
-                                v_EmployerOrganizationId = BB.v_OrganizationId,
+                                //v_EmployerOrganizationId = BB.v_OrganizationId,
+                                v_EmployerOrganizationId = A.v_OrganizationId,
                                 v_WorkingOrganizationId = G.v_OrganizationId,
                                 v_EmployerName = BB.v_Name,
                                 v_EmployerRuc = BB.v_IdentificationNumber,
@@ -32874,7 +32876,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 foreach (var item in Empresas)
                 {
-                    List<LiquidacionDetalle> LiquidacionDetalle = new List<LiquidacionDetalle>();
+                    if (item.v_EmployerOrganizationId != "N009-OO000000670")
+                    {
+                        List<LiquidacionDetalle> LiquidacionDetalle = new List<LiquidacionDetalle>();
                     var oLiquidacionEmpresaDetalle = new Liquidacion();
                     oLiquidacionEmpresaDetalle.v_EmployerOrganizationId = item.v_EmployerOrganizationId;
                     oLiquidacionEmpresaDetalle.v_EmployerName = item.v_EmployerName;
@@ -32883,7 +32887,6 @@ namespace Sigesoft.Node.WinClient.BLL
                     oLiquidacionEmpresaDetalle.v_EmployerRepr = item.v_EmployerRepr;
                     oLiquidacionEmpresaDetalle.v_EmployerTelefono = item.v_EmployerTelefono;
                     
-
                     var servicios = ListaServicios.FindAll(p => p.v_EmployerOrganizationId == item.v_EmployerOrganizationId);
 
                     int contador = 1;
@@ -32918,6 +32921,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                     LiquidacionDetalle = LiquidacionDetalle.OrderBy(o => o.Esotype).ToList();
                     ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
+                    }
                 }
 
                 pobjOperationResult.Success = 1;
