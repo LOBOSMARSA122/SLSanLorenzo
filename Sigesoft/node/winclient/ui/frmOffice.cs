@@ -344,13 +344,16 @@ namespace Sigesoft.Node.WinClient.UI
                 if (_TserviceId == (int)MasterService.AtxMedicaParticular || _TserviceId == (int)MasterService.AtxMedicaSeguros)
                 {
                     #region ESO V1
-                    frm = new Operations.frmEso(_serviceId, null, null, _TserviceId);
+                    //frm = new Operations.frmEso(_serviceId, null, null, _TserviceId);
                     //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
-                    frm.ShowDialog();
+                    //frm.ShowDialog();
                     #endregion
                     #region ESO V2 (Asíncrono)
                     //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
                     //frm.ShowDialog();
+                    frm = new Operations.frmContainerEso(_serviceId, null, "Service", _TserviceId, _personId);
+                    frm.Show();
+                    this.Enabled = true;
                     #endregion
                     
                 }
@@ -362,12 +365,15 @@ namespace Sigesoft.Node.WinClient.UI
 
                     this.Enabled = false;
                     #region ESO V1  
-                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
-                    frm.ShowDialog();
+                    //frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
+                    //frm.ShowDialog();
                     #endregion
                     #region ESO V2 (Asíncrono)
                     //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
                     //frm.ShowDialog();
+                    frm = new Operations.frmContainerEso(_serviceId, null, "Service", _TserviceId, _personId);
+                    frm.Show();
+                    this.Enabled = true;
                     #endregion
                     
                     this.Enabled = true;
