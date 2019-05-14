@@ -352,7 +352,7 @@ namespace Sigesoft.Node.WinClient.UI
                     //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
                     //frm.ShowDialog();
                     frm = new Operations.frmContainerEso(_serviceId, null, "Service", _TserviceId, _personId);
-                    frm.Show();
+                    frm.ShowDialog();
                     this.Enabled = true;
                     #endregion
                     
@@ -372,7 +372,7 @@ namespace Sigesoft.Node.WinClient.UI
                     //frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
                     //frm.ShowDialog();
                     frm = new Operations.frmContainerEso(_serviceId, null, "Service", _TserviceId, _personId);
-                    frm.Show();
+                    frm.ShowDialog();
                     this.Enabled = true;
                     #endregion
                     
