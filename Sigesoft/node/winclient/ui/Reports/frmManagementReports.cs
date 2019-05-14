@@ -2493,7 +2493,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             frm.ShowDialog();
             this.Enabled = true;
         }
+        private void GenerateAutorizacion_Liberacion_SanMartin(string pathFile)
+        {
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter_ExoLab();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
 
+            Aut_Liberacion_San_Martin.CreateAutorizacionLiberacionInformacionMedicaSanMartin(pathFile, datosP, MedicalCenter, filiationData);
+        }
         private void GenerateHistoriaClinica(string pathFile)
         {
             OperationResult objOperationResult = new OperationResult();
@@ -5807,6 +5814,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.IE_OBSTETRICO_PELVICO_ID:
                     Generate_Informe_Ecografico_Obstetrico_Pelvico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_OBSTETRICO_PELVICO_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.AUTORIZACION_LIBERACION_SAN_MARTIN:
+                    GenerateAutorizacion_Liberacion_SanMartin(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.AUTORIZACION_LIBERACION_SAN_MARTIN)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 ///GenerateInforme_Resultados_San_Martinm
