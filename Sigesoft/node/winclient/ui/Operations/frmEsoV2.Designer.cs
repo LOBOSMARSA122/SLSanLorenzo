@@ -1676,6 +1676,7 @@
             this.btnAgregarRecomendaciones_Conclusiones.TabIndex = 96;
             this.btnAgregarRecomendaciones_Conclusiones.Text = "      Agregar";
             this.btnAgregarRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
+            this.btnAgregarRecomendaciones_Conclusiones.Visible = false;
             // 
             // btnRemoverRecomendaciones_Conclusiones
             // 
@@ -1697,6 +1698,7 @@
             this.btnRemoverRecomendaciones_Conclusiones.TabIndex = 97;
             this.btnRemoverRecomendaciones_Conclusiones.Text = "     Eliminar";
             this.btnRemoverRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
+            this.btnRemoverRecomendaciones_Conclusiones.Visible = false;
             // 
             // chkinterconsulta
             // 

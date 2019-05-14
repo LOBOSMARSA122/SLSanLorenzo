@@ -378,7 +378,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             //}
             //else
             //{
-            //    foreach (var pdf in _filesNameToMerge) {  System.IO.File.Delete(pdf); }
+            //foreach (var pdf in _filesNameToMerge) { System.IO.File.Delete(pdf); }
             //}
 
         }
@@ -415,7 +415,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             OperationResult objOperationResult = new OperationResult();
             MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
             crConsolidatedReports rp = null;
-            rp = new Reports.crConsolidatedReports();
+            //rp = new Reports.crConsolidatedReports();
             _filesNameToMerge = new List<string>();
 
             foreach (var com in reportesId)
