@@ -36,6 +36,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private  string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
         private string _tempSourcePath = Path.Combine(Application.StartupPath, "TempMerge");
         DataSet dsGetRepo = null;
+        DataSet dsGetRepo1 = null;
         PacientBL _pacientBL = new PacientBL();
         HistoryBL _historyBL = new HistoryBL();
         string ruta;
@@ -354,24 +355,24 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
                 _mergeExPDF.Execute();
             }
-            var adjunto = _filesNameToMerge.FindAll(p => p.Contains(_dni));
-            var adjunto_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
-            if (adjunto.Count() > 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { foreach (var otros in adjunto_2) { if ((pdf != adj || pdf != otros) && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } } }
-            }
-            else if (adjunto.Count() > 0 && adjunto_2.Count() == 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
-            }
-            else if (adjunto.Count() == 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto_2) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
-            }
-            else
-            {
-                foreach (var pdf in _filesNameToMerge) {  System.IO.File.Delete(pdf); }
-            }
+            //var adjunto = _filesNameToMerge.FindAll(p => p.Contains(_dni));
+            //var adjunto_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+            //if (adjunto.Count() > 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { foreach (var otros in adjunto_2) { if ((pdf != adj || pdf != otros) && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } } }
+            //}
+            //else if (adjunto.Count() > 0 && adjunto_2.Count() == 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+            //}
+            //else if (adjunto.Count() == 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto_2) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+            //}
+            //else
+            //{
+            //    foreach (var pdf in _filesNameToMerge) {  System.IO.File.Delete(pdf); }
+            //}
 
         }
 
@@ -413,8 +414,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             foreach (var com in reportesId)
             {
                 int IdCrystal = GetIdCrystal(com);
-                //tasks.Add(Task<string>.Factory.StartNew(() => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
-                ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal);
+                tasks.Add(Task<string>.Factory.StartNew(() => ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal), TaskCreationOptions.AttachedToParent | TaskCreationOptions.LongRunning));
+                //ChooseReport(com.Split('|')[0], serviceId, pPacienteId, IdCrystal);
             }
 
             if (Publicar)
@@ -2326,13 +2327,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     var HISTORIA_CLINICA_PSICOLOGICA_ID = new ServiceBL().GetHistoriaClinicaPsicologica(_serviceId, Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
 
                     dsGetRepo = new DataSet();
+                    dsGetRepo1 = new DataSet();
 
                     DataTable dt_HISTORIA_CLINICA_PSICOLOGICA_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(HISTORIA_CLINICA_PSICOLOGICA_ID);
-                    dt_HISTORIA_CLINICA_PSICOLOGICA_ID.TableName = "dtHistoriaClinicaPsicologica";
-                    dsGetRepo.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID);
+                    DataTable dt_HISTORIA_CLINICA_PSICOLOGICA_ID_2 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(HISTORIA_CLINICA_PSICOLOGICA_ID);
+                    
                     if (pintIdCrystal == 42)
                     {
-
+                        dt_HISTORIA_CLINICA_PSICOLOGICA_ID.TableName = "dtHistoriaClinicaPsicologica";
+                        dsGetRepo.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID);
                         rp = new Reports.crApendice04_Psico_01();
                         rp.SetDataSource(dsGetRepo);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -2345,8 +2348,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.Export();
                         rp.Close();
 
+                        dt_HISTORIA_CLINICA_PSICOLOGICA_ID_2.TableName = "dtHistoriaClinicaPsicologica_Apendice04";
+                        dsGetRepo1.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID_2);
                         rp = new Reports.crApendice04_Psico_02();
-                        rp.SetDataSource(dsGetRepo);
+                        rp.SetDataSource(dsGetRepo1);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
@@ -2370,7 +2375,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
                     else if (pintIdCrystal == 55)
                     {
-
+                        dt_HISTORIA_CLINICA_PSICOLOGICA_ID.TableName = "dtHistoriaClinicaPsicologica";
+                        dsGetRepo.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID);
                         rp = new Reports.crHistoriaClinicaPsicologica_GOLD();
                         rp.SetDataSource(dsGetRepo);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -2383,8 +2389,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.Export();
                         rp.Close();
 
+                        dt_HISTORIA_CLINICA_PSICOLOGICA_ID_2.TableName = "dsHistoriaClinicaPsicologica2_GOLD";
+                        dsGetRepo1.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID_2);
                         rp = new Reports.crHistoriaClinicaPsicologica2_GOLD();
-                        rp.SetDataSource(dsGetRepo);
+                        rp.SetDataSource(dsGetRepo1);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
@@ -2408,6 +2416,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
                     else
                     {
+                        dt_HISTORIA_CLINICA_PSICOLOGICA_ID.TableName = "dtHistoriaClinicaPsicologica";
+                        dsGetRepo.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID);
                         rp = new Reports.crHistoriaClinicaPsicologica();
                         rp.SetDataSource(dsGetRepo);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -2421,9 +2431,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.Export();
                         rp.Close();
 
-
+                        dt_HISTORIA_CLINICA_PSICOLOGICA_ID_2.TableName = "dtHistoriaClinicaPsicologica_2";
+                        dsGetRepo1.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID_2);
                         rp = new Reports.crHistoriaClinicaPsicologica2();
-                        rp.SetDataSource(dsGetRepo);
+                        rp.SetDataSource(dsGetRepo1);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();

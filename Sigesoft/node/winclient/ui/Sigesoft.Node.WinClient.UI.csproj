@@ -409,6 +409,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsHistoriaClinicaPsicologica.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsHistoriaClinicaPsicologica2_GOLD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaPsicologica2_GOLD.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\dsHistoriaClinicaPsicologica_2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaPsicologica_2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\dsHistoriaClinicaPsicologica_Apendice04.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaPsicologica_Apendice04.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\dsMaslachestres.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5397,6 +5412,39 @@
     </None>
     <None Include="Dataset\dsFondoOjo.xss">
       <DependentUpon>dsFondoOjo.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica2_GOLD.xsc">
+      <DependentUpon>dsHistoriaClinicaPsicologica2_GOLD.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica2_GOLD.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaPsicologica2_GOLD.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica2_GOLD.xss">
+      <DependentUpon>dsHistoriaClinicaPsicologica2_GOLD.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica_2.xsc">
+      <DependentUpon>dsHistoriaClinicaPsicologica_2.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica_2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaPsicologica_2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica_2.xss">
+      <DependentUpon>dsHistoriaClinicaPsicologica_2.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica_Apendice04.xsc">
+      <DependentUpon>dsHistoriaClinicaPsicologica_Apendice04.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica_Apendice04.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaPsicologica_Apendice04.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dataset\dsHistoriaClinicaPsicologica_Apendice04.xss">
+      <DependentUpon>dsHistoriaClinicaPsicologica_Apendice04.xsd</DependentUpon>
     </None>
     <None Include="Dataset\dsLumboSacra.xsc">
       <DependentUpon>dsLumboSacra.xsd</DependentUpon>
