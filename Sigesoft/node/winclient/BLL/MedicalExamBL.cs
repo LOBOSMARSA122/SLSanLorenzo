@@ -297,21 +297,29 @@ namespace Sigesoft.Node.WinClient.BLL
           
       }
 
-      public List<ComponentList> GetAllComponent()
-    {
-        var dbContext = new SigesoftEntitiesModel();
-        List<ComponentList> objDtoEntity = null;
+        public List<ComponentList> GetAllComponent()
+        {
+            var dbContext = new SigesoftEntitiesModel();
+            List<ComponentList> objDtoEntity = null;
 
-        var objEntity = (from a in dbContext.component
+            var objEntity = (from a in dbContext.component
             where a.i_IsDeleted == 0
             select new ComponentList
             {
-                v_ComponentId = a.v_ComponentId,
-                r_BasePrice = a.r_BasePrice
+            v_ComponentId = a.v_ComponentId,
+            r_BasePrice = a.r_BasePrice
             }).ToList();
 
-        return objEntity.ToList();
-    }
+            return objEntity.ToList();
+        }
+
+        public string GetCommentaryUpdateByComponentId(string componentId)
+        {
+            using (var dbContext = new SigesoftEntitiesModel())
+            {
+                return dbContext.component.FirstOrDefault(p => p.v_ComponentId == componentId).v_ComentaryUpdate;
+            }
+        }
 
     }
 }

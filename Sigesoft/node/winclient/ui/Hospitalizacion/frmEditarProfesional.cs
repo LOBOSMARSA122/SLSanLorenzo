@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
+using Sigesoft.Node.WinClient.BE.Custom;
+using Infragistics.Win.UltraWinGrid;
 
 namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 {
@@ -17,6 +19,108 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private string _mode;
         private string _medicoId;
         HospitalizacionBL oHospitalizacionBL = new HospitalizacionBL();
+
+
+        #region GetChanges
+        string[] nombreCampos =
+        {
+
+            "ddlServiceTypeId", "ddlMasterServiceId", "txtClinica", "txtMedico"
+        };
+
+        private List<Campos> ListValuesCampo = new List<Campos>();
+
+        private string GetChanges()
+        {
+            string cadena = oHospitalizacionBL.GetComentaryUpdateByMedicoId(_medicoId);
+            string oldComentary = cadena;
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            bool change = false;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampo.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        cadena += item + ":" + ValorCampo + "|";
+                        change = true;
+                    }
+                }
+            }
+            if (change)
+            {
+                return cadena;
+            }
+
+            return oldComentary;
+        }
+
+        private void SetOldValues()
+        {
+            ListValuesCampo = new List<Campos>();
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCampos)
+            {
+
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    Campos _Campo = new Campos();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampo.Add(_Campo);
+                }
+            }
+        }
+
+        private string GetValueControl(string ControlId, Control ctrl)
+        {
+            string value1 = null;
+
+            switch (ControlId)
+            {
+                case "TextBox":
+                    value1 = ((TextBox)ctrl).Text;
+                    break;
+                case "ComboBox":
+                    value1 = ((ComboBox)ctrl).Text;
+                    break;
+                case "CheckBox":
+                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
+                    break;
+                case "RadioButton":
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
+                    break;
+                case "DateTimePicker":
+                    value1 = ((DateTimePicker)ctrl).Text; ;
+                    break;
+                case "UltraCombo":
+                    value1 = ((UltraCombo)ctrl).Text; ;
+                    break;
+                default:
+                    break;
+            }
+
+            return value1;
+        }
+
+        #endregion
+        
+
+
         public frmEditarProfesional(string mode, string medicoId)
         {
             _mode = mode;
@@ -34,6 +138,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
             else
             {
+                ddlUsuario.Enabled = false;
                 OperationResult objOperationResult1 = new OperationResult();
                 var o =oHospitalizacionBL.GetMedico(ref objOperationResult1, _medicoId);
 
@@ -42,9 +147,19 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 ddlMasterServiceId.SelectedValue = o.i_MasterServiceId.ToString();
                 txtClinica.Text = o.r_Clinica.ToString();
                 txtMedico.Text = o.r_Medico.ToString();
+
+                SetOldValues();
             }
         }
 
+        //private void LoadData()
+        //{
+        //    var o = oHospitalizacionBL.GetMedico(ref objOperationResult1, _medicoId);
+        //    ddlServiceTypeId.SelectedValue = o.i_MasterServiceTypeId.ToString();
+        //    ddlMasterServiceId.SelectedValue = o.i_MasterServiceId.ToString();
+        //    txtClinica.Text = o.r_Clinica.ToString();
+        //    txtMedico.Text = o.r_Medico.ToString();
+        //}
         private void LoadComboBox()
         {
             OperationResult objOperationResult1 = new OperationResult();
@@ -98,6 +213,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 else
                 {
                     OmedicoDto.v_MedicoId = _medicoId;
+                    OmedicoDto.v_ComentaryUpdate = GetChanges();
                     oHospitalizacionBL.UpdateMedico(ref objOperationResult, OmedicoDto, Globals.ClientSession.GetAsList());
                 }
                

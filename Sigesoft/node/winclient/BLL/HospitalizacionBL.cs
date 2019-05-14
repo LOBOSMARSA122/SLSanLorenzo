@@ -1136,5 +1136,13 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+
+        public string GetComentaryUpdateByMedicoId(string medicoId)
+        {
+            using (var dbContext = new SigesoftEntitiesModel())
+            {
+                return dbContext.medico.FirstOrDefault(p => p.v_MedicoId == medicoId).v_ComentaryUpdate;
+            }
+        }
     }
 }
