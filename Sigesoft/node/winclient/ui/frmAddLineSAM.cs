@@ -21,6 +21,8 @@ namespace Sigesoft.Node.WinClient.UI
     {
         private string _IdLinea;
         private string _strFilterExpression;
+        private string _txtLineaCodigo;
+        private string _txtLineaNombre;
         public frmAddLineSAM()
         {
             InitializeComponent();
@@ -170,6 +172,8 @@ namespace Sigesoft.Node.WinClient.UI
                 string NombreLinea = grdDataLinea.Selected.Rows[0].Cells["v_Nombre"].Value.ToString();
                 txtLineaCodigo.Text = CodLinea;
                 txtLineaNombre.Text = NombreLinea;
+                _txtLineaCodigo = CodLinea;
+                _txtLineaNombre = NombreLinea;
                 btnEditar_2.Visible = true;
                 btnLineaAgregar.Visible = false;
             }
@@ -188,6 +192,7 @@ namespace Sigesoft.Node.WinClient.UI
                 OperationResult objOperationResult = new OperationResult();
                 try
                 {
+                    
                     using (var cnx = ConnectionHelper.GetConnection)
                     {
                         if (cnx.State != System.Data.ConnectionState.Open) cnx.Open();
@@ -236,10 +241,33 @@ namespace Sigesoft.Node.WinClient.UI
                 {
                     using (var cnx = ConnectionHelper.GetConnection)
                     {
+                      
                         if (cnx.State != System.Data.ConnectionState.Open) cnx.Open();
+                        string queryGetCommentary = "select v_ComentaryUpdate from linea where v_IdLinea='" + _IdLinea + "'";
+
+                        var GetCommentary = cnx.Query(queryGetCommentary).ToList();
+                        string comentarioUpdate = GetCommentary[0].v_ComentaryUpdate;
+                        comentarioUpdate += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+                        bool IsUpdate = false;
+                        if (_txtLineaCodigo != txtLineaCodigo.Text)
+                        {
+                            comentarioUpdate += "CodigoLinea:" + _txtLineaCodigo + "|";
+                            IsUpdate = true;
+                        }
+
+                        if (_txtLineaNombre != txtLineaNombre.Text)
+                        {
+                            comentarioUpdate += "NombreLinea:" + _txtLineaNombre + "|";
+                            IsUpdate = true;
+                        }
+
+                        if (!IsUpdate)
+                        {
+                            comentarioUpdate = "";
+                        }
 
                         string query = "update [dbo].[linea] set v_CodLinea = '" + txtLineaCodigo.Text + "',v_Nombre='" +
-                                       txtLineaNombre.Text + "' where v_IdLinea='" + _IdLinea + "'";
+                                       txtLineaNombre.Text + "',v_ComentaryUpdate='" + comentarioUpdate + "' where v_IdLinea='" + _IdLinea + "'";
                         objOperationResult.Success = 1;
                         cnx.Query(query);
                         MessageBox.Show("Se editó correctamente:", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);

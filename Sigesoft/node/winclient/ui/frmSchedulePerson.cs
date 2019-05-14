@@ -14,6 +14,7 @@ using System.Drawing.Imaging;
 using Infragistics.Win;
 using ScrapperReniecSunat;
 using System.Transactions;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -39,6 +40,106 @@ namespace Sigesoft.Node.WinClient.UI
         string _dni;
 
         #endregion
+
+        #region GetChanges
+        string[] nombreCampos =
+        {
+
+            "txtName", "ddlDocTypeId", "txtFirstLastName", "txtDocNumber", "txtSecondLastName", "txtAdressLocation", "ddlRelationshipId", "ddlPlaceWorkId",
+            "ddlSexTypeId", "txtDecucible", "txtNroPliza", "ddlMaritalStatusId", "ddlLevelOfId", "txtBirthPlace", "ddlAltitudeWorkId", "txtExploitedMineral",
+            "dtpBirthdate", "ddlDistricId", "txtResidenceTimeInWorkplace", "ddlProvinceId", "ddlTypeOfInsuranceId", "ddlDepartamentId", "txtNumberLivingChildren",
+            "txtNumberDependentChildren", "ddlResidenceInWorkplaceId", "txtNroHermanos", "txtMail", "txtTelephoneNumber", "txtReligion", "txtNacionalidad",
+            "txtResideAnte"
+        };
+
+        private List<Campos> ListValuesCampo = new List<Campos>();
+
+        private string GetChanges()
+        {
+            string cadena = new PacientBL().GetComentaryUpdateByPersonId(PacientId);
+            string oldComentary = cadena;
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            bool change = false;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampo.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        cadena += item + ":" + ValorCampo + "|";
+                        change = true;
+                    }
+                }
+            }
+            if (change)
+            {
+                return cadena;
+            }
+
+            return oldComentary;
+        }
+
+        private void SetOldValues()
+        {
+            ListValuesCampo = new List<Campos>();
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCampos)
+            {
+                
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    Campos _Campo = new Campos();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampo.Add(_Campo);
+                }
+            }
+        }
+
+        private string GetValueControl(string ControlId, Control ctrl)
+        {
+            string value1 = null;
+
+            switch (ControlId)
+            {
+                case "TextBox":
+                    value1 = ((TextBox)ctrl).Text;
+                    break;
+                case "ComboBox":
+                    value1 = ((ComboBox)ctrl).Text;
+                    break;
+                case "CheckBox":
+                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
+                    break;
+                case "RadioButton":
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
+                    break;
+                case "DateTimePicker":
+                    value1 = ((DateTimePicker)ctrl).Text;;
+                    break;
+                default:
+                    break;
+            }
+
+            return value1;
+        }
+
+        #endregion
+        
 
         public frmSchedulePerson(string strCalendarId, string pstrModeAgenda, string pstrProtocolId, string nroHospitalizacion, string dni)
         {
@@ -231,6 +332,7 @@ namespace Sigesoft.Node.WinClient.UI
             ddlMasterServiceId.SelectedValue = ((int)MasterService.Eso).ToString();
             ddlVipId.SelectedValue = "0";
             cboMedicoTratante.SelectedValue = 0;
+
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -421,6 +523,7 @@ namespace Sigesoft.Node.WinClient.UI
                     btnSavePacient.Text = "Guardar Nuevo Paciente";
                     txtName.Focus();
             }
+            SetOldValues();
         }
 
         private void ObtenerDatosDNI(string dni)
@@ -651,7 +754,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
                     objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
                     objpersonDto.v_Religion = txtReligion.Text;
-
+                    objpersonDto.v_ComentaryUpdate = GetChanges();
 
                     if (dtpBirthdate.Value > DateTime.Now.Date)
                     {
@@ -660,7 +763,7 @@ namespace Sigesoft.Node.WinClient.UI
                     }
                     // Save the data
                     PacientId = _objPacientBL.UpdatePacient(ref objOperationResult, objpersonDto, Globals.ClientSession.GetAsList(), NumberDocument, txtDocNumber.Text);
-                   
+                    SetOldValues();
                 }
                 if (objOperationResult.Success == 1)  // Operación sin error
                 {
@@ -682,11 +785,14 @@ namespace Sigesoft.Node.WinClient.UI
                         // Se queda en el formulario.
                     }
                 }
+                
             }
             else
             {
                 MessageBox.Show("Por favor corrija la información ingresada. Vea los indicadores de error.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            
         }
 
         private void btnschedule_Click(object sender, EventArgs e)

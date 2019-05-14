@@ -16,6 +16,14 @@ namespace Sigesoft.Node.WinClient.BLL
 
         #region Person
 
+        public string GetComentaryUpdateByPersonId(string personId)
+        {
+            using (var dbContext = new SigesoftEntitiesModel())
+            {
+                return dbContext.person.FirstOrDefault(p => p.v_PersonId == personId).v_ComentaryUpdate;
+            }
+        }
+
         public personDto GetPerson(ref OperationResult pobjOperationResult, string pstrPersonId)
         {
             //mon.IsActive = true;

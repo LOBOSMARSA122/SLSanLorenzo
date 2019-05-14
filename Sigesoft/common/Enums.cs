@@ -767,5 +767,14 @@ namespace Sigesoft.Common
         Ok = 1,
         Fail = 2
     }
+
+
+    public enum TipoBusqueda
+    {
+        CodigoSegus = 1,
+        NombreCategoria = 2,
+        NombreSubCategoria = 3,
+        NombreComponent = 4,
+    }
 }
 

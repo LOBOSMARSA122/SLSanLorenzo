@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
+using Sigesoft.Node.WinClient.BE.Custom;
+using Infragistics.Win.UltraWinGrid;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -23,6 +25,166 @@ namespace Sigesoft.Node.WinClient.UI
         private serviceDto _serviceDTO = null;
         private string _protocolName;
         string NumberDocument;
+
+
+
+        #region GetChanges
+        string[] nombreCamposPersona =
+        {
+            "txtName", "ddlDocTypeId", "txtFirstLastName", "txtDocNumber", "txtSecondLastName", "ddlSexTypeId", "ddlMaritalStatusId",
+            "txtMail", "txtTelephoneNumber", "ddlLevelOfId"
+        };
+
+        string[] nombreCamposProtocolo =
+        {
+            "txtProtocolName", "cbGeso", "cbOrganizationInvoice", "cbServiceType", "cbOrganization", "cbService", "cbIntermediaryOrganization",
+            "txtCentroCosto", "cbEsoType"
+        };
+
+        private List<Campos> ListValuesCampoPersona = new List<Campos>();
+        private List<Campos> ListValuesCampoProtocolo = new List<Campos>();
+        private string GetChangesPerson()
+        {
+            string cadena = new PacientBL().GetComentaryUpdateByPersonId(_PersonId);
+            string oldComentary = cadena;
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            bool change = false;
+            foreach (var item in nombreCamposPersona)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampoPersona.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        cadena += item + ":" + ValorCampo + "|";
+                        change = true;
+                    }
+                }
+            }
+            if (change)
+            {
+                return cadena;
+            }
+
+            return oldComentary;
+        }
+        private string GetChangesProtocol()
+        {
+            string cadena = _protocolBL.GetComentaryUpdateByProtocolId(_protocolId);
+            string oldComentary = cadena;
+            cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            bool change = false;
+            foreach (var item in nombreCamposProtocolo)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampoProtocolo.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        cadena += item + ":" + ValorCampo + "|";
+                        change = true;
+                    }
+                }
+            }
+            if (change)
+            {
+                return cadena;
+            }
+
+            return oldComentary;
+        }
+
+        private void SetOldValuesPerson()
+        {
+            ListValuesCampoPersona = new List<Campos>();
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCamposPersona)
+            {
+
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    Campos _Campo = new Campos();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampoPersona.Add(_Campo);
+                }
+            }
+        }
+
+        private void SetOldValuesProtocol()
+        {
+            ListValuesCampoProtocolo = new List<Campos>();
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCamposProtocolo)
+            {
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+                    Campos _Campo = new Campos();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampoProtocolo.Add(_Campo);
+                }
+            }
+        }
+
+        private string GetValueControl(string ControlId, Control ctrl)
+        {
+            string value1 = null;
+
+            switch (ControlId)
+            {
+                case "TextBox":
+                    value1 = ((TextBox)ctrl).Text;
+                    break;
+                case "ComboBox":
+                    value1 = ((ComboBox)ctrl).Text;
+                    break;
+                case "CheckBox":
+                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
+                    break;
+                case "RadioButton":
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
+                    break;
+                case "DateTimePicker":
+                    value1 = ((DateTimePicker)ctrl).Text; ;
+                    break;
+                case "UltraCombo":
+                    value1 = ((UltraCombo)ctrl).Text; ;
+                    break;
+                default:
+                    break;
+            }
+
+            return value1;
+        }
+
+        #endregion
+        
 
         public frmEditarServicio(string pServiceId, string pProtocolId, string pPersonId)
         {
@@ -77,6 +239,9 @@ namespace Sigesoft.Node.WinClient.UI
             lblCostoTotal.Text = Total.ToString();
 
             grdDataLocation.DataSource = dataListPc;
+
+            SetOldValuesPerson();
+            SetOldValuesProtocol();
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -90,7 +255,7 @@ namespace Sigesoft.Node.WinClient.UI
             OperationResult objOperationResult = new OperationResult();
 
             objpacientDto = _objPacientBL.GetPacient(ref objOperationResult, _PersonId, null);
-            NumberDocument = txtDocNumber.Text;
+            NumberDocument = objpacientDto.v_DocNumber;
             txtName.Text = objpacientDto.v_FirstName;
             txtFirstLastName.Text = objpacientDto.v_FirstLastName;
             txtSecondLastName.Text = objpacientDto.v_SecondLastName;
@@ -164,7 +329,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_MaritalStatusId = Convert.ToInt32(ddlMaritalStatusId.SelectedValue);
                     objpersonDto.i_LevelOfId = Convert.ToInt32(ddlLevelOfId.SelectedValue);
                     objpersonDto.v_DocNumber = txtDocNumber.Text.Trim();
-               
+                    objpersonDto.v_ComentaryUpdate = GetChangesPerson();
                     objpersonDto.v_TelephoneNumber = txtTelephoneNumber.Text.Trim();
                   
                     objpersonDto.v_Mail = txtMail.Text.Trim();
@@ -279,6 +444,7 @@ namespace Sigesoft.Node.WinClient.UI
                 _protocolDTO.i_MasterServiceId = int.Parse(cbService.SelectedValue.ToString());
                 _protocolDTO.i_MasterServiceTypeId = int.Parse(cbServiceType.SelectedValue.ToString());
                 _protocolDTO.v_ProtocolId = _protocolId;
+                _protocolDTO.v_ComentaryUpdate = GetChangesProtocol();
                 _protocolBL.UpdateProtocol(ref objOperationResult,
                         _protocolDTO,
                         _protocolcomponentListDTO,

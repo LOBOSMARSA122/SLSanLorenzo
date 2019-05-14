@@ -8,7 +8,8 @@ namespace Sigesoft.Node.WinClient.BE
     public class Categoria
     {
         public string v_CategoryName { get; set; }
-
+        public string v_CodigoSegus { get; set; }
+        public string v_SubCategoryName { get; set; }
         public int? i_CategoryId { get; set; }
         public string v_ComponentName { get; set; }
         public string v_ComponentId { get; set; }
