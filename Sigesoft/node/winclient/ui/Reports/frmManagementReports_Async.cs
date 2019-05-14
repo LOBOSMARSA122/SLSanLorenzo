@@ -320,7 +320,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 {
                     foreach (var item in adj)
                     {
-                        filesNameToMergeOrder.Add(item);
+                        if (File.Exists(item))
+                        {
+                            filesNameToMergeOrder.Add(item);
+                        }
+                       
                     }
 
                 }
@@ -329,7 +333,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 {
                     foreach (var item in adj_2)
                     {
-                        filesNameToMergeOrder.Add(item);
+                        if (File.Exists(item))
+                        {
+                            filesNameToMergeOrder.Add(item);
+                        }
                     }
 
                 }
@@ -982,7 +989,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_1 + ".pdf";
+                    objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_1 + "1.pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
@@ -995,7 +1002,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_2 + ".pdf";
+                    objDiskOpt.DiskFileName = _ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_2 + "2.pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     filesName.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
