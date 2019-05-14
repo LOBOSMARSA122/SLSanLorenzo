@@ -45,11 +45,19 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            _medicoId = grdData.Selected.Rows[0].Cells["v_MedicoId"].Value.ToString();
-            var frm = new frmEditarProfesional("Edit", _medicoId);
-            frm.ShowDialog();
+            if (grdData.Selected.Rows.Count > 0)
+            {
+                _medicoId = grdData.Selected.Rows[0].Cells["v_MedicoId"].Value.ToString();
+                var frm = new frmEditarProfesional("Edit", _medicoId);
+                frm.ShowDialog();
 
-            BindGrid("");
+                BindGrid("");
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila.", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            }
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

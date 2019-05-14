@@ -10,6 +10,7 @@ using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.Contasol.Integration.Contasol;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 
 namespace Sigesoft.Node.WinClient.UI
@@ -24,6 +25,114 @@ namespace Sigesoft.Node.WinClient.UI
         string _NameComponentOld;
         private ComboTreeNode valueCategoryId;
         private string nameCategoryId;
+
+
+        #region GetChanges
+        private List<Campos> ListValuesCampo = new List<Campos>();
+
+        string[] nombreCampos =
+        {
+
+            "txtInsertName", "ddlCategoryId", "ddlDiagnosableId", "unBasePrice", "ddlComponentTypeId",
+            "ddlUIIsVisibleId", "unUIIndex", "ddlIsApprovedId", "unValidInDays", "txtCodigoSegus", "txtTarifaSegus",
+            "ddlUnidadProductiva"
+        };       
+
+        private string GetChanges()
+        {
+            string commentaryUpdate = _objMedicalExamBL.GetCommentaryUpdateByComponentId(objmedicalexamDto.v_ComponentId);
+            string oldCommentary = commentaryUpdate;
+            commentaryUpdate += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+            bool change = false;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+                string keyTagControl;
+                string value1;
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    var ValorCampo = ListValuesCampo.Find(x => x.NombreCampo == item).ValorCampo;
+                    if (ValorCampo != value1)
+                    {
+                        commentaryUpdate += item + ":" + ValorCampo + "|";
+                        change = true;
+                    }
+                }
+            }
+            if (change)
+            {
+                return commentaryUpdate;
+            }
+
+            return oldCommentary;
+        }
+
+        private void SetOldValues()
+        {
+            ListValuesCampo = new List<Campos>();
+            string keyTagControl = null;
+            string value1 = null;
+            foreach (var item in nombreCampos)
+            {
+                var fields = this.Controls.Find(item, true);
+
+                if (fields.Length > 0)
+                {
+                    keyTagControl = fields[0].GetType().Name;
+                    value1 = GetValueControl(keyTagControl, fields[0]);
+
+                    Campos _Campo = new Campos();
+                    _Campo.NombreCampo = item;
+                    _Campo.ValorCampo = value1;
+                    ListValuesCampo.Add(_Campo);
+                }
+            }
+        }
+
+        private string GetValueControl(string ControlId, Control ctrl)
+        {
+            string value1 = null;
+
+            switch (ControlId)
+            {
+                case "TextBox":
+                    value1 = ((TextBox)ctrl).Text;
+                    break;
+                case "ComboBox":
+                    value1 = ((ComboBox)ctrl).Text;
+                    break;
+                case "CheckBox":
+                    value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString() == "0" ? "SI" : "NO";
+                    break;
+                case "RadioButton":
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString() == "0" ? "SI" : "NO";
+                    break;
+                case "ComboTreeBox":
+                    if (((ComboTreeBox)ctrl).Text == "--Seleccionar--")
+                    {
+                        value1 = "--Seleccionar--";
+                    }
+                    else
+                    {
+                        value1 = ((ComboTreeBox)ctrl).SelectedNode.Parent.Text;
+                    }
+                    
+                    break;
+                default:
+                    break;
+            }
+
+            return value1;
+        }
+
+        #endregion
+        
+
+
         public frmMedicalExamEdicion( string strMedicalExamId,string pstrMode, string orden)
         {
             InitializeComponent();
@@ -135,6 +244,8 @@ namespace Sigesoft.Node.WinClient.UI
                     txtTarifaSegus.Text = objmedicalexamDto.r_PriceSegus.ToString();
                     txtCodigoSegus.Text = objmedicalexamDto.v_CodigoSegus;
                 }
+
+                SetOldValues();
             }
             catch (Exception ex)
             {
@@ -226,6 +337,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objmedicalexamDto.v_IdUnidadProductiva = ddlUnidadProductiva.SelectedValue.ToString();
                     objmedicalexamDto.r_PriceSegus = priceSegus;
                     objmedicalexamDto.v_CodigoSegus = txtCodigoSegus.Text;
+                    objmedicalexamDto.v_ComentaryUpdate = GetChanges();
                     // Save the data
                     _objMedicalExamBL.UpdateMedicalExam(ref objOperationResult,pbIsChangeName, objmedicalexamDto, Globals.ClientSession.GetAsList());
 

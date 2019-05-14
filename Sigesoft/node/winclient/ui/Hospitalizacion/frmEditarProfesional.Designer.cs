@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarProfesional));
             this.ddlUsuario = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblNombreProfesional = new System.Windows.Forms.Label();
@@ -203,7 +204,7 @@
             this.btnGrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGrabar.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGrabar.ForeColor = System.Drawing.Color.Black;
-            this.btnGrabar.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGrabar.Image = ((System.Drawing.Image)(resources.GetObject("btnGrabar.Image")));
             this.btnGrabar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGrabar.Location = new System.Drawing.Point(290, 233);
             this.btnGrabar.Margin = new System.Windows.Forms.Padding(2);

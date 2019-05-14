@@ -9981,68 +9981,90 @@ namespace Sigesoft.Node.WinClient.BLL
 		}
 
 
-		public List<Categoria> GetAllComponents(ref OperationResult pobjOperationResult)
+        public List<Categoria> GetAllComponents(ref OperationResult pobjOperationResult, int? filterType, string name)
 		{
 
 			int isDeleted = (int)SiNo.NO;
+            string codigoSegus = "";
+            string nameCategory = "";
+            string nameComponent = "";
+            string nameSubCategory = "";
+            if (filterType == (int)TipoBusqueda.CodigoSegus)
+            {
+                codigoSegus = name;
+
+            }
+            else if (filterType == (int)TipoBusqueda.NombreCategoria)
+            {
+                nameCategory = name;
+            }
+            else if (filterType == (int)TipoBusqueda.NombreComponent)
+            {
+                nameComponent =name;
+            }
+            else if (filterType == (int)TipoBusqueda.NombreSubCategoria)
+            {
+                nameSubCategory = name;
+            };
+
+            
 
 			try
 			{
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
+                System.Linq.IQueryable<Categoria> query;
+                if (name == "")
+                {
+                    query = (from C in dbContext.component
+                        join F in dbContext.systemparameter on new { a = C.i_CategoryId.Value, b = 116 }
+                            equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                        from F in F_join.DefaultIfEmpty()
 
-				//var query = (from A in dbContext.component                           
-				//             join C in dbContext.component on A.v_ComponentId equals C.v_ComponentId                            
-				//             join F in dbContext.systemparameter on new { a = C.i_CategoryId.Value, b = 116 }
-				//                      equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
-				//             from F in F_join.DefaultIfEmpty()
+                        where C.i_IsDeleted == 0
+                        select new Categoria
+                        {
+                            v_ComponentId = C.v_ComponentId,
+                            v_ComponentName = C.v_Name,
 
-				//             where                                
-				//                   A.i_IsDeleted == isDeleted
+                            v_CodigoSegus = C.v_CodigoSegus,
+                            i_CategoryId = C.i_CategoryId,
+                            v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
 
-				//             select new Categoria
-				//             {
-				//                 v_ComponentId = A.v_ComponentId,
-				//                 v_ComponentName = C.v_Name,                                
-				//                 i_CategoryId = C.i_CategoryId,
-				//                 v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1
+                        });
 
-				//             }).ToList();
+                }
+                else
+                {
+                    query = (from C in dbContext.component
+                        join F in dbContext.systemparameter on new { a = C.i_CategoryId.Value, b = 116 }
+                            equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                        from F in F_join.DefaultIfEmpty()
 
-				var query = (from C in dbContext.component
-							 join F in dbContext.systemparameter on new { a = C.i_CategoryId.Value, b = 116 }
-									  equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
-							 from F in F_join.DefaultIfEmpty()
+                        join G in dbContext.systemparameter on new { a = F.i_ParameterId, b = 116 }
+                            equals new { a = G.i_ParentParameterId.Value, b = G.i_GroupId } into G_join
+                        from G in G_join.DefaultIfEmpty()
 
-							 where C.i_IsDeleted == isDeleted
+                        where C.i_IsDeleted == 0 && G.v_Value1.Contains(nameSubCategory) && C.v_Name.Contains(nameComponent) && F.v_Value1.Contains(nameCategory) && C.v_CodigoSegus.Contains(codigoSegus)
+                        select new Categoria
+                        {
+                            v_ComponentId = C.v_ComponentId,
+                            v_ComponentName = C.v_Name,
 
+                            v_CodigoSegus = C.v_CodigoSegus,
+                            i_CategoryId = C.i_CategoryId,
+                            v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
 
-							 select new Categoria
-							 {
-								 v_ComponentId = C.v_ComponentId,
-								 v_ComponentName = C.v_Name,
-								 //i_ServiceComponentStatusId = A.i_ServiceComponentStatusId.Value,
-								 //v_ServiceComponentStatusName = B.v_Value1,
-								 //d_StartDate = A.d_StartDate.Value,
-								 //d_EndDate = A.d_EndDate.Value,
-								 //i_QueueStatusId = A.i_QueueStatusId.Value,
-								 //v_QueueStatusName = D.v_Value1,
-								 //ServiceStatusId = E.i_ServiceStatusId.Value,
-								 //v_Motive = E.v_Motive,
-								 i_CategoryId = C.i_CategoryId,
-								 v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
-								 //v_ServiceId = E.v_ServiceId,
-								 //v_ServiceComponentId = A.v_ServiceComponentId,
-							 });
+                        });
+
+                    
+                }
 
 
-
-
-				var objData = query.AsEnumerable()
-						   .Where(s => s.i_CategoryId != -1)
-						   .GroupBy(x => x.i_CategoryId)
-						   .Select(group => group.First());
-
+                var objData = query.AsEnumerable()
+                    .Where(s => s.i_CategoryId != -1)
+                    .GroupBy(x => x.i_CategoryId)
+                    .Select(group => group.First());
 
 				List<Categoria> obj = objData.ToList();
 
@@ -10056,6 +10078,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 					objCategoriaList.i_CategoryId = obj[i].i_CategoryId.Value;
 					objCategoriaList.v_CategoryName = obj[i].v_CategoryName;
+                    
 					var x = query.ToList().FindAll(p => p.i_CategoryId == obj[i].i_CategoryId.Value);
 
 					x.Sort((z, y) => z.v_ComponentName.CompareTo(y.v_ComponentName));

@@ -18,6 +18,7 @@ namespace Sigesoft.Node.WinClient.UI
     public partial class frmAddExam : Form
     {
         #region Declarations
+        ServiceBL objServiceBL = new ServiceBL();
         public CalendarBL _calendarBL = new CalendarBL();
         public List<ServiceComponentList> _auxiliaryExams = null;    
         public string _serviceId;
@@ -184,10 +185,10 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmAddAdditionalExam_Load(object sender, EventArgs e)
         {
-            ServiceBL objServiceBL = new ServiceBL();
+            
             OperationResult objOperationResult = new OperationResult();
 
-            var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult);
+            var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult, null, "");
             grdDataServiceComponent.DataSource = ListServiceComponent;
             ultraGrid1.DataSource = ListServiceComponent;
             if (_modo == "HOSPI" || _modo == "ASEGU")
@@ -533,6 +534,32 @@ namespace Sigesoft.Node.WinClient.UI
             #endregion
 
             txtUnidProdId.Text = lineId;
+        }
+
+        private void txtFiltro_KeyUp(object sender, KeyEventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            int? busqueda = null;
+            if (rbNombreCategoria.Checked)
+            {
+                busqueda = (int) TipoBusqueda.NombreCategoria;
+            }
+            else if (rbNombreSubCategoria.Checked)
+            {
+                busqueda = (int)TipoBusqueda.NombreSubCategoria;
+            }
+            else if (rbNombreComponente.Checked)
+            {
+                busqueda = (int)TipoBusqueda.NombreComponent;
+            }
+            else if (rbPorCodigoSegus.Checked)
+            {
+                busqueda = (int)TipoBusqueda.CodigoSegus;
+            }
+
+            var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult, busqueda, txtFiltro.Text);
+            grdDataServiceComponent.DataSource = ListServiceComponent;
+            ultraGrid1.DataSource = ListServiceComponent;
         }
         
     }
