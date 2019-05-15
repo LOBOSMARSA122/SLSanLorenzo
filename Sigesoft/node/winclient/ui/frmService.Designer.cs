@@ -161,7 +161,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnCompaginaSelected);
             this.groupBox1.Controls.Add(this.txtServicioId);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.cboUserMed);
@@ -217,15 +216,14 @@
             this.btnCompaginaSelected.ForeColor = System.Drawing.Color.Black;
             this.btnCompaginaSelected.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
             this.btnCompaginaSelected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompaginaSelected.Location = new System.Drawing.Point(1134, 91);
+            this.btnCompaginaSelected.Location = new System.Drawing.Point(1138, 105);
             this.btnCompaginaSelected.Margin = new System.Windows.Forms.Padding(2);
             this.btnCompaginaSelected.Name = "btnCompaginaSelected";
             this.btnCompaginaSelected.Size = new System.Drawing.Size(85, 36);
             this.btnCompaginaSelected.TabIndex = 145;
-            this.btnCompaginaSelected.Text = "&Comp. Seleccionados";
-            this.btnCompaginaSelected.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnCompaginaSelected.Text = "     &Compag. Seleccionad";
+            this.btnCompaginaSelected.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCompaginaSelected.UseVisualStyleBackColor = false;
-            this.btnCompaginaSelected.Visible = false;
             this.btnCompaginaSelected.Click += new System.EventHandler(this.btnCompaginaSelected_Click);
             // 
             // txtServicioId
@@ -700,6 +698,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.btnCompaginaSelected);
             this.groupBox2.Controls.Add(this.grdDataService);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.btnReportAsync);
@@ -731,11 +730,11 @@
             this.groupBox2.Controls.Add(this.btnInformePsicologico);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox2.Location = new System.Drawing.Point(11, 137);
+            this.groupBox2.Location = new System.Drawing.Point(11, 141);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(1227, 524);
+            this.groupBox2.Size = new System.Drawing.Size(1227, 520);
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
@@ -858,7 +857,7 @@
             this.grdDataService.Location = new System.Drawing.Point(0, 29);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
-            this.grdDataService.Size = new System.Drawing.Size(1126, 474);
+            this.grdDataService.Size = new System.Drawing.Size(1126, 470);
             this.grdDataService.TabIndex = 158;
             this.grdDataService.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataService_InitializeLayout);
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
@@ -896,7 +895,7 @@
             this.btnReportAsync.ForeColor = System.Drawing.Color.Black;
             this.btnReportAsync.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
             this.btnReportAsync.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportAsync.Location = new System.Drawing.Point(1138, 484);
+            this.btnReportAsync.Location = new System.Drawing.Point(1138, 66);
             this.btnReportAsync.Margin = new System.Windows.Forms.Padding(2);
             this.btnReportAsync.Name = "btnReportAsync";
             this.btnReportAsync.Size = new System.Drawing.Size(85, 36);
@@ -932,7 +931,7 @@
             this.btnHistoriaCl.ForeColor = System.Drawing.Color.Black;
             this.btnHistoriaCl.Image = global::Sigesoft.Node.WinClient.UI.Resources.historiaclinica;
             this.btnHistoriaCl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistoriaCl.Location = new System.Drawing.Point(1137, 363);
+            this.btnHistoriaCl.Location = new System.Drawing.Point(1137, 367);
             this.btnHistoriaCl.Margin = new System.Windows.Forms.Padding(2);
             this.btnHistoriaCl.Name = "btnHistoriaCl";
             this.btnHistoriaCl.Size = new System.Drawing.Size(86, 37);
@@ -969,7 +968,7 @@
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_edit;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1138, 324);
+            this.button1.Location = new System.Drawing.Point(1138, 328);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 36);
@@ -1014,7 +1013,7 @@
             this.btnCargoHistorias.ForeColor = System.Drawing.Color.Black;
             this.btnCargoHistorias.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnCargoHistorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargoHistorias.Location = new System.Drawing.Point(1137, 284);
+            this.btnCargoHistorias.Location = new System.Drawing.Point(1137, 288);
             this.btnCargoHistorias.Margin = new System.Windows.Forms.Padding(2);
             this.btnCargoHistorias.Name = "btnCargoHistorias";
             this.btnCargoHistorias.Size = new System.Drawing.Size(85, 36);
@@ -1053,11 +1052,11 @@
             this.btnExport.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(1138, 155);
+            this.btnExport.Location = new System.Drawing.Point(1138, 187);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(85, 40);
+            this.btnExport.Size = new System.Drawing.Size(85, 26);
             this.btnExport.TabIndex = 145;
-            this.btnExport.Text = "Exportar a Excel";
+            this.btnExport.Text = "Exportar Excl";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -1074,13 +1073,13 @@
             this.btnQuitarChek.ForeColor = System.Drawing.Color.Black;
             this.btnQuitarChek.Image = global::Sigesoft.Node.WinClient.UI.Resources.note_delete;
             this.btnQuitarChek.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitarChek.Location = new System.Drawing.Point(1138, 243);
+            this.btnQuitarChek.Location = new System.Drawing.Point(1138, 259);
             this.btnQuitarChek.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuitarChek.Name = "btnQuitarChek";
-            this.btnQuitarChek.Size = new System.Drawing.Size(85, 37);
+            this.btnQuitarChek.Size = new System.Drawing.Size(85, 26);
             this.btnQuitarChek.TabIndex = 146;
-            this.btnQuitarChek.Text = "Quitar         Check";
-            this.btnQuitarChek.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnQuitarChek.Text = "Quitar Chk";
+            this.btnQuitarChek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnQuitarChek.UseVisualStyleBackColor = false;
             this.btnQuitarChek.Click += new System.EventHandler(this.btnQuitarChek_Click);
             // 
@@ -1096,7 +1095,7 @@
             this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
             this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarCulminado.Location = new System.Drawing.Point(1138, 444);
+            this.btnActualizarCulminado.Location = new System.Drawing.Point(1138, 446);
             this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarCulminado.Name = "btnActualizarCulminado";
             this.btnActualizarCulminado.Size = new System.Drawing.Size(85, 36);
@@ -1154,7 +1153,7 @@
             this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
             this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarAptitud.Location = new System.Drawing.Point(1138, 404);
+            this.btnActualizarAptitud.Location = new System.Drawing.Point(1138, 408);
             this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarAptitud.Name = "btnActualizarAptitud";
             this.btnActualizarAptitud.Size = new System.Drawing.Size(85, 36);
@@ -1176,7 +1175,7 @@
             this.btnGeneracionMasivaReportes.ForeColor = System.Drawing.Color.Black;
             this.btnGeneracionMasivaReportes.Image = global::Sigesoft.Node.WinClient.UI.Resources.report;
             this.btnGeneracionMasivaReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGeneracionMasivaReportes.Location = new System.Drawing.Point(1138, 109);
+            this.btnGeneracionMasivaReportes.Location = new System.Drawing.Point(1138, 144);
             this.btnGeneracionMasivaReportes.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeneracionMasivaReportes.Name = "btnGeneracionMasivaReportes";
             this.btnGeneracionMasivaReportes.Size = new System.Drawing.Size(85, 41);
@@ -1246,7 +1245,7 @@
             this.btnEditarESO.ForeColor = System.Drawing.Color.Black;
             this.btnEditarESO.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_edit;
             this.btnEditarESO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarESO.Location = new System.Drawing.Point(1138, 29);
+            this.btnEditarESO.Location = new System.Drawing.Point(1138, 28);
             this.btnEditarESO.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarESO.Name = "btnEditarESO";
             this.btnEditarESO.Size = new System.Drawing.Size(85, 36);
@@ -1283,6 +1282,7 @@
             // 
             this.btnAdminReportes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdminReportes.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAdminReportes.Enabled = false;
             this.btnAdminReportes.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnAdminReportes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnAdminReportes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -1291,7 +1291,7 @@
             this.btnAdminReportes.ForeColor = System.Drawing.Color.Black;
             this.btnAdminReportes.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
             this.btnAdminReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminReportes.Location = new System.Drawing.Point(1138, 69);
+            this.btnAdminReportes.Location = new System.Drawing.Point(1138, 486);
             this.btnAdminReportes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdminReportes.Name = "btnAdminReportes";
             this.btnAdminReportes.Size = new System.Drawing.Size(85, 36);
@@ -1299,6 +1299,7 @@
             this.btnAdminReportes.Text = "&Compagina  Exámenes";
             this.btnAdminReportes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnAdminReportes.UseVisualStyleBackColor = false;
+            this.btnAdminReportes.Visible = false;
             this.btnAdminReportes.Click += new System.EventHandler(this.btnConsolidadoReportes_Click);
             // 
             // btnInterconsulta
@@ -1314,7 +1315,7 @@
             this.btnInterconsulta.ForeColor = System.Drawing.Color.Black;
             this.btnInterconsulta.Image = global::Sigesoft.Node.WinClient.UI.Resources.note_add;
             this.btnInterconsulta.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnInterconsulta.Location = new System.Drawing.Point(1138, 200);
+            this.btnInterconsulta.Location = new System.Drawing.Point(1138, 216);
             this.btnInterconsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnInterconsulta.Name = "btnInterconsulta";
             this.btnInterconsulta.Size = new System.Drawing.Size(85, 39);
