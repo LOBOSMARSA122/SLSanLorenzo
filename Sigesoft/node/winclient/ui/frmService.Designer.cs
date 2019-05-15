@@ -32,7 +32,7 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Pacient");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AptitudeStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationName");
@@ -42,7 +42,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PacientDocument");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Liq");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DocNumber", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DocNumber");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("detalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("detalle", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
@@ -58,7 +58,6 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmService));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCompaginaSelected = new System.Windows.Forms.Button();
             this.txtServicioId = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cboUserMed = new System.Windows.Forms.ComboBox();
@@ -90,6 +89,7 @@
             this.dtpDateTimeStar = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCompaginaSelected = new System.Windows.Forms.Button();
             this.chkFC = new System.Windows.Forms.CheckBox();
             this.FechaControlFin = new System.Windows.Forms.DateTimePicker();
             this.FechaControlIni = new System.Windows.Forms.DateTimePicker();
@@ -204,28 +204,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // btnCompaginaSelected
-            // 
-            this.btnCompaginaSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCompaginaSelected.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCompaginaSelected.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnCompaginaSelected.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnCompaginaSelected.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnCompaginaSelected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCompaginaSelected.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompaginaSelected.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnCompaginaSelected.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
-            this.btnCompaginaSelected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompaginaSelected.Location = new System.Drawing.Point(1093, 127);
-            this.btnCompaginaSelected.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCompaginaSelected.Name = "btnCompaginaSelected";
-            this.btnCompaginaSelected.Size = new System.Drawing.Size(129, 26);
-            this.btnCompaginaSelected.TabIndex = 145;
-            this.btnCompaginaSelected.Text = "Generacion grupal";
-            this.btnCompaginaSelected.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnCompaginaSelected.UseVisualStyleBackColor = false;
-            this.btnCompaginaSelected.Click += new System.EventHandler(this.btnCompaginaSelected_Click);
             // 
             // txtServicioId
             // 
@@ -605,6 +583,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Fecha Atención";
             // 
+            // btnCompaginaSelected
+            // 
+            this.btnCompaginaSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCompaginaSelected.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCompaginaSelected.Enabled = false;
+            this.btnCompaginaSelected.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCompaginaSelected.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCompaginaSelected.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCompaginaSelected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCompaginaSelected.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompaginaSelected.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCompaginaSelected.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
+            this.btnCompaginaSelected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCompaginaSelected.Location = new System.Drawing.Point(1093, 127);
+            this.btnCompaginaSelected.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCompaginaSelected.Name = "btnCompaginaSelected";
+            this.btnCompaginaSelected.Size = new System.Drawing.Size(129, 26);
+            this.btnCompaginaSelected.TabIndex = 145;
+            this.btnCompaginaSelected.Text = "Generacion grupal";
+            this.btnCompaginaSelected.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnCompaginaSelected.UseVisualStyleBackColor = false;
+            this.btnCompaginaSelected.Click += new System.EventHandler(this.btnCompaginaSelected_Click);
+            // 
             // chkFC
             // 
             this.chkFC.AutoSize = true;
@@ -676,7 +677,7 @@
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.ImageKey = "(none)";
-            this.label14.Location = new System.Drawing.Point(803, 643);
+            this.label14.Location = new System.Drawing.Point(819, 486);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(107, 15);
             this.label14.TabIndex = 141;
@@ -700,6 +701,8 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.btnCompaginaSelected);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.btnMigrarEmpresa);
             this.groupBox2.Controls.Add(this.btnSubirInterconsulta);
             this.groupBox2.Controls.Add(this.grdDataService);
             this.groupBox2.Controls.Add(this.button2);
@@ -881,7 +884,7 @@
             this.grdDataService.Location = new System.Drawing.Point(0, 29);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
-            this.grdDataService.Size = new System.Drawing.Size(1088, 474);
+            this.grdDataService.Size = new System.Drawing.Size(1088, 500);
             this.grdDataService.TabIndex = 158;
             this.grdDataService.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataService_InitializeLayout);
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
@@ -933,7 +936,7 @@
             // 
             this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnServicios.ForeColor = System.Drawing.Color.Black;
-            this.btnServicios.Location = new System.Drawing.Point(855, 495);
+            this.btnServicios.Location = new System.Drawing.Point(823, 452);
             this.btnServicios.Margin = new System.Windows.Forms.Padding(2);
             this.btnServicios.Name = "btnServicios";
             this.btnServicios.Size = new System.Drawing.Size(103, 24);
@@ -969,7 +972,7 @@
             // 
             this.btnPErson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPErson.ForeColor = System.Drawing.Color.Black;
-            this.btnPErson.Location = new System.Drawing.Point(870, 497);
+            this.btnPErson.Location = new System.Drawing.Point(704, 451);
             this.btnPErson.Margin = new System.Windows.Forms.Padding(2);
             this.btnPErson.Name = "btnPErson";
             this.btnPErson.Size = new System.Drawing.Size(103, 24);
@@ -1059,7 +1062,7 @@
             this.btnGenerarIds.ForeColor = System.Drawing.Color.Black;
             this.btnGenerarIds.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
             this.btnGenerarIds.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarIds.Location = new System.Drawing.Point(1032, 491);
+            this.btnGenerarIds.Location = new System.Drawing.Point(988, 488);
             this.btnGenerarIds.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerarIds.Name = "btnGenerarIds";
             this.btnGenerarIds.Size = new System.Drawing.Size(85, 36);
@@ -1122,7 +1125,7 @@
             this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
             this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarCulminado.Location = new System.Drawing.Point(761, 502);
+            this.btnActualizarCulminado.Location = new System.Drawing.Point(811, 465);
             this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarCulminado.Name = "btnActualizarCulminado";
             this.btnActualizarCulminado.Size = new System.Drawing.Size(145, 25);
@@ -1181,7 +1184,7 @@
             this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
             this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarAptitud.Location = new System.Drawing.Point(910, 501);
+            this.btnActualizarAptitud.Location = new System.Drawing.Point(851, 466);
             this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarAptitud.Name = "btnActualizarAptitud";
             this.btnActualizarAptitud.Size = new System.Drawing.Size(145, 25);
@@ -1204,7 +1207,7 @@
             this.btnGeneracionMasivaReportes.ForeColor = System.Drawing.Color.Black;
             this.btnGeneracionMasivaReportes.Image = global::Sigesoft.Node.WinClient.UI.Resources.report;
             this.btnGeneracionMasivaReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGeneracionMasivaReportes.Location = new System.Drawing.Point(719, 503);
+            this.btnGeneracionMasivaReportes.Location = new System.Drawing.Point(639, 463);
             this.btnGeneracionMasivaReportes.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeneracionMasivaReportes.Name = "btnGeneracionMasivaReportes";
             this.btnGeneracionMasivaReportes.Size = new System.Drawing.Size(145, 30);
@@ -1320,7 +1323,7 @@
             this.btnAdminReportes.ForeColor = System.Drawing.Color.Black;
             this.btnAdminReportes.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
             this.btnAdminReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminReportes.Location = new System.Drawing.Point(910, 500);
+            this.btnAdminReportes.Location = new System.Drawing.Point(870, 465);
             this.btnAdminReportes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdminReportes.Name = "btnAdminReportes";
             this.btnAdminReportes.Size = new System.Drawing.Size(145, 25);
@@ -1546,7 +1549,7 @@
             // 
             this.btnMigrarEmpresa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMigrarEmpresa.ForeColor = System.Drawing.Color.Black;
-            this.btnMigrarEmpresa.Location = new System.Drawing.Point(870, 637);
+            this.btnMigrarEmpresa.Location = new System.Drawing.Point(826, 469);
             this.btnMigrarEmpresa.Margin = new System.Windows.Forms.Padding(2);
             this.btnMigrarEmpresa.Name = "btnMigrarEmpresa";
             this.btnMigrarEmpresa.Size = new System.Drawing.Size(103, 24);
@@ -1997,8 +2000,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1242, 670);
-            this.Controls.Add(this.btnMigrarEmpresa);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btnBotonOculto);
@@ -2036,6 +2037,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).EndInit();
             this.cmService.ResumeLayout(false);
             this.ResumeLayout(false);
