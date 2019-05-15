@@ -871,7 +871,7 @@
             this.btnReportAsync.ForeColor = System.Drawing.Color.Black;
             this.btnReportAsync.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
             this.btnReportAsync.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportAsync.Location = new System.Drawing.Point(1138, 484);
+            this.btnReportAsync.Location = new System.Drawing.Point(1138, 69);
             this.btnReportAsync.Margin = new System.Windows.Forms.Padding(2);
             this.btnReportAsync.Name = "btnReportAsync";
             this.btnReportAsync.Size = new System.Drawing.Size(85, 36);
@@ -1258,6 +1258,7 @@
             // 
             this.btnAdminReportes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdminReportes.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAdminReportes.Enabled = false;
             this.btnAdminReportes.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnAdminReportes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnAdminReportes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -1266,7 +1267,7 @@
             this.btnAdminReportes.ForeColor = System.Drawing.Color.Black;
             this.btnAdminReportes.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
             this.btnAdminReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminReportes.Location = new System.Drawing.Point(1138, 69);
+            this.btnAdminReportes.Location = new System.Drawing.Point(1138, 486);
             this.btnAdminReportes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdminReportes.Name = "btnAdminReportes";
             this.btnAdminReportes.Size = new System.Drawing.Size(85, 36);
@@ -1274,6 +1275,7 @@
             this.btnAdminReportes.Text = "&Compagina  Exámenes";
             this.btnAdminReportes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnAdminReportes.UseVisualStyleBackColor = false;
+            this.btnAdminReportes.Visible = false;
             this.btnAdminReportes.Click += new System.EventHandler(this.btnConsolidadoReportes_Click);
             // 
             // btnInterconsulta

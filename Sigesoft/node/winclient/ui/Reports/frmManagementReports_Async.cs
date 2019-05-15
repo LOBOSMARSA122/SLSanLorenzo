@@ -324,7 +324,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         {
                             filesNameToMergeOrder.Add(item);
                         }
-                       
+                        else
+                        {
+                            MessageBox.Show("No se encontró la ruta : " + item, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return; 
+                        }
                     }
 
                 }
@@ -336,6 +340,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         if (File.Exists(item))
                         {
                             filesNameToMergeOrder.Add(item);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró la ruta : " + item, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
                         }
                     }
 
@@ -414,8 +423,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             OperationResult objOperationResult = new OperationResult();
             MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
-            crConsolidatedReports rp = null;
-            rp = new Reports.crConsolidatedReports();
+            //crConsolidatedReports rp = null; --- YA NO SE USA
+            //rp = new Reports.crConsolidatedReports();
             _filesNameToMerge = new List<string>();
 
             foreach (var com in reportesId)
