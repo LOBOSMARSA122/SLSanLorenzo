@@ -32,17 +32,23 @@
             this.chkTodos = new System.Windows.Forms.CheckBox();
             this.btnConsolidadoReportes = new System.Windows.Forms.Button();
             this.chklConsolidadoReportes = new System.Windows.Forms.CheckedListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSinAdjuntos = new System.Windows.Forms.RadioButton();
+            this.rbConAdjuntos = new System.Windows.Forms.RadioButton();
+            this.rbGenerarPublicar = new System.Windows.Forms.RadioButton();
             this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox1);
             this.groupBox4.Controls.Add(this.chkTodos);
             this.groupBox4.Controls.Add(this.btnConsolidadoReportes);
             this.groupBox4.Controls.Add(this.chklConsolidadoReportes);
             this.groupBox4.Location = new System.Drawing.Point(12, 10);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(413, 367);
+            this.groupBox4.Size = new System.Drawing.Size(413, 414);
             this.groupBox4.TabIndex = 139;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reportes Seleccionados";
@@ -71,7 +77,7 @@
             this.btnConsolidadoReportes.ForeColor = System.Drawing.Color.Black;
             this.btnConsolidadoReportes.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
             this.btnConsolidadoReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsolidadoReportes.Location = new System.Drawing.Point(293, 325);
+            this.btnConsolidadoReportes.Location = new System.Drawing.Point(293, 383);
             this.btnConsolidadoReportes.Margin = new System.Windows.Forms.Padding(2);
             this.btnConsolidadoReportes.Name = "btnConsolidadoReportes";
             this.btnConsolidadoReportes.Size = new System.Drawing.Size(102, 25);
@@ -93,11 +99,55 @@
             this.chklConsolidadoReportes.Size = new System.Drawing.Size(379, 274);
             this.chklConsolidadoReportes.TabIndex = 25;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbGenerarPublicar);
+            this.groupBox1.Controls.Add(this.rbConAdjuntos);
+            this.groupBox1.Controls.Add(this.rbSinAdjuntos);
+            this.groupBox1.Location = new System.Drawing.Point(16, 325);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(259, 83);
+            this.groupBox1.TabIndex = 138;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tipo";
+            // 
+            // rbSinAdjuntos
+            // 
+            this.rbSinAdjuntos.AutoSize = true;
+            this.rbSinAdjuntos.Checked = true;
+            this.rbSinAdjuntos.Location = new System.Drawing.Point(7, 20);
+            this.rbSinAdjuntos.Name = "rbSinAdjuntos";
+            this.rbSinAdjuntos.Size = new System.Drawing.Size(84, 17);
+            this.rbSinAdjuntos.TabIndex = 0;
+            this.rbSinAdjuntos.TabStop = true;
+            this.rbSinAdjuntos.Text = "Sin Adjuntos";
+            this.rbSinAdjuntos.UseVisualStyleBackColor = true;
+            // 
+            // rbConAdjuntos
+            // 
+            this.rbConAdjuntos.AutoSize = true;
+            this.rbConAdjuntos.Location = new System.Drawing.Point(134, 20);
+            this.rbConAdjuntos.Name = "rbConAdjuntos";
+            this.rbConAdjuntos.Size = new System.Drawing.Size(88, 17);
+            this.rbConAdjuntos.TabIndex = 1;
+            this.rbConAdjuntos.Text = "Con Adjuntos";
+            this.rbConAdjuntos.UseVisualStyleBackColor = true;
+            // 
+            // rbGenerarPublicar
+            // 
+            this.rbGenerarPublicar.AutoSize = true;
+            this.rbGenerarPublicar.Location = new System.Drawing.Point(6, 58);
+            this.rbGenerarPublicar.Name = "rbGenerarPublicar";
+            this.rbGenerarPublicar.Size = new System.Drawing.Size(163, 17);
+            this.rbGenerarPublicar.TabIndex = 2;
+            this.rbGenerarPublicar.Text = "Generar y publicar en la Web";
+            this.rbGenerarPublicar.UseVisualStyleBackColor = true;
+            // 
             // frmManagementReports_Async
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 389);
+            this.ClientSize = new System.Drawing.Size(437, 436);
             this.Controls.Add(this.groupBox4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -109,6 +159,8 @@
             this.Load += new System.EventHandler(this.frmManagementReports_Async_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -119,5 +171,9 @@
         private System.Windows.Forms.CheckBox chkTodos;
         private System.Windows.Forms.Button btnConsolidadoReportes;
         private System.Windows.Forms.CheckedListBox chklConsolidadoReportes;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbGenerarPublicar;
+        private System.Windows.Forms.RadioButton rbConAdjuntos;
+        private System.Windows.Forms.RadioButton rbSinAdjuntos;
     }
 }

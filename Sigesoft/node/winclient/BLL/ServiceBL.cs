@@ -15132,7 +15132,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 return serviceComponentFieldValues;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
