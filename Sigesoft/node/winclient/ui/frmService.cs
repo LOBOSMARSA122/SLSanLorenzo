@@ -3291,11 +3291,6 @@ namespace Sigesoft.Node.WinClient.UI
         {
             try
             {
-                List<string> ListaFinalRutaArchivos = new List<string>();
-                List<string> Services = new List<string>();
-                string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
-                string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
-                string _rutaTemporal = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
                 using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                 {
                     if (grdDataService.Selected.Rows.Count == 0)
@@ -3303,9 +3298,9 @@ namespace Sigesoft.Node.WinClient.UI
                         return;
                     }
                     //DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    
+                    string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+                    string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
                     List<ServiceComponentList> _listaDosaje = new List<ServiceComponentList>();
-                    
                     OperationResult _objOperationResult = new OperationResult();
                     foreach (var row in grdDataService.Selected.Rows)
                     {
@@ -3324,7 +3319,6 @@ namespace Sigesoft.Node.WinClient.UI
                         var _pacientName = row.Cells["v_Pacient"].Value.ToString();
                         var _dni = row.Cells["v_DocNumber"].Value.ToString();
                         var oService = _serviceBL.GetServiceShort(ServiceId);
-                        Services.Add(ServiceId);
                         string rutaInterconsulta = Common.Utils.GetApplicationConfigValue("Interconsulta").ToString();
                         var serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(ServiceId);
                         serviceComponents = serviceComponents.FindAll(p => componentIds.Contains(p.v_ComponentId)).ToList();
@@ -3532,7 +3526,7 @@ namespace Sigesoft.Node.WinClient.UI
                         #region GeneraReporte
                         
                             System.Threading.Tasks.Task.Factory.StartNew(() => frm.CrearReportesCrystal(ServiceId, PacientId, OrdenReporte, _listaDosaje, false)).Wait();
-                            frm._filesNameToMerge.Add(rutaInterconsulta + ServiceId + "-" + _pacientName + ".pdf");
+                            frm._filesNameToMerge.Add(rutaInterconsulta + ServiceId + "-" + oService.Paciente + ".pdf");
                             foreach (var item in OrdenReporte)
                             {
                                 var componentId = item.Split('|')[0];
@@ -3542,27 +3536,44 @@ namespace Sigesoft.Node.WinClient.UI
                                     filesNameToMergeOrder.Add(path);
                                 }
                             }
-
-                        ListaFinalRutaArchivos.AddRange(filesNameToMergeOrder.ToList());
                         
+                        var x = filesNameToMergeOrder.ToList();
+                        _mergeExPDF.FilesName = x;
+                        _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + ServiceId + ".pdf";
+                        _mergeExPDF.DestinationFile = _ruta + ServiceId + ".pdf";
+                        _mergeExPDF.Execute();
+                        //_mergeExPDF.RunFile();
 
-                        //if (oService.Empresa != oService.Contract)
-                        //{
-                        //    _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - Contrata (" + oService.Contract + ") - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-                        //    _mergeExPDF.Execute();
-                        //}
-                        //else if (oService.Empresa == oService.Contract)
-                        //{
-                        //    _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-                        //    _mergeExPDF.Execute();
-                        //}
 
+
+                        _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                        if (oService.Empresa != oService.Contract)
+                        {
+                            _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - Contrata (" + oService.Contract + ") - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                            _mergeExPDF.Execute();
+                        }
+                        else if (oService.Empresa == oService.Contract)
+                        {
+                            _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
+                            _mergeExPDF.Execute();
+                        }
+                        var adjunto = frm._filesNameToMerge.FindAll(p => p.Contains(_dni));
+                        var adjunto_2 = frm._filesNameToMerge.FindAll(p => p.Contains(ServiceId + "-" + _pacientName));
+                        if (adjunto.Count() > 0 && adjunto_2.Count() > 0)
+                        {
+                            foreach (var pdf in frm._filesNameToMerge) { foreach (var adj in adjunto) { foreach (var otros in adjunto_2) { if ((pdf != adj || pdf != otros) && pdf != _ruta + ServiceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } } }
+                        }
+                        else if (adjunto.Count() > 0 && adjunto_2.Count() == 0)
+                        {
+                            foreach (var pdf in frm._filesNameToMerge) { foreach (var adj in adjunto) { if (pdf != adj && pdf != _ruta + ServiceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+                        }
+                        else if (adjunto.Count() == 0 && adjunto_2.Count() > 0)
+                        {
+                            foreach (var pdf in frm._filesNameToMerge) { foreach (var adj in adjunto_2) { if (pdf != adj && pdf != _ruta + ServiceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
+                        }
                         #endregion
                     }
                 };
-                _mergeExPDF.FilesName = ListaFinalRutaArchivos;
-                _mergeExPDF.DestinationFile = _rutaTemporal +  "ReportesAgrupados-" + DateTime.Now.Millisecond.ToString() + ".pdf";
-                _mergeExPDF.Execute();
                 _mergeExPDF.RunFile();
             }
             catch (Exception ex)
