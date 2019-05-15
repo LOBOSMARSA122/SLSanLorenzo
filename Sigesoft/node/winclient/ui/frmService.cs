@@ -3407,5 +3407,20 @@ namespace Sigesoft.Node.WinClient.UI
 
 
         }
+
+        private void btnSubirInterconsulta_Click(object sender, EventArgs e)
+        {
+            if (grdDataService.Selected.Rows.Count > 0)
+            {
+                var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                var PacientName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+                frmSubirInterconsulta frm = new frmSubirInterconsulta(ServiceId, PacientName);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un servicio.", "¡ VALIDACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
