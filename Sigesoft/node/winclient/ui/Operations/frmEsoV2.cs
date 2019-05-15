@@ -5050,13 +5050,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
             var t = new Thread(() =>
             {
-                using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
                 {
                     Thread.Sleep(2500);
+                    MessageBox.Show("Se grabó correctamente.", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 };
                 ;
             });
             t.Start();
+            
             #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
 
             // Grabar Dx por examen componente mas sus restricciones
@@ -5092,7 +5094,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
             #endregion
-            MessageBox.Show("Se grabó correctamente.", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
 
         }
 
@@ -8535,16 +8537,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (procesoEso != null)
             {
                 procesoEso.Select();
-                procesoEso.WindowState = FormWindowState.Normal	;
+                procesoEso.WindowState = FormWindowState.Minimized;
                 var frm = (frmProcesosEso)procesoEso;
-                frm.Show();
+                //frm.Show();
                 frm.DataSource = datos;
             }
             else
             {
                 procesoEso = new frmProcesosEso();
                 var frm = (frmProcesosEso)procesoEso;
-                frm.Show();
+                //frm.Show();
                 frm.DataSource = datos;
                 procesoEso.Show();
             }
