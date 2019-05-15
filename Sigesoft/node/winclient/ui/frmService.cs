@@ -3299,24 +3299,24 @@ namespace Sigesoft.Node.WinClient.UI
                 string _rutaTemporal = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
                 string rutaInterconsulta = Common.Utils.GetApplicationConfigValue("Interconsulta").ToString();
 
-                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                
+                if (grdDataService.Selected.Rows.Count == 0)
                 {
-                    if (grdDataService.Selected.Rows.Count == 0)
-                    {
-                        return;
-                    }
+                    return;
+                }
+                
+                OperationResult _objOperationResult = new OperationResult();
+                foreach (var row in grdDataService.Selected.Rows)
+                {
 
-                    List<ServiceComponentList> _listaDosaje = new List<ServiceComponentList>();
-
-                    OperationResult _objOperationResult = new OperationResult();
-                    foreach (var row in grdDataService.Selected.Rows)
+                    var ServiceStatusId = row.Cells["i_ServiceStatusId"].Value == null ? 0 : int.Parse(row.Cells["i_ServiceStatusId"].Value.ToString());
+                    var EmpresaClienteId = row.Cells["v_CustomerOrganizationId"].Value.ToString();
+                    var ServiceId = row.Cells["v_ServiceId"].Value.ToString();
+                    var PacientId = row.Cells["v_PersonId"].Value.ToString();
+                    var _pacientName = row.Cells["v_Pacient"].Value.ToString();
+                    if (ServiceStatusId == (int)ServiceStatus.Culminado)
                     {
-                        var ServiceStatusId = row.Cells["i_ServiceStatusId"].Value == null ? 0 : int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceStatusId"].Value.ToString());
-                        var EmpresaClienteId = row.Cells["v_CustomerOrganizationId"].Value.ToString();
-                        var ServiceId = row.Cells["v_ServiceId"].Value.ToString();
-                        var PacientId = row.Cells["v_PersonId"].Value.ToString();
-                        var _pacientName = row.Cells["v_Pacient"].Value.ToString();
-                        if (ServiceStatusId == (int)ServiceStatus.Culminado)
+                        using (new LoadingClass.PleaseWait(this.Location, "Generandos..."))
                         {
                             frmManagementReports_Async frm = new frmManagementReports_Async("", "", "", "", "", "");
 
@@ -3353,7 +3353,7 @@ namespace Sigesoft.Node.WinClient.UI
                             }
                             #region GeneraReporte
 
-                            System.Threading.Tasks.Task.Factory.StartNew(() => frm.CrearReportesCrystal(ServiceId, PacientId, OrdenReporte, _listaDosaje, false)).Wait();
+                            System.Threading.Tasks.Task.Factory.StartNew(() => frm.CrearReportesCrystal(ServiceId, PacientId, OrdenReporte, null, false)).Wait();
                             frm._filesNameToMerge.Add(rutaInterconsulta + ServiceId + "-" + _pacientName + ".pdf");
                             foreach (var item in OrdenReporte)
                             {
@@ -3367,14 +3367,15 @@ namespace Sigesoft.Node.WinClient.UI
 
                             ListaFinalRutaArchivos.AddRange(filesNameToMergeOrder.ToList());
                             #endregion
-                        }
-                        else
-                        {
-                            PersonasNoGeneradas.Add(row.Cells["v_Pacient"].Value.ToString());
-                        }
-
+                        };
                     }
-                };
+                    else
+                    {
+                        PersonasNoGeneradas.Add(row.Cells["v_Pacient"].Value.ToString());
+                    }
+                    
+                }
+            
 
                 if (PersonasNoGeneradas.Count > 0)
                 {
