@@ -3309,7 +3309,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     #endregion
 
-                    if (_serviceComponentsInfo.ServiceComponentFields.Count != 0)
+                    if (_serviceComponentsInfo.i_ServiceComponentStatusId != 1)
                     {
                         // Flag para disparar el evento del selectedIndexChange luego de setear los valores x default
                         _cancelEventSelectedIndexChange = true;
@@ -3779,12 +3779,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         }
         private void SetSecurityByComponentC(string componentId)
         {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action<string>(SetSecurityByComponentC), componentId);
-            }
-            else
-            {
+            //if (this.InvokeRequired)
+            //{
+            //    this.Invoke(new Action<string>(SetSecurityByComponentC), componentId);
+            //}
+            //else
+            //{
                 var arrComponentId = _componentId.Split('|');
 
                 if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)//audiometría
@@ -3865,7 +3865,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 _serviceComponentsInfo = new ServiceBL().GetServiceComponentsInfo(ref objOperationResult, _serviceComponentId, _serviceId);
 
                 
-                if (_serviceComponentsInfo != null)
                 {
                     txtComentario.Text = _serviceComponentsInfo.v_Comment;
                     cbEstadoComponente.SelectedValue = _serviceComponentsInfo.i_ServiceComponentStatusId == (int)ServiceComponentStatus.PorIniciar ? ((int)ServiceComponentStatus.Iniciado).ToString() : _serviceComponentsInfo.i_ServiceComponentStatusId.ToString();
@@ -3880,7 +3879,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     #endregion
 
-                    if (_serviceComponentsInfo.ServiceComponentFields.Count != 0)
+                    if (_serviceComponentsInfo.i_ServiceComponentStatusId !=1)
                     {
                         _cancelEventSelectedIndexChange = true;
                         SearchControlAndSetValue(tcExamList.SelectedTab.TabPage, _serviceComponentsInfo);
@@ -3923,7 +3922,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 }
 
-            }
+            //}
             ExamConfiguration(componentId);
         }
 
@@ -4970,6 +4969,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta == DialogResult.Yes)
                     {
+                       
                         IniciarGrabadoAsincrono(tcExamList.SelectedTab.TabPage);
                         GrabarDiagnosticos();
                         _isChangeValue = false;
@@ -5048,7 +5048,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     systemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
                 }
             }
-
+            var t = new Thread(() =>
+            {
+                using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+                {
+                    Thread.Sleep(2500);
+                };
+                ;
+            });
+            t.Start();
             #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
 
             // Grabar Dx por examen componente mas sus restricciones
@@ -5084,7 +5092,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
             #endregion
-
+            MessageBox.Show("Se grabó correctamente.", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

@@ -58,6 +58,7 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmService));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCompaginaSelected = new System.Windows.Forms.Button();
             this.txtServicioId = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cboUserMed = new System.Windows.Forms.ComboBox();
@@ -152,7 +153,6 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
-            this.btnCompaginaSelected = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -204,6 +204,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnCompaginaSelected
+            // 
+            this.btnCompaginaSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCompaginaSelected.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCompaginaSelected.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCompaginaSelected.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCompaginaSelected.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCompaginaSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompaginaSelected.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompaginaSelected.ForeColor = System.Drawing.Color.Black;
+            this.btnCompaginaSelected.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
+            this.btnCompaginaSelected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCompaginaSelected.Location = new System.Drawing.Point(1134, 91);
+            this.btnCompaginaSelected.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCompaginaSelected.Name = "btnCompaginaSelected";
+            this.btnCompaginaSelected.Size = new System.Drawing.Size(85, 36);
+            this.btnCompaginaSelected.TabIndex = 145;
+            this.btnCompaginaSelected.Text = "&Comp. Seleccionados";
+            this.btnCompaginaSelected.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnCompaginaSelected.UseVisualStyleBackColor = false;
+            this.btnCompaginaSelected.Visible = false;
+            this.btnCompaginaSelected.Click += new System.EventHandler(this.btnCompaginaSelected_Click);
             // 
             // txtServicioId
             // 
@@ -1934,28 +1957,6 @@
             this.btnImprimirCertificadoAptitud.UseVisualStyleBackColor = false;
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
-            // 
-            // btnCompaginaSelected
-            // 
-            this.btnCompaginaSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCompaginaSelected.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCompaginaSelected.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnCompaginaSelected.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnCompaginaSelected.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnCompaginaSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompaginaSelected.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompaginaSelected.ForeColor = System.Drawing.Color.Black;
-            this.btnCompaginaSelected.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
-            this.btnCompaginaSelected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompaginaSelected.Location = new System.Drawing.Point(1134, 91);
-            this.btnCompaginaSelected.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCompaginaSelected.Name = "btnCompaginaSelected";
-            this.btnCompaginaSelected.Size = new System.Drawing.Size(85, 36);
-            this.btnCompaginaSelected.TabIndex = 145;
-            this.btnCompaginaSelected.Text = "&Comp. Seleccionados";
-            this.btnCompaginaSelected.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnCompaginaSelected.UseVisualStyleBackColor = false;
-            this.btnCompaginaSelected.Click += new System.EventHandler(this.btnCompaginaSelected_Click);
             // 
             // frmService
             // 
