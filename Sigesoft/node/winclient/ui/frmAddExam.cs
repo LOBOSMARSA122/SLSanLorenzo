@@ -485,7 +485,11 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void ultraGrid1_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
         {
-
+            bool row = ultraGrid1.Selected.Rows.Count > 0;
+            if (!row)
+            {
+                return;
+            }
             if (ultraGrid1.Selected.Rows[0].Cells["v_ComponentId"].Value == null)
             {
                 btnAgregarExamenAuxiliar.Enabled =false;
@@ -536,13 +540,27 @@ namespace Sigesoft.Node.WinClient.UI
             txtUnidProdId.Text = lineId;
         }
 
-        private void txtFiltro_KeyUp(object sender, KeyEventArgs e)
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            FilterComponents();
+        }
+
+        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)(Keys.Enter))
+            {
+                FilterComponents();
+            }
+        }
+
+
+        private void FilterComponents()
         {
             OperationResult objOperationResult = new OperationResult();
             int? busqueda = null;
             if (rbNombreCategoria.Checked)
             {
-                busqueda = (int) TipoBusqueda.NombreCategoria;
+                busqueda = (int)TipoBusqueda.NombreCategoria;
             }
             else if (rbNombreSubCategoria.Checked)
             {
@@ -561,6 +579,5 @@ namespace Sigesoft.Node.WinClient.UI
             grdDataServiceComponent.DataSource = ListServiceComponent;
             ultraGrid1.DataSource = ListServiceComponent;
         }
-        
     }
 }

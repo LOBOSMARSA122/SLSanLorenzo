@@ -84,137 +84,146 @@ namespace Sigesoft.Node.WinClient.UI
 
         #endregion
 
-        public frmHistory( string pstrPacientId)
+        public frmHistory(string pstrPacientId)
         {
-            OperationResult objOperationResult = new OperationResult();
-            PacientBL objPacienteBL = new PacientBL();
-            personDto objPersonDto = new personDto();
-            HistoryBL objHistoryBL = new HistoryBL();
-            List<HistoryList> HistoryList  = new List<HistoryList>();
-
-            InitializeComponent();
-
-            //****************************************************************************************************//
-            SystemParameterBL objSystemParameterBL = new SystemParameterBL();
-            _objSystemParameterList = new List<SystemParameterList>();
-            SystemParameterList objSystemParameter = new SystemParameterList();
-
-
-            HistoryBL oHistoryBL = new HistoryBL();
-            List<PersonMedicalHistoryList> PersonMedicalHistoryList = new List<PersonMedicalHistoryList>();
-            PersonMedicalHistoryList = oHistoryBL.GetPersonMedicalHistoryPagedAndFilteredByPersonId1(ref objOperationResult, 0, null, "", "", pstrPacientId);
-
-            if (PersonMedicalHistoryList.Count == 0)
+            try
             {
-                _objSystemParameterList = objSystemParameterBL.GetSystemParametersPagedAndFilteredNew(ref objOperationResult, 0, null, "", "i_GroupId== 147 && i_IsDeleted == 0", 147);                
-            }
-            else
-            {
-                foreach (var item in PersonMedicalHistoryList)
+                OperationResult objOperationResult = new OperationResult();
+                PacientBL objPacienteBL = new PacientBL();
+                personDto objPersonDto = new personDto();
+                HistoryBL objHistoryBL = new HistoryBL();
+                List<HistoryList> HistoryList = new List<HistoryList>();
+
+                InitializeComponent();
+
+                //****************************************************************************************************//
+                SystemParameterBL objSystemParameterBL = new SystemParameterBL();
+                _objSystemParameterList = new List<SystemParameterList>();
+                SystemParameterList objSystemParameter = new SystemParameterList();
+
+
+                HistoryBL oHistoryBL = new HistoryBL();
+                List<PersonMedicalHistoryList> PersonMedicalHistoryList = new List<PersonMedicalHistoryList>();
+                PersonMedicalHistoryList = oHistoryBL.GetPersonMedicalHistoryPagedAndFilteredByPersonId1(ref objOperationResult, 0, null, "", "", pstrPacientId);
+
+                if (PersonMedicalHistoryList.Count == 0)
                 {
-                    objSystemParameter.v_Value1 = item.v_DiseasesId;
-                    objSystemParameter.v_DiseaseName = item.v_DiseasesName;
-                    if (item.i_Answer == (int)SiNo.NO)
-                    {
-                        objSystemParameter.NO = true;
-                    }
-                    else if (item.i_Answer == (int)SiNo.SI)
-                    {
-                        objSystemParameter.SI = true;
-                    }
-                    else if (item.i_Answer == (int)SiNo.NONE)
-                    {
-                        objSystemParameter.ND = true;
-                    }
-
-                    _objSystemParameterList.Add(objSystemParameter);
+                    _objSystemParameterList = objSystemParameterBL.GetSystemParametersPagedAndFilteredNew(ref objOperationResult, 0, null, "", "i_GroupId== 147 && i_IsDeleted == 0", 147);
                 }
-                _objSystemParameterList = objSystemParameterBL.GetSystemParametersPagedAndFilteredNew(ref objOperationResult, 0, null, "", "i_GroupId== 147 && i_IsDeleted == 0", 147);
-                foreach (var item in PersonMedicalHistoryList)
+                else
                 {
-                    SystemParameterList Result = _objSystemParameterList.Find(p => p.v_Value1 == item.v_DiseasesId);
+                    foreach (var item in PersonMedicalHistoryList)
+                    {
+                        objSystemParameter.v_Value1 = item.v_DiseasesId;
+                        objSystemParameter.v_DiseaseName = item.v_DiseasesName;
+                        if (item.i_Answer == (int)SiNo.NO)
+                        {
+                            objSystemParameter.NO = true;
+                        }
+                        else if (item.i_Answer == (int)SiNo.SI)
+                        {
+                            objSystemParameter.SI = true;
+                        }
+                        else if (item.i_Answer == (int)SiNo.NONE)
+                        {
+                            objSystemParameter.ND = true;
+                        }
 
-                    if (Result == null)                
-                        Result = new SystemParameterList();
-                                          
-                    Result.i_Answer = item.i_Answer;
+                        _objSystemParameterList.Add(objSystemParameter);
+                    }
+                    _objSystemParameterList = objSystemParameterBL.GetSystemParametersPagedAndFilteredNew(ref objOperationResult, 0, null, "", "i_GroupId== 147 && i_IsDeleted == 0", 147);
+                    foreach (var item in PersonMedicalHistoryList)
+                    {
+                        SystemParameterList Result = _objSystemParameterList.Find(p => p.v_Value1 == item.v_DiseasesId);
 
-                    if (item.i_Answer == (int)SiNo.NO)
-                    {
-                        Result.NO = true;
-                        Result.SI = false;
-                        Result.ND = false;
+                        if (Result == null)
+                            Result = new SystemParameterList();
+
+                        Result.i_Answer = item.i_Answer;
+
+                        if (item.i_Answer == (int)SiNo.NO)
+                        {
+                            Result.NO = true;
+                            Result.SI = false;
+                            Result.ND = false;
+                        }
+                        else if (item.i_Answer == (int)SiNo.SI)
+                        {
+                            Result.SI = true;
+                            Result.NO = false;
+                            Result.ND = false;
+                        }
+                        else if (item.i_Answer == (int)SiNo.NONE)
+                        {
+                            Result.ND = true;
+                            Result.SI = false;
+                            Result.NO = false;
+                        }
                     }
-                    else if (item.i_Answer == (int)SiNo.SI)
-                    {
-                        Result.SI = true;
-                        Result.NO = false;
-                        Result.ND = false;
-                    }
-                    else if (item.i_Answer == (int)SiNo.NONE)
-                    {
-                        Result.ND = true;
-                        Result.SI = false;
-                        Result.NO = false;
-                    }
+
                 }
 
+                ultraGrid2.DataSource = _objSystemParameterList;
+
+
+                //*****************************************************************************************************//
+                _PacientId = pstrPacientId;
+                objPersonDto = objPacienteBL.GetPerson(ref objOperationResult, _PacientId);
+                _personName = objPersonDto.v_FirstName + " " + objPersonDto.v_FirstLastName + " " + objPersonDto.v_SecondLastName;
+                _FingerPrintImage = objPersonDto.b_FingerPrintTemplate;
+                _Validation = false;
+                Byte[] ooo = objPersonDto.b_PersonImage;
+                if (ooo == null)
+                {
+                    pbEmployee.Image = Resources.nofoto;
+                }
+                else
+                {
+                    pbEmployee.Image = Common.Utils.BytesArrayToImageOficce(ooo, pbEmployee);
+                    _personImage = ooo;
+                }
+
+                txtEmployee.Text = _personName;
+                Utils.LoadDropDownList(ddlDocTypeId, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 106, null), DropDownListAction.Select);
+                ddlDocTypeId.SelectedValue = objPersonDto.i_DocTypeId.ToString();
+                txtNumDocument.Text = objPersonDto.v_DocNumber;
+
+                Utils.LoadDropDownList(cbEstCivil, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+                cbEstCivil.SelectedValue = objPersonDto.i_MaritalStatusId.ToString();
+
+                Utils.LoadDropDownList(cbGInstruccion, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+                cbGInstruccion.SelectedValue = objPersonDto.i_LevelOfId.ToString();
+
+                txtFNac.Text = objPersonDto.d_Birthdate.ToString().Split(' ')[0];
+                DateTime FechaNacimiento = (DateTime)objPersonDto.d_Birthdate;
+                int PacientAge = DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1;
+                txtAge.Text = PacientAge.ToString();
+                textHijos.Text = (objPersonDto.i_NumberLivingChildren + objPersonDto.i_NumberDependentChildren).ToString();
+                textNacionalidad.Text = objPersonDto.v_Nacionalidad;
+                textReligion.Text = objPersonDto.v_Religion;
+
+                this.Text = this.Text + "Antecedentes del Paciente : " + " (" + _personName + ")";
+
+                HistoryList = objHistoryBL.GetHistoryPagedAndFiltered(ref objOperationResult, 0, null, "", "", _PacientId);
+                if (HistoryList.Count == 0) return;
+                FingerPrintImage = HistoryList[0].b_FingerPrintImage;
+                RubricImageText = HistoryList[0].t_RubricImageText;
+
+                if (FingerPrintImage == null || FingerPrintImage.Count() == 0) return;
+
+
+                pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
+
+                if (RubricImageText == null) return;
+
+                sigPlusNET1.SetSigString(RubricImageText);
             }
-
-            ultraGrid2.DataSource = _objSystemParameterList;
-
-            
-            //*****************************************************************************************************//
-            _PacientId = pstrPacientId;
-            objPersonDto= objPacienteBL.GetPerson(ref objOperationResult, _PacientId);
-            _personName = objPersonDto.v_FirstName + " " + objPersonDto.v_FirstLastName + " " + objPersonDto.v_SecondLastName;
-            _FingerPrintImage = objPersonDto.b_FingerPrintTemplate;
-            _Validation = false;
-            Byte[] ooo = objPersonDto.b_PersonImage;
-            if (ooo == null)
+            catch (Exception)
             {
-                pbEmployee.Image = Resources.nofoto;
+                
+                return;
             }
-            else
-            {
-                pbEmployee.Image = Common.Utils.BytesArrayToImageOficce(ooo, pbEmployee);
-                _personImage = ooo;
-            }
-
-            txtEmployee.Text = _personName;
-            Utils.LoadDropDownList(ddlDocTypeId, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 106, null), DropDownListAction.Select);
-            ddlDocTypeId.SelectedValue = objPersonDto.i_DocTypeId.ToString();
-            txtNumDocument.Text = objPersonDto.v_DocNumber;
-
-            Utils.LoadDropDownList(cbEstCivil, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
-            cbEstCivil.SelectedValue = objPersonDto.i_MaritalStatusId.ToString();
-
-            Utils.LoadDropDownList(cbGInstruccion, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
-            cbGInstruccion.SelectedValue = objPersonDto.i_LevelOfId.ToString();
-
-            txtFNac.Text = objPersonDto.d_Birthdate.ToString().Split(' ')[0];
-            DateTime FechaNacimiento = (DateTime)objPersonDto.d_Birthdate;
-            int PacientAge = DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1;
-            txtAge.Text = PacientAge.ToString();
-            textHijos.Text = (objPersonDto.i_NumberLivingChildren + objPersonDto.i_NumberDependentChildren).ToString();
-            textNacionalidad.Text = objPersonDto.v_Nacionalidad;
-            textReligion.Text = objPersonDto.v_Religion;
-
-            this.Text = this.Text + "Antecedentes del Paciente : " + " (" + _personName + ")";
-
-            HistoryList = objHistoryBL.GetHistoryPagedAndFiltered(ref objOperationResult, 0, null, "", "", _PacientId);
-            if (HistoryList.Count == 0) return;
-            FingerPrintImage = HistoryList[0].b_FingerPrintImage;
-            RubricImageText = HistoryList[0].t_RubricImageText;
-
-            if (FingerPrintImage == null || FingerPrintImage.Count() == 0) return;
-
             
-            pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
-
-            if (RubricImageText == null) return;
-
-            sigPlusNET1.SetSigString(RubricImageText);
         }
 
         private void mnuNewOccupational_Click(object sender, EventArgs e)

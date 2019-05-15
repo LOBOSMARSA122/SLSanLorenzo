@@ -30,7 +30,7 @@
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CategoryName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CategoryName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponenteName");
@@ -96,12 +96,12 @@
             this.txtUnidProdId = new System.Windows.Forms.TextBox();
             this.lblPlan = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.rbNombreSubCategoria = new System.Windows.Forms.RadioButton();
+            this.rbNombreComponente = new System.Windows.Forms.RadioButton();
             this.rbNombreCategoria = new System.Windows.Forms.RadioButton();
             this.rbPorCodigoSegus = new System.Windows.Forms.RadioButton();
-            this.rbNombreComponente = new System.Windows.Forms.RadioButton();
-            this.rbNombreSubCategoria = new System.Windows.Forms.RadioButton();
-            this.txtFiltro = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbExamenesSeleccionados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataServiceComponent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).BeginInit();
@@ -541,7 +541,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnFiltrar);
             this.groupBox1.Controls.Add(this.txtFiltro);
             this.groupBox1.Controls.Add(this.rbNombreSubCategoria);
             this.groupBox1.Controls.Add(this.rbNombreComponente);
@@ -553,6 +553,47 @@
             this.groupBox1.TabIndex = 131;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.btnFiltrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFiltrar.Location = new System.Drawing.Point(294, 45);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.TabIndex = 4;
+            this.btnFiltrar.Text = "Buscar";
+            this.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Location = new System.Drawing.Point(11, 45);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(256, 20);
+            this.txtFiltro.TabIndex = 3;
+            this.txtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFiltro_KeyPress);
+            // 
+            // rbNombreSubCategoria
+            // 
+            this.rbNombreSubCategoria.AutoSize = true;
+            this.rbNombreSubCategoria.Location = new System.Drawing.Point(127, 14);
+            this.rbNombreSubCategoria.Name = "rbNombreSubCategoria";
+            this.rbNombreSubCategoria.Size = new System.Drawing.Size(129, 17);
+            this.rbNombreSubCategoria.TabIndex = 2;
+            this.rbNombreSubCategoria.Text = "Nombre SubCategoria";
+            this.rbNombreSubCategoria.UseVisualStyleBackColor = true;
+            // 
+            // rbNombreComponente
+            // 
+            this.rbNombreComponente.AutoSize = true;
+            this.rbNombreComponente.Location = new System.Drawing.Point(262, 14);
+            this.rbNombreComponente.Name = "rbNombreComponente";
+            this.rbNombreComponente.Size = new System.Drawing.Size(125, 17);
+            this.rbNombreComponente.TabIndex = 1;
+            this.rbNombreComponente.Text = "Nombre Componente";
+            this.rbNombreComponente.UseVisualStyleBackColor = true;
             // 
             // rbNombreCategoria
             // 
@@ -575,43 +616,6 @@
             this.rbPorCodigoSegus.TabIndex = 0;
             this.rbPorCodigoSegus.Text = "Codigo Segus";
             this.rbPorCodigoSegus.UseVisualStyleBackColor = true;
-            // 
-            // rbNombreComponente
-            // 
-            this.rbNombreComponente.AutoSize = true;
-            this.rbNombreComponente.Location = new System.Drawing.Point(262, 14);
-            this.rbNombreComponente.Name = "rbNombreComponente";
-            this.rbNombreComponente.Size = new System.Drawing.Size(125, 17);
-            this.rbNombreComponente.TabIndex = 1;
-            this.rbNombreComponente.Text = "Nombre Componente";
-            this.rbNombreComponente.UseVisualStyleBackColor = true;
-            // 
-            // rbNombreSubCategoria
-            // 
-            this.rbNombreSubCategoria.AutoSize = true;
-            this.rbNombreSubCategoria.Location = new System.Drawing.Point(127, 14);
-            this.rbNombreSubCategoria.Name = "rbNombreSubCategoria";
-            this.rbNombreSubCategoria.Size = new System.Drawing.Size(129, 17);
-            this.rbNombreSubCategoria.TabIndex = 2;
-            this.rbNombreSubCategoria.Text = "Nombre SubCategoria";
-            this.rbNombreSubCategoria.UseVisualStyleBackColor = true;
-            // 
-            // txtFiltro
-            // 
-            this.txtFiltro.Location = new System.Drawing.Point(11, 45);
-            this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(256, 20);
-            this.txtFiltro.TabIndex = 3;
-            this.txtFiltro.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFiltro_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(273, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Buscar";
             // 
             // frmAddExam
             // 
@@ -680,6 +684,6 @@
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.RadioButton rbNombreSubCategoria;
         private System.Windows.Forms.RadioButton rbNombreComponente;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnFiltrar;
     }
 }

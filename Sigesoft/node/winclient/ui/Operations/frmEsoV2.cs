@@ -6302,7 +6302,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ViewEditAntecedent()
         {
-            frmHistory frm = new frmHistory(_personId);
+            Form frm = new frmHistory(_personId);
             frm.MdiParent = this.MdiParent;
             frm.Show();
             // refresca grilla de antecedentes
