@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -885,14 +885,14 @@
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance105.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance105.BackColor2 = System.Drawing.Color.Transparent;
+            appearance105.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance105.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance105.BorderColor = System.Drawing.Color.Red;
+            appearance105.BorderColor2 = System.Drawing.Color.Red;
+            appearance105.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance105;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -928,7 +928,7 @@
             this.btnCerrarESO.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarESO.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCerrarESO.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
-            this.btnCerrarESO.Location = new System.Drawing.Point(567, 8);
+            this.btnCerrarESO.Location = new System.Drawing.Point(567, 9);
             this.btnCerrarESO.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarESO.Name = "btnCerrarESO";
             this.btnCerrarESO.Size = new System.Drawing.Size(24, 18);
@@ -2481,8 +2481,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel2.Controls.Add(this.gbDiagnosticoExamen);
-            this.splitContainer2.Size = new System.Drawing.Size(1303, 531);
-            this.splitContainer2.SplitterDistance = 366;
+            this.splitContainer2.Size = new System.Drawing.Size(1303, 552);
+            this.splitContainer2.SplitterDistance = 380;
             this.splitContainer2.TabIndex = 59;
             // 
             // tcExamList
@@ -2495,7 +2495,7 @@
             this.tcExamList.Location = new System.Drawing.Point(0, 0);
             this.tcExamList.Name = "tcExamList";
             this.tcExamList.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tcExamList.Size = new System.Drawing.Size(1300, 363);
+            this.tcExamList.Size = new System.Drawing.Size(1300, 377);
             this.tcExamList.TabIndex = 1;
             this.tcExamList.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
             this.tcExamList.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
@@ -2508,7 +2508,7 @@
             this.ultraTabSharedControlsPage1.Font = new System.Drawing.Font("Microsoft Tai Le", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(20, 1);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1279, 361);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1279, 375);
             this.ultraTabSharedControlsPage1.MouseLeave += new System.EventHandler(this.ultraTabSharedControlsPage1_MouseLeave);
             // 
             // groupBox4
@@ -2528,9 +2528,9 @@
             this.groupBox4.Controls.Add(this.txtComentario);
             this.groupBox4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox4.Location = new System.Drawing.Point(709, 2);
+            this.groupBox4.Location = new System.Drawing.Point(709, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(598, 180);
+            this.groupBox4.Size = new System.Drawing.Size(598, 178);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Grabar Examen";
@@ -2548,7 +2548,7 @@
             this.btnVisorReporteExamen.ForeColor = System.Drawing.Color.Black;
             this.btnVisorReporteExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnVisorReporteExamen.Image")));
             this.btnVisorReporteExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisorReporteExamen.Location = new System.Drawing.Point(334, 33);
+            this.btnVisorReporteExamen.Location = new System.Drawing.Point(334, 34);
             this.btnVisorReporteExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnVisorReporteExamen.Name = "btnVisorReporteExamen";
             this.btnVisorReporteExamen.Size = new System.Drawing.Size(259, 36);
@@ -2571,7 +2571,7 @@
             this.btnReceta.ForeColor = System.Drawing.Color.Black;
             this.btnReceta.Image = ((System.Drawing.Image)(resources.GetObject("btnReceta.Image")));
             this.btnReceta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReceta.Location = new System.Drawing.Point(9, 141);
+            this.btnReceta.Location = new System.Drawing.Point(9, 136);
             this.btnReceta.Margin = new System.Windows.Forms.Padding(2);
             this.btnReceta.Name = "btnReceta";
             this.btnReceta.Size = new System.Drawing.Size(302, 36);
@@ -2593,7 +2593,7 @@
             this.btnGuardarExamen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnGuardarExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarExamen.Image")));
             this.btnGuardarExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarExamen.Location = new System.Drawing.Point(336, 141);
+            this.btnGuardarExamen.Location = new System.Drawing.Point(336, 136);
             this.btnGuardarExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarExamen.Name = "btnGuardarExamen";
             this.btnGuardarExamen.Size = new System.Drawing.Size(258, 36);
@@ -2607,7 +2607,7 @@
             this.chkUtilizarFirma.AutoSize = true;
             this.chkUtilizarFirma.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkUtilizarFirma.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 122);
+            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 119);
             this.chkUtilizarFirma.Name = "chkUtilizarFirma";
             this.chkUtilizarFirma.Size = new System.Drawing.Size(96, 17);
             this.chkUtilizarFirma.TabIndex = 59;
@@ -2630,7 +2630,7 @@
             this.chkApproved.AutoSize = true;
             this.chkApproved.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkApproved.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkApproved.Location = new System.Drawing.Point(474, 122);
+            this.chkApproved.Location = new System.Drawing.Point(474, 119);
             this.chkApproved.Name = "chkApproved";
             this.chkApproved.Size = new System.Drawing.Size(137, 17);
             this.chkApproved.TabIndex = 58;
@@ -2654,7 +2654,7 @@
             this.EXAMENES_lblComentarios.AutoSize = true;
             this.EXAMENES_lblComentarios.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EXAMENES_lblComentarios.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(6, 17);
+            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(6, 20);
             this.EXAMENES_lblComentarios.Name = "EXAMENES_lblComentarios";
             this.EXAMENES_lblComentarios.Size = new System.Drawing.Size(96, 13);
             this.EXAMENES_lblComentarios.TabIndex = 49;
@@ -2665,7 +2665,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.DarkGray;
-            this.label27.Location = new System.Drawing.Point(519, 11);
+            this.label27.Location = new System.Drawing.Point(519, 14);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(43, 13);
             this.label27.TabIndex = 52;
@@ -2688,7 +2688,7 @@
             this.cbTipoProcedenciaExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoProcedenciaExamen.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTipoProcedenciaExamen.FormattingEnabled = true;
-            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(9, 112);
+            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(9, 109);
             this.cbTipoProcedenciaExamen.Name = "cbTipoProcedenciaExamen";
             this.cbTipoProcedenciaExamen.Size = new System.Drawing.Size(302, 21);
             this.cbTipoProcedenciaExamen.TabIndex = 53;
@@ -2697,7 +2697,7 @@
             // txtComentario
             // 
             this.txtComentario.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComentario.Location = new System.Drawing.Point(6, 33);
+            this.txtComentario.Location = new System.Drawing.Point(6, 36);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
