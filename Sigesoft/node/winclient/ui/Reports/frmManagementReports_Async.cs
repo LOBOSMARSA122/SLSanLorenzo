@@ -360,8 +360,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
 
                 }
-                
-
             }
             if (rbGenerarPublicar.Checked)
             {
