@@ -291,17 +291,28 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void btnConsolidadoReportes_Click(object sender, EventArgs e)
         {
-            DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (GetChekedItems(chklConsolidadoReportes) == null)
+            {
+                MessageBox.Show( "Seleccione al menos un reporte a generar.","VALIDACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            bool publicar = false;
+            if (rbConAdjuntos.Checked || rbGenerarPublicar.Checked)
+            {
+                publicar = true;
+            }
             OperationResult objOperationResult = new OperationResult();
             string _ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
             string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
             string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
             var filesNameToMergeOrder = new List<string>();
             var Reportes = GetChekedItems(chklConsolidadoReportes);
+
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
                 System.Threading.Tasks.Task.Factory.StartNew(() => CrearReportesCrystal(_serviceId, _pacientId, Reportes, _listaDosaje,
-                    Result == System.Windows.Forms.DialogResult.Yes ? true : false)).Wait();
+                    publicar)).Wait();
 
                 foreach (var item in _ComponentsIdsOrdenados)
                 {
@@ -313,7 +324,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
                 }
             };
-            if (Result == System.Windows.Forms.DialogResult.Yes)
+            if (rbConAdjuntos.Checked || rbGenerarPublicar.Checked)
             {
                 var adj = _filesNameToMerge.FindAll(p => p.Contains(_dni));
                 if (adj.Count() > 0)
@@ -349,8 +360,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
 
                 }
-                _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
+                
 
+            }
+            if (rbGenerarPublicar.Checked)
+            {
+                _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
             }
             var x = filesNameToMergeOrder.ToList();
             _mergeExPDF.FilesName = x;
@@ -361,35 +376,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var oService = _serviceBL.GetServiceShort(_serviceId);
             _mergeExPDF.FilesName = x;
             _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
-            if (oService.Empresa != oService.Contract && Result == System.Windows.Forms.DialogResult.Yes)
+            if (oService.Empresa != oService.Contract && publicar)
             {
                 _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - Contrata (" + oService.Contract + ") - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
                 _mergeExPDF.Execute();
             }
-            else if (oService.Empresa == oService.Contract && Result == System.Windows.Forms.DialogResult.Yes)
+            else if (oService.Empresa == oService.Contract && publicar)
             {
                 _mergeExPDF.DestinationFile = rutaConsolidado + oService.Empresa + " - " + oService.Paciente + " - " + oService.FechaServicio.Value.ToString("dd MMMM,  yyyy") + ".pdf";
                 _mergeExPDF.Execute();
             }
-            //var adjunto = _filesNameToMerge.FindAll(p => p.Contains(_dni));
-            //var adjunto_2 = _filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
-            //if (adjunto.Count() > 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            //{
-            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { foreach (var otros in adjunto_2) { if ((pdf != adj || pdf != otros) && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } } }
-            //}
-            //else if (adjunto.Count() > 0 && adjunto_2.Count() == 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            //{
-            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
-            //}
-            //else if (adjunto.Count() == 0 && adjunto_2.Count() > 0 && Result == System.Windows.Forms.DialogResult.Yes)
-            //{
-            //    foreach (var pdf in _filesNameToMerge) { foreach (var adj in adjunto_2) { if (pdf != adj && pdf != _ruta + _serviceId + "-CAP.pdf") { System.IO.File.Delete(pdf); } } }
-            //}
-            //else
-            //{
-            //    foreach (var pdf in _filesNameToMerge) {  System.IO.File.Delete(pdf); }
-            //}
-
         }
 
         private void chklChekedAll(CheckedListBox chkl, bool checkedState)
