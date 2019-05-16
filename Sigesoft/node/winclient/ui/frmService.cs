@@ -3563,7 +3563,7 @@ namespace Sigesoft.Node.WinClient.UI
                                     }
                                     #region GeneraReporte
 
-                                    System.Threading.Tasks.Task.Factory.StartNew(() => _LogicReports.CrearReportesCrystal(ServiceId, PacientId, OrdenReporte, customerOrganizationName, dni, null, false)).Wait();
+                                    System.Threading.Tasks.Task.Factory.StartNew(() => _LogicReports.CrearReportesCrystal(ServiceId, PacientId, OrdenReporte, customerOrganizationName, dni, _pacientName, true)).Wait();
                                     _LogicReports._filesNameToMerge.Add(rutaInterconsulta + ServiceId + "-" + _pacientName + ".pdf");
                                     foreach (var item in OrdenReporte)
                                     {
@@ -3591,7 +3591,7 @@ namespace Sigesoft.Node.WinClient.UI
                                         }
 
                                     }
-                                    var adj_2 = _LogicReports._filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+                                    var adj_2 = _LogicReports._filesNameToMerge.FindAll(p => p.Contains(ServiceId + "-" + _pacientName));
                                     if (adj_2.Count() > 0)
                                     {
                                         foreach (var item in adj_2)
@@ -3706,7 +3706,7 @@ namespace Sigesoft.Node.WinClient.UI
                                     }
                                     #region GeneraReporte
 
-                                    System.Threading.Tasks.Task.Factory.StartNew(() => _LogicReports.CrearReportesCrystal(ServiceId, PacientId, OrdenReporte, customerOrganizationName, dni, _pacientName, false)).Wait();
+                                    System.Threading.Tasks.Task.Factory.StartNew(() => _LogicReports.CrearReportesCrystal(ServiceId, PacientId, OrdenReporte, customerOrganizationName, dni, _pacientName, true)).Wait();
                                     _LogicReports._filesNameToMerge.Add(rutaInterconsulta + ServiceId + "-" + _pacientName + ".pdf");
                                     foreach (var item in OrdenReporte)
                                     {
