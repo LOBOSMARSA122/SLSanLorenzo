@@ -204,6 +204,7 @@
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.verExámenesAdicionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -815,9 +816,10 @@
             this.mnuMarcarSalida,
             this.toolStripMenuItem2,
             this.tsmDeclaracionDrogas,
-            this.registrarSolicitudCartaDeGarantíaToolStripMenuItem});
+            this.registrarSolicitudCartaDeGarantíaToolStripMenuItem,
+            this.verExámenesAdicionalesToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(271, 320);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(271, 364);
             // 
             // mnuReagendarCita
             // 
@@ -1739,6 +1741,13 @@
             ultraDataColumn21,
             ultraDataColumn22});
             // 
+            // verExámenesAdicionalesToolStripMenuItem
+            // 
+            this.verExámenesAdicionalesToolStripMenuItem.Name = "verExámenesAdicionalesToolStripMenuItem";
+            this.verExámenesAdicionalesToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.verExámenesAdicionalesToolStripMenuItem.Text = "Ver Exámenes Adicionales";
+            this.verExámenesAdicionalesToolStripMenuItem.Click += new System.EventHandler(this.verExámenesAdicionalesToolStripMenuItem_Click);
+            // 
             // frmCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1871,5 +1880,6 @@
         private System.Windows.Forms.TextBox txtServicioId;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ToolStripMenuItem registrarSolicitudCartaDeGarantíaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verExámenesAdicionalesToolStripMenuItem;
     }
 }

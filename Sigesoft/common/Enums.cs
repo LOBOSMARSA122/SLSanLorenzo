@@ -778,6 +778,7 @@ namespace Sigesoft.Common
         NombreCategoria = 2,
         NombreSubCategoria = 3,
         NombreComponent = 4,
+        ComponentId = 5,
     }
 }
 
