@@ -214,6 +214,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CIE10\Cie10MF.cs" />
     <Compile Include="Configuration\frmAddPlan.cs">
       <SubType>Form</SubType>
     </Compile>
