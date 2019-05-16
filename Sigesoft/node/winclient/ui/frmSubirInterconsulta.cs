@@ -53,7 +53,8 @@ namespace Sigesoft.Node.WinClient.UI
                 File.Copy(openFileDialog1.FileName, destino);
             }
             else { File.Copy(openFileDialog1.FileName, destino); }
-
+            MessageBox.Show("El archivo se anexó correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }

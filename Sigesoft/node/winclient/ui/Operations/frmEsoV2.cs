@@ -97,7 +97,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private List<ServiceComponentFieldValuesList> _serviceComponentFieldValuesList = null;
         private List<ServiceComponentFieldValuesList> _tmpListValuesOdontograma = null;
 
-        private bool _isChangeValue = false;
+        public bool _isChangeValue = false;
         private int? _sexTypeId;
         private Gender _sexType;
         private bool flagValueChange = false;
@@ -3309,7 +3309,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     #endregion
 
-                    if (_serviceComponentsInfo.ServiceComponentFields.Count != 0)
+                    if (_serviceComponentsInfo.i_ServiceComponentStatusId != 1)
                     {
                         // Flag para disparar el evento del selectedIndexChange luego de setear los valores x default
                         _cancelEventSelectedIndexChange = true;
@@ -3779,12 +3779,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         }
         private void SetSecurityByComponentC(string componentId)
         {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action<string>(SetSecurityByComponentC), componentId);
-            }
-            else
-            {
+            //if (this.InvokeRequired)
+            //{
+            //    this.Invoke(new Action<string>(SetSecurityByComponentC), componentId);
+            //}
+            //else
+            //{
                 var arrComponentId = _componentId.Split('|');
 
                 if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)//audiometría
@@ -3865,7 +3865,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 _serviceComponentsInfo = new ServiceBL().GetServiceComponentsInfo(ref objOperationResult, _serviceComponentId, _serviceId);
 
                 
-                if (_serviceComponentsInfo != null)
                 {
                     txtComentario.Text = _serviceComponentsInfo.v_Comment;
                     cbEstadoComponente.SelectedValue = _serviceComponentsInfo.i_ServiceComponentStatusId == (int)ServiceComponentStatus.PorIniciar ? ((int)ServiceComponentStatus.Iniciado).ToString() : _serviceComponentsInfo.i_ServiceComponentStatusId.ToString();
@@ -3880,7 +3879,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     #endregion
 
-                    if (_serviceComponentsInfo.ServiceComponentFields.Count != 0)
+                    if (_serviceComponentsInfo.i_ServiceComponentStatusId !=1)
                     {
                         _cancelEventSelectedIndexChange = true;
                         SearchControlAndSetValue(tcExamList.SelectedTab.TabPage, _serviceComponentsInfo);
@@ -3923,7 +3922,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 }
 
-            }
+            //}
             ExamConfiguration(componentId);
         }
 
@@ -4970,6 +4969,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta == DialogResult.Yes)
                     {
+                       
                         IniciarGrabadoAsincrono(tcExamList.SelectedTab.TabPage);
                         GrabarDiagnosticos();
                         _isChangeValue = false;
@@ -5048,7 +5048,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     systemUserSuplantadorId = frm.i_SystemUserSuplantadorId;
                 }
             }
-
+            var t = new Thread(() =>
+            {
+                using (new LoadingClass.PleaseWait(this.Location, "Grabando..."))
+                {
+                    Thread.Sleep(2500);
+                    MessageBox.Show("Se grabó correctamente.", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                };
+                ;
+            });
+            t.Start();
+            
             #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
 
             // Grabar Dx por examen componente mas sus restricciones
@@ -5084,7 +5094,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
             #endregion
-
+            
 
         }
 
@@ -8527,16 +8537,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (procesoEso != null)
             {
                 procesoEso.Select();
-                procesoEso.WindowState = FormWindowState.Normal	;
+                procesoEso.WindowState = FormWindowState.Minimized;
                 var frm = (frmProcesosEso)procesoEso;
-                frm.Show();
+                //frm.Show();
                 frm.DataSource = datos;
             }
             else
             {
                 procesoEso = new frmProcesosEso();
                 var frm = (frmProcesosEso)procesoEso;
-                frm.Show();
+                //frm.Show();
                 frm.DataSource = datos;
                 procesoEso.Show();
             }
@@ -8964,6 +8974,68 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 label34.Visible = false;
                 txtComentarioAptitud.Visible = false;
+            }
+        }
+
+        public void FrmEsoV2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // volver el usuario que se logueo
+            Globals.ClientSession.i_SystemUserId = Globals.ClientSession.i_SystemUserCopyId;
+            OperationResult objOperationResult = new OperationResult();
+            ServiceBL objServiceBL = new ServiceBL();
+
+            if (_isChangeValue)
+            {
+                var result = MessageBox.Show("Se han realizado cambios, ¿Desea salir de todos modos?", "CONFIRMACIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                    e.Cancel = true;
+            }
+
+            // Aviso automático de que se culminaron todos los examanes, se tendria que proceder
+            // a establecer el estado del servicio a (Culminado Esperando Aptitud)               
+
+            var alert = objServiceBL.GetServiceComponentsCulminados(ref objOperationResult, _serviceId);
+
+            if (alert != null && alert.Count > 0)// consulta trae datos.... examenes que no estan evaluados
+            {
+
+            }
+            else // todos los examenes están con el estado evaluado
+            {
+
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
+                {
+                    MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    serviceDto objserviceDto = new serviceDto();
+                    objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                    objserviceDto.i_ServiceStatusId = (int)ServiceStatus.Culminado;
+                    objserviceDto.v_Motive = "Culminado";
+                    objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                }
+                else if (_tipo == (int)MasterService.Eso)
+                {
+                    if (cbAptitudEso.SelectedValue.ToString() == ((int)AptitudeStatus.SinAptitud).ToString())
+                    {
+                        MessageBox.Show("Todos los Examenes se encuentran concluidos.\nEl estado de la Atención es: En espera de Aptitud .", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        serviceDto objserviceDto = new serviceDto();
+                        objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                        objserviceDto.i_ServiceStatusId = (int)ServiceStatus.EsperandoAptitud;
+                        objserviceDto.v_Motive = "Esperando Aptitud";
+                        objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                    }
+                    else
+                    {
+                        MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        serviceDto objserviceDto = new serviceDto();
+                        objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                        objserviceDto.i_ServiceStatusId = (int)ServiceStatus.Culminado;
+                        objserviceDto.v_Motive = "Culminado";
+                        objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                    }
+
+                }
+
             }
         }
         

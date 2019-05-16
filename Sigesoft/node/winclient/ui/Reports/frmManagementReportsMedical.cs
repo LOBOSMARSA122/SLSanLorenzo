@@ -32,7 +32,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
          List<DiagnosticRepositoryList> _listDiagnosticRepositoryLists;
 
         private MergeExPDF _mergeExPDF = new MergeExPDF();
-        private List<string> _filesNameToMerge = new List<string>();
+        public List<string> _filesNameToMerge = new List<string>();
         private string _serviceId;
         private string _EmpresaClienteId;
         private string _pacientId;
@@ -213,7 +213,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         }
 
-        private void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, bool Publicar)
+        public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, bool Publicar)
         {
             OperationResult objOperationResult = new OperationResult();
             MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();

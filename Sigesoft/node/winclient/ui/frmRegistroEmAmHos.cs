@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
 using System.Data.SqlClient;
+using Sigesoft.Node.WinClient.UI.CIE10;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -366,7 +367,28 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             OperationResult objOperationResult = new OperationResult();
+            Cie10MF _cie10MF = new Cie10MF();
             //TramasBL _tramasBL = new TramasBL();
+            var cie10 = txtCie10.Text;
+            if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.MASCULINO)
+            {
+                var cie10Masculino = _cie10MF.Femeninos.ToList().Find(x => x == cie10);
+                if (cie10Masculino.Length > 0)
+                {
+                    MessageBox.Show("El diagnóstico elegido pertenece solo al género FEMENINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
+            else if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.FEMENINO)
+            {
+                var cie10Femenino = _cie10MF.Masculinos.ToList().Find(x => x == cie10);
+                if (cie10Femenino.Length > 0)
+                {
+                    MessageBox.Show("El diagnóstico elegido pertenece solo al género MASCULINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
+
             _tramaDto = new tramasDto();
             if (_mode == "New")
             {
@@ -521,6 +543,7 @@ namespace Sigesoft.Node.WinClient.UI
                 this.Close();
             }
         }
+        
         private void cbDx_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)
         {
             //MessageBox.Show("hola MUNDO", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -541,6 +564,8 @@ namespace Sigesoft.Node.WinClient.UI
             conectasam.closesigesoft();
         }
 
+
+        
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();

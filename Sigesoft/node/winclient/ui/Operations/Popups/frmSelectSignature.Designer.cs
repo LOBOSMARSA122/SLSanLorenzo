@@ -108,7 +108,7 @@
             this.MinimizeBox = false;
             this.Name = "frmSelectSignature";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccione Firma del profesional";
             this.Load += new System.EventHandler(this.frmSelectSignature_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uvSelectSignature)).EndInit();
