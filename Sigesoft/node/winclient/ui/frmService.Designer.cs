@@ -98,6 +98,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnMigrarEmpresa = new System.Windows.Forms.Button();
             this.btnSubirInterconsulta = new System.Windows.Forms.Button();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.button2 = new System.Windows.Forms.Button();
@@ -133,7 +134,6 @@
             this.verEditarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Examenes = new System.Windows.Forms.ToolStripMenuItem();
             this.vistaPreviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMigrarEmpresa = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.btnBotonOculto = new System.Windows.Forms.Button();
@@ -745,6 +745,20 @@
             this.groupBox2.Text = "Lista de Servicios";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // btnMigrarEmpresa
+            // 
+            this.btnMigrarEmpresa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMigrarEmpresa.ForeColor = System.Drawing.Color.Black;
+            this.btnMigrarEmpresa.Location = new System.Drawing.Point(826, 469);
+            this.btnMigrarEmpresa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMigrarEmpresa.Name = "btnMigrarEmpresa";
+            this.btnMigrarEmpresa.Size = new System.Drawing.Size(103, 24);
+            this.btnMigrarEmpresa.TabIndex = 150;
+            this.btnMigrarEmpresa.Text = "Migrar Empresas";
+            this.btnMigrarEmpresa.UseVisualStyleBackColor = true;
+            this.btnMigrarEmpresa.Visible = false;
+            this.btnMigrarEmpresa.Click += new System.EventHandler(this.btnMigrarEmpresa_Click);
+            // 
             // btnSubirInterconsulta
             // 
             this.btnSubirInterconsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -884,7 +898,7 @@
             this.grdDataService.Location = new System.Drawing.Point(0, 29);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
-            this.grdDataService.Size = new System.Drawing.Size(1088, 500);
+            this.grdDataService.Size = new System.Drawing.Size(1088, 472);
             this.grdDataService.TabIndex = 158;
             this.grdDataService.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataService_InitializeLayout);
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
@@ -1207,7 +1221,7 @@
             this.btnGeneracionMasivaReportes.ForeColor = System.Drawing.Color.Black;
             this.btnGeneracionMasivaReportes.Image = global::Sigesoft.Node.WinClient.UI.Resources.report;
             this.btnGeneracionMasivaReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGeneracionMasivaReportes.Location = new System.Drawing.Point(639, 463);
+            this.btnGeneracionMasivaReportes.Location = new System.Drawing.Point(599, 452);
             this.btnGeneracionMasivaReportes.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeneracionMasivaReportes.Name = "btnGeneracionMasivaReportes";
             this.btnGeneracionMasivaReportes.Size = new System.Drawing.Size(145, 30);
@@ -1544,20 +1558,6 @@
             this.vistaPreviaToolStripMenuItem.Text = "Vista Previa";
             this.vistaPreviaToolStripMenuItem.Visible = false;
             this.vistaPreviaToolStripMenuItem.Click += new System.EventHandler(this.vistaPreviaToolStripMenuItem_Click);
-            // 
-            // btnMigrarEmpresa
-            // 
-            this.btnMigrarEmpresa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMigrarEmpresa.ForeColor = System.Drawing.Color.Black;
-            this.btnMigrarEmpresa.Location = new System.Drawing.Point(826, 469);
-            this.btnMigrarEmpresa.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMigrarEmpresa.Name = "btnMigrarEmpresa";
-            this.btnMigrarEmpresa.Size = new System.Drawing.Size(103, 24);
-            this.btnMigrarEmpresa.TabIndex = 150;
-            this.btnMigrarEmpresa.Text = "Migrar Empresas";
-            this.btnMigrarEmpresa.UseVisualStyleBackColor = true;
-            this.btnMigrarEmpresa.Visible = false;
-            this.btnMigrarEmpresa.Click += new System.EventHandler(this.btnMigrarEmpresa_Click);
             // 
             // openFileDialog1
             // 

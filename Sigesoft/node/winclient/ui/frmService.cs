@@ -3591,7 +3591,7 @@ namespace Sigesoft.Node.WinClient.UI
                     }
                     else
                     {
-                        #region ManagementReportMadical
+                        #region ManagementReportMedical
                         foreach (var row in grdDataService.Selected.Rows)
                         {
 
@@ -3705,7 +3705,7 @@ namespace Sigesoft.Node.WinClient.UI
                         string personas = "";
                         foreach (var persona in PersonasNoGeneradas)
                         {
-                            personas = persona + ", ";
+                            personas += persona + ", ";
                         }
 
                         personas += ".";
