@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -885,14 +885,14 @@
             // 
             // uvExamen
             // 
-            appearance105.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance105.BackColor2 = System.Drawing.Color.Transparent;
-            appearance105.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance105.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance105.BorderColor = System.Drawing.Color.Red;
-            appearance105.BorderColor2 = System.Drawing.Color.Red;
-            appearance105.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance105;
+            appearance106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance106.BackColor2 = System.Drawing.Color.Transparent;
+            appearance106.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance106.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance106.BorderColor = System.Drawing.Color.Red;
+            appearance106.BorderColor2 = System.Drawing.Color.Red;
+            appearance106.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance106;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -7889,6 +7889,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EXAMENES MÉDICOS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmEsoV2_FormClosing);
             this.Load += new System.EventHandler(this.FrmEsoV2_Load);
             this.SizeChanged += new System.EventHandler(this.FrmEsoV2_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).EndInit();

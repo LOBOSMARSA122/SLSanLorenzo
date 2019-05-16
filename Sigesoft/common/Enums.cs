@@ -172,7 +172,10 @@ namespace Sigesoft.Common
         NoApto = 3,
         AptoObs = 4,
         AptRestriccion = 5,
-        SinAptitud = 1
+        SinAptitud = 1,
+        Asistencial = 6,
+        Evaluado =7
+
     }
     public enum RecordType
     {
