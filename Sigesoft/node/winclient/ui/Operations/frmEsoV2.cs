@@ -97,7 +97,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private List<ServiceComponentFieldValuesList> _serviceComponentFieldValuesList = null;
         private List<ServiceComponentFieldValuesList> _tmpListValuesOdontograma = null;
 
-        private bool _isChangeValue = false;
+        public bool _isChangeValue = false;
         private int? _sexTypeId;
         private Gender _sexType;
         private bool flagValueChange = false;
@@ -8974,6 +8974,68 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 label34.Visible = false;
                 txtComentarioAptitud.Visible = false;
+            }
+        }
+
+        public void FrmEsoV2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // volver el usuario que se logueo
+            Globals.ClientSession.i_SystemUserId = Globals.ClientSession.i_SystemUserCopyId;
+            OperationResult objOperationResult = new OperationResult();
+            ServiceBL objServiceBL = new ServiceBL();
+
+            if (_isChangeValue)
+            {
+                var result = MessageBox.Show("Se han realizado cambios, ¿Desea salir de todos modos?", "CONFIRMACIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                    e.Cancel = true;
+            }
+
+            // Aviso automático de que se culminaron todos los examanes, se tendria que proceder
+            // a establecer el estado del servicio a (Culminado Esperando Aptitud)               
+
+            var alert = objServiceBL.GetServiceComponentsCulminados(ref objOperationResult, _serviceId);
+
+            if (alert != null && alert.Count > 0)// consulta trae datos.... examenes que no estan evaluados
+            {
+
+            }
+            else // todos los examenes están con el estado evaluado
+            {
+
+                if (_tipo == (int)MasterService.AtxMedicaParticular || _tipo == (int)MasterService.AtxMedicaSeguros)
+                {
+                    MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    serviceDto objserviceDto = new serviceDto();
+                    objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                    objserviceDto.i_ServiceStatusId = (int)ServiceStatus.Culminado;
+                    objserviceDto.v_Motive = "Culminado";
+                    objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                }
+                else if (_tipo == (int)MasterService.Eso)
+                {
+                    if (cbAptitudEso.SelectedValue.ToString() == ((int)AptitudeStatus.SinAptitud).ToString())
+                    {
+                        MessageBox.Show("Todos los Examenes se encuentran concluidos.\nEl estado de la Atención es: En espera de Aptitud .", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        serviceDto objserviceDto = new serviceDto();
+                        objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                        objserviceDto.i_ServiceStatusId = (int)ServiceStatus.EsperandoAptitud;
+                        objserviceDto.v_Motive = "Esperando Aptitud";
+                        objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                    }
+                    else
+                    {
+                        MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        serviceDto objserviceDto = new serviceDto();
+                        objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                        objserviceDto.i_ServiceStatusId = (int)ServiceStatus.Culminado;
+                        objserviceDto.v_Motive = "Culminado";
+                        objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                    }
+
+                }
+
             }
         }
         
