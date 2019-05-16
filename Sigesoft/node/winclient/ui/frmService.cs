@@ -3355,8 +3355,6 @@ namespace Sigesoft.Node.WinClient.UI
                             {
                                 using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                                 {
-                                    frmManagementReports_Async frm = new frmManagementReports_Async("", "", "", "", "", "");
-
                                     var filesNameToMergeOrder = new List<string>();
                                     var ordenReportes = _organizationBL.GetOrdenReportes_(ref _objOperationResult, EmpresaClienteId);
                                     var componentIds = ordenReportes.Select(p => p.v_ComponentId).ToList();
@@ -3576,7 +3574,40 @@ namespace Sigesoft.Node.WinClient.UI
                                             filesNameToMergeOrder.Add(path);
                                         }
                                     }
+                                    var adj = _LogicReports._filesNameToMerge.FindAll(p => p.Contains(dni));
+                                    if (adj.Count() > 0)
+                                    {
+                                        foreach (var item in adj)
+                                        {
+                                            if (File.Exists(item))
+                                            {
+                                                filesNameToMergeOrder.Add(item);
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("No se encontró la ruta : " + item, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                return;
+                                            }
+                                        }
 
+                                    }
+                                    var adj_2 = _LogicReports._filesNameToMerge.FindAll(p => p.Contains(_serviceId + "-" + _pacientName));
+                                    if (adj_2.Count() > 0)
+                                    {
+                                        foreach (var item in adj_2)
+                                        {
+                                            if (File.Exists(item))
+                                            {
+                                                filesNameToMergeOrder.Add(item);
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("No se encontró la ruta : " + item, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                return;
+                                            }
+                                        }
+
+                                    }
                                     ListaFinalRutaArchivos.AddRange(filesNameToMergeOrder.ToList());
                                     #endregion
                                 };
