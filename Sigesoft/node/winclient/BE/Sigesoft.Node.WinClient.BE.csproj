@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\AdditionalExamCustom.cs" />
     <Compile Include="Custom\Adolescente.cs" />
     <Compile Include="Custom\Adulto.cs" />
     <Compile Include="Custom\AdultoMayor.cs" />
@@ -344,6 +345,7 @@
     <Compile Include="Custom\WorkerData.cs" />
     <Compile Include="Custom\WorkstationDangersList.cs" />
     <Compile Include="Custom\XmlNatclar.cs" />
+    <Compile Include="Generated\additionalexamDto.cs" />
     <Compile Include="Generated\adolescenteDto.cs" />
     <Compile Include="Generated\adultoDto.cs" />
     <Compile Include="Generated\adultomayorDto.cs" />

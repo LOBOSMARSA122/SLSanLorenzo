@@ -187,7 +187,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pbEmployee = new System.Windows.Forms.PictureBox();
-            this.ZKFPEngX1 = new AxZKFPEngXControl.AxZKFPEngX();
+            //this.ZKFPEngX1 = new AxZKFPEngXControl.AxZKFPEngX();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -215,7 +215,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgOkFirma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgNoFirma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEmployee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZKFPEngX1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ZKFPEngX1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1662,18 +1662,18 @@
             // 
             // ZKFPEngX1
             // 
-            this.ZKFPEngX1.Enabled = true;
-            this.ZKFPEngX1.Location = new System.Drawing.Point(27, 582);
-            this.ZKFPEngX1.Name = "ZKFPEngX1";
-            this.ZKFPEngX1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ZKFPEngX1.OcxState")));
-            this.ZKFPEngX1.Size = new System.Drawing.Size(24, 24);
-            this.ZKFPEngX1.TabIndex = 103;
-            this.ZKFPEngX1.OnFeatureInfo += new AxZKFPEngXControl.IZKFPEngXEvents_OnFeatureInfoEventHandler(this.ZKFPEngX1_OnFeatureInfo);
-            this.ZKFPEngX1.OnImageReceived += new AxZKFPEngXControl.IZKFPEngXEvents_OnImageReceivedEventHandler(this.ZKFPEngX1_OnImageReceived);
-            this.ZKFPEngX1.OnEnroll += new AxZKFPEngXControl.IZKFPEngXEvents_OnEnrollEventHandler(this.ZKFPEngX1_OnEnroll);
-            this.ZKFPEngX1.OnCapture += new AxZKFPEngXControl.IZKFPEngXEvents_OnCaptureEventHandler(this.ZKFPEngX1_OnCapture);
-            this.ZKFPEngX1.OnFingerTouching += new System.EventHandler(this.ZKFPEngX1_OnFingerTouching);
-            this.ZKFPEngX1.OnFingerLeaving += new System.EventHandler(this.ZKFPEngX1_OnFingerLeaving);
+            //this.ZKFPEngX1.Enabled = true;
+            //this.ZKFPEngX1.Location = new System.Drawing.Point(27, 582);
+            //this.ZKFPEngX1.Name = "ZKFPEngX1";
+            //this.ZKFPEngX1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ZKFPEngX1.OcxState")));
+            //this.ZKFPEngX1.Size = new System.Drawing.Size(24, 24);
+            //this.ZKFPEngX1.TabIndex = 103;
+            //this.ZKFPEngX1.OnFeatureInfo += new AxZKFPEngXControl.IZKFPEngXEvents_OnFeatureInfoEventHandler(this.ZKFPEngX1_OnFeatureInfo);
+            //this.ZKFPEngX1.OnImageReceived += new AxZKFPEngXControl.IZKFPEngXEvents_OnImageReceivedEventHandler(this.ZKFPEngX1_OnImageReceived);
+            //this.ZKFPEngX1.OnEnroll += new AxZKFPEngXControl.IZKFPEngXEvents_OnEnrollEventHandler(this.ZKFPEngX1_OnEnroll);
+            //this.ZKFPEngX1.OnCapture += new AxZKFPEngXControl.IZKFPEngXEvents_OnCaptureEventHandler(this.ZKFPEngX1_OnCapture);
+            //this.ZKFPEngX1.OnFingerTouching += new System.EventHandler(this.ZKFPEngX1_OnFingerTouching);
+            //this.ZKFPEngX1.OnFingerLeaving += new System.EventHandler(this.ZKFPEngX1_OnFingerLeaving);
             // 
             // ultraToolTipManager1
             // 
@@ -1687,7 +1687,7 @@
             this.ClientSize = new System.Drawing.Size(992, 611);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.ZKFPEngX1);
+            //this.Controls.Add(this.ZKFPEngX1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmHistory";
             this.ShowIcon = false;
@@ -1723,7 +1723,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgOkFirma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgNoFirma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZKFPEngX1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ZKFPEngX1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1778,7 +1778,7 @@
         private System.Windows.Forms.Panel panelRubric;
         private Topaz.SigPlusNET sigPlusNET1;
         private System.Windows.Forms.Button btnDelSignature;
-        private AxZKFPEngXControl.AxZKFPEngX ZKFPEngX1;
+        //private AxZKFPEngXControl.AxZKFPEngX ZKFPEngX1;
         private System.Windows.Forms.PictureBox imgInfoFirma;
         private System.Windows.Forms.Label lblResultFirma;
         private System.Windows.Forms.PictureBox imgOkFirma;

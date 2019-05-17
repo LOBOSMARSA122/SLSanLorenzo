@@ -1089,15 +1089,24 @@ namespace Sigesoft.Node.WinClient.UI
             //var ListServiceComponent = oServiceBL.GetServiceComponents(ref objOperationResult, _strServicelId);
             //grdDataServiceComponent.DataSource = ListServiceComponent;
             ServiceBL oServiceBL = new ServiceBL();
-            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId,"","","","");
-            frm._serviceId = _serviceId;
+            //var frm = new frmAddExam(ListaComponentes, "", _ProtocolId, "", "", "", _serviceId);
+            //frm._serviceId = _serviceId;
+            //frm.ShowDialog();
+            OperationResult objOperationResult = new OperationResult();
+            List<string> Componentes = new List<string>();
+            var listServicecomponents = oServiceBL.GetServiceComponents(ref objOperationResult, _serviceId);
+            foreach (var obj in listServicecomponents)
+            {
+                Componentes.Add(obj.v_ComponentId);
+            }
+            var frm = new AdditionalExam(Componentes, _ProtocolId, _serviceId, _personId);
             frm.ShowDialog();
 
             if (frm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
                 return;
 
-            OperationResult objOperationResult = new OperationResult();
-            var ListServiceComponent = oServiceBL.GetServiceComponents(ref objOperationResult, _strServicelId);
+
+            var ListServiceComponent = oServiceBL.GetServiceComponents(ref objOperationResult, _serviceId);
             grdDataServiceComponent.DataSource = ListServiceComponent;
      
         }

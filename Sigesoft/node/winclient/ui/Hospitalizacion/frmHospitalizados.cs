@@ -517,14 +517,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             conectasam.closesigesoft();
             if (plan != "")
             {
-                var frm = new frmAddExam(ListaComponentes, "ASEGU", protocolId, "Asegu", NroHospitalizacion, dni, serviceId) { _serviceId = serviceId };
+                var frm = new frmAddExam(ListaComponentes, "ASEGU", protocolId, "Asegu", NroHospitalizacion, dni, serviceId, null) { _serviceId = serviceId };
                 frm.ShowDialog();
                 if (frm.DialogResult == DialogResult.OK)
                     btnFilter_Click(sender, e);
             }
             else
             {
-                var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni, serviceId) { _serviceId = serviceId };
+                var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni, serviceId, null) { _serviceId = serviceId };
                 frm.ShowDialog();
                 if (frm.DialogResult == DialogResult.OK)
                     btnFilter_Click(sender, e);

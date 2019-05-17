@@ -1064,8 +1064,8 @@ namespace Sigesoft.Node.WinClient.UI
             //string pstrPacientId = grdData.Selected.Rows[0].Cells[0].Value.ToString();
             string pstrPacientId = PacientId;
             frmHistory frm = new frmHistory(pstrPacientId);
-            frm.FingerPrintImage = FingerPrintImage;
-            frm.RubricImageText = RubricImageText;
+            //frm.FingerPrintImage = FingerPrintImage;
+            //frm.RubricImageText = RubricImageText;
             frm.ShowDialog();
         }
 
