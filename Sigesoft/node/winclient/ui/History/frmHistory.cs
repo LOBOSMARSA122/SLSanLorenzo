@@ -47,7 +47,7 @@ namespace Sigesoft.Node.WinClient.UI
         string _GroupPopupFamilyMedical;
         byte[] _personImage;
         string _personName;
-        byte[] _FingerPrintImage;
+        //byte[] _FingerPrintImage;
         bool _Validation;
 
         bool _ResultMedicoPersonales = false;
@@ -170,7 +170,7 @@ namespace Sigesoft.Node.WinClient.UI
                 _PacientId = pstrPacientId;
                 objPersonDto = objPacienteBL.GetPerson(ref objOperationResult, _PacientId);
                 _personName = objPersonDto.v_FirstName + " " + objPersonDto.v_FirstLastName + " " + objPersonDto.v_SecondLastName;
-                _FingerPrintImage = objPersonDto.b_FingerPrintTemplate;
+                //_FingerPrintImage = objPersonDto.b_FingerPrintTemplate;
                 _Validation = false;
                 Byte[] ooo = objPersonDto.b_PersonImage;
                 if (ooo == null)
@@ -206,17 +206,17 @@ namespace Sigesoft.Node.WinClient.UI
 
                 HistoryList = objHistoryBL.GetHistoryPagedAndFiltered(ref objOperationResult, 0, null, "", "", _PacientId);
                 if (HistoryList.Count == 0) return;
-                FingerPrintImage = HistoryList[0].b_FingerPrintImage;
-                RubricImageText = HistoryList[0].t_RubricImageText;
+                //FingerPrintImage = HistoryList[0].b_FingerPrintImage;
+                //RubricImageText = HistoryList[0].t_RubricImageText;
 
-                if (FingerPrintImage == null || FingerPrintImage.Count() == 0) return;
+                //if (FingerPrintImage == null || FingerPrintImage.Count() == 0) return;
 
 
-                pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
+                //pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
 
-                if (RubricImageText == null) return;
+                //if (RubricImageText == null) return;
 
-                sigPlusNET1.SetSigString(RubricImageText);
+                //sigPlusNET1.SetSigString(RubricImageText);
             }
             catch (Exception)
             {
@@ -326,13 +326,13 @@ namespace Sigesoft.Node.WinClient.UI
             LoadTreeNoxiuosHabits(148);
             LoadTreeFamilyMedicalAntecedents(149);
 
-            if (FingerPrintImage == null) 
-                return;
+            //if (FingerPrintImage == null) 
+                //return;
 
             //pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
 
-            if (RubricImageText == null) 
-                return;
+            //if (RubricImageText == null) 
+            //    return;
 
             //sigPlusNET1.SetSigString(RubricImageText);
 
@@ -1679,15 +1679,15 @@ namespace Sigesoft.Node.WinClient.UI
 
         #region Properties
 
-        public byte[] FingerPrintTemplate { get; set; }
+        //public byte[] FingerPrintTemplate { get; set; }
 
-        public byte[] FingerPrintImage { get; set; }
+        //public byte[] FingerPrintImage { get; set; }
 
         public string Mode { get; set; }
 
-        public byte[] RubricImage { get; set; }
+        //public byte[] RubricImage { get; set; }
 
-        public string RubricImageText { get; set; }
+        //public string RubricImageText { get; set; }
 
         #endregion
 
@@ -1704,33 +1704,33 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmCapturedFingerPrint_Load(object sender, EventArgs e)
         {
-            // Iniciar el componente huellero
-            InitFingerPrint();
+            //// Iniciar el componente huellero
+            //InitFingerPrint();
 
-            // Iniciar el componente Firma
-            sigPlusNET1.SetTabletState(1);
+            //// Iniciar el componente Firma
+            //sigPlusNET1.SetTabletState(1);
 
-            lblResultFirma.Text = "Sensor de firma conectado";
-            ShowHintImageFirma(3);
+            //lblResultFirma.Text = "Sensor de firma conectado";
+            //ShowHintImageFirma(3);
 
-            FAutoIdentify = false;       
+            //FAutoIdentify = false;       
 
-            if (Mode == "New")
-            {
-                //EnrollFingerPrint(null, null);
-            }
-            else if (Mode == "Edit")
-            {
-                if (FingerPrintImage == null) return;
+            //if (Mode == "New")
+            //{
+            //    //EnrollFingerPrint(null, null);
+            //}
+            //else if (Mode == "Edit")
+            //{
+            //    if (FingerPrintImage == null) return;
 
-                pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
+            //    pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
 
-                if (RubricImageText ==  null) return;
+            //    if (RubricImageText ==  null) return;
                     
-                sigPlusNET1.SetSigString(RubricImageText);
+            //    sigPlusNET1.SetSigString(RubricImageText);
 
-                //btnEnroll_Click(null, null);
-            }       
+            //    //btnEnroll_Click(null, null);
+            //}       
         }   
              
         private void ShowHintInfo(String s)
@@ -1805,33 +1805,33 @@ namespace Sigesoft.Node.WinClient.UI
         // Initilization FingerPrint
         private void InitFingerPrint()
         {
-            if (ZKFPEngX1.InitEngine() == 0)
-            {
-                //btnInit.Enabled = false;
-                FMatchType = 2;
-                ShowHintInfo("Sensor conectado");
-                lblresult.Text = "Sensor de Huella conectado";
-                ShowHintImage(3);
-                ZKFPEngX1.FPEngineVersion = "9";
+            //if (ZKFPEngX1.InitEngine() == 0)
+            //{
+            //    //btnInit.Enabled = false;
+            //    FMatchType = 2;
+            //    ShowHintInfo("Sensor conectado");
+            //    lblresult.Text = "Sensor de Huella conectado";
+            //    ShowHintImage(3);
+            //    ZKFPEngX1.FPEngineVersion = "9";
 
-                //Crear un espacio de caché de identificación de huellas dactilares y devuelve su identificador
-                fpcHandle = ZKFPEngX1.CreateFPCacheDB();
-                //EDSensorNum.Text = Convert.ToString(ZKFPEngX1.SensorCount);
-                //EDSensorIndex.Text = Convert.ToString(ZKFPEngX1.SensorIndex);
-                //EDSensorSN.Text = ZKFPEngX1.SensorSN;
-                //ZKFPEngX1.EnrollCount = 3;
-                //button1.Enabled = true;
-            }
-            else
-            {
-                ShowHintInfo("Error al conectar el sensor de Huella");
-            }
+            //    //Crear un espacio de caché de identificación de huellas dactilares y devuelve su identificador
+            //    fpcHandle = ZKFPEngX1.CreateFPCacheDB();
+            //    //EDSensorNum.Text = Convert.ToString(ZKFPEngX1.SensorCount);
+            //    //EDSensorIndex.Text = Convert.ToString(ZKFPEngX1.SensorIndex);
+            //    //EDSensorSN.Text = ZKFPEngX1.SensorSN;
+            //    //ZKFPEngX1.EnrollCount = 3;
+            //    //button1.Enabled = true;
+            //}
+            //else
+            //{
+            //    ShowHintInfo("Error al conectar el sensor de Huella");
+            //}
         }
 
         //desconectar
         private void DisconnectFingerPrint()
         {
-            ZKFPEngX1.EndEngine();
+            //ZKFPEngX1.EndEngine();
             //btnInit.Enabled = true;
             //button1.Enabled = false;
         }
@@ -1839,23 +1839,23 @@ namespace Sigesoft.Node.WinClient.UI
         //Comienzo de la inscripción de huellas dactilares
         private void EnrollFingerPrint(object sender, EventArgs e)
         {
-            ZKFPEngX1.CancelEnroll();
+            //ZKFPEngX1.CancelEnroll();
             //ZKFPEngX1.EnrollCount = 3;
-            ZKFPEngX1.BeginEnroll();
-            ShowHintInfo("Inicio de Registro");
+           // ZKFPEngX1.BeginEnroll();
+           // ShowHintInfo("Inicio de Registro");
           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DisconnectFingerPrint();
+            //DisconnectFingerPrint();
         }
 
         private void btnAutoverify_Click(object sender, EventArgs e)
         {
-            FAutoIdentify = true;
-            ZKFPEngX1.SetAutoIdentifyPara(FAutoIdentify, fpcHandle, 8);
-            FMatchType = 2;
+            //FAutoIdentify = true;
+            //ZKFPEngX1.SetAutoIdentifyPara(FAutoIdentify, fpcHandle, 8);
+            //FMatchType = 2;
         }      
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -1865,12 +1865,12 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void FingerPrintImageDisposing()
         {
-            if (pbFingerPrint.Image != null)
-            {
-                pbFingerPrint.Image.Dispose();
+            //if (pbFingerPrint.Image != null)
+            //{
+            //    pbFingerPrint.Image.Dispose();
 
-                pbFingerPrint.Image = null;
-            }
+            //    pbFingerPrint.Image = null;
+            //}
         }
 
         #endregion
@@ -1880,113 +1880,113 @@ namespace Sigesoft.Node.WinClient.UI
         //Show fingerprint image
         private void ZKFPEngX1_OnImageReceived(object sender, AxZKFPEngXControl.IZKFPEngXEvents_OnImageReceivedEvent e)
         {
-             ShowHintImage(0);
-            Graphics g = pbFingerPrint.CreateGraphics();
-            Bitmap bmp = new Bitmap(pbFingerPrint.Width, pbFingerPrint.Height);
-            g = Graphics.FromImage(bmp);
-            int dc = g.GetHdc().ToInt32();
-            ZKFPEngX1.PrintImageAt(dc, 0, 0, bmp.Width, bmp.Height);
-            g.Dispose();
-            pbFingerPrint.Image = bmp;
+            // ShowHintImage(0);
+            //Graphics g = pbFingerPrint.CreateGraphics();
+            //Bitmap bmp = new Bitmap(pbFingerPrint.Width, pbFingerPrint.Height);
+            //g = Graphics.FromImage(bmp);
+            //int dc = g.GetHdc().ToInt32();
+            //ZKFPEngX1.PrintImageAt(dc, 0, 0, bmp.Width, bmp.Height);
+            //g.Dispose();
+            //pbFingerPrint.Image = bmp;
         }
 
         private void ZKFPEngX1_OnEnroll(object sender, AxZKFPEngXControl.IZKFPEngXEvents_OnEnrollEvent e)
         {
-            if (e.actionResult)
-            {
-                MessageBox.Show("Registro de Huella Dactilar Exitoso！ ", "ZK4500 Finger Print ", MessageBoxButtons.OK);
-                //e.aTemplate = ZKFPEngX1.GetTemplate();
-                //ZKFPEngX1.AddRegTemplateToFPCacheDB(fpcHandle, 1, e.aTemplate);
+            //if (e.actionResult)
+            //{
+            //    MessageBox.Show("Registro de Huella Dactilar Exitoso！ ", "ZK4500 Finger Print ", MessageBoxButtons.OK);
+            //    //e.aTemplate = ZKFPEngX1.GetTemplate();
+            //    //ZKFPEngX1.AddRegTemplateToFPCacheDB(fpcHandle, 1, e.aTemplate);
 
-                ZKFPEngX1.AddRegTemplateStrToFPCacheDBEx(fpcHandle, 1, ZKFPEngX1.GetTemplateAsStringEx("9"), ZKFPEngX1.GetTemplateAsStringEx("10"));
-                ShowHintInfo("Registro de Huella Dactilar Exitoso！");
-                lblresult.Text = "Registro de Huella Dactilar Exitoso！";
-                ShowHintImage(3);
+            //    ZKFPEngX1.AddRegTemplateStrToFPCacheDBEx(fpcHandle, 1, ZKFPEngX1.GetTemplateAsStringEx("9"), ZKFPEngX1.GetTemplateAsStringEx("10"));
+            //    ShowHintInfo("Registro de Huella Dactilar Exitoso！");
+            //    lblresult.Text = "Registro de Huella Dactilar Exitoso！";
+            //    ShowHintImage(3);
 
-            }
-            else
-            {
-                ShowHintInfo("Error en Registro de Huella Dactilar");
-                MessageBox.Show("Error en Registro de Huella Dactilar ", "ZK4500 Finger Print ", MessageBoxButtons.OK);
-                lblresult.Text = "Error en Registro de Huella Dactilar！";
-                ShowHintImage(2);
-            }
+            //}
+            //else
+            //{
+            //    ShowHintInfo("Error en Registro de Huella Dactilar");
+            //    MessageBox.Show("Error en Registro de Huella Dactilar ", "ZK4500 Finger Print ", MessageBoxButtons.OK);
+            //    lblresult.Text = "Error en Registro de Huella Dactilar！";
+            //    ShowHintImage(2);
+            //}
         }
 
         private void ZKFPEngX1_OnFeatureInfo(object sender, AxZKFPEngXControl.IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
-             String strTemp = "Fingerprint calidad";
-            if (e.aQuality != 0)
-            {
-                strTemp = strTemp + " No buena";
-                lblresult.Text = strTemp;
-                ShowHintImage(2);
-            }
-            else
-            {
-                strTemp = strTemp + " Bueno";
-            }
-            if (ZKFPEngX1.EnrollIndex != 1)
-            {
-                if (ZKFPEngX1.IsRegister)
-                {
-                    if (ZKFPEngX1.EnrollIndex - 1 > 0)
-                    {
-                        strTemp = strTemp + '\n' + "Estado de Registro: pulse su dedo " + Convert.ToString(ZKFPEngX1.EnrollIndex - 1) + " veces!";
-                        lblresult.Text = strTemp;
-                        ShowHintImage(3);
-                    }
-                }
-            }
-            ShowHintInfo(strTemp);
+            // String strTemp = "Fingerprint calidad";
+            //if (e.aQuality != 0)
+            //{
+            //    strTemp = strTemp + " No buena";
+            //    lblresult.Text = strTemp;
+            //    ShowHintImage(2);
+            //}
+            //else
+            //{
+            //    strTemp = strTemp + " Bueno";
+            //}
+            //if (ZKFPEngX1.EnrollIndex != 1)
+            //{
+            //    if (ZKFPEngX1.IsRegister)
+            //    {
+            //        if (ZKFPEngX1.EnrollIndex - 1 > 0)
+            //        {
+            //            strTemp = strTemp + '\n' + "Estado de Registro: pulse su dedo " + Convert.ToString(ZKFPEngX1.EnrollIndex - 1) + " veces!";
+            //            lblresult.Text = strTemp;
+            //            ShowHintImage(3);
+            //        }
+            //    }
+            //}
+            //ShowHintInfo(strTemp);
         }
 
         private void ZKFPEngX1_OnCapture(object sender, AxZKFPEngXControl.IZKFPEngXEvents_OnCaptureEvent e)
         {
-            string stmp = "";
-            string Template = ZKFPEngX1.GetTemplateAsString();
-            bool ddd = false;
-            if (_FingerPrintImage == null)
-            {
-               MessageBox.Show("El trabajador no tiene registrado su huella digital", "!INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               lblValidationStatus.Text = "NO AUTENTICADO";
-               lblValidationStatus.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
-            stmp = System.Convert.ToBase64String(_FingerPrintImage);
+            //string stmp = "";
+            //string Template = ZKFPEngX1.GetTemplateAsString();
+            //bool ddd = false;
+            //if (_FingerPrintImage == null)
+            //{
+            //   MessageBox.Show("El trabajador no tiene registrado su huella digital", "!INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //   lblValidationStatus.Text = "NO AUTENTICADO";
+            //   lblValidationStatus.ForeColor = System.Drawing.Color.Red;
+            //    return;
+            //}
+            //stmp = System.Convert.ToBase64String(_FingerPrintImage);
 
-            if (ZKFPEngX1.VerFingerFromStr(ref Template, stmp, false, ref ddd))
-            {
-                MessageBox.Show("Huella dáctilar correcta", "!INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _Validation = true;
-                sigPlusNET1.SetTabletState(1);
-                btnDelSignature.Enabled = true;
-                lblValidationStatus.Text = "AUTENTICADO CORRECTAMENTE";
-                lblValidationStatus.ForeColor = System.Drawing.Color.Blue;
-            }
-            else
-            {
-                MessageBox.Show("Huella dáctilar incorrecta. Vuelva a intentar", "!ERROR DE VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //tabControl1.Enabled = false;
-                _Validation = false;
-                sigPlusNET1.SetTabletState(2);
-                btnDelSignature.Enabled = false;
-            }
+            //if (ZKFPEngX1.VerFingerFromStr(ref Template, stmp, false, ref ddd))
+            //{
+            //    MessageBox.Show("Huella dáctilar correcta", "!INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    _Validation = true;
+            //    sigPlusNET1.SetTabletState(1);
+            //    btnDelSignature.Enabled = true;
+            //    lblValidationStatus.Text = "AUTENTICADO CORRECTAMENTE";
+            //    lblValidationStatus.ForeColor = System.Drawing.Color.Blue;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Huella dáctilar incorrecta. Vuelva a intentar", "!ERROR DE VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    //tabControl1.Enabled = false;
+            //    _Validation = false;
+            //    sigPlusNET1.SetTabletState(2);
+            //    btnDelSignature.Enabled = false;
+            //}
         }
 
         private void ZKFPEngX1_OnFingerTouching(object sender, EventArgs e)
         {
-              ShowHintInfo("Tocando");
+              //ShowHintInfo("Tocando");
         }
 
         private void ZKFPEngX1_OnFingerLeaving(object sender, EventArgs e)
         {
-              ShowHintInfo("Soltando");
+              //ShowHintInfo("Soltando");
         }
 
         private void btnDelSignature_Click(object sender, EventArgs e)
         {
-            sigPlusNET1.ClearTablet();
+            //sigPlusNET1.ClearTablet();
         }
 
         //private void btnDelFingerPrint_Click(object sender, EventArgs e)
@@ -2025,50 +2025,50 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmHistory_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HistoryBL objHistoryBL = new HistoryBL();
-            historyDto objhistoryDto = new historyDto();
-            OperationResult objOperationResult = new OperationResult();
+            //HistoryBL objHistoryBL = new HistoryBL();
+            //historyDto objhistoryDto = new historyDto();
+            //OperationResult objOperationResult = new OperationResult();
 
-            if (FingerPrintImage ==null)
-            {
-                // Imagen de la huella
-                object image = null;
-                ZKFPEngX1.GetFingerImage(ref image);
+            //if (FingerPrintImage ==null)
+            //{
+            //    // Imagen de la huella
+            //    object image = null;
+            //    ZKFPEngX1.GetFingerImage(ref image);
 
-                FingerPrintImage = (byte[])image;
-            }
+            //    FingerPrintImage = (byte[])image;
+            //}
           
 
-            // Firma imagen   
-            sigPlusNET1.SetImageXSize(500);
-            sigPlusNET1.SetImageYSize(150);
-            sigPlusNET1.SetJustifyMode(5);
+            //// Firma imagen   
+            //sigPlusNET1.SetImageXSize(500);
+            //sigPlusNET1.SetImageYSize(150);
+            //sigPlusNET1.SetJustifyMode(5);
 
-            var myimage = sigPlusNET1.GetSigImage();
-            RubricImage = Common.Utils.imageToByteArray1(myimage);
-            myimage.Dispose();
+            //var myimage = sigPlusNET1.GetSigImage();
+            //RubricImage = Common.Utils.imageToByteArray1(myimage);
+            //myimage.Dispose();
 
-            // Firma serializada en formato ASCII hex string
-            RubricImageText = sigPlusNET1.GetSigString();
+            //// Firma serializada en formato ASCII hex string
+            //RubricImageText = sigPlusNET1.GetSigString();
 
-            if (RubricImageText == "300D0A300D0A" && grdDataOccupational.Rows.Count() != 0)
-            {
-                //MessageBox.Show("Se necesita registrar la firma digital del Trabajador", "!INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //e.Cancel = true; 
-            }
-            else
-            {
-                if (grdDataOccupational.Rows.Count() == 0) return;
+            //if (RubricImageText == "300D0A300D0A" && grdDataOccupational.Rows.Count() != 0)
+            //{
+            //    //MessageBox.Show("Se necesita registrar la firma digital del Trabajador", "!INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    //e.Cancel = true; 
+            //}
+            //else
+            //{
+            //    if (grdDataOccupational.Rows.Count() == 0) return;
 
-                for (int i = 0; i < grdDataOccupational.Rows.Count(); i++)
-                {
-                    objhistoryDto = objHistoryBL.GetHistory(ref objOperationResult, grdDataOccupational.Rows[i].Cells["v_HistoryId"].Value.ToString());
-                    objhistoryDto.b_FingerPrintImage = FingerPrintImage;
-                    objhistoryDto.b_RubricImage = RubricImage;
-                    objhistoryDto.t_RubricImageText = RubricImageText;
-                    objHistoryBL.UpdateHistoryFingerRubric(ref objOperationResult, objhistoryDto, Globals.ClientSession.GetAsList());
-                }
-            }
+            //    for (int i = 0; i < grdDataOccupational.Rows.Count(); i++)
+            //    {
+            //        objhistoryDto = objHistoryBL.GetHistory(ref objOperationResult, grdDataOccupational.Rows[i].Cells["v_HistoryId"].Value.ToString());
+            //        objhistoryDto.b_FingerPrintImage = FingerPrintImage;
+            //        objhistoryDto.b_RubricImage = RubricImage;
+            //        objhistoryDto.t_RubricImageText = RubricImageText;
+            //        objHistoryBL.UpdateHistoryFingerRubric(ref objOperationResult, objhistoryDto, Globals.ClientSession.GetAsList());
+            //    }
+            //}
         }
 
         private void ultraGrid2_InitializeLayout(object sender, InitializeLayoutEventArgs e)
