@@ -110,31 +110,35 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
                     var objData = new PacientBL().ReporteMatrizShauindo(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
                     grdShauindo.DataSource = objData;
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                    btnExportShauindo.Enabled = true;
                 }
                 else if (tabControl1.SelectedTab.Name == "tpLaZanja")
                 {
                     var objData = new PacientBL().ReporteMatrizLaZanja(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
                     grdLaZanja.DataSource = objData;
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                    btnExportLaZanja.Enabled = true;
                 }
                 else if (tabControl1.SelectedTab.Name == "tpGoldFields")
                 {
                     var objData = new PacientBL().ReporteMatrizGoldFields(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
                     grdGolFields.DataSource = objData;
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
-
+                    btnExportGolFields.Enabled = true;
                 }
                 else if (tabControl1.SelectedTab.Name == "tpSolucManteIntegra")
                 {
                     var objData = new PacientBL().ReporteMatrizSolucManteIntegra(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
                     grdSoluc.DataSource = objData;
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                    btnExportSoluc.Enabled = true;
                 }
                 else if (tabControl1.SelectedTab.Name == "tpMiBanco")
                 {
                     var objData = new PacientBL().ReporteMatrizMiBanco(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
                     grdMiBanco.DataSource = objData;
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                    btnExportMiBanco.Enabled = true;
                 }
 
             }

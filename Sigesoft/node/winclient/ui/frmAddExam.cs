@@ -29,6 +29,7 @@ namespace Sigesoft.Node.WinClient.UI
         private string _dni;
         List<string> _ListaComponentes = null;
         private string lineId;
+        List<Categoria> _DataSource = new List<Categoria>();
         #endregion
 
         #region Properties
@@ -40,7 +41,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         #endregion
 
-        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId, string type, string nroHospitalizacion, string dni, string serviceId)
+        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId, string type, string nroHospitalizacion, string dni, string serviceId, List<Categoria> DataSource)
         {
             _ListaComponentes = ListaComponentes;
             _dni = dni;
@@ -49,6 +50,7 @@ namespace Sigesoft.Node.WinClient.UI
             _protocolId = protocolId;
             _type = type;
             _serviceId = serviceId;
+            _DataSource = DataSource;
             InitializeComponent();
 
         }
@@ -129,6 +131,10 @@ namespace Sigesoft.Node.WinClient.UI
                     //var frm = new frmCalendar(_nroHospitalizacion, _dni, _serviceId);
                     //frm.ShowDialog();
                 }
+                else
+                {
+                    return;
+                }
                 
             }
             // El examen ya esta agregado
@@ -187,10 +193,23 @@ namespace Sigesoft.Node.WinClient.UI
         {
             
             OperationResult objOperationResult = new OperationResult();
+            if (_DataSource != null)
+            {
+                if (_DataSource.Count > 0)
+                {
+                    grdDataServiceComponent.DataSource = _DataSource;
+                    ultraGrid1.DataSource = _DataSource;
+                }
+                else
+                {
+                    var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult, null, "");
+                    grdDataServiceComponent.DataSource = ListServiceComponent;
+                    ultraGrid1.DataSource = ListServiceComponent;
+                }
 
-            var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult, null, "");
-            grdDataServiceComponent.DataSource = ListServiceComponent;
-            ultraGrid1.DataSource = ListServiceComponent;
+            }
+            
+            
             if (_modo == "HOSPI" || _modo == "ASEGU")
             {
                 cboMedico.Enabled = true;

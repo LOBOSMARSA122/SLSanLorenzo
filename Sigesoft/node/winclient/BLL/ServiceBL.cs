@@ -2884,6 +2884,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+
 		public List<ServiceComponentList> GetServiceComponents(ref OperationResult pobjOperationResult, string pstrServiceId)
 		{
 
@@ -9989,6 +9990,7 @@ namespace Sigesoft.Node.WinClient.BLL
             string nameCategory = "";
             string nameComponent = "";
             string nameSubCategory = "";
+            string componentId = "";
             if (filterType == (int)TipoBusqueda.CodigoSegus)
             {
                 codigoSegus = name;
@@ -10005,8 +10007,11 @@ namespace Sigesoft.Node.WinClient.BLL
             else if (filterType == (int)TipoBusqueda.NombreSubCategoria)
             {
                 nameSubCategory = name;
-            };
-
+            }
+            else if (filterType == (int)TipoBusqueda.ComponentId)
+            {
+                componentId = name;
+            }
             
 
 			try
@@ -10045,7 +10050,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             equals new { a = G.i_ParentParameterId.Value, b = G.i_GroupId } into G_join
                         from G in G_join.DefaultIfEmpty()
 
-                        where C.i_IsDeleted == 0 && (G.v_Value1.Contains(nameSubCategory) && C.v_Name.Contains(nameComponent) && F.v_Value1.Contains(nameCategory) && C.v_CodigoSegus.Contains(codigoSegus))
+                        where C.i_IsDeleted == 0 && (G.v_Value1.Contains(nameSubCategory) && C.v_ComponentId.Contains(componentId) && C.v_Name.Contains(nameComponent) && F.v_Value1.Contains(nameCategory) && C.v_CodigoSegus.Contains(codigoSegus))
                         select new Categoria
                         {
                             v_ComponentId = C.v_ComponentId,
