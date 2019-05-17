@@ -10039,6 +10039,29 @@ namespace Sigesoft.Node.WinClient.BLL
                         });
 
                 }
+                else if (filterType == (int)TipoBusqueda.ComponentId)
+                {
+                    query = (from C in dbContext.component
+                        join F in dbContext.systemparameter on new { a = C.i_CategoryId.Value, b = 116 }
+                            equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                        
+                        from F in F_join.DefaultIfEmpty()
+
+                        where C.i_IsDeleted == 0 && C.v_ComponentId == componentId
+                        select new Categoria
+                        {
+                            v_ComponentId = C.v_ComponentId,
+                            v_ComponentName = C.v_Name,
+                            v_CodigoSegus = C.v_CodigoSegus,
+                            i_CategoryId = C.i_CategoryId,
+                            v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
+
+                        });
+                    var query2 = query
+                        .GroupBy(x => new { x.v_CodigoSegus, x.v_ComponentName, x.v_ComponentId, x.i_CategoryId, x.v_CategoryName })
+                        .Select(g => new { g.Key.v_CodigoSegus, g.Key.v_ComponentName, g.Key.v_ComponentId, g.Key.i_CategoryId, g.Key.v_CategoryName });
+
+                }
                 else
                 {
                     query = (from C in dbContext.component
@@ -10050,12 +10073,11 @@ namespace Sigesoft.Node.WinClient.BLL
                             equals new { a = G.i_ParentParameterId.Value, b = G.i_GroupId } into G_join
                         from G in G_join.DefaultIfEmpty()
 
-                        where C.i_IsDeleted == 0 && (G.v_Value1.Contains(nameSubCategory) && C.v_ComponentId.Contains(componentId) && C.v_Name.Contains(nameComponent) && F.v_Value1.Contains(nameCategory) && C.v_CodigoSegus.Contains(codigoSegus))
+                        where C.i_IsDeleted == 0 && (G.v_Value1.Contains(nameSubCategory) && C.v_Name.Contains(nameComponent) && F.v_Value1.Contains(nameCategory) && C.v_CodigoSegus.Contains(codigoSegus))
                         select new Categoria
                         {
                             v_ComponentId = C.v_ComponentId,
                             v_ComponentName = C.v_Name,
-
                             v_CodigoSegus = C.v_CodigoSegus,
                             i_CategoryId = C.i_CategoryId,
                             v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
@@ -10095,8 +10117,7 @@ namespace Sigesoft.Node.WinClient.BLL
 					foreach (var item in x)
 					{
 						objComponentDetailList = new ComponentDetailList();
-
-						objComponentDetailList.v_ComponentId = item.v_ComponentId;
+                        objComponentDetailList.v_ComponentId = item.v_ComponentId;
 						objComponentDetailList.v_ComponentName = item.v_ComponentName;
 						//objComponentDetailList.v_ServiceComponentId = item.v_ServiceComponentId;
                         var list = ListaComponentes.Find(z => z.v_ComponentId == item.v_ComponentId);
@@ -32783,6 +32804,8 @@ namespace Sigesoft.Node.WinClient.BLL
             return objEntity;
 
         }
+
+
 
         public UsuarioGrabo DevolverDatosUsuarioFirma(int systemuserId)
         {

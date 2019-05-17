@@ -724,7 +724,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 txtTrabajador.Text = grdDataCalendar.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
                 _PacientId = grdDataCalendar.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
-
+                _dni = grdDataCalendar.Selected.Rows[0].Cells["v_DocNumber"].Value.ToString();
                 _serviceId = grdDataCalendar.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
 
                 _calendarId = grdDataCalendar.Selected.Rows[0].Cells["v_CalendarId"].Value.ToString();
@@ -1334,7 +1334,7 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnAgregarExamen_Click(object sender, EventArgs e)
         {
             ServiceBL oServiceBL = new ServiceBL();
-            var frm = new frmAddExam(ListaComponentes, "", _ProtocolId, "", "", "","", null);
+            var frm = new frmAddExam(ListaComponentes, "", _ProtocolId, "", "", _dni,"", null);
             frm._serviceId = _serviceId;
             frm.ShowDialog();
 
@@ -3686,49 +3686,55 @@ namespace Sigesoft.Node.WinClient.UI
         {
             try
             {
-                using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
+
+                OperationResult objOperationResult = new OperationResult();
+                string ServiceId = grdDataCalendar.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+                List<AdditionalExamCustom> ListAdditionalExams = new AdditionalExamBL().GetAdditionalExamByServiceId(ServiceId);
+
+                List<string> ComponentAdditionalList = new List<string>();
+                List<string> ComponentNewService = new List<string>();
+
+                foreach (var obj in ListAdditionalExams)
                 {
-                    List<string> ComponetList = new List<string>();
-                    OperationResult objOperationResult = new OperationResult();
-                    string ServiceId = grdDataCalendar.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-
-                    List<string> ListAdditionalExams = new AdditionalExamBL().GetAdditionalExamByServiceId(ServiceId);
-
-                    List<Categoria> DataSource = new List<Categoria>();
-                    
-
-                    foreach (var componentId in ListAdditionalExams)
+                    ComponentAdditionalList.Add(obj.ComponentId);
+                    if (obj.IsNewService == (int)SiNo.SI)
                     {
-                        var ListServiceComponent = new ServiceBL().GetAllComponents(ref objOperationResult, (int)TipoBusqueda.ComponentId, componentId);
-
-
-                        
-                        Categoria categoria = DataSource.Find(x => x.i_CategoryId == ListServiceComponent[0].i_CategoryId);
-                        if (categoria != null)
-                        {
-                            List<ComponentDetailList> componentDetail = new List<ComponentDetailList>();
-                            componentDetail = ListServiceComponent[0].Componentes;
-                            DataSource.Find(x => x.i_CategoryId == ListServiceComponent[0].i_CategoryId).Componentes.AddRange(componentDetail);
-                        }
-                        else
-                        {
-                            DataSource.AddRange(ListServiceComponent);
-                        }
-                        
-
-
-
+                        ComponentNewService.Add(obj.ComponentId);
                     }
-
-                    var frm = new frmAddExam(ComponetList, "", _ProtocolId, "", "", "", ServiceId, DataSource);
-                    frm.ShowDialog();
                 }
+
+                List<Categoria> DataSource = new List<Categoria>();
+
+
+                foreach (var componentId in ComponentAdditionalList)
+                {
+                    var ListServiceComponent = new ServiceBL().GetAllComponents(ref objOperationResult, (int)TipoBusqueda.ComponentId, componentId);
+
+
+                    
+                    Categoria categoria = DataSource.Find(x => x.i_CategoryId == ListServiceComponent[0].i_CategoryId);
+                    if (categoria != null)
+                    {
+                        List<ComponentDetailList> componentDetail = new List<ComponentDetailList>();
+                        componentDetail = ListServiceComponent[0].Componentes;
+                        DataSource.Find(x => x.i_CategoryId == ListServiceComponent[0].i_CategoryId).Componentes.AddRange(componentDetail);
+                    }
+                    else
+                    {
+                        DataSource.AddRange(ListServiceComponent);
+                    }
+                }
+
+                var frm = new frmAddExam(ComponentNewService, "", _ProtocolId, "", "", _dni, ServiceId, DataSource);
+                frm.ShowDialog();
+                
             }
             catch (Exception ex)
             {
                 return;
             }
-           
+
         }
        
     }

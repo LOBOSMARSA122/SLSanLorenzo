@@ -288,6 +288,7 @@
             this.lvExamenesSeleccionados.TabIndex = 0;
             this.lvExamenesSeleccionados.UseCompatibleStateImageBehavior = false;
             this.lvExamenesSeleccionados.View = System.Windows.Forms.View.Details;
+            this.lvExamenesSeleccionados.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvExamenesSeleccionados_ItemSelectionChanged);
             // 
             // chExamen
             // 
@@ -374,6 +375,7 @@
             this.btnRemoverExamenAuxiliar.Size = new System.Drawing.Size(25, 22);
             this.btnRemoverExamenAuxiliar.TabIndex = 139;
             this.btnRemoverExamenAuxiliar.UseVisualStyleBackColor = true;
+            this.btnRemoverExamenAuxiliar.Click += new System.EventHandler(this.btnRemoverExamenAuxiliar_Click);
             // 
             // btnAgregarExamenAuxiliar
             // 

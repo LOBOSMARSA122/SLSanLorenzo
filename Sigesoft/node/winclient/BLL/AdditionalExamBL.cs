@@ -48,14 +48,62 @@ namespace Sigesoft.Node.WinClient.BLL
             
         }
 
+        public void UpdateAdditionalExamByComponentIdAndServiceId(string componentId, string serviceId, int userId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbcontext = new SigesoftEntitiesModel();
+                var obj = (from ade in dbcontext.additionalexam
+                    where ade.v_ComponentId == componentId && ade.v_ServiceId == serviceId && ade.i_IsDeleted == 0 && ade.i_IsProcessed == 0
+                    select ade).FirstOrDefault();
 
-        public List<string> GetAdditionalExamByServiceId( string serviceId)
+                obj.i_IsNewService = (int)SiNo.NO;
+                obj.i_IsProcessed = (int)SiNo.SI;
+                obj.i_IsDeleted = (int)SiNo.NO;
+                obj.d_UpdateDate = DateTime.Now;
+                obj.i_UpdateUserId = userId;
+
+                dbcontext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
+
+            
+        }
+
+        public List<AdditionalExamCustom> GetAdditionalExamByServiceId_all(string serviceId, int userId)
+        {
+            SigesoftEntitiesModel dbcontext = new SigesoftEntitiesModel();
+
+            var list = (from ade in dbcontext.additionalexam
+                        where ade.v_ServiceId == serviceId && ade.i_IsDeleted == 0 && ade.i_InsertUserId == userId
+                select new AdditionalExamCustom
+                {
+                    ComponentId = ade.v_ComponentId,
+                    ServiceId = ade.v_ServiceId,
+                    IsProcessed = ade.i_IsProcessed.Value,
+                    IsNewService = ade.i_IsNewService.Value
+                }).ToList();
+
+            return list;
+        }
+
+        public List<AdditionalExamCustom> GetAdditionalExamByServiceId( string serviceId)
         {
             SigesoftEntitiesModel dbcontext = new SigesoftEntitiesModel();
 
             var list = (from ade in dbcontext.additionalexam
                 where ade.v_ServiceId == serviceId && ade.i_IsDeleted == 0 && ade.i_IsProcessed == 0
-                select ade.v_ComponentId).ToList();
+                select new AdditionalExamCustom
+                {
+                    ComponentId = ade.v_ComponentId,
+                    ServiceId = ade.v_ServiceId,
+                    IsNewService = ade.i_IsNewService.Value
+                }).ToList();
 
             return list;
         }
