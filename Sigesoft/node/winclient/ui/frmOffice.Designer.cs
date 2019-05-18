@@ -100,6 +100,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAgregarAdiconal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
+            this.reImprimirExamenAdicionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grdListaLlamando = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.grdLlamandoPaciente = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -118,7 +119,7 @@
             this.cbService = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.reImprimirExamenAdicionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optModificarExamenAdicional = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -511,16 +512,17 @@
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregarAdiconal,
             this.btnRemoverEsamen,
-            this.reImprimirExamenAdicionalToolStripMenuItem});
+            this.reImprimirExamenAdicionalToolStripMenuItem,
+            this.optModificarExamenAdicional});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(234, 92);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(245, 114);
             this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
             // 
             // btnAgregarAdiconal
             // 
             this.btnAgregarAdiconal.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarAdiconal.Image")));
             this.btnAgregarAdiconal.Name = "btnAgregarAdiconal";
-            this.btnAgregarAdiconal.Size = new System.Drawing.Size(233, 22);
+            this.btnAgregarAdiconal.Size = new System.Drawing.Size(244, 22);
             this.btnAgregarAdiconal.Text = "Agregar Adicional";
             this.btnAgregarAdiconal.Click += new System.EventHandler(this.btnAgregarAdiconal_Click);
             // 
@@ -528,9 +530,16 @@
             // 
             this.btnRemoverEsamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverEsamen.Image")));
             this.btnRemoverEsamen.Name = "btnRemoverEsamen";
-            this.btnRemoverEsamen.Size = new System.Drawing.Size(233, 22);
+            this.btnRemoverEsamen.Size = new System.Drawing.Size(244, 22);
             this.btnRemoverEsamen.Text = "Remover Examen";
             this.btnRemoverEsamen.Click += new System.EventHandler(this.btnRemoverEsamen_Click);
+            // 
+            // reImprimirExamenAdicionalToolStripMenuItem
+            // 
+            this.reImprimirExamenAdicionalToolStripMenuItem.Name = "reImprimirExamenAdicionalToolStripMenuItem";
+            this.reImprimirExamenAdicionalToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.reImprimirExamenAdicionalToolStripMenuItem.Text = "Re Imprimir Examen Adicional";
+            this.reImprimirExamenAdicionalToolStripMenuItem.Click += new System.EventHandler(this.reImprimirExamenAdicionalToolStripMenuItem_Click);
             // 
             // grdListaLlamando
             // 
@@ -1010,12 +1019,12 @@
             this.label14.Text = "Tipo Servicio";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // reImprimirExamenAdicionalToolStripMenuItem
+            // optModificarExamenAdicional
             // 
-            this.reImprimirExamenAdicionalToolStripMenuItem.Name = "reImprimirExamenAdicionalToolStripMenuItem";
-            this.reImprimirExamenAdicionalToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.reImprimirExamenAdicionalToolStripMenuItem.Text = "Re Imprimir Examen Adicional";
-            this.reImprimirExamenAdicionalToolStripMenuItem.Click += new System.EventHandler(this.reImprimirExamenAdicionalToolStripMenuItem_Click);
+            this.optModificarExamenAdicional.Name = "optModificarExamenAdicional";
+            this.optModificarExamenAdicional.Size = new System.Drawing.Size(244, 22);
+            this.optModificarExamenAdicional.Text = "Modificar Exámenes Adicionales";
+            this.optModificarExamenAdicional.Click += new System.EventHandler(this.optModificarExamenAdicional_Click);
             // 
             // frmOffice
             // 
@@ -1104,5 +1113,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ToolStripMenuItem reImprimirExamenAdicionalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optModificarExamenAdicional;
     }
 }

@@ -521,6 +521,12 @@
     <Compile Include="frmAddExam.Designer.cs">
       <DependentUpon>frmAddExam.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAdditionalExamMant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdditionalExamMant.Designer.cs">
+      <DependentUpon>frmAdditionalExamMant.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddLineSAM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3686,6 +3692,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddExam.resx">
       <DependentUpon>frmAddExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdditionalExamMant.resx">
+      <DependentUpon>frmAdditionalExamMant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddLineSAM.resx">
       <DependentUpon>frmAddLineSAM.cs</DependentUpon>
@@ -7208,7 +7217,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
