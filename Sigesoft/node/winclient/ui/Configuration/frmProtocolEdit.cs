@@ -307,6 +307,9 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 txtComision.Text = _protocolDTO.i_ValidInDays.ToString();
                 chkEsActivo.Checked = Convert.ToBoolean(_protocolDTO.i_IsActive);
                 cboVendedor.Text = _protocolDTO.v_NombreVendedor;
+                txtFactor.Text = _protocolDTO.r_PriceFactor.ToString();
+                txtEps.Text = _protocolDTO.r_MedicineDiscount.ToString();
+                txtCamaHosp.Text = _protocolDTO.r_HospitalBedPrice.ToString();
 
                 // Componentes del protocolo
                 var dataListPc = _protocolBL.GetProtocolComponents(ref objOperationResult, _protocolId);
@@ -412,6 +415,9 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 _protocolDTO.i_IsActive = Convert.ToInt32(chkEsActivo.Checked);
                 _protocolDTO.v_NombreVendedor = cboVendedor.Text;
                 _protocolDTO.v_ComentaryUpdate = SetChanges();
+                _protocolDTO.r_PriceFactor = float.Parse(txtFactor.Text);
+                _protocolDTO.r_HospitalBedPrice = float.Parse(txtCamaHosp.Text);
+                _protocolDTO.r_MedicineDiscount = float.Parse(txtEps.Text);
 
                 // Grabar componentes del protocolo
                 if (_mode == "New" || _mode == "Clon")

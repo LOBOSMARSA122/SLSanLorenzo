@@ -79,6 +79,7 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtDocNumber = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCamaHosp = new System.Windows.Forms.TextBox();
             this.btnAgregarEmpresaContrata = new System.Windows.Forms.Button();
             this.chkEsActivo = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -95,6 +96,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lblBedHospital = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cboVendedor = new System.Windows.Forms.ComboBox();
             this.txtComision = new System.Windows.Forms.TextBox();
@@ -118,8 +120,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.lblBedHospital = new System.Windows.Forms.Label();
-            this.txtCamaHosp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdProtocolComponent)).BeginInit();
             this.cmProtocol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).BeginInit();
@@ -464,6 +464,18 @@
             this.groupBox1.Text = "Datos del Protocolo";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // txtCamaHosp
+            // 
+            this.txtCamaHosp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCamaHosp.Location = new System.Drawing.Point(894, 131);
+            this.txtCamaHosp.MaxLength = 250;
+            this.txtCamaHosp.Name = "txtCamaHosp";
+            this.txtCamaHosp.Size = new System.Drawing.Size(42, 20);
+            this.txtCamaHosp.TabIndex = 24;
+            this.txtCamaHosp.Text = "0.00";
+            this.txtCamaHosp.Visible = false;
+            this.txtCamaHosp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCamaHosp_KeyPress);
+            // 
             // btnAgregarEmpresaContrata
             // 
             this.btnAgregarEmpresaContrata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -539,10 +551,10 @@
             // txtEps
             // 
             this.txtEps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEps.Location = new System.Drawing.Point(785, 131);
+            this.txtEps.Location = new System.Drawing.Point(780, 131);
             this.txtEps.MaxLength = 250;
             this.txtEps.Name = "txtEps";
-            this.txtEps.Size = new System.Drawing.Size(36, 20);
+            this.txtEps.Size = new System.Drawing.Size(42, 20);
             this.txtEps.TabIndex = 24;
             this.txtEps.Text = "0.00";
             this.txtEps.Visible = false;
@@ -555,7 +567,7 @@
             this.txtFactor.Location = new System.Drawing.Point(686, 131);
             this.txtFactor.MaxLength = 250;
             this.txtFactor.Name = "txtFactor";
-            this.txtFactor.Size = new System.Drawing.Size(36, 20);
+            this.txtFactor.Size = new System.Drawing.Size(42, 20);
             this.txtFactor.TabIndex = 24;
             this.txtFactor.Text = "0.00";
             this.toolTip1.SetToolTip(this.txtFactor, "Solo acepta números.");
@@ -578,7 +590,7 @@
             this.lblEps.BackColor = System.Drawing.Color.Transparent;
             this.lblEps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEps.ForeColor = System.Drawing.Color.Black;
-            this.lblEps.Location = new System.Drawing.Point(741, 131);
+            this.lblEps.Location = new System.Drawing.Point(746, 131);
             this.lblEps.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEps.Name = "lblEps";
             this.lblEps.Size = new System.Drawing.Size(48, 20);
@@ -673,6 +685,20 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "Nombre Proto.";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblBedHospital
+            // 
+            this.lblBedHospital.BackColor = System.Drawing.Color.Transparent;
+            this.lblBedHospital.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBedHospital.ForeColor = System.Drawing.Color.Black;
+            this.lblBedHospital.Location = new System.Drawing.Point(832, 131);
+            this.lblBedHospital.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBedHospital.Name = "lblBedHospital";
+            this.lblBedHospital.Size = new System.Drawing.Size(71, 20);
+            this.lblBedHospital.TabIndex = 23;
+            this.lblBedHospital.Text = "Cama Hosp.";
+            this.lblBedHospital.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBedHospital.Visible = false;
             // 
             // label4
             // 
@@ -1076,32 +1102,6 @@
             this.btnOK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // lblBedHospital
-            // 
-            this.lblBedHospital.BackColor = System.Drawing.Color.Transparent;
-            this.lblBedHospital.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBedHospital.ForeColor = System.Drawing.Color.Black;
-            this.lblBedHospital.Location = new System.Drawing.Point(835, 131);
-            this.lblBedHospital.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBedHospital.Name = "lblBedHospital";
-            this.lblBedHospital.Size = new System.Drawing.Size(71, 20);
-            this.lblBedHospital.TabIndex = 23;
-            this.lblBedHospital.Text = "Cama Hosp.";
-            this.lblBedHospital.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblBedHospital.Visible = false;
-            // 
-            // txtCamaHosp
-            // 
-            this.txtCamaHosp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCamaHosp.Location = new System.Drawing.Point(898, 131);
-            this.txtCamaHosp.MaxLength = 250;
-            this.txtCamaHosp.Name = "txtCamaHosp";
-            this.txtCamaHosp.Size = new System.Drawing.Size(36, 20);
-            this.txtCamaHosp.TabIndex = 24;
-            this.txtCamaHosp.Text = "0.00";
-            this.txtCamaHosp.Visible = false;
-            this.txtCamaHosp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCamaHosp_KeyPress);
             // 
             // frmProtocolEdit
             // 
