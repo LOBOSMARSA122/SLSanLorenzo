@@ -24069,7 +24069,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   Pregunta5ASiNo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5).v_Value1,
                                NroCigarros = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == "N009-MF000003660").v_Value1,
 
-                               ESPIROMETRIA_OBSERVACIONES_ASMA = Espirometria.Count != 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA).v_Value1,
+                               ESPIROMETRIA_OBSERVACIONES_ASMA = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA).v_Value1,
                                ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO = Espirometria.Count == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA_TIEMPO).v_Value1,
                                ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS = Espirometria.Count == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_OBSERVACIONES_ASMA_CRISIS).v_Value1,
 

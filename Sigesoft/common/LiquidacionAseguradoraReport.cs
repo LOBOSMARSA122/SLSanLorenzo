@@ -92,7 +92,7 @@ namespace NetPdf
                 aseguradora = item.Aseguradora;paciente = item.Paciente;empresa = item.EmpresaId;fecha = item.FechaServicio.ToShortDateString();historia = item.ServicioId; 
             }
            
-            decimal total = 0; decimal? saldocoaseguropaciente = 0; decimal? saldoaseguradora = 0; decimal? saldodeduciblepaciente = 0;
+            decimal total = 0; decimal saldocoaseguropaciente = 0; decimal saldoaseguradora = 0; decimal saldodeduciblepaciente = 0;
             #region OLD
             //foreach (var item in Detalle_report)
             //{
@@ -299,7 +299,7 @@ namespace NetPdf
             #endregion
 
             cadena1 =
-                "select SC.d_SaldoPaciente as d_SaldoPaciente, SC.d_SaldoAseguradora as d_SaldoAseguradora,SC.r_Price/1.18 as subtotal, SC.r_Price*0.18 as igv,SC.r_Price as total, " +
+                "select CONVERT(Decimal(15,2),SC.d_SaldoPaciente,2) as d_SaldoPaciente, CONVERT(Decimal(15,2),SC.d_SaldoAseguradora,2) as d_SaldoAseguradora,CONVERT(Decimal(15,2),SC.r_Price/1.18,2) as subtotal, CONVERT(Decimal(15,2),SC.r_Price*0.18,2) as igv,CONVERT(Decimal(15,2),SC.r_Price,2) as total, " +
                 "SC.d_InsertDate as fecha, CP.v_Name as Descripcion, " +
                 "CP.v_IdUnidadProductiva as v_IdUnidadProductiva, SR.v_ServiceId as v_ServiceId, " +
                 "case when SC.i_TipoDesc = 1 then 'SI' else 'NO' end as i_EsDeducible, " +
@@ -329,7 +329,8 @@ namespace NetPdf
                 v_ServiceIdCP = lector.GetValue(8).ToString();
                 EsDeducibleCP = lector.GetValue(9).ToString();
                 EsCoaseguroCP = lector.GetValue(10).ToString();
-                if (EsDeducibleCP == "SI")
+
+                if (EsCoaseguroCP == "SI")
                 {
                     cell = new PdfPCell(new Phrase(fecha, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                     cells.Add(cell);
@@ -337,28 +338,7 @@ namespace NetPdf
                     cells.Add(cell);
                     cell = new PdfPCell(new Phrase(DescripcionCP, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                     cells.Add(cell);
-                    cell = new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(subtotalCP, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(subtotalCP, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(totalCP, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    saldodeduciblepaciente += decimal.Parse(d_SaldoPacienteCP);
-                    saldoaseguradora += decimal.Parse(d_SaldoAseguradoraCP);
-                }
-                else if (EsCoaseguroCP == "SI")
-                {
-                    cell = new PdfPCell(new Phrase(fecha, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(historia, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase(DescripcionCP, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
-                    cells.Add(cell);
-                    cell = new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cell = new PdfPCell(new Phrase("1.0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                     cells.Add(cell);
                     cell = new PdfPCell(new Phrase(subtotalCP, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                     cells.Add(cell);
@@ -371,6 +351,28 @@ namespace NetPdf
                     saldocoaseguropaciente += decimal.Parse(d_SaldoPacienteCP);
                     saldoaseguradora += decimal.Parse(d_SaldoAseguradoraCP);
                 }
+                else if (EsDeducibleCP == "SI")
+                {
+                    cell = new PdfPCell(new Phrase(fecha, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase(historia, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase(DescripcionCP, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase("1.0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase(subtotalCP, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase(subtotalCP, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase(totalCP, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                    cells.Add(cell);
+                    saldodeduciblepaciente += decimal.Parse(d_SaldoPacienteCP);
+                    saldoaseguradora += decimal.Parse(d_SaldoAseguradoraCP);
+                }
+                
                 
             }
             lector.Close();
@@ -385,7 +387,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("SERVICIO", fontColumnValueBold)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
                 new PdfPCell(new Phrase("CANT.", fontColumnValueBold)) { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
                 new PdfPCell(new Phrase("V. UNIT", fontColumnValueBold)) { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
-                new PdfPCell(new Phrase("DESC. PPS", fontColumnValueBold)) { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
+                new PdfPCell(new Phrase("PPS: "+pps+" %", fontColumnValueBold)) { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
                 new PdfPCell(new Phrase("SUB TOTAL", fontColumnValueBold)) { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
                 new PdfPCell(new Phrase("V. TOTAL", fontColumnValueBold)) { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
                 
@@ -398,12 +400,12 @@ namespace NetPdf
             document.Add(table);
             cells = new List<PdfPCell>();
             cadena1 =
-                "select RC.d_SaldoPaciente as d_SaldoPacienteRC, RC.d_SaldoAseguradora as d_SaldoAseguradoraRC, " +
+                "select CONVERT(Decimal(15,2),RC.d_SaldoPaciente,2) as d_SaldoPacienteRC, CONVERT(Decimal(15,2),RC.d_SaldoAseguradora,2) as d_SaldoAseguradoraRC, " +
                 "RC.v_IdProductoDetalle as productoRC, SR.d_ServiceDate as fechaRC, " +
-                "(RC.d_SaldoPaciente + RC.d_SaldoAseguradora)/RC.d_Cantidad as PrecioUnitario, RC.d_Cantidad as cantidadRC, " +
-                "(((RC.d_SaldoPaciente + RC.d_SaldoAseguradora)/RC.d_Cantidad)/1.18) as subtotalRC, " +
-                "(RC.d_SaldoPaciente + RC.d_SaldoAseguradora)*0.18 as igvRC, " +
-                "RC.d_SaldoPaciente + RC.d_SaldoAseguradora as totalRC " +
+                "CONVERT(Decimal(15,2),(RC.d_SaldoPaciente + RC.d_SaldoAseguradora)/RC.d_Cantidad,2) as PrecioUnitario, CONVERT(Decimal(15,1),RC.d_Cantidad,1) as cantidadRC, " +
+                "CONVERT(Decimal(15,2),(((RC.d_SaldoPaciente + RC.d_SaldoAseguradora)/RC.d_Cantidad)/1.18),2) as subtotalRC, " +
+                "CONVERT(Decimal(15,2),(RC.d_SaldoPaciente + RC.d_SaldoAseguradora)*0.18,2) as igvRC, " +
+                "CONVERT(Decimal(15,2),RC.d_SaldoPaciente + RC.d_SaldoAseguradora,2) as totalRC " +
                 "from service SR " +
                 "inner join receta RC on SR.v_ServiceId=RC.v_ServiceId " +
                 "where SR.v_ServiceId='" + historia + "' and RC.i_Lleva=1";
@@ -463,12 +465,12 @@ namespace NetPdf
             }
             lector.Close();
             cadena1 =
-                "select TKD.d_SaldoPaciente as d_SaldoPacienteTK, TKD.d_SaldoAseguradora as d_SaldoAseguradoraTK, " +
+                "select CONVERT(Decimal(15,2),TKD.d_SaldoPaciente,2) as d_SaldoPacienteTK, CONVERT(Decimal(15,2),TKD.d_SaldoAseguradora,2) as d_SaldoAseguradoraTK, " +
                 "TKD.v_Descripcion as medicamentoTK, TKD.d_InsertDate as fechaTK, " +
-                "TKD.d_PrecioVenta as PrecioUnitarioTK, TKD.d_Cantidad as d_CantidadTK, " +
-                "((TKD.d_SaldoPaciente+TKD.d_SaldoAseguradora)/1.18) as subtotalTK, " +
-                "(TKD.d_SaldoPaciente+TKD.d_SaldoAseguradora)*0.18 as igvTK, " +
-                "(TKD.d_SaldoPaciente+TKD.d_SaldoAseguradora) as totalTK, TK.v_TicketId as  v_TicketId " +
+                "CONVERT(Decimal(15,2),TKD.d_PrecioVenta,2) as PrecioUnitarioTK, CONVERT(Decimal(15,1),TKD.d_Cantidad,1) as d_CantidadTK, " +
+                "CONVERT(Decimal(15,2),((TKD.d_SaldoPaciente+TKD.d_SaldoAseguradora)/1.18),2) as subtotalTK, " +
+                "CONVERT(Decimal(15,2),(TKD.d_SaldoPaciente+TKD.d_SaldoAseguradora)*0.18,2) as igvTK, " +
+                "CONVERT(Decimal(15,2),(TKD.d_SaldoPaciente+TKD.d_SaldoAseguradora),2) as totalTK, TK.v_TicketId as  v_TicketId " +
                 " from service SR  " +
                 "inner join ticket TK on SR.v_ServiceId=TK.v_ServiceId " +
                 "inner join ticketdetalle TKD on TK.v_TicketId=TKD.v_TicketId " +
@@ -490,7 +492,9 @@ namespace NetPdf
                 totalTK = lector.GetValue(8).ToString();
                 v_TicketId = lector.GetValue(9).ToString();
                 decimal pUnitSinIgv = PrecioUnitarioTK / (decimal)1.18;
+                pUnitSinIgv = decimal.Round(pUnitSinIgv, 2);
                 decimal descpps = pUnitSinIgv / (1 - (pps / 100));
+                descpps = decimal.Round(descpps, 2);
                 cell = new PdfPCell(new Phrase(fechaTK, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase(v_TicketId, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
@@ -543,8 +547,8 @@ namespace NetPdf
             document.Add(table);
             cells = new List<PdfPCell>();
             cadena1 =
-                "select HH.d_SaldoPaciente as d_SaldoPacienteHH, HH.d_SaldoAseguradora as d_SaldoAseguradoraHH, " +
-                "HOS.d_FechaIngreso as d_StartDateHH, HOS.d_FechaAlta as d_EndDateHH, HH.d_Precio/1.18 as d_Precio, " +
+                "select CONVERT(Decimal(15,2),HH.d_SaldoPaciente,1) as d_SaldoPacienteHH, CONVERT(Decimal(15,2),HH.d_SaldoAseguradora,2) as d_SaldoAseguradoraHH, " +
+                "HOS.d_FechaIngreso as d_StartDateHH, HOS.d_FechaAlta as d_EndDateHH, CONVERT(Decimal(15,2),HH.d_Precio/1.18,2) as d_Precio, " +
                 " CONVERT(decimal, (HOS.d_FechaAlta-HOS.d_FechaIngreso)) as dias, HH.v_HopitalizacionId as hospiId " +
                 "from hospitalizacionservice HS " +
                 "inner join service SR on SR.v_ServiceId= HS.v_ServiceId " +
@@ -569,7 +573,9 @@ namespace NetPdf
                 if (diashospi > 0 && diashospi < 1){diashospi = 1;}
                 else{decimal d;diashospi = Math.Round(diashospi, 0);}
                 decimal totalHH = diashospi * d_Precio;
+                totalHH = decimal.Round(totalHH, 2);
                 decimal precioSinIgv = d_Precio / (decimal) 1.18;
+                precioSinIgv = decimal.Round(precioSinIgv, 2);
                 cell = new PdfPCell(new Phrase(d_StartDateHH + " - " + d_EndDateHH, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase(hospiId, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
@@ -582,7 +588,7 @@ namespace NetPdf
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
-                cell = new PdfPCell(new Phrase((totalHH / (decimal) 1.18).ToString(), fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                cell = new PdfPCell(new Phrase(precioSinIgv.ToString(), fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase(totalHH.ToString(), fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
@@ -598,9 +604,12 @@ namespace NetPdf
             #endregion
             #region Total
 
-            decimal? totalliq = (saldocoaseguropaciente + saldodeduciblepaciente + saldoaseguradora);
-            decimal? igvlig = (totalliq/(decimal)1.18) * (decimal) 0.18;
-            decimal? subtotalliq = totalliq - igvlig;
+            decimal totalliq = (saldocoaseguropaciente + saldodeduciblepaciente + saldoaseguradora);
+            totalliq = decimal.Round(totalliq, 2);
+            decimal igvlig = (totalliq/(decimal)1.18) * (decimal) 0.18;
+            igvlig = decimal.Round(igvlig, 2);
+            decimal subtotalliq = totalliq - igvlig;
+            subtotalliq = decimal.Round(subtotalliq, 2);
             var cellsTit6 = new List<PdfPCell>()
             { 
                
