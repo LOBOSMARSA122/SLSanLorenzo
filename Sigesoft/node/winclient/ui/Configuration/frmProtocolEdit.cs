@@ -41,7 +41,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
             "cbEmpresaTrabajo", "cbEmpresaCliente", "cbEmpresaEmpleadora", "cbGeso", "cbTipoServicio",
             "cbServicio", "txtCentroCosto", "chkEsComisionable", "txtComision", "chkEsActivo", "cboVendedor",
-            "txtNombreProtocolo", "cbTipoExamen"
+            "txtNombreProtocolo", "cbTipoExamen", "txtFactor", "txtEps", "txtCamaHosp"
         };
 
         private List<Campo> ListValuesCampo = new List<Campo>();
@@ -54,10 +54,16 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private List<Campos> SetChangeProtocolComponent()
         {
+            List<Campos> ComentaryProtComponent = new List<Campos>();
             var old = _OldProtocolcomponentListForcomentary;
+            if (old == null)
+            {
+                return ComentaryProtComponent;
+            }
+
             var nuevo = _tmpProtocolcomponentList;
             
-            List<Campos> ComentaryProtComponent = new List<Campos>();
+            
             foreach (var itemOld in old)
             {
                 bool cambios = false;
