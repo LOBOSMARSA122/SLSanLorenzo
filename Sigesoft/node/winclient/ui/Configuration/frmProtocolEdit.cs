@@ -1010,11 +1010,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         }
 
-        private void cbServiceType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cbGeso_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -1186,6 +1181,115 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             frm.ShowDialog();
 
  
+        }
+
+        private void cbTipoServicio_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbTipoServicio.Text == "SEGUROS")
+            {
+                lblEps.Visible = true;
+                lblFactor.Visible = true;
+                txtFactor.Visible = true;
+                txtEps.Visible = true;
+                lblBedHospital.Visible = true;
+                txtCamaHosp.Visible = true;
+            }
+            else
+            {
+                lblEps.Visible = false;
+                lblFactor.Visible = false;
+                txtFactor.Visible = false;
+                txtEps.Visible = false;
+                lblBedHospital.Visible = false;
+                txtCamaHosp.Visible = false;
+            }
+        }
+
+        private void txtFactor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (e.KeyChar.ToString() ==  ".")
+            {
+                var charerd = txtFactor.Text.ToCharArray();
+                int count = 0;
+                foreach (var item in charerd){if (item.ToString() == "."){count++;}}
+                if (txtFactor.Text == "") 
+                { 
+                    txtFactor.Text = "0.";
+                    e.Handled = true;
+                }
+                else if (count == 0){e.Handled = false;}
+                else{e.Handled = true;}
+            }
+            else if (e.KeyChar == '\b')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEps_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (e.KeyChar.ToString() == ".")
+            {
+                var charerd = txtFactor.Text.ToCharArray();
+                int count = 0;
+                foreach (var item in charerd) { if (item.ToString() == ".") { count++; } }
+                if (txtFactor.Text == "")
+                {
+                    txtFactor.Text = "0.";
+                    e.Handled = true;
+                }
+                else if (count == 0) { e.Handled = false; }
+                else { e.Handled = true; }
+            }
+            else if (e.KeyChar == '\b')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCamaHosp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (e.KeyChar.ToString() == ".")
+            {
+                var charerd = txtFactor.Text.ToCharArray();
+                int count = 0;
+                foreach (var item in charerd) { if (item.ToString() == ".") { count++; } }
+                if (txtFactor.Text == "")
+                {
+                    txtFactor.Text = "0.";
+                    e.Handled = true;
+                }
+                else if (count == 0) { e.Handled = false; }
+                else { e.Handled = true; }
+            }
+            else if (e.KeyChar == '\b')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }
