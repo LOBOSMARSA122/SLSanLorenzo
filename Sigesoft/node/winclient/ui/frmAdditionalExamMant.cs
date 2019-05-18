@@ -51,7 +51,7 @@ namespace Sigesoft.Node.WinClient.UI
                     var serviceId = row.Cells["v_ServiceId"].Value.ToString();
                     var componentId = row.Cells["v_ComponentId"].Value.ToString();
 
-                    new AdditionalExamBL().DeleteAdditionalExam(serviceId, componentId, Globals.ClientSession.i_SystemUserId);
+                    //new AdditionalExamBL().DeleteAdditionalExam(serviceId, componentId, Globals.ClientSession.i_SystemUserId);
                 } 
 	        }
             else

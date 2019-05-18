@@ -122,7 +122,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     v_ComponentId = ade.v_ComponentId,
                     v_ServiceId = ade.v_ServiceId,
                     v_ComponentName = com.v_Name,
-                    i_IsProcessed = ade.i_IsProcessed.Value;
+                    i_IsProcessed = ade.i_IsProcessed.Value,
                     v_PacientName = per.v_FirstLastName + " " + per.v_SecondLastName + ", " + per.v_FirstName,
                 }).ToList();
 
