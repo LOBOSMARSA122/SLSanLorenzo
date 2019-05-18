@@ -1290,17 +1290,18 @@ namespace Sigesoft.Node.WinClient.UI
         {
             string ServiceId = grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
 
-            //var Data = GetAdditionalExamForUpdateByServiceId(ServiceId, Globals.ClientSession.i_SystemUserId);
-            //if (Data != null)
-            //{
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No se encontraron exámenes adicionales a su cargo.", "VALIDACIÓN",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
+            var Data = new AdditionalExamBL().GetAdditionalExamForUpdateByServiceId(ServiceId, Globals.ClientSession.i_SystemUserId);
+            if (Data != null)
+            {
+                var frm = new frmAdditionalExamMant(ServiceId, Data);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron exámenes adicionales a su cargo.", "VALIDACIÓN",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
     }
