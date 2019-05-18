@@ -107,5 +107,24 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return list;
         }
+
+        public List<AdditionalExamUpdate> GetAdditionalExamForUpdateByServiceId(string serviceId, int userId)
+        {
+            SigesoftEntitiesModel dbcontext = new SigesoftEntitiesModel();
+
+            var list = (from ade in dbcontext.additionalexam
+                join com in dbcontext.component on ade.v_ComponentId equals com.v_ComponentId
+                where ade.v_ServiceId == serviceId && ade.i_IsDeleted == 0 && ade.i_IsProcessed == 0 && ade.i_InsertUserId == userId
+                select new AdditionalExamUpdate
+                {
+                    v_AdditionalExamId = ade.v_AdditionalExamId,
+                    v_ComponentId = ade.v_ComponentId,
+                    v_ServiceId = ade.v_ServiceId,
+                    //v_CategoryName = ,
+                    //v_PacientName = ,
+                }).ToList();
+
+            return list;
+        }
     }
 }

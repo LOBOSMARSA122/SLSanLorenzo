@@ -54,6 +54,43 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public SystemUserList GetSystemUser(int SystemUserId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from su1 in dbContext.systemuser
+                        join A in dbContext.person on su1.v_PersonId equals A.v_PersonId
+                        join B in dbContext.professional on A.v_PersonId equals B.v_PersonId
+
+                        where su1.i_IsDeleted == 0 && su1.i_SystemUserId == SystemUserId
+
+                        select new SystemUserList
+                        {
+                            v_PersonName = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
+                            i_ProfesionId = B.i_ProfessionId,
+                            CMP = B.v_ProfessionalCode,
+                            InfAdicional = B.v_ProfessionalInformation,
+                            v_PersonId = B.v_PersonId
+                        }
+                    ).FirstOrDefault();
+
+
+
+
+                //List<SystemUserList> objData = query.ToList();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+
+        }
 
         public SystemUserList GetSystemUserNameExternal(ref OperationResult pobjOperationResult, int SystemUserId)
         {

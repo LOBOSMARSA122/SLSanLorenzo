@@ -18,4 +18,15 @@ namespace Sigesoft.Node.WinClient.BE.Custom
         public int IsNewService { get; set; }
 
     }
+
+    public class AdditionalExamUpdate
+    {
+
+        public string v_CategoryName { get; set; }
+        public string v_PacientName { get; set; }
+        public string v_ServiceId { get; set; }
+        public string v_ComponentId { get; set; }
+        public string v_AdditionalExamId { get; set; }
+
+    }
 }
