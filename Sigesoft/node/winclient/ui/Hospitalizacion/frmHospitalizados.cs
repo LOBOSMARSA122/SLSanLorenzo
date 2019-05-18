@@ -497,6 +497,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnAgregarExamenes_Click(object sender, EventArgs e)
         {
+            OperationResult objOperationResult = new OperationResult();
             var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             var NroHospitalizacion = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
@@ -515,6 +516,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
             lector.Close();
             conectasam.closesigesoft();
+
+            var ListServiceComponent = new ServiceBL().GetServiceComponents_(ref objOperationResult, serviceId);
+            ListaComponentes = new List<string>();
+            foreach (var item in ListServiceComponent)
+            {
+                ListaComponentes.Add(item.v_ComponentId);
+            }
+
             if (plan != "")
             {
                 var frm = new frmAddExam(ListaComponentes, "ASEGU", protocolId, "Asegu", NroHospitalizacion, dni, serviceId, null) { _serviceId = serviceId };

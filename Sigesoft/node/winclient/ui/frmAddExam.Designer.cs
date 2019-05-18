@@ -112,6 +112,7 @@
             // 
             // gbExamenesSeleccionados
             // 
+            this.gbExamenesSeleccionados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.gbExamenesSeleccionados.Controls.Add(this.lvExamenesSeleccionados);
             this.gbExamenesSeleccionados.Location = new System.Drawing.Point(626, 90);
             this.gbExamenesSeleccionados.Name = "gbExamenesSeleccionados";
@@ -122,6 +123,9 @@
             // 
             // lvExamenesSeleccionados
             // 
+            this.lvExamenesSeleccionados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvExamenesSeleccionados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chExamen,
             this.chMedicalExamId,
@@ -129,7 +133,7 @@
             this.lvExamenesSeleccionados.FullRowSelect = true;
             this.lvExamenesSeleccionados.Location = new System.Drawing.Point(7, 17);
             this.lvExamenesSeleccionados.Name = "lvExamenesSeleccionados";
-            this.lvExamenesSeleccionados.Size = new System.Drawing.Size(324, 366);
+            this.lvExamenesSeleccionados.Size = new System.Drawing.Size(324, 329);
             this.lvExamenesSeleccionados.TabIndex = 0;
             this.lvExamenesSeleccionados.UseCompatibleStateImageBehavior = false;
             this.lvExamenesSeleccionados.View = System.Windows.Forms.View.Details;
@@ -237,6 +241,7 @@
             // 
             // ultraGrid1
             // 
+            this.ultraGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance8.BackColor = System.Drawing.SystemColors.Window;
             appearance8.BackColor2 = System.Drawing.Color.Silver;
             appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -406,6 +411,7 @@
             // 
             // cboMedico
             // 
+            this.cboMedico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cboMedico.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cboMedico.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -420,6 +426,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
@@ -489,6 +496,7 @@
             // 
             // gbTipoAtencion
             // 
+            this.gbTipoAtencion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.gbTipoAtencion.Controls.Add(this.rbAdicional);
             this.gbTipoAtencion.Controls.Add(this.rbNuevaConsulta);
             this.gbTipoAtencion.Location = new System.Drawing.Point(630, 53);
@@ -522,6 +530,7 @@
             // 
             // txtUnidProdId
             // 
+            this.txtUnidProdId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtUnidProdId.Location = new System.Drawing.Point(626, 447);
             this.txtUnidProdId.Name = "txtUnidProdId";
             this.txtUnidProdId.Size = new System.Drawing.Size(129, 20);

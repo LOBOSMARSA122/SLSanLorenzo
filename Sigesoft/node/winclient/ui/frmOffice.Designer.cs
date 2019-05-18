@@ -118,6 +118,7 @@
             this.cbService = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.reImprimirExamenAdicionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -509,16 +510,17 @@
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregarAdiconal,
-            this.btnRemoverEsamen});
+            this.btnRemoverEsamen,
+            this.reImprimirExamenAdicionalToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(170, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(234, 92);
             this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
             // 
             // btnAgregarAdiconal
             // 
             this.btnAgregarAdiconal.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarAdiconal.Image")));
             this.btnAgregarAdiconal.Name = "btnAgregarAdiconal";
-            this.btnAgregarAdiconal.Size = new System.Drawing.Size(169, 22);
+            this.btnAgregarAdiconal.Size = new System.Drawing.Size(233, 22);
             this.btnAgregarAdiconal.Text = "Agregar Adicional";
             this.btnAgregarAdiconal.Click += new System.EventHandler(this.btnAgregarAdiconal_Click);
             // 
@@ -526,7 +528,7 @@
             // 
             this.btnRemoverEsamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverEsamen.Image")));
             this.btnRemoverEsamen.Name = "btnRemoverEsamen";
-            this.btnRemoverEsamen.Size = new System.Drawing.Size(169, 22);
+            this.btnRemoverEsamen.Size = new System.Drawing.Size(233, 22);
             this.btnRemoverEsamen.Text = "Remover Examen";
             this.btnRemoverEsamen.Click += new System.EventHandler(this.btnRemoverEsamen_Click);
             // 
@@ -1008,6 +1010,13 @@
             this.label14.Text = "Tipo Servicio";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // reImprimirExamenAdicionalToolStripMenuItem
+            // 
+            this.reImprimirExamenAdicionalToolStripMenuItem.Name = "reImprimirExamenAdicionalToolStripMenuItem";
+            this.reImprimirExamenAdicionalToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.reImprimirExamenAdicionalToolStripMenuItem.Text = "Re Imprimir Examen Adicional";
+            this.reImprimirExamenAdicionalToolStripMenuItem.Click += new System.EventHandler(this.reImprimirExamenAdicionalToolStripMenuItem_Click);
+            // 
             // frmOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1094,5 +1103,6 @@
         private System.Windows.Forms.ComboBox cbService;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ToolStripMenuItem reImprimirExamenAdicionalToolStripMenuItem;
     }
 }

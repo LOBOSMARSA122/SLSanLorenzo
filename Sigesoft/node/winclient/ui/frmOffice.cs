@@ -10,6 +10,8 @@ using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
 using Sigesoft.Node.WinClient.BE;
 using Infragistics.Win.UltraWinGrid;
+using System.IO;
+using NetPdf;
 
 
 namespace Sigesoft.Node.WinClient.UI
@@ -1239,6 +1241,41 @@ namespace Sigesoft.Node.WinClient.UI
         private void grdLlamandoPaciente_DoubleClick(object sender, EventArgs e)
         {
             Atender02();
+        }
+
+        private void reImprimirExamenAdicionalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (grdListaLlamando.Selected.Rows.Count == 0)
+                {
+                    MessageBox.Show("Seleccione un paciente por favor.", "VALIDACIÓN", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+                MergeExPDF _mergeExPDF = new MergeExPDF();
+                #region BuscarPDF
+                var rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+                var ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+                string ServiceId = grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                var datosGrabo = new ServiceBL().DevolverDatosUsuarioFirma(168);
+
+                List<string> pdfList = new List<string>();
+                pdfList.Add(string.Format("{0}.pdf", Path.Combine(ruta, ServiceId + "-" + "ORDEN-EX-MED-ADICI-" + datosGrabo.CMP)));
+                _mergeExPDF.FilesName = pdfList;
+                _mergeExPDF.DestinationFile = string.Format("{0}.pdf", Path.Combine(rutaBasura, "REIMPRESO-" + ServiceId + "-" + datosGrabo.CMP));
+                _mergeExPDF.Execute();
+                _mergeExPDF.RunFile();
+
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No existen PDFs por reimprimir.", "VALIDACIÓN", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+            
         }
 
     }

@@ -8541,6 +8541,14 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        //public PacientList DevolverDatosPacienteMin(string pstrServiceId)
+        //{
+        //    SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //    var objEntity = (from a in dbContext.service
+        //            join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+        //            where a
+
+        //}
         public Sigesoft.Node.WinClient.BE.PacientList DevolverDatosPaciente(string pstrServiceId)
         {
             try

@@ -50,7 +50,7 @@ namespace Sigesoft.Node.WinClient.UI
             _protocolId = protocolId;
             _type = type;
             _serviceId = serviceId;
-            _DataSource = DataSource;
+            _DataSource = DataSource == null ? new List<Categoria>() : DataSource;
             InitializeComponent();
 
         }
@@ -64,10 +64,18 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var findResult = lvExamenesSeleccionados.FindItemWithText(MedicalExamId);
 
+            // El examen ya esta agregado
+            if (findResult != null)
+            {
+                MessageBox.Show("Por favor seleccione otro examen.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var res = _ListaComponentes.Find(p => p == MedicalExamId);
             if (res != null)
             {
-                this.DialogResult = MessageBox.Show("Este examen ya se encuentra agregado, ¿Desea crear nuevo servicio?", "Error de validación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                var DialogResult = MessageBox.Show("El paciente ya cuenta con este examen, ¿Desea crear nuevo servicio?", "Error de Valicación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                                
                 if (DialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -127,7 +135,7 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
 
                     MessageBox.Show("Se generó el servicio: " + serviceId, " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;                    
+                    //var DialogResult = DialogResult.OK;                    
                     //var frm = new frmCalendar(_nroHospitalizacion, _dni, _serviceId);
                     //frm.ShowDialog();
                 }
@@ -137,12 +145,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
                 
             }
-            // El examen ya esta agregado
-            if (findResult != null)
-            {
-                MessageBox.Show("Por favor seleccione otro examen.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            
 
             var row = new ListViewItem(new[] { MedicalExamName, MedicalExamId, ServiceComponentConcatId });
 
@@ -193,20 +196,21 @@ namespace Sigesoft.Node.WinClient.UI
         {
             
             OperationResult objOperationResult = new OperationResult();
-            if (_DataSource != null)
+            if (_DataSource.Count > 0)
             {
-                if (_DataSource.Count > 0)
-                {
-                    grdDataServiceComponent.DataSource = _DataSource;
-                    ultraGrid1.DataSource = _DataSource;
-                }
-                else
-                {
-                    var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult, null, "");
-                    grdDataServiceComponent.DataSource = ListServiceComponent;
-                    ultraGrid1.DataSource = ListServiceComponent;
-                }
-
+                grdDataServiceComponent.DataSource = _DataSource;
+                ultraGrid1.DataSource = _DataSource;
+                groupBox1.Visible = false;
+                cbLine.Visible = false;
+                this.Height = 458;
+                ultraGrid1.Height = 360;
+                ultraGrid1.Location = new Point(3,3);
+            }
+            else
+            {
+                var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult, null, "");
+                grdDataServiceComponent.DataSource = ListServiceComponent;
+                ultraGrid1.DataSource = ListServiceComponent;
             }
             
             
@@ -322,13 +326,16 @@ namespace Sigesoft.Node.WinClient.UI
             foreach (ListViewItem item in lvExamenesSeleccionados.Items)
             {
                 var fields = item.SubItems;
-                var serviceComponentConcatId = fields[1].Text.Split('|');
+                var ComponentId = fields[1].Text.Split('|');
                 var NombreComponente = fields[0].Text.Split('|');
+
+                
+
                 MedicalExamBL objComponentBL = new MedicalExamBL();
                 componentDto objComponentDto = new componentDto();
 
                 OperationResult objOperationResult = new OperationResult();
-                foreach (var scid in serviceComponentConcatId)
+                foreach (var scid in ComponentId)
                 {
                     var conCargoA = -1;
                     if (_type == "Hospi")
@@ -495,7 +502,14 @@ namespace Sigesoft.Node.WinClient.UI
                         objServiceComponentDto.d_SaldoAseguradora = 0;
                         _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());
                     }
-                }             
+                }
+             
+                //Actualizo si son examenes adicionales
+                if (_DataSource.Count > 0)
+                {
+                    new AdditionalExamBL().UpdateAdditionalExamByComponentIdAndServiceId(ComponentId[0], _serviceId,
+                        Globals.ClientSession.i_SystemUserId);
+                }
             }
           
             MessageBox.Show("Se grabo correctamente", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);

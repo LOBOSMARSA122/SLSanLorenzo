@@ -15,6 +15,9 @@ using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using Constants = Sigesoft.Common.Constants;
 using System.Transactions;
+using System.IO;
+using NetPdf;
+using iTextSharp.text.pdf;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -26,7 +29,8 @@ namespace Sigesoft.Node.WinClient.UI
         private string _personId;
         AdditionalExamBL _additionalExamBl = new AdditionalExamBL();
         List<string> _ListaComponentes = null;
-        public List<ServiceComponentList> _auxiliaryExams = null;    
+        public List<ServiceComponentList> _auxiliaryExams = null;
+        private MergeExPDF _mergeExPDF = new MergeExPDF();
         #region Properties
 
         private string MedicalExamId { get; set; }
@@ -91,6 +95,12 @@ namespace Sigesoft.Node.WinClient.UI
             var findResult = lvExamenesSeleccionados.FindItemWithText(MedicalExamId);
             string IsProcessed = "0";
             string IsNewService = "0";
+            // El examen ya esta agregado
+            if (findResult != null)
+            {
+                MessageBox.Show("Por favor seleccione otro examen.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var res = _ListaComponentes.Find(p => p == MedicalExamId);
             if (res != null)
             {
@@ -98,11 +108,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 if (DialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    #region Agenda Automática
-
                     IsNewService = "1";
-
-                    #endregion
                 }
                 else
                 {
@@ -110,14 +116,9 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
-            // El examen ya esta agregado
-            if (findResult != null)
-            {
-                MessageBox.Show("Por favor seleccione otro examen.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            
 
-            var row = new ListViewItem(new[] { MedicalExamId, IsProcessed, IsNewService });
+            var row = new ListViewItem(new[] {MedicalExamName, MedicalExamId, IsProcessed, IsNewService });
 
             lvExamenesSeleccionados.Items.Add(row);
 
@@ -206,18 +207,24 @@ namespace Sigesoft.Node.WinClient.UI
             //    _auxiliaryExams = new List<ServiceComponentList>();
             try
             {
+                var ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+                var rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+                string pathFile = "";
+                string CMP = "";
+                var openFile = false;
                 using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
                 {
+                    OperationResult objOperationResult = new OperationResult();
                     List<AdditionalExamCustom> ListAdditionalExam = new List<AdditionalExamCustom>();
-
+                    
                     foreach (ListViewItem item in lvExamenesSeleccionados.Items)
                     {
 
                         AdditionalExamCustom _additionalExam = new AdditionalExamCustom();
                         var fields = item.SubItems;
-                        _additionalExam.ComponentId = fields[0].Text;
-                        _additionalExam.IsProcessed = int.Parse(fields[1].Text);
-                        _additionalExam.IsNewService = int.Parse(fields[2].Text);
+                        _additionalExam.ComponentId = fields[1].Text;
+                        _additionalExam.IsProcessed = int.Parse(fields[2].Text);
+                        _additionalExam.IsNewService = int.Parse(fields[3].Text);
                         _additionalExam.Commentary = txtCommentary.Text;
                         _additionalExam.ServiceId = _serviceId;
                         _additionalExam.PersonId = _personId;
@@ -230,6 +237,24 @@ namespace Sigesoft.Node.WinClient.UI
 
                     }
 
+                    
+
+
+                    
+
+                    var datosGrabo = objServiceBL.DevolverDatosUsuarioFirma(168);
+                    
+
+                    if (datosGrabo != null)
+                    {
+                        if (datosGrabo.CMP != null)
+                        {
+                            CMP = datosGrabo.CMP;
+                            pathFile = string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + "ORDEN-EX-MED-ADICI-" + datosGrabo.CMP));
+                        }
+
+                    }
+        
                     using (var ts = new TransactionScope())
                     {
                         var success = _additionalExamBl.AddAdditionalExam(ListAdditionalExam, Globals.ClientSession.GetAsList());
@@ -240,9 +265,49 @@ namespace Sigesoft.Node.WinClient.UI
 
                         ts.Complete();
                     }
+                    List<Categoria> AdditionalExam = new List<Categoria>();
+                    List<Categoria> DataSource = new List<Categoria>();
+                    List<string> ComponentList = new List<string>();
+                    var ListadditExam = new AdditionalExamBL().GetAdditionalExamByServiceId_all(_serviceId, Globals.ClientSession.i_SystemUserId);
+
+                    foreach (var componenyId in ListadditExam)
+                    {
+                        ComponentList.Add(componenyId.ComponentId);
+                    }
+
+                    foreach (var componentId in ComponentList)
+                    {
+                        var ListServiceComponent = new ServiceBL().GetAllComponents(ref objOperationResult, (int)TipoBusqueda.ComponentId, componentId);
+
+                        Categoria categoria = DataSource.Find(x => x.i_CategoryId == ListServiceComponent[0].i_CategoryId);
+                        if (categoria != null)
+                        {
+                            List<ComponentDetailList> componentDetail = new List<ComponentDetailList>();
+                            componentDetail = ListServiceComponent[0].Componentes;
+                            DataSource.Find(x => x.i_CategoryId == ListServiceComponent[0].i_CategoryId).Componentes.AddRange(componentDetail);
+                        }
+                        else
+                        {
+                            DataSource.AddRange(ListServiceComponent);
+                        }
+                    }
+
+                    
+                    var MedicalCenter = objServiceBL.GetInfoMedicalCenter();
+                    var DatosPaciente = new PacientBL().DevolverDatosPaciente(_serviceId);
+
+                    new PrintAdditionalExam().GenerateAdditionalexam(pathFile, MedicalCenter, DatosPaciente, datosGrabo, txtCommentary.Text, DataSource, ListadditExam);
                 }
-                
+
+                List<string> pdfList = new List<string>();
+                pdfList.Add(pathFile);
+                _mergeExPDF.FilesName = pdfList;
+                _mergeExPDF.DestinationFile = string.Format("{0}.pdf", Path.Combine(rutaBasura, _serviceId + "-" + "ORDEN-EX-MED-ADICI-" + CMP));
+                _mergeExPDF.Execute();
+                _mergeExPDF.RunFile();
+
                 this.Close();
+                
             }
             catch (Exception ex)
             {
@@ -253,9 +318,27 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
+        
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lvExamenesSeleccionados_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            btnRemoverExamenAuxiliar.Enabled = (lvExamenesSeleccionados.SelectedItems.Count > 0);
+        }
+
+        private void btnRemoverExamenAuxiliar_Click(object sender, EventArgs e)
+        {
+            var selectedItem = lvExamenesSeleccionados.SelectedItems[0];
+            var medicalExamId = selectedItem.SubItems[1].Text;
+
+            // Eliminacion fisica
+            lvExamenesSeleccionados.Items.Remove(selectedItem);
+            gbExamenesSeleccionados.Text = string.Format("Examenes Seleccionados {0}", lvExamenesSeleccionados.Items.Count);
+
+
         }
     }
 }

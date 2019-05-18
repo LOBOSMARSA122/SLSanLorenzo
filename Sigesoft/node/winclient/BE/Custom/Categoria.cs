@@ -7,6 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class Categoria
     {
+        public int? i_IsProcessed { get; set; }
         public string v_CategoryName { get; set; }
         public string v_CodigoSegus { get; set; }
         public string v_SubCategoryName { get; set; }
@@ -18,6 +19,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_QueueStatusName { get; set; }
         public int i_ServiceComponentStatusId { get; set; }
         public int i_ApprovedInsertUserId { get; set; }
+        
         public string ApprovedUpdateUser { get; set; }
         public List<ComponentDetailList> Componentes {get; set;}
     }
