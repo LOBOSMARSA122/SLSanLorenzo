@@ -743,6 +743,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void grdData_AfterRowUpdate(object sender, RowEventArgs e)
         {
 
+        }
+
+        private void btnLiberar_Click(object sender, EventArgs e)
+        {
+            var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            #region Conexion SAM
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            #endregion
+
+            var cadena1 = "update hospitalizacion set " +
+                          "d_FechaAlta = NULL " +
+                          "where v_HopitalizacionId='"+v_HopitalizacionId+"' ";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            lector.Close();
+            btnFilter_Click(sender, e);
+            MessageBox.Show("Se liberó el registro exitosamente.", "Información", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }           
 
     }

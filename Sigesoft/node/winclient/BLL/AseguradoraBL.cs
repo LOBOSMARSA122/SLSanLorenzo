@@ -141,7 +141,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     //    ConexionSigesoft conectasam = new ConexionSigesoft();
                     //    conectasam.opensigesoft();
                     //    #endregion
-                    //    var cadena1 = "select OO.r_FactorMed, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + oLiquidacionAseguradora.Protocolo + "'";
+                    //    var cadena1 = "select PR.r_MedicineDiscount, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + oLiquidacionAseguradora.Protocolo + "'";
                     //    SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                     //    SqlDataReader lector = comando.ExecuteReader();
                     //    string factor = "";

@@ -119,5 +119,9 @@ namespace Sigesoft.Node.WinClient.UI
                 Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text, txtCoaseguro.Text);
             }
         }
+
+        private void frmConfigSeguros_Load_1(object sender, EventArgs e)
+        {
+        }
     }
 }

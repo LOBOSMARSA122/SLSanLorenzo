@@ -1254,7 +1254,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             }
             else if (e.KeyChar.ToString() == ".")
             {
-                var charerd = txtFactor.Text.ToCharArray();
+                var charerd = txtEps.Text.ToCharArray();
                 int count = 0;
                 foreach (var item in charerd) { if (item.ToString() == ".") { count++; } }
                 if (txtFactor.Text == "")
@@ -1283,7 +1283,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             }
             else if (e.KeyChar.ToString() == ".")
             {
-                var charerd = txtFactor.Text.ToCharArray();
+                var charerd = txtCamaHosp.Text.ToCharArray();
                 int count = 0;
                 foreach (var item in charerd) { if (item.ToString() == ".") { count++; } }
                 if (txtFactor.Text == "")
