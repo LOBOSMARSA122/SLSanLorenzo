@@ -1332,6 +1332,39 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<KeyValueDTO> GetAllComponents_(ref OperationResult pobjOperationResult)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var DataComponentList = (from a in dbContext.component
+                    join B in dbContext.systemparameter on new { a = a.i_CategoryId.Value, b = 116 } equals new { a = B.i_ParameterId, b = B.i_GroupId } into B_join
+                    from B in B_join.DefaultIfEmpty()
+                    where a.i_IsDeleted == 0 &&
+                          a.i_ComponentTypeId == 1
+                    select new KeyValueDTO
+                    {
+                        //Value4 = a.i_CategoryId.Value,//i_CategoryId
+                        //Value1 = B.v_Value1, //CategoryName
+                        Value2 = a.v_ComponentId, // ComponentId
+                        Value1 = a.v_Name, // v_Name
+                        Id = a.v_ComponentId
+                    }).OrderBy(x => x.Value1).ToList();
+
+
+                List<KeyValueDTO> objData = DataComponentList.ToList();
+                pobjOperationResult.Success = 1;
+                return objData;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
         public static List<KeyValueDTO> GetAllComponentsByRoleNodeId(int nodeId, int roleId)
         {
             //mon.IsActive = true;

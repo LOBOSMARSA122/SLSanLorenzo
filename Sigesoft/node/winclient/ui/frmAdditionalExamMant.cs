@@ -51,12 +51,23 @@ namespace Sigesoft.Node.WinClient.UI
                     var serviceId = row.Cells["v_ServiceId"].Value.ToString();
                     var componentId = row.Cells["v_ComponentId"].Value.ToString();
 
-                    //new AdditionalExamBL().DeleteAdditionalExam(serviceId, componentId, Globals.ClientSession.i_SystemUserId);
+                    new AdditionalExamBL().DeleteAdditionalExam(serviceId, componentId, Globals.ClientSession.i_SystemUserId);
                 } 
 	        }
             else
             {
                 return;
+            }
+            
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (grdDataAdditionalExam.Selected.Rows.Count > 0)
+            {
+                var componentId = grdDataAdditionalExam.Selected.Rows[0].Cells["v_ComponentId"].Value.ToString();
+                var frm = new frmUpdateAdditionalExam(componentId);
+                frm.ShowDialog();
             }
             
         }

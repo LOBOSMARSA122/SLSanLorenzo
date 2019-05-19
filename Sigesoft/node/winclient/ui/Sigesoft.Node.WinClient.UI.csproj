@@ -1410,6 +1410,12 @@
     <Compile Include="frmReporteGerencia.Designer.cs">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdateAdditionalExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateAdditionalExam.Designer.cs">
+      <DependentUpon>frmUpdateAdditionalExam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\frmContainerEso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3927,6 +3933,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteGerencia.resx">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateAdditionalExam.resx">
+      <DependentUpon>frmUpdateAdditionalExam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\frmContainerEso.resx">
       <DependentUpon>frmContainerEso.cs</DependentUpon>

@@ -473,7 +473,6 @@
             this.txtCamaHosp.Size = new System.Drawing.Size(42, 20);
             this.txtCamaHosp.TabIndex = 24;
             this.txtCamaHosp.Text = "0.00";
-            this.txtCamaHosp.Visible = false;
             this.txtCamaHosp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCamaHosp_KeyPress);
             // 
             // btnAgregarEmpresaContrata
@@ -557,7 +556,6 @@
             this.txtEps.Size = new System.Drawing.Size(42, 20);
             this.txtEps.TabIndex = 24;
             this.txtEps.Text = "0.00";
-            this.txtEps.Visible = false;
             this.txtEps.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
             this.txtEps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEps_KeyPress);
             // 
@@ -571,7 +569,6 @@
             this.txtFactor.TabIndex = 24;
             this.txtFactor.Text = "0.00";
             this.toolTip1.SetToolTip(this.txtFactor, "Solo acepta números.");
-            this.txtFactor.Visible = false;
             this.txtFactor.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
             this.txtFactor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactor_KeyPress);
             // 
