@@ -147,7 +147,6 @@ namespace Sigesoft.Node.WinClient.UI.OperationsNatclar
                 case "DatosApQuirurgicos":
 
                     var objQuiru = new EstructuraDatosAPQuirurgicos();
-
                     datosPaciente = oNatclarBL.DatosXmlNatclar(serviceId);
                     ubigeoPaciente = oNatclarBL.DevolverUbigue(datosPaciente.DepartamentoNacimiento, datosPaciente.ProvinciaNacimiento, datosPaciente.ProvinciaNacimiento);
 
@@ -222,7 +221,6 @@ namespace Sigesoft.Node.WinClient.UI.OperationsNatclar
 
                     foreach (var item in antecedentesQuirurgicos)
                     {
-                        
                         lError = "APQUIRURGICOS.CodigoCIE";
                         objQuiru.APQUIRURGICOS.CodigoCIE = item.v_CIE10Id;
                         lError = "APQUIRURGICOS.Descripcion";

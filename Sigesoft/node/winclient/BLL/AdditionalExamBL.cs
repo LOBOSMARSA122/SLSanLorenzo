@@ -69,10 +69,7 @@ namespace Sigesoft.Node.WinClient.BLL
             {
 
                 throw;
-            }
-            
-
-            
+            }   
         }
 
         public List<AdditionalExamCustom> GetAdditionalExamByServiceId_all(string serviceId, int userId)
@@ -129,14 +126,13 @@ namespace Sigesoft.Node.WinClient.BLL
             return list;
         }
 
-        public void DeleteAdditionalExam (string serviceId, string componentId, int userId)
+        public void DeleteAdditionalExam(string _AdditionalExamId, int userId)
         {
             try
             {
                 SigesoftEntitiesModel dbcontext = new SigesoftEntitiesModel();
                 var obj = (from ade in dbcontext.additionalexam
-                    where ade.v_ComponentId == componentId && ade.v_ServiceId == serviceId && ade.i_IsDeleted == 0 &&
-                          ade.i_InsertUserId == userId
+                           where ade.v_AdditionalExamId == _AdditionalExamId
                     select ade).FirstOrDefault();
 
                 obj.i_IsDeleted = (int)SiNo.SI;
@@ -148,6 +144,53 @@ namespace Sigesoft.Node.WinClient.BLL
             catch (Exception e)
             {
 
+                throw;
+            }
+        }
+
+        public bool UpdateComponentAdditionalExam(string NewComponentId, string _AdditionalExamId, int userId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbcontext = new SigesoftEntitiesModel();
+                var obj = (from ade in dbcontext.additionalexam
+                           where ade.v_AdditionalExamId == _AdditionalExamId 
+                    select ade).FirstOrDefault();
+
+                obj.v_ComponentId = NewComponentId;
+                obj.d_UpdateDate = DateTime.Now;
+                obj.i_UpdateUserId = userId;
+
+                dbcontext.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                return false; 
+            }  
+        }
+
+        public void ReverseProcessed(string serviceId, string serviceComponentId, int userId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var obj = (from addex in dbContext.additionalexam
+                    join src in dbContext.servicecomponent on addex.v_ComponentId equals src.v_ComponentId
+                    where addex.i_IsProcessed == (int) SiNo.SI && addex.i_IsDeleted == (int) SiNo.NO &&  addex.v_ServiceId == serviceId &&
+                          src.v_ServiceComponentId == serviceComponentId
+                    select addex).FirstOrDefault();
+
+                obj.i_IsProcessed = (int) SiNo.NO;
+                obj.i_UpdateUserId = userId;
+                obj.d_UpdateDate = DateTime.Now;
+
+                dbContext.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
                 throw;
             }
         }

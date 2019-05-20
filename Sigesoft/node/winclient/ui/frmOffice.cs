@@ -1264,7 +1264,7 @@ namespace Sigesoft.Node.WinClient.UI
                 MergeExPDF _mergeExPDF = new MergeExPDF();
                 #region BuscarPDF
                 var rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-                var ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+                var ruta = Common.Utils.GetApplicationConfigValue("rutaExamenesAdicionales").ToString();
                 string ServiceId = grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                 var datosGrabo = new ServiceBL().DevolverDatosUsuarioFirma(Globals.ClientSession.i_SystemUserId);
 
@@ -1291,7 +1291,7 @@ namespace Sigesoft.Node.WinClient.UI
             string ServiceId = grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
 
             var Data = new AdditionalExamBL().GetAdditionalExamForUpdateByServiceId(ServiceId, Globals.ClientSession.i_SystemUserId);
-            if (Data != null)
+            if (Data != null && Data.Count > 0)
             {
                 var frm = new frmAdditionalExamMant(ServiceId, Data);
                 frm.ShowDialog();
