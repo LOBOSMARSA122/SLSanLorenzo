@@ -6447,6 +6447,7 @@
     </Content>
     <None Include="Resources\generar_1.png" />
     <None Include="Resources\generar_2.png" />
+    <None Include="Resources\Go-back.ico" />
     <Content Include="Resources\historiaclinica.png" />
     <None Include="Resources\repor_1.png" />
     <None Include="Resources\repor_2.png" />

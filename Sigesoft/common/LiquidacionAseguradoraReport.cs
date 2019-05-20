@@ -184,14 +184,14 @@ namespace NetPdf
             }
             lector.Close();
             cadena1 =
-                "select PL.d_Importe as deducible, PL.d_ImporteCo as coaseguro, OO.r_Factor as factor, OO.r_FactorMed as pps " +
+                "select PL.d_Importe as deducible, PL.d_ImporteCo as coaseguro, PR.r_PriceFactor as factor, PR.r_MedicineDiscount as pps " +
                 "from service SR " +
                 "inner join servicecomponent SC on SR.v_ServiceId=SC.v_ServiceId " +
                 "inner join protocol PR on PR.v_ProtocolId=SR.v_ProtocolId " +
                 "inner join organization OO on PR.v_AseguradoraOrganizationId=OO.v_OrganizationId " +
                 "inner join [dbo].[plan] PL on PL.v_ProtocoloId=PR.v_ProtocolId and SC.v_IdUnidadProductiva=PL.v_IdUnidadProductiva " +
                 "where SR.v_ServiceId='"+historia+"'  and SC.v_IdUnidadProductiva<>'N001-LN000000005' " +
-                "group by PL.d_Importe, PL.d_ImporteCo, OO.r_Factor, OO.r_FactorMed";
+                "group by PL.d_Importe, PL.d_ImporteCo, PR.r_PriceFactor, PR.r_MedicineDiscount";
             comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
             lector = comando.ExecuteReader();
             string deducible = "- - -";

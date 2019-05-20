@@ -48,6 +48,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                  if (_mode == "NewASEGU")
                  {
                      groupBox3.Visible = false;
+
                  }
                 
             } 
@@ -199,10 +200,31 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtPrecio.Text = ".";
                 return;
             }
+            if (_mode == "NewASEGU")
+            {
+                #region Conexion SAM
+                ConexionSigesoft conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                #endregion
+                var cadena1 = "select r_HospitalBedPrice from protocol where v_ProtocolId ='"+_v_ProtocoloId+"'";
+                SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                SqlDataReader lector = comando.ExecuteReader();
+                string hab = "";
+                while (lector.Read())
+                {
+                    hab = lector.GetValue(0).ToString();
+                }
+                lector.Close();
+                txtPrecio.Text = hab;
+                txtPrecio.Enabled = false;
+            }
+            else
+            {
+                habHospit = _hospitalizacionBL.GetHabitaciónH(ref objOperationResult, int.Parse(cboHabitación.SelectedValue.ToString()));
 
-            habHospit = _hospitalizacionBL.GetHabitaciónH(ref objOperationResult, int.Parse(cboHabitación.SelectedValue.ToString()));
-
-            txtPrecio.Text = habHospit.v_Value2;
+                txtPrecio.Text = habHospit.v_Value2;
+            }
+            
 
         }
 
