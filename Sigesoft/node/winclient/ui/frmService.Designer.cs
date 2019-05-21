@@ -98,6 +98,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnVerficiarAdj = new System.Windows.Forms.Button();
             this.btnMigrarEmpresa = new System.Windows.Forms.Button();
             this.btnSubirInterconsulta = new System.Windows.Forms.Button();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -700,6 +701,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.btnVerficiarAdj);
             this.groupBox2.Controls.Add(this.btnCompaginaSelected);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.btnMigrarEmpresa);
@@ -744,6 +746,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // btnVerficiarAdj
+            // 
+            this.btnVerficiarAdj.Location = new System.Drawing.Point(1093, 498);
+            this.btnVerficiarAdj.Name = "btnVerficiarAdj";
+            this.btnVerficiarAdj.Size = new System.Drawing.Size(129, 26);
+            this.btnVerficiarAdj.TabIndex = 160;
+            this.btnVerficiarAdj.Text = "Verificar Adjuntos";
+            this.btnVerficiarAdj.UseVisualStyleBackColor = true;
+            this.btnVerficiarAdj.Visible = false;
+            this.btnVerficiarAdj.Click += new System.EventHandler(this.btnVerficiarAdj_Click);
             // 
             // btnMigrarEmpresa
             // 
@@ -972,7 +985,7 @@
             this.btnHistoriaCl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnHistoriaCl.Image = global::Sigesoft.Node.WinClient.UI.Resources.historiaclinica;
             this.btnHistoriaCl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistoriaCl.Location = new System.Drawing.Point(1093, 470);
+            this.btnHistoriaCl.Location = new System.Drawing.Point(1093, 463);
             this.btnHistoriaCl.Margin = new System.Windows.Forms.Padding(2);
             this.btnHistoriaCl.Name = "btnHistoriaCl";
             this.btnHistoriaCl.Size = new System.Drawing.Size(129, 26);
@@ -2145,5 +2158,6 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid grdDataService;
         private System.Windows.Forms.Button btnCompaginaSelected;
         private System.Windows.Forms.Button btnSubirInterconsulta;
+        private System.Windows.Forms.Button btnVerficiarAdj;
     }
 }

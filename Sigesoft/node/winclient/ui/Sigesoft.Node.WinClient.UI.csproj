@@ -220,6 +220,7 @@
     <Compile Include="AdditionalExam.Designer.cs">
       <DependentUpon>AdditionalExam.cs</DependentUpon>
     </Compile>
+    <Compile Include="adjuntos.cs" />
     <Compile Include="CIE10\Cie10MF.cs" />
     <Compile Include="Configuration\frmAddPlan.cs">
       <SubType>Form</SubType>

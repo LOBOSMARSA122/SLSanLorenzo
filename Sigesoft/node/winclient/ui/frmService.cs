@@ -18,6 +18,7 @@ using System.Threading;
 using System.Windows.Shell;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
+using System.Data.SqlClient;
 
 //using iTextSharp.text;
 //using iTextSharp.text.pdf;
@@ -4074,6 +4075,43 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 MessageBox.Show("Seleccione un servicio.", "¡ VALIDACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void btnVerficiarAdj_Click(object sender, EventArgs e)
+        {
+            string rutaEspiro = Common.Utils.GetApplicationConfigValue("ImgESPIROOrigen").ToString();
+            #region Conexion SIGESOFT verificar la unidad productiva del componente
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            var cadena1 = "select v_FileName from multimediafile where v_FileName like '%espiro%'";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            List<adjuntos> AdjuntosList = new List<adjuntos>();
+            while (lector.Read())
+            {
+                AdjuntosList.Add(new adjuntos()
+                {
+                    adjId = lector.GetValue(0).ToString()
+                });
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            #endregion
+            List<string> noExisten = new List<string>();
+            foreach (var item in AdjuntosList)
+            {
+                var prueba = rutaEspiro + item.adjId;
+                if (File.Exists(rutaEspiro + item.adjId))
+                {
+                    
+                }
+                else
+                {
+                    noExisten.Add(item.adjId);
+                }
+            }
+            Clipboard.SetText(string.Join(",", noExisten));
+            MessageBox.Show("Los reportes se generaron correctamente", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
