@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Sigesoft.Common;
+using Sigesoft.Node.WinClient.BLL;
 
 namespace Sigesoft.Node.WinClient.UI
 {
     public partial class frmUpdateAdditionalExam : Form
     {
         private string _ComponentId = "";
-        public frmUpdateAdditionalExam(string componentId)
+        private string _AdditionalExamId = "";
+        public frmUpdateAdditionalExam(string componentId, string AdditionalExamId)
         {
+            _AdditionalExamId = AdditionalExamId;
             _ComponentId = componentId;
             InitializeComponent();
         }
@@ -28,16 +31,29 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            bool result = true;
             if (cbComponent.SelectedValue.ToString() == _ComponentId)
             {
                 MessageBox.Show("Por favor, escoja otro examen.", "VALIDACIÓN", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
             }
-
+            
             var newComponentId = cbComponent.SelectedValue.ToString();
-
+            using (new LoadingClass.PleaseWait(this.Location, "Actualizando..."))
+            {
+                result = new AdditionalExamBL().UpdateComponentAdditionalExam(newComponentId, _AdditionalExamId, Globals.ClientSession.i_SystemUserId);
+            }
+          
+            if (result)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Sucedió un error, vuel a a intentar.", "ERROR", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         

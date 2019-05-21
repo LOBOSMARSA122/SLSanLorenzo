@@ -2805,7 +2805,7 @@ namespace Sigesoft.Node.WinClient.UI
                         btnInterconsulta.Enabled = false;
                         btnTiempos.Enabled = false;
                         btnFechaEntrega.Enabled = false;
-
+                        btnImprimirAdicionales.Enabled = false;
                         return;
                     }
                 }
@@ -2817,6 +2817,8 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                         btnFechaEntrega.Enabled = false;
                     }
+
+                    btnImprimirAdicionales.Enabled = 
                     btn7D.Enabled =
                     btnOdontograma.Enabled =
                     btnHistoriaOcupacional.Enabled =
@@ -4077,31 +4079,31 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-        private void btnVerficiarAdj_Click(object sender, EventArgs e)
+        private void btnImprimirAdicionales_Click(object sender, EventArgs e)
         {
-            string rutaEspiro = Common.Utils.GetApplicationConfigValue("ImgESPIROOrigen").ToString();
-            #region Conexion SIGESOFT verificar la unidad productiva del componente
-            ConexionSigesoft conectasam = new ConexionSigesoft();
-            conectasam.opensigesoft();
-            var cadena1 = "select v_FileName from multimediafile where v_FileName like '%espiro%'";
-            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
-            SqlDataReader lector = comando.ExecuteReader();
-            List<adjuntos> AdjuntosList = new List<adjuntos>();
-            while (lector.Read())
+            var ruta = Common.Utils.GetApplicationConfigValue("rutaExamenesAdicionales").ToString();
+            var rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+            var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            string pathFile = "";
+            List<string> ListExamsAdditionalPDF = new List<string>();
+
+            
+            DirectoryInfo DirInfo = new DirectoryInfo(ruta);
+            var files = from f in DirInfo.EnumerateFiles()
+                where f.Name.Contains(ServiceId + "-ORDEN-EX-MED-ADICI-")
+                select f;
+            foreach (var file in files)
             {
-                AdjuntosList.Add(new adjuntos()
-                {
-                    adjId = lector.GetValue(0).ToString()
-                });
+                pathFile = Path.Combine(ruta, file.Name);
+                ListExamsAdditionalPDF.Add(pathFile);
             }
-            lector.Close();
-            conectasam.closesigesoft();
-            #endregion
-            List<string> noExisten = new List<string>();
-            foreach (var item in AdjuntosList)
-            {
-                var prueba = rutaEspiro + item.adjId;
-                if (File.Exists(rutaEspiro + item.adjId))
+         
+            
+
+            _mergeExPDF.FilesName = ListExamsAdditionalPDF;
+            _mergeExPDF.DestinationFile = string.Format("{0}.pdf", Path.Combine(rutaBasura, ServiceId + "-TODOS-LOS-EXAMENES-ADICIONALES-"));
+            _mergeExPDF.Execute();
+            _mergeExPDF.RunFile();
                 {
                     
                 }

@@ -155,6 +155,7 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
+            this.btnImprimirAdicionales = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -701,7 +702,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.btnVerficiarAdj);
+            this.groupBox2.Controls.Add(this.btnImprimirAdicionales);
             this.groupBox2.Controls.Add(this.btnCompaginaSelected);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.btnMigrarEmpresa);
@@ -784,7 +785,7 @@
             this.btnSubirInterconsulta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSubirInterconsulta.Image = global::Sigesoft.Node.WinClient.UI.Resources.email_transfer;
             this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubirInterconsulta.Location = new System.Drawing.Point(1093, 225);
+            this.btnSubirInterconsulta.Location = new System.Drawing.Point(1093, 264);
             this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
             this.btnSubirInterconsulta.Size = new System.Drawing.Size(129, 26);
@@ -1022,7 +1023,7 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_edit;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1093, 421);
+            this.button1.Location = new System.Drawing.Point(1093, 432);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 26);
@@ -1067,7 +1068,7 @@
             this.btnCargoHistorias.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCargoHistorias.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnCargoHistorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargoHistorias.Location = new System.Drawing.Point(1093, 372);
+            this.btnCargoHistorias.Location = new System.Drawing.Point(1093, 392);
             this.btnCargoHistorias.Margin = new System.Windows.Forms.Padding(2);
             this.btnCargoHistorias.Name = "btnCargoHistorias";
             this.btnCargoHistorias.Size = new System.Drawing.Size(129, 26);
@@ -1109,7 +1110,7 @@
             this.btnExport.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(1093, 176);
+            this.btnExport.Location = new System.Drawing.Point(1093, 220);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(129, 26);
             this.btnExport.TabIndex = 145;
@@ -1130,7 +1131,7 @@
             this.btnQuitarChek.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnQuitarChek.Image = global::Sigesoft.Node.WinClient.UI.Resources.note_delete;
             this.btnQuitarChek.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitarChek.Location = new System.Drawing.Point(1093, 323);
+            this.btnQuitarChek.Location = new System.Drawing.Point(1093, 349);
             this.btnQuitarChek.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuitarChek.Name = "btnQuitarChek";
             this.btnQuitarChek.Size = new System.Drawing.Size(129, 26);
@@ -1374,7 +1375,7 @@
             this.btnInterconsulta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnInterconsulta.Image = global::Sigesoft.Node.WinClient.UI.Resources.note_add;
             this.btnInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInterconsulta.Location = new System.Drawing.Point(1093, 274);
+            this.btnInterconsulta.Location = new System.Drawing.Point(1093, 305);
             this.btnInterconsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnInterconsulta.Name = "btnInterconsulta";
             this.btnInterconsulta.Size = new System.Drawing.Size(129, 26);
@@ -2004,6 +2005,25 @@
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
             // 
+            // btnImprimirAdicionales
+            // 
+            this.btnImprimirAdicionales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirAdicionales.BackColor = System.Drawing.SystemColors.Control;
+            this.btnImprimirAdicionales.Enabled = false;
+            this.btnImprimirAdicionales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImprimirAdicionales.Font = new System.Drawing.Font("Calibri", 8.25F);
+            this.btnImprimirAdicionales.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirAdicionales.Image = global::Sigesoft.Node.WinClient.UI.Resources.printer_go;
+            this.btnImprimirAdicionales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirAdicionales.Location = new System.Drawing.Point(1093, 166);
+            this.btnImprimirAdicionales.Name = "btnImprimirAdicionales";
+            this.btnImprimirAdicionales.Size = new System.Drawing.Size(129, 44);
+            this.btnImprimirAdicionales.TabIndex = 160;
+            this.btnImprimirAdicionales.Text = "          Imprimir Exámenes Adicionales";
+            this.btnImprimirAdicionales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimirAdicionales.UseVisualStyleBackColor = false;
+            this.btnImprimirAdicionales.Click += new System.EventHandler(this.btnImprimirAdicionales_Click);
+            // 
             // frmService
             // 
             this.AcceptButton = this.btnFilter;
@@ -2158,6 +2178,6 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid grdDataService;
         private System.Windows.Forms.Button btnCompaginaSelected;
         private System.Windows.Forms.Button btnSubirInterconsulta;
-        private System.Windows.Forms.Button btnVerficiarAdj;
+        private System.Windows.Forms.Button btnImprimirAdicionales;
     }
 }

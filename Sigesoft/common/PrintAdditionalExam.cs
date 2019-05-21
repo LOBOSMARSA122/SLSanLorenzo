@@ -247,7 +247,7 @@ namespace Sigesoft
             }
             else
             {
-                cellFirma = new PdfPCell(new Phrase("FIRMA", fontTitle2_)) { Colspan = 3, Rowspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f, BorderColor = BaseColor.BLACK };
+                cellFirma = new PdfPCell(new Phrase("FIRMA", fontTitle2_)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f, BorderColor = BaseColor.BLACK };
             }
 
 

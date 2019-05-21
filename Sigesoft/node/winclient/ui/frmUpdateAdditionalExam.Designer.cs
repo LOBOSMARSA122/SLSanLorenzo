@@ -36,7 +36,7 @@
             // cbComponent
             // 
             this.cbComponent.FormattingEnabled = true;
-            this.cbComponent.Location = new System.Drawing.Point(12, 40);
+            this.cbComponent.Location = new System.Drawing.Point(12, 39);
             this.cbComponent.Name = "cbComponent";
             this.cbComponent.Size = new System.Drawing.Size(334, 21);
             this.cbComponent.TabIndex = 0;
