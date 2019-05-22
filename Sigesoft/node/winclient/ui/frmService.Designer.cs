@@ -98,7 +98,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnVerficiarAdj = new System.Windows.Forms.Button();
+            //this.btnVerficiarAdj = new System.Windows.Forms.Button();
             this.btnMigrarEmpresa = new System.Windows.Forms.Button();
             this.btnSubirInterconsulta = new System.Windows.Forms.Button();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -750,14 +750,14 @@
             // 
             // btnVerficiarAdj
             // 
-            this.btnVerficiarAdj.Location = new System.Drawing.Point(1093, 498);
-            this.btnVerficiarAdj.Name = "btnVerficiarAdj";
-            this.btnVerficiarAdj.Size = new System.Drawing.Size(129, 26);
-            this.btnVerficiarAdj.TabIndex = 160;
-            this.btnVerficiarAdj.Text = "Verificar Adjuntos";
-            this.btnVerficiarAdj.UseVisualStyleBackColor = true;
-            this.btnVerficiarAdj.Visible = false;
-            this.btnVerficiarAdj.Click += new System.EventHandler(this.btnVerficiarAdj_Click);
+            //this.btnVerficiarAdj.Location = new System.Drawing.Point(1093, 498);
+            //this.btnVerficiarAdj.Name = "btnVerficiarAdj";
+            //this.btnVerficiarAdj.Size = new System.Drawing.Size(129, 26);
+            //this.btnVerficiarAdj.TabIndex = 160;
+            //this.btnVerficiarAdj.Text = "Verificar Adjuntos";
+            //this.btnVerficiarAdj.UseVisualStyleBackColor = true;
+            //this.btnVerficiarAdj.Visible = false;
+            //this.btnVerficiarAdj.Click += new System.EventHandler(this.btnVerficiarAdj_Click);
             // 
             // btnMigrarEmpresa
             // 

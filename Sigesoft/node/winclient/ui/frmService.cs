@@ -4104,16 +4104,6 @@ namespace Sigesoft.Node.WinClient.UI
             _mergeExPDF.DestinationFile = string.Format("{0}.pdf", Path.Combine(rutaBasura, ServiceId + "-TODOS-LOS-EXAMENES-ADICIONALES-"));
             _mergeExPDF.Execute();
             _mergeExPDF.RunFile();
-                {
-                    
-                }
-                else
-                {
-                    noExisten.Add(item.adjId);
-                }
-            }
-            Clipboard.SetText(string.Join(",", noExisten));
-            MessageBox.Show("Los reportes se generaron correctamente", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
