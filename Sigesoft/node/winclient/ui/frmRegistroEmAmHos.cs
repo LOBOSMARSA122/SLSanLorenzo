@@ -373,20 +373,28 @@ namespace Sigesoft.Node.WinClient.UI
             if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.MASCULINO)
             {
                 var cie10Masculino = _cie10MF.Femeninos.ToList().Find(x => x == cie10);
-                if (cie10Masculino.Length > 0)
+                if (cie10Masculino != null)
                 {
-                    MessageBox.Show("El diagnóstico elegido pertenece solo al género FEMENINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                    if (cie10Masculino.Length > 0)
+                    {
+                        MessageBox.Show("El diagnóstico elegido pertenece solo al género FEMENINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
                 }
+                
             }
             else if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.FEMENINO)
             {
                 var cie10Femenino = _cie10MF.Masculinos.ToList().Find(x => x == cie10);
-                if (cie10Femenino.Length > 0)
+                if (cie10Femenino != null)
                 {
-                    MessageBox.Show("El diagnóstico elegido pertenece solo al género MASCULINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                    if (cie10Femenino.Length > 0)
+                    {
+                        MessageBox.Show("El diagnóstico elegido pertenece solo al género MASCULINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
                 }
+                
             }
 
             _tramaDto = new tramasDto();

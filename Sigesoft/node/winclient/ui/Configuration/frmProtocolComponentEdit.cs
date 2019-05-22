@@ -83,14 +83,17 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void chkIsConditional_CheckedChanged(object sender, EventArgs e)
         {
-            gbConditional.Enabled = (chkExamenCondicional.Checked);
-
             if (!chkExamenCondicional.Checked)
             {
                 cbOperador.SelectedValue = "6";
                 txtEdad.Value = 0;
                 cbGenero.SelectedValue = ((int)GenderConditional.AMBOS).ToString();
                 cbGrupoEtario.SelectedValue = "-1";
+                gbConditional.Enabled = false;
+            }
+            else
+            {
+                gbConditional.Enabled = true;
             }
 
         }
@@ -118,6 +121,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
         private void frmProtocolComponentEdit_Load(object sender, EventArgs e)
         {
             //OperationResult objOperationResult = new OperationResult();
+            
+
             #region Mayusculas - Normal
             var _EsMayuscula = int.Parse(Common.Utils.GetApplicationConfigValue("EsMayuscula"));
             if (_EsMayuscula == 1)
@@ -139,6 +144,9 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 // Additional logic here.             
                 txtComponentName.Select();
 
+                chkExamenCondicional.Checked = true;
+                gbConditional.Enabled = true;
+
             }
             else if (_mode == "Edit")
             {
@@ -150,7 +158,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 lblExamenSeleccionado.Text = findResult.v_ComponentName;
                 txtPrecioFinal.Value = findResult.r_Price;
                 chkExamenAdicional.Checked = Convert.ToBoolean(findResult.i_isAdditional);
-                chkExamenCondicional.Checked = Convert.ToBoolean(findResult.i_IsConditionalId);                
+                chkExamenCondicional.Checked = true;                
                 cbOperador.SelectedValue = findResult.i_OperatorId.ToString();
                 txtEdad.Value = findResult.i_Age;
                 cbGenero.SelectedValue = findResult.i_GenderId.ToString();
@@ -193,15 +201,20 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
             if (chkExamenCondicional.Checked)
             {
-                if (cbOperador.SelectedIndex != 0)
+                if (cbOperador.SelectedIndex < 0)
                 {
-                    if (Convert.ToInt32(txtEdad.Value) == 0)
+                    if (Convert.ToInt32(txtEdad.Value) < 0)
                     {
-                        MessageBox.Show("Por favor ingrese una edad.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Por favor ingrese una edad correcta.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtEdad.Focus();
                         return;
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("LOS EXAMENES TIENEN CONDICIONAL OBLIGATORIA.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             if (chkIMC.Checked)
