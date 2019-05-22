@@ -10594,15 +10594,14 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public HospitalizacionCustom GetDataHospitalizacionByServiceId(string serviceId)
+        public List<HospitalizacionCustom> GetDataHospitalizacionByServiceId(string serviceId)
         {
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var objHospitalizacion = (from hosp in dbContext.hospitalizacion
+                var objHospitalizacion = (from hosHab in dbContext.hospitalizacionhabitacion
+                                          join hosp in dbContext.hospitalizacion on hosHab.v_HopitalizacionId equals hosp.v_HopitalizacionId
                                           join hosSer in dbContext.hospitalizacionservice on hosp.v_HopitalizacionId equals hosSer.v_HopitalizacionId
-                                          join hosHab in dbContext.hospitalizacionhabitacion on hosp.v_HopitalizacionId equals hosHab.v_HopitalizacionId
-                                          
                                           join sys in dbContext.systemparameter on new { a = hosHab.i_HabitacionId.Value, b = 309 }
                                               equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
                                           from sys in sys_join.DefaultIfEmpty()
@@ -10612,7 +10611,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                               d_FechaIngreso = hosp.d_FechaIngreso.Value,
                                               d_FechaAlta = hosp.d_FechaAlta.Value,
                                               v_Habitacion = sys.v_Value1,
-                                          }).FirstOrDefault();
+                                              d_Precio = hosHab.d_Precio.Value,
+                                          }).OrderByDescending(x => x.d_FechaAlta).ToList();
 
                 return objHospitalizacion;
             }
@@ -10621,6 +10621,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+
     }
 }
 

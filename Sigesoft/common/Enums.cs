@@ -150,7 +150,8 @@ namespace Sigesoft.Common
         AtxMedica = 9,
         AtxMedicaParticular = 10,
         AtxMedicaSeguros = 12,
-        Hospitalizacion = 19
+        Hospitalizacion = 19,
+        Emergencia = 31
     }
 
     public enum MotiveType

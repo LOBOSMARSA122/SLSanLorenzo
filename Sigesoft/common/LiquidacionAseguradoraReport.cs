@@ -201,7 +201,7 @@ namespace NetPdf
                 deducible = lector.GetValue(0).ToString();
                 copago = lector.GetValue(1).ToString();
                 factor = lector.GetValue(2).ToString();
-                pps = (decimal)(lector.GetValue(3));
+                pps = decimal.Parse(lector.GetValue(3).ToString());
             }
             lector.Close();
             var cellsTit2 = new List<PdfPCell>()

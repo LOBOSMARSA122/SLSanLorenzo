@@ -36212,19 +36212,44 @@ namespace Sigesoft.Node.WinClient.BLL
         {
             try
             {
+                
+                //Primero busco todos el id de la hospitalizacion que tuvo el paciente
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var list = (from ser in dbContext.service
-                    join sys in dbContext.systemparameter on new {a = ser.i_MasterServiceId.Value, b = 119}
-                        equals new {a = sys.i_ParameterId, b = sys.i_GroupId} into sys_join
-                    from sys in sys_join.DefaultIfEmpty()
+                var HopitalizacionId = (from hoser in dbContext.hospitalizacionservice
+                    where hoser.v_ServiceId == serviceId
+                    select hoser.v_HopitalizacionId).FirstOrDefault();
 
-                    where ser.v_ServiceId == serviceId
-                    select new ServiceList
-                    {
-                        v_MasterServiceName = sys.v_Value1,
-                    }).ToList();
 
-                return list;
+                //Ahora busco todos los servicios de hospitalizacion
+                var ServicesId = (from hoser in dbContext.hospitalizacionservice
+                    where hoser.v_HopitalizacionId == HopitalizacionId
+                    select hoser.v_ServiceId).ToList();
+
+                List<ServiceList> _ListServices = new List<ServiceList>();
+
+                foreach (var _serviceId in ServicesId)
+	            {
+                    var list = (from ser in dbContext.service
+                        join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId
+                        join sys in dbContext.systemparameter on new {a = ser.i_MasterServiceId.Value, b = 119}
+                            equals new {a = sys.i_ParameterId, b = sys.i_GroupId} into sys_join
+                        from sys in sys_join.DefaultIfEmpty()
+
+                        where ser.v_ServiceId == _serviceId
+                        select new ServiceList
+                        {
+                            v_MasterServiceName = sys.v_Value1,
+                            i_MasterServiceId = ser.i_MasterServiceId.Value,
+                            //r_ClinicDescount = pro.r_ClinicDiscount.Value,
+                        }).OrderBy(x => x.v_MasterServiceName).FirstOrDefault();
+
+                    list.ListServicesComponents = GetServicesComponents(_serviceId);
+
+                    _ListServices.Add(list);
+	            }
+                
+
+                return _ListServices;
 
             }
             catch (Exception ex)
@@ -36234,17 +36259,235 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
 
-        //public List<ServiceComponentList> GetServicesComponents(string serviceId)
-        //{
-        //    try
-        //    {
-        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-        //        var list = (from )
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //    }
-        //}
+        public List<ServiceComponentList> GetServicesComponents(string serviceId)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //Ahora busco todos los componentes
+                List<ServiceComponentList> _listSerComponentList = new List<ServiceComponentList>();
+
+                var listServiceComponent = (from serCom in dbContext.servicecomponent
+                                        //join ser in dbContext.service on serCom.v_ServiceId equals ser.v_ServiceId
+                                        join com in dbContext.component on serCom.v_ComponentId equals com.v_ComponentId
+                                        join sys in dbContext.systemparameter on new { a = com.i_KindOfService.Value, b = 358 }
+                                            equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                                        from sys in sys_join.DefaultIfEmpty()
+                                            where serCom.v_ServiceId == serviceId && serCom.r_Price != 0
+                                        select new ServiceComponentList
+                                        {
+                                            //i_MasterServiceId = ser.i_MasterServiceId.Value,
+                                            v_ComponentName = com.v_Name,
+                                            v_ComponentId = com.v_ComponentId,
+                                            v_KindOfService = sys.v_Value1,
+                                            i_KindOfService = com.i_KindOfService.Value,
+                                            d_SaldoPaciente = serCom.d_SaldoPaciente.Value,                                           
+                                            d_SaldoAseguradora = serCom.d_SaldoAseguradora.Value,
+                                            r_Price = serCom.r_Price.Value,
+                                        }).OrderBy(x => x.v_KindOfService).ToList();
+                //if (descount != null)
+                //{
+                //    foreach (var obj in listServiceComponent)
+                //    {
+                //        obj.r_Descount = double.Parse(obj.r_Price) * (descount / 100);
+                //    }
+                //}
+                
+
+                return listServiceComponent;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public JoinTicketDetails GetDataMedicamentosByServiceId(string serviceId)
+        {
+            try
+            {
+                //Primero busco todos el id de la hospitalizacion que tuvo el paciente
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var HopitalizacionId = (from hoser in dbContext.hospitalizacionservice
+                                        where hoser.v_ServiceId == serviceId
+                                        select hoser.v_HopitalizacionId).FirstOrDefault();
+
+
+                //Ahora busco todos los servicios de hospitalizacion
+                var ServicesId = (from hoser in dbContext.hospitalizacionservice
+                                  where hoser.v_HopitalizacionId == HopitalizacionId
+                                  select hoser.v_ServiceId).ToList();
+
+                List<TicketDetalleList> _TicketDetalleList = new List<TicketDetalleList>();
+                foreach (var ServiceId in ServicesId)
+                {
+                    var list = (from tkde in dbContext.ticketdetalle
+                                join tk in dbContext.ticket on tkde.v_TicketId equals tk.v_TicketId
+                                where tk.v_ServiceId == ServiceId && tk.i_IsDeleted == 0
+                                select new TicketDetalleList
+                                {
+                                    v_IdProductoDetalle = tkde.v_IdProductoDetalle,
+                                    v_Descripcion = tkde.v_Descripcion,
+                                    d_SaldoPaciente = tkde.d_SaldoPaciente.Value,
+                                    d_SaldoAseguradora = tkde.d_SaldoAseguradora.Value,
+                                    d_Importe = tkde.d_Cantidad.Value * tkde.d_PrecioVenta.Value,
+                                }).OrderBy(x => x.v_Descripcion).ToList();
+                    _TicketDetalleList.AddRange(list);
+                }
+
+
+                //Lógica para las el pdf...
+                decimal Importe = 0;
+                decimal Descuento = 0;
+                decimal Total = 0;
+                int Encontrados = 0;
+                List<string> ListIdProductoDetalle = new List<string>();
+                if (_TicketDetalleList.Count > 0)
+                {
+                    
+                    foreach (var objDetail in _TicketDetalleList)
+                    {
+                        var find = ListIdProductoDetalle.FindAll(x => x == objDetail.v_IdProductoDetalle);
+                        if (find.Count == 0)
+                        {
+                            ListIdProductoDetalle.Add(objDetail.v_IdProductoDetalle);
+                        }
+                    }
+                }
+
+                foreach (var idProcutDetalle in ListIdProductoDetalle)
+                {
+                    var obj = _TicketDetalleList.FindAll(x => x.v_IdProductoDetalle == idProcutDetalle).ToList();
+                    if (obj != null)
+                    {
+                        foreach (var item in obj)
+                        {
+                            decimal desct = item.d_SaldoAseguradora == null ? 0 : item.d_SaldoAseguradora.Value;
+                            Importe += item.d_Importe.Value;
+                            Descuento += item.d_SaldoAseguradora == null ? 0 : item.d_SaldoAseguradora.Value;
+                            Total += item.d_Importe.Value - desct;
+                        }
+
+                        Encontrados++;
+                    }
+                }
+
+                JoinTicketDetails _JoinTicketDetails = new JoinTicketDetails();
+                _JoinTicketDetails.v_Amount = Math.Round(Importe, 2).ToString();
+                _JoinTicketDetails.v_Discount = Math.Round(Descuento, 2).ToString();
+                _JoinTicketDetails.v_Total = Math.Round(Total, 2).ToString();
+                _JoinTicketDetails.v_Found = Encontrados.ToString();
+                _JoinTicketDetails.v_Description = "FARMACIA SALA DE OPERACIONES";
+
+                if (Encontrados == 0)
+                {
+                    return null;
+                }
+
+                return _JoinTicketDetails;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            
+        }
+
+
+        public JoinTicketDetails GetDataRecetaByServiceId(string serviceId)
+        {
+            try
+            {
+                //Primero busco todos el id de la hospitalizacion que tuvo el paciente
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var HopitalizacionId = (from hoser in dbContext.hospitalizacionservice
+                                        where hoser.v_ServiceId == serviceId
+                                        select hoser.v_HopitalizacionId).FirstOrDefault();
+
+
+                //Ahora busco todos los servicios de hospitalizacion
+                var ServicesId = (from hoser in dbContext.hospitalizacionservice
+                                  where hoser.v_HopitalizacionId == HopitalizacionId
+                                  select hoser.v_ServiceId).ToList();
+
+                if (ServicesId.Count == 0)
+                {
+                    ServicesId.Add(serviceId);
+                }
+
+                List<RecetaDetail> _RecetaDetalleList = new List<RecetaDetail>();
+                foreach (var ServiceId in ServicesId)
+                {
+                    var list = (from rec in dbContext.receta
+                                where rec.v_ServiceId == ServiceId
+                                select new RecetaDetail
+                                {
+                                    v_IdProductoDetalle = rec.v_IdProductoDetalle,
+                                    d_SaldoPaciente = rec.d_SaldoPaciente.Value,
+                                    d_SaldoAseguradora = rec.d_SaldoAseguradora.Value,
+                                    d_Importe = rec.d_SaldoPaciente.Value + rec.d_SaldoAseguradora.Value,
+                                }).ToList();
+                    _RecetaDetalleList.AddRange(list);
+                }
+
+
+                //Lógica para las el pdf...
+                decimal Importe = 0;
+                decimal Descuento = 0;
+                decimal Total = 0;
+                int Encontrados = 0;
+                List<string> ListIdProductoDetalle = new List<string>();
+                if (_RecetaDetalleList.Count > 0)
+                {
+                    
+                    foreach (var objDetail in _RecetaDetalleList)
+                    {
+                        var find = ListIdProductoDetalle.FindAll(x => x == objDetail.v_IdProductoDetalle);
+                        if (find.Count == 0)
+                        {
+                            ListIdProductoDetalle.Add(objDetail.v_IdProductoDetalle);
+                        }
+                    }
+                }
+
+                foreach (var idProcutDetalle in ListIdProductoDetalle)
+                {
+                    var obj = _RecetaDetalleList.FindAll(x => x.v_IdProductoDetalle == idProcutDetalle).ToList();
+                    if (obj != null)
+                    {
+                        foreach (var item in obj)
+                        {
+                            Importe += item.d_Importe.Value;
+                            Descuento += item.d_SaldoAseguradora == null ? 0 : item.d_SaldoAseguradora.Value;
+                            Total += item.d_Importe.Value;
+                        }
+
+                        Encontrados++;
+                    }
+                }
+
+                JoinTicketDetails _JoinTicketDetails = new JoinTicketDetails();
+                if (Encontrados == 0)
+                {
+                    return null;
+                }
+
+
+                _JoinTicketDetails.v_Amount = Math.Round(Importe, 2).ToString();
+                _JoinTicketDetails.v_Discount = Math.Round(Descuento, 2).ToString();
+                _JoinTicketDetails.v_Total = Math.Round(Total, 2).ToString();
+                _JoinTicketDetails.v_Found = Encontrados.ToString();
+                _JoinTicketDetails.v_Description = "FARMACIA PISO Y EN OT.SERRVICIO";
+
+                return _JoinTicketDetails;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
     }
 }

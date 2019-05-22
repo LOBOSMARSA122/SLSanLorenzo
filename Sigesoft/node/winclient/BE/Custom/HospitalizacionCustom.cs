@@ -10,5 +10,6 @@ namespace Sigesoft.Node.WinClient.BE.Custom
         public DateTime d_FechaAlta { get; set; }
         public DateTime d_FechaIngreso { get; set; }
         public string v_Habitacion { get; set; }
+        public decimal d_Precio { get; set; }
     }
 }

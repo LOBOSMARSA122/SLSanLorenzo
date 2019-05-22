@@ -7,7 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
    public class ServiceList
     {
-
+        public double? r_ClinicDescount { get; set; } 
         public string v_ServiceId { get; set; }
         public string v_ComponentId { get; set; }
         public string v_CalendarId { get; set; }
@@ -470,7 +470,7 @@ namespace Sigesoft.Node.WinClient.BE
        public string v_Mail { get; set; }
        public string v_TelephoneNumber { get; set; }
 
-
+       public List<ServiceComponentList> ListServicesComponents { get; set; }
        //datos Tramas
        public string nombre { get; set; }
        public string genero { get; set; }

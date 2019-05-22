@@ -34,7 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\..\..\..\..\..\FACT_ELECT\Server\WebClientAdmin\SAMBHS.Server.WebClientAdmin.UI\bin\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
@@ -55,6 +59,7 @@
     <Compile Include="AuthorizedPersonBL.cs" />
     <Compile Include="BlackListBL.cs" />
     <Compile Include="CalendarBL.cs" />
+    <Compile Include="ConnectionHelperSige.cs" />
     <Compile Include="CustomReportBL.cs" />
     <Compile Include="DataHierarchyBL.cs" />
     <Compile Include="DxFrecuenteBL.cs" />
