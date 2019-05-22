@@ -76,6 +76,7 @@
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.txtTotalAseguradora = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -217,6 +218,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnLiquidacion);
             this.groupBox2.Controls.Add(this.grdData);
             this.groupBox2.Controls.Add(this.lblRecordCountCalendar);
@@ -236,9 +238,9 @@
             // 
             this.btnLiquidacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
             this.btnLiquidacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLiquidacion.Location = new System.Drawing.Point(1073, 81);
+            this.btnLiquidacion.Location = new System.Drawing.Point(1060, 81);
             this.btnLiquidacion.Name = "btnLiquidacion";
-            this.btnLiquidacion.Size = new System.Drawing.Size(128, 33);
+            this.btnLiquidacion.Size = new System.Drawing.Size(149, 33);
             this.btnLiquidacion.TabIndex = 153;
             this.btnLiquidacion.Text = "Generar Liquidación";
             this.btnLiquidacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -377,9 +379,9 @@
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(1073, 29);
+            this.btnExport.Location = new System.Drawing.Point(1060, 29);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(128, 33);
+            this.btnExport.Size = new System.Drawing.Size(149, 33);
             this.btnExport.TabIndex = 104;
             this.btnExport.Text = "Exportar a Excel";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -406,6 +408,19 @@
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 108;
             this.label3.Text = "TOTAL ASEGURADORA";
+            // 
+            // button1
+            // 
+            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(1060, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 33);
+            this.button1.TabIndex = 154;
+            this.button1.Text = "Generar Pre-Liquidación";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmLiquidacionAseguradora
             // 
@@ -455,6 +470,7 @@
         private System.Windows.Forms.TextBox txtTotalAseguradora;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLiquidacion;
+        private System.Windows.Forms.Button button1;
 
     }
 }

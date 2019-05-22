@@ -240,5 +240,26 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (grdData.Selected.Rows.Count > 0)
+            {
+                string ruta = Common.Utils.GetApplicationConfigValue("LiquidacionAseguradora").ToString();
+                string serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+                var objPacient = new PacientBL().GetDataPacientByServiceId(serviceId);
+                var objOrganization = new OrganizationBL().GetDataOrganizationByServiceiId(serviceId);
+                var objAseguradora = new OrganizationBL().GetDataAseguradoraByServiceiId(serviceId);
+                var objHospitalizacion = new PacientBL().GetDataHospitalizacionByServiceId(serviceId);
+                var ListCostosService = new ServiceBL().GetServiceAndCost(serviceId);
+                LiquidacionHosp.LiquidacionHospitalaria(objPacient, objOrganization, objAseguradora, objHospitalizacion, ruta + "jason" + ".pdf");
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un paciente porfavor", "VALIDACIÓN", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            
+        }
+
     }
 }

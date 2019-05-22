@@ -36206,5 +36206,45 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+
+        public List<ServiceList> GetServiceAndCost(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var list = (from ser in dbContext.service
+                    join sys in dbContext.systemparameter on new {a = ser.i_MasterServiceId.Value, b = 119}
+                        equals new {a = sys.i_ParameterId, b = sys.i_GroupId} into sys_join
+                    from sys in sys_join.DefaultIfEmpty()
+
+                    where ser.v_ServiceId == serviceId
+                    select new ServiceList
+                    {
+                        v_MasterServiceName = sys.v_Value1,
+                    }).ToList();
+
+                return list;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        //public List<ServiceComponentList> GetServicesComponents(string serviceId)
+        //{
+        //    try
+        //    {
+        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //        var list = (from )
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
     }
 }

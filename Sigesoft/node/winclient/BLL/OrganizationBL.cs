@@ -792,5 +792,50 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
         #endregion
+
+        public organizationDto GetDataOrganizationByServiceiId(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objOrganization = (from org in dbContext.organization
+                                       join prot in dbContext.protocol on org.v_OrganizationId equals prot.v_EmployerOrganizationId
+                                       join ser in dbContext.service on prot.v_ProtocolId equals ser.v_ProtocolId
+                                       where ser.v_ServiceId == serviceId && ser.i_IsDeleted == 0
+                                       select new organizationDto
+                                       {
+                                           v_Name = org.v_Name,
+                                           v_Address = org.v_Address,
+                                           v_PhoneNumber = org.v_PhoneNumber,
+                                       }).FirstOrDefault();
+                return objOrganization;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public organizationDto GetDataAseguradoraByServiceiId(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objOrganization = (from org in dbContext.organization
+                    join prot in dbContext.protocol on org.v_OrganizationId equals prot.v_AseguradoraOrganizationId
+                    join ser in dbContext.service on prot.v_ProtocolId equals ser.v_ProtocolId
+                    where ser.v_ServiceId == serviceId && ser.i_IsDeleted == 0
+                    select new organizationDto
+                    {
+                        v_Name = org.v_Name,
+                        v_IdentificationNumber = org.v_IdentificationNumber,
+                    }).FirstOrDefault();
+                return objOrganization;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

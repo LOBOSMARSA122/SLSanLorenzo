@@ -7,6 +7,7 @@ using System.Transactions;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
 using Sigesoft.Common;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 namespace Sigesoft.Node.WinClient.BLL
 {
@@ -10567,6 +10568,58 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
             
+        }
+
+        public personDto GetDataPacientByServiceId(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objPacient = (from per in dbContext.person
+                    join ser in dbContext.service on per.v_PersonId equals ser.v_PersonId
+                    where ser.v_ServiceId == serviceId && per.i_IsDeleted == 0 && ser.i_IsDeleted == 0
+                    select new personDto
+                    {
+                        v_FirstName = per.v_FirstName,
+                        v_FirstLastName = per.v_FirstLastName,
+                        v_SecondLastName = per.v_SecondLastName,
+                        v_OwnerName = per.v_OwnerName,
+                        v_DocNumber = per.v_DocNumber,
+                    }).FirstOrDefault();
+                return objPacient;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public HospitalizacionCustom GetDataHospitalizacionByServiceId(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objHospitalizacion = (from hosp in dbContext.hospitalizacion
+                                          join hosSer in dbContext.hospitalizacionservice on hosp.v_HopitalizacionId equals hosSer.v_HopitalizacionId
+                                          join hosHab in dbContext.hospitalizacionhabitacion on hosp.v_HopitalizacionId equals hosHab.v_HopitalizacionId
+                                          
+                                          join sys in dbContext.systemparameter on new { a = hosHab.i_HabitacionId.Value, b = 309 }
+                                              equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                                          from sys in sys_join.DefaultIfEmpty()
+                                          where hosSer.v_ServiceId == serviceId
+                                          select new HospitalizacionCustom
+                                          {
+                                              d_FechaIngreso = hosp.d_FechaIngreso.Value,
+                                              d_FechaAlta = hosp.d_FechaAlta.Value,
+                                              v_Habitacion = sys.v_Value1,
+                                          }).FirstOrDefault();
+
+                return objHospitalizacion;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

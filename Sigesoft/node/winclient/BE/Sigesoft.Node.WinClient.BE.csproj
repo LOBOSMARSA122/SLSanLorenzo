@@ -79,6 +79,7 @@
     <Compile Include="Custom\GerenciaTreeCredito.cs" />
     <Compile Include="Custom\GerenciaTreeTipoExamen.cs" />
     <Compile Include="Custom\GridKeyValueDTO.cs" />
+    <Compile Include="Custom\HospitalizacionCustom.cs" />
     <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
