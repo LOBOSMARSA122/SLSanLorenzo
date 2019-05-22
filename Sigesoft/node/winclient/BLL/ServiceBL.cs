@@ -34552,9 +34552,12 @@ namespace Sigesoft.Node.WinClient.BLL
                 var objEntitySource = (from a in dbContext.service
                                        where a.v_ServiceId == pServiceId
                                        select a).FirstOrDefault();
-             
-	            objEntitySource.v_NroLiquidacion = "";
-	            objEntitySource.i_IsFac = 0;
+
+                objEntitySource.v_NroLiquidacion = null;
+                objEntitySource.i_StatusLiquidation = 1;
+	            objEntitySource.i_IsFac = 1;
+
+
                 // Guardar los cambios
                 dbContext.SaveChanges();
 	        }

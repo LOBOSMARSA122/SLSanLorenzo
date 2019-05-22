@@ -18,6 +18,7 @@ using System.Threading;
 using System.Windows.Shell;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
+using System.Data.SqlClient;
 
 //using iTextSharp.text;
 //using iTextSharp.text.pdf;

@@ -64,75 +64,79 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             var nuevo = _tmpProtocolcomponentList;
             
             
-            foreach (var itemOld in old)
+            if (old != null)
             {
-                bool cambios = false;
-                string cadena = _protocolBL.GetComentaryUpdateByProtocolComponentId(itemOld.v_ProtocolComponentId);
-
-                
-                cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
-                var itemNew = nuevo.Find(x => x.v_ProtocolComponentId == itemOld.v_ProtocolComponentId);
-                if (itemOld.i_Age != itemNew.i_Age)
+                foreach (var itemOld in old)
                 {
-                    cadena += "Edad:" + itemOld.i_Age + "|";
-                    cambios = true;
-                }
-                if (itemOld.v_Gender != itemNew.v_Gender)
-                {
-                    cadena += "Genero:" + itemOld.v_Gender + "|";
-                    cambios = true;
-                }
-                if (itemOld.r_Price != itemNew.r_Price)
-                {
-                    cadena += "Precio:" + itemOld.r_Price + "|";
-                    cambios = true;
-                }
-                if (itemOld.v_Operator != itemNew.v_Operator)
-                {
-                    cadena += "Operador:" + itemOld.v_Operator + "|";
-                    cambios = true;
-                }
-                if (itemOld.v_IsConditional != itemNew.v_IsConditional)
-                {
-                    cadena += "EsCondicional:" + itemOld.v_IsConditional + "|";
-                    cambios = true;
-                }
-                if (itemOld.v_ComponentTypeName != itemNew.v_ComponentTypeName)
-                {
-                    cadena += "Tipo:" + itemOld.v_ComponentTypeName + "|";
-                    cambios = true;
-                }
-
-                if (itemOld.i_IsConditionalId != itemNew.i_IsConditionalId)
-                {
-                    string valor = itemOld.i_IsConditionalId == 0 && itemOld.i_IsConditionalId != null ? "NO" : "SI";
-                    cadena += "EsAdicional:" + valor + "|";
-                    cambios = true;
-                }
-
-                if (itemOld.i_isAdditional != itemNew.i_isAdditional)
-                {
-                    string valor = itemOld.i_isAdditional == 0 && itemOld.i_isAdditional != null? "NO" : "SI";
-                    cadena += "EsCondicional:" + valor + "|";
-                    cambios = true;
-                }
-
-                if (itemOld.r_Imc != itemNew.r_Imc)
-                {
-                    cadena += "IMC:" + itemOld.r_Imc + "|";
-                    cambios = true;
-                }
-
-                if (cambios)
-                {
-                    Campos _Campos = new Campos();
-                    _Campos.ValorCampo = cadena;
-                    _Campos.NombreCampo = itemOld.v_ProtocolComponentId;
-                    ComentaryProtComponent.Add(_Campos);
-                }
+                    bool cambios = false;
+                    string cadena = _protocolBL.GetComentaryUpdateByProtocolComponentId(itemOld.v_ProtocolComponentId);
 
 
+                    cadena += "<FechaActualiza:" + DateTime.Now.ToString() + "|UsuarioActualiza:" + Globals.ClientSession.v_UserName + "|";
+                    var itemNew = nuevo.Find(x => x.v_ProtocolComponentId == itemOld.v_ProtocolComponentId);
+                    if (itemOld.i_Age != itemNew.i_Age)
+                    {
+                        cadena += "Edad:" + itemOld.i_Age + "|";
+                        cambios = true;
+                    }
+                    if (itemOld.v_Gender != itemNew.v_Gender)
+                    {
+                        cadena += "Genero:" + itemOld.v_Gender + "|";
+                        cambios = true;
+                    }
+                    if (itemOld.r_Price != itemNew.r_Price)
+                    {
+                        cadena += "Precio:" + itemOld.r_Price + "|";
+                        cambios = true;
+                    }
+                    if (itemOld.v_Operator != itemNew.v_Operator)
+                    {
+                        cadena += "Operador:" + itemOld.v_Operator + "|";
+                        cambios = true;
+                    }
+                    if (itemOld.v_IsConditional != itemNew.v_IsConditional)
+                    {
+                        cadena += "EsCondicional:" + itemOld.v_IsConditional + "|";
+                        cambios = true;
+                    }
+                    if (itemOld.v_ComponentTypeName != itemNew.v_ComponentTypeName)
+                    {
+                        cadena += "Tipo:" + itemOld.v_ComponentTypeName + "|";
+                        cambios = true;
+                    }
+
+                    if (itemOld.i_IsConditionalId != itemNew.i_IsConditionalId)
+                    {
+                        string valor = itemOld.i_IsConditionalId == 0 && itemOld.i_IsConditionalId != null ? "NO" : "SI";
+                        cadena += "EsAdicional:" + valor + "|";
+                        cambios = true;
+                    }
+
+                    if (itemOld.i_isAdditional != itemNew.i_isAdditional)
+                    {
+                        string valor = itemOld.i_isAdditional == 0 && itemOld.i_isAdditional != null ? "NO" : "SI";
+                        cadena += "EsCondicional:" + valor + "|";
+                        cambios = true;
+                    }
+
+                    if (itemOld.r_Imc != itemNew.r_Imc)
+                    {
+                        cadena += "IMC:" + itemOld.r_Imc + "|";
+                        cambios = true;
+                    }
+
+                    if (cambios)
+                    {
+                        Campos _Campos = new Campos();
+                        _Campos.ValorCampo = cadena;
+                        _Campos.NombreCampo = itemOld.v_ProtocolComponentId;
+                        ComentaryProtComponent.Add(_Campos);
+                    }
+
+
+                }
             }
+            
 
             return ComentaryProtComponent;
 
