@@ -168,11 +168,21 @@
     <Reference Include="Microsoft.TeamFoundation.Client, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.TeamFoundation.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.TeamFoundation.Diff, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.Vbe.Interop, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\ExternalLibraries\Microsoft.Vbe.Interop.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="NCalc, Version=1.3.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\ExternalLibraries\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="OFFICE, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\ExternalLibraries\OFFICE.DLL</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -220,6 +230,7 @@
     <Compile Include="AdditionalExam.Designer.cs">
       <DependentUpon>AdditionalExam.cs</DependentUpon>
     </Compile>
+    <Compile Include="adjuntos.cs" />
     <Compile Include="CIE10\Cie10MF.cs" />
     <Compile Include="Configuration\frmAddPlan.cs">
       <SubType>Form</SubType>
@@ -520,6 +531,12 @@
     </Compile>
     <Compile Include="frmAddExam.Designer.cs">
       <DependentUpon>frmAddExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdditionalExamMant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdditionalExamMant.Designer.cs">
+      <DependentUpon>frmAdditionalExamMant.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddLineSAM.cs">
       <SubType>Form</SubType>
@@ -1403,6 +1420,12 @@
     </Compile>
     <Compile Include="frmReporteGerencia.Designer.cs">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateAdditionalExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateAdditionalExam.Designer.cs">
+      <DependentUpon>frmUpdateAdditionalExam.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\frmContainerEso.cs">
       <SubType>Form</SubType>
@@ -3687,6 +3710,9 @@
     <EmbeddedResource Include="frmAddExam.resx">
       <DependentUpon>frmAddExam.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdditionalExamMant.resx">
+      <DependentUpon>frmAdditionalExamMant.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddLineSAM.resx">
       <DependentUpon>frmAddLineSAM.cs</DependentUpon>
     </EmbeddedResource>
@@ -3918,6 +3944,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteGerencia.resx">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateAdditionalExam.resx">
+      <DependentUpon>frmUpdateAdditionalExam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\frmContainerEso.resx">
       <DependentUpon>frmContainerEso.cs</DependentUpon>
@@ -5224,9 +5253,7 @@
     <EmbeddedResource Include="UserControls\ucHistorialGrupoFactor.resx">
       <DependentUpon>ucHistorialGrupoFactor.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="Dataset\Anexo7D.xsc">
       <DependentUpon>Anexo7D.xsd</DependentUpon>
     </None>
@@ -6327,28 +6354,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
@@ -6429,6 +6438,7 @@
     </Content>
     <None Include="Resources\generar_1.png" />
     <None Include="Resources\generar_2.png" />
+    <None Include="Resources\Go-back.ico" />
     <Content Include="Resources\historiaclinica.png" />
     <None Include="Resources\repor_1.png" />
     <None Include="Resources\repor_2.png" />
@@ -7208,7 +7218,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

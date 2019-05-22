@@ -394,7 +394,7 @@ namespace Sigesoft.Node.WinClient.UI
                         lector.Close();
                         string factores = ""; string aseguradoraName = ""; string organizationId = "";
                         var factorGlobal = "";
-                        var cadena2 = "select OO.r_Factor, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + _protocolId + "'";
+                        var cadena2 = "select PR.r_PriceFactor, OO.v_Name, PR.v_CustomerOrganizationId from Organization OO inner join protocol PR On PR.v_AseguradoraOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId ='" + _protocolId + "'";
                         comando = new SqlCommand(cadena2, connection: conectasam.conectarsigesoft);
                         lector = comando.ExecuteReader();
                         while (lector.Read())

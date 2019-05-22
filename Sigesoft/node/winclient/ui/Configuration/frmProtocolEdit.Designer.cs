@@ -79,23 +79,29 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtDocNumber = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboVendedor = new System.Windows.Forms.ComboBox();
+            this.txtCamaHosp = new System.Windows.Forms.TextBox();
             this.btnAgregarEmpresaContrata = new System.Windows.Forms.Button();
             this.chkEsActivo = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtComision = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.chkEsComisionable = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtEps = new System.Windows.Forms.TextBox();
+            this.txtFactor = new System.Windows.Forms.TextBox();
             this.txtCentroCosto = new System.Windows.Forms.TextBox();
+            this.lblEps = new System.Windows.Forms.Label();
+            this.lblFactor = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lblBedHospital = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboVendedor = new System.Windows.Forms.ComboBox();
+            this.txtComision = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chkEsComisionable = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpExamenes = new System.Windows.Forms.TabPage();
             this.btnRemover = new System.Windows.Forms.Button();
@@ -352,7 +358,7 @@
             this.uvProtocol.GetValidationSettings(this.cbTipoServicio).DataType = typeof(string);
             this.uvProtocol.GetValidationSettings(this.cbTipoServicio).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
             this.uvProtocol.GetValidationSettings(this.cbTipoServicio).IsRequired = true;
-            this.cbTipoServicio.SelectedIndexChanged += new System.EventHandler(this.cbServiceType_SelectedIndexChanged);
+            this.cbTipoServicio.SelectedValueChanged += new System.EventHandler(this.cbTipoServicio_SelectedValueChanged);
             this.cbTipoServicio.TextChanged += new System.EventHandler(this.cbServiceType_TextChanged);
             // 
             // cbServicio
@@ -422,20 +428,20 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cboVendedor);
+            this.groupBox1.Controls.Add(this.txtCamaHosp);
             this.groupBox1.Controls.Add(this.btnAgregarEmpresaContrata);
             this.groupBox1.Controls.Add(this.chkEsActivo);
             this.groupBox1.Controls.Add(this.cbEmpresaCliente);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtComision);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.chkEsComisionable);
             this.groupBox1.Controls.Add(this.cbServicio);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cbTipoServicio);
+            this.groupBox1.Controls.Add(this.txtEps);
+            this.groupBox1.Controls.Add(this.txtFactor);
             this.groupBox1.Controls.Add(this.txtCentroCosto);
+            this.groupBox1.Controls.Add(this.lblEps);
+            this.groupBox1.Controls.Add(this.lblFactor);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.cbEmpresaTrabajo);
             this.groupBox1.Controls.Add(this.label7);
@@ -447,6 +453,7 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtNombreProtocolo);
             this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.lblBedHospital);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox1.Location = new System.Drawing.Point(17, 11);
@@ -457,28 +464,16 @@
             this.groupBox1.Text = "Datos del Protocolo";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label4
+            // txtCamaHosp
             // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(587, 153);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 20);
-            this.label4.TabIndex = 63;
-            this.label4.Text = "Vendedor";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cboVendedor
-            // 
-            this.cboVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboVendedor.FormattingEnabled = true;
-            this.cboVendedor.Location = new System.Drawing.Point(686, 154);
-            this.cboVendedor.Margin = new System.Windows.Forms.Padding(2);
-            this.cboVendedor.Name = "cboVendedor";
-            this.cboVendedor.Size = new System.Drawing.Size(250, 21);
-            this.cboVendedor.TabIndex = 62;
+            this.txtCamaHosp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCamaHosp.Location = new System.Drawing.Point(894, 131);
+            this.txtCamaHosp.MaxLength = 250;
+            this.txtCamaHosp.Name = "txtCamaHosp";
+            this.txtCamaHosp.Size = new System.Drawing.Size(42, 20);
+            this.txtCamaHosp.TabIndex = 24;
+            this.txtCamaHosp.Text = "0.00";
+            this.txtCamaHosp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCamaHosp_KeyPress);
             // 
             // btnAgregarEmpresaContrata
             // 
@@ -507,7 +502,7 @@
             this.chkEsActivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkEsActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEsActivo.ForeColor = System.Drawing.Color.Black;
-            this.chkEsActivo.Location = new System.Drawing.Point(880, 132);
+            this.chkEsActivo.Location = new System.Drawing.Point(880, 158);
             this.chkEsActivo.Name = "chkEsActivo";
             this.chkEsActivo.Size = new System.Drawing.Size(56, 17);
             this.chkEsActivo.TabIndex = 36;
@@ -526,70 +521,56 @@
             this.label3.Text = "Emp. Cliente";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtComision
-            // 
-            this.txtComision.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtComision.Enabled = false;
-            this.txtComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComision.Location = new System.Drawing.Point(787, 129);
-            this.txtComision.MaxLength = 250;
-            this.txtComision.Name = "txtComision";
-            this.txtComision.Size = new System.Drawing.Size(46, 20);
-            this.txtComision.TabIndex = 35;
-            this.txtComision.TextChanged += new System.EventHandler(this.txtValidDays_TextChanged);
-            this.txtComision.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValidDays_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(701, 129);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 20);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "% de Comisión";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chkEsComisionable
-            // 
-            this.chkEsComisionable.AutoSize = true;
-            this.chkEsComisionable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkEsComisionable.ForeColor = System.Drawing.Color.Black;
-            this.chkEsComisionable.Location = new System.Drawing.Point(585, 133);
-            this.chkEsComisionable.Name = "chkEsComisionable";
-            this.chkEsComisionable.Size = new System.Drawing.Size(108, 17);
-            this.chkEsComisionable.TabIndex = 33;
-            this.chkEsComisionable.Text = "Es comisionable?";
-            this.chkEsComisionable.UseVisualStyleBackColor = true;
-            this.chkEsComisionable.CheckedChanged += new System.EventHandler(this.chkIsHasVigency_CheckedChanged);
-            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(587, 80);
+            this.label1.Location = new System.Drawing.Point(622, 80);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 19);
             this.label1.TabIndex = 31;
             this.label1.Text = "Servicio";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(587, 52);
+            this.label8.Location = new System.Drawing.Point(596, 52);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 20);
             this.label8.TabIndex = 30;
             this.label8.Text = "Tipo Servicio";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // txtEps
+            // 
+            this.txtEps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEps.Location = new System.Drawing.Point(780, 131);
+            this.txtEps.MaxLength = 250;
+            this.txtEps.Name = "txtEps";
+            this.txtEps.Size = new System.Drawing.Size(42, 20);
+            this.txtEps.TabIndex = 24;
+            this.txtEps.Text = "0.00";
+            this.txtEps.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
+            this.txtEps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEps_KeyPress);
+            // 
+            // txtFactor
+            // 
+            this.txtFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFactor.Location = new System.Drawing.Point(686, 131);
+            this.txtFactor.MaxLength = 250;
+            this.txtFactor.Name = "txtFactor";
+            this.txtFactor.Size = new System.Drawing.Size(42, 20);
+            this.txtFactor.TabIndex = 24;
+            this.txtFactor.Text = "0.00";
+            this.toolTip1.SetToolTip(this.txtFactor, "Solo acepta números.");
+            this.txtFactor.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
+            this.txtFactor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactor_KeyPress);
             // 
             // txtCentroCosto
             // 
@@ -601,18 +582,46 @@
             this.txtCentroCosto.TabIndex = 24;
             this.txtCentroCosto.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
             // 
+            // lblEps
+            // 
+            this.lblEps.BackColor = System.Drawing.Color.Transparent;
+            this.lblEps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEps.ForeColor = System.Drawing.Color.Black;
+            this.lblEps.Location = new System.Drawing.Point(746, 131);
+            this.lblEps.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEps.Name = "lblEps";
+            this.lblEps.Size = new System.Drawing.Size(48, 20);
+            this.lblEps.TabIndex = 23;
+            this.lblEps.Text = "E.P.S";
+            this.lblEps.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblEps.Visible = false;
+            // 
+            // lblFactor
+            // 
+            this.lblFactor.BackColor = System.Drawing.Color.Transparent;
+            this.lblFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFactor.ForeColor = System.Drawing.Color.Black;
+            this.lblFactor.Location = new System.Drawing.Point(624, 131);
+            this.lblFactor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFactor.Name = "lblFactor";
+            this.lblFactor.Size = new System.Drawing.Size(48, 20);
+            this.lblFactor.TabIndex = 23;
+            this.lblFactor.Text = "Factor";
+            this.lblFactor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblFactor.Visible = false;
+            // 
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(587, 104);
+            this.label13.Location = new System.Drawing.Point(624, 104);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 20);
             this.label13.TabIndex = 23;
             this.label13.Text = "C/Costo";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
@@ -630,13 +639,13 @@
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(587, 27);
+            this.label9.Location = new System.Drawing.Point(622, 27);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 19);
             this.label9.TabIndex = 17;
             this.label9.Text = "GESO";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
@@ -673,6 +682,87 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "Nombre Proto.";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblBedHospital
+            // 
+            this.lblBedHospital.BackColor = System.Drawing.Color.Transparent;
+            this.lblBedHospital.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBedHospital.ForeColor = System.Drawing.Color.Black;
+            this.lblBedHospital.Location = new System.Drawing.Point(832, 131);
+            this.lblBedHospital.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBedHospital.Name = "lblBedHospital";
+            this.lblBedHospital.Size = new System.Drawing.Size(71, 20);
+            this.lblBedHospital.TabIndex = 23;
+            this.lblBedHospital.Text = "Cama Hosp.";
+            this.lblBedHospital.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBedHospital.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(643, 648);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 20);
+            this.label4.TabIndex = 63;
+            this.label4.Text = "Vendedor";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Visible = false;
+            // 
+            // cboVendedor
+            // 
+            this.cboVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboVendedor.FormattingEnabled = true;
+            this.cboVendedor.Location = new System.Drawing.Point(653, 648);
+            this.cboVendedor.Margin = new System.Windows.Forms.Padding(2);
+            this.cboVendedor.Name = "cboVendedor";
+            this.cboVendedor.Size = new System.Drawing.Size(47, 21);
+            this.cboVendedor.TabIndex = 62;
+            this.cboVendedor.Visible = false;
+            // 
+            // txtComision
+            // 
+            this.txtComision.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtComision.Enabled = false;
+            this.txtComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComision.Location = new System.Drawing.Point(650, 648);
+            this.txtComision.MaxLength = 250;
+            this.txtComision.Name = "txtComision";
+            this.txtComision.Size = new System.Drawing.Size(47, 20);
+            this.txtComision.TabIndex = 35;
+            this.txtComision.Visible = false;
+            this.txtComision.TextChanged += new System.EventHandler(this.txtValidDays_TextChanged);
+            this.txtComision.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValidDays_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(633, 648);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 20);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "% de Comisión";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.Visible = false;
+            // 
+            // chkEsComisionable
+            // 
+            this.chkEsComisionable.AutoSize = true;
+            this.chkEsComisionable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEsComisionable.ForeColor = System.Drawing.Color.Black;
+            this.chkEsComisionable.Location = new System.Drawing.Point(612, 650);
+            this.chkEsComisionable.Name = "chkEsComisionable";
+            this.chkEsComisionable.Size = new System.Drawing.Size(108, 17);
+            this.chkEsComisionable.TabIndex = 33;
+            this.chkEsComisionable.Text = "Es comisionable?";
+            this.chkEsComisionable.UseVisualStyleBackColor = true;
+            this.chkEsComisionable.Visible = false;
+            this.chkEsComisionable.CheckedChanged += new System.EventHandler(this.chkIsHasVigency_CheckedChanged);
             // 
             // tabControl1
             // 
@@ -1016,10 +1106,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(976, 677);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cboVendedor);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtComision);
+            this.Controls.Add(this.chkEsComisionable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1039,6 +1134,7 @@
             this.tpUsuariosExternos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdExternalUser)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1097,5 +1193,11 @@
         private System.Windows.Forms.Button btnAddUserExternal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboVendedor;
+        private System.Windows.Forms.TextBox txtEps;
+        private System.Windows.Forms.TextBox txtFactor;
+        private System.Windows.Forms.Label lblEps;
+        private System.Windows.Forms.Label lblFactor;
+        private System.Windows.Forms.TextBox txtCamaHosp;
+        private System.Windows.Forms.Label lblBedHospital;
     }
 }

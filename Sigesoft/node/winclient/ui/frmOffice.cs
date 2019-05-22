@@ -62,6 +62,14 @@ namespace Sigesoft.Node.WinClient.UI
         {
             OperationResult objOperationResult = new OperationResult();
              //Utils.LoadDropDownList(cbOficina, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
+             var objUser = new ProfessionalBL().GetSystemUser(Globals.ClientSession.i_SystemUserId);
+             if (objUser.i_ProfesionId != (int)TipoProfesional.Auditor && objUser.i_ProfesionId != (int)TipoProfesional.Auditor_Evaluador && objUser.i_ProfesionId != (int)TipoProfesional.Evaluador)
+            {
+                btnAgregarAdiconal.Enabled = false;
+                reImprimirExamenAdicionalToolStripMenuItem.Enabled = false;
+                btnRemoverEsamen.Enabled = false;
+            }
+
 
             Utils.LoadDropDownList(cbServiceType, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.All);
             // combo servicio
@@ -1256,9 +1264,9 @@ namespace Sigesoft.Node.WinClient.UI
                 MergeExPDF _mergeExPDF = new MergeExPDF();
                 #region BuscarPDF
                 var rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-                var ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+                var ruta = Common.Utils.GetApplicationConfigValue("rutaExamenesAdicionales").ToString();
                 string ServiceId = grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-                var datosGrabo = new ServiceBL().DevolverDatosUsuarioFirma(168);
+                var datosGrabo = new ServiceBL().DevolverDatosUsuarioFirma(Globals.ClientSession.i_SystemUserId);
 
                 List<string> pdfList = new List<string>();
                 pdfList.Add(string.Format("{0}.pdf", Path.Combine(ruta, ServiceId + "-" + "ORDEN-EX-MED-ADICI-" + datosGrabo.CMP)));
@@ -1276,6 +1284,24 @@ namespace Sigesoft.Node.WinClient.UI
                 return;
             }
             
+        }
+
+        private void optModificarExamenAdicional_Click(object sender, EventArgs e)
+        {
+            string ServiceId = grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+            var Data = new AdditionalExamBL().GetAdditionalExamForUpdateByServiceId(ServiceId, Globals.ClientSession.i_SystemUserId);
+            if (Data != null && Data.Count > 0)
+            {
+                var frm = new frmAdditionalExamMant(ServiceId, Data);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron exámenes adicionales a su cargo.", "VALIDACIÓN",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
     }

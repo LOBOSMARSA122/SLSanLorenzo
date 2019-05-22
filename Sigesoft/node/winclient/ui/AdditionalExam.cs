@@ -207,7 +207,7 @@ namespace Sigesoft.Node.WinClient.UI
             //    _auxiliaryExams = new List<ServiceComponentList>();
             try
             {
-                var ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+                var ruta = Common.Utils.GetApplicationConfigValue("rutaExamenesAdicionales").ToString();
                 var rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
                 string pathFile = "";
                 string CMP = "";
@@ -237,12 +237,8 @@ namespace Sigesoft.Node.WinClient.UI
 
                     }
 
-                    
 
-
-                    
-
-                    var datosGrabo = objServiceBL.DevolverDatosUsuarioFirma(168);
+                    var datosGrabo = objServiceBL.DevolverDatosUsuarioFirma(Globals.ClientSession.i_SystemUserId);
                     
 
                     if (datosGrabo != null)

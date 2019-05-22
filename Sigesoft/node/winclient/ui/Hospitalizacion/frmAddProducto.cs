@@ -44,7 +44,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             #region Conexion SIGESOFT Obtener Porcentaje de descuento EPS
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
-            var cadena = "select OO.r_FactorMed from protocol PR inner join organization OO on PR.v_CustomerOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId='" + _protocolId + "'";
+            var cadena = "select PR.r_MedicineDiscount from protocol PR inner join organization OO on PR.v_CustomerOrganizationId = OO.v_OrganizationId where PR.v_ProtocolId='" + _protocolId + "'";
             SqlCommand comando = new SqlCommand(cadena, connection: conectasam.conectarsigesoft);
             SqlDataReader lector = comando.ExecuteReader();
             string EPS = "";

@@ -18,6 +18,7 @@ using System.Threading;
 using System.Windows.Shell;
 using Infragistics.Win.UltraWinDataSource;
 using Sigesoft.Node.WinClient.UI.Reports;
+using System.Data.SqlClient;
 
 //using iTextSharp.text;
 //using iTextSharp.text.pdf;
@@ -2804,7 +2805,7 @@ namespace Sigesoft.Node.WinClient.UI
                         btnInterconsulta.Enabled = false;
                         btnTiempos.Enabled = false;
                         btnFechaEntrega.Enabled = false;
-
+                        btnImprimirAdicionales.Enabled = false;
                         return;
                     }
                 }
@@ -2816,6 +2817,8 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                         btnFechaEntrega.Enabled = false;
                     }
+
+                    btnImprimirAdicionales.Enabled = 
                     btn7D.Enabled =
                     btnOdontograma.Enabled =
                     btnHistoriaOcupacional.Enabled =
@@ -4074,6 +4077,33 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 MessageBox.Show("Seleccione un servicio.", "¡ VALIDACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void btnImprimirAdicionales_Click(object sender, EventArgs e)
+        {
+            var ruta = Common.Utils.GetApplicationConfigValue("rutaExamenesAdicionales").ToString();
+            var rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+            var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            string pathFile = "";
+            List<string> ListExamsAdditionalPDF = new List<string>();
+
+            
+            DirectoryInfo DirInfo = new DirectoryInfo(ruta);
+            var files = from f in DirInfo.EnumerateFiles()
+                where f.Name.Contains(ServiceId + "-ORDEN-EX-MED-ADICI-")
+                select f;
+            foreach (var file in files)
+            {
+                pathFile = Path.Combine(ruta, file.Name);
+                ListExamsAdditionalPDF.Add(pathFile);
+            }
+         
+            
+
+            _mergeExPDF.FilesName = ListExamsAdditionalPDF;
+            _mergeExPDF.DestinationFile = string.Format("{0}.pdf", Path.Combine(rutaBasura, ServiceId + "-TODOS-LOS-EXAMENES-ADICIONALES-"));
+            _mergeExPDF.Execute();
+            _mergeExPDF.RunFile();
         }
     }
 }

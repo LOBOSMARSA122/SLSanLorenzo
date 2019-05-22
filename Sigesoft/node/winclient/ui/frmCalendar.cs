@@ -1035,12 +1035,6 @@ namespace Sigesoft.Node.WinClient.UI
             if (ugComponentes.Selected.Rows.Count == 0)
                 return;
 
-            //if (ugComponentes.Selected.Rows[0].Cells["v_serviceComponentId"] == null)
-            //{
-            //    MessageBox.Show("¿Por favor seleccione una categoría?", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
             ServiceBL oServiceBL = new ServiceBL();
             DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?", "ADVERTENCIA!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
@@ -1049,16 +1043,7 @@ namespace Sigesoft.Node.WinClient.UI
                 var _auxiliaryExams = new List<ServiceComponentList>();
                 OperationResult objOperationResult = new OperationResult();
 
-                //int categoryId = int.Parse(ugComponentes.Selected.Rows[0].Cells["i_CategoryId"].Value.ToString());
                 string v_ServiceComponentId = ugComponentes.Selected.Rows[0].Cells["v_serviceComponentId"].Value.ToString();
-                //var serviceComponentId = ugComponentes.Selected.Rows[0].Cells["v_ServiceComponentId"].Value.ToString();
-
-
-
-                //frmRemoverExamen frm = new frmRemoverExamen(categoryId,_serviceId);
-                //frm.ShowDialog();
-
-
 
                 ServiceComponentList auxiliaryExam = new ServiceComponentList();
                 auxiliaryExam.v_ServiceComponentId = v_ServiceComponentId;
@@ -1067,36 +1052,7 @@ namespace Sigesoft.Node.WinClient.UI
                 _objCalendarBL.UpdateAdditionalExam(_auxiliaryExams, _serviceId, (int?)SiNo.NO, Globals.ClientSession.GetAsList());
                 var ListServiceComponent = oServiceBL.GetAllComponentsByService(ref objOperationResult, _strServicelId);
                 ugComponentes.DataSource = ListServiceComponent;
-
-
-
-
-
-
-
-                //if (categoryId == -1)
-                //{
-                //    ServiceComponentList auxiliaryExam = new ServiceComponentList();
-                //    auxiliaryExam.v_ServiceComponentId = serviceComponentId;
-                //    _auxiliaryExams.Add(auxiliaryExam);
-                //}
-                //else
-                //{
-                //    var oServiceComponentList = oServiceBL.GetServiceComponentByCategoryId(ref objOperationResult, categoryId, _strServicelId);
-
-                //    foreach (var scid in oServiceComponentList)
-                //    {
-                //        ServiceComponentList auxiliaryExam = new ServiceComponentList();
-                //        auxiliaryExam.v_ServiceComponentId = scid.v_ServiceComponentId;
-                //        _auxiliaryExams.Add(auxiliaryExam);
-                //    }
-
-                //}
-
-                //_objCalendarBL.UpdateAdditionalExam(_auxiliaryExams, _serviceId, (int?)SiNo.NO, Globals.ClientSession.GetAsList());
-                //var ListServiceComponent = oServiceBL.GetServiceComponents(ref objOperationResult, _strServicelId);
-                //ugComponentes.DataSource = ListServiceComponent;
-                ////MessageBox.Show("Se grabo correctamente", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new AdditionalExamBL().ReverseProcessed(_strServicelId, v_ServiceComponentId, Globals.ClientSession.i_SystemUserId);
             }
 
         }
@@ -1750,7 +1706,7 @@ namespace Sigesoft.Node.WinClient.UI
 //                                foreach (var perfil in perfiles)
 //                                {
 //                                    var xePerfil = new XElement("Perfil" + contadorPerfil);
-//                                    xePerfil.Value = CodigoNatclarLaboratorio(perfil.IdComponente);
+//                        xePerfil.Value = CodigoNatclarLaboratorio(perfil.IdComponente);
 
 //                                    //var pruebas = perfiles.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
 //                                    var contadorPrueba = 1;
@@ -3725,9 +3681,23 @@ namespace Sigesoft.Node.WinClient.UI
                         DataSource.AddRange(ListServiceComponent);
                     }
                 }
-
-                var frm = new frmAddExam(ComponentNewService, "", _ProtocolId, "", "", _dni, ServiceId, DataSource);
-                frm.ShowDialog();
+                if (DataSource != null)
+                {
+                    if (DataSource.Count > 0)
+                    {
+                        var frm = new frmAddExam(ComponentNewService, "", _ProtocolId, "", "", _dni, ServiceId, DataSource);
+                        frm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron exámenes adicionales para este paciente.", "AVISO",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    
+                }
+                
+                
                 
             }
             catch (Exception ex)
