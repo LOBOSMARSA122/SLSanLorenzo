@@ -614,8 +614,9 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_AltitudeWorkId = Convert.ToInt32(ddlAltitudeWorkId.SelectedValue);
                     objpersonDto.i_PlaceWorkId = Convert.ToInt32(ddlPlaceWorkId.SelectedValue);
                     objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
-
-
+                    objpersonDto.v_Religion = txtReligion.Text;
+                    objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
+                    objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
                     objpersonDto.b_FingerPrintTemplate = FingerPrintTemplate;
                     objpersonDto.b_FingerPrintImage = FingerPrintImage;
                     objpersonDto.b_RubricImage = RubricImage;
@@ -627,8 +628,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_ResidenceInWorkplaceId = Convert.ToInt32(ddlResidenceInWorkplaceId.SelectedValue);
                     objpersonDto.v_ResidenceTimeInWorkplace = txtResidenceTimeInWorkplace.Text;
                     objpersonDto.i_TypeOfInsuranceId = Convert.ToInt32(ddlTypeOfInsuranceId.SelectedValue);
-                    objpersonDto.i_NumberLivingChildren = Convert.ToInt32(txtNumberLivingChildren.Text);
-                    objpersonDto.i_NumberDependentChildren = Convert.ToInt32(txtNumberDependentChildren.Text);
+                    objpersonDto.i_NumberLiveChildren = Convert.ToInt32(txtNumberLivingChildren.Text);
+                    objpersonDto.i_NumberDeadChildren = Convert.ToInt32(txtNumberDependentChildren.Text);
 
 
                     if (pbPersonImage.Image != null)

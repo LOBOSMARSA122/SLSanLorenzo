@@ -8120,6 +8120,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
                                  i_NumberLivingChildren = B.i_NumberLivingChildren,
                                  i_NumberDependentChildren = B.i_NumberDependentChildren,
+                                 
                                  i_NumberLiveChildren = B.i_NumberLiveChildren,
                                  i_NumberDeadChildren = B.i_NumberDeadChildren,
                                  v_DocNumber = B.v_DocNumber

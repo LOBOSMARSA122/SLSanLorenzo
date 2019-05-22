@@ -37,7 +37,9 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,7 +74,6 @@
     <Compile Include="GeneratedAssemblers\componentfieldvaluesAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrecommendationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrestrictionAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\configdxAssembler.cs" />
     <Compile Include="GeneratedAssemblers\cuidadopreventivoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\cuidadopreventivocomentarioAssembler.cs" />
     <Compile Include="GeneratedAssemblers\datahierarchyAssembler.cs" />
@@ -85,19 +86,15 @@
     <Compile Include="GeneratedAssemblers\embarzoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\workstationdangersAssembler.cs" />
     <Compile Include="GeneratedAssemblers\warehouseAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\vigilanciaserviceAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\vigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
     <Compile Include="GeneratedAssemblers\tramasAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\testcorrunceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserrolenodeAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemusergobalprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemparameterAssembler.cs" />
     <Compile Include="GeneratedAssemblers\supplierAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\subscriptionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\softwarecomponentreleaseAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\serviceorderAssembler.cs" />
@@ -130,8 +127,6 @@
     <Compile Include="GeneratedAssemblers\productAssembler.cs" />
     <Compile Include="GeneratedAssemblers\procedurebyserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\problemaAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\planvigilanciadiseasesAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\planvigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planintegralAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personmedicalhistoryAssembler.cs" />
@@ -143,7 +138,6 @@
     <Compile Include="GeneratedAssemblers\ordenreporteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\occupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\noxioushabitsAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\notificationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodesyncstatusAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeserviceprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeorganizationprofileAssembler.cs" />
@@ -161,7 +155,6 @@
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\liquidacionAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\identitystringAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
