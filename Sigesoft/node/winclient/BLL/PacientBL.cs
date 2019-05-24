@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Linq.Dynamic;
+using System.Transactions;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
 using Sigesoft.Common;
+using Sigesoft.Node.WinClient.BE.Custom;
 
 namespace Sigesoft.Node.WinClient.BLL
 {
@@ -10376,6 +10378,251 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public string FusionServices(ref OperationResult objOperationResult, List<string> servicesId, List<string> ClientSession)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                List<hospitalizacionserviceDto> ListHospServices = new List<hospitalizacionserviceDto>();
+                List<hospitalizacionserviceDto> ListHospServicesDistintos = new List<hospitalizacionserviceDto>();
+                List<string> ServicesNoEncontrados = new List<string>();
+
+                using (var ts = new TransactionScope())
+                {
+                    #region FindListHospServices
+                    foreach (var serviceId in servicesId)
+                    {
+                        var query = (from hser in dbContext.hospitalizacionservice
+                                     where hser.v_ServiceId == serviceId && hser.i_IsDeleted == 0
+                                     select new hospitalizacionserviceDto
+                                     {
+                                         v_HospitalizacionServiceId = hser.v_HospitalizacionServiceId,
+                                         v_HopitalizacionId = hser.v_HopitalizacionId,
+                                         v_ServiceId = hser.v_ServiceId,
+                                     }).FirstOrDefault();
+
+                        if (query != null)
+                        {
+                            ListHospServices.Add(query);
+                        }
+                        else
+                        {
+                            ServicesNoEncontrados.Add(serviceId);
+                        }
+
+                    }
+                    #endregion
+
+                    string HospitalizacionId = "";
+                    var objHospitlizacion = ListHospServices.FindAll(x => x.v_HopitalizacionId != null).FirstOrDefault();
+                    if (objHospitlizacion != null)
+                    {
+                        HospitalizacionId = objHospitlizacion.v_HopitalizacionId;
+                    }
+                    if (HospitalizacionId != "" && HospitalizacionId != null)
+                    {
+                        //Actualizo la HospitalizacionService con los mismos HospitalizacionId
+                        foreach (var HospService in ListHospServices)
+                        {
+                            if (HospitalizacionId != HospService.v_HopitalizacionId)
+                            {
+                                var query = (from hser in dbContext.hospitalizacionservice
+                                             where hser.v_HospitalizacionServiceId == HospService.v_HospitalizacionServiceId
+                                             select hser).FirstOrDefault();
+                                query.v_HopitalizacionId = HospitalizacionId;
+                                query.d_UpdateDate = DateTime.Now;
+                                query.i_UpdateUserId = Int32.Parse(ClientSession[0]); 
+                                dbContext.SaveChanges();
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        if (ListHospServices.Count > 0)
+                        {
+                            HospitalizacionId = AddHospitalizacion(ListHospServices[0].v_ServiceId, ClientSession);
+                            foreach (var HospService in ListHospServices)
+                            {
+                                var query = (from hser in dbContext.hospitalizacionservice
+                                    where hser.v_HospitalizacionServiceId == HospService.v_HospitalizacionServiceId
+                                    select hser).FirstOrDefault();
+                                query.v_HopitalizacionId = HospitalizacionId;
+                                query.d_UpdateDate = DateTime.Now;
+                                query.i_UpdateUserId = Int32.Parse(ClientSession[0]); 
+                                dbContext.SaveChanges();
+                            }
+                        }
+                        
+                    }
+                    if (ServicesNoEncontrados.Count > 0)
+                    {
+                        //Agrego una nueva HospitalizacionService
+                        if (HospitalizacionId != "" && HospitalizacionId != null)
+                        {
+                            foreach (var _serviceId in ServicesNoEncontrados)
+                            {
+                                string reult = AddHospitalizacionService(_serviceId, HospitalizacionId, ClientSession);
+                                if (reult == null)
+                                {
+                                    throw new Exception("Sucedió un error al generar las nuevas hospitalizaciones services");
+                                }
+                            }
+                        }
+                        else //Agrego una nueva Hospitalizacion
+                        {
+                            string _HospitalizacionId = AddHospitalizacion(ServicesNoEncontrados[0], ClientSession);
+                            foreach (var serviceId in ServicesNoEncontrados)
+                            {
+                                if (_HospitalizacionId != null)
+                                {
+                                    //Agrego la hospitalizacionService
+                                    string reult = AddHospitalizacionService(serviceId, _HospitalizacionId, ClientSession);
+                                    if (reult == null)
+                                    {
+                                        throw new Exception("Sucedió un error al generar las nuevas hospitalizaciones services");
+                                    }
+                                }
+                                else
+                                {
+                                    throw new Exception("Sucedió un error al generar las nuevas hospitalizaciones");
+                                }
+                            }
+                        }
+                    }
+
+                    ts.Complete();
+                    objOperationResult.Success = 1;
+                    return "ok";
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ErrorMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public string AddHospitalizacionService(string serviceId, string hospitalizacionId, List<string> ClientSession)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var SecuentialId = Utils.GetNextSecuentialId(Int32.Parse(ClientSession[0]), 351);
+                var newId = Common.Utils.GetNewId(int.Parse(ClientSession[0]), SecuentialId, "HS");
+
+                hospitalizacionserviceDto objHospitalizacionDto = new hospitalizacionserviceDto();
+                objHospitalizacionDto.v_HospitalizacionServiceId = newId;
+                objHospitalizacionDto.v_HopitalizacionId = hospitalizacionId;
+                objHospitalizacionDto.v_ServiceId = serviceId;
+                objHospitalizacionDto.i_InsertUserId = int.Parse(ClientSession[2]);
+                objHospitalizacionDto.d_InsertDate = DateTime.Now;
+                objHospitalizacionDto.i_IsDeleted = (int)SiNo.NO;
+
+                hospitalizacionservice hospServ = hospitalizacionserviceAssembler.ToEntity(objHospitalizacionDto);
+
+                dbContext.AddTohospitalizacionservice(hospServ);
+                dbContext.SaveChanges();
+
+                return "ok";
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public string AddHospitalizacion(string serviceId, List<string> ClientSession)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objCalendar = (from cal in dbContext.calendar
+                                   where cal.v_ServiceId == serviceId && cal.i_IsDeleted == 0
+                                   select cal).FirstOrDefault();
+
+                var SecuentialId = Utils.GetNextSecuentialId(Int32.Parse(ClientSession[0]), 350);
+                var newId = Common.Utils.GetNewId(int.Parse(ClientSession[0]), SecuentialId, "HP");
+
+                hospitalizacionDto objHospitalizacionDto = new hospitalizacionDto();
+                objHospitalizacionDto.v_HopitalizacionId = newId;
+                objHospitalizacionDto.v_PersonId = objCalendar.v_PersonId;
+                objHospitalizacionDto.i_InsertUserId = int.Parse(ClientSession[2]);
+                objHospitalizacionDto.d_FechaIngreso = objCalendar.d_EntryTimeCM.Value;
+                objHospitalizacionDto.d_InsertDate = DateTime.Now;
+                objHospitalizacionDto.i_IsDeleted = (int)SiNo.NO;
+
+                hospitalizacion hosp = hospitalizacionAssembler.ToEntity(objHospitalizacionDto);
+
+                dbContext.AddTohospitalizacion(hosp);
+                dbContext.SaveChanges();
+
+                return newId;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            
+        }
+
+        public personDto GetDataPacientByServiceId(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objPacient = (from per in dbContext.person
+                    join ser in dbContext.service on per.v_PersonId equals ser.v_PersonId
+                    where ser.v_ServiceId == serviceId && per.i_IsDeleted == 0 && ser.i_IsDeleted == 0
+                    select new personDto
+                    {
+                        v_FirstName = per.v_FirstName,
+                        v_FirstLastName = per.v_FirstLastName,
+                        v_SecondLastName = per.v_SecondLastName,
+                        v_OwnerName = per.v_OwnerName,
+                        v_DocNumber = per.v_DocNumber,
+                    }).FirstOrDefault();
+                return objPacient;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public List<HospitalizacionCustom> GetDataHospitalizacionByServiceId(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objHospitalizacion = (from hosHab in dbContext.hospitalizacionhabitacion
+                                          join hosp in dbContext.hospitalizacion on hosHab.v_HopitalizacionId equals hosp.v_HopitalizacionId
+                                          join hosSer in dbContext.hospitalizacionservice on hosp.v_HopitalizacionId equals hosSer.v_HopitalizacionId
+                                          join sys in dbContext.systemparameter on new { a = hosHab.i_HabitacionId.Value, b = 309 }
+                                              equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                                          from sys in sys_join.DefaultIfEmpty()
+                                          where hosSer.v_ServiceId == serviceId
+                                          select new HospitalizacionCustom
+                                          {
+                                              d_FechaIngreso = hosp.d_FechaIngreso.Value,
+                                              d_FechaAlta = hosp.d_FechaAlta.Value,
+                                              v_Habitacion = sys.v_Value1,
+                                              d_Precio = hosHab.d_Precio.Value,
+                                          }).OrderByDescending(x => x.d_FechaAlta).ToList();
+
+                return objHospitalizacion;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
     }
 }
 

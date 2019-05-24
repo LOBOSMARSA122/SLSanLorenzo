@@ -5,6 +5,14 @@ using System.Text;
 
 namespace Sigesoft.Node.WinClient.BE
 {
+    public class JoinTicketDetails
+    {
+        public string v_Found { get; set; }
+        public string v_Description { get; set; }
+        public string v_Amount { get; set; }
+        public string v_Discount { get; set; }
+        public string v_Total { get; set; }
+    }
     public class TicketDetalleList
     {
         public string v_TicketDetalleId { get; set; }

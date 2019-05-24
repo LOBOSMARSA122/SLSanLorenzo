@@ -240,5 +240,39 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MergeExPDF _mergeExPDF = new MergeExPDF();
+            if (grdData.Selected.Rows.Count > 0)
+            {
+                string ruta = Common.Utils.GetApplicationConfigValue("LiquidacionAseguradora").ToString();
+                string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+                string serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+                string pathFile = ruta + "PRE-LIQUIDACIÓN-" + serviceId + ".pdf";
+                var objPacient = new PacientBL().GetDataPacientByServiceId(serviceId);
+                var objOrganization = new OrganizationBL().GetDataOrganizationByServiceiId(serviceId);
+                var objAseguradora = new OrganizationBL().GetDataAseguradoraByServiceiId(serviceId);
+                var objHospitalizacion = new PacientBL().GetDataHospitalizacionByServiceId(serviceId);
+                var ListCostosService = new ServiceBL().GetServiceAndCost(serviceId);
+                var dataTicketDetail = new ServiceBL().GetDataMedicamentosByServiceId(serviceId);
+                var dataRecetaDetail = new ServiceBL().GetDataRecetaByServiceId(serviceId);
+                LiquidacionHosp.LiquidacionHospitalaria(dataRecetaDetail, dataTicketDetail, ListCostosService, objPacient, objOrganization, objAseguradora, objHospitalizacion, pathFile);
+
+                List<string> PathList = new List<string>();
+                PathList.Add(pathFile);
+                _mergeExPDF.FilesName = PathList;
+                _mergeExPDF.DestinationFile = rutaBasura + "PRE-LIQUIDACIÓN-COPIA" + serviceId + ".pdf";
+                _mergeExPDF.Execute();
+                _mergeExPDF.RunFile();
+
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un paciente porfavor", "VALIDACIÓN", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            
+        }
+
     }
 }

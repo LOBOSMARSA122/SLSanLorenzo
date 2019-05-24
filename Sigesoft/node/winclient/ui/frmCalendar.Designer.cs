@@ -205,6 +205,7 @@
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnFusionar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -1186,7 +1187,7 @@
             this.btnRemoverEsamen,
             this.btnAgregarExamen});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(170, 92);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(170, 70);
             // 
             // btnAgregarAdiconal
             // 
@@ -1226,6 +1227,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnFusionar);
             this.splitContainer1.Panel1.Controls.Add(this.btnHistoria);
             this.splitContainer1.Panel1.Controls.Add(this.btnCambiarProtocolo);
             this.splitContainer1.Panel1.Controls.Add(this.btnGenerarXML);
@@ -1293,7 +1295,7 @@
             this.btnCambiarProtocolo.Location = new System.Drawing.Point(152, 414);
             this.btnCambiarProtocolo.Margin = new System.Windows.Forms.Padding(2);
             this.btnCambiarProtocolo.Name = "btnCambiarProtocolo";
-            this.btnCambiarProtocolo.Size = new System.Drawing.Size(125, 24);
+            this.btnCambiarProtocolo.Size = new System.Drawing.Size(139, 24);
             this.btnCambiarProtocolo.TabIndex = 103;
             this.btnCambiarProtocolo.Text = "Cambiar Protocolo";
             this.btnCambiarProtocolo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1748,6 +1750,19 @@
             ultraDataColumn21,
             ultraDataColumn22});
             // 
+            // btnFusionar
+            // 
+            this.btnFusionar.Image = global::Sigesoft.Node.WinClient.UI.Resources.arrow_refresh;
+            this.btnFusionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFusionar.Location = new System.Drawing.Point(295, 415);
+            this.btnFusionar.Name = "btnFusionar";
+            this.btnFusionar.Size = new System.Drawing.Size(116, 23);
+            this.btnFusionar.TabIndex = 105;
+            this.btnFusionar.Text = "Fusionar Servicios";
+            this.btnFusionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFusionar.UseVisualStyleBackColor = true;
+            this.btnFusionar.Click += new System.EventHandler(this.btnFusionar_Click);
+            // 
             // frmCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1881,5 +1896,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ToolStripMenuItem registrarSolicitudCartaDeGarantíaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verExámenesAdicionalesToolStripMenuItem;
+        private System.Windows.Forms.Button btnFusionar;
     }
 }

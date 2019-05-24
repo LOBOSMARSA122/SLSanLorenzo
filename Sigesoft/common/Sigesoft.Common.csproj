@@ -107,6 +107,7 @@
     <Compile Include="ConexionSambhs.cs" />
     <Compile Include="Declaracion_Jurada_Sintomatico_Respiratorio.cs" />
     <Compile Include="Informe_Radiologico_Lumina.cs" />
+    <Compile Include="LiquidacionHosp.cs" />
     <Compile Include="LiquidacionAseguradoraReport.cs" />
     <Compile Include="Osteomuscular_MiBanco.cs" />
     <Compile Include="Pago_Especialsta_Report.cs" />

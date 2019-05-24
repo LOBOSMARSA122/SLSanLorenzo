@@ -79,6 +79,7 @@
     <Compile Include="Custom\GerenciaTreeCredito.cs" />
     <Compile Include="Custom\GerenciaTreeTipoExamen.cs" />
     <Compile Include="Custom\GridKeyValueDTO.cs" />
+    <Compile Include="Custom\HospitalizacionCustom.cs" />
     <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Custom\ProtocolSystemUSerExternalList.cs" />
     <Compile Include="Custom\PuestoList.cs" />
     <Compile Include="Custom\recetadespachoDto.cs" />
+    <Compile Include="Custom\RecetaDetail.cs" />
     <Compile Include="Custom\recetaDto.cs" />
     <Compile Include="Custom\recetaList.cs" />
     <Compile Include="Custom\RecomendationList.cs" />

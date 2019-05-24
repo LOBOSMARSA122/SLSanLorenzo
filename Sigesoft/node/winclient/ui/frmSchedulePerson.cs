@@ -1520,7 +1520,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else
             {
-                if (int.Parse(ddlServiceTypeId.SelectedValue.ToString()) == 9)
+                if (int.Parse(ddlServiceTypeId.SelectedValue.ToString()) == 9 || int.Parse(ddlServiceTypeId.SelectedValue.ToString()) == 11)
                 {
                     cboMedicoTratante.Enabled = true;
                 }

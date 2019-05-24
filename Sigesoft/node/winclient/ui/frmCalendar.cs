@@ -3706,6 +3706,54 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
         }
+
+        private void btnFusionar_Click(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                OperationResult objOperationResult = new OperationResult();
+                List<string> Services = new List<string>();
+                var personId = "";
+                bool personChange = false;
+                foreach (var row in grdDataCalendar.Rows)
+                {
+                    if ((bool)row.Cells["b_Seleccionar"].Value)
+                    {
+                        var strpersonId = row.Cells["v_PersonId"].Value.ToString();
+                        var strServiceId = row.Cells["v_ServiceId"].Value.ToString();
+                        var circuitStartDate = row.Cells["d_EntryTimeCM"].Value;
+                        Services.Add(strServiceId);
+                        if (personId == strpersonId || personChange == false)
+                        {
+                            personId = strpersonId;
+                            personChange = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por favor, elija a una misma persona para poder fusionar", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        if (circuitStartDate == null)
+                        {
+                            MessageBox.Show("Procure que el paciente inicie el circuito.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                }
+
+                if (Services.Count > 0)
+                {
+                    var result = new PacientBL().FusionServices(ref objOperationResult, Services,
+                        Globals.ClientSession.GetAsList());
+                    if (result == null)
+                    {
+                        MessageBox.Show(objOperationResult.ErrorMessage, "ERROR", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }	
+            }
+
+        }
        
     }
 }
