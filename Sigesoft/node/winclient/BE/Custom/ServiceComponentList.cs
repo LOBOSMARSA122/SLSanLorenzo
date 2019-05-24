@@ -7,6 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class ServiceComponentList
     {
+        public string v_CodigoSegus { get; set; }
         public double? r_Descount { get; set; }
         public int? i_MasterServiceId { get; set; }
         public int? i_KindOfService { get; set; }

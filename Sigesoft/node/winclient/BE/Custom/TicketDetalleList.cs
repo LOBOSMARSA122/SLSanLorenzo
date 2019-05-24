@@ -5,16 +5,36 @@ using System.Text;
 
 namespace Sigesoft.Node.WinClient.BE
 {
+
+    public class TiposCuenta
+    {
+        public string NombreCuenta { get; set; }
+        public int? Encontrados { get; set; }
+        public decimal? TotalImporte { get; set; }
+        public List<JoinTicketDetails> ListJoinTickets { get; set; }
+    }
+
     public class JoinTicketDetails
     {
-        public string v_Found { get; set; }
-        public string v_Description { get; set; }
+
+        
+        public string Descripcion { get; set; }
+        public decimal? Importe { get; set; }
+        public decimal? Descuento { get; set; }
+        public decimal? Total { get; set; }
+
         public string v_Amount { get; set; }
         public string v_Discount { get; set; }
         public string v_Total { get; set; }
+        public string v_Found { get; set; }
+        public string v_Description { get; set; }
+
     }
+
     public class TicketDetalleList
     {
+        public int i_TipoCuenta { get; set; }
+        public string v_TipoCuentaName { get; set; }
         public string v_TicketDetalleId { get; set; }
         public string v_TicketId { get; set; }
         public string v_IdProductoDetalle { get; set; }

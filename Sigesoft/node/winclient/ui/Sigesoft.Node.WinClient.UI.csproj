@@ -122,6 +122,7 @@
     <Reference Include="Infragistics4.Win.SupportDialogs.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinCalcManager.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinCalcManager.v13.1.FormulaBuilder, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinChart.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinDataSource.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -1420,6 +1421,12 @@
     </Compile>
     <Compile Include="frmReporteGerencia.Designer.cs">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTracking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTracking.Designer.cs">
+      <DependentUpon>frmTracking.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUpdateAdditionalExam.cs">
       <SubType>Form</SubType>
@@ -3944,6 +3951,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteGerencia.resx">
       <DependentUpon>frmReporteGerencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTracking.resx">
+      <DependentUpon>frmTracking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateAdditionalExam.resx">
       <DependentUpon>frmUpdateAdditionalExam.cs</DependentUpon>

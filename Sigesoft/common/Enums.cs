@@ -216,6 +216,13 @@ namespace Sigesoft.Common
         EsperandoAptitud = 6
     }
 
+    public enum TrackingStatus
+    {
+        PorIniciar = 0,
+        Iniciado = 1,
+        Culminado = 2
+    }
+
     public enum Flag_Call
     {
         NoseLlamo = 0,
