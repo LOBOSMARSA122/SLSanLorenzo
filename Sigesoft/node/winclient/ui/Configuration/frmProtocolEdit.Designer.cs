@@ -120,6 +120,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdProtocolComponent)).BeginInit();
             this.cmProtocol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).BeginInit();
@@ -236,15 +237,16 @@
             this.cmProtocol.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.New,
             this.Edit,
-            this.delete});
+            this.delete,
+            this.verCambiosToolStripMenuItem});
             this.cmProtocol.Name = "contextMenuStrip1";
-            this.cmProtocol.Size = new System.Drawing.Size(126, 70);
+            this.cmProtocol.Size = new System.Drawing.Size(153, 114);
             // 
             // New
             // 
             this.New.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.New.Name = "New";
-            this.New.Size = new System.Drawing.Size(125, 22);
+            this.New.Size = new System.Drawing.Size(152, 22);
             this.New.Text = "Nuevo";
             this.New.Click += new System.EventHandler(this.New_Click);
             // 
@@ -252,7 +254,7 @@
             // 
             this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
             this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(125, 22);
+            this.Edit.Size = new System.Drawing.Size(152, 22);
             this.Edit.Text = "Modificar";
             this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
@@ -260,7 +262,7 @@
             // 
             this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(125, 22);
+            this.delete.Size = new System.Drawing.Size(152, 22);
             this.delete.Text = "Eliminar";
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -1100,6 +1102,14 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // verCambiosToolStripMenuItem
+            // 
+            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
+            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
+            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
+            // 
             // frmProtocolEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1199,5 +1209,6 @@
         private System.Windows.Forms.Label lblFactor;
         private System.Windows.Forms.TextBox txtCamaHosp;
         private System.Windows.Forms.Label lblBedHospital;
+        private System.Windows.Forms.ToolStripMenuItem verCambiosToolStripMenuItem;
     }
 }

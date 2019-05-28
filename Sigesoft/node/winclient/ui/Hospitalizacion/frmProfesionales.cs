@@ -126,5 +126,36 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             lblNombreProfesional.Text = oSystemUserList.v_PersonName;
         }
+
+        private void verCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _medicoId = grdData.Selected.Rows[0].Cells["v_MedicoId"].Value.ToString();
+            string commentary = oHospitalizacionBL.GetComentaryUpdateByMedicoId(_medicoId);
+            if (commentary == "" || commentary == null)
+            {
+                MessageBox.Show("Aún no se han realizado cambios.", "AVISO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            var frm = new frmViewChanges(commentary);
+            frm.ShowDialog();
+        }
+
+        private void grdData_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (grdData.Rows == null)
+            {
+
+                cmProfesionales.Items["verCambiosToolStripMenuItem"].Enabled = false;
+            }
+            else if (grdData.Rows.Count == 0)
+            {
+                cmProfesionales.Items["verCambiosToolStripMenuItem"].Enabled = false;
+            }
+            else
+            {
+                cmProfesionales.Items["verCambiosToolStripMenuItem"].Enabled = true;
+            }
+        }
     }
 }

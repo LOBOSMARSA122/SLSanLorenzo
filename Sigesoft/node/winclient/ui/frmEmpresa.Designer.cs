@@ -334,6 +334,8 @@
             this.btnObtenerProtocolos = new System.Windows.Forms.Button();
             this.btnAsignarOrden = new System.Windows.Forms.Button();
             this.btnProcesar = new System.Windows.Forms.Button();
+            this.cmEmpresas = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -380,6 +382,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uvOccupation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvWarehouse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvOrganization)).BeginInit();
+            this.cmEmpresas.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -587,6 +590,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdData.CausesValidation = false;
+            this.grdData.ContextMenuStrip = this.cmEmpresas;
             appearance1.BackColor2 = System.Drawing.Color.White;
             appearance1.BorderColor = System.Drawing.Color.DarkGray;
             appearance1.ForeColor = System.Drawing.Color.Black;
@@ -3089,7 +3093,7 @@
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.Location = new System.Drawing.Point(1074, 433);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
@@ -3108,7 +3112,7 @@
             this.btnOK.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOK.Location = new System.Drawing.Point(1074, 352);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
@@ -3257,6 +3261,21 @@
             this.btnProcesar.Visible = false;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
+            // cmEmpresas
+            // 
+            this.cmEmpresas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verCambiosToolStripMenuItem});
+            this.cmEmpresas.Name = "cmEmpresas";
+            this.cmEmpresas.Size = new System.Drawing.Size(153, 48);
+            // 
+            // verCambiosToolStripMenuItem
+            // 
+            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
+            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
+            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
+            // 
             // frmEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3346,6 +3365,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uvOccupation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvWarehouse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvOrganization)).EndInit();
+            this.cmEmpresas.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3538,6 +3558,8 @@
         private System.Windows.Forms.Label lblFactor;
         private System.Windows.Forms.TextBox txtFactorMed;
         private System.Windows.Forms.Label lblFactorMed;
+        private System.Windows.Forms.ContextMenuStrip cmEmpresas;
+        private System.Windows.Forms.ToolStripMenuItem verCambiosToolStripMenuItem;
     }
 }
 

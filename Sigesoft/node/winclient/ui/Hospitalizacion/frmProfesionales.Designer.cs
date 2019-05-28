@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Medico");
@@ -48,7 +49,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblNombreProfesional = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.cmProfesionales = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
+            this.cmProfesionales.SuspendLayout();
             this.SuspendLayout();
             // 
             // grdData
@@ -57,6 +61,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdData.CausesValidation = false;
+            this.grdData.ContextMenuStrip = this.cmProfesionales;
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -129,6 +134,7 @@
             this.grdData.Size = new System.Drawing.Size(819, 345);
             this.grdData.TabIndex = 101;
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
+            this.grdData.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdData_MouseDown);
             // 
             // btnEditar
             // 
@@ -256,6 +262,21 @@
             this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
+            // cmProfesionales
+            // 
+            this.cmProfesionales.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verCambiosToolStripMenuItem});
+            this.cmProfesionales.Name = "cmProfesionales";
+            this.cmProfesionales.Size = new System.Drawing.Size(141, 26);
+            // 
+            // verCambiosToolStripMenuItem
+            // 
+            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
+            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
+            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
+            // 
             // frmProfesionales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,6 +297,7 @@
             this.Text = "Profesionales";
             this.Load += new System.EventHandler(this.frmProfesionales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
+            this.cmProfesionales.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,5 +313,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblNombreProfesional;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.ContextMenuStrip cmProfesionales;
+        private System.Windows.Forms.ToolStripMenuItem verCambiosToolStripMenuItem;
     }
 }

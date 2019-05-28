@@ -381,6 +381,8 @@ namespace Sigesoft.Node.WinClient.UI
 
                 if (row != null)
                 {
+
+                    contextMenuStrip1.Items["verCambiosToolStripMenuItem"].Enabled = true;
                     grdData.Rows[row.Index].Selected = true;
                     contextMenuStrip1.Items["mnuGridNuevo"].Enabled = true;
                     contextMenuStrip1.Items["mnuGridModificar"].Enabled = true;
@@ -389,6 +391,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
                 else
                 {
+                    contextMenuStrip1.Items["verCambiosToolStripMenuItem"].Enabled = true;
                     contextMenuStrip1.Items["mnuGridNuevo"].Enabled = true;
                     contextMenuStrip1.Items["mnuGridModificar"].Enabled = false;
                     contextMenuStrip1.Items["mnuGridAntecedent"].Enabled = false;
@@ -1426,6 +1429,20 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 ddlDepartamentId.SelectedValue = departamento[1].Id;
             }
+        }
+
+        private void verCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string pacientId = grdData.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
+            string commentary = _objPacientBL.GetComentaryUpdateByPersonId(pacientId);
+            if (commentary == "" || commentary == null)
+            {
+                MessageBox.Show("Aún no se han realizado cambios.", "AVISO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            var frm = new frmViewChanges(commentary);
+            frm.ShowDialog();
         }
 
     }

@@ -475,6 +475,19 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void verCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string commentary = _protocolBL.GetComentaryUpdateByProtocolId(_protocolId);
+            if (commentary == "")
+            {
+                MessageBox.Show("Aún no se han realizado cambios.", "AVISO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            var frm = new frmViewChanges(commentary);
+            frm.ShowDialog();
+        }
                
     }
 }

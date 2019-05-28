@@ -383,12 +383,14 @@ namespace Sigesoft.Node.WinClient.UI
 
             if (row != null)
             {
+                cmEmpresas.Items["verCambiosToolStripMenuItem"].Enabled = true;
                 grdData.Rows[row.Index].Selected = true;
                 contextMenuStrip1.Items["mnuGridNuevo"].Enabled = true;
                 contextMenuStrip1.Items["mnuGridModificar"].Enabled = true;
             }
             else
             {
+                cmEmpresas.Items["verCambiosToolStripMenuItem"].Enabled = false;
                 contextMenuStrip1.Items["mnuGridNuevo"].Enabled = true;
                 contextMenuStrip1.Items["mnuGridModificar"].Enabled = false;
             }
@@ -2463,6 +2465,19 @@ namespace Sigesoft.Node.WinClient.UI
             }
             
             
+        }
+
+        private void verCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string commentary = new OrganizationBL().GetComentaryUpdateByOrganizationId(_organizationId);
+            if (commentary == "" || commentary == null)
+            {
+                MessageBox.Show("Aún no se han realizado cambios.", "AVISO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            var frm = new frmViewChanges(commentary);
+            frm.ShowDialog();
         }
 
     }
