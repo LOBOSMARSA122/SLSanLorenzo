@@ -51,8 +51,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                  }
                 
-            } 
-            else if (_mode == "Edit")
+            }
+            else if (_mode == "EditASEGU" || _mode == "EditHOSPI")
             {
                 _hospitalizacionHabitaciónDto = _hospitalizacionBL.GetHabitacion(ref objOperationResult, _hospitalizacionHabitacionId);
 
@@ -161,17 +161,24 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     this.Close();
                 }
             }
-            else if (_mode == "Edit")
+            else if (_mode == "EditASEGU" || _mode == "EditHOSPI")
             {
                 _hospitalizacionHabitaciónDto.v_HopitalizacionId = _hospitalizacion;
                 _hospitalizacionHabitaciónDto.i_HabitacionId = int.Parse(cboHabitación.SelectedValue.ToString());
                 _hospitalizacionHabitaciónDto.d_StartDate = dtpFechaInicio.Value;
                 _hospitalizacionHabitaciónDto.d_EndDate = dtpFechaFin.Value;
                 _hospitalizacionHabitaciónDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante : (int)CargoHospitalizacion.Paciente;
-          
                 decimal d;
-                _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null; 
-
+                if (_mode == "EditASEGU")
+                {
+                    _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
+                    _hospitalizacionHabitaciónDto.d_SaldoAseguradora = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
+                }
+                else if (_mode == "EditHOSPI")
+                {
+                    _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
+                }
+                
                 DialogResult Result = MessageBox.Show("¿Desea Guardar Habitación?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (Result == System.Windows.Forms.DialogResult.Yes)

@@ -35,6 +35,13 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaServicio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Paciente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Aseguradora");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Factor");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PPS");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Estado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Emision");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("N° Fact.");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Recepcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Saldo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Detalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Detalle", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Descripcion");
@@ -68,6 +75,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnLiquidacion = new System.Windows.Forms.Button();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountCalendar = new System.Windows.Forms.Label();
@@ -76,7 +84,6 @@
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.txtTotalAseguradora = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -234,6 +241,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
             // 
+            // button1
+            // 
+            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(1060, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 33);
+            this.button1.TabIndex = 154;
+            this.button1.Text = "Generar Pre-Liquidación";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnLiquidacion
             // 
             this.btnLiquidacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
@@ -258,22 +278,40 @@
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn29.Header.VisiblePosition = 0;
+            ultraGridColumn29.Width = 145;
             ultraGridColumn30.Header.VisiblePosition = 1;
+            ultraGridColumn30.Width = 103;
             ultraGridColumn31.Header.VisiblePosition = 2;
-            ultraGridColumn31.Width = 186;
+            ultraGridColumn31.Width = 217;
             ultraGridColumn38.Header.VisiblePosition = 3;
             ultraGridColumn38.Width = 191;
-            ultraGridColumn32.Header.VisiblePosition = 4;
+            ultraGridColumn3.Header.VisiblePosition = 4;
+            ultraGridColumn3.Width = 89;
+            ultraGridColumn4.Header.VisiblePosition = 5;
+            ultraGridColumn5.Header.VisiblePosition = 6;
+            ultraGridColumn6.Header.VisiblePosition = 7;
+            ultraGridColumn7.Header.VisiblePosition = 8;
+            ultraGridColumn8.Header.VisiblePosition = 9;
+            ultraGridColumn9.Header.VisiblePosition = 10;
+            ultraGridColumn32.Header.VisiblePosition = 11;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn29,
             ultraGridColumn30,
             ultraGridColumn31,
             ultraGridColumn38,
+            ultraGridColumn3,
+            ultraGridColumn4,
+            ultraGridColumn5,
+            ultraGridColumn6,
+            ultraGridColumn7,
+            ultraGridColumn8,
+            ultraGridColumn9,
             ultraGridColumn32});
             ultraGridColumn33.ColSpan = ((short)(2));
             ultraGridColumn33.Header.VisiblePosition = 0;
+            ultraGridColumn33.Width = 229;
             ultraGridColumn34.Header.VisiblePosition = 1;
-            ultraGridColumn34.Width = 186;
+            ultraGridColumn34.Width = 217;
             ultraGridColumn39.Header.VisiblePosition = 2;
             ultraGridColumn39.Width = 191;
             ultraGridColumn35.Header.VisiblePosition = 6;
@@ -281,10 +319,10 @@
             ultraGridColumn36.Header.VisiblePosition = 7;
             ultraGridColumn36.Width = 102;
             ultraGridColumn37.Header.VisiblePosition = 5;
-            ultraGridColumn37.Width = 68;
+            ultraGridColumn37.Width = 95;
             ultraGridColumn1.Header.VisiblePosition = 4;
             ultraGridColumn2.Header.VisiblePosition = 3;
-            ultraGridColumn2.Width = 61;
+            ultraGridColumn2.Width = 89;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn33,
             ultraGridColumn34,
@@ -408,19 +446,6 @@
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 108;
             this.label3.Text = "TOTAL ASEGURADORA";
-            // 
-            // button1
-            // 
-            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1060, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 33);
-            this.button1.TabIndex = 154;
-            this.button1.Text = "Generar Pre-Liquidación";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmLiquidacionAseguradora
             // 

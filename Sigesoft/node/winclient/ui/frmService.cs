@@ -104,7 +104,7 @@ namespace Sigesoft.Node.WinClient.UI
             var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
             Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
             Utils.LoadDropDownList(ddlProtocolId, "Value1", "Id", BLL.Utils.GetProtocolsByOrganizationForCombo(ref objOperationResult, "-1", "-1", null), DropDownListAction.All);
-                       
+
             Utils.LoadDropDownList(ddServiceStatusId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 125, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlStatusAptitudId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 124, null), DropDownListAction.All);
 
@@ -112,19 +112,19 @@ namespace Sigesoft.Node.WinClient.UI
 
             // Obtener permisos de cada examen de un rol especifico
             var componentProfile = _serviceBL.GetRoleNodeComponentProfileByRoleNodeId(Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_RoleId.Value);
-            
+
             _componentListTemp = BLL.Utils.GetAllComponents(ref objOperationResult);
 
             var xxx = _componentListTemp.FindAll(p => p.Value4 != -1);
 
             List<KeyValueDTO> groupComponentList = xxx.GroupBy(x => x.Value4).Select(group => group.First()).ToList();
 
-             groupComponentList.AddRange(_componentListTemp.ToList().FindAll(p => p.Value4 == -1));
-             // Remover los componentes que no estan asignados al rol del usuario
-             var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
+            groupComponentList.AddRange(_componentListTemp.ToList().FindAll(p => p.Value4 == -1));
+            // Remover los componentes que no estan asignados al rol del usuario
+            var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
 
-             Utils.LoadDropDownList(cboUserMed, "Value1", "Id", BLL.Utils.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
-          
+            Utils.LoadDropDownList(cboUserMed, "Value1", "Id", BLL.Utils.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+
             Utils.LoadDropDownList(ddlConsultorio, "Value1", "Id", results, DropDownListAction.Select);
 
             dtpDateTimeStar.CustomFormat = "dd/MM/yyyy";
@@ -145,7 +145,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             OperationResult objOperationResult = new OperationResult();
 
-            if (ddlMasterServiceId.SelectedValue !=null )
+            if (ddlMasterServiceId.SelectedValue != null)
             {
                 var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
 
@@ -154,14 +154,14 @@ namespace Sigesoft.Node.WinClient.UI
                     ddlEsoType.Enabled = true;
                     ddlProtocolId.Enabled = true;
                     Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
-          
+
                     //Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.All);
 
                 }
                 else
                 {
                     Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
-          
+
                     //Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.All);
                     ddlEsoType.Enabled = false;
                     ddlProtocolId.Enabled = false;
@@ -227,7 +227,7 @@ namespace Sigesoft.Node.WinClient.UI
             if (ddlMasterServiceId.SelectedValue.ToString() != "-1") Filters.Add("i_MasterServiceId==" + ddlMasterServiceId.SelectedValue);
             if (ddlServiceTypeId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceTypeId==" + ddlServiceTypeId.SelectedValue);
             if (ddlEsoType.SelectedValue.ToString() != "-1") Filters.Add("i_EsoTypeId==" + ddlEsoType.SelectedValue);
-            if (ddlProtocolId.SelectedValue.ToString() != "-1") Filters.Add("v_ProtocolId=="+ "\"" + ddlProtocolId.SelectedValue + "\"");
+            if (ddlProtocolId.SelectedValue.ToString() != "-1") Filters.Add("v_ProtocolId==" + "\"" + ddlProtocolId.SelectedValue + "\"");
             if (ddlStatusAptitudId.SelectedValue.ToString() != "-1") Filters.Add("i_AptitudeStatusId==" + ddlStatusAptitudId.SelectedValue);
             if (cboUserMed.SelectedValue.ToString() != "-1") Filters.Add("i_ApprovedUpdateUserId==" + cboUserMed.SelectedValue);
 
@@ -255,7 +255,7 @@ namespace Sigesoft.Node.WinClient.UI
             var objData = GetData(0, null, "", strFilterExpression);
             ListaGrilla = objData;
             grdDataService.DataSource = objData;
-
+            #region Ocultar columnas
             grdDataService.DisplayLayout.Bands[0].Columns["v_PersonId"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["b_FechaEntrega"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["v_ServiceStatusName"].Hidden = true;
@@ -267,6 +267,9 @@ namespace Sigesoft.Node.WinClient.UI
             grdDataService.DisplayLayout.Bands[0].Columns["v_DiagnosticRepositoryId"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["v_DiseasesName"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["d_ExpirationDateDiagnostic"].Hidden = true;
+            grdDataService.DisplayLayout.Bands[0].Columns["d_ServiceDate"].Hidden = true;
+            grdDataService.DisplayLayout.Bands[0].Columns["TipoServicioMaster"].Hidden = true;
+            grdDataService.DisplayLayout.Bands[0].Columns["TipoServicioESO"].Hidden = true;
 
             grdDataService.DisplayLayout.Bands[0].Columns["v_Recommendation"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["i_ServiceId"].Hidden = true;
@@ -306,6 +309,23 @@ namespace Sigesoft.Node.WinClient.UI
             grdDataService.DisplayLayout.Bands[0].Columns["UsuarioMedicina"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["item"].Hidden = true;
             grdDataService.DisplayLayout.Bands[0].Columns["i_ApprovedUpdateUserId"].Hidden = true;
+            #endregion
+
+            grdDataService.DisplayLayout.Bands[0].Columns["Liq"].Header.VisiblePosition = 0;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_DocNumber"].Header.VisiblePosition = 1;
+            grdDataService.DisplayLayout.Bands[0].Columns["Fecha"].Header.VisiblePosition = 2;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_Pacient"].Header.VisiblePosition = 3;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_ServiceStatusName"].Header.VisiblePosition = 4;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_AptitudeStatusName"].Header.VisiblePosition = 5;
+            grdDataService.DisplayLayout.Bands[0].Columns["CompMinera"].Header.VisiblePosition = 6;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_OrganizationName"].Header.VisiblePosition = 7;
+            grdDataService.DisplayLayout.Bands[0].Columns["Tercero"].Header.VisiblePosition = 8;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_ProtocolName"].Header.VisiblePosition = 9;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_ServiceId"].Header.VisiblePosition = 10;
+            grdDataService.DisplayLayout.Bands[0].Columns["TipoServicio"].Header.VisiblePosition = 11;
+            grdDataService.DisplayLayout.Bands[0].Columns["UsuarioCrea"].Header.VisiblePosition = 12;
+            grdDataService.DisplayLayout.Bands[0].Columns["v_MedicoTratante"].Header.VisiblePosition = 13;
+
 
             lblRecordCountCalendar.Text = string.Format("Se encontraron {0} registros.", objData.Count());
 
@@ -357,12 +377,12 @@ namespace Sigesoft.Node.WinClient.UI
             ddlProtocolId.Enabled = true;
 
             OperationResult objOperationResult = new OperationResult();
-                
+
             var id3 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
 
             //Utils.LoadDropDownList(ddlEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlProtocolId, "Value1", "Id", BLL.Utils.GetProtocolsByOrganizationForCombo(ref objOperationResult, id3[0], id3[1], null), DropDownListAction.All);          
-            
+
         }
 
         private void ddlServiceTypeId_SelectedIndexChanged_1(object sender, EventArgs e)

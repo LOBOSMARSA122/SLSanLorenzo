@@ -27367,7 +27367,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 select new LumboSacracs
 								 {
 									 EmpresaCliente = D1.v_Name,
-									 Trabajador = B.v_FirstLastName + " " + B.v_FirstLastName + " " + B.v_FirstName,
+									 Trabajador = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
 									 FechaNacimiento = B.d_Birthdate,
 									 FechaEvaluacion = A.d_ServiceDate,
 									 Puesto = B.v_CurrentOccupation,
@@ -35623,6 +35623,21 @@ namespace Sigesoft.Node.WinClient.BLL
                             from J22 in J22_join.DefaultIfEmpty()
                             join K in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 } equals new { a = K.i_ParameterId, b = K.i_GroupId } into K_join
                                     from K in K_join.DefaultIfEmpty()
+                            join N in dbContext.systemuser on C.i_InsertUserId equals N.i_SystemUserId
+                            join O in dbContext.person on N.v_PersonId equals O.v_PersonId
+                            join P in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = P.i_ParameterId, b = P.i_GroupId } into P_join
+                                from P in P_join.DefaultIfEmpty()
+
+                            join E in dbContext.servicecomponent on A.v_ServiceId equals E.v_ServiceId
+
+                            join F in dbContext.systemuser on E.i_MedicoTratanteId equals F.i_SystemUserId into F_join
+                            from F in F_join.DefaultIfEmpty()
+
+                            join G in dbContext.person on F.v_PersonId equals G.v_PersonId into G_join
+                            from G in G_join.DefaultIfEmpty()
+                            
+                            join Q in dbContext.systemparameter on new { a = I.i_EsoTypeId.Value, b = 118 } equals new { a = Q.i_ParameterId, b = Q.i_GroupId } into Q_join
+                            from Q in Q_join.DefaultIfEmpty()
 
                             where A.i_IsDeleted == 0
                             && L.i_LineStatusId == (int)LineStatus.EnCircuito && A.v_ProtocolId != null
@@ -35652,7 +35667,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_OrganizationName = J.v_Name,
                                 i_ServiceId = C.i_ServiceId,
                                 v_AptitudeStatusName = K.v_Value1,
-                                v_DocNumber = B.v_DocNumber
+                                v_DocNumber = B.v_DocNumber,
+                                UsuarioCrea = O.v_FirstLastName + " " + O.v_SecondLastName + ", " + O.v_FirstName,
+                                TipoServicioMaster =  P.v_Value1,
+                                TipoServicioESO =  Q.v_Value1,
+                                v_MedicoTratante = G.v_FirstLastName + " " + G.v_SecondLastName + ", " + G.v_FirstName
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -35675,11 +35694,42 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 List<ServiceGridJerarquizadaList> objData = query.ToList();
 
-                var result = objData.GroupBy(g => g.v_ServiceId).Select(s => s.First()).ToList();
+                var datos = (from a in objData
+                    select new ServiceGridJerarquizadaList
+                    {
+                        b_FechaEntrega = a.b_FechaEntrega,
+                        v_PersonId = a.v_PersonId,
+                        v_ServiceId = a.v_ServiceId,
+                        v_Pacient = a.v_Pacient,
+                        v_PacientDocument = a.v_PacientDocument,
+                        i_ServiceStatusId = a.i_ServiceStatusId,
+                        i_StatusLiquidation = a.i_StatusLiquidation,
+                        v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                        v_CustomerLocationId = a.v_CustomerLocationId,
+                        i_MasterServiceId = a.i_MasterServiceId,
+                        i_ServiceTypeId = a.i_ServiceTypeId,
+                        i_EsoTypeId = a.i_EsoTypeId,
+                        v_ProtocolId = a.v_ProtocolId,
+                        v_ProtocolName = a.v_ProtocolName,
+                        i_AptitudeStatusId = a.i_AptitudeStatusId,
+                        i_ApprovedUpdateUserId = a.i_ApprovedUpdateUserId,
+                        CompMinera = a.CompMinera,
+                        Tercero = a.Tercero,
+                        v_OrganizationName = a.v_OrganizationName,
+                        i_ServiceId = a.i_ServiceId,
+                        v_AptitudeStatusName = a.v_AptitudeStatusName,
+                        v_DocNumber = a.v_DocNumber,
+                        UsuarioCrea = a.UsuarioCrea,
+                        TipoServicio = a.TipoServicioMaster == "EXAMEN SALUD OCUPACIONAL" ? "EMO" + " - " + a.TipoServicioESO : a.TipoServicioMaster + " - " + a.TipoServicioESO,
+                        v_MedicoTratante = a.v_MedicoTratante == "-1" ? " - - -" : a.v_MedicoTratante == null ? " - - - " : a.v_MedicoTratante == "SAN LORENZO, CLINICA" ? "CLINICA SAN LORENZO" : a.v_MedicoTratante,
+                        Fecha = a.d_ServiceDate.ToString()
+                    }).ToList();
 
+                var result = datos.GroupBy(g => g.v_ServiceId).Select(s => s.First()).ToList();
                 var bindingList = new BindingList<ServiceGridJerarquizadaList>(result);
-
                 pobjOperationResult.Success = 1;
+                //return bindingList;
+
                 return bindingList;
 
             }

@@ -38,5 +38,7 @@ namespace Sigesoft.Node.WinClient.BE
         public int i_EsCoaseguro { get; set; }
 
         public decimal? d_Importe { get; set; }
+
+        public string UsuarioCrea { get; set; }
     }
 }
