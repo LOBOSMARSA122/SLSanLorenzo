@@ -112,6 +112,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbLine)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -416,15 +417,16 @@
             this.contextMenuMedicalExam.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuGridNewMedicalExam,
             this.mnuGridEditMedicalExam,
-            this.mnuGridDeleteMedicalExam});
+            this.mnuGridDeleteMedicalExam,
+            this.verCambiosToolStripMenuItem});
             this.contextMenuMedicalExam.Name = "contextMenuStrip1";
-            this.contextMenuMedicalExam.Size = new System.Drawing.Size(126, 70);
+            this.contextMenuMedicalExam.Size = new System.Drawing.Size(153, 114);
             // 
             // mnuGridNewMedicalExam
             // 
             this.mnuGridNewMedicalExam.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridNewMedicalExam.Image")));
             this.mnuGridNewMedicalExam.Name = "mnuGridNewMedicalExam";
-            this.mnuGridNewMedicalExam.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridNewMedicalExam.Size = new System.Drawing.Size(152, 22);
             this.mnuGridNewMedicalExam.Text = "Nuevo";
             this.mnuGridNewMedicalExam.Click += new System.EventHandler(this.mnuGridNewMedicalExam_Click);
             // 
@@ -432,7 +434,7 @@
             // 
             this.mnuGridEditMedicalExam.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridEditMedicalExam.Image")));
             this.mnuGridEditMedicalExam.Name = "mnuGridEditMedicalExam";
-            this.mnuGridEditMedicalExam.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridEditMedicalExam.Size = new System.Drawing.Size(152, 22);
             this.mnuGridEditMedicalExam.Text = "Modificar";
             this.mnuGridEditMedicalExam.Click += new System.EventHandler(this.mnuGridEditMedicalExam_Click);
             // 
@@ -440,7 +442,7 @@
             // 
             this.mnuGridDeleteMedicalExam.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridDeleteMedicalExam.Image")));
             this.mnuGridDeleteMedicalExam.Name = "mnuGridDeleteMedicalExam";
-            this.mnuGridDeleteMedicalExam.Size = new System.Drawing.Size(125, 22);
+            this.mnuGridDeleteMedicalExam.Size = new System.Drawing.Size(152, 22);
             this.mnuGridDeleteMedicalExam.Text = "Eliminar";
             this.mnuGridDeleteMedicalExam.Click += new System.EventHandler(this.mnuGridDeleteMedicalExam_Click);
             // 
@@ -774,6 +776,14 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // verCambiosToolStripMenuItem
+            // 
+            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
+            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
+            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
+            // 
             // frmMedicalExam
             // 
             this.AcceptButton = this.btnFilter;
@@ -847,6 +857,7 @@
         private Infragistics.Win.UltraWinGrid.UltraCombo cbLine;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUnidadProdId;
+        private System.Windows.Forms.ToolStripMenuItem verCambiosToolStripMenuItem;
     }
 }
 

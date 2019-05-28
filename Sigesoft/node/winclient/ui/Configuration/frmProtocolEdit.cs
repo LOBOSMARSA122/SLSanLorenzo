@@ -424,7 +424,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 _protocolDTO.i_ValidInDays = txtComision.Text != string.Empty ? int.Parse(txtComision.Text) : (int?)null;
                 _protocolDTO.i_IsActive = Convert.ToInt32(chkEsActivo.Checked);
                 _protocolDTO.v_NombreVendedor = cboVendedor.Text;
-                _protocolDTO.v_ComentaryUpdate = SetChanges();
+                
                 _protocolDTO.r_PriceFactor = float.Parse(txtFactor.Text);
                 _protocolDTO.r_HospitalBedPrice = float.Parse(txtCamaHosp.Text);
                 _protocolDTO.r_MedicineDiscount = float.Parse(txtEps.Text);
@@ -485,7 +485,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     #endregion
 
                     _protocolDTO.v_ProtocolId = _protocolId;
-
+                    _protocolDTO.v_ComentaryUpdate = SetChanges();
                     _protocolcomponentListDTOUpdate = new List<protocolcomponentDto>();
                     _protocolcomponentListDTODelete = new List<protocolcomponentDto>();
 
@@ -1306,6 +1306,20 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             {
                 e.Handled = true;
             }
+        }
+
+        private void verCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            string commentary = _protocolBL.GetComentaryUpdateByProtocolComponentId(_protocolComponentId);
+            if (commentary == "")
+            {
+                MessageBox.Show("Aún no se han realizado cambios.", "AVISO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            var frm = new frmViewChanges(commentary);
+            frm.ShowDialog();
         }
     }
 }

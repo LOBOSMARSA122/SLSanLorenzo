@@ -36257,23 +36257,13 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-
         public List<ServiceList> GetServiceAndCost(string serviceId)
         {
             try
             {
-                
-                //Primero busco todos el id de la hospitalizacion que tuvo el paciente
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var HopitalizacionId = (from hoser in dbContext.hospitalizacionservice
-                    where hoser.v_ServiceId == serviceId
-                    select hoser.v_HopitalizacionId).FirstOrDefault();
-
-
                 //Ahora busco todos los servicios de hospitalizacion
-                var ServicesId = (from hoser in dbContext.hospitalizacionservice
-                    where hoser.v_HopitalizacionId == HopitalizacionId
-                    select hoser.v_ServiceId).ToList();
+                var ServicesId = GetServicesId(serviceId);
 
                 List<ServiceList> _ListServices = new List<ServiceList>();
 
@@ -36308,6 +36298,238 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<ComponentForLiquiCustom> GetServiceAndCost_(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //Ahora busco todos los servicios de hospitalizacion
+                var ServicesId = GetServicesId(serviceId);
+
+                List<ComponentForLiquiCustom> _ListServices = new List<ComponentForLiquiCustom>();
+                List<ComponentForLiquiCustom> _ListServicesFinal = new List<ComponentForLiquiCustom>();
+                foreach (var _serviceId in ServicesId)
+                {
+                    var list = (from ser in dbContext.service
+                        join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId
+                        join sys in dbContext.systemparameter on new { a = ser.i_MasterServiceId.Value, b = 119 }
+                            equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                        from sys in sys_join.DefaultIfEmpty()
+
+                        where ser.v_ServiceId == _serviceId
+                                select new ComponentForLiquiCustom
+                        {
+                            MasterServiceName = sys.v_Value1,
+                            MasterServiceId = ser.i_MasterServiceId.Value,
+                        }).OrderBy(x => x.MasterServiceName).FirstOrDefault();
+
+                    list.ListKindOfServices = GetServicesComponents_(_serviceId);
+
+                    _ListServices.Add(list);
+                }
+
+                //Lo agrupo si es hospitalizacion y emergencia
+                foreach (var item in _ListServices)
+                {
+                    if (item.MasterServiceId != (int)MasterService.Emergencia)
+                    {
+                        if (_ListServicesFinal.Count == 0)
+                        {
+                            _ListServicesFinal.Add(item);
+                        }
+                        else
+                        {
+                            _ListServicesFinal[0].ListKindOfServices.AddRange(item.ListKindOfServices);
+                        }
+                    }
+                    else
+                    {
+                        _ListServicesFinal.Add(item);
+                    }
+                }
+
+                List<ComponentForLiquiCustom> _ListServicesFinal2 = new List<ComponentForLiquiCustom>();
+                
+                
+                foreach (var dataFinal in _ListServicesFinal)
+                {
+                    List<string> ListfindCategoryName = new List<string>();
+                    List<string> ListfindKindOfServiceName = new List<string>();
+                    List<KindOfServices> _ListKindOfServices = new List<KindOfServices>();
+                    
+                    foreach (var itemF in dataFinal.ListKindOfServices)
+                    {//Agrupo las Clases de Servicio
+                        List<CategoryForKOS> _ListCategoryForKOS = new List<CategoryForKOS>();
+                        var find = ListfindKindOfServiceName.Find(x => x == itemF.KindOfServiceName);
+                        if (find == null)
+                        {
+                            KindOfServices _KindOfServices = new KindOfServices();
+                            _KindOfServices.KindOfServiceId = itemF.KindOfServiceId;
+                            _KindOfServices.KindOfServiceName = itemF.KindOfServiceName;
+
+                            _KindOfServices.ListCategoryForKOS = new List<CategoryForKOS>();
+                            _KindOfServices.ListCategoryForKOS.AddRange(itemF.ListCategoryForKOS);
+
+                            _ListKindOfServices.Add(_KindOfServices);
+
+                            ListfindKindOfServiceName.Add(itemF.KindOfServiceName);
+                        }
+                        else
+                        {
+                            _ListKindOfServices.Find(x => x.KindOfServiceName == find).ListCategoryForKOS.AddRange(itemF.ListCategoryForKOS);
+                        }
+
+
+                        foreach (var dateCat in itemF.ListCategoryForKOS)
+                        {//Agrupo las categorias x clase de servicio
+                            var findCategoryForKOS = ListfindCategoryName.Find(x => x == dateCat.CategoryName);
+                            if (findCategoryForKOS == null)
+                            {
+                                CategoryForKOS _CategoryForKOS = new CategoryForKOS();
+                                _CategoryForKOS.CategoryName = dateCat.CategoryName;
+                                _CategoryForKOS.KindOfServiceId = dateCat.KindOfServiceId.Value;
+                                _CategoryForKOS.KindOfServiceName = dateCat.KindOfServiceName;
+
+                                _CategoryForKOS.ListServicesComponentForKOS = new List<ServicesComponentForCategory>();
+                                _CategoryForKOS.ListServicesComponentForKOS.AddRange(dateCat.ListServicesComponentForKOS);
+
+                                ListfindCategoryName.Add(dateCat.CategoryName);
+
+                                _ListCategoryForKOS.Add(_CategoryForKOS);
+                            }
+                            else
+                            {
+                                _ListCategoryForKOS.Find(x => x.CategoryName == findCategoryForKOS).ListServicesComponentForKOS.AddRange(dateCat.ListServicesComponentForKOS);
+                            }
+
+
+                        }
+
+                        itemF.ListCategoryForKOS = _ListCategoryForKOS;
+                    }
+
+                    dataFinal.ListKindOfServices = _ListKindOfServices;
+                    
+                }
+
+
+                //ordeno todas las listas
+                foreach(var orderService in _ListServicesFinal)
+                {
+                    
+                    foreach (var orderKOS in orderService.ListKindOfServices)
+                    {
+                        orderKOS.ListCategoryForKOS.OrderBy(x => x.CategoryName);
+
+                        foreach (var orderCat in orderKOS.ListCategoryForKOS)
+                        {
+                        
+                            orderCat.ListServicesComponentForKOS.OrderBy(x => x.ComponentName);
+                        }
+                    }
+                }
+
+                return _ListServicesFinal;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public List<KindOfServices> GetServicesComponents_(string serviceId)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //Ahora busco todos los componentes
+                List<KindOfServices> _ListKindOfServices = new List<KindOfServices>();
+                List<CategoryForKOS> _ListCategoryForKOS = new List<CategoryForKOS>();
+                List<string> ListfindCategoryName = new List<string>();
+                List<string> ListfindKindOfServiceName = new List<string>();
+                var listServiceComponent = (from serCom in dbContext.servicecomponent
+                                            //join ser in dbContext.service on serCom.v_ServiceId equals ser.v_ServiceId
+                                            join com in dbContext.component on serCom.v_ComponentId equals com.v_ComponentId
+                                            join sys in dbContext.systemparameter on new { a = com.i_KindOfService.Value, b = 358 }
+                                                equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                                            from sys in sys_join.DefaultIfEmpty()
+
+                                            join sys2 in dbContext.systemparameter on new { a = com.i_CategoryId.Value, b = 116 }  // Categoria
+                                            equals new { a = sys2.i_ParameterId, b = sys2.i_GroupId } into sys2_join
+                                            from sys2 in sys2_join.DefaultIfEmpty()
+                                            where serCom.v_ServiceId == serviceId && serCom.r_Price != 0
+                                            select new ServicesComponentForCategory
+                                            {
+                                                ComponentName = com.v_Name,
+                                                CategoryName = sys2.v_Value1,
+                                                ComponentId = com.v_ComponentId,
+                                                KindOfServiceName = sys.v_Value1,
+                                                KindOfServiceId = com.i_KindOfService.Value,
+                                                SaldoPaciente = serCom.d_SaldoPaciente.Value,
+                                                SaldoAseguradora = serCom.d_SaldoAseguradora.Value,
+                                                Price = serCom.r_Price.Value,
+                                                CodigoSegus = com.v_CodigoSegus,
+                                            }).OrderBy(x => x.KindOfServiceName).ToList();
+
+                //Agrego los componentes a una misma categoria
+                foreach (var itemCom in listServiceComponent)
+                {
+                    var findCategoryForKOS = ListfindCategoryName.Find(x => x == itemCom.CategoryName);
+                    if (findCategoryForKOS == null)
+                    {
+                        CategoryForKOS _CategoryForKOS = new CategoryForKOS();
+                        _CategoryForKOS.CategoryName = itemCom.CategoryName;
+                        _CategoryForKOS.KindOfServiceId = itemCom.KindOfServiceId.Value;
+                        _CategoryForKOS.KindOfServiceName = itemCom.KindOfServiceName;
+
+                        _CategoryForKOS.ListServicesComponentForKOS = new List<ServicesComponentForCategory>();
+                        _CategoryForKOS.ListServicesComponentForKOS.Add(itemCom);
+
+                        ListfindCategoryName.Add(itemCom.CategoryName);
+
+                        _ListCategoryForKOS.Add(_CategoryForKOS);
+                    }
+                    else
+                    {
+                        _ListCategoryForKOS.Find(x => x.CategoryName == findCategoryForKOS).ListServicesComponentForKOS.Add(itemCom);
+                    }
+                }
+
+
+                //Agrego las categorias a una misma clase de servicio
+                foreach (var itemCat in _ListCategoryForKOS)
+                {
+                    var findKindOfServiceName = ListfindKindOfServiceName.Find(x => x == itemCat.KindOfServiceName);
+                    if (findKindOfServiceName == null)
+                    {
+                        KindOfServices _KindOfServices = new KindOfServices();
+                        _KindOfServices.KindOfServiceId = itemCat.KindOfServiceId;
+                        _KindOfServices.KindOfServiceName = itemCat.KindOfServiceName;
+
+                        _KindOfServices.ListCategoryForKOS = new List<CategoryForKOS>();
+                        _KindOfServices.ListCategoryForKOS.Add(itemCat);
+
+                        _ListKindOfServices.Add(_KindOfServices);
+
+                        ListfindKindOfServiceName.Add(itemCat.KindOfServiceName);
+                    }
+                    else
+                    {
+                        _ListKindOfServices.Find(x => x.KindOfServiceName == findKindOfServiceName).ListCategoryForKOS.Add(itemCat);
+                    }
+
+                }
+                
+
+                return _ListKindOfServices;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         public List<ServiceComponentList> GetServicesComponents(string serviceId)
         {
@@ -36324,26 +36546,23 @@ namespace Sigesoft.Node.WinClient.BLL
                                         join sys in dbContext.systemparameter on new { a = com.i_KindOfService.Value, b = 358 }
                                             equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
                                         from sys in sys_join.DefaultIfEmpty()
-                                            where serCom.v_ServiceId == serviceId && serCom.r_Price != 0
+
+                                        join sys2 in dbContext.systemparameter on new { a = com.i_CategoryId.Value, b = 116 }  // Categoria
+                                        equals new { a = sys2.i_ParameterId, b = sys2.i_GroupId } into sys2_join
+                                        from sys2 in sys2_join.DefaultIfEmpty()
+                                        where serCom.v_ServiceId == serviceId && serCom.r_Price != 0
                                         select new ServiceComponentList
                                         {
-                                            //i_MasterServiceId = ser.i_MasterServiceId.Value,
                                             v_ComponentName = com.v_Name,
+                                            v_CategoryName = sys2.v_Value1,
                                             v_ComponentId = com.v_ComponentId,
                                             v_KindOfService = sys.v_Value1,
                                             i_KindOfService = com.i_KindOfService.Value,
                                             d_SaldoPaciente = serCom.d_SaldoPaciente.Value,                                           
                                             d_SaldoAseguradora = serCom.d_SaldoAseguradora.Value,
                                             r_Price = serCom.r_Price.Value,
-                                        }).OrderBy(x => x.v_KindOfService).ToList();
-                //if (descount != null)
-                //{
-                //    foreach (var obj in listServiceComponent)
-                //    {
-                //        obj.r_Descount = double.Parse(obj.r_Price) * (descount / 100);
-                //    }
-                //}
-                
+                                            v_CodigoSegus = com.v_CodigoSegus,
+                                        }).OrderBy(x => x.v_KindOfService).ToList();               
 
                 return listServiceComponent;
             }
@@ -36353,32 +36572,86 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public JoinTicketDetails GetDataMedicamentosByServiceId(string serviceId)
+        //public List<TicketDetalleList> GetListDataMedicamentosByServiceId(string serviceId)
+        //{
+        //    try
+        //    {
+        //        //Ahora busco todos los servicios de hospitalizacion
+        //        var ServicesId = GetServicesId(serviceId);
+        //        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+        //        List<TicketDetalleList> _TicketDetalleList = new List<TicketDetalleList>();
+        //        foreach (var ServiceId in ServicesId)
+        //        {
+        //            var list = (from tkde in dbContext.ticketdetalle
+        //                join tk in dbContext.ticket on tkde.v_TicketId equals tk.v_TicketId
+        //                where tk.v_ServiceId == ServiceId && tk.i_IsDeleted == 0
+        //                select new TicketDetalleList
+        //                {
+        //                    v_IdProductoDetalle = tkde.v_IdProductoDetalle,
+        //                    v_Descripcion = tkde.v_Descripcion,
+        //                    d_SaldoPaciente = tkde.d_SaldoPaciente.Value,
+        //                    d_SaldoAseguradora = tkde.d_SaldoAseguradora.Value,
+        //                    d_Importe = tkde.d_Cantidad.Value * tkde.d_PrecioVenta.Value,
+        //                }).OrderBy(x => x.v_Descripcion).ToList();
+        //            _TicketDetalleList.AddRange(list);
+        //        }
+
+        //        return _TicketDetalleList;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+            
+        //}
+
+        public List<RecetaDetail> GetListDataRecetaByServiceId(string serviceId)
+        {
+            //Ahora busco todos los servicios de hospitalizacion
+            var ServicesId = GetServicesId(serviceId);
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            List<RecetaDetail> _RecetaDetalleList = new List<RecetaDetail>();
+            foreach (var ServiceId in ServicesId)
+            {
+                var list = (from rec in dbContext.receta
+                    where rec.v_ServiceId == ServiceId
+                    select new RecetaDetail
+                    {
+                        v_IdProductoDetalle = rec.v_IdProductoDetalle,
+                        d_SaldoPaciente = rec.d_SaldoPaciente.Value,
+                        d_SaldoAseguradora = rec.d_SaldoAseguradora.Value,
+                        d_Importe = rec.d_SaldoPaciente.Value + rec.d_SaldoAseguradora.Value,
+                    }).ToList();
+                _RecetaDetalleList.AddRange(list);
+            }
+
+            return _RecetaDetalleList;
+        }
+
+        public List<TiposCuenta> GetDataMedicamentosByServiceId(string serviceId)
         {
             try
             {
-                //Primero busco todos el id de la hospitalizacion que tuvo el paciente
+
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var HopitalizacionId = (from hoser in dbContext.hospitalizacionservice
-                                        where hoser.v_ServiceId == serviceId
-                                        select hoser.v_HopitalizacionId).FirstOrDefault();
-
-
                 //Ahora busco todos los servicios de hospitalizacion
-                var ServicesId = (from hoser in dbContext.hospitalizacionservice
-                                  where hoser.v_HopitalizacionId == HopitalizacionId
-                                  select hoser.v_ServiceId).ToList();
+                var ServicesId = GetServicesId(serviceId);
 
                 List<TicketDetalleList> _TicketDetalleList = new List<TicketDetalleList>();
                 foreach (var ServiceId in ServicesId)
                 {
                     var list = (from tkde in dbContext.ticketdetalle
                                 join tk in dbContext.ticket on tkde.v_TicketId equals tk.v_TicketId
+                                join sys in dbContext.systemparameter on new { a = tk.i_TipoCuentaId.Value, b = 310 }
+                                    equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
+                                from sys in sys_join.DefaultIfEmpty()
                                 where tk.v_ServiceId == ServiceId && tk.i_IsDeleted == 0
                                 select new TicketDetalleList
                                 {
                                     v_IdProductoDetalle = tkde.v_IdProductoDetalle,
                                     v_Descripcion = tkde.v_Descripcion,
+                                    i_TipoCuenta = tk.i_TipoCuentaId.Value,
+                                    v_TipoCuentaName = sys.v_Value1,
                                     d_SaldoPaciente = tkde.d_SaldoPaciente.Value,
                                     d_SaldoAseguradora = tkde.d_SaldoAseguradora.Value,
                                     d_Importe = tkde.d_Cantidad.Value * tkde.d_PrecioVenta.Value,
@@ -36386,56 +36659,60 @@ namespace Sigesoft.Node.WinClient.BLL
                     _TicketDetalleList.AddRange(list);
                 }
 
-
-                //Lógica para las el pdf...
-                decimal Importe = 0;
-                decimal Descuento = 0;
-                decimal Total = 0;
-                int Encontrados = 0;
-                List<string> ListIdProductoDetalle = new List<string>();
-                if (_TicketDetalleList.Count > 0)
+                //Almaceno los nombres unicos
+                List<string> TiposCuentaNombre = new List<string>();
+                List<TiposCuenta> ListTiposCuenta = new List<TiposCuenta>();
+                foreach (var cuentas in _TicketDetalleList)
                 {
-                    
-                    foreach (var objDetail in _TicketDetalleList)
+                    var findName = TiposCuentaNombre.Find(x => x == cuentas.v_TipoCuentaName);
+                    if (findName == null)//si aun no se encontró el nombre de la cuenta
                     {
-                        var find = ListIdProductoDetalle.FindAll(x => x == objDetail.v_IdProductoDetalle);
-                        if (find.Count == 0)
-                        {
-                            ListIdProductoDetalle.Add(objDetail.v_IdProductoDetalle);
-                        }
+                        TiposCuenta _TiposCuenta = new TiposCuenta();
+                        _TiposCuenta.NombreCuenta = cuentas.v_TipoCuentaName;
+                        _TiposCuenta.ListJoinTickets = new List<JoinTicketDetails>();
+
+                        JoinTicketDetails _JoinTicketDetails = new JoinTicketDetails();
+                        _JoinTicketDetails.Descripcion = cuentas.v_Descripcion;
+                        _JoinTicketDetails.Descuento = cuentas.d_SaldoAseguradora == null ? 0 : cuentas.d_SaldoAseguradora.Value; 
+                        _JoinTicketDetails.Importe = cuentas.d_Importe.Value;
+
+                        _TiposCuenta.ListJoinTickets.Add(_JoinTicketDetails);
+
+                        ListTiposCuenta.Add(_TiposCuenta);
+                        TiposCuentaNombre.Add(cuentas.v_TipoCuentaName);
+                    }
+                    else
+                    {
+                        JoinTicketDetails _JoinTicketDetails = new JoinTicketDetails();
+                        _JoinTicketDetails.Descripcion = cuentas.v_Descripcion;
+                        _JoinTicketDetails.Descuento = cuentas.d_SaldoAseguradora == null ? 0 : cuentas.d_SaldoAseguradora.Value;
+                        _JoinTicketDetails.Importe = cuentas.d_Importe.Value;
+
+
+                        ListTiposCuenta.Find(x => x.NombreCuenta == findName).ListJoinTickets.Add(_JoinTicketDetails);
                     }
                 }
 
-                foreach (var idProcutDetalle in ListIdProductoDetalle)
+                foreach (var TipoCuenta in ListTiposCuenta)
                 {
-                    var obj = _TicketDetalleList.FindAll(x => x.v_IdProductoDetalle == idProcutDetalle).ToList();
-                    if (obj != null)
+                    decimal Importe = 0;
+                    int CantProd = 0;
+                    decimal Descuento = 0;/////aún no hay lógica para el descuento 'ward'
+                    decimal Total = 0;/////aún no hay lógica para el descuento 'ward'
+                    foreach (var TicketDetalle in TipoCuenta.ListJoinTickets)
                     {
-                        foreach (var item in obj)
-                        {
-                            decimal desct = item.d_SaldoAseguradora == null ? 0 : item.d_SaldoAseguradora.Value;
-                            Importe += item.d_Importe.Value;
-                            Descuento += item.d_SaldoAseguradora == null ? 0 : item.d_SaldoAseguradora.Value;
-                            Total += item.d_Importe.Value - desct;
-                        }
-
-                        Encontrados++;
+                        Importe += TicketDetalle.Importe.Value;
+                        CantProd++;
                     }
+
+                    TipoCuenta.Encontrados = CantProd;
+                    TipoCuenta.TotalImporte = Importe;
+                    TipoCuenta.ListJoinTickets = null;
                 }
 
-                JoinTicketDetails _JoinTicketDetails = new JoinTicketDetails();
-                _JoinTicketDetails.v_Amount = Math.Round(Importe, 2).ToString();
-                _JoinTicketDetails.v_Discount = Math.Round(Descuento, 2).ToString();
-                _JoinTicketDetails.v_Total = Math.Round(Total, 2).ToString();
-                _JoinTicketDetails.v_Found = Encontrados.ToString();
-                _JoinTicketDetails.v_Description = "FARMACIA SALA DE OPERACIONES";
+                //Agrupo los medicamentos iguales, sumo sus descuentos y precios.
 
-                if (Encontrados == 0)
-                {
-                    return null;
-                }
-
-                return _JoinTicketDetails;
+                return ListTiposCuenta;
             }
             catch (Exception ex)
             {
@@ -36449,22 +36726,9 @@ namespace Sigesoft.Node.WinClient.BLL
         {
             try
             {
-                //Primero busco todos el id de la hospitalizacion que tuvo el paciente
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var HopitalizacionId = (from hoser in dbContext.hospitalizacionservice
-                                        where hoser.v_ServiceId == serviceId
-                                        select hoser.v_HopitalizacionId).FirstOrDefault();
-
-
                 //Ahora busco todos los servicios de hospitalizacion
-                var ServicesId = (from hoser in dbContext.hospitalizacionservice
-                                  where hoser.v_HopitalizacionId == HopitalizacionId
-                                  select hoser.v_ServiceId).ToList();
-
-                if (ServicesId.Count == 0)
-                {
-                    ServicesId.Add(serviceId);
-                }
+                var ServicesId = GetServicesId(serviceId);
 
                 List<RecetaDetail> _RecetaDetalleList = new List<RecetaDetail>();
                 foreach (var ServiceId in ServicesId)
@@ -36539,5 +36803,22 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+
+        public List<string> GetServicesId(string serviceId)
+        {
+            //Primero busco todos el id de la hospitalizacion que tuvo el paciente
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var HopitalizacionId = (from hoser in dbContext.hospitalizacionservice
+                where hoser.v_ServiceId == serviceId
+                select hoser.v_HopitalizacionId).FirstOrDefault();
+
+
+            //Ahora busco todos los servicios de hospitalizacion
+            var ServicesId = (from hoser in dbContext.hospitalizacionservice
+                where hoser.v_HopitalizacionId == HopitalizacionId
+                select hoser.v_ServiceId).ToList();
+
+            return ServicesId;
+        }
     }
 }

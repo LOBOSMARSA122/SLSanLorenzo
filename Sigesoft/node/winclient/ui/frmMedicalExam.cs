@@ -200,8 +200,8 @@ namespace Sigesoft.Node.WinClient.UI
         private void mnuGridEditMedicalExam_Click(object sender, EventArgs e)
         {
             string strMedicalExamId = grdDataMedicalExam.Selected.Rows[0].Cells[0].Value.ToString();
-
-            frmMedicalExamEdicion frm = new frmMedicalExamEdicion(strMedicalExamId, "Edit", "");
+            string orden = grdDataMedicalExam.Selected.Rows[0].Cells["i_UIIndex"].Value.ToString();
+            frmMedicalExamEdicion frm = new frmMedicalExamEdicion(strMedicalExamId, "Edit", orden);
             frm.ShowDialog();
 
             //if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
@@ -339,12 +339,16 @@ namespace Sigesoft.Node.WinClient.UI
                 if (row != null)
                 {
                      grdDataMedicalExam.Rows[row.Index].Selected = true;
+                     contextMenuMedicalExam.Items["verCambiosToolStripMenuItem"].Enabled = true;
+
                      contextMenuMedicalExam.Items["mnuGridNewMedicalExam"].Enabled = true;
                      contextMenuMedicalExam.Items["mnuGridEditMedicalExam"].Enabled = true;
                      contextMenuMedicalExam.Items["mnuGridDeleteMedicalExam"].Enabled = true;                    
                 }
                 else
                 {
+                    contextMenuMedicalExam.Items["verCambiosToolStripMenuItem"].Enabled = true;
+
                     contextMenuMedicalExam.Items["mnuGridNewMedicalExam"].Enabled = true;
                     contextMenuMedicalExam.Items["mnuGridEditMedicalExam"].Enabled = false;
                     contextMenuMedicalExam.Items["mnuGridDeleteMedicalExam"].Enabled = false;
@@ -622,6 +626,19 @@ namespace Sigesoft.Node.WinClient.UI
             #endregion
 
             txtUnidadProdId.Text = LineId;
+        }
+
+        private void verCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string commentary = _objMedicalExamBL.GetCommentaryUpdateByComponentId(strMedicalExamId);
+            if (commentary == "" || commentary == null)
+            {
+                MessageBox.Show("Aún no se han realizado cambios.", "AVISO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            var frm = new frmViewChanges(commentary);
+            frm.ShowDialog();
         }
 
     }

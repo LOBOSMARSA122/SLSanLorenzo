@@ -253,7 +253,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var objOrganization = new OrganizationBL().GetDataOrganizationByServiceiId(serviceId);
                 var objAseguradora = new OrganizationBL().GetDataAseguradoraByServiceiId(serviceId);
                 var objHospitalizacion = new PacientBL().GetDataHospitalizacionByServiceId(serviceId);
-                var ListCostosService = new ServiceBL().GetServiceAndCost(serviceId);
+                var ListCostosService = new ServiceBL().GetServiceAndCost_(serviceId);
                 var dataTicketDetail = new ServiceBL().GetDataMedicamentosByServiceId(serviceId);
                 var dataRecetaDetail = new ServiceBL().GetDataRecetaByServiceId(serviceId);
                 LiquidacionHosp.LiquidacionHospitalaria(dataRecetaDetail, dataTicketDetail, ListCostosService, objPacient, objOrganization, objAseguradora, objHospitalizacion, pathFile);
@@ -272,6 +272,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     MessageBoxIcon.Warning);
             }
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var frm = new frmTracking();
+            frm.ShowDialog();
         }
 
     }

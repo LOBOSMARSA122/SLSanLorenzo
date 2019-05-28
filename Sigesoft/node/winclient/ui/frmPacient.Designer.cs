@@ -174,6 +174,7 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAntecedentes = new System.Windows.Forms.Button();
             this.txtCurrentOccupation = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -193,15 +194,16 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuGridNuevo,
             this.mnuGridModificar,
-            this.mnuGridAntecedent});
+            this.mnuGridAntecedent,
+            this.verCambiosToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
             // 
             // mnuGridNuevo
             // 
             this.mnuGridNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.mnuGridNuevo.Name = "mnuGridNuevo";
-            this.mnuGridNuevo.Size = new System.Drawing.Size(146, 22);
+            this.mnuGridNuevo.Size = new System.Drawing.Size(152, 22);
             this.mnuGridNuevo.Text = "Nuevo";
             this.mnuGridNuevo.Click += new System.EventHandler(this.mnuGridNuevo_Click);
             // 
@@ -209,7 +211,7 @@
             // 
             this.mnuGridModificar.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridModificar.Image")));
             this.mnuGridModificar.Name = "mnuGridModificar";
-            this.mnuGridModificar.Size = new System.Drawing.Size(146, 22);
+            this.mnuGridModificar.Size = new System.Drawing.Size(152, 22);
             this.mnuGridModificar.Text = "Modificar";
             this.mnuGridModificar.Click += new System.EventHandler(this.mnuGridModificar_Click);
             // 
@@ -217,7 +219,7 @@
             // 
             this.mnuGridAntecedent.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.mnuGridAntecedent.Name = "mnuGridAntecedent";
-            this.mnuGridAntecedent.Size = new System.Drawing.Size(146, 22);
+            this.mnuGridAntecedent.Size = new System.Drawing.Size(152, 22);
             this.mnuGridAntecedent.Text = "Antecedentes";
             this.mnuGridAntecedent.Click += new System.EventHandler(this.mnuGridAntecedent_Click);
             // 
@@ -1667,6 +1669,14 @@
             this.txtCurrentOccupation.Size = new System.Drawing.Size(420, 22);
             this.txtCurrentOccupation.TabIndex = 148;
             // 
+            // verCambiosToolStripMenuItem
+            // 
+            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
+            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
+            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
+            // 
             // frmPacient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1822,6 +1832,7 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtReligion;
         private Infragistics.Win.UltraWinGrid.UltraCombo txtNombreTitular;
+        private System.Windows.Forms.ToolStripMenuItem verCambiosToolStripMenuItem;
     }
 }
 

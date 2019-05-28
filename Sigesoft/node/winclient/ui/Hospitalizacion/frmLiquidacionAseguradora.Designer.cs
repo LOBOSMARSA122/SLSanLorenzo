@@ -35,15 +35,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaServicio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Paciente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Aseguradora");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Factor");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PPS");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Estado");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Emision");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("N° Fact.");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Recepcion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Saldo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Detalle");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Detalle", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Detalle", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Descripcion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tipo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Valor");
@@ -65,7 +58,6 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.cboEmpresa = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPacient = new System.Windows.Forms.TextBox();
@@ -75,15 +67,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnLiquidacion = new System.Windows.Forms.Button();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountCalendar = new System.Windows.Forms.Label();
-            this.btnExport = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.txtTotalAseguradora = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnLiquidacion = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -110,27 +104,6 @@
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(1141, 43);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 24);
-            this.btnFilter.TabIndex = 107;
-            this.btnFilter.Text = "Filtrar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // cboEmpresa
             // 
@@ -225,6 +198,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnLiquidacion);
             this.groupBox2.Controls.Add(this.grdData);
@@ -241,32 +215,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
             // 
-            // button1
-            // 
-            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1060, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 33);
-            this.button1.TabIndex = 154;
-            this.button1.Text = "Generar Pre-Liquidación";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnLiquidacion
-            // 
-            this.btnLiquidacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.btnLiquidacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLiquidacion.Location = new System.Drawing.Point(1060, 81);
-            this.btnLiquidacion.Name = "btnLiquidacion";
-            this.btnLiquidacion.Size = new System.Drawing.Size(149, 33);
-            this.btnLiquidacion.TabIndex = 153;
-            this.btnLiquidacion.Text = "Generar Liquidación";
-            this.btnLiquidacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLiquidacion.UseVisualStyleBackColor = true;
-            this.btnLiquidacion.Click += new System.EventHandler(this.btnLiquidacion_Click);
-            // 
             // grdData
             // 
             this.grdData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -278,40 +226,22 @@
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn29.Header.VisiblePosition = 0;
-            ultraGridColumn29.Width = 145;
             ultraGridColumn30.Header.VisiblePosition = 1;
-            ultraGridColumn30.Width = 103;
             ultraGridColumn31.Header.VisiblePosition = 2;
-            ultraGridColumn31.Width = 217;
+            ultraGridColumn31.Width = 186;
             ultraGridColumn38.Header.VisiblePosition = 3;
             ultraGridColumn38.Width = 191;
-            ultraGridColumn3.Header.VisiblePosition = 4;
-            ultraGridColumn3.Width = 89;
-            ultraGridColumn4.Header.VisiblePosition = 5;
-            ultraGridColumn5.Header.VisiblePosition = 6;
-            ultraGridColumn6.Header.VisiblePosition = 7;
-            ultraGridColumn7.Header.VisiblePosition = 8;
-            ultraGridColumn8.Header.VisiblePosition = 9;
-            ultraGridColumn9.Header.VisiblePosition = 10;
-            ultraGridColumn32.Header.VisiblePosition = 11;
+            ultraGridColumn32.Header.VisiblePosition = 4;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn29,
             ultraGridColumn30,
             ultraGridColumn31,
             ultraGridColumn38,
-            ultraGridColumn3,
-            ultraGridColumn4,
-            ultraGridColumn5,
-            ultraGridColumn6,
-            ultraGridColumn7,
-            ultraGridColumn8,
-            ultraGridColumn9,
             ultraGridColumn32});
             ultraGridColumn33.ColSpan = ((short)(2));
             ultraGridColumn33.Header.VisiblePosition = 0;
-            ultraGridColumn33.Width = 229;
             ultraGridColumn34.Header.VisiblePosition = 1;
-            ultraGridColumn34.Width = 217;
+            ultraGridColumn34.Width = 186;
             ultraGridColumn39.Header.VisiblePosition = 2;
             ultraGridColumn39.Width = 191;
             ultraGridColumn35.Header.VisiblePosition = 6;
@@ -319,10 +249,10 @@
             ultraGridColumn36.Header.VisiblePosition = 7;
             ultraGridColumn36.Width = 102;
             ultraGridColumn37.Header.VisiblePosition = 5;
-            ultraGridColumn37.Width = 95;
+            ultraGridColumn37.Width = 68;
             ultraGridColumn1.Header.VisiblePosition = 4;
             ultraGridColumn2.Header.VisiblePosition = 3;
-            ultraGridColumn2.Width = 89;
+            ultraGridColumn2.Width = 61;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn33,
             ultraGridColumn34,
@@ -412,20 +342,6 @@
             this.lblRecordCountCalendar.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountCalendar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnExport
-            // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(1060, 29);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(149, 33);
-            this.btnExport.TabIndex = 104;
-            this.btnExport.Text = "Exportar a Excel";
-            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
             // txtTotalAseguradora
             // 
             this.txtTotalAseguradora.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -446,6 +362,77 @@
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 108;
             this.label3.Text = "TOTAL ASEGURADORA";
+            // 
+            // button1
+            // 
+            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(1060, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 33);
+            this.button1.TabIndex = 154;
+            this.button1.Text = "Generar Pre-Liquidación";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnLiquidacion
+            // 
+            this.btnLiquidacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnLiquidacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLiquidacion.Location = new System.Drawing.Point(1060, 81);
+            this.btnLiquidacion.Name = "btnLiquidacion";
+            this.btnLiquidacion.Size = new System.Drawing.Size(149, 33);
+            this.btnLiquidacion.TabIndex = 153;
+            this.btnLiquidacion.Text = "Generar Liquidación";
+            this.btnLiquidacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLiquidacion.UseVisualStyleBackColor = true;
+            this.btnLiquidacion.Click += new System.EventHandler(this.btnLiquidacion_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(1060, 29);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(149, 33);
+            this.btnExport.TabIndex = 104;
+            this.btnExport.Text = "Exportar a Excel";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(1141, 43);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 24);
+            this.btnFilter.TabIndex = 107;
+            this.btnFilter.Text = "Filtrar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1060, 174);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(149, 23);
+            this.button2.TabIndex = 155;
+            this.button2.Text = "Prueba";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmLiquidacionAseguradora
             // 
@@ -496,6 +483,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLiquidacion;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
 
     }
 }

@@ -92,6 +92,7 @@ namespace Sigesoft.Node.Contasol.Integration
                 using (var dbContext = ConnectionHelper.ContasolContext)
                 {
                     var entidad = dbContext.productodetalle.FirstOrDefault(p => p.v_IdProductoDetalle == pobjDto.IdProductoDetalle);
+                    
                     var nombre = pobjDto.Nombre.Trim();
                     var presentacion = pobjDto.Presentacion.Trim();
                     var concentracion = pobjDto.Concentracion.Trim();

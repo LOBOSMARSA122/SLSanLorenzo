@@ -52,6 +52,7 @@
     <Compile Include="Custom\Adulto.cs" />
     <Compile Include="Custom\AdultoMayor.cs" />
     <Compile Include="Custom\Campos.cs" />
+    <Compile Include="Custom\ComponentForLiquiCustom.cs" />
     <Compile Include="Custom\ConsultaGerencia.cs" />
     <Compile Include="Custom\DatoEso.cs" />
     <Compile Include="Custom\DynamicSchedule.cs" />
@@ -327,6 +328,7 @@
     <Compile Include="Custom\TicketList.cs" />
     <Compile Include="Custom\TiempoTrabajador.cs" />
     <Compile Include="Custom\TrabajadoresConcatenados.cs" />
+    <Compile Include="Custom\TrackingCustom.cs" />
     <Compile Include="Custom\TramasList.cs" />
     <Compile Include="Custom\TypeOfEEPList.cs" />
     <Compile Include="Custom\Ubigeo.cs" />
@@ -383,6 +385,7 @@
     <Compile Include="Generated\warehouseDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
     <Compile Include="Generated\tramasDto.cs" />
+    <Compile Include="Generated\trackingDto.cs" />
     <Compile Include="Generated\ticketdetalleDto.cs" />
     <Compile Include="Generated\ticketDto.cs" />
     <Compile Include="Generated\systemuserrolenodeDto.cs" />

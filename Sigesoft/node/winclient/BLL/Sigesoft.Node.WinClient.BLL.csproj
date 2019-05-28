@@ -120,6 +120,7 @@
     <Compile Include="SupplierBL.cs" />
     <Compile Include="SystemParameterBL.cs" />
     <Compile Include="TicketBL.cs" />
+    <Compile Include="TrackingBL.cs" />
     <Compile Include="TramasBL.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WarehouseBL.cs" />

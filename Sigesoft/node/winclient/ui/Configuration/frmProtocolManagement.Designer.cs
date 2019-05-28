@@ -51,7 +51,6 @@
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolManagement));
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolComponentId");
@@ -71,12 +70,10 @@
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolManagement));
             this.lblRecordCount = new System.Windows.Forms.Label();
             this.grd = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.cmProtocol = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.New = new System.Windows.Forms.ToolStripMenuItem();
-            this.Edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.Clonar = new System.Windows.Forms.ToolStripMenuItem();
             this.gbProtocolComponents = new System.Windows.Forms.GroupBox();
             this.txtComponente = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -97,19 +94,23 @@
             this.cbEsoType = new System.Windows.Forms.ComboBox();
             this.txtProtocolName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.grdProtocolComponent = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountProtocolComponents = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblCostoTotal = new System.Windows.Forms.Label();
+            this.cachedcrReporteInterconsulta1 = new Sigesoft.Node.WinClient.UI.Reports.CachedcrReporteInterconsulta();
+            this.btnPlanes = new System.Windows.Forms.Button();
+            this.btnUsuariosExternos = new System.Windows.Forms.Button();
+            this.btnGenerarOS = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnClon = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnGenerarOS = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblCostoTotal = new System.Windows.Forms.Label();
-            this.btnUsuariosExternos = new System.Windows.Forms.Button();
-            this.btnPlanes = new System.Windows.Forms.Button();
-            this.cachedcrReporteInterconsulta1 = new Sigesoft.Node.WinClient.UI.Reports.CachedcrReporteInterconsulta();
+            this.New = new System.Windows.Forms.ToolStripMenuItem();
+            this.Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Clonar = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.cmProtocol.SuspendLayout();
             this.gbProtocolComponents.SuspendLayout();
@@ -261,33 +262,10 @@
             this.cmProtocol.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.New,
             this.Edit,
-            this.Clonar});
+            this.Clonar,
+            this.verCambiosToolStripMenuItem});
             this.cmProtocol.Name = "contextMenuStrip1";
-            this.cmProtocol.Size = new System.Drawing.Size(126, 70);
-            // 
-            // New
-            // 
-            this.New.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
-            this.New.Name = "New";
-            this.New.Size = new System.Drawing.Size(125, 22);
-            this.New.Text = "Nuevo";
-            this.New.Click += new System.EventHandler(this.New_Click);
-            // 
-            // Edit
-            // 
-            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(125, 22);
-            this.Edit.Text = "Modificar";
-            this.Edit.Click += new System.EventHandler(this.Edit_Click);
-            // 
-            // Clonar
-            // 
-            this.Clonar.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
-            this.Clonar.Name = "Clonar";
-            this.Clonar.Size = new System.Drawing.Size(125, 22);
-            this.Clonar.Text = "Clonar";
-            this.Clonar.Click += new System.EventHandler(this.Clonar_Click);
+            this.cmProtocol.Size = new System.Drawing.Size(153, 114);
             // 
             // gbProtocolComponents
             // 
@@ -549,22 +527,6 @@
             this.label5.Text = "Nombre ";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnFilter
-            // 
-            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(946, 80);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(60, 24);
-            this.btnFilter.TabIndex = 3;
-            this.btnFilter.Text = "Filtrar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
             // grdProtocolComponent
             // 
             this.grdProtocolComponent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -694,6 +656,104 @@
             this.lblRecordCountProtocolComponents.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountProtocolComponents.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(795, 579);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(196, 23);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "Costo Total del Protocolo";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCostoTotal
+            // 
+            this.lblCostoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCostoTotal.BackColor = System.Drawing.SystemColors.Info;
+            this.lblCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoTotal.ForeColor = System.Drawing.Color.Black;
+            this.lblCostoTotal.Location = new System.Drawing.Point(995, 579);
+            this.lblCostoTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCostoTotal.Name = "lblCostoTotal";
+            this.lblCostoTotal.Size = new System.Drawing.Size(88, 23);
+            this.lblCostoTotal.TabIndex = 109;
+            this.lblCostoTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnPlanes
+            // 
+            this.btnPlanes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlanes.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPlanes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPlanes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlanes.ForeColor = System.Drawing.Color.Black;
+            this.btnPlanes.Image = ((System.Drawing.Image)(resources.GetObject("btnPlanes.Image")));
+            this.btnPlanes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPlanes.Location = new System.Drawing.Point(1096, 369);
+            this.btnPlanes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPlanes.Name = "btnPlanes";
+            this.btnPlanes.Size = new System.Drawing.Size(75, 24);
+            this.btnPlanes.TabIndex = 111;
+            this.btnPlanes.Text = "Planes";
+            this.btnPlanes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPlanes.UseVisualStyleBackColor = false;
+            this.btnPlanes.Click += new System.EventHandler(this.btnPlanes_Click);
+            // 
+            // btnUsuariosExternos
+            // 
+            this.btnUsuariosExternos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUsuariosExternos.BackColor = System.Drawing.SystemColors.Control;
+            this.btnUsuariosExternos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUsuariosExternos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuariosExternos.ForeColor = System.Drawing.Color.Black;
+            this.btnUsuariosExternos.Image = global::Sigesoft.Node.WinClient.UI.Resources.group;
+            this.btnUsuariosExternos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuariosExternos.Location = new System.Drawing.Point(1096, 336);
+            this.btnUsuariosExternos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUsuariosExternos.Name = "btnUsuariosExternos";
+            this.btnUsuariosExternos.Size = new System.Drawing.Size(75, 29);
+            this.btnUsuariosExternos.TabIndex = 110;
+            this.btnUsuariosExternos.Text = "Usuarios Externos";
+            this.btnUsuariosExternos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUsuariosExternos.UseVisualStyleBackColor = false;
+            this.btnUsuariosExternos.Click += new System.EventHandler(this.btnUsuariosExternos_Click);
+            // 
+            // btnGenerarOS
+            // 
+            this.btnGenerarOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerarOS.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGenerarOS.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGenerarOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarOS.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerarOS.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
+            this.btnGenerarOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarOS.Location = new System.Drawing.Point(1096, 279);
+            this.btnGenerarOS.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarOS.Name = "btnGenerarOS";
+            this.btnGenerarOS.Size = new System.Drawing.Size(75, 53);
+            this.btnGenerarOS.TabIndex = 108;
+            this.btnGenerarOS.Text = "Generar Order de Servicio";
+            this.btnGenerarOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerarOS.UseVisualStyleBackColor = false;
+            this.btnGenerarOS.Click += new System.EventHandler(this.btnGenerarOS_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(1096, 251);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 24);
+            this.btnCancel.TabIndex = 107;
+            this.btnCancel.Text = "    Salir";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnClon
             // 
             this.btnClon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -744,103 +804,53 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnCancel
+            // New
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(1096, 251);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 24);
-            this.btnCancel.TabIndex = 107;
-            this.btnCancel.Text = "    Salir";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.New.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
+            this.New.Name = "New";
+            this.New.Size = new System.Drawing.Size(152, 22);
+            this.New.Text = "Nuevo";
+            this.New.Click += new System.EventHandler(this.New_Click);
             // 
-            // btnGenerarOS
+            // Edit
             // 
-            this.btnGenerarOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerarOS.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGenerarOS.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGenerarOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarOS.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerarOS.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
-            this.btnGenerarOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarOS.Location = new System.Drawing.Point(1096, 279);
-            this.btnGenerarOS.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGenerarOS.Name = "btnGenerarOS";
-            this.btnGenerarOS.Size = new System.Drawing.Size(75, 53);
-            this.btnGenerarOS.TabIndex = 108;
-            this.btnGenerarOS.Text = "Generar Order de Servicio";
-            this.btnGenerarOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGenerarOS.UseVisualStyleBackColor = false;
-            this.btnGenerarOS.Click += new System.EventHandler(this.btnGenerarOS_Click);
+            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(152, 22);
+            this.Edit.Text = "Modificar";
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
-            // label9
+            // Clonar
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(795, 579);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(196, 23);
-            this.label9.TabIndex = 38;
-            this.label9.Text = "Costo Total del Protocolo";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Clonar.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
+            this.Clonar.Name = "Clonar";
+            this.Clonar.Size = new System.Drawing.Size(152, 22);
+            this.Clonar.Text = "Clonar";
+            this.Clonar.Click += new System.EventHandler(this.Clonar_Click);
             // 
-            // lblCostoTotal
+            // btnFilter
             // 
-            this.lblCostoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCostoTotal.BackColor = System.Drawing.SystemColors.Info;
-            this.lblCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostoTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblCostoTotal.Location = new System.Drawing.Point(995, 579);
-            this.lblCostoTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCostoTotal.Name = "lblCostoTotal";
-            this.lblCostoTotal.Size = new System.Drawing.Size(88, 23);
-            this.lblCostoTotal.TabIndex = 109;
-            this.lblCostoTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(946, 80);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(60, 24);
+            this.btnFilter.TabIndex = 3;
+            this.btnFilter.Text = "Filtrar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // btnUsuariosExternos
+            // verCambiosToolStripMenuItem
             // 
-            this.btnUsuariosExternos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUsuariosExternos.BackColor = System.Drawing.SystemColors.Control;
-            this.btnUsuariosExternos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUsuariosExternos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuariosExternos.ForeColor = System.Drawing.Color.Black;
-            this.btnUsuariosExternos.Image = global::Sigesoft.Node.WinClient.UI.Resources.group;
-            this.btnUsuariosExternos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuariosExternos.Location = new System.Drawing.Point(1096, 336);
-            this.btnUsuariosExternos.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUsuariosExternos.Name = "btnUsuariosExternos";
-            this.btnUsuariosExternos.Size = new System.Drawing.Size(75, 29);
-            this.btnUsuariosExternos.TabIndex = 110;
-            this.btnUsuariosExternos.Text = "Usuarios Externos";
-            this.btnUsuariosExternos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUsuariosExternos.UseVisualStyleBackColor = false;
-            this.btnUsuariosExternos.Click += new System.EventHandler(this.btnUsuariosExternos_Click);
-            // 
-            // btnPlanes
-            // 
-            this.btnPlanes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPlanes.BackColor = System.Drawing.SystemColors.Control;
-            this.btnPlanes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPlanes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlanes.ForeColor = System.Drawing.Color.Black;
-            this.btnPlanes.Image = ((System.Drawing.Image)(resources.GetObject("btnPlanes.Image")));
-            this.btnPlanes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlanes.Location = new System.Drawing.Point(1096, 369);
-            this.btnPlanes.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPlanes.Name = "btnPlanes";
-            this.btnPlanes.Size = new System.Drawing.Size(75, 24);
-            this.btnPlanes.TabIndex = 111;
-            this.btnPlanes.Text = "Planes";
-            this.btnPlanes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPlanes.UseVisualStyleBackColor = false;
-            this.btnPlanes.Click += new System.EventHandler(this.btnPlanes_Click);
+            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
+            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
+            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
             // 
             // frmProtocolManagement
             // 
@@ -918,5 +928,6 @@
         private System.Windows.Forms.TextBox txtComponente;
         private System.Windows.Forms.Button btnPlanes;
         private Reports.CachedcrReporteInterconsulta cachedcrReporteInterconsulta1;
+        private System.Windows.Forms.ToolStripMenuItem verCambiosToolStripMenuItem;
     }
 }
