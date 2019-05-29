@@ -424,13 +424,25 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 _protocolDTO.i_ValidInDays = txtComision.Text != string.Empty ? int.Parse(txtComision.Text) : (int?)null;
                 _protocolDTO.i_IsActive = Convert.ToInt32(chkEsActivo.Checked);
                 _protocolDTO.v_NombreVendedor = cboVendedor.Text;
+
+                if (txtFactor.Text != "")
+                {
+                    double r_PriceFactor = double.Parse(txtFactor.Text);
+                    _protocolDTO.r_PriceFactor = Math.Round(r_PriceFactor, 2);
+                }
+                if (txtCamaHosp.Text != "")
+                {
+                    double r_HospitalBedPrice = double.Parse(txtCamaHosp.Text);
+                    _protocolDTO.r_HospitalBedPrice = Math.Round(r_HospitalBedPrice, 2);
+                }
+
+                if (txtEps.Text != "")
+                {
+                    double r_MedicineDiscount = float.Parse(txtEps.Text);
+                    _protocolDTO.r_MedicineDiscount = Math.Round(r_MedicineDiscount, 2);
+                }
+
                 
-                double r_PriceFactor = double.Parse(txtFactor.Text);
-                _protocolDTO.r_PriceFactor = Math.Round(r_PriceFactor, 2);
-                double r_HospitalBedPrice = double.Parse(txtCamaHosp.Text);
-                _protocolDTO.r_HospitalBedPrice = Math.Round(r_HospitalBedPrice, 2);
-                double r_MedicineDiscount = float.Parse(txtEps.Text);
-                _protocolDTO.r_MedicineDiscount = Math.Round(r_MedicineDiscount, 2);
 
                 // Grabar componentes del protocolo
                 if (_mode == "New" || _mode == "Clon")

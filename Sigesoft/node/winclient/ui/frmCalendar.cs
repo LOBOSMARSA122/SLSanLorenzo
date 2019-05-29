@@ -699,6 +699,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdDataCalendar_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
         {
+            
             btnConsentimiento.Enabled = btnExportExcel.Enabled = btnExportPdf.Enabled = btnAdjuntar.Enabled = (grdDataCalendar.Selected.Rows.Count > 0);
             btnSendEmail.Enabled = (grdDataCalendar.Selected.Rows.Count > 0 && _sendEmailEnabled);
             
@@ -1070,12 +1071,13 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdDataCalendar_ClickCell(object sender, ClickCellEventArgs e)
         {
+            
             if ((e.Cell.Column.Key == "b_Seleccionar"))
             {
                 if ((e.Cell.Value.ToString() == "False"))
                 {
                     e.Cell.Value = true;
-
+                    
                     //btnFechaEntrega.Enabled = true;
                     //btnAdjuntarArchivo.Enabled = true;
                 }
@@ -3709,37 +3711,44 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnFusionar_Click(object sender, EventArgs e)
         {
+
+            List<string> Services = new List<string>();
+            var personId = "";
+            bool personChange = false;
+            foreach (var row in grdDataCalendar.Rows)
+            {
+                if ((bool)row.Cells["b_Seleccionar"].Value)
+                {
+                    var strpersonId = row.Cells["v_PersonId"].Value.ToString();
+                    var strServiceId = row.Cells["v_ServiceId"].Value.ToString();
+                    var circuitStartDate = row.Cells["d_EntryTimeCM"].Value;
+                    Services.Add(strServiceId);
+                    if (personId == strpersonId || personChange == false)
+                    {
+                        personId = strpersonId;
+                        personChange = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, elija a una misma persona para poder fusionar", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (circuitStartDate == null)
+                    {
+                        MessageBox.Show("Procure que el paciente inicie el circuito.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+            if (Services.Count <= 1 )
+            {
+                MessageBox.Show("Seleccione 2 a más servicios.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
                 OperationResult objOperationResult = new OperationResult();
-                List<string> Services = new List<string>();
-                var personId = "";
-                bool personChange = false;
-                foreach (var row in grdDataCalendar.Rows)
-                {
-                    if ((bool)row.Cells["b_Seleccionar"].Value)
-                    {
-                        var strpersonId = row.Cells["v_PersonId"].Value.ToString();
-                        var strServiceId = row.Cells["v_ServiceId"].Value.ToString();
-                        var circuitStartDate = row.Cells["d_EntryTimeCM"].Value;
-                        Services.Add(strServiceId);
-                        if (personId == strpersonId || personChange == false)
-                        {
-                            personId = strpersonId;
-                            personChange = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Por favor, elija a una misma persona para poder fusionar", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                        if (circuitStartDate == null)
-                        {
-                            MessageBox.Show("Procure que el paciente inicie el circuito.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-                }
+                
 
                 if (Services.Count > 0)
                 {

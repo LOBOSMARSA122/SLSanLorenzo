@@ -35,7 +35,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             "txtInsertName", "ddlCategoryId", "ddlDiagnosableId", "unBasePrice", "ddlComponentTypeId",
             "ddlUIIsVisibleId", "unUIIndex", "ddlIsApprovedId", "unValidInDays", "txtCodigoSegus", "txtTarifaSegus",
-            "ddlUnidadProductiva", "ddlKindOfService"
+            "ddlUnidadProductiva", "ddlKindOfService", "cbRecargable"
         };       
 
         private string GetChanges()
@@ -182,6 +182,7 @@ namespace Sigesoft.Node.WinClient.UI
                 
                 Utils.LoadComboTreeBoxList(ddlCategoryId, BLL.Utils.GetSystemParameterForComboTreeBox(ref objOperationResult, 116, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(ddlDiagnosableId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(cbRecargable, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(ddlComponentTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 126, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(ddlKindOfService, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 358, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(ddlUIIsVisibleId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
@@ -235,6 +236,7 @@ namespace Sigesoft.Node.WinClient.UI
                     ddlDiagnosableId.SelectedValue = objmedicalexamDto.i_DiagnosableId.ToString();
                     ddlComponentTypeId.SelectedValue = objmedicalexamDto.i_ComponentTypeId.ToString();
                     ddlKindOfService.SelectedValue = objmedicalexamDto.i_KindOfService.ToString();
+                    cbRecargable.SelectedValue = objmedicalexamDto.i_PriceIsRecharged.ToString();
                     ddlUIIsVisibleId.SelectedValue = objmedicalexamDto.i_UIIsVisibleId.ToString();
                     unUIIndex.Value = objmedicalexamDto.i_UIIndex;
 
@@ -300,6 +302,7 @@ namespace Sigesoft.Node.WinClient.UI
                         objmedicalexamDto.r_PriceSegus = priceSegus;
                         objmedicalexamDto.v_CodigoSegus = txtCodigoSegus.Text;
                         objmedicalexamDto.i_KindOfService = Int32.Parse(ddlKindOfService.SelectedValue.ToString());
+                        objmedicalexamDto.i_PriceIsRecharged = Int32.Parse(cbRecargable.SelectedValue.ToString());
                         // Save the data
                         _objMedicalExamBL.AddMedicalExam(ref objOperationResult, objmedicalexamDto, Globals.ClientSession.GetAsList());
 
@@ -340,6 +343,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objmedicalexamDto.r_PriceSegus = priceSegus;
                     objmedicalexamDto.v_CodigoSegus = txtCodigoSegus.Text;
                     objmedicalexamDto.i_KindOfService = Int32.Parse(ddlKindOfService.SelectedValue.ToString());
+                    objmedicalexamDto.i_PriceIsRecharged = Int32.Parse(cbRecargable.SelectedValue.ToString());
                     objmedicalexamDto.v_ComentaryUpdate = GetChanges();
                     // Save the data
                     _objMedicalExamBL.UpdateMedicalExam(ref objOperationResult,pbIsChangeName, objmedicalexamDto, Globals.ClientSession.GetAsList());
