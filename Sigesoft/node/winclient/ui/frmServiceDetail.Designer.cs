@@ -49,19 +49,18 @@
             // grdDetails
             // 
             this.grdDetails.CausesValidation = false;
-            this.grdDetails.DataMember = null;
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdDetails.DisplayLayout.Appearance = appearance1;
             ultraGridColumn3.Header.VisiblePosition = 0;
-            ultraGridColumn3.Width = 269;
+            ultraGridColumn3.Width = 235;
             ultraGridColumn29.Header.VisiblePosition = 1;
-            ultraGridColumn29.Width = 175;
+            ultraGridColumn29.Width = 160;
             ultraGridColumn4.Header.VisiblePosition = 2;
             ultraGridColumn8.Header.VisiblePosition = 3;
             ultraGridColumn6.Header.VisiblePosition = 4;
-            ultraGridColumn6.Width = 297;
+            ultraGridColumn6.Width = 256;
             ultraGridColumn7.Header.VisiblePosition = 5;
             ultraGridColumn7.Width = 338;
             ultraGridBand1.Columns.AddRange(new object[] {
@@ -124,16 +123,17 @@
             this.grdDetails.Location = new System.Drawing.Point(11, 24);
             this.grdDetails.Margin = new System.Windows.Forms.Padding(2);
             this.grdDetails.Name = "grdDetails";
-            this.grdDetails.Size = new System.Drawing.Size(1300, 376);
+            this.grdDetails.Size = new System.Drawing.Size(1142, 376);
             this.grdDetails.TabIndex = 46;
             // 
             // frmServiceDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 411);
+            this.ClientSize = new System.Drawing.Size(1164, 411);
             this.Controls.Add(this.grdDetails);
             this.Name = "frmServiceDetail";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalles";
             this.Load += new System.EventHandler(this.frmServiceDetail_Load);
