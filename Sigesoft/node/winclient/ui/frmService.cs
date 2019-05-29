@@ -4125,5 +4125,26 @@ namespace Sigesoft.Node.WinClient.UI
             _mergeExPDF.Execute();
             _mergeExPDF.RunFile();
         }
+
+        private void itemDetalles_Click(object sender, EventArgs e)
+        {
+            var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            var PacientName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+            var FechaServicio = grdDataService.Selected.Rows[0].Cells["Fecha"].Value.ToString();
+            var frm = new frmServiceDetail(ServiceId, FechaServicio, PacientName);
+            frm.ShowDialog();
+        }
+
+        private void grdDataService_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (grdDataService.Selected.Rows.Count == 0)
+            {
+                cmGridService.Items["itemDetalles"].Enabled = false;
+            }
+            else
+            {
+                cmGridService.Items["itemDetalles"].Enabled = true;
+            }
+        }
     }
 }

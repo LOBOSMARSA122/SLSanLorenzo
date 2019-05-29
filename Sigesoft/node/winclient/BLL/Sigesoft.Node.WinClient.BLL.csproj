@@ -116,6 +116,7 @@
     <Compile Include="SecurityBL.cs" />
     <Compile Include="ServiceBL.cs" />
     <Compile Include="ServiceComponentListReportSolo.cs" />
+    <Compile Include="ServiceDetailBL.cs" />
     <Compile Include="ServiceOrderBL.cs" />
     <Compile Include="SpecialistConfigurationBl.cs" />
     <Compile Include="SupplierBL.cs" />
