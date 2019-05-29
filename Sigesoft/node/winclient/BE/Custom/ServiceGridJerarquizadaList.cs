@@ -74,5 +74,13 @@ namespace Sigesoft.Node.WinClient.BE
         public int item { get; set; }
         public int? i_ApprovedUpdateUserId { get; set; }
         public string v_DocNumber { get; set; }
+
+        public string UsuarioCrea { get; set; }
+        public string TipoServicio { get; set; }
+        public string TipoServicioMaster {get; set; }
+        public string TipoServicioESO { get; set; }
+        public string v_MedicoTratante { get; set; }
+
+        public string Fecha { get; set; }
     }
 }

@@ -49,7 +49,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 int doctor = 1;
                 hospser = _hospitBL.GetHospitServ(hospiId);
 
-                var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
                 var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
 
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
@@ -156,7 +155,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 _hospitBL.UpdateHospitalizacion(ref objOperationResult, _Hospitalizacion, Globals.ClientSession.GetAsList());
                 #endregion
 
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor, hospitalizacion, hospitalizacionhabitacion, medicoTratante);
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, datosP, doctor, hospitalizacion, hospitalizacionhabitacion, medicoTratante);
 
                 this.Enabled = true;
             }
@@ -287,7 +286,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 
                 
                 
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente, hospitalizacion, hospitalizacionhabitacion, medicoTratante);
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, datosP, paciente, hospitalizacion, hospitalizacionhabitacion, medicoTratante);
                 this.Enabled = true;
             }
             this.Close();

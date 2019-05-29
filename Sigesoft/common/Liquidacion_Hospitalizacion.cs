@@ -26,7 +26,7 @@ namespace NetPdf
         }        
         public static void CreateLiquidacion(string filePDF,
             organizationDto infoEmpresaPropietaria, List<HospitalizacionList> ListaHospit,
-            ServiceList DataService, PacientList datosPac, int cargo, hospitalizacionDto hospit, hospitalizacionhabitacionDto hospitHabit,  MedicoTratanteAtenciones medico)
+            PacientList datosPac, int cargo, hospitalizacionDto hospit, hospitalizacionhabitacionDto hospitHabit,  MedicoTratanteAtenciones medico)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -506,10 +506,7 @@ namespace NetPdf
             document.Add(filiationWorker);
             #endregion
 
-            #region ACTUALIZAR PRECIOS EN BASE
-            
 
-            #endregion
             document.Close();
             writer.Close();
             writer.Dispose();

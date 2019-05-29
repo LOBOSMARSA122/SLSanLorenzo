@@ -731,7 +731,7 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
 
-        private List<TicketDetalleList> BuscarTicketsDetalle(string v_TicketId)
+        public List<TicketDetalleList> BuscarTicketsDetalle(string v_TicketId)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
             var queryticketdetalle = from A in dbContext.hospitalizacion
@@ -739,6 +739,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
                                      join E in dbContext.ticket on D.v_ServiceId equals E.v_ServiceId
                                      join F in dbContext.ticketdetalle on E.v_TicketId equals F.v_TicketId
+                                     join G in dbContext.systemuser on E.i_InsertUserId equals  G.i_SystemUserId
+                                     join H in dbContext.person on G.v_PersonId equals H.v_PersonId
                                      //join G in dbContext.productsformigration on F.v_IdProductoDetalle equals G.v_ProductId
                                      where E.v_TicketId == v_TicketId && F.i_IsDeleted == 0 && E.i_IsDeleted == 0
                                      && A.i_IsDeleted == 0 && C.i_IsDeleted == 0 && D.i_IsDeleted == 0
@@ -751,7 +753,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_Descripcion = F.v_Descripcion,
                                   v_IdProductoDetalle = F.v_IdProductoDetalle,
                                   i_EsDespachado = F.i_EsDespachado.Value,
-                                  d_PrecioVenta = F.d_PrecioVenta.Value
+                                  d_PrecioVenta = F.d_PrecioVenta.Value,
+                                  UsuarioCrea = H.v_FirstLastName + " " + H.v_SecondLastName + ", " + H.v_FirstName
                               };
             List<TicketDetalleList> objData = queryticketdetalle.ToList();
             var ticketdetalle = (from a in objData
@@ -764,7 +767,8 @@ namespace Sigesoft.Node.WinClient.BLL
                               v_Descripcion = a.v_Descripcion,
                               i_EsDespachado = a.i_EsDespachado,
                               EsDespachado = a.i_EsDespachado == 0 ? "NO" : "SI",
-                              d_PrecioVenta = a.d_PrecioVenta
+                              d_PrecioVenta = a.d_PrecioVenta,
+                              UsuarioCrea = a.UsuarioCrea
                           }).ToList();
 
             return ticketdetalle;
@@ -1084,6 +1088,93 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public ticketDto GetHospitServTicket(string ticketId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                ticketDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.ticket
+                                 where a.v_TicketId == ticketId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = ticketAssembler.ToDTO(objEntity);
+
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public hospitalizacionserviceDto GetHospitServwithTicekt(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                hospitalizacionserviceDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.hospitalizacionservice
+                    where a.v_ServiceId == serviceId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = hospitalizacionserviceAssembler.ToDTO(objEntity);
+
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public serviceDto GetService(string servideId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                serviceDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.service
+                                 where a.v_ServiceId == servideId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = serviceAssembler.ToDTO(objEntity);
+
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public protocolDto GetProtocol(string protocolId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                protocolDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.protocol
+                                 where a.v_ProtocolId == protocolId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = protocolAssembler.ToDTO(objEntity);
+
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public hospitalizacionhabitacionDto GetHospitalizacionHabitacion(ref OperationResult pobjOperationResult, string v_HopitalizacionId)
         {
             //mon.IsActive = true;
@@ -1111,6 +1202,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        
         public void ActualizarPagoMedico(string serviceId)
         {
             try
