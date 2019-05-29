@@ -43,7 +43,7 @@ namespace Sigesoft.Node.WinClient.UI
             if (_mode == "NewASEGU" || _mode == "NewHOSPI")
             {
                 cmEstadosHabitacion.Items["itemLiberar"].Enabled = false;
-                cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
+                //cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
 
                 dtpFechaFin.Checked = false;
                 if (_mode == "NewASEGU")
@@ -56,7 +56,7 @@ namespace Sigesoft.Node.WinClient.UI
             else if (_mode == "Edit")
             {
                 cmEstadosHabitacion.Items["itemLiberar"].Enabled = false;
-                cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
+                //cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
 
                 _hospitalizacionHabitaciónDto = _hospitalizacionBL.GetHabitacion(ref objOperationResult, _hospitalizacionHabitacionId);
 
