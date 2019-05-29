@@ -31,7 +31,9 @@ namespace Sigesoft.Node.WinClient.BLL
                         PacientDocument = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_DocNumber,
                         EmpresaId = E.v_OrganizationSeguroId,
                         Aseguradora = D.v_Name,
-                        Protocolo = C.v_ProtocolId
+                        Protocolo = C.v_ProtocolId,
+                        //Factor = C.r_PriceFactor,
+                        //PPS = C.r_ClinicDiscount
                     };
 
                     if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -60,6 +62,10 @@ namespace Sigesoft.Node.WinClient.BLL
                     oLiquidacionAseguradora.Paciente = servicio.Paciente;
                     oLiquidacionAseguradora.Aseguradora = servicio.Aseguradora;
                     oLiquidacionAseguradora.Protocolo = servicio.Protocolo;
+                    //oLiquidacionAseguradora.Factor = servicio.Factor;
+                    //oLiquidacionAseguradora.PPS = servicio.PPS;
+
+
                     var serviceComponents = obtenerServiceComponentsByServiceId(servicio.ServicioId);
                     var detalle = new List<LiquiAseguradoraDetalle>();
                     foreach (var componente in serviceComponents)

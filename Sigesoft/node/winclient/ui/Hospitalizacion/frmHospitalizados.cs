@@ -51,6 +51,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         int _edad;
         private string v_ProtocoloId;
 
+        private hospitalizacionserviceDto hospser = new hospitalizacionserviceDto();
+        private ticketDto Ticket = new ticketDto();
+        private protocolDto prot = new protocolDto();
+        private serviceDto serv = new serviceDto();
         public frmHospitalizados()
         {
             InitializeComponent();
@@ -231,6 +235,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnTicket.Enabled = false;
                         btnEditarTicket.Enabled = false;
                         btnEliminarTicket.Enabled = false;
+                        btnImprimirTicket.Enabled = false;
                         btnAgregarExamenes.Enabled = false;
                         btnAsignarHabitacion.Enabled = false;
                         btnEditarHabitacion.Enabled = false;
@@ -244,6 +249,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     else
                     {
                         btnAsignarHabitacion.Enabled = true;
+                        btnImprimirTicket.Enabled = false;
                         btnReportePDF.Enabled = true;
                         btnDarAlta.Enabled = true;
                         btnReportePDF.Enabled = true;
@@ -259,6 +265,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnTicket.Enabled = false;
                         btnEditarTicket.Enabled = false;
                         btnEliminarTicket.Enabled = false;
+                        btnImprimirTicket.Enabled = false;
                         btnAgregarExamenes.Enabled = false;
                         btnAsignarHabitacion.Enabled = false;
                         btnEditarHabitacion.Enabled = false;
@@ -275,6 +282,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnAgregarExamenes.Enabled = true;
                         btnEditarTicket.Enabled = false;
                         btnEliminarTicket.Enabled = false;
+                        btnImprimirTicket.Enabled = false;
                         btnAsignarHabitacion.Enabled = false;
                         btnEditarHabitacion.Enabled = false;
                         btnEliminarHabitacion.Enabled = false;
@@ -291,6 +299,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnTicket.Enabled = false;
                         btnEditarTicket.Enabled = false;
                         btnEliminarTicket.Enabled = false;
+                        btnImprimirTicket.Enabled = true;
                         btnAgregarExamenes.Enabled = false;
                         btnAsignarHabitacion.Enabled = false;
                         btnEditarHabitacion.Enabled = false;
@@ -305,6 +314,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     {
                         btnEditarTicket.Enabled = true;
                         btnEliminarTicket.Enabled = true;
+                        btnImprimirTicket.Enabled = true;
                         btnTicket.Enabled = false;
                         btnAgregarExamenes.Enabled = false;
                         btnAsignarHabitacion.Enabled = false;
@@ -320,6 +330,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     btnTicket.Enabled = false;
                     btnEditarTicket.Enabled = false;
                     btnEliminarTicket.Enabled = false;
+                    btnImprimirTicket.Enabled = false;
                     btnAgregarExamenes.Enabled = false;
                     btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
@@ -334,6 +345,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     btnTicket.Enabled = false;
                     btnEditarTicket.Enabled = false;
                     btnEliminarTicket.Enabled = false;
+                    btnImprimirTicket.Enabled = false;
                     btnAgregarExamenes.Enabled = false;
                     btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
@@ -350,6 +362,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnTicket.Enabled = false;
                         btnEditarTicket.Enabled = false;
                         btnEliminarTicket.Enabled = false;
+                        btnImprimirTicket.Enabled = false;
                         btnAgregarExamenes.Enabled = false;
                         btnAsignarHabitacion.Enabled = false;
                         btnEditarHabitacion.Enabled = false;
@@ -366,6 +379,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnTicket.Enabled = false;
                         btnEditarTicket.Enabled = false;
                         btnEliminarTicket.Enabled = false;
+                        btnImprimirTicket.Enabled = false;
                         btnAgregarExamenes.Enabled = false;
                         btnDarAlta.Enabled = false;
                         btnReportePDF.Enabled = false;
@@ -441,15 +455,16 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             try
             {
-                #region Conexion SIGESOFT Obtener Protocolo
                 var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+
+                #region Conexion SIGESOFT Obtener Protocolo
                 ConexionSigesoft conectasam = new ConexionSigesoft();
                 conectasam.opensigesoft();
                 var cadena1 = "select PR.v_ProtocolId " +
                               "from hospitalizacionservice HS " +
                               "inner join service SR on SR.v_ServiceId= HS.v_ServiceId " +
                               "inner join protocol PR on SR.v_ProtocolId=PR.v_ProtocolId " +
-                              "where v_HopitalizacionId='"+v_HopitalizacionId+"'";
+                              "where v_HopitalizacionId='" + v_HopitalizacionId + "'";
                 SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                 SqlDataReader lector = comando.ExecuteReader();
                 v_ProtocoloId = "";
@@ -457,9 +472,30 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 lector.Close();
                 conectasam.closesigesoft();
                 #endregion
+
+                #region Conexion SIGESOFT Obtener Plan
+                conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                cadena1 = "select PL.i_PlanId from [dbo].[plan] PL where PL.v_ProtocoloId ='" + v_ProtocoloId + "'";
+                comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                lector = comando.ExecuteReader();
+                string plan = "";
+                while (lector.Read()) { plan = lector.GetValue(0).ToString(); }
+                lector.Close();
+                conectasam.closesigesoft();
+                #endregion
+                string modoMasterService;
+                if (plan != "") { modoMasterService = "ASEGU"; }
+                else { modoMasterService = "HOSPI"; }
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
                 var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
+
                 frmHabitaciones frm = new frmHabitaciones(hospitalizacionId, "Edit", hospitalizacionHabitacionId, v_ProtocoloId);
+
+
+                //frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit" + modoMasterService, hospitalizacionHabitacionId, v_ProtocoloId);
+                //frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId, v_ProtocoloId);
+
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnEditarHabitacion.Enabled = false;
@@ -601,6 +637,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                             btnTicket.Enabled = false;
                             btnEditarTicket.Enabled = false;
                             btnEliminarTicket.Enabled = false;
+                            btnImprimirTicket.Enabled = false;
                             btnAgregarExamenes.Enabled = false;
                             btnAsignarHabitacion.Enabled = false;
                             btnEditarHabitacion.Enabled = false;
@@ -783,6 +820,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 MessageBoxIcon.Information);
         }
 
+
         private void btnVerHabitaciones_Click(object sender, EventArgs e)
         {
             //var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
@@ -805,6 +843,46 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                 new HabitacionBL().UpdateEstateHabitacionLimpieza(v_HopitalizacionId);
             }
+        }
+
+        private void btnImprimirTicket_Click(object sender, EventArgs e)
+        {
+            OperationResult _objOperationResult = new OperationResult();
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+                var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
+
+                var lista = _hospitBL.BuscarTicketsDetalle(ticketId);
+
+                //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
+                //int doctor = 1;
+                Ticket = _hospitBL.GetHospitServTicket(ticketId);
+                hospser = _hospitBL.GetHospitServwithTicekt(Ticket.v_ServiceId);
+
+                serv = _hospitBL.GetService(Ticket.v_ServiceId);
+                prot = _hospitBL.GetProtocol(serv.v_ProtocolId);
+
+                var datosP = _pacientBL.DevolverDatosPaciente(Ticket.v_ServiceId);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaTicketsH").ToString();
+                ServiceList personData = _serviceBL.GetServicePersonData(ref _objOperationResult, hospser.v_ServiceId);
+
+                var hospitalizacion = _hospitBL.GetHospitalizacion(ref _objOperationResult, hospser.v_HopitalizacionId);
+                var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref _objOperationResult, hospser.v_HopitalizacionId);
+                var medicoTratante = new ServiceBL().GetMedicoTratante(Ticket.v_ServiceId);
+                
+                string nombre = "Ticket N° " + ticketId + "_" + personData.v_DocNumber;
+
+                TicketHosp.CreateTicket(ruta + nombre + ".pdf", MedicalCenter, lista, datosP, hospitalizacion, hospitalizacionhabitacion, medicoTratante, Ticket, prot);
+
+                this.Enabled = true;
+            }
+            //this.Close();
+
         }           
 
     }

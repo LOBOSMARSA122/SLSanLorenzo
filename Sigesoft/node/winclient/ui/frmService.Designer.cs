@@ -32,17 +32,20 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Pacient");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AptitudeStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CopmMinera");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CompMinera");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tercero");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PacientDocument");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Liq");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Liq", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DocNumber");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UsuarioCrea");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoServicio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_MedicoTratante");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("detalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("detalle", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
@@ -98,7 +101,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            //this.btnVerficiarAdj = new System.Windows.Forms.Button();
+            this.btnImprimirAdicionales = new System.Windows.Forms.Button();
             this.btnMigrarEmpresa = new System.Windows.Forms.Button();
             this.btnSubirInterconsulta = new System.Windows.Forms.Button();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -155,7 +158,6 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
-            this.btnImprimirAdicionales = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -346,7 +348,7 @@
             this.btnFilter.ForeColor = System.Drawing.Color.Black;
             this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
             this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(1051, 91);
+            this.btnFilter.Location = new System.Drawing.Point(1143, 92);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 24);
@@ -679,7 +681,7 @@
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.ImageKey = "(none)";
-            this.label14.Location = new System.Drawing.Point(819, 486);
+            this.label14.Location = new System.Drawing.Point(792, 505);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(107, 15);
             this.label14.TabIndex = 141;
@@ -748,16 +750,24 @@
             this.groupBox2.Text = "Lista de Servicios";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // btnVerficiarAdj
+            // btnImprimirAdicionales
             // 
-            //this.btnVerficiarAdj.Location = new System.Drawing.Point(1093, 498);
-            //this.btnVerficiarAdj.Name = "btnVerficiarAdj";
-            //this.btnVerficiarAdj.Size = new System.Drawing.Size(129, 26);
-            //this.btnVerficiarAdj.TabIndex = 160;
-            //this.btnVerficiarAdj.Text = "Verificar Adjuntos";
-            //this.btnVerficiarAdj.UseVisualStyleBackColor = true;
-            //this.btnVerficiarAdj.Visible = false;
-            //this.btnVerficiarAdj.Click += new System.EventHandler(this.btnVerficiarAdj_Click);
+            this.btnImprimirAdicionales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirAdicionales.BackColor = System.Drawing.SystemColors.Control;
+            this.btnImprimirAdicionales.Enabled = false;
+            this.btnImprimirAdicionales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImprimirAdicionales.Font = new System.Drawing.Font("Calibri", 8.25F);
+            this.btnImprimirAdicionales.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnImprimirAdicionales.Image = global::Sigesoft.Node.WinClient.UI.Resources.printer_go;
+            this.btnImprimirAdicionales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimirAdicionales.Location = new System.Drawing.Point(1093, 166);
+            this.btnImprimirAdicionales.Name = "btnImprimirAdicionales";
+            this.btnImprimirAdicionales.Size = new System.Drawing.Size(129, 44);
+            this.btnImprimirAdicionales.TabIndex = 160;
+            this.btnImprimirAdicionales.Text = "          Imprimir Exámenes Adicionales";
+            this.btnImprimirAdicionales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimirAdicionales.UseVisualStyleBackColor = false;
+            this.btnImprimirAdicionales.Click += new System.EventHandler(this.btnImprimirAdicionales_Click);
             // 
             // btnMigrarEmpresa
             // 
@@ -806,46 +816,65 @@
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdDataService.DisplayLayout.Appearance = appearance1;
             ultraGridColumn1.Header.Caption = "Paciente";
-            ultraGridColumn1.Header.VisiblePosition = 2;
-            ultraGridColumn2.Header.Caption = "Fecha Servicio";
-            ultraGridColumn2.Header.VisiblePosition = 5;
+            ultraGridColumn1.Header.VisiblePosition = 3;
+            ultraGridColumn1.Width = 223;
             ultraGridColumn3.Header.Caption = "Aptitud";
-            ultraGridColumn3.Header.VisiblePosition = 6;
+            ultraGridColumn3.Header.VisiblePosition = 7;
+            ultraGridColumn3.Width = 95;
             ultraGridColumn4.Header.Caption = "Estado Servicio";
-            ultraGridColumn4.Header.VisiblePosition = 4;
+            ultraGridColumn4.Header.VisiblePosition = 6;
+            ultraGridColumn4.Width = 95;
             ultraGridColumn5.Header.Caption = "Empresa";
-            ultraGridColumn5.Header.VisiblePosition = 7;
-            ultraGridColumn6.Header.VisiblePosition = 8;
+            ultraGridColumn5.Header.VisiblePosition = 8;
+            ultraGridColumn5.Width = 197;
+            ultraGridColumn23.Header.VisiblePosition = 4;
+            ultraGridColumn23.Width = 187;
             ultraGridColumn7.Header.VisiblePosition = 9;
+            ultraGridColumn7.Width = 162;
             ultraGridColumn8.Header.VisiblePosition = 11;
+            ultraGridColumn8.Width = 121;
             ultraGridColumn9.Header.Caption = "Protocolo";
             ultraGridColumn9.Header.VisiblePosition = 10;
+            ultraGridColumn9.Width = 155;
             ultraGridColumn10.Header.Caption = "Paciente";
-            ultraGridColumn10.Header.VisiblePosition = 3;
+            ultraGridColumn10.Header.VisiblePosition = 5;
             ultraGridColumn10.Hidden = true;
+            ultraGridColumn11.Header.Fixed = true;
             ultraGridColumn11.Header.VisiblePosition = 0;
-            ultraGridColumn11.Width = 29;
-            ultraGridColumn12.Header.Caption = "Nro Historia";
+            ultraGridColumn11.Width = 18;
+            ultraGridColumn12.Header.Caption = "N° Historia";
             ultraGridColumn12.Header.VisiblePosition = 1;
-            ultraGridColumn13.Header.VisiblePosition = 12;
+            ultraGridColumn12.Width = 67;
+            ultraGridColumn19.Header.VisiblePosition = 13;
+            ultraGridColumn19.Width = 240;
+            ultraGridColumn20.Header.VisiblePosition = 12;
+            ultraGridColumn20.Width = 181;
+            ultraGridColumn21.Header.VisiblePosition = 2;
+            ultraGridColumn21.Width = 128;
+            ultraGridColumn22.Header.VisiblePosition = 14;
+            ultraGridColumn22.Width = 214;
+            ultraGridColumn13.Header.VisiblePosition = 15;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
-            ultraGridColumn2,
             ultraGridColumn3,
             ultraGridColumn4,
             ultraGridColumn5,
-            ultraGridColumn6,
+            ultraGridColumn23,
             ultraGridColumn7,
             ultraGridColumn8,
             ultraGridColumn9,
             ultraGridColumn10,
             ultraGridColumn11,
             ultraGridColumn12,
+            ultraGridColumn19,
+            ultraGridColumn20,
+            ultraGridColumn21,
+            ultraGridColumn22,
             ultraGridColumn13});
             ultraGridBand1.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.Yes;
             ultraGridColumn14.ColSpan = ((short)(3));
             ultraGridColumn14.Header.VisiblePosition = 0;
-            ultraGridColumn14.Width = 292;
+            ultraGridColumn14.Width = 211;
             ultraGridColumn15.Header.VisiblePosition = 1;
             ultraGridColumn15.Hidden = true;
             ultraGridColumn16.ColSpan = ((short)(4));
@@ -863,10 +892,12 @@
             this.grdDataService.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdDataService.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdDataService.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.grdDataService.DisplayLayout.EmptyRowSettings.Style = Infragistics.Win.UltraWinGrid.EmptyRowStyle.AlignWithDataRows;
             this.grdDataService.DisplayLayout.GroupByBox.Prompt = " ";
             this.grdDataService.DisplayLayout.InterBandSpacing = 10;
             this.grdDataService.DisplayLayout.MaxColScrollRegions = 1;
             this.grdDataService.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdDataService.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
             this.grdDataService.DisplayLayout.Override.AllowColSwapping = Infragistics.Win.UltraWinGrid.AllowColSwapping.NotAllowed;
             this.grdDataService.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
             appearance2.BackColor = System.Drawing.Color.Transparent;
@@ -893,7 +924,6 @@
             this.grdDataService.DisplayLayout.Override.RowSelectorAppearance = appearance6;
             this.grdDataService.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.RowIndex;
             this.grdDataService.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            this.grdDataService.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.Fixed;
             appearance7.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             appearance7.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
             appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
@@ -906,9 +936,10 @@
             this.grdDataService.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
             this.grdDataService.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.grdDataService.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdDataService.DisplayLayout.UseFixedHeaders = true;
             this.grdDataService.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.grdDataService.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdDataService.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.grdDataService.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.grdDataService.Location = new System.Drawing.Point(0, 29);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
@@ -2004,25 +2035,6 @@
             this.btnImprimirCertificadoAptitud.UseVisualStyleBackColor = false;
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
-            // 
-            // btnImprimirAdicionales
-            // 
-            this.btnImprimirAdicionales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimirAdicionales.BackColor = System.Drawing.SystemColors.Control;
-            this.btnImprimirAdicionales.Enabled = false;
-            this.btnImprimirAdicionales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnImprimirAdicionales.Font = new System.Drawing.Font("Calibri", 8.25F);
-            this.btnImprimirAdicionales.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnImprimirAdicionales.Image = global::Sigesoft.Node.WinClient.UI.Resources.printer_go;
-            this.btnImprimirAdicionales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirAdicionales.Location = new System.Drawing.Point(1093, 166);
-            this.btnImprimirAdicionales.Name = "btnImprimirAdicionales";
-            this.btnImprimirAdicionales.Size = new System.Drawing.Size(129, 44);
-            this.btnImprimirAdicionales.TabIndex = 160;
-            this.btnImprimirAdicionales.Text = "          Imprimir Exámenes Adicionales";
-            this.btnImprimirAdicionales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimirAdicionales.UseVisualStyleBackColor = false;
-            this.btnImprimirAdicionales.Click += new System.EventHandler(this.btnImprimirAdicionales_Click);
             // 
             // frmService
             // 
