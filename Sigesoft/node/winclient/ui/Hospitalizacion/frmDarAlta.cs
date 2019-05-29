@@ -64,9 +64,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 _hospitalizacionDto = _hospitalizacionBL.GetHospitalizacion(ref objOperationResult, _hospitalizacionId);
                 _hospitalizacionDto.d_FechaAlta = (DateTime?)(dtpFechaAlta.Checked == false ? (ValueType)null : dtpFechaAlta.Value);
                 _hospitalizacionDto.v_Comentario = txtComentario.Text;
-
+                
                 _hospitalizacionBL.UpdateHospitalizacion(ref objOperationResult, _hospitalizacionDto, Globals.ClientSession.GetAsList());
-                   
+
+
+                new HabitacionBL().UpdateEstateHabitacionByHospId(_hospitalizacionId);
+
+                MessageBox.Show(
+                    "El estado de la habitación será de 'En Limpieza', por favor dar aviso al personal correspondiente",
+                    "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // hacer update al service culminado
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

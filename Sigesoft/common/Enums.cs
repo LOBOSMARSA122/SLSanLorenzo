@@ -18,7 +18,14 @@ namespace Sigesoft.Common
         Internal = 1,
         External = 2
     }
-    
+
+    public enum EstadoHabitacion
+    {
+        Ocupado = 1,
+        EnLimpieza = 2,
+        Libre = 3
+    }
+
     public enum EmpresaDx
     {
         ConDx = 1,

@@ -237,6 +237,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnEliminarHabitacion.Enabled = false;
                         btnDarAlta.Enabled = false;
                         activador = true;
+                        
                         btnReportePDF.Enabled = true;
 
                     }
@@ -248,6 +249,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnReportePDF.Enabled = true;
 
                     }
+                    
                 }
 
                 if (rowSelected.Band.Index.ToString() == "1")
@@ -418,7 +420,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 if (plan != "") { modoMasterService = "ASEGU"; }
                 else { modoMasterService = "HOSPI"; }
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
+                //frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
+                var frm = new frmHabitaciones(hospitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnAsignarHabitacion.Enabled = false;
@@ -455,9 +458,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 conectasam.closesigesoft();
                 #endregion
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-                var hospitalizacionHabitacionId =
-                    grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
-                frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId, v_ProtocoloId);
+                var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
+                frmHabitaciones frm = new frmHabitaciones(hospitalizacionId, "Edit", hospitalizacionHabitacionId, v_ProtocoloId);
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnEditarHabitacion.Enabled = false;
@@ -592,7 +594,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     {
                         if (e.Row.Cells["d_FechaAlta"].Value!=null)
                         {
+                            
                             e.Row.Appearance.BackColor = Color.Yellow;
+
                             e.Row.Appearance.BackColor2 = Color.White;
                             btnTicket.Enabled = false;
                             btnEditarTicket.Enabled = false;
@@ -616,6 +620,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                             //grdData.Selected.Rows[0].Band.Override.SelectTypeRow = SelectType.None;
 
                         }
+
+
                     }
                 }
                 if (banda == "2")
@@ -675,10 +681,23 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             if (row != null)
             {
                 contextMenuStrip2.Items["btnRemoverEsamen"].Enabled = true;
+
             }
             else
             {
                 contextMenuStrip2.Items["btnRemoverEsamen"].Enabled = false;
+                contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
+            }
+            if (grdData.Selected.Rows.Count > 0)
+            {
+                if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
+                {
+                    contextMenuStrip2.Items["itemLimpieza"].Enabled = true;
+                }
+                else
+                {
+                    contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
+                }
             }
         }
 
@@ -762,6 +781,30 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             btnFilter_Click(sender, e);
             MessageBox.Show("Se liberó el registro exitosamente.", "Información", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+        }
+
+        private void btnVerHabitaciones_Click(object sender, EventArgs e)
+        {
+            //var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            var frm = new frmHabitaciones("", "View", "", "");
+            frm.ShowDialog();
+        }
+
+        private void itemLimpieza_Click(object sender, EventArgs e)
+        {
+            if (grdData.Selected.Rows.Count == 0)
+            {
+                return;
+            }
+
+            var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+
+            var DialogResult = MessageBox.Show("Se pondrá en limpieza la habitación, ¿desea continuar?",
+                "CONFIRMACIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (DialogResult == DialogResult.Yes)
+            {
+                new HabitacionBL().UpdateEstateHabitacionLimpieza(v_HopitalizacionId);
+            }
         }           
 
     }
