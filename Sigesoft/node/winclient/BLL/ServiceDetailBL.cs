@@ -42,7 +42,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     equals new { a = org2.v_OrganizationId } into org2_join
                     from org2 in org2_join.DefaultIfEmpty()
                    
-                    where src.v_ServiceId == serviceId
+                    where src.v_ServiceId == serviceId && src.r_Price != 0
 
                     select new ServiceDetailCustom
                     {
@@ -50,13 +50,13 @@ namespace Sigesoft.Node.WinClient.BLL
                         Estado = sys.v_Value1,
                         Aseguradora = org2.v_Name,
                         Empresa = org.v_Name,
-                        Con_IGV = src.r_Price.Value,
+                        IGV = src.r_Price.Value,
                     }).ToList();
                 List<ServiceDetailCustom> FinalQuery = new List<ServiceDetailCustom>();
                 foreach (var item in query)
                 {
-                    item.Precio = item.Con_IGV - (item.Con_IGV * float.Parse("0.18"));
-
+                    item.Precio = float.Parse(Math.Round(item.IGV - (item.IGV * float.Parse("0.18")), 2).ToString());
+                    item.IGV = float.Parse(Math.Round(item.IGV * float.Parse("0.18"), 2).ToString());
                     var find = FinalQuery.Find(x => x.Examenes == item.Examenes);
                     if (find == null)
                     {

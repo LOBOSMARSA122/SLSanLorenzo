@@ -33,7 +33,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Examenes");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Estado");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Con_IGV");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IGV");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Aseguradora");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Empresa", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
@@ -59,7 +59,7 @@
             ultraGridColumn29.Header.VisiblePosition = 1;
             ultraGridColumn29.Width = 175;
             ultraGridColumn4.Header.VisiblePosition = 2;
-            ultraGridColumn5.Header.VisiblePosition = 3;
+            ultraGridColumn8.Header.VisiblePosition = 3;
             ultraGridColumn6.Header.VisiblePosition = 4;
             ultraGridColumn6.Width = 297;
             ultraGridColumn7.Header.VisiblePosition = 5;
@@ -68,7 +68,7 @@
             ultraGridColumn3,
             ultraGridColumn29,
             ultraGridColumn4,
-            ultraGridColumn5,
+            ultraGridColumn8,
             ultraGridColumn6,
             ultraGridColumn7});
             this.grdDetails.DisplayLayout.BandsSerializer.Add(ultraGridBand1);

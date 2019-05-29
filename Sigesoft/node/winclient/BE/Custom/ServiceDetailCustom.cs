@@ -10,7 +10,7 @@ namespace Sigesoft.Node.WinClient.BE.Custom
         public string Examenes { get; set; }
         public string Estado { get; set; }
         public float Precio { get; set; }
-        public float Con_IGV { get; set; }
+        public float IGV { get; set; }
         public string Aseguradora { get; set; }
         public string Empresa { get; set; }
     }
