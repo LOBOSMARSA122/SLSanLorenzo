@@ -32,8 +32,8 @@ namespace Sigesoft.Node.WinClient.BLL
                         EmpresaId = E.v_OrganizationSeguroId,
                         Aseguradora = D.v_Name,
                         Protocolo = C.v_ProtocolId,
-                        //Factor = C.r_PriceFactor,
-                        //PPS = C.r_ClinicDiscount
+                        Factor_ = C.r_PriceFactor,
+                        PPS = C.r_MedicineDiscount
                     };
 
                     if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -62,8 +62,8 @@ namespace Sigesoft.Node.WinClient.BLL
                     oLiquidacionAseguradora.Paciente = servicio.Paciente;
                     oLiquidacionAseguradora.Aseguradora = servicio.Aseguradora;
                     oLiquidacionAseguradora.Protocolo = servicio.Protocolo;
-                    //oLiquidacionAseguradora.Factor = servicio.Factor;
-                    //oLiquidacionAseguradora.PPS = servicio.PPS;
+                    oLiquidacionAseguradora.Factor = decimal.Round((decimal)servicio.Factor_, 2);
+                    oLiquidacionAseguradora.PPS = servicio.PPS;
 
 
                     var serviceComponents = obtenerServiceComponentsByServiceId(servicio.ServicioId);

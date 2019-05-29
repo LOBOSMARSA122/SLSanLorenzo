@@ -16,8 +16,9 @@ namespace Sigesoft.Node.WinClient.BE
         public string Aseguradora { get; set; }
         public string Protocolo { get; set; }
         public decimal? TotalAseguradora { get; set; }
-        public decimal? Factor { get; set; }
-        public decimal? PPS { get; set; }
+        public double? Factor_ { get; set; }
+        public decimal Factor { get; set; }
+        public double? PPS { get; set; }
 
         public List<LiquiAseguradoraDetalle> Detalle { get; set; }
     }

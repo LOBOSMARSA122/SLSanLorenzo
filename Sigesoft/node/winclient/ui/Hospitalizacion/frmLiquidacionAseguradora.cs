@@ -54,7 +54,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var objData = GetData(strFilterExpression);
             _dataReport = objData;
-            grdData.DataSource = objData;
+            grdData_1.DataSource = objData;
             lblRecordCountCalendar.Text = string.Format("Se encontraron {0} registros.", objData.Count());
         }
 
@@ -95,15 +95,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
+                this.ultraGridExcelExporter1.Export(this.grdData_1, saveFileDialog1.FileName);
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void btnLiquidacion_Click(object sender, EventArgs e)
         {
-            string serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
-            string organizationName = grdData.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
+            string serviceId = grdData_1.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+            string organizationName = grdData_1.Selected.Rows[0].Cells["Aseguradora"].Value.ToString();
             #region Conexion SIGESOFT Obtener OrganizationId
             ConexionSigesoft conectasam = new ConexionSigesoft();
             conectasam.opensigesoft();
@@ -168,7 +168,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             OperationResult objOperationResult = new OperationResult();
             ServiceBL _serviceBL = new ServiceBL();
             var data = _dataReport;
-            var x = grdData.Selected.Rows[0].Cells["ServicioId"].Value;
+            var x = grdData_1.Selected.Rows[0].Cells["ServicioId"].Value;
             var result = data.FindAll(p => p.ServicioId == x).ToList();
             string ruta = Common.Utils.GetApplicationConfigValue("LiquidacionAseguradora").ToString();
             var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
@@ -243,11 +243,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void button1_Click(object sender, EventArgs e)
         {
             MergeExPDF _mergeExPDF = new MergeExPDF();
-            if (grdData.Selected.Rows.Count > 0)
+            if (grdData_1.Selected.Rows.Count > 0)
             {
                 string ruta = Common.Utils.GetApplicationConfigValue("LiquidacionAseguradora").ToString();
                 string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-                string serviceId = grdData.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+                string serviceId = grdData_1.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
                 string pathFile = ruta + "PRE-LIQUIDACIÓN-" + serviceId + ".pdf";
                 var objPacient = new PacientBL().GetDataPacientByServiceId(serviceId);
                 var objOrganization = new OrganizationBL().GetDataOrganizationByServiceiId(serviceId);
