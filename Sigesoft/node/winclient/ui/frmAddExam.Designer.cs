@@ -505,6 +505,7 @@
             this.gbTipoAtencion.TabIndex = 126;
             this.gbTipoAtencion.TabStop = false;
             this.gbTipoAtencion.Text = "Tipo de Servicio";
+            this.gbTipoAtencion.Visible = false;
             // 
             // rbAdicional
             // 
