@@ -240,7 +240,7 @@ namespace Sigesoft.Node.WinClient.UI
                         aseguradoraName = lector.GetValue(1).ToString();
                         }
                         lector.Close();
-                        conectasam.closesigesoft();
+                        //conectasam.closesigesoft();
                         lblPlan.Text = "Añadir plan de: " + aseguradoraName + "\n" + "Protocolo de Atención: " + protocolName;
                         if (lblPlan.Text.Length > 50) { lblPlan.Font = new Font("Microsoft Sans Serif", 6.25f); }
                         #endregion
