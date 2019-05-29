@@ -87,23 +87,23 @@
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHospitalizados));
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn18 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn19 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_ServiceDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn20 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn21 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn22 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_MasterServiceName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn23 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn24 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn25 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LocationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn26 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn27 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn28 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn29 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn30 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_FechaEntrega");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn31 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Liq");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn32 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn33 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn34 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_ServiceDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_MasterServiceName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LocationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn13 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_FechaEntrega");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn14 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Liq");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.txtPacient = new System.Windows.Forms.TextBox();
@@ -117,6 +117,7 @@
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemLimpieza = new System.Windows.Forms.ToolStripMenuItem();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -132,6 +133,7 @@
             this.btnEliminarTicket = new System.Windows.Forms.Button();
             this.btnEditarTicket = new System.Windows.Forms.Button();
             this.btnTicket = new System.Windows.Forms.Button();
+            this.btnVerHabitaciones = new System.Windows.Forms.Button();
             this.btnImprimirTicket = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -479,39 +481,48 @@
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRemoverEsamen});
+            this.btnRemoverEsamen,
+            this.itemLimpieza});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(166, 26);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(233, 48);
             // 
             // btnRemoverEsamen
             // 
             this.btnRemoverEsamen.Enabled = false;
             this.btnRemoverEsamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverEsamen.Image")));
             this.btnRemoverEsamen.Name = "btnRemoverEsamen";
-            this.btnRemoverEsamen.Size = new System.Drawing.Size(165, 22);
+            this.btnRemoverEsamen.Size = new System.Drawing.Size(232, 22);
             this.btnRemoverEsamen.Text = "Remover Examen";
             this.btnRemoverEsamen.Click += new System.EventHandler(this.btnRemoverEsamen_Click);
+            // 
+            // itemLimpieza
+            // 
+            this.itemLimpieza.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.pencil;
+            this.itemLimpieza.Name = "itemLimpieza";
+            this.itemLimpieza.Size = new System.Drawing.Size(232, 22);
+            this.itemLimpieza.Text = "Poner Habitación en Limpieza";
+            this.itemLimpieza.Click += new System.EventHandler(this.itemLimpieza_Click);
             // 
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn18,
-            ultraDataColumn19,
-            ultraDataColumn20,
-            ultraDataColumn21,
-            ultraDataColumn22,
-            ultraDataColumn23,
-            ultraDataColumn24,
-            ultraDataColumn25,
-            ultraDataColumn26,
-            ultraDataColumn27,
-            ultraDataColumn28,
-            ultraDataColumn29,
-            ultraDataColumn30,
-            ultraDataColumn31,
-            ultraDataColumn32,
-            ultraDataColumn33,
-            ultraDataColumn34});
+            ultraDataColumn1,
+            ultraDataColumn2,
+            ultraDataColumn3,
+            ultraDataColumn4,
+            ultraDataColumn5,
+            ultraDataColumn6,
+            ultraDataColumn7,
+            ultraDataColumn8,
+            ultraDataColumn9,
+            ultraDataColumn10,
+            ultraDataColumn11,
+            ultraDataColumn12,
+            ultraDataColumn13,
+            ultraDataColumn14,
+            ultraDataColumn15,
+            ultraDataColumn16,
+            ultraDataColumn17});
             // 
             // btnLiberar
             // 
@@ -545,7 +556,7 @@
             this.btnEliminarHabitacion.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.delete;
             this.btnEliminarHabitacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarHabitacion.Location = new System.Drawing.Point(1140, 376);
+            this.btnEliminarHabitacion.Location = new System.Drawing.Point(1138, 377);
             this.btnEliminarHabitacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarHabitacion.Name = "btnEliminarHabitacion";
             this.btnEliminarHabitacion.Size = new System.Drawing.Size(128, 32);
@@ -595,7 +606,7 @@
             this.btnDarAlta.Location = new System.Drawing.Point(1140, 435);
             this.btnDarAlta.Margin = new System.Windows.Forms.Padding(2);
             this.btnDarAlta.Name = "btnDarAlta";
-            this.btnDarAlta.Size = new System.Drawing.Size(128, 47);
+            this.btnDarAlta.Size = new System.Drawing.Size(128, 45);
             this.btnDarAlta.TabIndex = 108;
             this.btnDarAlta.Text = "Alta";
             this.btnDarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -615,10 +626,10 @@
             this.btnReportePDF.ForeColor = System.Drawing.Color.Black;
             this.btnReportePDF.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
             this.btnReportePDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportePDF.Location = new System.Drawing.Point(1142, 524);
+            this.btnReportePDF.Location = new System.Drawing.Point(1142, 539);
             this.btnReportePDF.Margin = new System.Windows.Forms.Padding(2);
             this.btnReportePDF.Name = "btnReportePDF";
-            this.btnReportePDF.Size = new System.Drawing.Size(128, 46);
+            this.btnReportePDF.Size = new System.Drawing.Size(128, 31);
             this.btnReportePDF.TabIndex = 107;
             this.btnReportePDF.Text = "Reporte";
             this.btnReportePDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -639,7 +650,7 @@
             this.btnEditarHabitacion.ForeColor = System.Drawing.Color.Black;
             this.btnEditarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_edit;
             this.btnEditarHabitacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarHabitacion.Location = new System.Drawing.Point(1140, 340);
+            this.btnEditarHabitacion.Location = new System.Drawing.Point(1138, 292);
             this.btnEditarHabitacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarHabitacion.Name = "btnEditarHabitacion";
             this.btnEditarHabitacion.Size = new System.Drawing.Size(128, 32);
@@ -663,7 +674,7 @@
             this.btnAsignarHabitacion.ForeColor = System.Drawing.Color.Black;
             this.btnAsignarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.btnAsignarHabitacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAsignarHabitacion.Location = new System.Drawing.Point(1140, 304);
+            this.btnAsignarHabitacion.Location = new System.Drawing.Point(1138, 256);
             this.btnAsignarHabitacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsignarHabitacion.Name = "btnAsignarHabitacion";
             this.btnAsignarHabitacion.Size = new System.Drawing.Size(128, 32);
@@ -687,7 +698,7 @@
             this.btnAgregarExamenes.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarExamenes.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
             this.btnAgregarExamenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarExamenes.Location = new System.Drawing.Point(1140, 250);
+            this.btnAgregarExamenes.Location = new System.Drawing.Point(1138, 220);
             this.btnAgregarExamenes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarExamenes.Name = "btnAgregarExamenes";
             this.btnAgregarExamenes.Size = new System.Drawing.Size(128, 32);
@@ -783,6 +794,30 @@
             this.btnTicket.UseVisualStyleBackColor = false;
             this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
+            // btnVerHabitaciones
+            // 
+            this.btnVerHabitaciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerHabitaciones.BackColor = System.Drawing.SystemColors.Control;
+            this.btnVerHabitaciones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnVerHabitaciones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnVerHabitaciones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnVerHabitaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerHabitaciones.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerHabitaciones.ForeColor = System.Drawing.Color.Black;
+            this.btnVerHabitaciones.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.btnVerHabitaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerHabitaciones.Location = new System.Drawing.Point(1138, 328);
+            this.btnVerHabitaciones.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVerHabitaciones.Name = "btnVerHabitaciones";
+            this.btnVerHabitaciones.Size = new System.Drawing.Size(128, 32);
+            this.btnVerHabitaciones.TabIndex = 157;
+            this.btnVerHabitaciones.TabStop = false;
+            this.btnVerHabitaciones.Text = "Ver Habitaciones";
+            this.btnVerHabitaciones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerHabitaciones.UseVisualStyleBackColor = false;
+            this.btnVerHabitaciones.Click += new System.EventHandler(this.btnVerHabitaciones_Click);
+            // 
             // btnImprimirTicket
             // 
             this.btnImprimirTicket.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -812,6 +847,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 581);
+            this.Controls.Add(this.btnVerHabitaciones);
             this.Controls.Add(this.btnImprimirTicket);
             this.Controls.Add(this.btnLiberar);
             this.Controls.Add(this.btnEliminarHabitacion);
@@ -875,6 +911,11 @@
         private System.Windows.Forms.Button btnEliminarHabitacion;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
         private System.Windows.Forms.Button btnLiberar;
+
+        private System.Windows.Forms.Button btnVerHabitaciones;
+        private System.Windows.Forms.ToolStripMenuItem itemLimpieza;
+
         private System.Windows.Forms.Button btnImprimirTicket;
+
     }
 }

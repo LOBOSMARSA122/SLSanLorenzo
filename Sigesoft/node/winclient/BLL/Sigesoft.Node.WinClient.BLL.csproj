@@ -77,6 +77,7 @@
     <Compile Include="GerenciaTreeTipoPago.cs" />
     <Compile Include="GesBL.cs" />
     <Compile Include="GroupOccupationBL.cs" />
+    <Compile Include="HabitacionBL.cs" />
     <Compile Include="HistoryBL.cs" />
     <Compile Include="HospitalizacionBL.cs" />
     <Compile Include="HospitalizacionHabitacionBL.cs" />

@@ -1277,6 +1277,12 @@
     <Compile Include="frmGroupMedicalExamField.Designer.cs">
       <DependentUpon>frmGroupMedicalExamField.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHabitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHabitaciones.Designer.cs">
+      <DependentUpon>frmHabitaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHistorialServicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3884,6 +3890,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGroupMedicalExamField.resx">
       <DependentUpon>frmGroupMedicalExamField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHabitaciones.resx">
+      <DependentUpon>frmHabitaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHistorialServicio.resx">
       <DependentUpon>frmHistorialServicio.cs</DependentUpon>
