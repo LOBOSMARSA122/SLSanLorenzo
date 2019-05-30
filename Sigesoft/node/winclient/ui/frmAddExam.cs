@@ -549,7 +549,7 @@ namespace Sigesoft.Node.WinClient.UI
                                     }
                                     else
                                     {
-                                        frmConfigSeguros frm1 = new frmConfigSeguros(factorGlobal);
+                                        frmConfigSeguros frm1 = new frmConfigSeguros("1");
                                         frm1.ShowDialog();
                                         objServiceComponentDto.r_Price = (float) frm1.nuevoPrecio;
                                         objServiceComponentDto.d_SaldoPaciente = importe;

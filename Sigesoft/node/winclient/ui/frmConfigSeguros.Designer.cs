@@ -36,15 +36,15 @@
             this.txtCoaseguro = new System.Windows.Forms.TextBox();
             this.lblMontoCoaseguro = new System.Windows.Forms.Label();
             this.txtImporte = new System.Windows.Forms.TextBox();
+            this.txtPagoAseguradora = new System.Windows.Forms.TextBox();
             this.lblmontoDeducible = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPagoPaciente = new System.Windows.Forms.TextBox();
             this.txtnuevoPrecio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtPagoAseguradora = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtFactor = new System.Windows.Forms.TextBox();
-            this.txtPagoPaciente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtPrecioBase = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -135,6 +135,14 @@
             this.txtImporte.Size = new System.Drawing.Size(70, 20);
             this.txtImporte.TabIndex = 6;
             // 
+            // txtPagoAseguradora
+            // 
+            this.txtPagoAseguradora.Enabled = false;
+            this.txtPagoAseguradora.Location = new System.Drawing.Point(263, 15);
+            this.txtPagoAseguradora.Name = "txtPagoAseguradora";
+            this.txtPagoAseguradora.Size = new System.Drawing.Size(70, 20);
+            this.txtPagoAseguradora.TabIndex = 10;
+            // 
             // lblmontoDeducible
             // 
             this.lblmontoDeducible.AutoSize = true;
@@ -143,6 +151,32 @@
             this.lblmontoDeducible.Size = new System.Drawing.Size(37, 13);
             this.lblmontoDeducible.TabIndex = 4;
             this.lblmontoDeducible.Text = "Monto";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(199, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Aseguradora";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(51, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Paga Paciente";
+            // 
+            // txtPagoPaciente
+            // 
+            this.txtPagoPaciente.Enabled = false;
+            this.txtPagoPaciente.Location = new System.Drawing.Point(127, 15);
+            this.txtPagoPaciente.Name = "txtPagoPaciente";
+            this.txtPagoPaciente.Size = new System.Drawing.Size(70, 20);
+            this.txtPagoPaciente.TabIndex = 12;
             // 
             // txtnuevoPrecio
             // 
@@ -162,39 +196,15 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Nuevo precio";
             // 
-            // txtPagoAseguradora
-            // 
-            this.txtPagoAseguradora.Enabled = false;
-            this.txtPagoAseguradora.Location = new System.Drawing.Point(263, 15);
-            this.txtPagoAseguradora.Name = "txtPagoAseguradora";
-            this.txtPagoAseguradora.Size = new System.Drawing.Size(70, 20);
-            this.txtPagoAseguradora.TabIndex = 10;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(199, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Aseguradora";
-            // 
             // txtFactor
             // 
+            this.txtFactor.Enabled = false;
             this.txtFactor.Location = new System.Drawing.Point(216, 11);
             this.txtFactor.Name = "txtFactor";
             this.txtFactor.Size = new System.Drawing.Size(70, 20);
             this.txtFactor.TabIndex = 11;
             this.txtFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFactor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactor_KeyPress);
-            // 
-            // txtPagoPaciente
-            // 
-            this.txtPagoPaciente.Enabled = false;
-            this.txtPagoPaciente.Location = new System.Drawing.Point(127, 15);
-            this.txtPagoPaciente.Name = "txtPagoPaciente";
-            this.txtPagoPaciente.Size = new System.Drawing.Size(70, 20);
-            this.txtPagoPaciente.TabIndex = 12;
             // 
             // label2
             // 
@@ -204,15 +214,6 @@
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Factor";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(51, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Paga Paciente";
             // 
             // txtPrecioBase
             // 
