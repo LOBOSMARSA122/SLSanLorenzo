@@ -10,6 +10,8 @@ namespace Sigesoft.Node.WinClient.BE.Custom
     {
         public int? MasterServiceId { get; set; }
         public string MasterServiceName { get; set; }
+        public double? Discount { get; set; }
+        public decimal? ImporteDeducible { get; set; }
         public List<KindOfServices> ListKindOfServices { get; set; }
     }
 
