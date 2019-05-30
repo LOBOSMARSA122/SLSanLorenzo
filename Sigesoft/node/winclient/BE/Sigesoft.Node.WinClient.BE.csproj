@@ -458,6 +458,7 @@
     <Compile Include="Generated\hospitalizacionserviceDto.cs" />
     <Compile Include="Generated\hospitalizacionhabitacionDto.cs" />
     <Compile Include="Generated\hospitalizacionDto.cs" />
+    <Compile Include="Generated\holidaysDto.cs" />
     <Compile Include="Generated\historyDto.cs" />
     <Compile Include="Generated\groupoccupationDto.cs" />
     <Compile Include="Generated\gesDto.cs" />

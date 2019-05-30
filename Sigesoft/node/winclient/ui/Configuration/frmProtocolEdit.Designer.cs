@@ -66,6 +66,7 @@
             this.New = new System.Windows.Forms.ToolStripMenuItem();
             this.Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordCount2 = new System.Windows.Forms.Label();
             this.uvProtocol = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.cbEmpresaCliente = new System.Windows.Forms.ComboBox();
@@ -120,7 +121,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.verCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.lblDescuento = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdProtocolComponent)).BeginInit();
             this.cmProtocol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).BeginInit();
@@ -227,7 +229,7 @@
             this.grdProtocolComponent.Location = new System.Drawing.Point(17, 28);
             this.grdProtocolComponent.Margin = new System.Windows.Forms.Padding(2);
             this.grdProtocolComponent.Name = "grdProtocolComponent";
-            this.grdProtocolComponent.Size = new System.Drawing.Size(821, 383);
+            this.grdProtocolComponent.Size = new System.Drawing.Size(854, 383);
             this.grdProtocolComponent.TabIndex = 46;
             this.grdProtocolComponent.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdProtocolComponent_AfterSelectChange);
             this.grdProtocolComponent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdProtocolComponent_MouseDown);
@@ -240,13 +242,13 @@
             this.delete,
             this.verCambiosToolStripMenuItem});
             this.cmProtocol.Name = "contextMenuStrip1";
-            this.cmProtocol.Size = new System.Drawing.Size(153, 114);
+            this.cmProtocol.Size = new System.Drawing.Size(141, 92);
             // 
             // New
             // 
             this.New.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.New.Name = "New";
-            this.New.Size = new System.Drawing.Size(152, 22);
+            this.New.Size = new System.Drawing.Size(140, 22);
             this.New.Text = "Nuevo";
             this.New.Click += new System.EventHandler(this.New_Click);
             // 
@@ -254,7 +256,7 @@
             // 
             this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
             this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(152, 22);
+            this.Edit.Size = new System.Drawing.Size(140, 22);
             this.Edit.Text = "Modificar";
             this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
@@ -262,16 +264,24 @@
             // 
             this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(152, 22);
+            this.delete.Size = new System.Drawing.Size(140, 22);
             this.delete.Text = "Eliminar";
             this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
+            // verCambiosToolStripMenuItem
+            // 
+            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
+            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
+            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
             // 
             // lblRecordCount2
             // 
             this.lblRecordCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount2.Location = new System.Drawing.Point(578, 8);
+            this.lblRecordCount2.Location = new System.Drawing.Point(603, 8);
             this.lblRecordCount2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount2.Name = "lblRecordCount2";
             this.lblRecordCount2.Size = new System.Drawing.Size(259, 18);
@@ -305,7 +315,7 @@
             this.cbGeso.FormattingEnabled = true;
             this.cbGeso.Location = new System.Drawing.Point(686, 24);
             this.cbGeso.Name = "cbGeso";
-            this.cbGeso.Size = new System.Drawing.Size(250, 21);
+            this.cbGeso.Size = new System.Drawing.Size(285, 21);
             this.cbGeso.TabIndex = 18;
             this.uvProtocol.GetValidationSettings(this.cbGeso).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
             this.uvProtocol.GetValidationSettings(this.cbGeso).DataType = typeof(string);
@@ -354,7 +364,7 @@
             this.cbTipoServicio.FormattingEnabled = true;
             this.cbTipoServicio.Location = new System.Drawing.Point(686, 51);
             this.cbTipoServicio.Name = "cbTipoServicio";
-            this.cbTipoServicio.Size = new System.Drawing.Size(250, 21);
+            this.cbTipoServicio.Size = new System.Drawing.Size(285, 21);
             this.cbTipoServicio.TabIndex = 26;
             this.uvProtocol.GetValidationSettings(this.cbTipoServicio).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
             this.uvProtocol.GetValidationSettings(this.cbTipoServicio).DataType = typeof(string);
@@ -371,7 +381,7 @@
             this.cbServicio.FormattingEnabled = true;
             this.cbServicio.Location = new System.Drawing.Point(686, 78);
             this.cbServicio.Name = "cbServicio";
-            this.cbServicio.Size = new System.Drawing.Size(250, 21);
+            this.cbServicio.Size = new System.Drawing.Size(285, 21);
             this.cbServicio.TabIndex = 32;
             this.uvProtocol.GetValidationSettings(this.cbServicio).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
             this.uvProtocol.GetValidationSettings(this.cbServicio).DataType = typeof(string);
@@ -430,9 +440,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDiscount);
+            this.groupBox1.Controls.Add(this.lblDescuento);
+            this.groupBox1.Controls.Add(this.chkEsActivo);
             this.groupBox1.Controls.Add(this.txtCamaHosp);
             this.groupBox1.Controls.Add(this.btnAgregarEmpresaContrata);
-            this.groupBox1.Controls.Add(this.chkEsActivo);
             this.groupBox1.Controls.Add(this.cbEmpresaCliente);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cbServicio);
@@ -460,7 +472,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox1.Location = new System.Drawing.Point(17, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(946, 181);
+            this.groupBox1.Size = new System.Drawing.Size(1017, 181);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Protocolo";
@@ -469,7 +481,7 @@
             // txtCamaHosp
             // 
             this.txtCamaHosp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCamaHosp.Location = new System.Drawing.Point(894, 131);
+            this.txtCamaHosp.Location = new System.Drawing.Point(834, 132);
             this.txtCamaHosp.MaxLength = 250;
             this.txtCamaHosp.Name = "txtCamaHosp";
             this.txtCamaHosp.Size = new System.Drawing.Size(42, 20);
@@ -504,7 +516,7 @@
             this.chkEsActivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkEsActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEsActivo.ForeColor = System.Drawing.Color.Black;
-            this.chkEsActivo.Location = new System.Drawing.Point(880, 158);
+            this.chkEsActivo.Location = new System.Drawing.Point(911, 164);
             this.chkEsActivo.Name = "chkEsActivo";
             this.chkEsActivo.Size = new System.Drawing.Size(56, 17);
             this.chkEsActivo.TabIndex = 36;
@@ -552,7 +564,7 @@
             // txtEps
             // 
             this.txtEps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEps.Location = new System.Drawing.Point(780, 131);
+            this.txtEps.Location = new System.Drawing.Point(720, 132);
             this.txtEps.MaxLength = 250;
             this.txtEps.Name = "txtEps";
             this.txtEps.Size = new System.Drawing.Size(42, 20);
@@ -564,7 +576,7 @@
             // txtFactor
             // 
             this.txtFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFactor.Location = new System.Drawing.Point(686, 131);
+            this.txtFactor.Location = new System.Drawing.Point(626, 132);
             this.txtFactor.MaxLength = 250;
             this.txtFactor.Name = "txtFactor";
             this.txtFactor.Size = new System.Drawing.Size(42, 20);
@@ -580,7 +592,7 @@
             this.txtCentroCosto.Location = new System.Drawing.Point(686, 105);
             this.txtCentroCosto.MaxLength = 250;
             this.txtCentroCosto.Name = "txtCentroCosto";
-            this.txtCentroCosto.Size = new System.Drawing.Size(250, 20);
+            this.txtCentroCosto.Size = new System.Drawing.Size(285, 20);
             this.txtCentroCosto.TabIndex = 24;
             this.txtCentroCosto.TextChanged += new System.EventHandler(this.txtCostCenter_TextChanged);
             // 
@@ -589,7 +601,7 @@
             this.lblEps.BackColor = System.Drawing.Color.Transparent;
             this.lblEps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEps.ForeColor = System.Drawing.Color.Black;
-            this.lblEps.Location = new System.Drawing.Point(746, 131);
+            this.lblEps.Location = new System.Drawing.Point(686, 132);
             this.lblEps.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEps.Name = "lblEps";
             this.lblEps.Size = new System.Drawing.Size(48, 20);
@@ -603,7 +615,7 @@
             this.lblFactor.BackColor = System.Drawing.Color.Transparent;
             this.lblFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFactor.ForeColor = System.Drawing.Color.Black;
-            this.lblFactor.Location = new System.Drawing.Point(624, 131);
+            this.lblFactor.Location = new System.Drawing.Point(564, 132);
             this.lblFactor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFactor.Name = "lblFactor";
             this.lblFactor.Size = new System.Drawing.Size(48, 20);
@@ -690,7 +702,7 @@
             this.lblBedHospital.BackColor = System.Drawing.Color.Transparent;
             this.lblBedHospital.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBedHospital.ForeColor = System.Drawing.Color.Black;
-            this.lblBedHospital.Location = new System.Drawing.Point(832, 131);
+            this.lblBedHospital.Location = new System.Drawing.Point(772, 132);
             this.lblBedHospital.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBedHospital.Name = "lblBedHospital";
             this.lblBedHospital.Size = new System.Drawing.Size(71, 20);
@@ -704,10 +716,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(643, 648);
+            this.label4.Location = new System.Drawing.Point(624, 642);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 20);
+            this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 63;
             this.label4.Text = "Vendedor";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -717,7 +729,7 @@
             // 
             this.cboVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVendedor.FormattingEnabled = true;
-            this.cboVendedor.Location = new System.Drawing.Point(653, 648);
+            this.cboVendedor.Location = new System.Drawing.Point(689, 642);
             this.cboVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.cboVendedor.Name = "cboVendedor";
             this.cboVendedor.Size = new System.Drawing.Size(47, 21);
@@ -729,7 +741,7 @@
             this.txtComision.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComision.Enabled = false;
             this.txtComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComision.Location = new System.Drawing.Point(650, 648);
+            this.txtComision.Location = new System.Drawing.Point(458, 642);
             this.txtComision.MaxLength = 250;
             this.txtComision.Name = "txtComision";
             this.txtComision.Size = new System.Drawing.Size(47, 20);
@@ -743,10 +755,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(633, 648);
+            this.label2.Location = new System.Drawing.Point(510, 642);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 20);
+            this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 34;
             this.label2.Text = "% de Comisión";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -757,7 +769,7 @@
             this.chkEsComisionable.AutoSize = true;
             this.chkEsComisionable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEsComisionable.ForeColor = System.Drawing.Color.Black;
-            this.chkEsComisionable.Location = new System.Drawing.Point(612, 650);
+            this.chkEsComisionable.Location = new System.Drawing.Point(344, 646);
             this.chkEsComisionable.Name = "chkEsComisionable";
             this.chkEsComisionable.Size = new System.Drawing.Size(108, 17);
             this.chkEsComisionable.TabIndex = 33;
@@ -773,7 +785,7 @@
             this.tabControl1.Location = new System.Drawing.Point(17, 198);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(946, 442);
+            this.tabControl1.Size = new System.Drawing.Size(971, 442);
             this.tabControl1.TabIndex = 47;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -787,7 +799,7 @@
             this.tpExamenes.Location = new System.Drawing.Point(4, 22);
             this.tpExamenes.Name = "tpExamenes";
             this.tpExamenes.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExamenes.Size = new System.Drawing.Size(938, 416);
+            this.tpExamenes.Size = new System.Drawing.Size(963, 416);
             this.tpExamenes.TabIndex = 0;
             this.tpExamenes.Text = "Examenes";
             this.tpExamenes.UseVisualStyleBackColor = true;
@@ -805,7 +817,7 @@
             this.btnRemover.ForeColor = System.Drawing.Color.Black;
             this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemover.Location = new System.Drawing.Point(850, 86);
+            this.btnRemover.Location = new System.Drawing.Point(875, 86);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 24);
@@ -827,7 +839,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(850, 58);
+            this.btnEditar.Location = new System.Drawing.Point(875, 58);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 24);
@@ -848,7 +860,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(850, 30);
+            this.btnNuevo.Location = new System.Drawing.Point(875, 30);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 24);
@@ -1079,7 +1091,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(881, 642);
+            this.btnCancel.Location = new System.Drawing.Point(915, 642);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
@@ -1092,7 +1104,7 @@
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOK.Location = new System.Drawing.Point(802, 642);
+            this.btnOK.Location = new System.Drawing.Point(836, 642);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 24);
@@ -1102,20 +1114,36 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // verCambiosToolStripMenuItem
+            // txtDiscount
             // 
-            this.verCambiosToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
-            this.verCambiosToolStripMenuItem.Name = "verCambiosToolStripMenuItem";
-            this.verCambiosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.verCambiosToolStripMenuItem.Text = "Ver Cambios";
-            this.verCambiosToolStripMenuItem.Click += new System.EventHandler(this.verCambiosToolStripMenuItem_Click);
+            this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiscount.Location = new System.Drawing.Point(929, 132);
+            this.txtDiscount.MaxLength = 250;
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(42, 20);
+            this.txtDiscount.TabIndex = 63;
+            this.txtDiscount.Text = "0.00";
+            // 
+            // lblDescuento
+            // 
+            this.lblDescuento.BackColor = System.Drawing.Color.Transparent;
+            this.lblDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescuento.ForeColor = System.Drawing.Color.Black;
+            this.lblDescuento.Location = new System.Drawing.Point(881, 132);
+            this.lblDescuento.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDescuento.Name = "lblDescuento";
+            this.lblDescuento.Size = new System.Drawing.Size(43, 20);
+            this.lblDescuento.TabIndex = 62;
+            this.lblDescuento.Text = "Dscto";
+            this.lblDescuento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDescuento.Visible = false;
             // 
             // frmProtocolEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(976, 677);
+            this.ClientSize = new System.Drawing.Size(1010, 677);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboVendedor);
             this.Controls.Add(this.tabControl1);
@@ -1210,5 +1238,7 @@
         private System.Windows.Forms.TextBox txtCamaHosp;
         private System.Windows.Forms.Label lblBedHospital;
         private System.Windows.Forms.ToolStripMenuItem verCambiosToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtDiscount;
+        private System.Windows.Forms.Label lblDescuento;
     }
 }
