@@ -13,6 +13,7 @@ using System.Threading;
 using Sigesoft.Node.WinClient.BE.Custom;
 using System.Data.SqlClient;
 using System.ComponentModel;
+using System.Net.Sockets;
 using System.Runtime.InteropServices.ComTypes;
 using NetPdf;
 
@@ -2735,7 +2736,11 @@ namespace Sigesoft.Node.WinClient.BLL
                     int intNodeId = int.Parse(ClientSession[0]);
                     NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 24), "SC");
                     objEntity.v_ServiceComponentId = NewId;
-                    objEntity.r_Price = SetNewPrice(pobjDtoEntity.r_Price.Value);
+                    if (objEntity.r_Price != null)
+                    {
+                        objEntity.r_Price = SetNewPrice(pobjDtoEntity.r_Price.Value, pobjDtoEntity.v_ComponentId);
+                    }
+                    
 
                     dbContext.AddToservicecomponent(objEntity);
                     dbContext.SaveChanges();
@@ -2757,70 +2762,27 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-        private float SetNewPrice(float value)
+        private float SetNewPrice(float value, string componentId)
         {
             try
             {
+                if (value <= 0) return value;
+                
+                SigesoftEntitiesModel cnx = new SigesoftEntitiesModel();
+
+                var EsRecargable = cnx.component.Where(x => x.v_ComponentId == componentId).FirstOrDefault().i_PriceIsRecharged;
+
+                if (EsRecargable != (int)SiNo.SI) return value;
+
                 DateTime now = DateTime.Now;
                 string year = now.Year.ToString();
                 string day = now.Day.ToString();
                 string month = now.Month.ToString();
-                if (value <= 0)
-                {
-                    return value;
-                }
-                
-                
+
+                var objFeriados = cnx.holidays.Where(x => x.d_Date == now.Date && x.i_Year == now.Year).FirstOrDefault();
+
                 bool IsRecharged = false;
-                if (now >=  DateTime.Parse("18/04/" + year + " 00:00:01") && now <=  DateTime.Parse("18/04/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("19/04/" + year + " 00:00:01") && now <= DateTime.Parse("19/04/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("21/04/" + year + " 00:00:01") && now <= DateTime.Parse("21/04/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("01/05/" + year + " 00:00:01") && now <= DateTime.Parse("01/05/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("29/06/" + year + " 00:00:01") && now <= DateTime.Parse("29/06/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("28/07/" + year + " 00:00:01") && now <= DateTime.Parse("28/07/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("29/07/" + year + " 00:00:01") && now <= DateTime.Parse("29/07/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("30/09/" + year + " 00:00:01") && now <= DateTime.Parse("30/09/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("08/10/" + year + " 00:00:01") && now <= DateTime.Parse("08/10/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("31/10/" + year + " 00:00:01") && now <= DateTime.Parse("31/10/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("01/11/" + year + " 00:00:01") && now <= DateTime.Parse("01/11/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("08/12/" + year + " 00:00:01") && now <= DateTime.Parse("08/12/" + year + " 23:59:59"))
-                {
-                    IsRecharged = true;
-                }
-                else if (now >= DateTime.Parse("25/12/" + year + " 00:00:01") && now <= DateTime.Parse("25/12/" + year + " 23:59:59"))
+                if (objFeriados != null)
                 {
                     IsRecharged = true;
                 }
@@ -2836,7 +2798,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 if (IsRecharged)
                 {
                     float newValueRecharged = value + (value * float.Parse("0.2"));
-                    //newValueRecharged = float.Parse(Math.Round(decimal.Parse(newValueRecharged.ToString()), 2).ToString());
+                    newValueRecharged = float.Parse(newValueRecharged.ToString("N2"));
                     return newValueRecharged;
                 }
 
@@ -36404,6 +36366,11 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     var list = (from ser in dbContext.service
                         join pro in dbContext.protocol on ser.v_ProtocolId equals pro.v_ProtocolId
+
+                        join pl in dbContext.plan on new { a = pro.v_ProtocolId }
+                            equals new { a = pl.v_ProtocoloId } into pl_join
+                        from pl in pl_join.DefaultIfEmpty()
+
                         join sys in dbContext.systemparameter on new { a = ser.i_MasterServiceId.Value, b = 119 }
                             equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
                         from sys in sys_join.DefaultIfEmpty()
@@ -36413,7 +36380,10 @@ namespace Sigesoft.Node.WinClient.BLL
                         {
                             MasterServiceName = sys.v_Value1,
                             MasterServiceId = ser.i_MasterServiceId.Value,
+                            Discount = pro.r_DiscountExam,
+                            ImporteDeducible = pl.d_Importe,
                         }).OrderBy(x => x.MasterServiceName).FirstOrDefault();
+
 
                     list.ListKindOfServices = GetServicesComponents_(_serviceId);
 
@@ -36706,6 +36676,12 @@ namespace Sigesoft.Node.WinClient.BLL
             foreach (var ServiceId in ServicesId)
             {
                 var list = (from rec in dbContext.receta
+                    join ser in dbContext.service on rec.v_ServiceId equals ser.v_ServiceId
+
+                    join pl in dbContext.plan on new { a = ser.v_ProtocolId }
+                    equals new { a = pl.v_ProtocoloId } into pl_join
+                    from pl in pl_join.DefaultIfEmpty()
+
                     where rec.v_ServiceId == ServiceId
                     select new RecetaDetail
                     {
@@ -36713,6 +36689,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         d_SaldoPaciente = rec.d_SaldoPaciente.Value,
                         d_SaldoAseguradora = rec.d_SaldoAseguradora.Value,
                         d_Importe = rec.d_SaldoPaciente.Value + rec.d_SaldoAseguradora.Value,
+                        ImporteCoaseguro = pl.d_ImporteCo,
                     }).ToList();
                 _RecetaDetalleList.AddRange(list);
             }
@@ -36734,12 +36711,22 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     var list = (from tkde in dbContext.ticketdetalle
                                 join tk in dbContext.ticket on tkde.v_TicketId equals tk.v_TicketId
+
+                                join ser in dbContext.service on new { a = tk.v_ServiceId }
+                                    equals new { a = ser.v_ServiceId } into ser_join
+                                from ser in ser_join.DefaultIfEmpty()
+
+                                join pl in dbContext.plan on new { a = ser.v_ProtocolId }
+                                    equals new { a = pl.v_ProtocoloId } into pl_join
+                                from pl in pl_join.DefaultIfEmpty()
+
                                 join sys in dbContext.systemparameter on new { a = tk.i_TipoCuentaId.Value, b = 310 }
                                     equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
                                 from sys in sys_join.DefaultIfEmpty()
                                 where tk.v_ServiceId == ServiceId && tk.i_IsDeleted == 0
                                 select new TicketDetalleList
                                 {
+                                    v_TicketDetalleId = tkde.v_TicketDetalleId,
                                     v_IdProductoDetalle = tkde.v_IdProductoDetalle,
                                     v_Descripcion = tkde.v_Descripcion,
                                     i_TipoCuenta = tk.i_TipoCuentaId.Value,
@@ -36747,7 +36734,19 @@ namespace Sigesoft.Node.WinClient.BLL
                                     d_SaldoPaciente = tkde.d_SaldoPaciente.Value,
                                     d_SaldoAseguradora = tkde.d_SaldoAseguradora.Value,
                                     d_Importe = tkde.d_Cantidad.Value * tkde.d_PrecioVenta.Value,
-                                }).OrderBy(x => x.v_Descripcion).ToList();
+                                    ImporteCoaseguro = pl.d_ImporteCo,
+                                }).OrderBy(x => x.v_Descripcion).Select(x => new TicketDetalleList
+                    {
+                        v_TicketDetalleId = x.v_TicketDetalleId,
+                        v_IdProductoDetalle = x.v_IdProductoDetalle,
+                        v_Descripcion = x.v_Descripcion,
+                        i_TipoCuenta = x.i_TipoCuenta,
+                        v_TipoCuentaName = x.v_TipoCuentaName,
+                        d_SaldoPaciente = x.d_SaldoPaciente,
+                        d_SaldoAseguradora = x.d_SaldoAseguradora,
+                        d_Importe = x.d_Importe,
+                        ImporteCoaseguro = x.ImporteCoaseguro,
+                    }).Distinct().ToList();
                     _TicketDetalleList.AddRange(list);
                 }
 
@@ -36762,12 +36761,12 @@ namespace Sigesoft.Node.WinClient.BLL
                         TiposCuenta _TiposCuenta = new TiposCuenta();
                         _TiposCuenta.NombreCuenta = cuentas.v_TipoCuentaName;
                         _TiposCuenta.ListJoinTickets = new List<JoinTicketDetails>();
-
+                        _TiposCuenta.ImporteCoaseguro = cuentas.ImporteCoaseguro;
                         JoinTicketDetails _JoinTicketDetails = new JoinTicketDetails();
                         _JoinTicketDetails.Descripcion = cuentas.v_Descripcion;
                         _JoinTicketDetails.Descuento = cuentas.d_SaldoAseguradora == null ? 0 : cuentas.d_SaldoAseguradora.Value; 
                         _JoinTicketDetails.Importe = cuentas.d_Importe.Value;
-
+                        _JoinTicketDetails.SaldoPaciente = cuentas.d_SaldoPaciente;
                         _TiposCuenta.ListJoinTickets.Add(_JoinTicketDetails);
 
                         ListTiposCuenta.Add(_TiposCuenta);
@@ -36779,7 +36778,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         _JoinTicketDetails.Descripcion = cuentas.v_Descripcion;
                         _JoinTicketDetails.Descuento = cuentas.d_SaldoAseguradora == null ? 0 : cuentas.d_SaldoAseguradora.Value;
                         _JoinTicketDetails.Importe = cuentas.d_Importe.Value;
-
+                        _JoinTicketDetails.SaldoPaciente = cuentas.d_SaldoPaciente;
 
                         ListTiposCuenta.Find(x => x.NombreCuenta == findName).ListJoinTickets.Add(_JoinTicketDetails);
                     }
@@ -36788,17 +36787,25 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var TipoCuenta in ListTiposCuenta)
                 {
                     decimal Importe = 0;
+                    decimal TotalSaldoPaciente = 0;
                     int CantProd = 0;
                     decimal Descuento = 0;/////aún no hay lógica para el descuento 'ward'
                     decimal Total = 0;/////aún no hay lógica para el descuento 'ward'
                     foreach (var TicketDetalle in TipoCuenta.ListJoinTickets)
                     {
                         Importe += TicketDetalle.Importe.Value;
+
+                        if (TicketDetalle.SaldoPaciente != null)
+                        {
+                            TotalSaldoPaciente += TicketDetalle.SaldoPaciente.Value;
+                        }
+                        
                         CantProd++;
                     }
 
                     TipoCuenta.Encontrados = CantProd;
                     TipoCuenta.TotalImporte = Importe;
+                    TipoCuenta.TotalSaldoPaciente = TotalSaldoPaciente;
                     TipoCuenta.ListJoinTickets = null;
                 }
 
@@ -36826,6 +36833,11 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var ServiceId in ServicesId)
                 {
                     var list = (from rec in dbContext.receta
+                                join ser in dbContext.service on rec.v_ServiceId equals ser.v_ServiceId
+
+                                join pl in dbContext.plan on new { a = ser.v_ProtocolId }
+                                    equals new { a = pl.v_ProtocoloId } into pl_join
+                                from pl in pl_join.DefaultIfEmpty()
                                 where rec.v_ServiceId == ServiceId
                                 select new RecetaDetail
                                 {
@@ -36833,6 +36845,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     d_SaldoPaciente = rec.d_SaldoPaciente.Value,
                                     d_SaldoAseguradora = rec.d_SaldoAseguradora.Value,
                                     d_Importe = rec.d_SaldoPaciente.Value + rec.d_SaldoAseguradora.Value,
+                                    ImporteCoaseguro = pl.d_ImporteCo,
                                 }).ToList();
                     _RecetaDetalleList.AddRange(list);
                 }

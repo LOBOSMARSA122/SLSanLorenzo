@@ -79,6 +79,7 @@
     <Compile Include="GroupOccupationBL.cs" />
     <Compile Include="HabitacionBL.cs" />
     <Compile Include="HistoryBL.cs" />
+    <Compile Include="HolidayBL.cs" />
     <Compile Include="HospitalizacionBL.cs" />
     <Compile Include="HospitalizacionHabitacionBL.cs" />
     <Compile Include="LiquidacionBL.cs" />

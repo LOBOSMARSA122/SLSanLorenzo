@@ -41,7 +41,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
             "cbEmpresaTrabajo", "cbEmpresaCliente", "cbEmpresaEmpleadora", "cbGeso", "cbTipoServicio",
             "cbServicio", "txtCentroCosto", "chkEsComisionable", "txtComision", "chkEsActivo", "cboVendedor",
-            "txtNombreProtocolo", "cbTipoExamen", "txtFactor", "txtEps", "txtCamaHosp"
+            "txtNombreProtocolo", "cbTipoExamen", "txtFactor", "txtEps", "txtCamaHosp", "txtDiscount"
         };
 
         private List<Campo> ListValuesCampo = new List<Campo>();
@@ -320,7 +320,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 txtFactor.Text = _protocolDTO.r_PriceFactor.ToString();
                 txtEps.Text = _protocolDTO.r_MedicineDiscount.ToString();
                 txtCamaHosp.Text = _protocolDTO.r_HospitalBedPrice.ToString();
-
+                txtDiscount.Text = _protocolDTO.r_DiscountExam.ToString();
                 // Componentes del protocolo
                 var dataListPc = _protocolBL.GetProtocolComponents(ref objOperationResult, _protocolId);
                 
@@ -424,7 +424,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 _protocolDTO.i_ValidInDays = txtComision.Text != string.Empty ? int.Parse(txtComision.Text) : (int?)null;
                 _protocolDTO.i_IsActive = Convert.ToInt32(chkEsActivo.Checked);
                 _protocolDTO.v_NombreVendedor = cboVendedor.Text;
-
+                
                 if (txtFactor.Text != "")
                 {
                     double r_PriceFactor = double.Parse(txtFactor.Text);
@@ -438,10 +438,13 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
                 if (txtEps.Text != "")
                 {
-                    double r_MedicineDiscount = float.Parse(txtEps.Text);
+                    double r_MedicineDiscount = double.Parse(txtEps.Text);
                     _protocolDTO.r_MedicineDiscount = Math.Round(r_MedicineDiscount, 2);
                 }
-
+                if (txtDiscount.Text != "")
+                {
+                    _protocolDTO.r_DiscountExam = double.Parse(txtDiscount.Text);
+                }
                 
 
                 // Grabar componentes del protocolo
@@ -1223,6 +1226,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 txtFactor.Visible = true;
                 txtEps.Visible = true;
                 lblBedHospital.Visible = true;
+                txtDiscount.Visible = true;
+                lblDescuento.Visible = true;
                 txtCamaHosp.Visible = true;
             }
             else
@@ -1232,6 +1237,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 txtFactor.Visible = false;
                 txtEps.Visible = false;
                 lblBedHospital.Visible = false;
+                lblDescuento.Visible = false;
+                txtDiscount.Visible = false;
                 txtCamaHosp.Visible = false;
             }
         }

@@ -159,6 +159,7 @@
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\holidaysAssembler.cs" />
     <Compile Include="GeneratedAssemblers\historyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\groupoccupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gesAssembler.cs" />

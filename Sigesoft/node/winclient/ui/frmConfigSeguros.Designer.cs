@@ -47,12 +47,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtPrecioBase = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(393, 143);
+            this.btnSalir.Location = new System.Drawing.Point(376, 49);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 15;
@@ -62,7 +64,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(286, 143);
+            this.btnGuardar.Location = new System.Drawing.Point(269, 49);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 16;
@@ -77,13 +79,18 @@
             this.groupBox1.Controls.Add(this.txtCoaseguro);
             this.groupBox1.Controls.Add(this.lblMontoCoaseguro);
             this.groupBox1.Controls.Add(this.txtImporte);
+            this.groupBox1.Controls.Add(this.txtPagoAseguradora);
             this.groupBox1.Controls.Add(this.lblmontoDeducible);
-            this.groupBox1.Location = new System.Drawing.Point(10, 49);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtPagoPaciente);
+            this.groupBox1.Location = new System.Drawing.Point(174, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(445, 48);
+            this.groupBox1.Size = new System.Drawing.Size(65, 48);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de pago";
+            this.groupBox1.Visible = false;
             // 
             // rbCoaseguro
             // 
@@ -144,6 +151,7 @@
             this.txtnuevoPrecio.Name = "txtnuevoPrecio";
             this.txtnuevoPrecio.Size = new System.Drawing.Size(70, 20);
             this.txtnuevoPrecio.TabIndex = 9;
+            this.txtnuevoPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -157,7 +165,7 @@
             // txtPagoAseguradora
             // 
             this.txtPagoAseguradora.Enabled = false;
-            this.txtPagoAseguradora.Location = new System.Drawing.Point(216, 117);
+            this.txtPagoAseguradora.Location = new System.Drawing.Point(263, 15);
             this.txtPagoAseguradora.Name = "txtPagoAseguradora";
             this.txtPagoAseguradora.Size = new System.Drawing.Size(70, 20);
             this.txtPagoAseguradora.TabIndex = 10;
@@ -165,7 +173,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(152, 121);
+            this.label6.Location = new System.Drawing.Point(199, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 5;
@@ -177,12 +185,13 @@
             this.txtFactor.Name = "txtFactor";
             this.txtFactor.Size = new System.Drawing.Size(70, 20);
             this.txtFactor.TabIndex = 11;
+            this.txtFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFactor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactor_KeyPress);
             // 
             // txtPagoPaciente
             // 
             this.txtPagoPaciente.Enabled = false;
-            this.txtPagoPaciente.Location = new System.Drawing.Point(80, 117);
+            this.txtPagoPaciente.Location = new System.Drawing.Point(127, 15);
             this.txtPagoPaciente.Name = "txtPagoPaciente";
             this.txtPagoPaciente.Size = new System.Drawing.Size(70, 20);
             this.txtPagoPaciente.TabIndex = 12;
@@ -199,7 +208,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 121);
+            this.label5.Location = new System.Drawing.Point(51, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 13);
             this.label5.TabIndex = 7;
@@ -211,6 +220,7 @@
             this.txtPrecioBase.Name = "txtPrecioBase";
             this.txtPrecioBase.Size = new System.Drawing.Size(70, 20);
             this.txtPrecioBase.TabIndex = 13;
+            this.txtPrecioBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPrecioBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioBase_KeyPress);
             // 
             // label1
@@ -222,26 +232,46 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Precio base";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "I.G.V.";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(80, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(70, 20);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "18.00";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactor_KeyPress);
+            // 
             // frmConfigSeguros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 177);
+            this.ClientSize = new System.Drawing.Size(472, 79);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtnuevoPrecio);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtPagoAseguradora);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFactor);
-            this.Controls.Add(this.txtPagoPaciente);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPrecioBase);
             this.Controls.Add(this.label1);
             this.Name = "frmConfigSeguros";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Configurar Precio";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConfigSeguros_FormClosing);
             this.Load += new System.EventHandler(this.frmConfigSeguros_Load_1);
             this.groupBox1.ResumeLayout(false);
@@ -272,5 +302,7 @@
         private System.Windows.Forms.Label lblMontoCoaseguro;
         private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.Label lblmontoDeducible;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
