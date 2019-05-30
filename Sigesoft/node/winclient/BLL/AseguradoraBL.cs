@@ -18,11 +18,15 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.service
+                            join CA in dbContext.calendar on A.v_ServiceId equals  CA.v_ServiceId
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                             join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
                             join E in dbContext.plan on C.v_ProtocolId equals E.v_ProtocoloId
                             join D in dbContext.organization on E.v_OrganizationSeguroId equals D.v_OrganizationId
-                            where A.i_IsDeleted == 0 && A.d_ServiceDate >= pdatBeginDate.Value && A.d_ServiceDate <= pdatEndDate.Value
+                            where A.i_IsDeleted == 0 && 
+                                  A.d_ServiceDate >= pdatBeginDate.Value && 
+                                  A.d_ServiceDate <= pdatEndDate.Value && 
+                                  CA.i_CalendarStatusId != 4
                     select new LiquidacionAseguradora
                     {
                         ServicioId = A.v_ServiceId,
@@ -33,7 +37,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         Aseguradora = D.v_Name,
                         Protocolo = C.v_ProtocolId,
                         Factor_ = C.r_PriceFactor,
-                        PPS = C.r_MedicineDiscount
+                        PPS_ = C.r_MedicineDiscount
                     };
 
                     if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -41,12 +45,10 @@ namespace Sigesoft.Node.WinClient.BLL
                         query = query.Where(pstrFilterExpression);
                     }
                     
-
-                
-                 List<LiquidacionAseguradora> data = query.ToList();
+                 List<LiquidacionAseguradora> data = query.OrderBy(o => o.FechaServicio).ToList();
+                 
 
                  data = data.GroupBy(p => p.ServicioId).Select(s => s.First()).ToList();
-               
 
                 var ListaLiquidacion = new List<LiquidacionAseguradora>();
                 LiquidacionAseguradora oLiquidacionAseguradora;
@@ -63,7 +65,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oLiquidacionAseguradora.Aseguradora = servicio.Aseguradora;
                     oLiquidacionAseguradora.Protocolo = servicio.Protocolo;
                     oLiquidacionAseguradora.Factor = decimal.Round((decimal)servicio.Factor_, 2);
-                    oLiquidacionAseguradora.PPS = servicio.PPS;
+                    oLiquidacionAseguradora.PPS = servicio.PPS_ + "%";
 
 
                     var serviceComponents = obtenerServiceComponentsByServiceId(servicio.ServicioId);
