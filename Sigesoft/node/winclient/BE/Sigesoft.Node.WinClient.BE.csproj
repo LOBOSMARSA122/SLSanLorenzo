@@ -303,6 +303,7 @@
     <Compile Include="Custom\ServiceComponentFieldValuesList.cs" />
     <Compile Include="Custom\ServiceComponentList.cs" />
     <Compile Include="Custom\ServiceData.cs" />
+    <Compile Include="Custom\ServiceDetailCustom.cs" />
     <Compile Include="Custom\ServiceGridJerarquizadaList.cs" />
     <Compile Include="Custom\ServiceImportacionList.cs" />
     <Compile Include="Custom\ServiceOrderDetailList.cs" />

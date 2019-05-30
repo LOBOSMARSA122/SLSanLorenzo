@@ -2735,6 +2735,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     int intNodeId = int.Parse(ClientSession[0]);
                     NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 24), "SC");
                     objEntity.v_ServiceComponentId = NewId;
+                    objEntity.r_Price = SetNewPrice(pobjDtoEntity.r_Price.Value);
 
                     dbContext.AddToservicecomponent(objEntity);
                     dbContext.SaveChanges();
@@ -2755,6 +2756,97 @@ namespace Sigesoft.Node.WinClient.BLL
 				return;
 			}
 		}
+
+        private float SetNewPrice(float value)
+        {
+            try
+            {
+                DateTime now = DateTime.Now;
+                string year = now.Year.ToString();
+                string day = now.Day.ToString();
+                string month = now.Month.ToString();
+                if (value <= 0)
+                {
+                    return value;
+                }
+                
+                
+                bool IsRecharged = false;
+                if (now >=  DateTime.Parse("18/04/" + year + " 00:00:01") && now <=  DateTime.Parse("18/04/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("19/04/" + year + " 00:00:01") && now <= DateTime.Parse("19/04/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("21/04/" + year + " 00:00:01") && now <= DateTime.Parse("21/04/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("01/05/" + year + " 00:00:01") && now <= DateTime.Parse("01/05/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("29/06/" + year + " 00:00:01") && now <= DateTime.Parse("29/06/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("28/07/" + year + " 00:00:01") && now <= DateTime.Parse("28/07/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("29/07/" + year + " 00:00:01") && now <= DateTime.Parse("29/07/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("30/09/" + year + " 00:00:01") && now <= DateTime.Parse("30/09/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("08/10/" + year + " 00:00:01") && now <= DateTime.Parse("08/10/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("31/10/" + year + " 00:00:01") && now <= DateTime.Parse("31/10/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("01/11/" + year + " 00:00:01") && now <= DateTime.Parse("01/11/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("08/12/" + year + " 00:00:01") && now <= DateTime.Parse("08/12/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse("25/12/" + year + " 00:00:01") && now <= DateTime.Parse("25/12/" + year + " 23:59:59"))
+                {
+                    IsRecharged = true;
+                }
+                else if (now >= DateTime.Parse(day + "/" + month + "/" + year + " 20:00:00") && now < DateTime.Parse(day + "/" + month + "/" + year + " 08:00:00").AddDays(1))
+                {
+                    IsRecharged = true;
+                }
+                else if(now.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    IsRecharged = true;
+                }
+
+                if (IsRecharged)
+                {
+                    float newValueRecharged = value + (value * float.Parse("0.2"));
+                    //newValueRecharged = float.Parse(Math.Round(decimal.Parse(newValueRecharged.ToString()), 2).ToString());
+                    return newValueRecharged;
+                }
+
+                return value;
+            }
+            catch (Exception ex)
+            {
+                return value;
+            }
+        }
 
 		public List<ServiceComponentList> GetServiceComponentsRoadMap(ref OperationResult pobjOperationResult, string pstrServiceId)
 		{

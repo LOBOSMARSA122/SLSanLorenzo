@@ -40,7 +40,7 @@ namespace Sigesoft.Node.Contasol.Integration
                         "join productoalmacen pa on pd.\"v_IdProductoDetalle\" = pa.\"v_ProductoDetalleId\" " +
                         "where (" + nombre + " is null or lower(p.\"v_Descripcion\") like " + nombre + ") and p.i_EsActivo =1 and pa.d_StockActual > 0 and " +
                         "(" + accionFarmaco + " is null or lower(p.\"v_AccionFarmaco\") like " + accionFarmaco + ") " +
-                        "and pa.i_IdAlmacen = 1 and p.\"i_Eliminado\" = 0;";
+                        "and pa.i_IdAlmacen = 1 and p.\"i_Eliminado\" = 0 and pa.v_Periodo=2019 ;";
 
                     var listado = cnx.Query<MedicamentoDto>(query).ToList();
 

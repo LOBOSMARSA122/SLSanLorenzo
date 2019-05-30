@@ -39,6 +39,7 @@
             this.ddlUIIsVisibleId = new System.Windows.Forms.ComboBox();
             this.ddlIsApprovedId = new System.Windows.Forms.ComboBox();
             this.unBasePrice = new System.Windows.Forms.TextBox();
+            this.ddlKindOfService = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
@@ -60,8 +61,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.unValidInDays = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.label9 = new System.Windows.Forms.Label();
-            this.ddlKindOfService = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.cbRecargable = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uvMedicalExamEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unUIIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unValidInDays)).BeginInit();
@@ -113,7 +115,7 @@
             this.ddlDiagnosableId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlDiagnosableId.DropDownWidth = 300;
             this.ddlDiagnosableId.FormattingEnabled = true;
-            this.ddlDiagnosableId.Location = new System.Drawing.Point(111, 94);
+            this.ddlDiagnosableId.Location = new System.Drawing.Point(111, 124);
             this.ddlDiagnosableId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlDiagnosableId.Name = "ddlDiagnosableId";
             this.ddlDiagnosableId.Size = new System.Drawing.Size(135, 21);
@@ -128,7 +130,7 @@
             this.ddlComponentTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlComponentTypeId.DropDownWidth = 300;
             this.ddlComponentTypeId.FormattingEnabled = true;
-            this.ddlComponentTypeId.Location = new System.Drawing.Point(111, 120);
+            this.ddlComponentTypeId.Location = new System.Drawing.Point(111, 150);
             this.ddlComponentTypeId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlComponentTypeId.Name = "ddlComponentTypeId";
             this.ddlComponentTypeId.Size = new System.Drawing.Size(390, 21);
@@ -143,7 +145,7 @@
             this.ddlUIIsVisibleId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlUIIsVisibleId.DropDownWidth = 300;
             this.ddlUIIsVisibleId.FormattingEnabled = true;
-            this.ddlUIIsVisibleId.Location = new System.Drawing.Point(111, 146);
+            this.ddlUIIsVisibleId.Location = new System.Drawing.Point(111, 176);
             this.ddlUIIsVisibleId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlUIIsVisibleId.Name = "ddlUIIsVisibleId";
             this.ddlUIIsVisibleId.Size = new System.Drawing.Size(135, 21);
@@ -158,7 +160,7 @@
             this.ddlIsApprovedId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlIsApprovedId.DropDownWidth = 300;
             this.ddlIsApprovedId.FormattingEnabled = true;
-            this.ddlIsApprovedId.Location = new System.Drawing.Point(111, 172);
+            this.ddlIsApprovedId.Location = new System.Drawing.Point(111, 202);
             this.ddlIsApprovedId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlIsApprovedId.Name = "ddlIsApprovedId";
             this.ddlIsApprovedId.Size = new System.Drawing.Size(135, 21);
@@ -170,7 +172,7 @@
             // 
             // unBasePrice
             // 
-            this.unBasePrice.Location = new System.Drawing.Point(396, 97);
+            this.unBasePrice.Location = new System.Drawing.Point(396, 127);
             this.unBasePrice.Margin = new System.Windows.Forms.Padding(2);
             this.unBasePrice.Name = "unBasePrice";
             this.unBasePrice.Size = new System.Drawing.Size(105, 20);
@@ -179,6 +181,21 @@
             this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
             this.uvMedicalExamEdit.GetValidationSettings(this.unBasePrice).IsRequired = true;
             this.unBasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unBasePrice_KeyPress);
+            // 
+            // ddlKindOfService
+            // 
+            this.ddlKindOfService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlKindOfService.DropDownWidth = 300;
+            this.ddlKindOfService.FormattingEnabled = true;
+            this.ddlKindOfService.Location = new System.Drawing.Point(111, 98);
+            this.ddlKindOfService.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlKindOfService.Name = "ddlKindOfService";
+            this.ddlKindOfService.Size = new System.Drawing.Size(390, 21);
+            this.ddlKindOfService.TabIndex = 63;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).IsRequired = true;
             // 
             // comboBox1
             // 
@@ -196,7 +213,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(426, 249);
+            this.btnCancel.Location = new System.Drawing.Point(426, 280);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
@@ -211,7 +228,7 @@
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOK.Image")));
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOK.Location = new System.Drawing.Point(346, 249);
+            this.btnOK.Location = new System.Drawing.Point(346, 280);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 24);
@@ -232,7 +249,7 @@
             this.btnAgregarLinea.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarLinea.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarLinea.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarLinea.Image")));
-            this.btnAgregarLinea.Location = new System.Drawing.Point(505, 220);
+            this.btnAgregarLinea.Location = new System.Drawing.Point(505, 251);
             this.btnAgregarLinea.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarLinea.Name = "btnAgregarLinea";
             this.btnAgregarLinea.Size = new System.Drawing.Size(27, 21);
@@ -261,7 +278,7 @@
             // 
             // txtTarifaSegus
             // 
-            this.txtTarifaSegus.Location = new System.Drawing.Point(396, 197);
+            this.txtTarifaSegus.Location = new System.Drawing.Point(396, 227);
             this.txtTarifaSegus.Margin = new System.Windows.Forms.Padding(2);
             this.txtTarifaSegus.MaxLength = 250;
             this.txtTarifaSegus.Name = "txtTarifaSegus";
@@ -270,7 +287,7 @@
             // 
             // txtCodigoSegus
             // 
-            this.txtCodigoSegus.Location = new System.Drawing.Point(109, 196);
+            this.txtCodigoSegus.Location = new System.Drawing.Point(109, 226);
             this.txtCodigoSegus.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoSegus.MaxLength = 250;
             this.txtCodigoSegus.Name = "txtCodigoSegus";
@@ -290,7 +307,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(328, 97);
+            this.label1.Location = new System.Drawing.Point(328, 127);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
@@ -300,7 +317,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 100);
+            this.label3.Location = new System.Drawing.Point(32, 130);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 13);
@@ -310,7 +327,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(325, 200);
+            this.label10.Location = new System.Drawing.Point(325, 230);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 13);
@@ -320,7 +337,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(36, 200);
+            this.label11.Location = new System.Drawing.Point(36, 230);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 13);
@@ -330,7 +347,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 126);
+            this.label5.Location = new System.Drawing.Point(18, 156);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 13);
@@ -340,7 +357,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 224);
+            this.label2.Location = new System.Drawing.Point(14, 254);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 13);
@@ -352,7 +369,7 @@
             this.ddlUnidadProductiva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlUnidadProductiva.DropDownWidth = 300;
             this.ddlUnidadProductiva.FormattingEnabled = true;
-            this.ddlUnidadProductiva.Location = new System.Drawing.Point(111, 220);
+            this.ddlUnidadProductiva.Location = new System.Drawing.Point(111, 250);
             this.ddlUnidadProductiva.Margin = new System.Windows.Forms.Padding(2);
             this.ddlUnidadProductiva.Name = "ddlUnidadProductiva";
             this.ddlUnidadProductiva.Size = new System.Drawing.Size(390, 21);
@@ -361,7 +378,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(57, 152);
+            this.label6.Location = new System.Drawing.Point(57, 182);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
@@ -372,7 +389,7 @@
             // 
             this.unUIIndex.AutoSize = false;
             this.unUIIndex.Enabled = false;
-            this.unUIIndex.Location = new System.Drawing.Point(396, 148);
+            this.unUIIndex.Location = new System.Drawing.Point(396, 178);
             this.unUIIndex.Margin = new System.Windows.Forms.Padding(2);
             this.unUIIndex.MaxValue = 9999;
             this.unUIIndex.Name = "unUIIndex";
@@ -384,7 +401,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(336, 148);
+            this.label7.Location = new System.Drawing.Point(336, 178);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
@@ -394,7 +411,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(48, 178);
+            this.label8.Location = new System.Drawing.Point(48, 208);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
@@ -404,7 +421,7 @@
             // unValidInDays
             // 
             this.unValidInDays.AutoSize = false;
-            this.unValidInDays.Location = new System.Drawing.Point(396, 173);
+            this.unValidInDays.Location = new System.Drawing.Point(396, 203);
             this.unValidInDays.Margin = new System.Windows.Forms.Padding(2);
             this.unValidInDays.MaxValue = 9999;
             this.unValidInDays.Name = "unValidInDays";
@@ -416,45 +433,57 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(319, 172);
+            this.label9.Location = new System.Drawing.Point(319, 202);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 13);
             this.label9.TabIndex = 32;
             this.label9.Text = "Vigencia(dias)";
             // 
-            // ddlKindOfService
-            // 
-            this.ddlKindOfService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlKindOfService.DropDownWidth = 300;
-            this.ddlKindOfService.FormattingEnabled = true;
-            this.ddlKindOfService.Location = new System.Drawing.Point(111, 68);
-            this.ddlKindOfService.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlKindOfService.Name = "ddlKindOfService";
-            this.ddlKindOfService.Size = new System.Drawing.Size(390, 21);
-            this.ddlKindOfService.TabIndex = 63;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).DataType = typeof(string);
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvMedicalExamEdit.GetValidationSettings(this.ddlKindOfService).IsRequired = true;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(18, 74);
+            this.label12.Location = new System.Drawing.Point(18, 104);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 13);
             this.label12.TabIndex = 64;
             this.label12.Text = "Clase de Servicio";
             // 
+            // cbRecargable
+            // 
+            this.cbRecargable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRecargable.DropDownWidth = 300;
+            this.cbRecargable.FormattingEnabled = true;
+            this.cbRecargable.Location = new System.Drawing.Point(111, 70);
+            this.cbRecargable.Margin = new System.Windows.Forms.Padding(2);
+            this.cbRecargable.Name = "cbRecargable";
+            this.cbRecargable.Size = new System.Drawing.Size(390, 21);
+            this.cbRecargable.TabIndex = 65;
+            this.uvMedicalExamEdit.GetValidationSettings(this.cbRecargable).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvMedicalExamEdit.GetValidationSettings(this.cbRecargable).DataType = typeof(string);
+            this.uvMedicalExamEdit.GetValidationSettings(this.cbRecargable).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvMedicalExamEdit.GetValidationSettings(this.cbRecargable).IsRequired = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(30, 74);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(62, 13);
+            this.label13.TabIndex = 66;
+            this.label13.Text = "Recargable";
+            // 
             // frmMedicalExamEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(551, 285);
+            this.ClientSize = new System.Drawing.Size(551, 316);
             this.ControlBox = false;
+            this.Controls.Add(this.cbRecargable);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.ddlKindOfService);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnAgregarLinea);
@@ -534,5 +563,7 @@
         private ComboTreeBox ddlCategoryId;
         private System.Windows.Forms.ComboBox ddlKindOfService;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbRecargable;
+        private System.Windows.Forms.Label label13;
     }
 }

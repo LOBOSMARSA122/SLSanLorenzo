@@ -40,8 +40,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PacientDocument");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Liq", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DocNumber");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Liq");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DocNumber", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UsuarioCrea");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoServicio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Fecha");
@@ -105,6 +105,8 @@
             this.btnMigrarEmpresa = new System.Windows.Forms.Button();
             this.btnSubirInterconsulta = new System.Windows.Forms.Button();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.cmGridService = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.itemDetalles = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.btnReportAsync = new System.Windows.Forms.Button();
             this.btnServicios = new System.Windows.Forms.Button();
@@ -161,6 +163,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
+            this.cmGridService.SuspendLayout();
             this.cmService.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -811,6 +814,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDataService.CausesValidation = false;
+            this.grdDataService.ContextMenuStrip = this.cmGridService;
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -955,6 +959,22 @@
             this.grdDataService.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.grdDataService_DoubleClickCell);
             this.grdDataService.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseEnterElement);
             this.grdDataService.MouseLeaveElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseLeaveElement);
+            this.grdDataService.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdDataService_MouseDown);
+            // 
+            // cmGridService
+            // 
+            this.cmGridService.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemDetalles});
+            this.cmGridService.Name = "cmGridService";
+            this.cmGridService.Size = new System.Drawing.Size(135, 26);
+            // 
+            // itemDetalles
+            // 
+            this.itemDetalles.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.itemDetalles.Name = "itemDetalles";
+            this.itemDetalles.Size = new System.Drawing.Size(134, 22);
+            this.itemDetalles.Text = "Ver Detalles";
+            this.itemDetalles.Click += new System.EventHandler(this.itemDetalles_Click);
             // 
             // button2
             // 
@@ -2084,6 +2104,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).EndInit();
+            this.cmGridService.ResumeLayout(false);
             this.cmService.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2191,5 +2212,7 @@
         private System.Windows.Forms.Button btnCompaginaSelected;
         private System.Windows.Forms.Button btnSubirInterconsulta;
         private System.Windows.Forms.Button btnImprimirAdicionales;
+        private System.Windows.Forms.ContextMenuStrip cmGridService;
+        private System.Windows.Forms.ToolStripMenuItem itemDetalles;
     }
 }
