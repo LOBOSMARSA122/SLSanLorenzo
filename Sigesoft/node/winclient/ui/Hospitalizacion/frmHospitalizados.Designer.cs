@@ -484,7 +484,7 @@
             this.btnRemoverEsamen,
             this.itemLimpieza});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(233, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(233, 70);
             // 
             // btnRemoverEsamen
             // 
@@ -497,6 +497,7 @@
             // 
             // itemLimpieza
             // 
+            this.itemLimpieza.Enabled = false;
             this.itemLimpieza.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.pencil;
             this.itemLimpieza.Name = "itemLimpieza";
             this.itemLimpieza.Size = new System.Drawing.Size(232, 22);

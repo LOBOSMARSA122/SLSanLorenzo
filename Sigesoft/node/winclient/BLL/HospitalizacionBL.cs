@@ -180,7 +180,11 @@ namespace Sigesoft.Node.WinClient.BLL
                         oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;
                         oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
                         oHospitalizacionHabitacionList.d_FechaAlta = habitacion.d_FechaAlta;
-                        oHospitalizacionHabitacionList.d_Precio = decimal.Round((decimal)habitacion.d_Precio, 2);
+                        if ((decimal)habitacion.d_Precio != null)
+                        {
+                            oHospitalizacionHabitacionList.d_Precio = decimal.Round((decimal)habitacion.d_Precio, 2); 
+                        }
+                        
                         if (habitacion.d_Precio != null)
                             oHospitalizacionHabitacionList.Total =
                                 CalcularCostoHabitacion(habitacion.d_Precio.ToString(), habitacion.d_StartDate,
@@ -378,32 +382,41 @@ namespace Sigesoft.Node.WinClient.BLL
 
         private List<HospitalizacionHabitacionList> BuscarHospitalizacionHabitaciones(string hospitalizacionId)
         {
-            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-              var habitaciones = (from A in dbContext.hospitalizacionhabitacion
-                                 join B in dbContext.hospitalizacion on A.v_HopitalizacionId equals B.v_HopitalizacionId
-                                 join D in dbContext.systemparameter on new { a = A.i_HabitacionId.Value, b = 309 } equals new { a = D.i_ParameterId, b = D.i_GroupId }
-                                 where A.v_HopitalizacionId == hospitalizacionId && A.i_IsDeleted == 0
-                                 select new HospitalizacionHabitacionList
-                                 {
-                                     v_HospitalizacionHabitacionId = A.v_HospitalizacionHabitacionId,
-                                     v_HopitalizacionId = A.v_HopitalizacionId,
-                                     i_HabitacionId = A.i_HabitacionId.Value,
-                                     NroHabitacion = D.v_Value1,
-                                     d_StartDate = A.d_StartDate,
-                                     d_EndDate = A.d_EndDate,
-                                     i_conCargoA = A.i_ConCargoA,
-                                     d_Precio = A.d_Precio.Value,
-                                     d_FechaAlta = B.d_FechaAlta
-                                 }).ToList();
-              List<HospitalizacionHabitacionList> obj = habitaciones;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var habitaciones = (from A in dbContext.hospitalizacionhabitacion
+                    join B in dbContext.hospitalizacion on A.v_HopitalizacionId equals B.v_HopitalizacionId
+                    join D in dbContext.systemparameter on new { a = A.i_HabitacionId.Value, b = 309 } equals new { a = D.i_ParameterId, b = D.i_GroupId }
+                    where A.v_HopitalizacionId == hospitalizacionId && A.i_IsDeleted == 0
+                    select new HospitalizacionHabitacionList
+                    {
+                        v_HospitalizacionHabitacionId = A.v_HospitalizacionHabitacionId,
+                        v_HopitalizacionId = A.v_HopitalizacionId,
+                        i_HabitacionId = A.i_HabitacionId.Value,
+                        NroHabitacion = D.v_Value1,
+                        d_StartDate = A.d_StartDate,
+                        d_EndDate = A.d_EndDate,
+                        i_conCargoA = A.i_ConCargoA,
+                        d_Precio = A.d_Precio.Value,
+                        d_FechaAlta = B.d_FechaAlta
+                    }).ToList();
+                List<HospitalizacionHabitacionList> obj = habitaciones;
 
-            return obj;
-
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            
         }
 
         private List<HospitalizacionServiceList> BuscarServiciosHospitalizacion(string hospitalizacionId)
         {
-            //acá hace un select a la tabla hospitalizacionService y buscas todos que tengan foranea HospitalizacionId
+            try
+            {
+                //acá hace un select a la tabla hospitalizacionService y buscas todos que tengan foranea HospitalizacionId
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
             var queryservice = from A in dbContext.hospitalizacion
                         join C in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals C.v_HopitalizacionId
@@ -518,6 +531,12 @@ namespace Sigesoft.Node.WinClient.BLL
             }
 
             return Lista;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            
         }
 
         public List<TicketList> BuscarTickets(string v_ServiceId)
