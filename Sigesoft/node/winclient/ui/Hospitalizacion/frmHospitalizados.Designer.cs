@@ -135,6 +135,7 @@
             this.btnTicket = new System.Windows.Forms.Button();
             this.btnVerHabitaciones = new System.Windows.Forms.Button();
             this.btnImprimirTicket = new System.Windows.Forms.Button();
+            this.itemCerrarHabitacion = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -482,9 +483,10 @@
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRemoverEsamen,
-            this.itemLimpieza});
+            this.itemLimpieza,
+            this.itemCerrarHabitacion});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(233, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(233, 92);
             // 
             // btnRemoverEsamen
             // 
@@ -843,6 +845,15 @@
             this.btnImprimirTicket.UseVisualStyleBackColor = false;
             this.btnImprimirTicket.Click += new System.EventHandler(this.btnImprimirTicket_Click);
             // 
+            // itemCerrarHabitacion
+            // 
+            this.itemCerrarHabitacion.Enabled = false;
+            this.itemCerrarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.door_out;
+            this.itemCerrarHabitacion.Name = "itemCerrarHabitacion";
+            this.itemCerrarHabitacion.Size = new System.Drawing.Size(232, 22);
+            this.itemCerrarHabitacion.Text = "Cerrar Habitación";
+            this.itemCerrarHabitacion.Click += new System.EventHandler(this.itemCerrarHabitacion_Click);
+            // 
             // frmHospitalizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -917,6 +928,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemLimpieza;
 
         private System.Windows.Forms.Button btnImprimirTicket;
+        private System.Windows.Forms.ToolStripMenuItem itemCerrarHabitacion;
 
     }
 }

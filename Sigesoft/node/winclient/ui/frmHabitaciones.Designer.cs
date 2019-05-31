@@ -55,6 +55,8 @@
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHabitaciones));
             this.grdDataHabitaciones = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.cmEstadosHabitacion = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.itemLiberar = new System.Windows.Forms.ToolStripMenuItem();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
@@ -69,20 +71,17 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardarTicket = new System.Windows.Forms.Button();
             this.gbForm = new System.Windows.Forms.GroupBox();
-            this.cmEstadosHabitacion = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.itemLiberar = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataHabitaciones)).BeginInit();
+            this.cmEstadosHabitacion.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbLine)).BeginInit();
             this.gbForm.SuspendLayout();
-            this.cmEstadosHabitacion.SuspendLayout();
             this.SuspendLayout();
             // 
             // grdDataHabitaciones
             // 
             this.grdDataHabitaciones.CausesValidation = false;
             this.grdDataHabitaciones.ContextMenuStrip = this.cmEstadosHabitacion;
-            this.grdDataHabitaciones.DataMember = null;
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -155,6 +154,22 @@
             this.grdDataHabitaciones.Name = "grdDataHabitaciones";
             this.grdDataHabitaciones.Size = new System.Drawing.Size(425, 263);
             this.grdDataHabitaciones.TabIndex = 45;
+            this.grdDataHabitaciones.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataHabitaciones_AfterSelectChange);
+            // 
+            // cmEstadosHabitacion
+            // 
+            this.cmEstadosHabitacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemLiberar});
+            this.cmEstadosHabitacion.Name = "cmEstadosHabitacion";
+            this.cmEstadosHabitacion.Size = new System.Drawing.Size(172, 26);
+            // 
+            // itemLiberar
+            // 
+            this.itemLiberar.Image = global::Sigesoft.Node.WinClient.UI.Resources.accept;
+            this.itemLiberar.Name = "itemLiberar";
+            this.itemLiberar.Size = new System.Drawing.Size(171, 22);
+            this.itemLiberar.Text = "Liberar Habitacion";
+            this.itemLiberar.Click += new System.EventHandler(this.itemLiberar_Click);
             // 
             // dtpFechaInicio
             // 
@@ -179,25 +194,27 @@
             // 
             this.dtpFechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaFin.Location = new System.Drawing.Point(112, 60);
+            this.dtpFechaFin.Location = new System.Drawing.Point(112, 212);
             this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.ShowCheckBox = true;
             this.dtpFechaFin.Size = new System.Drawing.Size(122, 20);
             this.dtpFechaFin.TabIndex = 112;
+            this.dtpFechaFin.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 66);
+            this.label3.Location = new System.Drawing.Point(11, 218);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 111;
             this.label3.Text = "Fecha Fin";
+            this.label3.Visible = false;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(112, 91);
+            this.txtPrecio.Location = new System.Drawing.Point(112, 63);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(122, 20);
             this.txtPrecio.TabIndex = 114;
@@ -205,7 +222,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 94);
+            this.label4.Location = new System.Drawing.Point(11, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 113;
@@ -215,7 +232,7 @@
             // 
             this.groupBox3.Controls.Add(this.rbPaciente);
             this.groupBox3.Controls.Add(this.rbMedicoTratante);
-            this.groupBox3.Location = new System.Drawing.Point(6, 118);
+            this.groupBox3.Location = new System.Drawing.Point(6, 89);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(248, 49);
             this.groupBox3.TabIndex = 115;
@@ -229,13 +246,13 @@
             this.rbPaciente.Name = "rbPaciente";
             this.rbPaciente.Size = new System.Drawing.Size(67, 17);
             this.rbPaciente.TabIndex = 10;
-            this.rbPaciente.TabStop = true;
             this.rbPaciente.Text = "Paciente";
             this.rbPaciente.UseVisualStyleBackColor = true;
             // 
             // rbMedicoTratante
             // 
             this.rbMedicoTratante.AutoSize = true;
+            this.rbMedicoTratante.Checked = true;
             this.rbMedicoTratante.Location = new System.Drawing.Point(6, 22);
             this.rbMedicoTratante.Name = "rbMedicoTratante";
             this.rbMedicoTratante.Size = new System.Drawing.Size(103, 17);
@@ -246,7 +263,7 @@
             // 
             // txtUnidProdId
             // 
-            this.txtUnidProdId.Location = new System.Drawing.Point(87, 236);
+            this.txtUnidProdId.Location = new System.Drawing.Point(87, 175);
             this.txtUnidProdId.Name = "txtUnidProdId";
             this.txtUnidProdId.Size = new System.Drawing.Size(80, 20);
             this.txtUnidProdId.TabIndex = 132;
@@ -303,10 +320,11 @@
             appearance19.BackColor = System.Drawing.SystemColors.ControlLight;
             this.cbLine.DisplayLayout.Override.TemplateAddRowAppearance = appearance19;
             this.cbLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLine.Location = new System.Drawing.Point(6, 186);
+            this.cbLine.Location = new System.Drawing.Point(6, 234);
             this.cbLine.Name = "cbLine";
             this.cbLine.Size = new System.Drawing.Size(248, 22);
             this.cbLine.TabIndex = 131;
+            this.cbLine.Visible = false;
             this.cbLine.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbLine_RowSelected);
             // 
             // btnSalir
@@ -321,7 +339,7 @@
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
             this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(6, 234);
+            this.btnSalir.Location = new System.Drawing.Point(6, 173);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(76, 23);
@@ -335,7 +353,7 @@
             // 
             this.btnGuardarTicket.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarTicket.Image")));
             this.btnGuardarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarTicket.Location = new System.Drawing.Point(178, 234);
+            this.btnGuardarTicket.Location = new System.Drawing.Point(178, 172);
             this.btnGuardarTicket.Name = "btnGuardarTicket";
             this.btnGuardarTicket.Size = new System.Drawing.Size(76, 23);
             this.btnGuardarTicket.TabIndex = 129;
@@ -359,25 +377,10 @@
             this.gbForm.Controls.Add(this.txtPrecio);
             this.gbForm.Location = new System.Drawing.Point(441, 11);
             this.gbForm.Name = "gbForm";
-            this.gbForm.Size = new System.Drawing.Size(260, 262);
+            this.gbForm.Size = new System.Drawing.Size(260, 209);
             this.gbForm.TabIndex = 133;
             this.gbForm.TabStop = false;
             this.gbForm.Text = "Datos";
-            // 
-            // cmEstadosHabitacion
-            // 
-            this.cmEstadosHabitacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemLiberar});
-            this.cmEstadosHabitacion.Name = "cmEstadosHabitacion";
-            this.cmEstadosHabitacion.Size = new System.Drawing.Size(172, 26);
-            // 
-            // itemLiberar
-            // 
-            this.itemLiberar.Image = global::Sigesoft.Node.WinClient.UI.Resources.accept;
-            this.itemLiberar.Name = "itemLiberar";
-            this.itemLiberar.Size = new System.Drawing.Size(171, 22);
-            this.itemLiberar.Text = "Liberar Habitacion";
-            this.itemLiberar.Click += new System.EventHandler(this.itemLiberar_Click);
             // 
             // frmHabitaciones
             // 
@@ -391,12 +394,12 @@
             this.Text = "frmHabitaciones";
             this.Load += new System.EventHandler(this.frmHabitaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataHabitaciones)).EndInit();
+            this.cmEstadosHabitacion.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbLine)).EndInit();
             this.gbForm.ResumeLayout(false);
             this.gbForm.PerformLayout();
-            this.cmEstadosHabitacion.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

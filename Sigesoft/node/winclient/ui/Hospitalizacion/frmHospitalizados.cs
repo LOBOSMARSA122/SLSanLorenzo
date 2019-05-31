@@ -230,6 +230,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                 if (rowSelected.Band.Index.ToString() == "0")
                 {
+                    contextMenuStrip2.Items["itemCerrarHabitacion"].Enabled = false;    
                     if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
                     {
                         btnTicket.Enabled = false;
@@ -242,7 +243,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         btnEliminarHabitacion.Enabled = false;
                         btnDarAlta.Enabled = false;
                         activador = true;
-                        contextMenuStrip2.Items["itemLimpieza"].Enabled = true;
+                        contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
                         btnReportePDF.Enabled = true;
 
                     }
@@ -260,6 +261,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (rowSelected.Band.Index.ToString() == "1")
                 {
+                    contextMenuStrip2.Items["itemCerrarHabitacion"].Enabled = false;    
                     contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
                     if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
                     {
@@ -295,6 +297,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (rowSelected.Band.Index.ToString() == "2")
                 {
+                    contextMenuStrip2.Items["itemCerrarHabitacion"].Enabled = false;    
                     contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
                     if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
                     {
@@ -327,8 +330,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                     }
                 }
+
                 if (rowSelected.Band.Index.ToString() == "3")
                 {
+                    contextMenuStrip2.Items["itemCerrarHabitacion"].Enabled = false;    
                     contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
                     btnTicket.Enabled = false;
                     btnEditarTicket.Enabled = false;
@@ -345,6 +350,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 }
                 if (rowSelected.Band.Index.ToString() == "4")
                 {
+                    contextMenuStrip2.Items["itemCerrarHabitacion"].Enabled = false;                    
                     contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
                     btnTicket.Enabled = false;
                     btnEditarTicket.Enabled = false;
@@ -361,7 +367,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 }
                 if (rowSelected.Band.Index.ToString() == "5")
                 {
-                    contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
+
+                    contextMenuStrip2.Items["itemCerrarHabitacion"].Enabled = true;
+                    contextMenuStrip2.Items["itemLimpieza"].Enabled = true;
                     if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
                     {
                         btnTicket.Enabled = false;
@@ -407,7 +415,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             try
             {
                 var v_HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-
+                
                 #region Conexion SIGESOFT Obtener Protocolo
                 ConexionSigesoft conectasam = new ConexionSigesoft();
                 conectasam.opensigesoft();
@@ -438,9 +446,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 string modoMasterService;
                 if (plan != "") { modoMasterService = "ASEGU"; }
                 else { modoMasterService = "HOSPI"; }
-                var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                //var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
                 //frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
-                var frm = new frmHabitaciones(hospitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
+                var frm = new frmHabitaciones(v_HopitalizacionId, "New" + modoMasterService, "", v_ProtocoloId);
                 frm.ShowDialog();
                 btnFilter_Click(sender, e);
                 btnAsignarHabitacion.Enabled = false;
@@ -495,7 +503,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
                 var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
 
-                frmHabitaciones frm = new frmHabitaciones(hospitalizacionId, "Edit", hospitalizacionHabitacionId, v_ProtocoloId);
+                frmHabitaciones frm = new frmHabitaciones(hospitalizacionId, "Edit" + modoMasterService, hospitalizacionHabitacionId, v_ProtocoloId);
 
 
                 //frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit" + modoMasterService, hospitalizacionHabitacionId, v_ProtocoloId);
@@ -831,13 +839,22 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             if (grdData.Selected.Rows.Count == 0)
                 return;
-            var v_HopitalizacionId = grdData.Selected.Rows[0].ParentCollection[0].Cells["v_HopitalizacionId"].Value.ToString();
+            var fechaFin = grdData.Selected.Rows[0].Cells["d_EndDate"].Value;
+            if (fechaFin == null)
+            {
+                MessageBox.Show("La habitación está ocupada y no puede pasar a limpieza directamente.",
+                    "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            var v_HopitalizacionId = grdData.Selected.Rows[0].ParentCollection[0].Cells["v_HopitalizacionId"].Value.ToString();
+            var nroHabitacion = grdData.Selected.Rows[0].Cells["NroHabitacion"].Value.ToString();
+            
             var DialogResult = MessageBox.Show("Se pondrá en limpieza la habitación, ¿desea continuar?",
                 "CONFIRMACIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (DialogResult == DialogResult.Yes)
             {
-                new HabitacionBL().UpdateEstateHabitacionLimpieza(v_HopitalizacionId);
+                new HabitacionBL().UpdateEstateHabitacionLimpieza(v_HopitalizacionId, nroHabitacion);
             }
         }
 
@@ -879,6 +896,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
             //this.Close();
 
+        }
+
+        private void itemCerrarHabitacion_Click(object sender, EventArgs e)
+        {
+            var v_HopitalizacionId = grdData.Selected.Rows[0].ParentCollection[0].Cells["v_HopitalizacionId"].Value.ToString();
+            bool IsUpdateHabitacion = new HabitacionBL().UpdateEstateHabitacionByHospId(v_HopitalizacionId);
+            if (IsUpdateHabitacion)
+            {
+                MessageBox.Show(
+                    "El estado de la habitación será de 'En Limpieza', por favor dar aviso al personal correspondiente",
+                    "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BindGrid();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sucedió un error, por favor vuelva a intentar.",
+                    "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }           
 
     }
