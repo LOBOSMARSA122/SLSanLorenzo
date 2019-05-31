@@ -43,6 +43,8 @@ namespace Sigesoft.Node.WinClient.UI
 
             if (_mode == "NewASEGU" || _mode == "NewHOSPI")
             {
+                label3.Visible = false;
+                dtFin.Visible = false;
                 cmEstadosHabitacion.Items["itemLiberar"].Enabled = false;
                 //cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
                 //prueba
@@ -56,6 +58,8 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else if (_mode == "EditASEGU" || _mode == "EditHOSPI")
             {
+                label3.Visible = true;
+                dtFin.Visible = true;
                 cmEstadosHabitacion.Items["itemLiberar"].Enabled = false;
                 //cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
 
@@ -79,7 +83,7 @@ namespace Sigesoft.Node.WinClient.UI
                     rbMedicoTratante.Checked = true;
                 if (_hospitalizacionHabitaciónDto.d_EndDate != null)
                 {
-                    //dtpFechaFin.Value = _hospitalizacionHabitaciónDto.d_EndDate.Value;
+                    dtFin.Value = _hospitalizacionHabitaciónDto.d_EndDate.Value;
                 }
                 txtPrecio.Text = (_hospitalizacionHabitaciónDto.d_Precio).ToString();
             }
@@ -255,11 +259,15 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else if (_mode == "EditASEGU" || _mode == "EditHOSPI")
             {
-
+                if (dtpFechaFin.Value > dtFin.Value)
+                {
+                    MessageBox.Show("La fecha de INICIO no puede ser mayor a la fecha FINAL", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 _hospitalizacionHabitaciónDto.v_HopitalizacionId = _hospitalizacion;
                 _hospitalizacionHabitaciónDto.i_HabitacionId = HabitacionId;
                 _hospitalizacionHabitaciónDto.d_StartDate = dtpFechaInicio.Value;
-                //_hospitalizacionHabitaciónDto.d_EndDate = dtpFechaFin.Value;
+                _hospitalizacionHabitaciónDto.d_EndDate = dtFin.Value;
                 _hospitalizacionHabitaciónDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante : (int)CargoHospitalizacion.Paciente;
 
                 decimal d;

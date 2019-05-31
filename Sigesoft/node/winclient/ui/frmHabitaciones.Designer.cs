@@ -71,6 +71,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardarTicket = new System.Windows.Forms.Button();
             this.gbForm = new System.Windows.Forms.GroupBox();
+            this.dtFin = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataHabitaciones)).BeginInit();
             this.cmEstadosHabitacion.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -194,7 +195,7 @@
             // 
             this.dtpFechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaFin.Location = new System.Drawing.Point(112, 212);
+            this.dtpFechaFin.Location = new System.Drawing.Point(71, 209);
             this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.ShowCheckBox = true;
@@ -205,7 +206,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 218);
+            this.label3.Location = new System.Drawing.Point(11, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 111;
@@ -232,7 +233,7 @@
             // 
             this.groupBox3.Controls.Add(this.rbPaciente);
             this.groupBox3.Controls.Add(this.rbMedicoTratante);
-            this.groupBox3.Location = new System.Drawing.Point(6, 89);
+            this.groupBox3.Location = new System.Drawing.Point(6, 117);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(248, 49);
             this.groupBox3.TabIndex = 115;
@@ -364,14 +365,15 @@
             // 
             // gbForm
             // 
+            this.gbForm.Controls.Add(this.dtFin);
             this.gbForm.Controls.Add(this.label2);
             this.gbForm.Controls.Add(this.txtUnidProdId);
             this.gbForm.Controls.Add(this.dtpFechaInicio);
+            this.gbForm.Controls.Add(this.dtpFechaFin);
             this.gbForm.Controls.Add(this.btnSalir);
             this.gbForm.Controls.Add(this.btnGuardarTicket);
             this.gbForm.Controls.Add(this.cbLine);
             this.gbForm.Controls.Add(this.label3);
-            this.gbForm.Controls.Add(this.dtpFechaFin);
             this.gbForm.Controls.Add(this.label4);
             this.gbForm.Controls.Add(this.groupBox3);
             this.gbForm.Controls.Add(this.txtPrecio);
@@ -381,6 +383,17 @@
             this.gbForm.TabIndex = 133;
             this.gbForm.TabStop = false;
             this.gbForm.Text = "Datos";
+            // 
+            // dtFin
+            // 
+            this.dtFin.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtFin.Location = new System.Drawing.Point(112, 93);
+            this.dtFin.Margin = new System.Windows.Forms.Padding(2);
+            this.dtFin.Name = "dtFin";
+            this.dtFin.Size = new System.Drawing.Size(122, 21);
+            this.dtFin.TabIndex = 133;
+            this.dtFin.Visible = false;
             // 
             // frmHabitaciones
             // 
@@ -423,5 +436,6 @@
         private System.Windows.Forms.GroupBox gbForm;
         private System.Windows.Forms.ContextMenuStrip cmEstadosHabitacion;
         private System.Windows.Forms.ToolStripMenuItem itemLiberar;
+        private System.Windows.Forms.DateTimePicker dtFin;
     }
 }
