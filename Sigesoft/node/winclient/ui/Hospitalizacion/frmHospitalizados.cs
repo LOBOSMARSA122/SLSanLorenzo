@@ -729,22 +729,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 contextMenuStrip2.Items["btnRemoverEsamen"].Enabled = false;
                 contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
             }
-            //if (grdData.Selected.Rows.Count > 0)
-            //{
-                
-            //    if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Band.)
-            //    {
-            //        if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
-            //        {
-            //            contextMenuStrip2.Items["itemLimpieza"].Enabled = true;
-            //        }
-            //        else
-            //        {
-            //            contextMenuStrip2.Items["itemLimpieza"].Enabled = false;
-            //        }
-            //    }
-                
-            //}
+
         }
 
         private void btnRemoverEsamen_Click(object sender, EventArgs e)
