@@ -163,7 +163,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnGuardarTicket_Click(object sender, EventArgs e)
         {
-
+            
             if (grdDataHabitaciones.Selected.Rows.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione una habitación", "VALIDACIÓN", MessageBoxButtons.OK,
@@ -171,7 +171,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 return;
             }
-
+            
             if (grdDataHabitaciones.Selected.Rows[0].Cells["Estado"].Value.ToString() == "OCUPADO")
             {
                 MessageBox.Show("No puede asignar una habitación que ya esta siendo usada", "VALIDACIÓN", MessageBoxButtons.OK,
@@ -179,7 +179,13 @@ namespace Sigesoft.Node.WinClient.UI
 
                 return;
             }
+            if (txtPrecio.Text == "" || txtPrecio.Text == null)
+            {
+                MessageBox.Show("Debe ingresar un precio.", "VALIDACIÓN", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
+                return;
+            }
             OperationResult objOperationResult = new OperationResult();
             int HabitacionId = int.Parse(grdDataHabitaciones.Selected.Rows[0].Cells["i_HabitacionId"].Value.ToString());
             if (_hospitalizacionHabitaciónDto == null)
