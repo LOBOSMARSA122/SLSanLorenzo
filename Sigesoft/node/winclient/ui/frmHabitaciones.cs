@@ -21,6 +21,7 @@ namespace Sigesoft.Node.WinClient.UI
         private string _hospitalizacionHabitacionId;
         private string _v_ProtocoloId;
         private string lineId;
+
         private hospitalizacionhabitacionDto _hospitalizacionHabitaciónDto = null;
         private HospitalizacionHabitacionBL _hospitalizacionBL = new HospitalizacionHabitacionBL();
         public string habitacionId = string.Empty;
@@ -45,7 +46,7 @@ namespace Sigesoft.Node.WinClient.UI
                 cmEstadosHabitacion.Items["itemLiberar"].Enabled = false;
                 //cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
                 //prueba
-                dtpFechaFin.Checked = false;
+                //dtpFechaFin.Checked = false;
                 if (_mode == "NewASEGU")
                 {
                     groupBox3.Visible = false;
@@ -53,7 +54,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
-            else if (_mode == "Edit")
+            else if (_mode == "EditASEGU" || _mode == "EditHOSPI")
             {
                 cmEstadosHabitacion.Items["itemLiberar"].Enabled = false;
                 //cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
@@ -78,7 +79,7 @@ namespace Sigesoft.Node.WinClient.UI
                     rbMedicoTratante.Checked = true;
                 if (_hospitalizacionHabitaciónDto.d_EndDate != null)
                 {
-                    dtpFechaFin.Value = _hospitalizacionHabitaciónDto.d_EndDate.Value;
+                    //dtpFechaFin.Value = _hospitalizacionHabitaciónDto.d_EndDate.Value;
                 }
                 txtPrecio.Text = (_hospitalizacionHabitaciónDto.d_Precio).ToString();
             }
@@ -108,8 +109,10 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void BindingGrid()
         {
+
             var listHab = new HabitacionBL().GetHabitaciones("");
             grdDataHabitaciones.DataSource = listHab;
+
         }
 
         private void cbLine_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)
@@ -163,7 +166,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnGuardarTicket_Click(object sender, EventArgs e)
         {
-
+            
             if (grdDataHabitaciones.Selected.Rows.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione una habitación", "VALIDACIÓN", MessageBoxButtons.OK,
@@ -171,7 +174,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 return;
             }
-
+            
             if (grdDataHabitaciones.Selected.Rows[0].Cells["Estado"].Value.ToString() == "OCUPADO")
             {
                 MessageBox.Show("No puede asignar una habitación que ya esta siendo usada", "VALIDACIÓN", MessageBoxButtons.OK,
@@ -179,7 +182,13 @@ namespace Sigesoft.Node.WinClient.UI
 
                 return;
             }
+            if (txtPrecio.Text == "" || txtPrecio.Text == null)
+            {
+                MessageBox.Show("Debe ingresar un precio.", "VALIDACIÓN", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
+                return;
+            }
             OperationResult objOperationResult = new OperationResult();
             int HabitacionId = int.Parse(grdDataHabitaciones.Selected.Rows[0].Cells["i_HabitacionId"].Value.ToString());
             if (_hospitalizacionHabitaciónDto == null)
@@ -193,7 +202,8 @@ namespace Sigesoft.Node.WinClient.UI
                 _hospitalizacionHabitaciónDto.v_HopitalizacionId = _hospitalizacion;
                 _hospitalizacionHabitaciónDto.i_HabitacionId = HabitacionId;
                 _hospitalizacionHabitaciónDto.d_StartDate = dtpFechaInicio.Value;
-                _hospitalizacionHabitaciónDto.d_EndDate = (DateTime?)(dtpFechaFin.Checked == false ? (ValueType)null : dtpFechaFin.Value);
+                
+                //_hospitalizacionHabitaciónDto.d_EndDate = (DateTime?)(dtpFechaFin.Checked == false ? (ValueType)null : dtpFechaFin.Value);
                 decimal d;
                 if (_mode == "NewASEGU")
                 {
@@ -203,7 +213,7 @@ namespace Sigesoft.Node.WinClient.UI
                     var cadena1 = "select PL.d_Importe from [dbo].[plan] PL where PL.v_IdUnidadProductiva='" + lineId + "' and PL.v_ProtocoloId='" + _v_ProtocoloId + "' ";
                     SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                     SqlDataReader lector = comando.ExecuteReader();
-                    string deducible = "";
+                    string deducible = "0.00";
                     while (lector.Read()) { deducible = lector.GetValue(0).ToString(); }
                     lector.Close();
                     conectasam.closesigesoft();
@@ -211,6 +221,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
                     _hospitalizacionHabitaciónDto.d_SaldoPaciente = decimal.Parse(deducible);
                     _hospitalizacionHabitaciónDto.d_SaldoAseguradora = decimal.Parse(txtPrecio.Text) - decimal.Parse(deducible);
+                    
                 }
                 else if (_mode == "NewHOSPI")
                 {
@@ -222,9 +233,19 @@ namespace Sigesoft.Node.WinClient.UI
 
                 if (Result == System.Windows.Forms.DialogResult.Yes)
                 {
+                    bool IsUpdateHabitacion = new HabitacionBL().UpdateEstateHabitacionByHospId(_hospitalizacion);
                     _hospitalizacionHabitaciónDto.i_EstateRoom = (int)EstadoHabitacion.Ocupado;
                     habitacionId = _hospitalizacionBL.AddHospitalizacionHabitacion(ref objOperationResult, _hospitalizacionHabitaciónDto, Globals.ClientSession.GetAsList());
-                    this.Close();
+
+                    if (IsUpdateHabitacion)
+                    {
+                        MessageBox.Show(
+                            "El estado de la habitación anterior será de 'En Limpieza', por favor dar aviso al personal correspondiente",
+                            "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    
+                    
                 }
                 else
                 {
@@ -232,16 +253,25 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
-            else if (_mode == "Edit")
+            else if (_mode == "EditASEGU" || _mode == "EditHOSPI")
             {
 
                 _hospitalizacionHabitaciónDto.v_HopitalizacionId = _hospitalizacion;
                 _hospitalizacionHabitaciónDto.i_HabitacionId = HabitacionId;
                 _hospitalizacionHabitaciónDto.d_StartDate = dtpFechaInicio.Value;
-                _hospitalizacionHabitaciónDto.d_EndDate = dtpFechaFin.Value;
+                //_hospitalizacionHabitaciónDto.d_EndDate = dtpFechaFin.Value;
                 _hospitalizacionHabitaciónDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante : (int)CargoHospitalizacion.Paciente;
 
                 decimal d;
+                if (_mode == "EditASEGU")
+                {
+                    _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
+                    _hospitalizacionHabitaciónDto.d_SaldoAseguradora = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
+                }
+                else if (_mode == "EditHOSPI")
+                {
+                    _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
+                }
                 _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null;
 
                 DialogResult Result = MessageBox.Show("¿Desea Guardar Habitación?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -297,9 +327,37 @@ namespace Sigesoft.Node.WinClient.UI
             
         }
 
-        private void itemLimpieza_Click(object sender, EventArgs e)
+        private void grdDataHabitaciones_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
         {
+            if (grdDataHabitaciones.Selected.Rows.Count == 0) return;
+            OperationResult objOperationResult = new OperationResult();
+            SystemParameterList habHospit = new SystemParameterList();
+            if (_mode == "NewASEGU")
+            {
+                #region Conexion SAM
+                ConexionSigesoft conectasam = new ConexionSigesoft();
+                conectasam.opensigesoft();
+                #endregion
+                var cadena1 = "select r_HospitalBedPrice from protocol where v_ProtocolId ='" + _v_ProtocoloId + "'";
+                SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+                SqlDataReader lector = comando.ExecuteReader();
+                string hab = "0.00";
+                while (lector.Read())
+                {
+                    hab = lector.GetValue(0).ToString();
+                }
+                lector.Close();
+                txtPrecio.Text = double.Parse(hab).ToString("N2");
+                txtPrecio.Enabled = false;
+            }
+            else
+            {
+                
+                int HabitacionId = int.Parse(grdDataHabitaciones.Selected.Rows[0].Cells["i_HabitacionId"].Value.ToString());
+                habHospit = _hospitalizacionBL.GetHabitaciónH(ref objOperationResult, HabitacionId);
 
+                txtPrecio.Text = double.Parse(habHospit.v_Value2).ToString("N2");
+            }
         }
     }
 }

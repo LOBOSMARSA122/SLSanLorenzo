@@ -131,14 +131,19 @@ namespace Sigesoft.Node.WinClient.BLL
             
         }
 
-        public void UpdateEstateHabitacionLimpieza(string HospitalizacionId)
+        public void UpdateEstateHabitacionLimpieza(string HospitalizacionId, string nroHabitacion)
         {
             try
             {
 
                 SigesoftEntitiesModel cnx = new SigesoftEntitiesModel();
+
+                var HabitacionObj = cnx.systemparameter.Where(x => x.i_GroupId == 309 && x.v_Value1 == nroHabitacion).FirstOrDefault();
+
+
+                int habitacionId = HabitacionObj.i_ParameterId;
                 var ListHospHab = (from hosp in cnx.hospitalizacionhabitacion
-                                   where hosp.v_HopitalizacionId == HospitalizacionId && hosp.i_EstateRoom == (int)EstadoHabitacion.Libre
+                                   where hosp.v_HopitalizacionId == HospitalizacionId && hosp.i_EstateRoom == (int)EstadoHabitacion.Libre && hosp.i_HabitacionId == habitacionId
                                    select hosp).ToList();
 
                 if (ListHospHab.Count > 0)
@@ -155,23 +160,28 @@ namespace Sigesoft.Node.WinClient.BLL
             }
 
         }
-        public void UpdateEstateHabitacionByHospId(string hospId)
+        public bool UpdateEstateHabitacionByHospId(string hospId)
         {
             try
             {
+
                 SigesoftEntitiesModel cnx = new SigesoftEntitiesModel();
                 var objHospHab = (from hosp in cnx.hospitalizacionhabitacion
                                   where hosp.v_HopitalizacionId == hospId && hosp.i_EstateRoom == (int)EstadoHabitacion.Ocupado
                     select hosp).FirstOrDefault();
+                if (objHospHab != null)
+                {
+                    objHospHab.i_EstateRoom = (int)EstadoHabitacion.EnLimpieza;
+                    objHospHab.d_EndDate = DateTime.Now;
 
-                objHospHab.i_EstateRoom = (int)EstadoHabitacion.EnLimpieza;
-
-                cnx.SaveChanges();
+                    cnx.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch (Exception e)
             {
-                
-                throw;
+                return false;
             }
         }
     }
