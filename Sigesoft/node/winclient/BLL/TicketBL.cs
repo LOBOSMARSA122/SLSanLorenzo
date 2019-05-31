@@ -132,6 +132,30 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public serviceDto GetService(ref OperationResult objOperationResult, string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                serviceDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.service
+                                 where a.v_ServiceId == serviceId
+                    select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = serviceAssembler.ToDTO(objEntity);
+
+                objOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
         public List<TicketList> GetTicketById(string _serviceId)
         {
             try
@@ -356,14 +380,14 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
-        public List<PlanList> TienePlan(string protocolId, string unidadProd)
+        public List<PlanList> TienePlan(string protocolId, string unidadProductivaId)
         {
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var objEntity = (from a in dbContext.plan
-                                 where a.v_ProtocoloId == protocolId && a.v_IdUnidadProductiva == unidadProd
+                                 where a.v_ProtocoloId == protocolId && a.v_IdUnidadProductiva == unidadProductivaId
                                  select new PlanList
                                  {
                                     i_PlanId = a.i_PlanId,
@@ -375,6 +399,35 @@ namespace Sigesoft.Node.WinClient.BLL
                                     d_Importe = a.d_Importe.Value,
                                     d_ImporteCo = a.d_ImporteCo.Value
                                  } ).ToList();
+
+
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public List<PlanList> TienePlan_(string protocolId, int plan)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from a in dbContext.plan
+                    where a.v_ProtocoloId == protocolId && a.i_PlanId == plan
+                    select new PlanList
+                    {
+                        i_PlanId = a.i_PlanId,
+                        v_OrganizationSeguroId = a.v_OrganizationSeguroId,
+                        v_ProtocoloId = a.v_ProtocoloId,
+                        v_IdUnidadProductiva = a.v_IdUnidadProductiva,
+                        i_EsDeducible = a.i_EsDeducible.Value,
+                        i_EsCoaseguro = a.i_EsCoaseguro.Value,
+                        d_Importe = a.d_Importe.Value,
+                        d_ImporteCo = a.d_ImporteCo.Value
+                    }).ToList();
 
 
                 return objEntity;

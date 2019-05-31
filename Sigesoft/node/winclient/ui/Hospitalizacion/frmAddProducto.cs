@@ -121,9 +121,16 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                         decimal d;
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
-
+                        //nuevo
+                        int planId = 0;
+                        var servicioDet = oTicketBL.GetService(ref objOperationResult,_serviceId);
+                        if (servicioDet.i_PlanId != null)
+                        {
+                            planId = (int)servicioDet.i_PlanId;
+                        }
+                        //////
                         var tienePlan = false;
-                        var resultplan = oTicketBL.TienePlan(_protocolId, txtUnPdId.Text);
+                        var resultplan = oTicketBL.TienePlan_(_protocolId, planId);
                         if (resultplan.Count > 0) tienePlan = true;
                         else tienePlan = false;
 
@@ -137,7 +144,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 var cadena1 = "select PL.d_ImporteCo " +
                                               "from [dbo].[plan] PL " +
                                               "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
-                                              "where PR.v_ProtocolId='"+_protocolId+"' and PL.v_IdUnidadProductiva='"+txtUnPdId.Text+"'";
+                                              "where PR.v_ProtocolId='" + _protocolId + "' and PL.i_PlanId='" + planId + "'";
                                 SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                                 SqlDataReader lector = comando.ExecuteReader();
                                 string ImporteCo = "";
