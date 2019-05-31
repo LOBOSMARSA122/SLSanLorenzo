@@ -727,6 +727,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
             if (grdData.Selected.Rows.Count > 0)
             {
+               
                 if (grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value != null)
                 {
                     contextMenuStrip2.Items["itemLimpieza"].Enabled = true;
