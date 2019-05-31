@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.DAL;
@@ -70,6 +71,40 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 return null;
             }
+        }
+
+        public bool GetHabitacionByHabitacionId(string hospitalizacionId)
+        {
+            SigesoftEntitiesModel cnx = new SigesoftEntitiesModel();
+
+            var query = (from hosp in cnx.hospitalizacionhabitacion
+                where hosp.v_HopitalizacionId == hospitalizacionId select hosp).ToList();
+
+            if (query.Count > 0)
+            {
+                int ultimo = query.Count - 1;
+                int habitacionId = query[ultimo].i_HabitacionId.Value;
+                var habitacion = (from hosp in cnx.hospitalizacionhabitacion
+                                  where hosp.i_HabitacionId == habitacionId && hosp.i_EstateRoom == (int)EstadoHabitacion.Ocupado
+                                  select hosp).FirstOrDefault();
+
+                if (habitacion != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    var ponerOcupado = (from hosp in cnx.hospitalizacionhabitacion
+                        where hosp.v_HopitalizacionId == hospitalizacionId
+                        select hosp).ToList();
+
+                    ponerOcupado[ultimo].i_EstateRoom = (int) EstadoHabitacion.Ocupado;
+                    cnx.SaveChanges();
+                }
+            }
+            
+
+            return false;
         }
 
         public void UpdateEstateHabitacion(int Estate, int HabitacionId, string HospitalizacionHabId)
