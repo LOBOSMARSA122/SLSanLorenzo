@@ -541,25 +541,61 @@ namespace Sigesoft.Node.WinClient.UI
                             //CLINICA
                             case 1:
                                 {
-                                    objServiceComponentDto.r_Price = objComponentDto.r_PriceSegus;
-                                    objServiceComponentDto.d_SaldoPaciente = importe;
-                                    objServiceComponentDto.d_SaldoAseguradora = (decimal)objComponentDto.r_PriceSegus - importe;
+                                    if (objComponentDto.r_PriceSegus != 0)
+                                    {
+                                        objServiceComponentDto.r_Price = objComponentDto.r_PriceSegus;
+                                        objServiceComponentDto.d_SaldoPaciente = importe;
+                                        objServiceComponentDto.d_SaldoAseguradora = (decimal)objComponentDto.r_PriceSegus - importe;
+                                    }
+                                    else
+                                    {
+                                        frmConfigSeguros frm1 = new frmConfigSeguros("1");
+                                        frm1.ShowDialog();
+                                        objServiceComponentDto.r_Price = (float) frm1.nuevoPrecio;
+                                        objServiceComponentDto.d_SaldoPaciente = importe;
+                                        objServiceComponentDto.d_SaldoAseguradora = frm1.nuevoPrecio - importe;
+                                    }
+                                    
                                 }
                                 break;
                             //SERVICIOS AUXILIARES
                             case 2:
                                 {
-                                    objServiceComponentDto.r_Price = objComponentDto.r_PriceSegus * float.Parse(factorGlobal);
-                                    objServiceComponentDto.d_SaldoPaciente = importeCo * (decimal)objServiceComponentDto.r_Price / 100;
-                                    objServiceComponentDto.d_SaldoAseguradora = (100 - importeCo) * (decimal)objServiceComponentDto.r_Price / 100;
+                                    if (objComponentDto.r_PriceSegus != 0)
+                                    {
+                                        objServiceComponentDto.r_Price = objComponentDto.r_PriceSegus * float.Parse(factorGlobal);
+                                        objServiceComponentDto.d_SaldoPaciente = importeCo * (decimal)objServiceComponentDto.r_Price / 100;
+                                        objServiceComponentDto.d_SaldoAseguradora = (100 - importeCo) * (decimal)objServiceComponentDto.r_Price / 100;
+                                    }
+                                    else
+                                    {
+                                        frmConfigSeguros frm1 = new frmConfigSeguros(factorGlobal);
+                                        frm1.ShowDialog();
+                                        objServiceComponentDto.r_Price = (float) frm1.nuevoPrecio ;
+                                        objServiceComponentDto.d_SaldoPaciente = importeCo * frm1.nuevoPrecio / 100;
+                                        objServiceComponentDto.d_SaldoAseguradora = (100 - importeCo) * frm1.nuevoPrecio / 100;
+                                    }
+                                   
                                 }
                                 break;
                             //HONORARIOS MÉDICOS Y/O QUIRURGICOS
                             case 3:
                                 {
-                                    objServiceComponentDto.r_Price = objComponentDto.r_PriceSegus * float.Parse(factorGlobal);
-                                    objServiceComponentDto.d_SaldoPaciente = importeCo * (decimal)objServiceComponentDto.r_Price / 100;
-                                    objServiceComponentDto.d_SaldoAseguradora = (100 - importeCo) * (decimal)objServiceComponentDto.r_Price / 100;
+                                    if (objComponentDto.r_PriceSegus != 0)
+                                    {
+                                        objServiceComponentDto.r_Price = objComponentDto.r_PriceSegus * float.Parse(factorGlobal);
+                                        objServiceComponentDto.d_SaldoPaciente = importeCo * (decimal)objServiceComponentDto.r_Price / 100;
+                                        objServiceComponentDto.d_SaldoAseguradora = (100 - importeCo) * (decimal)objServiceComponentDto.r_Price / 100;
+                                    }
+                                    else
+                                    {
+                                        frmConfigSeguros frm1 = new frmConfigSeguros(factorGlobal);
+                                        frm1.ShowDialog();
+                                        objServiceComponentDto.r_Price = (float) frm1.nuevoPrecio;
+                                        objServiceComponentDto.d_SaldoPaciente = importeCo * frm1.nuevoPrecio / 100;
+                                        objServiceComponentDto.d_SaldoAseguradora = (100 - importeCo) * frm1.nuevoPrecio / 100;
+                                    }
+                                    
                                 }
                                 break;
                         }

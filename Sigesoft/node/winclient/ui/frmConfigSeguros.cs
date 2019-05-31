@@ -16,37 +16,13 @@ namespace Sigesoft.Node.WinClient.UI
         public decimal? aseguradora;
         public float? precio;
         public bool result;
+        private string _factor;
+        public decimal nuevoPrecio;
 
-        public frmConfigSeguros(int deducible, int coaseguro, decimal? importe, string precio, string factor, decimal? importeCo)
+        public frmConfigSeguros(string factor)
         {
             InitializeComponent();
-            if (deducible == 1 || deducible == 0)
-            {
-                if (deducible == 1) { rbDeducible.Checked = true; }
-                else
-                {
-                    rbDeducible.Checked = false;
-                    rbDeducible.Visible = false;
-                    txtImporte.Visible = false;
-                    lblmontoDeducible.Visible = false;
-                }
-            }
-            if (coaseguro == 1 || coaseguro == 0)
-            {
-                if (coaseguro == 1) { rbCoaseguro.Checked = true; }
-                else
-                {
-                    rbCoaseguro.Checked = false;
-                    rbCoaseguro.Visible = false;
-                    txtCoaseguro.Visible = false;
-                    lblMontoCoaseguro.Visible = false;
-                }
-            }
-            txtCoaseguro.Text = importeCo.ToString();
-            txtFactor.Text = factor;
-            txtPrecioBase.Text = precio;
-            txtImporte.Text = importe.ToString();
-            Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text, txtCoaseguro.Text);
+            
         }
         private void Calculator(bool coaseguro, bool deducible, string importe, string importeCo)
         {
@@ -64,11 +40,6 @@ namespace Sigesoft.Node.WinClient.UI
                 txtPagoAseguradora.Text = (double.Parse(txtnuevoPrecio.Text) - double.Parse(txtPagoPaciente.Text)).ToString();
 
             }
-        }
-
-        private void frmConfigSeguros_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void txtFactor_KeyPress(object sender, KeyPressEventArgs e)
@@ -108,7 +79,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             if ((int)e.KeyChar == (int)Keys.Enter)
             {
-                Calculator(rbCoaseguro.Checked, rbDeducible.Checked, txtImporte.Text, txtCoaseguro.Text);
+                CalcularNuevoPrecio(txtPrecioBase.Text, txtFactor.Text);
             }
         }
 
@@ -122,6 +93,15 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmConfigSeguros_Load_1(object sender, EventArgs e)
         {
+            txtPrecioBase.Text = "0.00";
+            txtFactor.Text = _factor;
+            CalcularNuevoPrecio(txtPrecioBase.Text, txtFactor.Text);
+        }
+
+        private void CalcularNuevoPrecio(string p1, string p2)
+        {
+            nuevoPrecio = decimal.Parse(p1) * decimal.Parse(p2) * (decimal) 1.18;
+            txtnuevoPrecio.Text = nuevoPrecio.ToString();
         }
     }
 }
