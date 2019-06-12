@@ -4135,7 +4135,9 @@ namespace Sigesoft.Node.WinClient.UI
             frm.ShowDialog();
         }
 
-        private void grdDataService_MouseDown(object sender, MouseEventArgs e)
+
+
+        private void grdDataService_MouseDown_1(object sender, MouseEventArgs e)
         {
             if (grdDataService.Selected.Rows.Count == 0)
             {

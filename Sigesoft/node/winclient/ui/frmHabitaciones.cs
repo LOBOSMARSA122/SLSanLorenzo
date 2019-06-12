@@ -259,7 +259,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else if (_mode == "EditASEGU" || _mode == "EditHOSPI")
             {
-                if (dtpFechaFin.Value > dtFin.Value)
+                if (dtpFechaInicio.Value > dtFin.Value)
                 {
                     MessageBox.Show("La fecha de INICIO no puede ser mayor a la fecha FINAL", "VALIDACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
