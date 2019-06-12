@@ -780,5 +780,10 @@ namespace Sigesoft.Node.WinClient.UI
             grdDataServiceComponent.DataSource = ListServiceComponent;
             ultraGrid1.DataSource = ListServiceComponent;
         }
+
+        private void cbLine_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+
+        }
     }
 }

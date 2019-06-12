@@ -1960,7 +1960,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             txtHallazgos.Text = string.IsNullOrEmpty(dataAnamnesis.Findings) ? "Sin Alteración" : dataAnamnesis.Findings;
             //txtFechaUltimoPAP.Text = string.IsNullOrEmpty(personData.v_FechaUltimoPAP) ? "" : personData.v_FechaUltimoPAP;
             txtMenarquia.Text = dataAnamnesis.Menarquia;
-            txtGestapara.Text = string.IsNullOrEmpty(dataAnamnesis.Gestapara) ? "G ( )  P ( ) ( ) ( ) ( ) " : dataAnamnesis.Gestapara;
+            txtGestapara.Text = string.IsNullOrEmpty(dataAnamnesis.Gestapara) ? "G (0)  P (0) (0) (0) (0) " : dataAnamnesis.Gestapara;
             cbMac.SelectedValue = dataAnamnesis.MacId == null ? "1" : dataAnamnesis.MacId.ToString();
             txtRegimenCatamenial.Text = dataAnamnesis.CatemenialRegime;
             txtCiruGine.Text = dataAnamnesis.CiruGine;
@@ -6313,8 +6313,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void ViewEditAntecedent()
         {
             Form frm = new frmHistory(_personId);
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+            //frm.MdiParent = this.MdiParent;
+            //frm.Show();
+            frm.ShowDialog();
             // refresca grilla de antecedentes
             GetAntecedentConsolidateForService(_personId);
         }

@@ -60,6 +60,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProducto));
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtUnidProdId = new System.Windows.Forms.TextBox();
             this.cbLine = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.cbExamen = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.txtPPS = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -86,7 +87,6 @@
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
-            this.lblIdDetalleProd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbLine)).BeginInit();
@@ -101,6 +101,7 @@
             // 
             // gbReceta
             // 
+            this.gbReceta.Controls.Add(this.txtUnidProdId);
             this.gbReceta.Controls.Add(this.cbLine);
             this.gbReceta.Controls.Add(this.cbExamen);
             this.gbReceta.Controls.Add(this.txtPPS);
@@ -127,14 +128,24 @@
             this.gbReceta.Controls.Add(this.ultraLabel2);
             this.gbReceta.Controls.Add(this.ultraLabel9);
             this.gbReceta.Controls.Add(this.ultraLabel1);
-            this.gbReceta.Location = new System.Drawing.Point(-6, 12);
+            this.gbReceta.Location = new System.Drawing.Point(12, 12);
             this.gbReceta.Name = "gbReceta";
-            this.gbReceta.Size = new System.Drawing.Size(407, 244);
+            this.gbReceta.Size = new System.Drawing.Size(380, 214);
             this.gbReceta.TabIndex = 1;
             this.gbReceta.Text = "Buscar Medicina";
             // 
+            // txtUnidProdId
+            // 
+            this.txtUnidProdId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtUnidProdId.Location = new System.Drawing.Point(29, 156);
+            this.txtUnidProdId.Name = "txtUnidProdId";
+            this.txtUnidProdId.Size = new System.Drawing.Size(20, 20);
+            this.txtUnidProdId.TabIndex = 128;
+            this.txtUnidProdId.Visible = false;
+            // 
             // cbLine
             // 
+            this.cbLine.AlphaBlendMode = Infragistics.Win.AlphaBlendMode.Standard;
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.cbLine.DisplayLayout.Appearance = appearance1;
@@ -183,11 +194,15 @@
             this.cbLine.DisplayLayout.Override.RowAppearance = appearance11;
             appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
             this.cbLine.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            this.cbLine.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList;
             this.cbLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLine.Location = new System.Drawing.Point(103, 151);
+            this.cbLine.Location = new System.Drawing.Point(64, 136);
+            this.cbLine.MaxLength = 136;
             this.cbLine.Name = "cbLine";
-            this.cbLine.Size = new System.Drawing.Size(276, 22);
+            this.cbLine.Size = new System.Drawing.Size(281, 22);
             this.cbLine.TabIndex = 125;
+            this.cbLine.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
+            this.cbLine.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.cbLine_InitializeLayout);
             this.cbLine.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbLine_RowSelected);
             // 
             // cbExamen
@@ -241,9 +256,9 @@
             appearance24.BackColor = System.Drawing.SystemColors.ControlLight;
             this.cbExamen.DisplayLayout.Override.TemplateAddRowAppearance = appearance24;
             this.cbExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbExamen.Location = new System.Drawing.Point(73, 195);
+            this.cbExamen.Location = new System.Drawing.Point(84, 187);
             this.cbExamen.Name = "cbExamen";
-            this.cbExamen.Size = new System.Drawing.Size(160, 22);
+            this.cbExamen.Size = new System.Drawing.Size(99, 22);
             this.cbExamen.TabIndex = 123;
             this.cbExamen.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbExamen_RowSelected);
             // 
@@ -252,7 +267,7 @@
             appearance25.TextHAlignAsString = "Right";
             this.txtPPS.Appearance = appearance25;
             this.txtPPS.Enabled = false;
-            this.txtPPS.Location = new System.Drawing.Point(277, 67);
+            this.txtPPS.Location = new System.Drawing.Point(277, 77);
             this.txtPPS.Name = "txtPPS";
             this.txtPPS.Size = new System.Drawing.Size(68, 21);
             this.txtPPS.TabIndex = 19;
@@ -260,26 +275,26 @@
             // ultraLabel8
             // 
             this.ultraLabel8.AutoSize = true;
-            this.ultraLabel8.Location = new System.Drawing.Point(184, 71);
+            this.ultraLabel8.Location = new System.Drawing.Point(196, 81);
             this.ultraLabel8.Name = "ultraLabel8";
-            this.ultraLabel8.Size = new System.Drawing.Size(89, 14);
+            this.ultraLabel8.Size = new System.Drawing.Size(30, 14);
             this.ultraLabel8.TabIndex = 20;
-            this.ultraLabel8.Text = "Precio Púb. Sug.";
+            this.ultraLabel8.Text = "PPS:";
             // 
             // txtPrecio
             // 
             appearance26.TextHAlignAsString = "Right";
             this.txtPrecio.Appearance = appearance26;
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(104, 71);
+            this.txtPrecio.Location = new System.Drawing.Point(64, 77);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(68, 21);
+            this.txtPrecio.Size = new System.Drawing.Size(77, 21);
             this.txtPrecio.TabIndex = 17;
             // 
             // ultraLabel7
             // 
             this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(64, 75);
+            this.ultraLabel7.Location = new System.Drawing.Point(9, 81);
             this.ultraLabel7.Name = "ultraLabel7";
             this.ultraLabel7.Size = new System.Drawing.Size(36, 14);
             this.ultraLabel7.TabIndex = 18;
@@ -288,42 +303,42 @@
             // txtComponentId
             // 
             this.txtComponentId.Enabled = false;
-            this.txtComponentId.Location = new System.Drawing.Point(76, 187);
+            this.txtComponentId.Location = new System.Drawing.Point(13, 164);
             this.txtComponentId.Name = "txtComponentId";
-            this.txtComponentId.Size = new System.Drawing.Size(111, 20);
+            this.txtComponentId.Size = new System.Drawing.Size(10, 20);
             this.txtComponentId.TabIndex = 16;
             // 
             // txtUnPdId
             // 
             this.txtUnPdId.Enabled = false;
-            this.txtUnPdId.Location = new System.Drawing.Point(268, 125);
+            this.txtUnPdId.Location = new System.Drawing.Point(178, 164);
             this.txtUnPdId.Name = "txtUnPdId";
-            this.txtUnPdId.Size = new System.Drawing.Size(111, 20);
+            this.txtUnPdId.Size = new System.Drawing.Size(17, 20);
             this.txtUnPdId.TabIndex = 16;
             this.txtUnPdId.Visible = false;
             // 
             // txtUnidadProductiva
             // 
             this.txtUnidadProductiva.Enabled = false;
-            this.txtUnidadProductiva.Location = new System.Drawing.Point(103, 125);
+            this.txtUnidadProductiva.Location = new System.Drawing.Point(143, 164);
             this.txtUnidadProductiva.Name = "txtUnidadProductiva";
-            this.txtUnidadProductiva.Size = new System.Drawing.Size(111, 20);
+            this.txtUnidadProductiva.Size = new System.Drawing.Size(29, 20);
             this.txtUnidadProductiva.TabIndex = 16;
             this.txtUnidadProductiva.Visible = false;
             // 
             // ultraLabel10
             // 
             this.ultraLabel10.AutoSize = true;
-            this.ultraLabel10.Location = new System.Drawing.Point(36, 155);
+            this.ultraLabel10.Location = new System.Drawing.Point(9, 131);
             this.ultraLabel10.Name = "ultraLabel10";
-            this.ultraLabel10.Size = new System.Drawing.Size(62, 14);
+            this.ultraLabel10.Size = new System.Drawing.Size(51, 27);
             this.ultraLabel10.TabIndex = 15;
-            this.ultraLabel10.Text = "Elegir Plan:";
+            this.ultraLabel10.Text = "Plan\r\nAtención:";
             // 
             // ultraLabel5
             // 
             this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(22, 128);
+            this.ultraLabel5.Location = new System.Drawing.Point(53, 167);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(84, 14);
             this.ultraLabel5.TabIndex = 15;
@@ -335,26 +350,26 @@
             appearance27.TextHAlignAsString = "Right";
             this.txtDesctoEPS.Appearance = appearance27;
             this.txtDesctoEPS.Enabled = false;
-            this.txtDesctoEPS.Location = new System.Drawing.Point(104, 98);
+            this.txtDesctoEPS.Location = new System.Drawing.Point(64, 104);
             this.txtDesctoEPS.Name = "txtDesctoEPS";
-            this.txtDesctoEPS.Size = new System.Drawing.Size(68, 21);
+            this.txtDesctoEPS.Size = new System.Drawing.Size(77, 21);
             this.txtDesctoEPS.TabIndex = 13;
             // 
             // ultraLabel6
             // 
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(14, 102);
+            this.ultraLabel6.Location = new System.Drawing.Point(9, 108);
             this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(84, 14);
+            this.ultraLabel6.Size = new System.Drawing.Size(47, 14);
             this.ultraLabel6.TabIndex = 14;
-            this.ultraLabel6.Text = "Descuento EPS";
+            this.ultraLabel6.Text = "Dto PPS";
             // 
             // txtPrecioVenta
             // 
             appearance28.TextHAlignAsString = "Right";
             this.txtPrecioVenta.Appearance = appearance28;
             this.txtPrecioVenta.Enabled = false;
-            this.txtPrecioVenta.Location = new System.Drawing.Point(277, 98);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(277, 104);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(68, 21);
             this.txtPrecioVenta.TabIndex = 13;
@@ -362,7 +377,7 @@
             // ultraLabel4
             // 
             this.ultraLabel4.AutoSize = true;
-            this.ultraLabel4.Location = new System.Drawing.Point(201, 102);
+            this.ultraLabel4.Location = new System.Drawing.Point(196, 108);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(72, 14);
             this.ultraLabel4.TabIndex = 14;
@@ -373,7 +388,7 @@
             appearance29.TextHAlignAsString = "Right";
             this.txtCodigo.Appearance = appearance29;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(277, 40);
+            this.txtCodigo.Location = new System.Drawing.Point(277, 46);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(68, 21);
             this.txtCodigo.TabIndex = 11;
@@ -381,7 +396,7 @@
             // ultraLabel3
             // 
             this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(230, 44);
+            this.ultraLabel3.Location = new System.Drawing.Point(196, 46);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(43, 14);
             this.ultraLabel3.TabIndex = 12;
@@ -400,7 +415,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(351, 15);
+            this.btnBuscar.Location = new System.Drawing.Point(346, 18);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(28, 23);
             this.btnBuscar.TabIndex = 8;
@@ -410,9 +425,9 @@
             // 
             // txtMedicamento
             // 
-            this.txtMedicamento.Location = new System.Drawing.Point(103, 17);
+            this.txtMedicamento.Location = new System.Drawing.Point(64, 20);
             this.txtMedicamento.Name = "txtMedicamento";
-            this.txtMedicamento.Size = new System.Drawing.Size(242, 20);
+            this.txtMedicamento.Size = new System.Drawing.Size(281, 20);
             this.txtMedicamento.TabIndex = 7;
             // 
             // btnSalir
@@ -421,7 +436,7 @@
             this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(239, 187);
+            this.btnSalir.Location = new System.Drawing.Point(201, 173);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 28);
             this.btnSalir.TabIndex = 6;
@@ -435,7 +450,7 @@
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(326, 187);
+            this.btnGuardar.Location = new System.Drawing.Point(299, 174);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 28);
             this.btnGuardar.TabIndex = 5;
@@ -448,16 +463,16 @@
             // 
             appearance30.TextHAlignAsString = "Right";
             this.txtCantidad.Appearance = appearance30;
-            this.txtCantidad.Location = new System.Drawing.Point(103, 43);
+            this.txtCantidad.Location = new System.Drawing.Point(64, 49);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(68, 21);
+            this.txtCantidad.Size = new System.Drawing.Size(77, 21);
             this.txtCantidad.TabIndex = 1;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // ultraLabel2
             // 
             this.ultraLabel2.AutoSize = true;
-            this.ultraLabel2.Location = new System.Drawing.Point(46, 47);
+            this.ultraLabel2.Location = new System.Drawing.Point(9, 50);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(53, 14);
             this.ultraLabel2.TabIndex = 2;
@@ -466,7 +481,7 @@
             // ultraLabel9
             // 
             this.ultraLabel9.AutoSize = true;
-            this.ultraLabel9.Location = new System.Drawing.Point(18, 195);
+            this.ultraLabel9.Location = new System.Drawing.Point(29, 190);
             this.ultraLabel9.Name = "ultraLabel9";
             this.ultraLabel9.Size = new System.Drawing.Size(49, 14);
             this.ultraLabel9.TabIndex = 0;
@@ -475,27 +490,17 @@
             // ultraLabel1
             // 
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(51, 20);
+            this.ultraLabel1.Location = new System.Drawing.Point(9, 26);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(48, 14);
             this.ultraLabel1.TabIndex = 0;
             this.ultraLabel1.Text = "Nombre:";
             // 
-            // lblIdDetalleProd
-            // 
-            this.lblIdDetalleProd.AutoSize = true;
-            this.lblIdDetalleProd.Location = new System.Drawing.Point(9, 185);
-            this.lblIdDetalleProd.Name = "lblIdDetalleProd";
-            this.lblIdDetalleProd.Size = new System.Drawing.Size(10, 13);
-            this.lblIdDetalleProd.TabIndex = 9;
-            this.lblIdDetalleProd.Text = ".";
-            // 
             // frmAddProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 230);
-            this.Controls.Add(this.lblIdDetalleProd);
+            this.ClientSize = new System.Drawing.Size(404, 232);
             this.Controls.Add(this.gbReceta);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -517,7 +522,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -531,7 +535,6 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtMedicamento;
-        private System.Windows.Forms.Label lblIdDetalleProd;
         private System.Windows.Forms.Label labelmensaje;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtCodigo;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
@@ -551,6 +554,7 @@
         private Infragistics.Win.UltraWinGrid.UltraCombo cbLine;
         private Infragistics.Win.Misc.UltraLabel ultraLabel10;
         private System.Windows.Forms.TextBox txtUnPdId;
+        private System.Windows.Forms.TextBox txtUnidProdId;
 
     }
 }

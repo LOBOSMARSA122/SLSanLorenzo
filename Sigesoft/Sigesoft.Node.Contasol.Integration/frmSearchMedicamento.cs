@@ -118,7 +118,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                 var entidad = new MedicamentoDto();
                 entidad.Nombre = txtNombreMedicamento.Text.Trim();
                 entidad.CodInterno = txtCodigo.Text.Trim();
-                entidad.PrecioVenta = decimal.TryParse(txtPrecioVenta.Text.Trim(), out d) ? d : 0;
+                entidad.PrecioVenta = decimal.Round((decimal.TryParse(txtPrecioVenta.Text.Trim(), out d) ? d : 0),2);
                 entidad.AccionFarmaco = txtAccionFarmaco.Text.Trim();
                 entidad.Concentracion = txtConcentracion.Text.Trim();
                 entidad.PrincipioActivo = txtPrincipioActivo.Text.Trim();

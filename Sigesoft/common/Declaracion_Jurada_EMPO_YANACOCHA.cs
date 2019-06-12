@@ -272,6 +272,13 @@ namespace NetPdf
                 }
             }
             float tamaño_celda1 = 12f;
+            string empresageneral = filiationData.empresa_;
+            string empresacontrata = filiationData.contrata;
+            string empresasubcontrata = filiationData.subcontrata;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
             cells = new List<PdfPCell>()
                    {      
                     //fila 
@@ -311,7 +318,7 @@ namespace NetPdf
                       new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue1)){Border = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(Empresa){Border = PdfPCell.NO_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
-                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue1)){Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase( empresageneral,fontColumnValue1)){Border = PdfPCell.NO_BORDER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue1)) {Border = PdfPCell.NO_BORDER, Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase("RETIRO", fontColumnValue1)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
@@ -320,7 +327,7 @@ namespace NetPdf
                       new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                   new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue1)){Border = PdfPCell.LEFT_BORDER},     
                     new PdfPCell(Contratista){Border = PdfPCell.NO_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue1)){Border = PdfPCell.NO_BORDER},   
+                    new PdfPCell(new Phrase(empresacontrata, fontColumnValue1)){Border = PdfPCell.NO_BORDER},   
                     new PdfPCell(new Phrase(" ", fontColumnValue1)) {Border = PdfPCell.NO_BORDER, Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue1)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },

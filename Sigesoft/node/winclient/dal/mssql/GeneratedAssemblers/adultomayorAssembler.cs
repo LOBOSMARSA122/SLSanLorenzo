@@ -62,7 +62,7 @@ namespace Sigesoft.Node.WinClient.BE
             entity.i_UpdateUserId = dto.i_UpdateUserId;
             entity.d_UpdateDate = dto.d_UpdateDate;
             entity.v_ReaccionAlergica = dto.v_ReaccionAlergica;
-            entity.v_DescripciónAntecedentes = dto.v_DescripciónAntecedentes;
+            entity.v_DescripciÃ³nAntecedentes = dto.v_DescripcionAntecedentes;
             entity.v_FlujoVaginal = dto.v_FlujoVaginal;
             entity.v_ObservacionesEmbarazo = dto.v_ObservacionesEmbarazo;
             entity.v_ComentaryUpdate = dto.v_ComentaryUpdate;
@@ -101,7 +101,7 @@ namespace Sigesoft.Node.WinClient.BE
             dto.i_UpdateUserId = entity.i_UpdateUserId;
             dto.d_UpdateDate = entity.d_UpdateDate;
             dto.v_ReaccionAlergica = entity.v_ReaccionAlergica;
-            dto.v_DescripciónAntecedentes = entity.v_DescripciónAntecedentes;
+            dto.v_DescripcionAntecedentes = entity.v_DescripciÃ³nAntecedentes;
             dto.v_FlujoVaginal = entity.v_FlujoVaginal;
             dto.v_ObservacionesEmbarazo = entity.v_ObservacionesEmbarazo;
             dto.v_ComentaryUpdate = entity.v_ComentaryUpdate;

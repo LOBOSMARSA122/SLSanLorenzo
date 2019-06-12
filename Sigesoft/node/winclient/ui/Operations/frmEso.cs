@@ -10405,6 +10405,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //toolTip1.Show("\n Ya se guardo el examen. \n Para editar: vuelva a ingresar.",btnGuardarExamen, 1500);
         }
 
+        private void ultraTabSharedControlsPage1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 
 }
