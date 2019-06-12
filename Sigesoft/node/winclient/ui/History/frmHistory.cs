@@ -802,7 +802,6 @@ namespace Sigesoft.Node.WinClient.UI
                 // Se queda en el formulario.
             }
            
-
         }
 
         private void btnCancelPersonMedical_Click(object sender, EventArgs e)
