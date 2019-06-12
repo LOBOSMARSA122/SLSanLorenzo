@@ -385,6 +385,8 @@
     <Compile Include="Generated\embarzoDto.cs" />
     <Compile Include="Generated\workstationdangersDto.cs" />
     <Compile Include="Generated\warehouseDto.cs" />
+    <Compile Include="Generated\vigilanciaserviceDto.cs" />
+    <Compile Include="Generated\vigilanciaDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
     <Compile Include="Generated\tramasDto.cs" />
     <Compile Include="Generated\trackingDto.cs" />
@@ -427,6 +429,8 @@
     <Compile Include="Generated\productDto.cs" />
     <Compile Include="Generated\procedurebyserviceDto.cs" />
     <Compile Include="Generated\problemaDto.cs" />
+    <Compile Include="Generated\planvigilanciadiseasesDto.cs" />
+    <Compile Include="Generated\planvigilanciaDto.cs" />
     <Compile Include="Generated\planintegralDto.cs" />
     <Compile Include="Generated\planDto.cs" />
     <Compile Include="Generated\personmedicalhistoryDto.cs" />

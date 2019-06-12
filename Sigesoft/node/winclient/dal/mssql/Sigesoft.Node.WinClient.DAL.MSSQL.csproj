@@ -86,6 +86,8 @@
     <Compile Include="GeneratedAssemblers\embarzoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\workstationdangersAssembler.cs" />
     <Compile Include="GeneratedAssemblers\warehouseAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\vigilanciaserviceAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\vigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
     <Compile Include="GeneratedAssemblers\tramasAssembler.cs" />
     <Compile Include="GeneratedAssemblers\trackingAssembler.cs" />
@@ -128,6 +130,8 @@
     <Compile Include="GeneratedAssemblers\productAssembler.cs" />
     <Compile Include="GeneratedAssemblers\procedurebyserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\problemaAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\planvigilanciadiseasesAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\planvigilanciaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planintegralAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personmedicalhistoryAssembler.cs" />
