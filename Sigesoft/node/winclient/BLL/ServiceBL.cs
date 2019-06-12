@@ -36384,6 +36384,10 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 List<ComponentForLiquiCustom> _ListServices = new List<ComponentForLiquiCustom>();
                 List<ComponentForLiquiCustom> _ListServicesFinal = new List<ComponentForLiquiCustom>();
+                if (ServicesId.Count == 0)
+                {
+                    ServicesId.Add(serviceId);
+                }
                 foreach (var _serviceId in ServicesId)
                 {
                     var list = (from ser in dbContext.service
@@ -36809,6 +36813,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var TipoCuenta in ListTiposCuenta)
                 {
                     decimal Importe = 0;
+                    decimal PrecioUnitario = 0;
                     decimal TotalSaldoPaciente = 0;
                     int CantProd = 0;
                     decimal Descuento = 0;/////aún no hay lógica para el descuento 'ward'
@@ -36816,7 +36821,6 @@ namespace Sigesoft.Node.WinClient.BLL
                     foreach (var TicketDetalle in TipoCuenta.ListJoinTickets)
                     {
                         Importe += TicketDetalle.Importe.Value;
-
                         if (TicketDetalle.SaldoPaciente != null)
                         {
                             TotalSaldoPaciente += TicketDetalle.SaldoPaciente.Value;

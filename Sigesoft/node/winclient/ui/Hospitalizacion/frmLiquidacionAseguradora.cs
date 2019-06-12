@@ -255,22 +255,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var objAseguradora = new OrganizationBL().GetDataAseguradoraByServiceiId(serviceId);
                 var dataRecetaDetail = new ServiceBL().GetDataRecetaByServiceId(serviceId);
                 var ListCostosService = new ServiceBL().GetServiceAndCost_(serviceId);
-                if (objProtocol.i_MasterServiceId != 10 && objProtocol.i_ServiceTypeId != 9)
-                {
-                    var objHospitalizacion = new PacientBL().GetDataHospitalizacionByServiceId(serviceId);
-                    
-                    var dataTicketDetail = new ServiceBL().GetDataMedicamentosByServiceId(serviceId);
 
-                    LiquidacionHosp.LiquidacionHospitalaria(dataRecetaDetail, dataTicketDetail, ListCostosService, objPacient, objOrganization, objAseguradora, objHospitalizacion, pathFile);
-                    _mergeExPDF.DestinationFile = rutaBasura + "PRE-LIQUIDACIÓN-HOSPI-COPIA-" + serviceId + ".pdf";
+                var objHospitalizacion = new PacientBL().GetDataHospitalizacionByServiceId(serviceId);
 
-                }
-                else
-                {
-                    LiquidacionAmbulatoria.LiquidacionAmbu(dataRecetaDetail, ListCostosService, objPacient, objOrganization, objAseguradora, pathFile);
-                    _mergeExPDF.DestinationFile = rutaBasura + "PRE-LIQUIDACIÓN-AMBU-COPIA-" + serviceId + ".pdf";
-                }
-                
+                var dataTicketDetail = new ServiceBL().GetDataMedicamentosByServiceId(serviceId);
+
+                LiquidacionHosp.LiquidacionHospitalaria(dataRecetaDetail, dataTicketDetail, ListCostosService, objPacient, objOrganization, objAseguradora, objHospitalizacion, pathFile);
+                _mergeExPDF.DestinationFile = rutaBasura + "PRE-LIQUIDACIÓN-HOSPI-COPIA-" + serviceId + ".pdf";
+
                 List<string> PathList = new List<string>();
                 PathList.Add(pathFile);
                 _mergeExPDF.FilesName = PathList;

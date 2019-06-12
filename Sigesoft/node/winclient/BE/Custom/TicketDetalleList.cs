@@ -11,6 +11,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string NombreCuenta { get; set; }
         public int? Encontrados { get; set; }
         public decimal? TotalImporte { get; set; }
+        public decimal? PrecioUnitario { get; set; }
         public decimal? ImporteCoaseguro { get; set; }
         public decimal? TotalSaldoPaciente { get; set; }
         public List<JoinTicketDetails> ListJoinTickets { get; set; }
