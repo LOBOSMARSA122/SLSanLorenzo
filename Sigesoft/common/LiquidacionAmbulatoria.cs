@@ -10,11 +10,11 @@ using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BE.Custom;
 using Sigesoft.Common;
 
-namespace Sigesoft
+namespace Sigesoft.Common
 {
-    public class LiquidacionHosp
+    public class LiquidacionAmbulatoria
     {
-        public static void LiquidacionHospitalaria(JoinTicketDetails dataRecetaDetail, List<TiposCuenta> dataFarmaHops, List<ComponentForLiquiCustom> ListServicesAndCost, personDto dataPacient, organizationDto dataOrganization, organizationDto dataAseguradora, List<HospitalizacionCustom> dataHospitalizacion, string pathFile)
+        public static void LiquidacionAmbu(JoinTicketDetails dataRecetaDetail, List<ComponentForLiquiCustom> ListServicesAndCost, personDto dataPacient, organizationDto dataOrganization, organizationDto dataAseguradora, string pathFile)
         {
 
             iTextSharp.text.Document document = new iTextSharp.text.Document(PageSize.A4, 30f, 30f, 15f, 41f);
@@ -114,63 +114,6 @@ namespace Sigesoft
             int nroHabit = 1;
             string FechIngreso = "----", FechAlta = "----", Habit = "---", Dias = ": 1", Habitaciones = ": 1", costoHabit = "---";
             #endregion
-            if (dataHospitalizacion != null)
-            {
-                if (dataHospitalizacion.Count > 0)
-                {
-                    List<DateTime> DIngreso = new List<DateTime>();
-                    List<DateTime> DAlta = new List<DateTime>();
-                    foreach (var data in dataHospitalizacion)
-                    {
-                        DIngreso.Add(data.d_FechaIngreso);
-                        DAlta.Add(data.d_FechaAlta);
-                    }
-
-                    List<DateTime> ListDIngreso = DIngreso.OrderBy(x => x).ToList();
-                    List<DateTime> ListDAlta = DAlta.OrderByDescending(x => x).ToList();
-
-                    Habit = dataHospitalizacion[0].v_Habitacion == null ? ": ---" : ": " + dataHospitalizacion[0].v_Habitacion;
-                    List<string> habitaciones = new List<string>();
-                    double costo = 0.00;
-
-                    if (ListDIngreso.Count() > 0 && ListDAlta.Count() > 0)
-                    {
-                        FechIngreso = ListDIngreso.Count() == 0 ? ": ---" : ": " + ListDIngreso[0].ToShortDateString();
-                        FechAlta = ListDAlta.Count() == 0 ? ": ---" : ": " + ListDAlta[0].ToShortDateString();
-
-
-                        TimeSpan ts = ListDAlta[0] - ListDIngreso[0];
-                        // Difference in days.
-                        int differenceInDays = ts.Days;
-                        if (differenceInDays <= 1)
-                        {
-                            differenceInDays = 1;
-                            i_dias = 1;
-                        }
-
-                        i_dias = differenceInDays;
-                        Dias = ": " + differenceInDays.ToString();
-                    }
-
-                    foreach (var dat in dataHospitalizacion)
-                    {
-                        costo += double.Parse(dat.d_Precio.ToString()) * i_dias;
-
-                        var find = habitaciones.Find(x => x == dat.v_Habitacion);
-                        if (find == null)
-                        {
-                            habitaciones.Add(dat.v_Habitacion);
-                        }
-                    }
-                    costo = Math.Round(costo, 2);
-                    costoHabit = costo.ToString();
-                    Habitaciones = habitaciones.Count.ToString();
-
-                    // Difference in days, hours, and minutes.
-
-                }
-
-            }
 
             cells = new List<PdfPCell>()
             {                
@@ -264,7 +207,7 @@ namespace Sigesoft
                     double totalConsumos = 0;
                     foreach (var service in ListServicesAndCost)
                     {
-                        
+
                         if (service.MasterServiceId.Value != (int)MasterService.Emergencia)
                         {
                             service.MasterServiceName = "HOSPITALIZACIÓN";
@@ -305,7 +248,7 @@ namespace Sigesoft
                                         
                                     };
 
-                                    columnWidths = new float[] { 5f, 95f};
+                                    columnWidths = new float[] { 5f, 95f };
                                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
                                     document.Add(table);
 
@@ -324,20 +267,20 @@ namespace Sigesoft
                                                 {
                                                     if (comFind.SaldoPaciente != null)
                                                     {
-                                                        totalDeducible += double.Parse(comFind.SaldoPaciente.Value.ToString("N2")); 
+                                                        totalDeducible += double.Parse(comFind.SaldoPaciente.Value.ToString("N2"));
                                                     }
                                                     if (service.Discount.Value > 0)
                                                     {
                                                         double importeActual = double.Parse(comFind.Price.ToString()) / (1 - (service.Discount.Value / 100));
                                                         importe += importeActual;
                                                         discount += importeActual * service.Discount.Value;
-                                                        
+
                                                     }
                                                     else
                                                     {
                                                         importe += double.Parse(comFind.Price.ToString());
                                                     }
-                                                    
+
                                                     total += double.Parse(comFind.Price.ToString());
                                                     totalEncontrados++;
                                                 }
@@ -382,7 +325,7 @@ namespace Sigesoft
                                                 {
                                                     if (comFind.SaldoPaciente != null)
                                                     {
-                                                        totalDeducible += double.Parse(comFind.SaldoPaciente.Value.ToString("N2")); 
+                                                        totalDeducible += double.Parse(comFind.SaldoPaciente.Value.ToString("N2"));
                                                     }
                                                     if (service.Discount.Value > 0)
                                                     {
@@ -454,20 +397,18 @@ namespace Sigesoft
                             columnWidths = new float[] { 85f, 15f };
                             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
                             document.Add(table);
-                            TotalDeducibleGlob += Math.Round(totalDeducible, 2); 
+                            TotalDeducibleGlob += Math.Round(totalDeducible, 2);
                             totalDeducible = 0.00;
                         }
 
-                }
-                ///////
-                if (!InsertDays && dataHospitalizacion != null)
-                {
-                    if (dataHospitalizacion.Count > 0)
-                    {
+                    }
 
+                    ////para los medicamentos que se dieron con receta
+                    if (dataRecetaDetail != null)
+                    {
                         cells = new List<PdfPCell>()
                         {
-                            new PdfPCell(new Phrase(contKindOfService.ToString() + ") HABITACIONES" , fontColumnValueBold2)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
+                            new PdfPCell(new Phrase("FARMACIA", fontSubTitleNegroNegrita)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
                         };
 
                         columnWidths = new float[] { 100f };
@@ -476,90 +417,26 @@ namespace Sigesoft
                         contKindOfService++;
 
                         double importe = 0.00;
-                        importe = double.Parse(costoHabit);
+                        importe = double.Parse(dataRecetaDetail.v_Amount);
                         totalImporte += Math.Round(importe, 2);
                         cells = new List<PdfPCell>()
                             {
-                                new PdfPCell(new Phrase("("+ Habitaciones +")" + " Habitación " + Habit + " Del " + FechIngreso + " AL " + FechAlta, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(costoHabit, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(costoHabit, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
+                                new PdfPCell(new Phrase("("+ dataRecetaDetail.v_Found +")" + " " + dataRecetaDetail.v_Description, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 18f, BorderColor = BaseColor.WHITE},
+                                new PdfPCell(new Phrase(dataRecetaDetail.v_Amount, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
+                                new PdfPCell(new Phrase(dataRecetaDetail.v_Discount, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
+                                new PdfPCell(new Phrase(dataRecetaDetail.v_Total, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
                             };
+
 
                         columnWidths = new float[] { 55f, 15f, 15f, 15f };
                         table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
                         document.Add(table);
 
-                        InsertDays = true;
-                    }
-
-                }
-                if (InsertDays)
-                {
-                    cells = new List<PdfPCell>()
-                            {
-                                new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 5f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 5f, UseVariableBorders = true, BorderColorTop = BaseColor.BLACK,  BorderColorBottom = BaseColor.WHITE, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE},
-                                new PdfPCell(new Phrase("Total : HABITACIÓN", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(totalImporte.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(totalImporte.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-
-                            };
-                    columnWidths = new float[] { 55f, 15f, 15f, 15f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                    document.Add(table);
-                    totalConsumos += Math.Round(totalImporte, 2);
-                    totalImporte = 0.00;
-
-                }
-
-                /////
-                ///PARA LA FARMACIA
-                /// 
-                if (dataFarmaHops != null)
-                {
-                    double totalCoaseguro = 0.00;
-                    if (dataFarmaHops.Count > 0)
-                    {//para el total de productos usados en las operaciones
-                        cells = new List<PdfPCell>()
-                        {
-                            new PdfPCell(new Phrase(contKindOfService.ToString() + ") FARMACIA" , fontColumnValueBold2)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                        };
-
-                        columnWidths = new float[] { 100f };
-                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                        document.Add(table);
-                        contKindOfService++;
-
-
-                        int totalProd = 1;
-                        foreach (var data in dataFarmaHops)
-                        {
-
-                            double importe = 0.00;
-                            importe = double.Parse(data.TotalImporte.Value.ToString());
-                            totalImporte += Math.Round(importe, 2);
-                            cells = new List<PdfPCell>()
-                            {
-                                new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase("("+ data.Encontrados.ToString() +")" + " [FARMACIA]" + data.NombreCuenta, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(importe.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(importe.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                            };
-
-                            columnWidths = new float[] { 5f, 50f, 15f, 15f, 15f };
-                            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                            document.Add(table);
-                            totalCoaseguro += double.Parse(data.TotalSaldoPaciente.Value.ToString("N2"));
-                        }
-
                         cells = new List<PdfPCell>()
                         {
                             new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 5f, BorderColor = BaseColor.WHITE},
                             new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 5f, UseVariableBorders = true, BorderColorTop = BaseColor.BLACK,  BorderColorBottom = BaseColor.WHITE, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE},
-                            new PdfPCell(new Phrase("Total : FARMACIA HOSP", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
+                            new PdfPCell(new Phrase("Total : " + dataRecetaDetail.v_Description, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
                             new PdfPCell(new Phrase(totalImporte.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
                             new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
                             new PdfPCell(new Phrase(totalImporte.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
@@ -572,101 +449,42 @@ namespace Sigesoft
                         totalImporte = 0.00;
 
                         cells = new List<PdfPCell>()
-                        {
-                            new PdfPCell(new Phrase("MONTO COASEGURO ("+ dataFarmaHops[0].ImporteCoaseguro.ToString() +") %   :", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                            new PdfPCell(new Phrase(totalCoaseguro.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE, BorderWidthBottom = 0},
-
-                        };
-                        columnWidths = new float[] { 85f, 15f };
-                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                        document.Add(table);
-                    }
-
-
-                    totalDesctGeneral += double.Parse(totalCoaseguro.ToString());
-                }
-                ////para los medicamentos que se dieron con receta
-                if (dataRecetaDetail != null)
-                {
-                    cells = new List<PdfPCell>()
-                        {
-                            new PdfPCell(new Phrase("FARMACIA", fontSubTitleNegroNegrita)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                        };
-
-                    columnWidths = new float[] { 100f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                    document.Add(table);
-                    contKindOfService++;
-
-                    double importe = 0.00;
-                    importe = double.Parse(dataRecetaDetail.v_Amount);
-                    totalImporte += Math.Round(importe, 2);
-                    cells = new List<PdfPCell>()
-                            {
-                                new PdfPCell(new Phrase("("+ dataRecetaDetail.v_Found +")" + " " + dataRecetaDetail.v_Description, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 18f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(dataRecetaDetail.v_Amount, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(dataRecetaDetail.v_Discount, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                                new PdfPCell(new Phrase(dataRecetaDetail.v_Total, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                            };
-
-
-                    columnWidths = new float[] { 55f, 15f, 15f, 15f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                    document.Add(table);
-
-                    cells = new List<PdfPCell>()
-                        {
-                            new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 5f, BorderColor = BaseColor.WHITE},
-                            new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 5f, UseVariableBorders = true, BorderColorTop = BaseColor.BLACK,  BorderColorBottom = BaseColor.WHITE, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE},
-                            new PdfPCell(new Phrase("Total : " + dataRecetaDetail.v_Description, fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                            new PdfPCell(new Phrase(totalImporte.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                            new PdfPCell(new Phrase("", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-                            new PdfPCell(new Phrase(totalImporte.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
-
-                        };
-                    columnWidths = new float[] { 55f, 15f, 15f, 15f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                    document.Add(table);
-                    totalConsumos += Math.Round(totalImporte, 2);
-                    totalImporte = 0.00;
-
-                    cells = new List<PdfPCell>()
                     {
                         new PdfPCell(new Phrase("MONTO COASEGURO ("+ dataRecetaDetail +") %   :" , fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
                         new PdfPCell(new Phrase(dataRecetaDetail.SaldoPaciente.Value.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE, BorderWidthBottom = 0},
 
                     };
-                    columnWidths = new float[] { 85f, 15f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                    document.Add(table);
+                        columnWidths = new float[] { 85f, 15f };
+                        table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+                        document.Add(table);
 
-                    totalDesctGeneral += double.Parse(dataRecetaDetail.SaldoPaciente.Value.ToString()); 
-                }
-                // aqui debe terminar el primer foreach
-                cells = new List<PdfPCell>()
+                        totalDesctGeneral += double.Parse(dataRecetaDetail.SaldoPaciente.Value.ToString());
+                    }
+                    // aqui debe terminar el primer foreach
+                    cells = new List<PdfPCell>()
                 {
                     new PdfPCell(new Phrase("TOTAL CONSUMOS:", fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
                     new PdfPCell(new Phrase(totalConsumos.ToString("N2"), fontColumnValue)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
 
                 };
-                columnWidths = new float[] { 85f, 15f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                document.Add(table);
+                    columnWidths = new float[] { 85f, 15f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+                    document.Add(table);
 
-                totalConsumoGeneral += Math.Round(totalConsumos, 2);
+                    totalConsumoGeneral += Math.Round(totalConsumos, 2);
 
 
-                //
-                //Alfinal de todo el foreach
-                string igv = "0.18";
-                double subTotalGeneral = totalConsumoGeneral - totalDesctGeneral - TotalDeducibleGlob;
-                double IgvGeneral = subTotalGeneral * float.Parse(igv);
-                double totalGeneral = subTotalGeneral + IgvGeneral;
-                subTotalGeneral = Math.Round(subTotalGeneral, 2);
-                IgvGeneral = Math.Round(IgvGeneral, 2);
-                totalGeneral = Math.Round(totalGeneral, 2);
-                string totalGeneralPalabra = Utils.enletras(totalGeneral.ToString());
-                cells = new List<PdfPCell>()
+                    //
+                    //Alfinal de todo el foreach
+                    string igv = "0.18";
+                    double subTotalGeneral = totalConsumoGeneral - totalDesctGeneral - TotalDeducibleGlob;
+                    double IgvGeneral = subTotalGeneral * float.Parse(igv);
+                    double totalGeneral = subTotalGeneral + IgvGeneral;
+                    subTotalGeneral = Math.Round(subTotalGeneral, 2);
+                    IgvGeneral = Math.Round(IgvGeneral, 2);
+                    totalGeneral = Math.Round(totalGeneral, 2);
+                    string totalGeneralPalabra = Utils.enletras(totalGeneral.ToString());
+                    cells = new List<PdfPCell>()
                 {
                     new PdfPCell(new Phrase("", fontColumnValueBold)) {Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 7f, UseVariableBorders = true, BorderColorTop = BaseColor.BLACK,  BorderColorBottom = BaseColor.WHITE, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE},
 
@@ -691,19 +509,19 @@ namespace Sigesoft
                     new PdfPCell(new Phrase(totalGeneral.ToString("N2"), fontColumnValueBold)) {Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 13f, BorderColor = BaseColor.WHITE},
 
                 };
-                columnWidths = new float[] { 40f, 45f, 15f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-                document.Add(table);
+                    columnWidths = new float[] { 40f, 45f, 15f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+                    document.Add(table);
 
-            }
+                }
 
 
             #endregion
 
-            document.Close();
-            writer.Close();
-            writer.Dispose();
+                document.Close();
+                writer.Close();
+                writer.Dispose();
+            }
         }
-      }
     }
 }
