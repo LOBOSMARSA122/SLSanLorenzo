@@ -243,25 +243,37 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void button1_Click(object sender, EventArgs e)
         {
             MergeExPDF _mergeExPDF = new MergeExPDF();
+            string serviceId = grdData_1.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+            var objProtocol = new ServiceBL().GetDataProtocolByServiceId(serviceId);
             if (grdData_1.Selected.Rows.Count > 0)
             {
                 string ruta = Common.Utils.GetApplicationConfigValue("LiquidacionAseguradora").ToString();
-                string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
-                string serviceId = grdData_1.Selected.Rows[0].Cells["ServicioId"].Value.ToString();
+                string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();                
                 string pathFile = ruta + "PRE-LIQUIDACIÓN-" + serviceId + ".pdf";
                 var objPacient = new PacientBL().GetDataPacientByServiceId(serviceId);
                 var objOrganization = new OrganizationBL().GetDataOrganizationByServiceiId(serviceId);
                 var objAseguradora = new OrganizationBL().GetDataAseguradoraByServiceiId(serviceId);
-                var objHospitalizacion = new PacientBL().GetDataHospitalizacionByServiceId(serviceId);
-                var ListCostosService = new ServiceBL().GetServiceAndCost_(serviceId);
-                var dataTicketDetail = new ServiceBL().GetDataMedicamentosByServiceId(serviceId);
                 var dataRecetaDetail = new ServiceBL().GetDataRecetaByServiceId(serviceId);
-                LiquidacionHosp.LiquidacionHospitalaria(dataRecetaDetail, dataTicketDetail, ListCostosService, objPacient, objOrganization, objAseguradora, objHospitalizacion, pathFile);
+                var ListCostosService = new ServiceBL().GetServiceAndCost_(serviceId);
+                if (objProtocol.i_MasterServiceId != 10 && objProtocol.i_ServiceTypeId != 9)
+                {
+                    var objHospitalizacion = new PacientBL().GetDataHospitalizacionByServiceId(serviceId);
+                    
+                    var dataTicketDetail = new ServiceBL().GetDataMedicamentosByServiceId(serviceId);
 
+                    LiquidacionHosp.LiquidacionHospitalaria(dataRecetaDetail, dataTicketDetail, ListCostosService, objPacient, objOrganization, objAseguradora, objHospitalizacion, pathFile);
+                    _mergeExPDF.DestinationFile = rutaBasura + "PRE-LIQUIDACIÓN-HOSPI-COPIA-" + serviceId + ".pdf";
+
+                }
+                else
+                {
+                    LiquidacionAmbulatoria.LiquidacionAmbu(dataRecetaDetail, ListCostosService, objPacient, objOrganization, objAseguradora, pathFile);
+                    _mergeExPDF.DestinationFile = rutaBasura + "PRE-LIQUIDACIÓN-AMBU-COPIA-" + serviceId + ".pdf";
+                }
+                
                 List<string> PathList = new List<string>();
                 PathList.Add(pathFile);
                 _mergeExPDF.FilesName = PathList;
-                _mergeExPDF.DestinationFile = rutaBasura + "PRE-LIQUIDACIÓN-COPIA" + serviceId + ".pdf";
                 _mergeExPDF.Execute();
                 _mergeExPDF.RunFile();
 
@@ -271,7 +283,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 MessageBox.Show("Seleccione un paciente porfavor", "VALIDACIÓN", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)

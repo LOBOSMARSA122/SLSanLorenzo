@@ -36352,6 +36352,28 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public ProtocolList GetDataProtocolByServiceId(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from pro in dbContext.protocol
+                    join ser in dbContext.service on pro.v_ProtocolId equals ser.v_ProtocolId
+                    where ser.v_ServiceId == serviceId
+                    select new ProtocolList
+                    {
+                        i_MasterServiceId = pro.i_MasterServiceId.Value,
+                        i_ServiceTypeId = pro.i_MasterServiceTypeId.Value
+                    }).FirstOrDefault();
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public List<ComponentForLiquiCustom> GetServiceAndCost_(string serviceId)
         {
             try
@@ -36375,7 +36397,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
                         from sys in sys_join.DefaultIfEmpty()
 
-                        where ser.v_ServiceId == _serviceId
+                        where ser.v_ServiceId == _serviceId && ser.i_IsDeleted == 0
                                 select new ComponentForLiquiCustom
                         {
                             MasterServiceName = sys.v_Value1,
@@ -36521,7 +36543,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                             join sys2 in dbContext.systemparameter on new { a = com.i_CategoryId.Value, b = 116 }  // Categoria
                                             equals new { a = sys2.i_ParameterId, b = sys2.i_GroupId } into sys2_join
                                             from sys2 in sys2_join.DefaultIfEmpty()
-                                            where serCom.v_ServiceId == serviceId && serCom.r_Price != 0
+                                            where serCom.v_ServiceId == serviceId && serCom.r_Price != 0 && serCom.i_IsDeleted == 0
                                             select new ServicesComponentForCategory
                                             {
                                                 ComponentName = com.v_Name,
@@ -36543,7 +36565,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     {
                         CategoryForKOS _CategoryForKOS = new CategoryForKOS();
                         _CategoryForKOS.CategoryName = itemCom.CategoryName;
-                        _CategoryForKOS.KindOfServiceId = itemCom.KindOfServiceId.Value;
+                        _CategoryForKOS.KindOfServiceId = itemCom.KindOfServiceId == null ? -1 : itemCom.KindOfServiceId.Value;
                         _CategoryForKOS.KindOfServiceName = itemCom.KindOfServiceName;
 
                         _CategoryForKOS.ListServicesComponentForKOS = new List<ServicesComponentForCategory>();
@@ -36723,7 +36745,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 join sys in dbContext.systemparameter on new { a = tk.i_TipoCuentaId.Value, b = 310 }
                                     equals new { a = sys.i_ParameterId, b = sys.i_GroupId } into sys_join
                                 from sys in sys_join.DefaultIfEmpty()
-                                where tk.v_ServiceId == ServiceId && tk.i_IsDeleted == 0
+                                where tk.v_ServiceId == ServiceId && tk.i_IsDeleted == 0 && tkde.i_IsDeleted == 0
                                 select new TicketDetalleList
                                 {
                                     v_TicketDetalleId = tkde.v_TicketDetalleId,
