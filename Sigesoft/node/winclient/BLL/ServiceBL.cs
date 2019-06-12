@@ -35956,7 +35956,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     where sss.i_IsDeleted == 0 && 
                           (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
                           sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
-                                  (S.i_ParameterId == 29 || S.i_ParameterId == 13)
+                                  (S.i_ParameterId == 29 || S.i_ParameterId == 13 || S.i_ParameterId == 19)
 
                             select new ServiceList
                             {
@@ -36026,7 +36026,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     where sss.i_IsDeleted == 0 && 
                           (sss.d_ServiceDate >= pdatBeginDate.Value && sss.d_ServiceDate <= pdatEndDate.Value) &&
                           sss.i_MasterServiceId != 2 && A1.i_CalendarStatusId != 4 &&
-                                  (S.i_ParameterId == 19 || S.i_ParameterId == 13)
+                                  (S.i_ParameterId == 19 || S.i_ParameterId == 13 || S.i_ParameterId == 29)
 
                             select new ServiceList
                             {

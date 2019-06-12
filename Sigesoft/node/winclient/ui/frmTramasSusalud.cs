@@ -81,7 +81,7 @@ namespace Sigesoft.Node.WinClient.UI
             btnEliminar.Enabled = false;
         }
 
-        private void btnFilter_Click(object sender, EventArgs e)
+        public void btnFilter_Click(object sender, EventArgs e)
         {
             OperationResult objOperationResult = new OperationResult();
             if (dtpDateTimeStar.Value > dptDateTimeEnd.Value)
@@ -443,7 +443,7 @@ namespace Sigesoft.Node.WinClient.UI
                 MessageBox.Show("SELECCIONE UNA TRAMA A EDITAR", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnFilter_Click(sender, e);
             }
-            btnFilter_Click(sender, e);
+            //btnFilter_Click(sender, e);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -533,6 +533,11 @@ namespace Sigesoft.Node.WinClient.UI
         {
             btnEditar.Enabled = true;
             btnEliminar.Enabled = true;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
         
     }

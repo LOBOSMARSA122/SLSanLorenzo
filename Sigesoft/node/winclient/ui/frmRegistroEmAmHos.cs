@@ -369,33 +369,33 @@ namespace Sigesoft.Node.WinClient.UI
             OperationResult objOperationResult = new OperationResult();
             Cie10MF _cie10MF = new Cie10MF();
             //TramasBL _tramasBL = new TramasBL();
-            var cie10 = txtCie10.Text;
-            if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.MASCULINO)
-            {
-                var cie10Masculino = _cie10MF.Femeninos.ToList().Find(x => x == cie10);
-                if (cie10Masculino != null)
-                {
-                    if (cie10Masculino.Length > 0)
-                    {
-                        MessageBox.Show("El diagnóstico elegido pertenece solo al género FEMENINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
-                    }
-                }
+            //var cie10 = txtCie10.Text;
+            //if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.MASCULINO)
+            //{
+            //    var cie10Masculino = _cie10MF.Femeninos.ToList().Find(x => x == cie10);
+            //    if (cie10Masculino != null)
+            //    {
+            //        if (cie10Masculino.Length > 0)
+            //        {
+            //            MessageBox.Show("El diagnóstico elegido pertenece solo al género FEMENINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //            return;
+            //        }
+            //    }
                 
-            }
-            else if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.FEMENINO)
-            {
-                var cie10Femenino = _cie10MF.Masculinos.ToList().Find(x => x == cie10);
-                if (cie10Femenino != null)
-                {
-                    if (cie10Femenino.Length > 0)
-                    {
-                        MessageBox.Show("El diagnóstico elegido pertenece solo al género MASCULINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
-                    }
-                }
+            //}
+            //else if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.FEMENINO)
+            //{
+            //    var cie10Femenino = _cie10MF.Masculinos.ToList().Find(x => x == cie10);
+            //    if (cie10Femenino != null)
+            //    {
+            //        if (cie10Femenino.Length > 0)
+            //        {
+            //            MessageBox.Show("El diagnóstico elegido pertenece solo al género MASCULINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //            return;
+            //        }
+            //    }
                 
-            }
+            //}
 
             _tramaDto = new tramasDto();
             if (_mode == "New")
@@ -403,6 +403,35 @@ namespace Sigesoft.Node.WinClient.UI
                 bool result = true;
                 if (_tabName == "Ambulatorio" || _tabName == "Emergencia" || _tabName == "Hospitalización")
                 {
+                    //
+                    var cie10 = txtCie10.Text;
+                    if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.MASCULINO)
+                    {
+                        var cie10Masculino = _cie10MF.Femeninos.ToList().Find(x => x == cie10);
+                        if (cie10Masculino != null)
+                        {
+                            if (cie10Masculino.Length > 0)
+                            {
+                                MessageBox.Show("El diagnóstico elegido pertenece solo al género FEMENINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+                        }
+
+                    }
+                    else if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.FEMENINO)
+                    {
+                        var cie10Femenino = _cie10MF.Masculinos.ToList().Find(x => x == cie10);
+                        if (cie10Femenino != null)
+                        {
+                            if (cie10Femenino.Length > 0)
+                            {
+                                MessageBox.Show("El diagnóstico elegido pertenece solo al género MASCULINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+                        }
+
+                    }
+                    //
                     _tramaDto.v_TipoRegistro = _tabName;
                     _tramaDto.d_FechaIngreso = dtpFechaIngreso.Value;
                     if (cbGenero.SelectedValue.ToString() == "-1" || cbRangoEdad.SelectedValue.ToString() == "-1" || cbDx.Text == "")
@@ -469,13 +498,44 @@ namespace Sigesoft.Node.WinClient.UI
                     _tramasBL.AddTramas(ref objOperationResult, _tramaDto, Globals.ClientSession.GetAsList());
                 }
                 MessageBox.Show("Registro Exitoso", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                this.Close();
             }
             else if (_mode == "Edit")
             {
                 var _getTrama = _tramasBL.GetTrama(ref objOperationResult, _tramaId);
                 if (_tabName == "Ambulatorio" || _tabName == "Emergencia" || _tabName == "Hospitalización")
                 {
+
+                    //
+                    var cie10 = txtCie10.Text;
+                    if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.MASCULINO)
+                    {
+                        var cie10Masculino = _cie10MF.Femeninos.ToList().Find(x => x == cie10);
+                        if (cie10Masculino != null)
+                        {
+                            if (cie10Masculino.Length > 0)
+                            {
+                                MessageBox.Show("El diagnóstico elegido pertenece solo al género FEMENINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+                        }
+
+                    }
+                    else if (int.Parse(cbGenero.SelectedValue.ToString()) == (int)Gender.FEMENINO)
+                    {
+                        var cie10Femenino = _cie10MF.Masculinos.ToList().Find(x => x == cie10);
+                        if (cie10Femenino != null)
+                        {
+                            if (cie10Femenino.Length > 0)
+                            {
+                                MessageBox.Show("El diagnóstico elegido pertenece solo al género MASCULINO.", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+                        }
+
+                    }
+                    //
+
                     bool result = true;
                     _tramaDto.v_TramaId = _tramaId;
                     _tramaDto.v_TipoRegistro = _tabName;
@@ -550,6 +610,9 @@ namespace Sigesoft.Node.WinClient.UI
                 MessageBox.Show("Actualización Exitosa", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
+            //frmTramasSusalud frmTramas = new frmTramasSusalud();
+            //frmTramas.btnFilter_Click(sender, e);
+
         }
         
         private void cbDx_RowSelected(object sender, Infragistics.Win.UltraWinGrid.RowSelectedEventArgs e)

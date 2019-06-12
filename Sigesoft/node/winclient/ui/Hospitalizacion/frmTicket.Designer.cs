@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTicket));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_IdProductoDetalle");
@@ -41,7 +42,6 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTicket));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -129,7 +129,7 @@
             // btnGuardarTicket
             // 
             this.btnGuardarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardarTicket.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarTicket.Image")));
             this.btnGuardarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGuardarTicket.Location = new System.Drawing.Point(678, 429);
             this.btnGuardarTicket.Name = "btnGuardarTicket";
@@ -223,10 +223,10 @@
             this.grdTicketDetalle.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdTicketDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdTicketDetalle.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdTicketDetalle.Location = new System.Drawing.Point(14, 189);
+            this.grdTicketDetalle.Location = new System.Drawing.Point(14, 165);
             this.grdTicketDetalle.Margin = new System.Windows.Forms.Padding(2);
             this.grdTicketDetalle.Name = "grdTicketDetalle";
-            this.grdTicketDetalle.Size = new System.Drawing.Size(725, 225);
+            this.grdTicketDetalle.Size = new System.Drawing.Size(725, 249);
             this.grdTicketDetalle.TabIndex = 47;
             this.grdTicketDetalle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdproduc_AfterSelectChange);
             // 
@@ -243,7 +243,7 @@
             this.btnRemover.ForeColor = System.Drawing.Color.Black;
             this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemover.Location = new System.Drawing.Point(748, 117);
+            this.btnRemover.Location = new System.Drawing.Point(743, 114);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(69, 24);
@@ -265,7 +265,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(748, 79);
+            this.btnEditar.Location = new System.Drawing.Point(743, 76);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(69, 24);
@@ -286,7 +286,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(748, 39);
+            this.btnNuevo.Location = new System.Drawing.Point(743, 39);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(69, 24);
@@ -355,9 +355,9 @@
             this.groupBox2.Controls.Add(this.btnNuevo);
             this.groupBox2.Controls.Add(this.btnRemover);
             this.groupBox2.Controls.Add(this.btnEditar);
-            this.groupBox2.Location = new System.Drawing.Point(8, 150);
+            this.groupBox2.Location = new System.Drawing.Point(8, 126);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(817, 269);
+            this.groupBox2.Size = new System.Drawing.Size(817, 293);
             this.groupBox2.TabIndex = 100;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle de Productos";
@@ -366,7 +366,7 @@
             // 
             this.gbConCargo.Controls.Add(this.rbPaciente);
             this.gbConCargo.Controls.Add(this.rbMedicoTratante);
-            this.gbConCargo.Location = new System.Drawing.Point(8, 72);
+            this.gbConCargo.Location = new System.Drawing.Point(8, 71);
             this.gbConCargo.Name = "gbConCargo";
             this.gbConCargo.Size = new System.Drawing.Size(276, 49);
             this.gbConCargo.TabIndex = 101;
@@ -398,7 +398,7 @@
             // chkTicketInterno
             // 
             this.chkTicketInterno.AutoSize = true;
-            this.chkTicketInterno.Location = new System.Drawing.Point(290, 95);
+            this.chkTicketInterno.Location = new System.Drawing.Point(690, 93);
             this.chkTicketInterno.Name = "chkTicketInterno";
             this.chkTicketInterno.Size = new System.Drawing.Size(117, 17);
             this.chkTicketInterno.TabIndex = 102;

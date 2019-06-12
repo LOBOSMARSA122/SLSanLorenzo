@@ -207,7 +207,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                              v_IdProductoDetalle = F.v_IdProductoDetalle,
                                              d_PrecioVenta = F.d_PrecioVenta.Value,
                                              i_RecordStatus = (int)RecordStatus.Grabado,
-                                             i_RecordType = (int)RecordType.NoTemporal
+                                             i_RecordType = (int)RecordType.NoTemporal,
+                                             d_SaldoAseguradora = F.d_SaldoAseguradora,
+                                             d_SaldoPaciente = F.d_SaldoPaciente
                                          }).ToList();
                 _pobjOperationResult.Success = 1;
                 return objEntity;
@@ -231,6 +233,17 @@ namespace Sigesoft.Node.WinClient.BLL
                                        where a.v_TicketId == objticketDto.v_TicketId
                                        select a).FirstOrDefault();
                 objticketDto.d_UpdateDate = DateTime.Now;
+                if (objEntitySource.d_InsertDate == null || objEntitySource.i_InsertUserId == null)
+                {
+                    objticketDto.d_InsertDate = DateTime.Now;
+                    objticketDto.i_InsertUserId = Int32.Parse(ClientSession[2]);
+                }
+                else
+                {
+                    objticketDto.d_InsertDate = objEntitySource.d_InsertDate;
+                    objticketDto.i_InsertUserId = objEntitySource.i_InsertUserId;
+                }
+                
                 objticketDto.i_UpdateUserId = Int32.Parse(ClientSession[2]);
                 objticketDto.i_IsDeleted = 0;
                 ticket objStrongEntity = ticketAssembler.ToEntity(objticketDto);
@@ -273,7 +286,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                         updatedetalleticket.d_Cantidad = item.d_Cantidad;
                         updatedetalleticket.i_EsDespachado = item.i_EsDespachado;
-
+                        updatedetalleticket.d_SaldoAseguradora = item.d_SaldoAseguradora;
+                        updatedetalleticket.d_SaldoPaciente = item.d_SaldoPaciente;
                         updatedetalleticket.i_IsDeleted = 0;
 
                         updatedetalleticket.d_UpdateDate = DateTime.Now;

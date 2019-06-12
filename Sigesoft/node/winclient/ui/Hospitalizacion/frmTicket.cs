@@ -218,7 +218,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             if (_modo == "ASEGU")
             {
                 gbConCargo.Visible = false;
-                chkTicketInterno.Visible = false;
+                chkTicketInterno.Visible = true;
             }
         }
 

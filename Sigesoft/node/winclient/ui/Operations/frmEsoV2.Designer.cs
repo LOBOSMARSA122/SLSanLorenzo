@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -885,14 +885,14 @@
             // 
             // uvExamen
             // 
-            appearance106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance106.BackColor2 = System.Drawing.Color.Transparent;
-            appearance106.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance106.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance106.BorderColor = System.Drawing.Color.Red;
-            appearance106.BorderColor2 = System.Drawing.Color.Red;
-            appearance106.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance106;
+            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance1.BackColor2 = System.Drawing.Color.Transparent;
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance1.BorderColor = System.Drawing.Color.Red;
+            appearance1.BorderColor2 = System.Drawing.Color.Red;
+            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance1;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -2930,13 +2930,12 @@
             this.gbServiciosAnteriores.Controls.Add(this.grdServiciosAnteriores);
             this.gbServiciosAnteriores.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbServiciosAnteriores.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbServiciosAnteriores.Location = new System.Drawing.Point(993, 310);
+            this.gbServiciosAnteriores.Location = new System.Drawing.Point(766, 310);
             this.gbServiciosAnteriores.Name = "gbServiciosAnteriores";
-            this.gbServiciosAnteriores.Size = new System.Drawing.Size(299, 196);
+            this.gbServiciosAnteriores.Size = new System.Drawing.Size(526, 196);
             this.gbServiciosAnteriores.TabIndex = 96;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
-            this.gbServiciosAnteriores.Visible = false;
             // 
             // grdServiciosAnteriores
             // 
@@ -3017,7 +3016,7 @@
             this.grdServiciosAnteriores.Location = new System.Drawing.Point(5, 19);
             this.grdServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.grdServiciosAnteriores.Name = "grdServiciosAnteriores";
-            this.grdServiciosAnteriores.Size = new System.Drawing.Size(287, 172);
+            this.grdServiciosAnteriores.Size = new System.Drawing.Size(514, 172);
             this.grdServiciosAnteriores.TabIndex = 94;
             this.grdServiciosAnteriores.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdServiciosAnteriores_ClickCell);
             // 
@@ -3030,7 +3029,7 @@
             this.gbAntecedentes.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbAntecedentes.Location = new System.Drawing.Point(7, 310);
             this.gbAntecedentes.Name = "gbAntecedentes";
-            this.gbAntecedentes.Size = new System.Drawing.Size(976, 196);
+            this.gbAntecedentes.Size = new System.Drawing.Size(753, 196);
             this.gbAntecedentes.TabIndex = 95;
             this.gbAntecedentes.TabStop = false;
             this.gbAntecedentes.Text = "Antecedentes";
@@ -3114,7 +3113,7 @@
             this.grdAntecedentes.Location = new System.Drawing.Point(5, 19);
             this.grdAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.grdAntecedentes.Name = "grdAntecedentes";
-            this.grdAntecedentes.Size = new System.Drawing.Size(966, 172);
+            this.grdAntecedentes.Size = new System.Drawing.Size(743, 172);
             this.grdAntecedentes.TabIndex = 93;
             // 
             // groupBox15
@@ -3229,7 +3228,7 @@
             this.btnVerServicioAnterior.ForeColor = System.Drawing.Color.Black;
             this.btnVerServicioAnterior.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
             this.btnVerServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerServicioAnterior.Location = new System.Drawing.Point(993, 511);
+            this.btnVerServicioAnterior.Location = new System.Drawing.Point(1130, 511);
             this.btnVerServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerServicioAnterior.Name = "btnVerServicioAnterior";
             this.btnVerServicioAnterior.Size = new System.Drawing.Size(162, 24);
@@ -3237,7 +3236,6 @@
             this.btnVerServicioAnterior.Text = "Ver servicio anterior";
             this.btnVerServicioAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVerServicioAnterior.UseVisualStyleBackColor = false;
-            this.btnVerServicioAnterior.Visible = false;
             this.btnVerServicioAnterior.Click += new System.EventHandler(this.btnVerServicioAnterior_Click);
             // 
             // gbAntGinecologicos
@@ -3492,7 +3490,7 @@
             this.btnVerEditarAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnVerEditarAntecedentes.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.btnVerEditarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(11, 511);
+            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(598, 511);
             this.btnVerEditarAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerEditarAntecedentes.Name = "btnVerEditarAntecedentes";
             this.btnVerEditarAntecedentes.Size = new System.Drawing.Size(162, 24);
@@ -3787,7 +3785,7 @@
             this.btnGuardarAnamnesis.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarAnamnesis.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarAnamnesis.Image")));
             this.btnGuardarAnamnesis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarAnamnesis.Location = new System.Drawing.Point(1212, 271);
+            this.btnGuardarAnamnesis.Location = new System.Drawing.Point(1164, 267);
             this.btnGuardarAnamnesis.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarAnamnesis.Name = "btnGuardarAnamnesis";
             this.btnGuardarAnamnesis.Size = new System.Drawing.Size(87, 27);

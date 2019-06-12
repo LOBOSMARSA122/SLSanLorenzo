@@ -99,7 +99,7 @@ namespace Sigesoft.Node.WinClient.UI
             if (cbmes.SelectedValue.ToString().Length == 1) { mes = "0" + cbmes.SelectedValue.ToString(); }
             else { mes = cbmes.SelectedValue.ToString(); }
             NombreCarpeta = anio + mes + "_SUSALUD";
-            rutaapp = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+            rutaapp = Common.Utils.GetApplicationConfigValue("rutaTramas").ToString();
             CrearCarpeta(NombreCarpeta, rutaapp);
             #endregion
 
@@ -465,7 +465,7 @@ namespace Sigesoft.Node.WinClient.UI
                                     {
                                         string cantdcirmayor = itemspilt[2];
                                         string cantdcirmenor = itemspilt1[2];
-                                        string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + "0" + itemspilt[0] + "|" + cantdcirmayor + "|" + cantdcirmenor + "|" + (ProgMayorHorasProg + ProgMenorHorasProg).ToString() + "|" + (ProgMayorHorasEfect + ProgMenorHorasEfect).ToString() + "|" + (ProgMayorHorasAct + ProgMenorHorasAct).ToString() + "|0";
+                                        string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + "0" + itemspilt[0] + "|" + cantdcirmayor + "|" + cantdcirmenor + "|" + (ProgMayorHorasProg + ProgMenorHorasProg).ToString() + "|" + (ProgMayorHorasEfect + ProgMenorHorasEfect).ToString() + "|" + (ProgMayorHorasAct + ProgMenorHorasAct).ToString() + ",00|0";
                                         file.WriteLine(texto);
                                     }
 
@@ -478,7 +478,7 @@ namespace Sigesoft.Node.WinClient.UI
                             {
                                 string cantdcirmayor = itemspilt[2];
                                 string cantdcirmenor = "0";
-                                string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + "0" + itemspilt[0] + "|" + cantdcirmayor + "|" + cantdcirmenor + "|" + (ProgMayorHorasProg + ProgMenorHorasProg).ToString() + "|" + (ProgMayorHorasEfect + ProgMenorHorasEfect).ToString() + "|" + (ProgMayorHorasAct + ProgMenorHorasAct).ToString() + "|0";
+                                string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + "0" + itemspilt[0] + "|" + cantdcirmayor + "|" + cantdcirmenor + "|" + (ProgMayorHorasProg + ProgMenorHorasProg).ToString() + "|" + (ProgMayorHorasEfect + ProgMenorHorasEfect).ToString() + "|" + (ProgMayorHorasAct + ProgMenorHorasAct).ToString() + ",00|0";
                                 file.WriteLine(texto);
                             }
                         }
@@ -495,7 +495,7 @@ namespace Sigesoft.Node.WinClient.UI
                         {
                             string cantdcirmayor = "0";
                             string cantdcirmenor = itemspilt1[2];
-                            string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + "0" + itemspilt1[0] + "|" + cantdcirmayor + "|" + cantdcirmenor + "|" + (ProgMayorHorasProg + ProgMenorHorasProg).ToString() + "|" + (ProgMayorHorasEfect + ProgMenorHorasEfect).ToString() + "|" + (ProgMayorHorasAct + ProgMenorHorasAct).ToString() + "|0";
+                            string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + "0" + itemspilt1[0] + "|" + cantdcirmayor + "|" + cantdcirmenor + "|" + (ProgMayorHorasProg + ProgMenorHorasProg).ToString() + "|" + (ProgMayorHorasEfect + ProgMenorHorasEfect).ToString() + "|" + (ProgMayorHorasAct + ProgMenorHorasAct).ToString() + ",00|0";
                             file.WriteLine(texto);
                         }
                     }
@@ -807,7 +807,7 @@ namespace Sigesoft.Node.WinClient.UI
                 foreach (var item in AgeGenderCountEmer)
                 {
                     string[] countitem = item.Split('|');
-                    string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + item + "|0|" + countitem[2];
+                    string texto = anio + mes + "|" + ugi + "|" + ugi + "|" + item + "|" + countitem[2];
                     file.WriteLine(texto);
                 }
                 file.Close();

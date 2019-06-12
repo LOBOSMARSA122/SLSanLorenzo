@@ -492,6 +492,7 @@
             this.cbLine.Name = "cbLine";
             this.cbLine.Size = new System.Drawing.Size(337, 22);
             this.cbLine.TabIndex = 124;
+            this.cbLine.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.cbLine_InitializeLayout);
             this.cbLine.RowSelected += new Infragistics.Win.UltraWinGrid.RowSelectedEventHandler(this.cbLine_RowSelected);
             // 
             // gbTipoAtencion

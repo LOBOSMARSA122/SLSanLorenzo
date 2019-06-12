@@ -26,7 +26,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         string _serviceId;
         private string _protocolId;
         private string _modoMasterService;
-
+        private string lineId;
         public frmAddProducto(string id, string mode, string serviceId, string protocolId, string modoMasterService)
         {
             InitializeComponent();
@@ -63,10 +63,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtCodigo.Text = medicamento.CodInterno;
                 txtMedicamento.Tag = medicamento.IdProductoDetalle;
                 //Nuevo Precio con descuento EPS
-                txtPrecioVenta.Text = (medicamento.d_PrecioMayorista - (medicamento.d_PrecioMayorista * decimal.Parse(EPS) / 100)).ToString();
+                txtPrecioVenta.Text = (decimal.Round((medicamento.d_PrecioMayorista - (medicamento.d_PrecioMayorista * decimal.Parse(EPS)) / 100),2)).ToString();
                 txtUnidadProductiva.Text = medicamento.IdLinea;
-                txtPrecio.Text = medicamento.PrecioVenta.ToString();
-                txtPPS.Text = medicamento.d_PrecioMayorista.ToString();
+                txtPrecio.Text = (decimal.Round((decimal)medicamento.PrecioVenta,2)).ToString();
+                txtPPS.Text = (decimal.Round((decimal)medicamento.d_PrecioMayorista,2)).ToString();
                 txtDesctoEPS.Text = EPS;
             }
         }
@@ -121,16 +121,21 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                         decimal d;
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
+                        
                         //nuevo
-                        int planId = 0;
-                        var servicioDet = oTicketBL.GetService(ref objOperationResult,_serviceId);
-                        if (servicioDet.i_PlanId != null)
-                        {
-                            planId = (int)servicioDet.i_PlanId;
-                        }
+                        //int planId = 0;
+                        //var servicioDet = oTicketBL.GetService(ref objOperationResult,_serviceId);
+                        //if (servicioDet.i_PlanId != null)
+                        //{
+                        //    planId = (int)servicioDet.i_PlanId;
+                        //}
                         //////
+                        
+
                         var tienePlan = false;
-                        var resultplan = oTicketBL.TienePlan_(_protocolId, planId);
+                        //var resultplan = oTicketBL.TienePlan_(_protocolId, planId);
+                        var resultplan = oTicketBL.TienePlan(_protocolId, lineId);
+
                         if (resultplan.Count > 0) tienePlan = true;
                         else tienePlan = false;
 
@@ -141,17 +146,18 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 #region Conexion SIGESOFT verificar la unidad productiva del componente
                                 ConexionSigesoft conectasam = new ConexionSigesoft();
                                 conectasam.opensigesoft();
-                                var cadena1 = "select PL.d_ImporteCo " +
+                                var cadena1 = "select PL.d_ImporteCo, PL.i_PlanId " +
                                               "from [dbo].[plan] PL " +
                                               "inner join protocol PR on PL.v_ProtocoloId=PR.v_ProtocolId " +
-                                              "where PR.v_ProtocolId='" + _protocolId + "' and PL.i_PlanId='" + planId + "'";
+                                              "where PR.v_ProtocolId='" + _protocolId + "' and PL.v_IdUnidadProductiva='" + lineId + "'";
                                 SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
                                 SqlDataReader lector = comando.ExecuteReader();
-                                string ImporteCo = "";
+                                string ImporteCo = ""; string PlanId = "";
                                 bool lectorleido = false;
                                 while (lector.Read())
                                 {
                                     ImporteCo = lector.GetValue(0).ToString();
+                                    PlanId = lector.GetValue(1).ToString();
                                     lectorleido = true;
                                 }
 
@@ -161,11 +167,22 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                     return;
                                 }
                                 lector.Close();
+                                
+                                #endregion
+                                _objTicketDetalleList.d_SaldoPaciente = decimal.Round((decimal.Parse(txtPrecioVenta.Text)),2) * decimal.Round((decimal.Parse(txtCantidad.Text)),2) * decimal.Round((decimal.Parse(ImporteCo)),2) / 100;
+                                _objTicketDetalleList.d_SaldoAseguradora = decimal.Round((decimal.Parse(txtPrecioVenta.Text)),2) * decimal.Round((decimal.Parse(txtCantidad.Text)),2) - _objTicketDetalleList.d_SaldoPaciente;
+                                _objTicketDetalleList.d_PrecioVenta = decimal.Round((decimal.Parse(txtPrecioVenta.Text)),2);
+
+                                #region Update a service agrega el PlanId
+                               var cadena2 = "update service set " +
+                                          "i_PlanId = '" + PlanId + "' " +
+                                          "where v_ServiceId = '" + _serviceId + "' ";
+                                SqlCommand comando_ = new SqlCommand(cadena2, connection: conectasam.conectarsigesoft);
+                                SqlDataReader lector_ = comando_.ExecuteReader();
+                                lector_.Close();
+
                                 conectasam.closesigesoft();
                                 #endregion
-                                _objTicketDetalleList.d_SaldoPaciente = decimal.Parse(txtPrecioVenta.Text) * decimal.Parse(txtCantidad.Text) * decimal.Parse(ImporteCo) / 100;
-                                _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(txtPrecioVenta.Text) * decimal.Parse(txtCantidad.Text)) - _objTicketDetalleList.d_SaldoPaciente;
-                                _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                             }
                             else if (resultplan[0].i_EsDeducible == 1)
                             {
@@ -174,7 +191,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         }
                         else
                         {
-                            _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecio.Text);// decimal.Parse(txtPrecioVenta.Text);
+                            _objTicketDetalleList.d_PrecioVenta = decimal.Round((decimal.Parse(txtPrecio.Text)),2);// decimal.Parse(txtPrecioVenta.Text);
                         }
 
                         _objTicketDetalleList.i_RecordStatus = (int)RecordStatus.Agregado;
@@ -264,8 +281,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 {
                      var result = _TempTicketDetalleList.Find(p => p.v_TicketDetalleId == _id);
                      decimal d;
-                     result.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
-                        result.v_CodInterno = txtCodigo.Text;
+                     result.d_Cantidad = decimal.Round((decimal.TryParse(txtCantidad.Text, out d) ? d : 0),2);
+                     if ((result.d_SaldoAseguradora != null || result.d_SaldoAseguradora >= 0) || result.d_SaldoPaciente != null || result.d_SaldoPaciente >= 0)
+                     {
+                         result.d_SaldoAseguradora =
+                             decimal.Round((decimal.TryParse(txtCantidad.Text, out d) ? d : 0), 2) * decimal.Round((decimal)result.d_PrecioVenta,2);
+                         result.d_SaldoPaciente = 0 ;
+
+                     }
+                     result.v_CodInterno = txtCodigo.Text;
                      result.i_RecordStatus = (int)RecordStatus.Modificado;
                 }
                 MessageBox.Show("Se grabo correctamente.", "INFORMACION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -291,8 +315,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var findResult = _TempTicketDetalleList.Find(p => p.v_TicketDetalleId == _id);
                 txtMedicamento.Text = findResult.v_NombreProducto;
                 txtCodigo.Text = findResult.v_CodInterno;
-                txtCantidad.Value = findResult.d_Cantidad;
-                txtPrecioVenta.Value = findResult.d_PrecioVenta;
+                txtCantidad.Value = decimal.Round((findResult.d_Cantidad),2);
+                txtPrecioVenta.Value = decimal.Round((findResult.d_PrecioVenta),2);
             }
             cbExamen.Select();
             object listaExamen = LlenarExamen();
@@ -305,6 +329,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             cbExamen.DisplayLayout.Bands[0].Columns[0].Width = 20;
             cbExamen.DisplayLayout.Bands[0].Columns[1].Width = 550;
 
+
             cbLine.Select();
             object listaLine = LlenarLines();
             cbLine.DataSource = listaLine;
@@ -316,6 +341,36 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             cbLine.DisplayLayout.Bands[0].Columns[0].Width = 20;
             cbLine.DisplayLayout.Bands[0].Columns[1].Width = 550;
             txtMedicamento.Focus();
+
+            ConexionSigesoft conectasam = new ConexionSigesoft();
+            conectasam.opensigesoft();
+            #region Colocar el Plan en el combo y bloquearlo
+            var cadena1 = "select SR.i_PlanId, PL.v_IdUnidadProductiva, LN.v_Nombre " +
+                      "from service SR " +
+                      "inner join [dbo].[plan] PL on SR.v_ProtocolId=PL.v_ProtocoloId and SR.i_PlanId=PL.i_PlanId " +
+                      "inner join [20505310072].[dbo].[linea] LN on PL.v_IdUnidadProductiva= LN.v_IdLinea " +
+                      "where v_ServiceId = '" + _serviceId + "' and SR.i_PlanId <> ''";
+            SqlCommand comando = new SqlCommand(cadena1, connection: conectasam.conectarsigesoft);
+            SqlDataReader lector = comando.ExecuteReader();
+            string i_PlanId, v_IdUnidadProductiva, v_Nombre = "";
+            bool resultPlan = false;
+            while (lector.Read())
+            {
+                i_PlanId = lector.GetValue(0).ToString();
+                v_IdUnidadProductiva = lector.GetValue(1).ToString();
+                v_Nombre = lector.GetValue(2).ToString();
+                resultPlan = true;
+            }
+            lector.Close();
+            conectasam.closesigesoft();
+            if (resultPlan)
+            {
+                cbLine.Text = v_Nombre;
+                cbLine.Enabled = false;
+            }
+            #endregion
+
+            
         }
 
         private object LlenarLines()
@@ -407,7 +462,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var cadena = "select v_IdLinea from [dbo].[linea] where v_Nombre='" + cbLine.Text + "' and i_Eliminado=0";
             SqlCommand comandou = new SqlCommand(cadena, connection: conectasam.conectarSambhs);
             SqlDataReader lectoru = comandou.ExecuteReader();
-            string lineId = "";
+            lineId = "";
             while (lectoru.Read())
             {
                 lineId = lectoru.GetValue(0).ToString();
@@ -415,7 +470,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             lectoru.Close();
             conectasam.closeSambhs();
             #endregion
+
+            txtUnidProdId.Text = lineId;
             txtUnPdId.Text = lineId;
+        }
+
+        private void cbLine_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+            
         }
     }
 }
