@@ -44,7 +44,7 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 cmEstadosHabitacion.Items["itemLiberar"].Enabled = false;
                 //cmEstadosHabitacion.Items["itemLimpieza"].Enabled = false;
-
+                //prueba
                 dtpFechaFin.Checked = false;
                 if (_mode == "NewASEGU")
                 {
