@@ -2735,7 +2735,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     int intNodeId = int.Parse(ClientSession[0]);
                     NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 24), "SC");
                     objEntity.v_ServiceComponentId = NewId;
-                    objEntity.r_Price = SetNewPrice(pobjDtoEntity.r_Price.Value);
+                    objEntity.r_Price = SetNewPrice(pobjDtoEntity.r_Price.Value, pobjDtoEntity.v_ComponentId);
 
                     dbContext.AddToservicecomponent(objEntity);
                     dbContext.SaveChanges();
@@ -2757,19 +2757,23 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-        private float SetNewPrice(float value)
+        private float SetNewPrice(float value, string componentId)
         {
             try
             {
+                if (value == null) return value;
+                if (value <= 0) return value;
+                
+                SigesoftEntitiesModel cnx = new SigesoftEntitiesModel();
+
+                var EsRecargable = cnx.component.Where(x => x.v_ComponentId == componentId).FirstOrDefault().i_PriceIsRecharged;
+
+                if (EsRecargable != (int)SiNo.SI) return value;
+
                 DateTime now = DateTime.Now;
                 string year = now.Year.ToString();
                 string day = now.Day.ToString();
-                string month = now.Month.ToString();
-                if (value <= 0)
-                {
-                    return value;
-                }
-                
+                string month = now.Month.ToString();                               
                 
                 bool IsRecharged = false;
                 if (now >=  DateTime.Parse("18/04/" + year + " 00:00:01") && now <=  DateTime.Parse("18/04/" + year + " 23:59:59"))
@@ -2836,7 +2840,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 if (IsRecharged)
                 {
                     float newValueRecharged = value + (value * float.Parse("0.2"));
-                    //newValueRecharged = float.Parse(Math.Round(decimal.Parse(newValueRecharged.ToString()), 2).ToString());
+                    newValueRecharged = float.Parse(newValueRecharged.ToString("N2"));
                     return newValueRecharged;
                 }
 
